@@ -1,0 +1,19 @@
+.car-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .car-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .car-list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  

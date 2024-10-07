@@ -1,0 +1,90 @@
+/* General Header Styles */
+.header {
+    background-color: #1e3a8a;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo h1 a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  
+  .navbar {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    background-color: #2d4ca3;
+    border-radius: 5px;
+  }
+  
+  /* Hamburger Menu Button Styles */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 25px; /* Adjust size as needed */
+    background: none; /* Remove default button background */
+    border: none; /* Remove default button border */
+    color: #fff; /* Your preferred color */
+    transition: color 0.3s ease; /* Transition for hover effect */
+  }
+  
+  .hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Responsive: On small screens */
+  @media (max-width: 768px) {
+    .navbar {
+      position: absolute;
+      top: 102px;
+      right: 0;
+      background-color: #1e3a8a;
+      width: 200px;
+      height: calc(100vh - 60px);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      display: none;
+    }
+  
+    .navbar.open {
+      display: flex;
+      z-index: 2;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  }
+  
+  /* Optional: Animate the open/close of the menu */
+  .navbar.open {
+    animation: slideIn 0.3s forwards;
+  }
+  
+  @keyframes slideIn {
+    from {
+      right: -200px;
+    }
+    to {
+      right: 0;
+    }
+  }
+  

@@ -1,0 +1,245 @@
+/* General Styles */
+.homepage {
+    font-family: 'Arial', sans-serif;
+    color: #444; /* Soft dark gray for general text */
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Hero Section */
+.hero {
+    background: url('../../public/images/hero-image2.jpg') no-repeat center center;
+    background-size: cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: #f5f5f5; /* Off-white for better contrast */
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for more contrast */
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 80%;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7); /* Stronger text shadow */
+}
+
+.hero p {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #e67e22; /* Soft orange */
+    color: white;
+    padding: 15px 35px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #d35400; /* Darker orange on hover */
+    transform: scale(1.05); /* Slight grow on hover */
+}
+
+/* Featured Cars */
+.featured-cars {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.featured-car-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.featured-car {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+}
+
+.featured-car:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featured-car img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.featured-car h3 {
+    font-size: 1.8rem;
+    margin-top: 15px;
+    color: #2c3e50; /* Deep blue-gray */
+}
+
+.featured-car p {
+    font-size: 1.3rem;
+    color: #e67e22; /* Soft orange for pricing */
+    margin-top: 5px;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-size: 2.5rem;
+    color: #34495e; /* Deep blue-gray */
+    margin-bottom: 20px;
+}
+
+.why-choose-us ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.why-choose-us li {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    color: #7f8c8d; /* Soft gray */
+}
+
+/* Stocklist Section */
+.stocklist-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.stocklist-section h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.testimonial {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 1.2rem;
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    color: #2c3e50;
+}
+
+.testimonial span {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+/* Contact CTA Section */
+.contact-cta {
+    padding: 50px 0;
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+}
+
+.contact-cta p {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+
+.contact-cta .cta-button {
+    background-color: #e67e22;
+    color: white;
+    font-size: 1.3rem;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.cta-button a {
+    text-decoration: none;
+    color: #f5f5f5;
+}
+
+.contact-cta .cta-button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+ 
+    .hero-content {
+        padding: 25px;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .featured-car-list {
+        flex-direction: column;
+    }
+
+    .featured-car {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .featured-car img {
+        height: 150px;
+    }
+
+    .contact-cta p {
+        font-size: 1.2rem;
+    }
+}

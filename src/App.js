@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/header';
+import Footer from './components/footer';
+import CarList from './components/carList';
+import CarDetails from './components/carDetails';
+import Stocklist from './components/stockList'; // Import the Stocklist component
+import carData from './components/carData'; // Import car data
+import About from './components/about';
+import HomePage from './components/homepage';
+import Contact from './components/contact';
+import HowToBuy from './components/howtobuy';
 
 function App() {
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    // Use the imported carData instead of defining it locally
+    setCars(carData);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage cars={cars} />} />
+          <Route path="/cars/:id" element={<CarDetails cars={cars} />} />
+          <Route path="/stocklist" element={<Stocklist cars={cars} />} /> {/* New route for Stocklist */}
+          <Route path="/about" element={<About />} /> {/* New route for About */}
+          <Route path="/contact" element={<Contact />} /> 
+          <Route path="/howtobuy" element={<HowToBuy />} /> {/* New route for How to Buy */}
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
