@@ -33,7 +33,7 @@ const carData = [
     year: '2021',
     price: 20000,
     location: 'Tokyo',
-    image: '/images/hondastepwgn.jpg',
+    image: `${process.env.PUBLIC_URL}/images/hondastepwgn.jpg`,
     description: 'A spacious and versatile family van.',
     dateAdded: '2023-10-01',
     popularity: 4,
