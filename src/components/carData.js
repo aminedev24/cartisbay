@@ -7,7 +7,7 @@ const carData = [
     year: '2023',
     price: 10000,
     location: 'New York',
-    image: `${process.env.PUBLIC_URL}/images/silverSadan.jpg`, // Use process.env.PUBLIC_URL
+    image: `${process.env.PUBLIC_URL}/images/silversadan.jpg`, // Use process.env.PUBLIC_URL
     description: 'A reliable car for export.',
     dateAdded: '2023-01-01',
     popularity: 5,
@@ -34,7 +34,7 @@ const carData = [
     year: '2022',
     price: 22000,
     location: 'Osaka',
-    image: `${process.env.PUBLIC_URL}/images/SUBARUIMPREZASPORTS.jpg`, // Use process.env.PUBLIC_URL
+    image: `${process.env.PUBLIC_URL}/images/subaruimprezasports.JPG`, // Use process.env.PUBLIC_URL
     description: 'A sporty compact car with all-wheel drive.',
     dateAdded: '2023-10-02',
     popularity: 5,
@@ -47,7 +47,7 @@ const carData = [
     year: '2023',
     price: 25000,
     location: 'Kyoto',
-    image: `${process.env.PUBLIC_URL}/images/subaruforester.jpg`, // Use process.env.PUBLIC_URL
+    image: `${process.env.PUBLIC_URL}/images/subaruforester.JPG`, // Use process.env.PUBLIC_URL
     description: 'A reliable SUV with great off-road capability.',
     dateAdded: '2023-10-03',
     popularity: 5,
@@ -60,7 +60,7 @@ const carData = [
     year: '2021',
     price: 20000,
     location: 'Tokyo',
-    image: `${process.env.PUBLIC_URL}/images/hondastepwgn.jpg`, // Use process.env.PUBLIC_URL
+    image: `${process.env.PUBLIC_URL}/images/hondastepwgn.JPG`, // Use process.env.PUBLIC_URL
     description: 'A spacious and versatile family van.',
     dateAdded: '2023-10-01',
     popularity: 4,
