@@ -25,21 +25,9 @@ const carData = [
     dateAdded: '2023-01-02',
     popularity: 4,
   },
+
   {
     id: 3,
-    name: 'Honda Step WGN',
-    make: 'Honda',
-    model: 'Step WGN',
-    year: '2021',
-    price: 20000,
-    location: 'Tokyo',
-    image: `${process.env.PUBLIC_URL}/images/hondastepwgn.jpg`, // Use process.env.PUBLIC_URL
-    description: 'A spacious and versatile family van.',
-    dateAdded: '2023-10-01',
-    popularity: 4,
-  },
-  {
-    id: 4,
     name: 'Subaru Impreza Sports',
     make: 'Subaru',
     model: 'Impreza Sports',
@@ -52,7 +40,7 @@ const carData = [
     popularity: 5,
   },
   {
-    id: 5,
+    id: 4,
     name: 'Subaru Forester',
     make: 'Subaru',
     model: 'Forester',
@@ -64,6 +52,19 @@ const carData = [
     dateAdded: '2023-10-03',
     popularity: 5,
   },
+  {
+    id: 5,
+    name: 'Honda Step WGN',
+    make: 'Honda',
+    model: 'Step WGN',
+    year: '2021',
+    price: 20000,
+    location: 'Tokyo',
+    image: `${process.env.PUBLIC_URL}/images/hondastepwgn.jpg`, // Use process.env.PUBLIC_URL
+    description: 'A spacious and versatile family van.',
+    dateAdded: '2023-10-01',
+    popularity: 4,
+  }
 ];
 
 export default carData;
