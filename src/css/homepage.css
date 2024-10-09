@@ -198,7 +198,7 @@
     transform: scale(1.05);
 }
 
-/* Responsive Design */
+/* Responsive Design 
 @media (max-width: 768px) {
  
     .hero-content {
@@ -243,3 +243,5 @@
         font-size: 1.2rem;
     }
 }
+
+/*

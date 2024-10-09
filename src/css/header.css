@@ -75,7 +75,7 @@
     transition: transform 0.3s ease;
   }
   
-  /* Responsive: On small screens */
+  /* Responsive: On small screens 
   @media (max-width: 768px) {
     .navbar {
       position: absolute;
@@ -100,7 +100,6 @@
     }
   }
   
-  /* Optional: Animate the open/close of the menu */
   .navbar.open {
     animation: slideIn 0.3s forwards;
   }
@@ -114,3 +113,4 @@
     }
   }
   
+  /*
