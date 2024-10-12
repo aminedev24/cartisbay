@@ -1,0 +1,96 @@
+.left-sidebar {
+  background-color: #f0f4f8; /* Light background for sidebar */
+  padding: 20px; /* Add some padding for spacing */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow for more depth */
+  border-right: 1px solid #ddd; /* Separate with a border */
+  height: 100vh; /* Full height of the viewport */
+  width: 235px; /* Increased fixed width for better usability */
+  position: fixed; /* Keep it fixed */
+  top: 20%; /* Align it to the top */
+  left: 0; /* Align it to the left */
+  overflow-y: auto; /* Scroll if content overflows */
+  z-index: 100; /* Ensure it stays above other elements */
+  transition: width 0.3s ease; /* Smooth transition for width changes */
+}
+
+.left-sidebar h2 {
+  font-size: 24px; /* Larger font for headings */
+  margin-bottom: 20px; /* Increased margin for better spacing */
+  color: #1e3a8a; /* Darker blue for heading text */
+  text-align: center; /* Center align heading text */
+}
+
+.left-sidebar select,
+.left-sidebar input {
+  width: 100%; /* Full width for inputs and selects */
+  padding: 10px; /* Increased padding for comfort */
+  margin-bottom: 15px; /* Margin for spacing */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Increased font size for better readability */
+  color: #333;
+  transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.left-sidebar select:focus,
+.left-sidebar input:focus {
+  border-color: #1e3a8a; /* Focus color on inputs */
+  outline: none;
+  box-shadow: 0 0 5px rgba(30, 58, 138, 0.5); /* Subtle glow effect on focus */
+}
+
+.left-sidebar button {
+  padding: 12px; /* Increased padding for better usability */
+  background-color: #1e3a8a; /* Main button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px; /* Larger font size for buttons */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.left-sidebar button:hover {
+  background-color: #2d4ca3; /* Darker shade on hover */
+}
+
+.left-sidebar button:disabled {
+  background-color: #b0bec5; /* Disabled button color */
+  cursor: not-allowed; /* Change cursor for disabled state */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .left-sidebar {
+      width: 170px; /* Adjusted width for small screens */
+  }
+
+  .left-sidebar select,
+  .left-sidebar input {
+      max-width: 180px; /* Set a max width to prevent excessive stretching */
+  }
+
+  .left-sidebar button {
+      max-width: 180px; /* Set a max width for buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .left-sidebar {
+      width: 150px; /* Further adjust width for very small screens */
+  }
+
+  .left-sidebar h2 {
+      font-size: 20px; /* Smaller font size for headings on small screens */
+  }
+
+  .left-sidebar select,
+  .left-sidebar input {
+      font-size: 14px; /* Smaller font size for inputs */
+  }
+
+  .left-sidebar button {
+      font-size: 14px; /* Smaller font size for buttons */
+  }
+}

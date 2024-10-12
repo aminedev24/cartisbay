@@ -2,6 +2,8 @@
     padding: 40px;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
+    margin: 0 auto;
+    width: 60%;
   }
   
   h2 {
@@ -21,9 +23,6 @@
     color: #e74c3c;
   }
   
-  section {
-    margin-bottom: 50px;
-  }
   
   .team-image, .world-map {
     width: 100%;
@@ -99,7 +98,7 @@
     border-radius: 10px;
   }
 
-  /*
+  
   
   @media (max-width: 768px) {
     .features {
@@ -119,4 +118,4 @@
     }
   }
   
-  */
+  

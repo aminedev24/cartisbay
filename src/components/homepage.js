@@ -3,7 +3,8 @@ import Stocklist from "./stockList";
 import carData from './carData'; // Import car data
 import '../css/homepage.css'; // Add your CSS file for homepage styling
 import { Link } from "react-router-dom";
-
+import LeftSidebar from "./sidebar";
+import RightSidebar from "./rightsidebar";
 function HomePage() {
     const [cars, setCars] = useState([]);
 
@@ -12,6 +13,9 @@ function HomePage() {
     }, []);
 
     return (
+        <div className="container">
+        <LeftSidebar />
+        <div className="main-content">
         <div className="homepage">
             {/* Hero Section */}
             <section className="hero">
@@ -71,6 +75,8 @@ function HomePage() {
                 <p>Contact us today and let us help you export your next car with ease!</p>
                 <Link className="cta-button" to="/contact" >Contact Us</Link>
             </section>
+        </div>
+        </div>
         </div>
     );
 }
