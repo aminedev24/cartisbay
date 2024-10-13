@@ -17,7 +17,12 @@ function HomePage() {
         <LeftSidebar />
         <div className="main-content">
         <div className="homepage">
-            {/* Hero Section */}
+            {/* Stocklist */}
+            <section className="stocklist-section">
+                <h2>Our Stock</h2>
+                <Stocklist cars={cars} />
+            </section>
+            {/* Hero Section 
             <section className="hero">
                 <div className="hero-content">
                     <h1>Your Trusted Car Export Partner</h1>
@@ -25,7 +30,7 @@ function HomePage() {
                     <button className="cta-button"><Link to="stocklist">Browse Our Stock</Link></button>
                 </div>
             </section>
-
+            */}
             {/* Featured Cars Section */}
             <section className="featured-cars">
                 <h2>Featured Cars</h2>
@@ -50,11 +55,7 @@ function HomePage() {
                 </ul>
             </section>
 
-            {/* Stocklist */}
-            <section className="stocklist-section">
-                <h2>Our Stock</h2>
-                <Stocklist cars={cars} />
-            </section>
+          
 
             {/* Customer Testimonials */}
             <section className="testimonials">

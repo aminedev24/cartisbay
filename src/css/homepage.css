@@ -2,14 +2,13 @@
 .main-content {
     margin-left: 250px; /* Width of left sidebar */
     margin-right: 100px; /* Width of right sidebar */
-    padding: 20px; /* Default padding */
+    padding: 5px 20px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
 }
 
 .homepage {
     font-family: 'Arial', sans-serif;
     color: #444; /* Soft dark gray for general text */
-    line-height: 1.6;
     padding: 0;
     margin: 0;
     display: flex; /* Use flexbox to align elements */
@@ -206,14 +205,12 @@
 
 /* Stocklist Section */
 .stocklist-section {
-    padding: 50px 0;
     background-color: #f9f9f9;
     text-align: center;
 }
 
 .stocklist-section h2 {
     color: #2c3e50;
-    margin-bottom: 30px;
 }
 
 /* Testimonials Section */

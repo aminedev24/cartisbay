@@ -112,12 +112,18 @@ const Stocklist = ({ cars }) => {
         <button onClick={() => setViewOption('list')}>List View</button*/}
        
       </div>
+      <div className={`car-list ${viewOption} ${sortedCars.length == 0 ? 'zero':'' }`}>
+          {sortedCars.length > 0 ? (
+            sortedCars.map((car) => (
+              <CarCard key={car.id} car={car} />
+            ))
+          ) : (
+            <div className="no-cars-found-container">
+              <div className="no-cars-found">No cars found</div>
+            </div>
+          )}
+        </div>
 
-      <div className={`car-list ${viewOption}`}>
-        {sortedCars.map((car) => (
-          <CarCard key={car.id} car={car} />
-        ))}
-      </div>
     </div>
   );
 };
