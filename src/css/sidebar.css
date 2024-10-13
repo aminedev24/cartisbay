@@ -77,9 +77,7 @@
 }
 
 @media (max-width: 480px) {
-  .left-sidebar {
-      width: 150px; /* Further adjust width for very small screens */
-  }
+
 
   .left-sidebar h2 {
       font-size: 20px; /* Smaller font size for headings on small screens */

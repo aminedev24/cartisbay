@@ -26,7 +26,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div>
+    <div className='header-container'>
       {/* Top bar with time and exchange rate */}
       <div className="top-bar">
         <div className="app-info">

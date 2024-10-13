@@ -9,6 +9,10 @@
   border-bottom: 1px solid #ddd;
 }
 
+.header-container {
+  width: 1200px;
+}
+
 .app-info .app-name {
   font-weight: bold;
   color: #333;

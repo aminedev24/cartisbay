@@ -1,9 +1,12 @@
 /* General Styles */
 .main-content {
     margin-left: 250px; /* Width of left sidebar */
-    margin-right: 100px; /* Width of right sidebar */
     padding: 5px 20px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
+}
+ 
+.container {
+    width: 1200px;
 }
 
 .homepage {
@@ -165,9 +168,7 @@
 }
 
 @media (max-width: 480px) {
-    .featured-car-list {
-        grid-template-columns: 1fr; /* Stack in one column on very small screens */
-    }
+   
 
     .featured-car img {
         height: 80px; /* Further reduce height on very small screens */
@@ -276,12 +277,12 @@
 
 
     .featured-car-list {
-        flex-direction: column; /* Stack cars vertically */
+ 
         align-items: center; /* Center items */
     }
 
     .featured-car {
-        width: 90%; /* Take full width on mobile */
+      
         min-width: 200px; /* Minimum width to prevent excessive shrinking */
     }
 
