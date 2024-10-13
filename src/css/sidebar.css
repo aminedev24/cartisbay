@@ -6,7 +6,6 @@
   height: 100vh; /* Full height of the viewport */
   width: 235px; /* Increased fixed width for better usability */
   position: fixed; /* Keep it fixed */
-  top: 20%; /* Align it to the top */
   left: 0; /* Align it to the left */
   overflow-y: auto; /* Scroll if content overflows */
   z-index: 100; /* Ensure it stays above other elements */
@@ -91,4 +90,31 @@
   .left-sidebar button {
       font-size: 14px; /* Smaller font size for buttons */
   }
+}
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-group h3 {
+  margin: 5px 0;
+}
+
+.filter-group button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #007BFF; /* Adjust color as needed */
+  color: white;
+  cursor: pointer;
+}
+
+.filter-group button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.filter-group input {
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
 }

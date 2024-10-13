@@ -9,11 +9,18 @@ import About from './components/about';
 import HomePage from './components/homepage';
 import Contact from './components/contact';
 import HowToBuy from './components/howtobuy';
-import LeftSidebar from './components/sidebar';
-import RightSidebar from './components/rightsidebar';
+import LeftSidebar from './components/sidebar'; // Import the LeftSidebar
 
 function App() {
   const [cars, setCars] = useState([]);
+  const [filters, setFilters] = useState({
+    make: '',
+    model: '',
+    year: '',
+    price: '',
+    location: '',
+    searchTerm: '',
+  });
 
   useEffect(() => {
     setCars(carData); // Use the imported carData
@@ -23,20 +30,15 @@ function App() {
     <Router>
       <Header />
       <div className='layout'>
-    
         
-       
-          <Routes>
-            <Route path="/" element={<HomePage cars={cars} />} />
-            <Route path="/cars/:id" element={<CarDetails cars={cars} />} />
-            <Route path="/stocklist" element={<Stocklist cars={cars} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/howtobuy" element={<HowToBuy />} />
-          </Routes>
-     
-        
-       
+        <Routes>
+          <Route path="/" element={<HomePage cars={cars} />} />
+          <Route path="/cars/:id" element={<CarDetails cars={cars} />} />
+          <Route path="/stocklist" element={<Stocklist cars={cars} filters={filters} />} /> {/* Pass filters to Stocklist */}
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/howtobuy" element={<HowToBuy />} />
+        </Routes>
       </div>
       <Footer />
     </Router>

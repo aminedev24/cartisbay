@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
 import CarCard from './carCard';
-import '../css/stockList.css'; // Ensure this CSS file is created for styling
+import '../css/stockList.css';
 
-const Stocklist = ({ cars }) => {
-  const [filters, setFilters] = useState({
-    make: '',
-    model: '',
-    year: '',
-    price: '',
-    location: '',
-    searchTerm: '',
-  });
-
+const Stocklist = ({ cars, filters, setFilters }) => {
   const [sortOption, setSortOption] = useState('newest'); // Default sort by newest
   const [viewOption, setViewOption] = useState('grid'); // Default view is grid
 
-  // Function to handle filter changes
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value,
-    }));
-  };
+  // Extract unique makes, models, and years for filtering options
+  const uniqueMakes = [...new Set(cars.map(car => car.make))];
+  const uniqueModels = [...new Set(cars.map(car => car.model))];
+  const uniqueYears = [...new Set(cars.map(car => car.year))];
 
   // Function to handle sorting
   const handleSortChange = (e) => {
@@ -34,7 +21,7 @@ const Stocklist = ({ cars }) => {
     return (
       (!filters.make || car.make.toLowerCase().includes(filters.make.toLowerCase())) &&
       (!filters.model || car.model.toLowerCase().includes(filters.model.toLowerCase())) &&
-      (!filters.year || car.year === filters.year) &&
+      (!filters.year || car.year.toString() === filters.year) &&
       (!filters.price || car.price <= filters.price) &&
       (!filters.location || car.location.toLowerCase().includes(filters.location.toLowerCase())) &&
       (!filters.searchTerm || car.name.toLowerCase().includes(filters.searchTerm.toLowerCase()))
@@ -54,28 +41,23 @@ const Stocklist = ({ cars }) => {
     }
   });
 
-  // Extract unique makes, models, and years for dropdowns
-  const uniqueMakes = [...new Set(cars.map(car => car.make))];
-  const uniqueModels = [...new Set(cars.map(car => car.model))];
-  const uniqueYears = [...new Set(cars.map(car => car.year))];
-
   return (
     <div className="stocklist">
       <div className="filters">
         <h2>Filter Options</h2>
-        <select name="make" onChange={handleFilterChange}>
+        <select name="make" onChange={(e) => setFilters({ ...filters, make: e.target.value })}>
           <option value="">Select Make</option>
           {uniqueMakes.map(make => (
             <option key={make} value={make}>{make}</option>
           ))}
         </select>
-        <select name="model" onChange={handleFilterChange}>
+        <select name="model" onChange={(e) => setFilters({ ...filters, model: e.target.value })}>
           <option value="">Select Model</option>
           {uniqueModels.map(model => (
             <option key={model} value={model}>{model}</option>
           ))}
         </select>
-        <select name="year" onChange={handleFilterChange}>
+        <select name="year" onChange={(e) => setFilters({ ...filters, year: e.target.value })}>
           <option value="">Select Year</option>
           {uniqueYears.map(year => (
             <option key={year} value={year}>{year}</option>
@@ -85,19 +67,19 @@ const Stocklist = ({ cars }) => {
           type="number"
           name="price"
           placeholder="Max Price"
-          onChange={handleFilterChange}
+          onChange={(e) => setFilters({ ...filters, price: e.target.value })}
         />
         <input
           type="text"
           name="location"
           placeholder="Location"
-          onChange={handleFilterChange}
+          onChange={(e) => setFilters({ ...filters, location: e.target.value })}
         />
         <input
           type="text"
           name="searchTerm"
           placeholder="Search by Name"
-          onChange={handleFilterChange}
+          onChange={(e) => setFilters({ ...filters, searchTerm: e.target.value })}
         />
       </div>
 
@@ -108,22 +90,19 @@ const Stocklist = ({ cars }) => {
           <option value="price">Price: Low to High</option>
           <option value="popularity">Most Popular</option>
         </select>
-        {/*<button onClick={() => setViewOption('grid')}>Grid View</button>
-        <button onClick={() => setViewOption('list')}>List View</button*/}
-       
       </div>
-      <div className={`car-list ${viewOption} ${sortedCars.length == 0 ? 'zero':'' }`}>
-          {sortedCars.length > 0 ? (
-            sortedCars.map((car) => (
-              <CarCard key={car.id} car={car} />
-            ))
-          ) : (
-            <div className="no-cars-found-container">
-              <div className="no-cars-found">No cars found</div>
-            </div>
-          )}
-        </div>
 
+      <div className={`car-list ${viewOption} ${sortedCars.length === 0 ? 'zero' : ''}`}>
+        {sortedCars.length > 0 ? (
+          sortedCars.map((car) => (
+            <CarCard key={car.id} car={car} />
+          ))
+        ) : (
+          <div className="no-cars-found-container">
+            <div className="no-cars-found">No cars found</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

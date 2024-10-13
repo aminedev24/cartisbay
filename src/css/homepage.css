@@ -1,13 +1,18 @@
 /* General Styles */
 .main-content {
     margin-left: 250px; /* Width of left sidebar */
+    margin-right: 130px;
     padding: 5px 20px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
 }
 
-.container {
-    width: 1200px; /* Fixed width */
-    margin: auto; /* Center the container */
+.container , .layout {
+    width: 1250px; /* Fixed width */
+   
+}
+
+.layout {
+    position: relative;
 }
 
 .homepage {

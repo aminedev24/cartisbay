@@ -7,6 +7,14 @@ import LeftSidebar from "./sidebar";
 import RightSidebar from "./rightsidebar";
 function HomePage() {
     const [cars, setCars] = useState([]);
+    const [filters, setFilters] = useState({
+        make: '',
+        model: '',
+        year: '',
+        price: '',
+        location: '',
+        searchTerm: '',
+      });
 
     useEffect(() => {
       setCars(carData);
@@ -14,13 +22,13 @@ function HomePage() {
 
     return (
         <div className="container">
-        <LeftSidebar />
+        <LeftSidebar setFilters={setFilters} />
         <div className="main-content">
         <div className="homepage">
             {/* Stocklist */}
             <section className="stocklist-section">
                 <h2>Our Stock</h2>
-                <Stocklist cars={cars} />
+                <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
             </section>
             {/* Hero Section 
             <section className="hero">
@@ -78,6 +86,7 @@ function HomePage() {
             </section>
         </div>
         </div>
+        <RightSidebar />
         </div>
     );
 }
