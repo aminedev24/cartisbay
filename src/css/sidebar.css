@@ -63,7 +63,7 @@
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .left-sidebar {
-      width: 170px; /* Adjusted width for small screens */
+      width: 225px; /* Adjusted width for small screens */
   }
 
   .left-sidebar select,
