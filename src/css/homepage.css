@@ -260,6 +260,7 @@
     text-align: center; /* Center align text */
     padding: 15px; /* Padding inside cards */
     width: 85%;
+    cursor: pointer;
 }
 
 .info-card-image {
