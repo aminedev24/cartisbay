@@ -9,10 +9,28 @@ const LeftSidebar = ({ setFilters }) => {
     }));
   };
 
+  const makes = ["Toyota", "Nissan", "Honda", "Ford", "Chevrolet"];
+
   return (
     <div className="left-sidebar">
+      <img
+        src={`${process.env.PUBLIC_URL}/images/sidebar_image.jpg`}
+        alt="Sidebar Image"
+        className="sidebar-image"
+      />
+      <div className="make-header">
+        <h4>Make</h4>
+      </div>
+      <ul className="make-list">
+        {makes.map((make, index) => (
+          <li key={index} className="make-item">
+            {make}
+          </li>
+        ))}
+      </ul>
+
       <h2>Filter Options</h2>
-      
+
       <div className="filter-group">
         <h3>Make</h3>
         <button onClick={() => handleFilterChange('make', 'Toyota')}>Toyota</button>

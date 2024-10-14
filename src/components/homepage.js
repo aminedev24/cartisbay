@@ -5,6 +5,7 @@ import '../css/homepage.css'; // Add your CSS file for homepage styling
 import { Link } from "react-router-dom";
 import LeftSidebar from "./sidebar";
 import RightSidebar from "./rightsidebar";
+import SearchForm from "./searchContainer";
 function HomePage() {
     const [cars, setCars] = useState([]);
     const [filters, setFilters] = useState({
@@ -20,12 +21,48 @@ function HomePage() {
       setCars(carData);
     }, []);
 
+
+    const cards = [
+        {
+          imgSrc: `${process.env.PUBLIC_URL}/images/testimonials.jpg`, 
+          title: 'Customer Review',
+        },
+        {
+          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy.jpg`, 
+          title: 'How to Buy',
+        },
+        {
+          imgSrc:`${process.env.PUBLIC_URL}/images/specialoffer.jpg`,
+          title: 'Today Special Offer',
+        },
+        {
+          imgSrc: `${process.env.PUBLIC_URL}/images/earnpts.jpg`,
+          title: 'Earn Up to 300pt with Purchase',
+        },
+        {
+          imgSrc:  `${process.env.PUBLIC_URL}/images/howtopay.jpg`,
+          title: 'How to Pay',
+        },
+      ];
+
+
+
     return (
         <div className="container">
         <LeftSidebar setFilters={setFilters} />
+       
         <div className="main-content">
         <div className="homepage">
             {/* Stocklist */}
+            <SearchForm />
+            <div className="info-cards-container">
+        {cards.map((card, index) => (
+            <div className="info-card" key={index}>
+            <img src={card.imgSrc} alt={card.title} className="info-card-image" />
+            <h3 className="info-card-title">{card.title}</h3>
+            </div>
+        ))}
+        </div>
             <section className="stocklist-section">
                 <h2>Our Stock</h2>
                 <Stocklist cars={cars} filters={filters} setFilters={setFilters} />

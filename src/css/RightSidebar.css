@@ -1,9 +1,9 @@
 /* Assuming your RightSidebar component has a class name */
 .right-sidebar {
-    position: relative; /* Position it absolutely */
+    position: absolute; /* Position it absolutely */
     top: 0; /* Align to the top */
     right: 0; /* Align to the right */
-    width: 250px; /* Set the desired width */
+    width: 230px; /* Set the desired width */
     height: 100%; /* Full height */
     background-color: #fff; /* Optional: Set a background color */
 }
@@ -33,35 +33,15 @@
     color: #e67e22; /* Change color on hover */
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .right-sidebar {
-        width: 150px; /* Set a fixed width for the sidebar on small screens */
-        right: 0; /* Align to the right of the screen */
-        height: auto; /* Allow height to adjust based on content */
-        position: absolute;
-    }
-
-    /* Optional: Adjust heading and link font sizes for smaller screens */
-    .right-sidebar h2 {
-        font-size: 1.5rem; /* Smaller heading size */
-    }
-
-    .right-sidebar a {
-        font-size: 1rem; /* Smaller link font size */
-    }
+.image-section {
+    margin-bottom: 20px; /* Space between images and the rest of the sidebar content */
 }
 
-@media (max-width: 480px) {
-    .right-sidebar {
-        width: 150px; /* Further reduce width on very small screens */
-    }
-
-    .right-sidebar h2 {
-        font-size: 1.3rem; /* Smaller heading size */
-    }
-
-    .right-sidebar a {
-        font-size: 0.9rem; /* Smaller link font size */
-    }
+.sidebar-image {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Round corners for images */
+    margin-bottom: 10px; /* Space between the two images */
+    cursor: pointer;
 }
+

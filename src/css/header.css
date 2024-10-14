@@ -10,7 +10,8 @@
 }
 
 .header-container {
-  width: 1250px;
+  min-width: 1250px;
+  width: 100%;
 }
 
 .app-info .app-name {
@@ -30,10 +31,10 @@
   font-size: 12px;  /* Smaller font size */
 }
 
-/* General Header Styles */
+/* General Header Styles 
 .header {
   background-color: #1e3a8a;
-  padding: 6px 15px;  /* Further reduced padding for a compact look */
+  padding: 6px 15px;  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,35 +42,33 @@
 
 .logo h1 a {
   color: white;
-  font-size: 20px;  /* Smaller logo font size */
+
   text-decoration: none;
 }
 
 .navbar {
   display: flex;
-  gap: 15px;  /* Reduced gap for tighter navigation links */
+  gap: 15px;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
-  font-size: 14px;  /* Smaller text size for navigation links */
-  padding: 6px 10px;  /* Reduced padding for a more compact feel */
+  font-size: 14p
+  padding: 6px 10px
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar a:hover {
   background-color: #2d4ca3;
-  color: #ffcc00;  /* Hover color change remains */
+  color: #ffcc00; 
   border-radius: 5px;
 }
 
-/* Hamburger Menu Button Styles */
 .hamburger {
-  display: none;  /* Keep hamburger hidden on desktop */
+  display: none;  
 }
 
-/* Animation for the slide-in menu, not necessary for desktop but preserved */
 @keyframes slideIn {
   from {
     right: -200px;
@@ -77,4 +76,164 @@
   to {
     right: 0;
   }
+}
+
+*/
+
+/* General Styles */
+.main-header {
+  background-color: #1e3a8a; /* Blueish color */
+  padding: 20px;
+  color: white;
+  border-bottom: 1px solid #2980b9; /* Slightly darker shade for contrast */
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  max-width: 600px;
+  margin: 0 20px;
+}
+
+.header-search input {
+  width: 100%;
+  padding: 10px 40px 10px 20px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  color: #888;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header-item {
+  cursor: pointer;
+  position: relative;
+}
+
+.header-item i {
+  margin-right: 5px;
+}
+
+/* Updated dropdown styles */
+.dropdown .dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 100;
+  color: black;
+  text-align: left;
+}
+
+/* Show dropdown when 'show' class is added */
+.dropdown-content.show {
+  display: block; /* Show when the 'show' class is present */
+  z-index: 200;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  font-size: 1.1rem;
+  color: #34495e; /* Dark gray */
+  text-decoration: none;
+  border-bottom: 1px solid #eaeaea; /* Separator */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none; /* Remove bottom border for last item */
+}
+
+.dropdown-content a:hover {
+  background-color: #e8f0ff; /* Soft blue hover */
+  color: #1e3a8a; /* Blue text on hover */
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.used-cars {
+  position: relative;
+  cursor: pointer;
+}
+
+.right-links {
+  display: flex;
+  gap: 20px;
+}
+
+.right-links div {
+  position: relative;
+}
+
+.right-links .nav-item {
+  cursor: pointer;
+}
+
+/* Updated nav-item dropdown content styles */
+.nav-item .dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute;
+  top: 40px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  width: 180px;
+}
+
+/* Show dropdown when 'show' class is added */
+.nav-item .dropdown-content.show {
+  display: block; /* Show when the 'show' class is present */
+}
+
+.nav-item .dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #34495e;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.nav-item .dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.nav-item .dropdown-content a:hover {
+  background-color: #e8f0ff;
+  color: #1e3a8a;
 }

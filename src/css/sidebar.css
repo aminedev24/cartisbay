@@ -3,9 +3,9 @@
   padding: 20px; /* Add some padding for spacing */
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow for more depth */
   border-right: 1px solid #ddd; /* Separate with a border */
-  height: 100vh; /* Full height of the viewport */
+  height: 98%; /* Full height of the viewport */
   width: 235px; /* Increased fixed width for better usability */
-  position: fixed; /* Keep it fixed */
+  position: absolute; /* Keep it fixed */
   left: 0; /* Align it to the left */
   overflow-y: auto; /* Scroll if content overflows */
   z-index: 100; /* Ensure it stays above other elements */
@@ -117,4 +117,39 @@
   margin-top: 5px;
   padding: 8px;
   width: 100%;
+}
+
+
+.sidebar-image {
+  width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Optional: rounded corners for the image */
+}
+
+.make-header {
+  background-color: #1e3a8a; /* Header background color */
+  color: white; /* Text color */
+  border-radius: 5px; /* Rounded corners */
+  margin: 20px 0; /* Space around the header */
+  text-align: center; /* Center the text */
+}
+
+.make-header h4 {
+  padding: 8px 0 8px 12px;
+  color: #FFF;
+}
+.make-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove padding */
+}
+
+.make-item {
+  padding: 15px; /* Space around each make item */
+  border-bottom: 1px solid #ccc; /* Optional: separator line */
+  cursor: pointer; /* Change cursor on hover */
+  text-align: center;
+}
+
+.make-item:hover {
+  background-color: #e0e0e0; /* Highlight on hover */
 }

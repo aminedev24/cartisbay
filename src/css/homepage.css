@@ -1,13 +1,13 @@
 /* General Styles */
 .main-content {
-    margin-left: 250px; /* Width of left sidebar */
-    margin-right: 130px;
+    margin-left: 270px; /* Width of left sidebar */
+    margin-right: 250px;
     padding: 5px 20px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
 }
 
 .container , .layout {
-    width: 1250px; /* Fixed width */
+    min-width: 1250px; /* Fixed width */
    
 }
 
@@ -244,3 +244,35 @@
         height: 80px; /* Further reduce height on very small screens */
     }
 }
+
+
+.info-cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Adjust for responsive design */
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Padding around the container */
+}
+
+.info-card {
+    background-color: #f5f5f5; /* Background color of cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    text-align: center; /* Center align text */
+    padding: 15px; /* Padding inside cards */
+    width: 85%;
+}
+
+.info-card-image {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px 8px 0 0; /* Round top corners */
+}
+
+.info-card-title {
+    margin-top: 10px; /* Space between image and text */
+    font-size: .8rem; /* Adjust font size */
+    color: #34495e; /* Text color */
+}
+
+
+
