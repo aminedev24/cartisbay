@@ -2,7 +2,7 @@
     background-color: #f8f9fa;
     padding: 5px 10px;  /* Adjust padding for a better layout */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     font-size: 12px;  /* Smaller font size */
     border-bottom: 1px solid #ddd;
