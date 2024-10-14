@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/header.css';
+import TopBar from './topbar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [japanTime, setJapanTime] = useState('');
-  const [usdToYenRate] = useState(144.90); // Fixed exchange rate
+
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isUsedCarsOpen, setUsedCarsOpen] = useState(false);
   const [isLocalServicesOpen, setLocalServicesOpen] = useState(false);
@@ -14,24 +14,13 @@ const Header = () => {
     setOpen((prev) => !prev);
 };
 
-  useEffect(() => {
-    // Function to update Japan Standard Time
-    const updateJapanTime = () => {
-      const now = new Date();
-      const options = { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-      const japanTimeString = now.toLocaleTimeString('en-US', options);
-      setJapanTime(japanTimeString);
-    };
 
-
-    // Update the time every second
-    const interval = setInterval(updateJapanTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
+  
     <div className='header-container'>
-      {/* Top bar with time and exchange rate */}
+      <TopBar />
+      {/*
       <div className="top-bar">
         <div className="app-info">
           <span className="app-name">Artisbay</span>
@@ -41,8 +30,7 @@ const Header = () => {
           <span className="exchange-rate">USD/JPY: $1 = ¥{usdToYenRate}</span>
         </div>
       </div>
-
-      {/* Main Header 
+    
       <header className="header">
         <div className="logo">
           <h1><Link to="/" onClick={() => setIsMenuOpen(false)}>Artisbay</Link></h1>
