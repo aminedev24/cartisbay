@@ -89,7 +89,7 @@
 /* General Styles */
 .main-header {
   background-color: #1e3a8a; /* Blueish color */
-  padding: 20px;
+  padding: 20px 75px;
   color: white;
   border-bottom: 1px solid #2980b9; /* Slightly darker shade for contrast */
 }
