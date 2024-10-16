@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/sidebar.css';
+import 'car-makes-icons/dist/style.css'; // Assuming this package provides make icons
 
 const LeftSidebar = ({ setFilters }) => {
   const handleFilterChange = (name, value) => {
@@ -24,6 +25,7 @@ const LeftSidebar = ({ setFilters }) => {
       <ul className="make-list">
         {makes.map((make, index) => (
           <li key={index} className="make-item">
+            <span className={`make-icon car-${make.toLowerCase()}`}></span> {/* Add icon */}
             {make}
           </li>
         ))}

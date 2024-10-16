@@ -140,16 +140,32 @@
 }
 .make-list {
   list-style-type: none; /* Remove default list styles */
-  padding: 0; /* Remove padding */
 }
 
+
 .make-item {
-  padding: 15px; /* Space around each make item */
-  border-bottom: 1px solid #ccc; /* Optional: separator line */
-  cursor: pointer; /* Change cursor on hover */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   text-align: center;
 }
 
 .make-item:hover {
   background-color: #e0e0e0; /* Highlight on hover */
 }
+
+.make-icon {
+  width: 30px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+
+
+.make-item:hover {
+  background-color: #f0f0f0; /* Slight highlight on hover */
+}
+
+

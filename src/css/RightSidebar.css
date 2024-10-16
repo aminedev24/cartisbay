@@ -6,6 +6,7 @@
     width: 230px; /* Set the desired width */
     height: 100%; /* Full height */
     background-color: #fff; /* Optional: Set a background color */
+    padding: 20px;
 }
 
 .right-sidebar h2 {
