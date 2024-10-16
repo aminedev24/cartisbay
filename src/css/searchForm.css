@@ -6,7 +6,13 @@
     margin: 5px auto;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
-
+.search-container h4 {
+    font-size: 19px;
+    color: #dfff;
+    text-transform: uppercase;
+    margin: 6px 0 10px 0;
+    border-bottom: 3px solid;
+}
 .search-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 3-column layout */
@@ -22,11 +28,12 @@
 .form-group label {
     margin-bottom: 8px;
     color: #eff2f5;
+    font-weight: bold;
 }
 
 .form-group select,
 .form-group input {
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
@@ -35,7 +42,7 @@
     grid-column: 4; /* Place the button in the fourth column */
     align-self: flex-end; /* Vertically align the button to the bottom */
     justify-self: end; /* Align the button to the right in its column */
-    padding: 15px;
+    padding: 7px 10px;
     background-color: #1e3a8a;
     color: white;
     border: none;

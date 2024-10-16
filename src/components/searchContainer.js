@@ -27,6 +27,7 @@ const SearchForm = () => {
 
   return (
     <div className="search-container">
+      <h4>Search Cars</h4>
       <form className="search-form" onSubmit={handleSubmit}>
         {/* Make */}
         <div className="form-group">

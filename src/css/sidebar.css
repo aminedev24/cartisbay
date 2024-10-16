@@ -1,15 +1,16 @@
 .left-sidebar {
   background-color: #f0f4f8; /* Light background for sidebar */
   padding: 20px; /* Add some padding for spacing */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow for more depth */
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow for more depth */
   border-right: 1px solid #ddd; /* Separate with a border */
   height: 98%; /* Full height of the viewport */
-  width: 235px; /* Increased fixed width for better usability */
+  width: 235px; /* Fixed width for better usability */
   position: absolute; /* Keep it fixed */
   left: 0; /* Align it to the left */
   overflow-y: auto; /* Scroll if content overflows */
   z-index: 100; /* Ensure it stays above other elements */
   transition: width 0.3s ease; /* Smooth transition for width changes */
+  font-family: Arial, sans-serif; /* Set a more readable font */
 }
 
 .left-sidebar h2 {
@@ -17,25 +18,27 @@
   margin-bottom: 20px; /* Increased margin for better spacing */
   color: #1e3a8a; /* Darker blue for heading text */
   text-align: center; /* Center align heading text */
+  text-transform: uppercase; /* Make headings stand out */
 }
 
 .left-sidebar select,
 .left-sidebar input {
   width: 100%; /* Full width for inputs and selects */
-  padding: 10px; /* Increased padding for comfort */
+  padding: 12px; /* Increased padding for comfort */
   margin-bottom: 15px; /* Margin for spacing */
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px; /* Increased font size for better readability */
   color: #333;
-  transition: border-color 0.3s ease; /* Smooth border color transition */
+  background-color: #fff; /* White background for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth border color and box-shadow transitions */
 }
 
 .left-sidebar select:focus,
 .left-sidebar input:focus {
   border-color: #1e3a8a; /* Focus color on inputs */
   outline: none;
-  box-shadow: 0 0 5px rgba(30, 58, 138, 0.5); /* Subtle glow effect on focus */
+  box-shadow: 0 0 8px rgba(30, 58, 138, 0.5); /* Slightly stronger glow effect on focus */
 }
 
 .left-sidebar button {
@@ -47,11 +50,12 @@
   cursor: pointer;
   width: 100%;
   font-size: 16px; /* Larger font size for buttons */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
 }
 
 .left-sidebar button:hover {
   background-color: #2d4ca3; /* Darker shade on hover */
+  transform: translateY(-1px); /* Slight lift on hover */
 }
 
 .left-sidebar button:disabled {
@@ -76,8 +80,6 @@
 }
 
 @media (max-width: 480px) {
-
-
   .left-sidebar h2 {
       font-size: 20px; /* Smaller font size for headings on small screens */
   }
@@ -98,6 +100,8 @@
 
 .filter-group h3 {
   margin: 5px 0;
+  font-size: 18px; /* Increased font size for filter headings */
+  color: #1e3a8a; /* Consistent color for filter headings */
 }
 
 .filter-group button {
@@ -107,6 +111,7 @@
   background-color: #007BFF; /* Adjust color as needed */
   color: white;
   cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
 }
 
 .filter-group button:hover {
@@ -117,8 +122,9 @@
   margin-top: 5px;
   padding: 8px;
   width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded corners */
 }
-
 
 .sidebar-image {
   width: 100%; /* Make the image responsive */
@@ -138,10 +144,10 @@
   padding: 8px 0 8px 12px;
   color: #FFF;
 }
+
 .make-list {
   list-style-type: none; /* Remove default list styles */
 }
-
 
 .make-item {
   display: flex;
@@ -160,12 +166,5 @@
   width: 30px;
   margin-right: 8px;
   vertical-align: middle;
+  font-size: 20px;
 }
-
-
-
-.make-item:hover {
-  background-color: #f0f0f0; /* Slight highlight on hover */
-}
-
-

@@ -1,99 +1,96 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/header.css';
 import TopBar from './topbar';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const dropdownRef = useRef([]);
 
-  const [isLoginOpen, setLoginOpen] = useState(false);
-  const [isUsedCarsOpen, setUsedCarsOpen] = useState(false);
-  const [isLocalServicesOpen, setLocalServicesOpen] = useState(false);
+  const toggleDropdown = (dropdownName) => {
+    setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
+  };
 
-  const toggleDropdown = (setOpen) => {
-    setOpen((prev) => !prev);
-};
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current) {
+      const dropdowns = dropdownRef.current;
+      const isClickInsideDropdown = dropdowns.some((dropdown) => dropdown && dropdown.contains(event.target));
+      if (!isClickInsideDropdown) {
+        setActiveDropdown(null);
+      }
+    }
+  };
 
-
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-  
     <div className='header-container'>
       <TopBar />
-      {/*
-      <div className="top-bar">
-        <div className="app-info">
-          <span className="app-name">Artisbay</span>
-        </div>
-        <div className="extra-info">
-          <span className="time">Japan Standard Time: {japanTime}</span>
-          <span className="exchange-rate">USD/JPY: $1 = ¥{usdToYenRate}</span>
-        </div>
-      </div>
-    
-      <header className="header">
-        <div className="logo">
-          <h1><Link to="/" onClick={() => setIsMenuOpen(false)}>Artisbay</Link></h1>
-        </div>
-        <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-          <Link to="/howtobuy" onClick={() => setIsMenuOpen(false)}>How To Buy</Link>
-        </nav>
-        <button className="hamburger" onClick={toggleMenu}>
-          ☰
-        </button>
-      </header>
-      */}
-       <header className="main-header">
-            <div className="header-top">
-                <div className="app-name">Artisbay</div>
-                <div className="header-search">
-                    <input type="text" placeholder="Search..." />
-                    <i className="search-icon">🔍</i>
-                </div>
-                <div className="header-icons">
-                    <div className="header-item">Contact</div>
-                    <div className="header-item">
-                        <i className="icon">❤️</i> Favorites
-                    </div>
-                    <div className="header-item">
-                        <i className="icon">🛒</i> Cart
-                    </div>
-                    <div className="header-item dropdown" onClick={() => toggleDropdown(setLoginOpen)}>
-                        <i className="icon">👤</i> Login
-                        <div className={`dropdown-content ${isLoginOpen ? 'show' : ''}`}>
-                            <a href="#">Profile</a>
-                            <a href="#">Logout</a>
-                        </div>
-                    </div>
-                </div>
+      <header className="main-header">
+        <div className="header-top">
+          <div className="app-name">Artisbay</div>
+          <div className="header-search">
+            <input type="text" placeholder="Search..." />
+            <i className="fas fa-search search-icon"></i>
+          </div>
+          <div className="header-icons">
+            <div className="header-item">Contact</div>
+            <div className="header-item">
+              <i className="fas fa-heart icon"></i> Favorites
             </div>
-
-            <div className="header-bottom">
-                <div className="used-cars dropdown" onClick={() => toggleDropdown(setUsedCarsOpen)}>
-                    <i className="icon">🚗</i> Used Cars <span className="arrow">🔽</span>
-                    <div className={`dropdown-content ${isUsedCarsOpen ? 'show' : ''}`}>
-                        <a href="#">Sedans</a>
-                        <a href="#">SUVs</a>
-                        <a href="#">Trucks</a>
-                    </div>
-                </div>
-                <div className="right-links">
-                    <div className="nav-item dropdown" onClick={() => toggleDropdown(setLocalServicesOpen)}>
-                        Local Services <span className="arrow">🔽</span>
-                        <div className={`dropdown-content ${isLocalServicesOpen ? 'show' : ''}`}>
-                            <a href="#">Repairs</a>
-                            <a href="#">Maintenance</a>
-                        </div>
-                    </div>
-                    <div className="nav-item">Reviews</div>
-                    <div className="nav-item">Help</div>
-                </div>
+            <div className="header-item">
+              <i className="fas fa-shopping-cart icon"></i> Cart
             </div>
-      </header>
+            <div
+              className="header-item dropdown"
+              ref={(el) => (dropdownRef.current[0] = el)}
+              onClick={() => toggleDropdown('login')}
+            >
+              <i className="fas fa-user icon"></i> Login
+              <div className={`dropdown-content login ${activeDropdown === 'login' ? 'show' : ''}`}>
+                <a href="#">Profile</a>
+                <a href="#">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div className="header-bottom">
+          <div
+            className="used-cars dropdown"
+            ref={(el) => (dropdownRef.current[1] = el)}
+            onClick={() => toggleDropdown('usedCars')}
+          >
+            <i className="fas fa-car icon"></i> Used Cars <span className="arrow">🔽</span>
+            <div className={`dropdown-content ${activeDropdown === 'usedCars' ? 'show' : ''}`}>
+              <a href="#">Sedans</a>
+              <a href="#">SUVs</a>
+              <a href="#">Trucks</a>
+            </div>
+          </div>
+          <div className="right-links">
+            <div
+              className="nav-item dropdown"
+              ref={(el) => (dropdownRef.current[2] = el)}
+              onClick={() => toggleDropdown('localServices')}
+            >
+              Local Services <span className="arrow">🔽</span>
+              <div className={`dropdown-content ${activeDropdown === 'localServices' ? 'show' : ''}`}>
+                <a href="#">Repairs</a>
+                <a href="#">Maintenance</a>
+              </div>
+            </div>
+            <div className="nav-item">Reviews</div>
+            <div className="nav-item">Help</div>
+          </div>
+        </div>
+      </header>
     </div>
   );
 };

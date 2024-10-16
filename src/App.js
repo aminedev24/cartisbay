@@ -26,6 +26,8 @@ function App() {
     setCars(carData); // Use the imported carData
   }, []);
 
+
+  
   return (
     <Router>
       <Header />
