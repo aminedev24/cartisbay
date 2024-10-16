@@ -1,7 +1,7 @@
 /* General Styles */
 .main-content {
     margin-left: 270px; /* Width of left sidebar */
-    margin-right: 260px;
+    margin-right: 270px;
     padding: 20px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
 }
@@ -249,7 +249,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Keep five columns */
     gap: 30px; /* Increased space between cards */
-    padding: 20px; /* Padding around the container */
+    padding: 20px 0 ; /* Padding around the container */
 }
 
 .info-card {
@@ -258,7 +258,7 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
     text-align: center; /* Center align text */
     padding: 15px; /* Padding inside cards */
-    width: 90%; /* Slightly smaller width of the cards */
+    width: 74%; /* Slightly smaller width of the cards */
     transition: transform 0.2s ease; /* Smooth scaling effect */
 }
 
