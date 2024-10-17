@@ -1,8 +1,8 @@
 /* General Styles */
 .main-content {
     margin-left: 270px; /* Width of left sidebar */
-    margin-right: 270px;
-    padding: 20px; /* Default padding */
+    margin-right: 250px;
+    padding: 20px 30px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
 }
 
