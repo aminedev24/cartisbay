@@ -1,49 +1,59 @@
 .search-container {
-    background-color: #f1892b;
+    background-color: #f1892b; /* Orange background */
     padding: 20px;
     border-radius: 10px;
-    max-width: 1000px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in the width and height */
 }
+
 .search-container h4 {
-    font-size: 19px;
-    color: #dfff;
+    color: white;
     text-transform: uppercase;
-    margin: 6px 0 10px 0;
-    border-bottom: 3px solid;
+    margin-bottom: 10px;
+    border-bottom: 3px solid white; /* Add underline */
+    padding-bottom: 5px;
 }
+
 .search-form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 3-column layout */
-    gap: 20px;
-    align-items: center; /* Align elements vertically */
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* Adjust for responsiveness */
+    gap: 5px; /* Reduce gap between form elements */
+    align-items: center; /* Center align items vertically */
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 8px;
-    color: #eff2f5;
+    display: flex; /* Use flex layout for inline alignment */
+    align-items: center; /* Center align items vertically */
+    color: white;
     font-weight: bold;
 }
 
-.form-group select,
-.form-group input {
-    padding: 7px;
+.form-group label {
+    margin-right: 3px; /* Reduce space between label and input */
+    flex: 0 0 auto; /* Prevent label from growing */
+    min-width: 70px; /* Optional: Set a minimum width for labels for consistency */
+}
+
+.form-group select, .form-group input {
+    padding: 5px; /* Decrease padding */
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: 12px; /* Reduce font size */
+    flex: 1; /* Allow input to take remaining space */
+    min-width: 100px; /* Reduce minimum width for input */
+}
+
+.search-form input[type="number"] {
+    min-width: 90px;
 }
 
 .search-btn {
-    grid-column: 4; /* Place the button in the fourth column */
-    align-self: flex-end; /* Vertically align the button to the bottom */
-    justify-self: end; /* Align the button to the right in its column */
-    padding: 7px 10px;
-    background-color: #1e3a8a;
+    grid-column: 4; /* Span the button across all columns */
+    padding: 10px;
+    background-color: #1e3a8a; /* Dark background for the button */
     color: white;
+    font-weight: bold;
+    text-transform: uppercase;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -51,5 +61,17 @@
 }
 
 .search-btn:hover {
-    background-color: #16468b;
+    background-color: #2446a7; /* Button hover effect */
 }
+
+.year-inputs {
+    display: flex;
+    gap: 10px; /* Adjust spacing between the two inputs */
+  }
+  
+  .year-inputs input {
+    min-width: 79px !important; /* Allow inputs to take up full available width */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }

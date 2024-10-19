@@ -15,8 +15,8 @@ const LeftSidebar = ({ setFilters }) => {
   return (
     <div className="left-sidebar">
       <img
-        src={`${process.env.PUBLIC_URL}/images/sidebar_image.jpg`}
-        alt="Sidebar Image"
+        src={`${process.env.PUBLIC_URL}/images/usedTires.jpg`}
+        alt="used tires ad"
         className="sidebar-image"
       />
       <div className="make-header">

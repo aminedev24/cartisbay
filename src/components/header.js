@@ -42,9 +42,6 @@ const Header = () => {
           <div className="header-icons">
             <div className="header-item">Contact</div>
             <div className="header-item">
-              <i className="fas fa-heart icon"></i> Favorites
-            </div>
-            <div className="header-item">
               <i className="fas fa-shopping-cart icon"></i> Cart
             </div>
             <div
@@ -62,22 +59,41 @@ const Header = () => {
         </div>
 
         <div className="header-bottom">
-          <div
-            className="used-cars dropdown"
-            ref={(el) => (dropdownRef.current[1] = el)}
-            onClick={() => toggleDropdown('usedCars')}
-          >
-            <i className="fas fa-car icon"></i> Used Cars <span className="arrow">🔽</span>
-            <div className={`dropdown-content ${activeDropdown === 'usedCars' ? 'show' : ''}`}>
-              <a href="#">Sedans</a>
-              <a href="#">SUVs</a>
-              <a href="#">Trucks</a>
+          <div className="left-links">
+            {/* Used Cars Dropdown */}
+            <div
+              className="used-cars dropdown"
+              ref={(el) => (dropdownRef.current[1] = el)}
+              onClick={() => toggleDropdown('usedCars')}
+            >
+              <i className="fas fa-car icon"></i> Used Cars <span className="arrow">🔽</span>
+              <div className={`dropdown-content ${activeDropdown === 'usedCars' ? 'show' : ''}`}>
+                <a href="#">Sedans</a>
+                <a href="#">SUVs</a>
+                <a href="#">Trucks</a>
+              </div>
+            </div>
+
+            {/* Used Tires Dropdown */}
+            <div
+              className="used-tires dropdown"
+              ref={(el) => (dropdownRef.current[2] = el)}
+              onClick={() => toggleDropdown('usedTires')}
+            >
+              <i className="fas fa-circle-notch icon"></i> Used Tires <span className="arrow">🔽</span>
+              <div className={`dropdown-content ${activeDropdown === 'usedTires' ? 'show' : ''}`}>
+                <a href="#">All-Season Tires</a>
+                <a href="#">Performance Tires</a>
+                <a href="#">Winter Tires</a>
+              </div>
             </div>
           </div>
+
+          {/* Right-side links */}
           <div className="right-links">
             <div
               className="nav-item dropdown"
-              ref={(el) => (dropdownRef.current[2] = el)}
+              ref={(el) => (dropdownRef.current[3] = el)}
               onClick={() => toggleDropdown('localServices')}
             >
               Local Services <span className="arrow">🔽</span>

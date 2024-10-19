@@ -11,6 +11,33 @@ const RightSidebar = () => {
                 <img src={`${process.env.PUBLIC_URL}/images/create_account.png`} alt="Second" className="sidebar-image" />
             </div>
 
+            <div className="account-container">
+        <div className="header">
+            <span className="person-icon"><i className="fas fa-user-plus"></i></span>
+            <h2>Create an Account</h2>
+        </div>
+        <div className="features-container">
+            <div className="feature">
+                <span className="feature-icon"><i className="fas fa-heart"></i></span>
+                <p>Favorites</p>
+            </div>
+            <div className="feature">
+                <span className="feature-icon"><i className="fas fa-search"></i></span>
+                <p>Save Search</p>
+            </div>
+            <div className="feature">
+                <span className="feature-icon"><i className="fas fa-comments"></i></span>
+                <p>Easy Enquiry</p>
+            </div>
+            <div className="feature">
+                <span className="feature-icon"><i className="fas fa-shopping-cart"></i></span>
+                <p>Buy Now</p>
+            </div>
+        </div>
+        <button className="create-account-btn">Create an Account</button>
+    </div>
+
+
             <h2>Useful Links</h2>
             <ul>
                 <li><a href="#">About Us</a></li>
