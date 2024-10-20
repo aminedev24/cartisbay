@@ -29,10 +29,7 @@ const RightSidebar = () => {
                 <span className="feature-icon"><i className="fas fa-comments"></i></span>
                 <p>Easy Enquiry</p>
             </div>
-            <div className="feature">
-                <span className="feature-icon"><i className="fas fa-shopping-cart"></i></span>
-                <p>Buy Now</p>
-            </div>
+           
         </div>
         <button className="create-account-btn">Create an Account</button>
     </div>

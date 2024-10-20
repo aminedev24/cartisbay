@@ -40,7 +40,7 @@ function HomePage() {
           title: 'Machinery',
         },
         {
-          imgSrc:  `${process.env.PUBLIC_URL}/images/howtopay.jpg`,
+          imgSrc:  `${process.env.PUBLIC_URL}/images/howtopay2.jpg`,
           title: 'How to Pay',
         },
       ];

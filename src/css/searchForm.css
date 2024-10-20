@@ -16,8 +16,8 @@
 
 .search-form {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* Adjust for responsiveness */
-    gap: 5px; /* Reduce gap between form elements */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 5px; /* Gap between form elements */
     align-items: center; /* Center align items vertically */
 }
 
@@ -48,7 +48,6 @@
 }
 
 .search-btn {
-    grid-column: 4; /* Span the button across all columns */
     padding: 10px;
     background-color: #1e3a8a; /* Dark background for the button */
     color: white;
@@ -67,11 +66,11 @@
 .year-inputs {
     display: flex;
     gap: 10px; /* Adjust spacing between the two inputs */
-  }
-  
-  .year-inputs input {
+}
+
+.year-inputs input {
     min-width: 79px !important; /* Allow inputs to take up full available width */
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
-  }
+}
