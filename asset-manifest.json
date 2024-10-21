@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.ae38ccf7.css",
+    "main.css": "/cartisbay/static/css/main.00556e29.css",
     "main.js": "/cartisbay/static/js/main.64ea5b18.js",
     "static/js/453.d1cd0238.chunk.js": "/cartisbay/static/js/453.d1cd0238.chunk.js",
     "static/media/car-makes-icons.svg?gtc92f": "/cartisbay/static/media/car-makes-icons.5887cab9f6dcec54f2f5.svg",
@@ -17,12 +17,12 @@
     "static/media/fa-v4compatibility.ttf": "/cartisbay/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "/cartisbay/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/cartisbay/index.html",
-    "main.ae38ccf7.css.map": "/cartisbay/static/css/main.ae38ccf7.css.map",
+    "main.00556e29.css.map": "/cartisbay/static/css/main.00556e29.css.map",
     "main.64ea5b18.js.map": "/cartisbay/static/js/main.64ea5b18.js.map",
     "453.d1cd0238.chunk.js.map": "/cartisbay/static/js/453.d1cd0238.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae38ccf7.css",
+    "static/css/main.00556e29.css",
     "static/js/main.64ea5b18.js"
   ]
 }
