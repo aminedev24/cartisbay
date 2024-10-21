@@ -60,33 +60,18 @@ const Header = () => {
 
         <div className="header-bottom">
           <div className="left-links">
-            {/* Used Cars Dropdown */}
-            <div
-              className="used-cars dropdown"
-              ref={(el) => (dropdownRef.current[1] = el)}
-              onClick={() => toggleDropdown('usedCars')}
-            >
-              <i className="fas fa-car icon"></i> Used Cars <span className="arrow">🔽</span>
-              <div className={`dropdown-content ${activeDropdown === 'usedCars' ? 'show' : ''}`}>
-                <a href="#">Sedans</a>
-                <a href="#">SUVs</a>
-                <a href="#">Trucks</a>
-              </div>
+          {/* Used Cars Links */}
+            <div className="used-cars">
+              <i className="fas fa-car icon"></i> 
+              <a href="#">Used Cars</a>
             </div>
 
-            {/* Used Tires Dropdown */}
-            <div
-              className="used-tires dropdown"
-              ref={(el) => (dropdownRef.current[2] = el)}
-              onClick={() => toggleDropdown('usedTires')}
-            >
-              <i className="fas fa-circle-notch icon"></i> Used Tires <span className="arrow">🔽</span>
-              <div className={`dropdown-content ${activeDropdown === 'usedTires' ? 'show' : ''}`}>
-                <a href="#">All-Season Tires</a>
-                <a href="#">Performance Tires</a>
-                <a href="#">Winter Tires</a>
-              </div>
+            {/* Used Tires Links */}
+            <div className="used-tires">
+              <i className="fas fa-circle-notch icon"></i> 
+              <a href="#">Used Tires</a>
             </div>
+
           </div>
 
           {/* Right-side links */}

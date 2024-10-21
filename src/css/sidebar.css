@@ -21,25 +21,7 @@
   text-transform: uppercase; /* Make headings stand out */
 }
 
-.left-sidebar select,
-.left-sidebar input {
-  width: 100%; /* Full width for inputs and selects */
-  padding: 12px; /* Increased padding for comfort */
-  margin-bottom: 15px; /* Margin for spacing */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px; /* Increased font size for better readability */
-  color: #333;
-  background-color: #fff; /* White background for inputs */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth border color and box-shadow transitions */
-}
 
-.left-sidebar select:focus,
-.left-sidebar input:focus {
-  border-color: #1e3a8a; /* Focus color on inputs */
-  outline: none;
-  box-shadow: 0 0 8px rgba(30, 58, 138, 0.5); /* Slightly stronger glow effect on focus */
-}
 
 .left-sidebar button {
   padding: 12px; /* Increased padding for better usability */
@@ -94,37 +76,7 @@
   }
 }
 
-.filter-group {
-  margin-bottom: 15px;
-}
 
-.filter-group h3 {
-  margin: 5px 0;
-  font-size: 18px; /* Increased font size for filter headings */
-  color: #1e3a8a; /* Consistent color for filter headings */
-}
-
-.filter-group button {
-  margin: 5px;
-  padding: 8px 12px;
-  border: none;
-  background-color: #007BFF; /* Adjust color as needed */
-  color: white;
-  cursor: pointer;
-  border-radius: 4px; /* Rounded corners */
-}
-
-.filter-group button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-.filter-group input {
-  margin-top: 5px;
-  padding: 8px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px; /* Rounded corners */
-}
 
 .sidebar-image {
   width: 100%; /* Make the image responsive */
@@ -132,7 +84,7 @@
   border-radius: 10px; /* Optional: rounded corners for the image */
 }
 
-.make-header {
+.make-header , .price-header, .discount-header {
   background-color: #1e3a8a; /* Header background color */
   color: white; /* Text color */
   border-radius: 5px; /* Rounded corners */
@@ -140,7 +92,7 @@
   text-align: center; /* Center the text */
 }
 
-.make-header h4 {
+.make-header h4 , .price-header h4 , .discount-header h4 {
   padding: 8px 0 8px 12px;
   color: #FFF;
 }
@@ -149,7 +101,7 @@
   list-style-type: none; /* Remove default list styles */
 }
 
-.make-item {
+.make-item , .price-item , .discount-item {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -158,7 +110,7 @@
   text-align: center;
 }
 
-.make-item:hover {
+.make-item:hover , .discount-item:hover, .price-item:hover {
   background-color: #e0e0e0; /* Highlight on hover */
 }
 
@@ -167,4 +119,26 @@
   margin-right: 8px;
   vertical-align: middle;
   font-size: 20px;
+}
+
+
+.price-header {
+  margin-top: 20px; /* Space above the price section */
+  margin-bottom: 10px; /* Space below the header */
+}
+
+.price-list {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.price-item {
+  padding: 10px; /* Space inside each item */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  justify-content: center;
+}
+
+.price-item:hover {
+  background-color: #f0f0f0; /* Background color on hover */
 }

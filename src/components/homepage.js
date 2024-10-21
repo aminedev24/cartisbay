@@ -28,12 +28,12 @@ function HomePage() {
           title: 'Used tires',
         },
         {
-          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy2.jpg`, 
+          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy3.jpg`, 
           title: 'How to Buy',
         },
         {
-          imgSrc:`${process.env.PUBLIC_URL}/images/usedSpares.jpg`,
-          title: 'Car spares',
+          imgSrc:`${process.env.PUBLIC_URL}/images/car_parts.jpg`,
+          title: 'Car Parts',
         },
         {
           imgSrc: `${process.env.PUBLIC_URL}/images/machinery.jpg`,
@@ -67,15 +67,6 @@ function HomePage() {
                 <h2>Our Stock</h2>
                 <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
             </section>
-            {/* Hero Section 
-            <section className="hero">
-                <div className="hero-content">
-                    <h1>Your Trusted Car Export Partner</h1>
-                    <p>Discover our wide range of quality cars ready for export worldwide.</p>
-                    <button className="cta-button"><Link to="stocklist">Browse Our Stock</Link></button>
-                </div>
-            </section>
-            */}
             {/* Featured Cars Section */}
             <section className="featured-cars">
                 <h2>Featured Cars</h2>

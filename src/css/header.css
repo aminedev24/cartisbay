@@ -17,6 +17,31 @@
   position: relative;
 }
 
+/* General styling for the links container */
+.used-cars, .used-tires {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.used-cars i, .used-tires i {
+  margin-right: 8px;
+  color: #fff; /* Adjust the color for the icons */
+}
+
+.used-cars a, .used-tires a {
+  color: #fff; /* Adjust link color */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.used-cars a:hover, .used-tires a:hover {
+  text-decoration: underline;
+}
+
+
+
+
 .header-top {
   display: flex;
   justify-content: space-between;

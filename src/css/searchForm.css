@@ -1,8 +1,10 @@
 .search-container {
     background-color: #f1892b; /* Orange background */
-    padding: 20px;
+    padding: 5px 20px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Ensure container doesn't overflow */
+    overflow: hidden; /* Prevent overflowing content */
 }
 
 .search-container h4 {
@@ -16,16 +18,21 @@
 
 .search-form {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 6 equal columns */
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
     gap: 10px; /* Space between form elements */
-    align-items: end;
+    align-items: center;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-weight: bold;
+    display: flex; /* Align label and input horizontally */
+    align-items: center; /* Vertically align items */
+}
+
+.search-container label {
+    margin-right: 10px;
+    flex: 0 1; /* Allow the label to take up some space */
+    white-space: nowrap; /* Prevent label from wrapping */
+    color: #fff;
 }
 
 .form-group select, 
@@ -33,13 +40,15 @@
     padding: 8px; /* Reduce padding to fit more elements */
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 14px; /* Adjust font size */
+    font-size: 14px;
+    flex: 2; /* Let the input take more space */
+    width: 100%; /* Ensure inputs take full width of the column */
 }
 
 .search-btn {
     grid-column: span 1; /* Span only 1 column */
     padding: 10px 20px;
-    background-color: #333; /* Dark background for the button */
+    background-color: #1e3a8a; /* Dark background for the button */
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -47,15 +56,19 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-   
+    align-self: flex-start;
 }
 
 .search-btn:hover {
-    background-color: #555; /* Button hover effect */
+    background-color: #304c9a; /* Button hover effect */
 }
-
 
 .year-inputs {
     display: flex;
     gap: 10px;
 }
+
+.year-inputs input {
+    min-width: 60px;
+}
+

@@ -6,136 +6,54 @@
   font-family: Arial, sans-serif;
 }
 
-/* Filters */
-.filters {
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+/* New Arrivals Container */
+.new-arrivals-container {
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding around the container */
+  margin: 20px 0; /* Margin above and below the container */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.filters h2 {
-  flex-basis: 100%;
-  margin-bottom: 10px;
+/* Buttons Row and Countries Row */
+.buttons-row,
+.countries-row {
+  display: flex; /* Use flexbox for horizontal alignment */
+  justify-content: space-between; /* Space items evenly */
+  margin-bottom: 10px; /* Margin below the row */
+  flex-wrap: wrap; /* Wrap if necessary */
 }
 
-.filters select,
-.filters input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1;
-  min-width: 120px;
+.buttons-row {
+  width: 100%; /* Full width */
 }
 
-/* Sort options */
-.sort-options {
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+.countries-row {
+  width: 60%; /* Decrease width for the countries row */
+  justify-content: center; /* Center align the buttons */
+  margin: 0 auto; /* Center the row within the parent */
 }
 
-.sort-options h2 {
-  flex-basis: 100%;
-  margin-bottom: 10px;
+/* Button Styles */
+button {
+  background-color: #fff; /* Button background color */
+  color: #304c9a; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Padding inside the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  text-transform: uppercase;
 }
 
-.sort-options select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1;
-  min-width: 120px;
+.buttons-row button {
+  font-weight: bold;
 }
 
-.sort-options button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
+button:hover {
+  background-color: #e64a19; /* Darker shade on hover */
 }
 
-.sort-options button:hover {
-  background-color: #0056b3;
-}
-
-/* Car List */
-.car-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Further decrease the minimum width for smaller containers */
-  gap: 10px; /* Reduce the gap between items */
-}
-
-.car-list.list {
-  grid-template-columns: 1fr; /* Stack items in a list view */
-}
-
-/* Car Card */
-.car-card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-  background-color: #fff;
-  padding: 8px; /* Further reduce padding */
-}
-
-/* Decrease image size */
-.car-card img {
-  width: 100%;
-  height: 120px; /* Further decrease the height of the image */
-  object-fit: cover;
-}
-
-.car-card h2 {
-  font-size: 0.9em; /* Decrease font size */
-  margin: 6px 0; /* Reduce margin */
-}
-
-.car-card p {
-  margin: 0 6px 6px;
-  font-size: 0.85em; /* Decrease text size */
-}
-
-/* Call-to-action button */
-.car-card a {
-  display: inline-block;
-  margin: 0 6px 6px;
-  padding: 6px;
-  background-color: #28a745;
-  color: white;
-  text-decoration: none;
-  font-size: 0.85em; /* Decrease button text size */
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.car-card a:hover {
-  background-color: #218838;
-}
-
-/* Hover effect */
-.car-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* No Cars Found */
-.no-cars-found {
-  grid-column: 1 / -1;
-  padding: 20px;
-  text-align: center;
-  font-size: 1.2rem;
-  color: #e67e22;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Zero state */
-.zero {
-  grid-template-columns: auto;
+.country-btn {
+  margin-right: 10px; /* Space between country buttons */
 }

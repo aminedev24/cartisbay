@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/sidebar.css';
 import 'car-makes-icons/dist/style.css'; // Assuming this package provides make icons
+import { FaDollarSign, FaTag } from 'react-icons/fa'; // Importing icons for price and discount
 
 const LeftSidebar = ({ setFilters }) => {
   const handleFilterChange = (name, value) => {
@@ -10,7 +11,28 @@ const LeftSidebar = ({ setFilters }) => {
     }));
   };
 
-  const makes = ["Toyota", "Nissan", "Honda", "Ford", "Chevrolet"];
+  const makes = [
+    "Toyota", 
+    "Nissan", 
+    "Honda", 
+    "Ford", 
+    "Chevrolet", 
+    "BMW", 
+    "Mercedes", 
+    "Volkswagen", 
+    "Subaru", 
+    "Kia", 
+    "Hyundai", 
+    "Mazda", 
+    "Audi", 
+    "Lexus", 
+    "Porsche", 
+    "Jaguar", 
+    "Land Rover", 
+    "Dodge", 
+    "Chrysler", 
+    "Buick"
+  ];
 
   return (
     <div className="left-sidebar">
@@ -31,50 +53,30 @@ const LeftSidebar = ({ setFilters }) => {
         ))}
       </ul>
 
-      <h2>Filter Options</h2>
-
-      <div className="filter-group">
-        <h3>Make</h3>
-        <button onClick={() => handleFilterChange('make', 'Toyota')}>Toyota</button>
-        <button onClick={() => handleFilterChange('make', 'Honda')}>Honda</button>
-        <button onClick={() => handleFilterChange('make', 'Subaru')}>Subaru</button>
-        <button onClick={() => handleFilterChange('make', '')}>Reset</button>
+      {/* Shop by Price Section */}
+      <div className="price-header">
+        <h4><FaDollarSign /> Shop by Price</h4>
       </div>
+      <ul className="price-list">
+        <li className="price-item" onClick={() => handleFilterChange('price', 'under_500')}>Under $500</li>
+        <li className="price-item" onClick={() => handleFilterChange('price', '500_1000')}>$500 - $1000</li>
+        <li className="price-item" onClick={() => handleFilterChange('price', '1000_1500')}>$1000 - $1500</li>
+        <li className="price-item" onClick={() => handleFilterChange('price', '1500_2000')}>$1500 - $2000</li>
+        <li className="price-item" onClick={() => handleFilterChange('price', '2500_4000')}>$2500 - $4000</li>
+      </ul>
 
-      <div className="filter-group">
-        <h3>Model</h3>
-        <button onClick={() => handleFilterChange('model', 'Corolla')}>Corolla</button>
-        <button onClick={() => handleFilterChange('model', 'Civic')}>Civic</button>
-        <button onClick={() => handleFilterChange('model', 'Impreza')}>Impreza</button>
-        <button onClick={() => handleFilterChange('model', '')}>Reset</button>
+      {/* Shop by Discount Section */}
+      <div className="discount-header">
+        <h4><FaTag /> Shop by Discount</h4>
       </div>
-
-      <div className="filter-group">
-        <h3>Year</h3>
-        <button onClick={() => handleFilterChange('year', '2023')}>2023</button>
-        <button onClick={() => handleFilterChange('year', '2022')}>2022</button>
-        <button onClick={() => handleFilterChange('year', '')}>Reset</button>
-      </div>
-
-      <div className="filter-group">
-        <h3>Price</h3>
-        <input 
-          type="number" 
-          name="price" 
-          placeholder="Max Price" 
-          onChange={(e) => handleFilterChange('price', e.target.value)} 
-        />
-      </div>
-
-      <div className="filter-group">
-        <h3>Location</h3>
-        <input 
-          type="text" 
-          name="location" 
-          placeholder="Location" 
-          onChange={(e) => handleFilterChange('location', e.target.value)} 
-        />
-      </div>
+      <ul className="discount-list">
+        <li className="discount-item" onClick={() => handleFilterChange('discount', '70_or_more')}>70% off or more</li>
+        <li className="discount-item" onClick={() => handleFilterChange('discount', '60_or_more')}>60% off or more</li>
+        <li className="discount-item" onClick={() => handleFilterChange('discount', '50_or_more')}>50% off or more</li>
+        <li className="discount-item" onClick={() => handleFilterChange('discount', '40_or_more')}>40% off or more</li>
+        <li className="discount-item" onClick={() => handleFilterChange('discount', '30_or_more')}>30% off or more</li>
+        <li className="discount-item" onClick={() => handleFilterChange('discount', '1_to_30')}>1% - 30% off</li>
+      </ul>
     </div>
   );
 };

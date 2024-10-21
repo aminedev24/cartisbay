@@ -115,18 +115,24 @@ const SearchForm = () => {
             <option value="right">Right</option>
           </select>
         </div>
-
+        
         {/* Price */}
         <div className="form-group">
           <label htmlFor="price">Price</label>
-          <input
-            type="number"
+          <select
             id="price"
             name="price"
             value={formData.price}
             onChange={handleChange}
-            placeholder="Min Price"
-          />
+          >
+            <option value="">Select Price</option>
+            <option value="under500">Under $500</option>
+            <option value="under1000">Under $1,000</option>
+            <option value="under1500">Under $1,500</option>
+            <option value="under2000">Under $2,000</option>
+            <option value="under2500">Under $2,500</option>
+            <option value="under4000">Under $4,000</option>
+          </select>
         </div>
 
         {/* Year */}
@@ -155,6 +161,8 @@ const SearchForm = () => {
             />
           </div>
         </div>
+
+     
       </form>
     </div>
   );
