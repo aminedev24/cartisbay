@@ -1,7 +1,5 @@
 /* Stocklist container */
 .stocklist {
-  max-width: 800px; /* Further decrease max width to reduce content width */
-  margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
@@ -19,7 +17,7 @@
 .buttons-row,
 .countries-row {
   display: flex; /* Use flexbox for horizontal alignment */
-  justify-content: space-between; /* Space items evenly */
+  justify-content: space-around; /* Space items evenly */
   margin-bottom: 10px; /* Margin below the row */
   flex-wrap: wrap; /* Wrap if necessary */
 }
