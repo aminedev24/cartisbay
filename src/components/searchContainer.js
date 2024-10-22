@@ -45,87 +45,90 @@ const SearchForm = () => {
     <div className="search-container">
       <h4>Search Cars</h4>
       <form className="search-form" onSubmit={handleSubmit}>
-        {/* Make */}
-        <div className="form-group">
-          <label htmlFor="make">Make</label>
+  <table>
+    <tbody>
+      {/* First Row */}
+      <tr>
+        <td><label htmlFor="make">Make:</label></td>
+        <td>
           <select
             id="make"
             name="make"
             value={formData.make}
             onChange={handleChange}
+            
           >
-            <option value="">Select Make</option>
+            <option value="">Make</option>
             <option value="toyota">Toyota</option>
             <option value="nissan">Nissan</option>
             <option value="honda">Honda</option>
           </select>
-        </div>
-
-        {/* Model */}
-        <div className="form-group">
-          <label htmlFor="model">Model</label>
+        </td>
+        
+        <td><label htmlFor="model">Model:</label></td>
+        <td>
           <select
             id="model"
             name="model"
             value={formData.model}
             onChange={handleChange}
-            disabled={!formData.make} // Disable the model dropdown if no make is selected
+            disabled={!formData.make}
           >
-            <option value="">Select Model</option>
+            <option value="">Model</option>
             {getModelsForMake().map((model) => (
               <option key={model} value={model.toLowerCase()}>
                 {model}
               </option>
             ))}
           </select>
-        </div>
-
-        {/* Type */}
-        <div className="form-group">
-          <label htmlFor="type">Type</label>
+        </td>
+        
+        <td><label htmlFor="type">Type:</label></td>
+        <td>
           <select
             id="type"
             name="type"
             value={formData.type}
             onChange={handleChange}
           >
-            <option value="">Select Type</option>
+            <option value="">Type</option>
             <option value="sedan">Sedan</option>
             <option value="suv">SUV</option>
             <option value="hatchback">Hatchback</option>
           </select>
-        </div>
+        </td>
+         <td colSpan="2">
+          <button type="submit" className="search-btn">
+            Search
+          </button>
+        </td>
+      </tr>
 
-        {/* Search Button */}
-        <button type="submit" className="search-btn">
-          Search
-        </button>
-
-        {/* Steering */}
-        <div className="form-group">
-          <label htmlFor="steering">Steering</label>
+      {/* Second Row */}
+      <tr>
+        <td><label htmlFor="steering">Steering:</label></td>
+        <td>
           <select
             id="steering"
             name="steering"
             value={formData.steering}
             onChange={handleChange}
           >
-            <option value="">Select Steering</option>
+            <option value="">Steering</option>
             <option value="left">Left</option>
             <option value="right">Right</option>
           </select>
-        </div>
+        </td>
         
-        {/* Price */}
-        <div className="form-group">
-          <label htmlFor="price">Price</label>
+        <td><label htmlFor="price">Price:</label></td>
+        <td>
           <select
             id="price"
             name="price"
             value={formData.price}
             onChange={handleChange}
           >
-            <option value="">Select Price</option>
+            <option value="">Price</option>
             <option value="under500">Under $500</option>
             <option value="under1000">Under $1,000</option>
             <option value="under1500">Under $1,500</option>
@@ -133,11 +136,10 @@ const SearchForm = () => {
             <option value="under2500">Under $2,500</option>
             <option value="under4000">Under $4,000</option>
           </select>
-        </div>
-
-        {/* Year */}
-        <div className="form-group">
-          <label>Year</label>
+        </td>
+        
+        <td><label>Year:</label></td>
+        <td>
           <div className="year-inputs">
             <input
               type="number"
@@ -147,7 +149,7 @@ const SearchForm = () => {
               onChange={handleChange}
               placeholder="From"
               min="1900"
-              max={new Date().getFullYear()} // Ensures "From" year doesn't exceed current year
+              max={new Date().getFullYear()}
             />
             <input
               type="number"
@@ -157,13 +159,15 @@ const SearchForm = () => {
               onChange={handleChange}
               placeholder="To"
               min="1900"
-              max={new Date().getFullYear()} // Ensures "To" year doesn't exceed current year
+              max={new Date().getFullYear()}
             />
           </div>
-        </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
 
-     
-      </form>
     </div>
   );
 };

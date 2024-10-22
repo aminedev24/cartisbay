@@ -1,7 +1,7 @@
 /* Car List */
 .car-list {
   display: grid; /* Use grid layout for car items */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create a responsive grid with a minimum item width of 200px */
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); /* Create a responsive grid with a minimum item width of 200px */
   gap: 20px; /* Space between grid items */
   padding: 20px; /* Padding around the grid */
 }

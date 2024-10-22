@@ -19,11 +19,13 @@
   display: flex; /* Use flexbox for horizontal alignment */
   justify-content: space-around; /* Space items evenly */
   margin-bottom: 10px; /* Margin below the row */
-  flex-wrap: wrap; /* Wrap if necessary */
 }
 
 .buttons-row {
   width: 100%; /* Full width */
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: nowrap;
 }
 
 .countries-row {
@@ -36,12 +38,13 @@
 button {
   background-color: #fff; /* Button background color */
   color: #304c9a; /* Button text color */
-  border: none; /* Remove border */
+  border: solid 1px; /* Remove border */
   border-radius: 4px; /* Rounded corners */
   padding: 10px 15px; /* Padding inside the button */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth transition */
   text-transform: uppercase;
+  
 }
 
 .buttons-row button {
@@ -53,5 +56,10 @@ button:hover {
 }
 
 .country-btn {
-  margin-right: 10px; /* Space between country buttons */
+  margin: 5px; /* Space between country buttons */
+}
+
+
+.car-card {
+  width: 85%;
 }

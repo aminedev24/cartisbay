@@ -64,7 +64,7 @@ function HomePage() {
         ))}
         </div>
             <section className="stocklist-section">
-                <h2>Our Stock</h2>
+             
                 <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
             </section>
             {/* Featured Cars Section */}

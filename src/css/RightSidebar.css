@@ -50,14 +50,21 @@
 
 /* Container for the account creation section */
 .account-container {
-    background-color: #fff; /* White background to match example */
-    padding: 10px;
+    background-color: #fff; /* White background for contrast */
+    padding: 20px; /* More spacious padding */
     border: 1px solid #e67e22; /* Orange border */
-    border-radius: 10px;
-    width: 96%; /* Adjusted for right sidebar */
+    border-radius: 12px; /* Slightly rounder corners */
+    width: 87%; /* Slight width adjustment for sidebar space */
     margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Deeper shadow for better emphasis */
     text-align: center;
+    max-width: 500px; /* Limiting the maximum width */
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for the entire container */
+.account-container:hover {
+    transform: translateY(-5px); /* Slight elevation on hover */
 }
 
 /* Header for the Create Account section */
@@ -65,83 +72,118 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     color: #e67e22; /* Orange color */
-    font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 10px;
+
 }
 
 .header h2 {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Larger header text */
 }
 
 /* Subtitle */
 .header-subtitle {
-    font-size: 0.9rem;
-    color: #777; /* Gray text for subtitle */
-    margin-bottom: 20px;
+    font-size: 1rem; /* Slightly larger subtitle */
+    color: #555; /* Darker gray for better readability */
+    margin-bottom: 30px; /* Increased margin for spacing */
 }
 
 /* Icon styling */
 .header-icon .fa-user-plus {
-    font-size: 1.4rem; /* Adjust size */
+    font-size: 1.6rem; /* Larger icon size */
 }
 
+/* Form styling */
 .account-form {
     display: flex;
-    flex-direction: column; /* Vertical layout for the form */
-    padding: 20px; /* Increased padding for more space */
-    background-color: #fff; /* White background for form */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    flex-direction: column; /* Vertical form layout */
+    padding: 25px; /* Generous padding inside form */
+    background-color: #f9f9f9; /* Light gray background for contrast */
+    border-radius: 10px; /* Slightly rounder corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
 }
 
+/* Form groups */
 .account-form .form-group {
-    flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 20px; /* Space between form fields */
+    display: flex;
+    flex-direction: column; /* Column layout for form fields */
+    margin-bottom: 20px; /* Space between fields */
 }
 
 label {
-    font-weight: bold; /* Bold labels */
-    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Emphasized labels */
+    margin-bottom: 8px; /* More space below labels */
     color: #333; /* Darker text color for labels */
 }
 
+/* Input fields */
 input {
-    padding: 12px; /* Increased padding for comfort */
-    border: 1px solid #ffa726; /* Light orangish border */
-    border-radius: 6px; /* Slightly larger rounded corners */
-    font-size: 1rem; /* Input font size */
-    width: 100%; /* Full width of the container */
-    transition: border-color 0.3s ease; /* Smooth transition for border color */
+    padding: 12px; /* Comfortable padding */
+    border: 1px solid #ffa726; /* Orangish border */
+    border-radius: 8px; /* Rounded corners for input fields */
+    font-size: .9rem; /* Standard input font size */
+    width: 90%; /* Full width input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
 }
 
 input:focus {
-    border-color: #ff5722; /* Border color on focus */
+    border-color: #ff5722; /* Orange border on focus */
     outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(255, 87, 34, 0.5); /* Shadow effect on focus */
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.5); /* Softer shadow effect */
 }
 
+/* Create Account button */
 .create-account-btn {
-    background-color: #304c9a; /* Lighter orangish background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    border-radius: 6px; /* Slightly larger rounded corners */
-    padding: 12px; /* Increased padding for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1rem; /* Button font size */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
+    background-color: #304c9a; /* Dark blue background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 8px; /* More rounded corners */
+    padding: 15px; /* Increased padding for better feel */
+    cursor: pointer; /* Pointer cursor */
+    font-size: .7rem; /* Standard button text size */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and click effects */
+    font-weight: bold;
 }
 
 .create-account-btn:hover {
-    background-color: #304c9a; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    background-color: #1e377f; /* Darker blue on hover */
+    transform: scale(1.05); /* Button enlarges slightly on hover */
 }
 
 .create-account-btn:active {
-    transform: scale(0.95); /* Slightly shrink the button when clicked */
+    transform: scale(0.95); /* Button shrinks slightly on click */
+}
+
+
+.local-services {
+    margin-top: 20px; /* Space above the local services section */
+}
+
+.local-services .header {
+    background-color: #1e377f;
+}
+.local-services h4 {
+    padding: 8px 0 8px 12px;
+   color: #fff;
+   margin: 0 20px;
+}
+
+.local-services .header {
+    display: flex; /* Flexbox layout for header */
+    align-items: center; /* Center items vertically */
+}
+
+.local-services .service-icon {
+    margin-right: 10px; /* Space between icon and title */
+}
+
+.country-list {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+}
+
+.country-item {
+    display: flex; /* Flexbox layout for country items */
+    align-items: center; /* Center items vertically */
+    margin: 5px 0; /* Space between country items */
 }

@@ -84,7 +84,7 @@
   border-radius: 10px; /* Optional: rounded corners for the image */
 }
 
-.make-header , .price-header, .discount-header {
+.make-header , .price-header, .discount-header , .type-header{
   background-color: #1e3a8a; /* Header background color */
   color: white; /* Text color */
   border-radius: 5px; /* Rounded corners */
@@ -92,7 +92,7 @@
   text-align: center; /* Center the text */
 }
 
-.make-header h4 , .price-header h4 , .discount-header h4 {
+.make-header h4 , .price-header h4 , .discount-header h4 , .type-header h4 {
   padding: 8px 0 8px 12px;
   color: #FFF;
 }
@@ -101,7 +101,7 @@
   list-style-type: none; /* Remove default list styles */
 }
 
-.make-item , .price-item , .discount-item {
+.make-item , .price-item , .discount-item , .type-item {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -110,11 +110,11 @@
   text-align: center;
 }
 
-.make-item:hover , .discount-item:hover, .price-item:hover {
+.make-item:hover , .discount-item:hover, .price-item:hover .type-item:hover  {
   background-color: #e0e0e0; /* Highlight on hover */
 }
 
-.make-icon {
+.make-icon , .type-icon {
   width: 30px;
   margin-right: 8px;
   vertical-align: middle;

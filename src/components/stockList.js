@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faStar, faHandshake, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import ReactCountryFlag from "react-country-flag";
 import CarCard from './carCard';
 import '../css/stockList.css';
 
@@ -22,6 +23,15 @@ const Stocklist = ({ cars }) => {
     }
   });
 
+  const countries = [
+    { name: "Japan", code: "JP" },
+    { name: "Namibia", code: "NA" },
+    { name: "France", code: "FR" },
+    { name: "Korea", code: "Ko" },
+    { name: "All", code: "" }, // Use an empty code for 'All'
+  ];
+  
+
   return (
     <div className="stocklist">
 
@@ -41,11 +51,23 @@ const Stocklist = ({ cars }) => {
 
         <h4>View Vehicles in the Following Countries:</h4>
         <div className="countries-row">
-          {["Japan", "Namibia", "France", "Korea", "All"].map((country, index) => (
-            <button key={index} className="country-btn">
-              <FontAwesomeIcon icon={faMapMarkerAlt} /> {country}
-            </button>
-          ))}
+        {countries.map((country, index) => (
+        <button key={index} className="country-btn">
+          {country.code && (
+            <ReactCountryFlag
+              countryCode={country.code}
+              svg
+              style={{
+                width: '1.5em',
+                height: '1.5em',
+                marginRight: '8px',
+              }}
+              title={country.name}
+            />
+          )}
+          {country.name}
+        </button>
+      ))}
         </div>
       </div>
 

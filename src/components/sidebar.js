@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/sidebar.css';
 import 'car-makes-icons/dist/style.css'; // Assuming this package provides make icons
-import { FaDollarSign, FaTag } from 'react-icons/fa'; // Importing icons for price and discount
+import { FaDollarSign, FaTag, FaTruck, FaCarSide, FaMotorcycle } from 'react-icons/fa'; // Importing icons for different types
 
 const LeftSidebar = ({ setFilters }) => {
   const handleFilterChange = (name, value) => {
@@ -76,6 +76,25 @@ const LeftSidebar = ({ setFilters }) => {
         <li className="discount-item" onClick={() => handleFilterChange('discount', '40_or_more')}>40% off or more</li>
         <li className="discount-item" onClick={() => handleFilterChange('discount', '30_or_more')}>30% off or more</li>
         <li className="discount-item" onClick={() => handleFilterChange('discount', '1_to_30')}>1% - 30% off</li>
+      </ul>
+
+      {/* Shop by Type Section */}
+      <div className="type-header">
+        <h4><FaCarSide className='type-icon' /> Shop by Type</h4>
+      </div>
+      <ul className="type-list">
+        <li className="type-item" onClick={() => handleFilterChange('type', 'sedan')}>
+          <FaCarSide className='type-icon' /> Sedan
+        </li>
+        <li className="type-item" onClick={() => handleFilterChange('type', 'truck')}>
+          <FaTruck className='type-icon' /> Truck
+        </li>
+        <li className="type-item" onClick={() => handleFilterChange('type', 'suv')}>
+          <FaCarSide className='type-icon' /> SUV
+        </li>
+        <li className="type-item" onClick={() => handleFilterChange('type', 'motorcycle')}>
+          <FaMotorcycle className='type-icon' /> Motorcycle
+        </li>
       </ul>
     </div>
   );

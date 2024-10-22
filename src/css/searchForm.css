@@ -15,60 +15,63 @@
     border-bottom: 3px solid white; /* Add underline */
     padding-bottom: 5px;
 }
-
 .search-form {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-    gap: 10px; /* Space between form elements */
-    align-items: center;
-}
-
-.form-group {
-    display: flex; /* Align label and input horizontally */
-    align-items: center; /* Vertically align items */
-}
-
-.search-container label {
-    margin-right: 10px;
-    flex: 0 1; /* Allow the label to take up some space */
-    white-space: nowrap; /* Prevent label from wrapping */
+    width: 100%; /* Full width for the form */
+    margin: 20px auto; /* Center the form */
+  }
+  
+  .search-form table {
+    width: 100%; /* Table takes full width */
+    border-collapse: collapse; /* Collapse table borders */
+  }
+  
+  .search-form th,
+  .search-form td {
+    padding: 5px; /* Reduced space inside cells */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .search-form label {
+    margin-right: 5px; /* Space between label and select */
+    font-weight: bold; /* Bold font for labels */
+    display: inline-block; /* Ensure labels take only necessary space */
+    width: 30%; /* Use percentage width for labels */
     color: #fff;
-}
-
-.form-group select, 
-.form-group input {
-    padding: 8px; /* Reduce padding to fit more elements */
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    flex: 2; /* Let the input take more space */
-    width: 100%; /* Ensure inputs take full width of the column */
-}
-
-.search-btn {
-    grid-column: span 1; /* Span only 1 column */
-    padding: 10px 20px;
-    background-color: #1e3a8a; /* Dark background for the button */
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
-}
-
-.search-btn:hover {
-    background-color: #304c9a; /* Button hover effect */
-}
-
-.year-inputs {
-    display: flex;
-    gap: 10px;
-}
-
-.year-inputs input {
-    min-width: 60px;
-}
-
+  }
+  
+  .search-form select,
+  .search-form input[type="number"] {
+    width: 90%; /* Use percentage width for select inputs */
+    padding: 5px; /* Padding inside inputs */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    font-size: 16px; /* Font size for inputs */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .search-form .year-inputs {
+    display: flex; /* Flexbox for year inputs */
+    gap: 10px; /* Space between year inputs */
+  }
+  
+  .search-form .search-btn {
+    background-color: #304c9a;; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button */
+    margin-top: 10px; /* Space above button */
+  }
+  
+  .search-form .search-btn:hover {
+    background-color: #1e377f;; /* Darker green on hover */
+  }
+  
+  .search-form td {
+    border-bottom: none; /* Remove bottom border for table cells */
+  }
+  
+ 
+  

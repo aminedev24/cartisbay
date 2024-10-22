@@ -161,9 +161,7 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
  
-    .hero {
-        height: 30vh; /* Adjust height for mobile */
-    }
+  
 
     .featured-car {
         min-width: 200px; /* Minimum width to prevent excessive shrinking */
