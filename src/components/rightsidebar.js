@@ -3,12 +3,8 @@ import CountryFlag from "react-country-flag"; // Import the CountryFlag componen
 import "../css/RightSidebar.css"; // Import the CSS file for styling
 
 const countries = [
-    { name: "Japan", code: "JP" },
-    { name: "United States", code: "US" },
-    { name: "Canada", code: "CA" },
-    { name: "Australia", code: "AU" },
-    { name: "United Kingdom", code: "GB" },
-    { name: "Germany", code: "DE" },
+    { name: "kongo", code: "CG" },
+    { name: "namibia", code: "NA" },
 ];
 
 const RightSidebar = () => {
@@ -34,6 +30,12 @@ const RightSidebar = () => {
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" required placeholder="Enter your email" />
+                    </div>
+
+                     {/* Password */}
+                     <div className="form-group">
+                        <label htmlFor="password">Email</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password" />
                     </div>
 
                     {/* Phone Number */}

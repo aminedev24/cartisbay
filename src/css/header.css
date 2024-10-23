@@ -39,7 +39,15 @@
   text-decoration: underline;
 }
 
+.dropdown {
+  cursor: pointer;
+  position: relative;
+}
 
+.help {
+  right: -40px !important;
+  left: unset;
+}
 
 
 .header-top {

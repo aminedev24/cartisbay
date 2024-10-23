@@ -28,7 +28,7 @@ function HomePage() {
           title: 'Used tires',
         },
         {
-          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy3.jpg`, 
+          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy4.jpg`, 
           title: 'How to Buy',
         },
         {

@@ -40,7 +40,7 @@ button {
   color: #304c9a; /* Button text color */
   border: solid 1px; /* Remove border */
   border-radius: 4px; /* Rounded corners */
-  padding: 10px 15px; /* Padding inside the button */
+  padding: 5px 10px; /* Padding inside the button */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth transition */
   text-transform: uppercase;
@@ -49,10 +49,13 @@ button {
 
 .buttons-row button {
   font-weight: bold;
+  flex: 0 0 120px;
+  display: flex;
+  align-items: center;
 }
 
 button:hover {
-  background-color: #e64a19; /* Darker shade on hover */
+  background-color: #f1892b; /* Darker shade on hover */
 }
 
 .country-btn {
@@ -63,3 +66,4 @@ button:hover {
 .car-card {
   width: 85%;
 }
+

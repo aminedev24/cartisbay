@@ -19,6 +19,10 @@
     width: 100%; /* Full width for the form */
     margin: 20px auto; /* Center the form */
   }
+
+  #make , #model {
+    width: 90px;
+  }
   
   .search-form table {
     width: 100%; /* Table takes full width */
@@ -32,16 +36,14 @@
   }
   
   .search-form label {
-    margin-right: 5px; /* Space between label and select */
     font-weight: bold; /* Bold font for labels */
     display: inline-block; /* Ensure labels take only necessary space */
-    width: 30%; /* Use percentage width for labels */
     color: #fff;
   }
   
   .search-form select,
   .search-form input[type="number"] {
-    width: 90%; /* Use percentage width for select inputs */
+    width: 100%; /* Use percentage width for select inputs */
     padding: 5px; /* Padding inside inputs */
     border: none; /* Remove border */
     outline: none; /* Remove outline */

@@ -118,10 +118,9 @@ label {
 
 /* Input fields */
 input {
-    padding: 12px; /* Comfortable padding */
+    padding: 9px; /* Comfortable padding */
     border: 1px solid #ffa726; /* Orangish border */
     border-radius: 8px; /* Rounded corners for input fields */
-    font-size: .9rem; /* Standard input font size */
     width: 90%; /* Full width input */
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
 }
