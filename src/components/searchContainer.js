@@ -12,59 +12,49 @@ const SearchForm = () => {
     yearTo: "",
   });
 
-  const [makes, setMakes] = useState([]);
+  const [makesData, setMakesData] = useState([]);
   const [modelsData, setModelsData] = useState({});
-  const [loading, setLoading] = useState(true);
 
-  // Years range from 1980 to current year
-  const yearOptions = Array.from(
-    { length: new Date().getFullYear() - 1979 },
-    (_, i) => 1980 + i
-  );
-
-  // Fetch makes and models once when the component mounts
+  // Fetch makes from the NHTSA API
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMakes = async () => {
       try {
-        // Check local storage first
-        const cachedMakes = localStorage.getItem("makes");
-        if (cachedMakes) {
-          const cachedData = JSON.parse(cachedMakes);
-          setMakes(cachedData.makes);
-          setModelsData(cachedData.modelsData);
-          setLoading(false);
-          return;
-        }
-
-        // Fetch makes from the NHTSA API
-        const response = await fetch(
-          "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"
-        );
+        const response = await fetch("https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json");
         const data = await response.json();
-        const makesList = data.Results.map((make) => make.Make_Name.toLowerCase());
-
-        // Here, you could also set modelsData based on your logic if needed.
-
-        // Save to local storage for caching
-        localStorage.setItem("makes", JSON.stringify({ makes: makesList, modelsData: {} }));
-        setMakes(makesList);
+        const makes = data.Results.map((make) => make.Make_Name.toLowerCase());
+        setMakesData(makes);
       } catch (error) {
         console.error("Error fetching makes:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
-    fetchData();
+    fetchMakes();
   }, []);
+
+  // Function to fetch models for a selected make
+  const fetchModels = async (make) => {
+    try {
+      const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`);
+      const data = await response.json();
+      const models = data.Results.map((model) => model.Model_Name);
+      setModelsData((prev) => ({ ...prev, [make]: models }));
+    } catch (error) {
+      console.error(`Error fetching models for ${make}:`, error);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-      ...(name === "make" && { model: "" }), // Reset model when make changes
+      ...(name === "make" && { model: "" }),
     });
+
+    // Fetch models for the selected make
+    if (name === "make" && value) {
+      fetchModels(value);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -76,9 +66,11 @@ const SearchForm = () => {
     return formData.make ? modelsData[formData.make] || [] : [];
   };
 
-  if (loading) {
-    return <div>Loading...</div>; // Render loading state while data is being fetched
-  }
+  // Years range from 1980 to current year
+  const yearOptions = Array.from(
+    { length: new Date().getFullYear() - 1979 },
+    (_, i) => 1980 + i
+  );
 
   return (
     <div className="search-container">
@@ -97,7 +89,7 @@ const SearchForm = () => {
                   onChange={handleChange}
                 >
                   <option value="">Make</option>
-                  {makes.map((make) => (
+                  {makesData.map((make) => (
                     <option key={make} value={make}>
                       {make.charAt(0).toUpperCase() + make.slice(1)}
                     </option>
