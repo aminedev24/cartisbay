@@ -154,9 +154,6 @@ input:focus {
 }
 
 
-.local-services {
-    margin-top: 20px; /* Space above the local services section */
-}
 
 .local-services .header {
     background-color: #1e377f;
@@ -172,17 +169,48 @@ input:focus {
     align-items: center; /* Center items vertically */
 }
 
-.local-services .service-icon {
+.local-services {
+    background-color: #f9f9f9; /* Light background for contrast */
+    border: 1px solid #e0e0e0; /* Light border for separation */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Add padding */
+    margin: 20px auto; /* Center it horizontally */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.header {
+    display: flex; /* Flex layout for icon and title */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 12px; /* Space below header */
+}
+
+.service-icon {
+    color: #007BFF; /* Change color for visibility */
+    font-size: 24px; /* Increase icon size */
     margin-right: 10px; /* Space between icon and title */
 }
 
 .country-list {
-    list-style: none; /* Remove bullet points */
+    list-style-type: none; /* Remove bullet points */
     padding: 0; /* Remove padding */
 }
 
 .country-item {
-    display: flex; /* Flexbox layout for country items */
+    display: flex; /* Flex layout for flag and country name */
     align-items: center; /* Center items vertically */
-    margin: 5px 0; /* Space between country items */
+    padding: 8px 0; /* Space around items */
+    transition: background-color 0.3s; /* Smooth transition */
 }
+
+.country-item:hover {
+    background-color: #e0f7fa; /* Change background on hover */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.country-item svg {
+    margin-right: 8px; /* Space between flag and name */
+}
+
+
+
+

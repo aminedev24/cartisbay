@@ -27,7 +27,8 @@ const Stocklist = ({ cars }) => {
     { name: "Japan", code: "JP" },
     { name: "Namibia", code: "NA" },
     { name: "France", code: "FR" },
-    { name: "Korea", code: "Ko" },
+    { name: "Kinshasa", code: "CD" },
+    { name: "kongo", code: "CG" },
     { name: "All", code: "" }, // Use an empty code for 'All'
   ];
   

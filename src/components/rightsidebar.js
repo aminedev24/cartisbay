@@ -5,6 +5,7 @@ import "../css/RightSidebar.css"; // Import the CSS file for styling
 const countries = [
     { name: "kongo", code: "CG" },
     { name: "namibia", code: "NA" },
+    { name: "Kinshasa", code: "CD" },
 ];
 
 const RightSidebar = () => {
@@ -73,6 +74,7 @@ const RightSidebar = () => {
                             {country.name}
                         </li>
                     ))}
+               
                 </ul>
             </div>
 
