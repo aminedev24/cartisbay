@@ -3,9 +3,9 @@ import CountryFlag from "react-country-flag"; // Import the CountryFlag componen
 import "../css/RightSidebar.css"; // Import the CSS file for styling
 
 const countries = [
-    { name: "kongo", code: "CG" },
-    { name: "namibia", code: "NA" },
-    { name: "Kinshasa", code: "CD" },
+    { name: "Namibia", code: "NA" },
+    { name: "Dr-Congo", code: "cd" },
+    { name: "Kinsasha", code: "cd" },
 ];
 
 const RightSidebar = () => {

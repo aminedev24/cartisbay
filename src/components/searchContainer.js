@@ -10,11 +10,62 @@ const SearchForm = () => {
     price: "",
     yearFrom: "",
     yearTo: "",
+    transmission: "",
+    fuelType: "",
   });
 
   const [makesData, setMakesData] = useState([]);
   const [modelsData, setModelsData] = useState({});
 
+  // Manually filter popular car makes
+  const popularMakes = [
+    "toyota",
+    "honda",
+    "ford",
+    "nissan",
+    "bmw",
+    "mercedes-benz",
+    "chevrolet",
+    "audi",
+    "volkswagen",
+    "hyundai",
+    "kia",
+    "lexus",
+    "mazda",
+    "subaru",
+    "tesla",
+    "jeep",
+    "land rover",
+    "volvo",
+    "jaguar",
+    "porsche",
+    "mitsubishi",
+    "suzuki",
+    "peugeot",
+    "renault",
+    "fiat",
+    "chrysler",
+    "dodge",
+    "gmc",
+    "cadillac",
+    "infiniti",
+    "acura",
+    "buick",
+    "lincoln",
+    "bentley",
+    "rolls-royce",
+    "ferrari",
+    "lamborghini",
+    "aston martin",
+    "maserati",
+    "alfa romeo",
+    "mini",
+    "skoda",
+    "citroën",
+    "opel",
+    "saab"
+  ];
+  
   // Fetch makes from the NHTSA API
   useEffect(() => {
     const fetchMakes = async () => {
@@ -22,7 +73,8 @@ const SearchForm = () => {
         const response = await fetch("https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json");
         const data = await response.json();
         const makes = data.Results.map((make) => make.Make_Name.toLowerCase());
-        setMakesData(makes);
+        const filteredMakes = makes.filter((make) => popularMakes.includes(make)); // Only keep popular makes
+        setMakesData(filteredMakes);
       } catch (error) {
         console.error("Error fetching makes:", error);
       }
@@ -124,25 +176,12 @@ const SearchForm = () => {
                   onChange={handleChange}
                 >
                   <option value="">Type</option>
+                  {/* Add more types as needed */}
                   <option value="sedan">Sedan</option>
-                  <option value="hatchback">Hatchback</option>
                   <option value="suv">SUV</option>
-                  <option value="mini-van">Mini Van</option>
-                  <option value="van">Van</option>
                   <option value="truck">Truck</option>
-                  <option value="wagon">Wagon</option>
                   <option value="coupe">Coupe</option>
-                  <option value="mini-vehicle">Mini Vehicle</option>
-                  <option value="bus">Bus</option>
-                  <option value="mini-bus">Mini Bus</option>
-                  <option value="pickup">Pick up</option>
-                  <option value="convertible">Convertible</option>
-                  <option value="tractor">Tractor</option>
-                  <option value="forklift">Forklift</option>
-                  <option value="machinery">Machinery</option>
-                  <option value="bus-20-seats">Bus 20 Seats</option>
-                  <option value="unspecified">Unspecified</option>
-                  <option value="others">Others</option>
+                  <option value="hatchback">Hatchback</option>
                 </select>
               </td>
               <td colSpan="2">
@@ -182,40 +221,39 @@ const SearchForm = () => {
                   <option value="under1500">Under $1,500</option>
                   <option value="under2000">Under $2,000</option>
                   <option value="under2500">Under $2,500</option>
-                  <option value="under4000">Under $4,000</option>
                 </select>
               </td>
 
-              <td><label>Year:</label></td>
+              <td><label htmlFor="yearFrom">Year:</label></td>
               <td>
-                <div className="year-inputs">
-                  <select
-                    id="yearFrom"
-                    name="yearFrom"
-                    value={formData.yearFrom}
-                    onChange={handleChange}
-                  >
-                    <option value="">From</option>
-                    {yearOptions.map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    id="yearTo"
-                    name="yearTo"
-                    value={formData.yearTo}
-                    onChange={handleChange}
-                  >
-                    <option value="">To</option>
-                    {yearOptions.map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <select
+                  id="yearFrom"
+                  name="yearFrom"
+                  value={formData.yearFrom}
+                  onChange={handleChange}
+                >
+                  <option value="">From</option>
+                  {yearOptions.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </td>
+              <td>
+                <select
+                  id="yearTo"
+                  name="yearTo"
+                  value={formData.yearTo}
+                  onChange={handleChange}
+                >
+                  <option value="">To</option>
+                  {yearOptions.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
               </td>
             </tr>
           </tbody>
