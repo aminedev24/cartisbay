@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/sidebar.css';
 import 'car-makes-icons/dist/style.css'; // Assuming this package provides make icons
-import { FaTag,FaDollarSign,FaCarSide, FaTruck, FaBus, FaMotorcycle, FaTractor, FaTools, FaQuestion, FaSyncAlt } from 'react-icons/fa'; // Added more icons
+import { FaShuttleVan,FaTag,FaDollarSign,FaCarSide, FaTruck, FaBus, FaMotorcycle, FaTractor, FaTools, FaQuestion, FaSyncAlt } from 'react-icons/fa'; // Added more icons
 import axios from 'axios'; // Or you can use fetch instead
 
 const LeftSidebar = ({ setFilters }) => {
@@ -21,7 +21,6 @@ const LeftSidebar = ({ setFilters }) => {
     "Ford", 
     "Chevrolet", 
     "BMW", 
-    "Mercedes", 
     "Volkswagen", 
     "Subaru", 
     "Kia", 
@@ -31,10 +30,8 @@ const LeftSidebar = ({ setFilters }) => {
     "Lexus", 
     "Porsche", 
     "Jaguar", 
-    "Land Rover", 
     "Dodge", 
     "Chrysler", 
-    "Buick"
   ];
 
   return (
@@ -87,61 +84,61 @@ const LeftSidebar = ({ setFilters }) => {
       </div>
       <ul className="type-list">
         <li className="type-item" onClick={() => handleFilterChange('type', 'sedan')}>
-          <FaCarSide className='type-icon' /> Sedan
+           Sedan
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'hatchback')}>
-          <FaCarSide className='type-icon' /> Hatchback
+           Hatchback
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'suv')}>
-          <FaCarSide className='type-icon' /> SUV
+           SUV
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'miniVan')}>
-          <FaCarSide className='type-icon' /> Mini Van
+          Mini Van
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'van')}>
-          <FaTruck className='type-icon' /> Van
+           Van
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'truck')}>
-          <FaTruck className='type-icon' /> Truck
+           Truck
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'wagon')}>
-          <FaCarSide className='type-icon' /> Wagon
+           Wagon
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'coupe')}>
-          <FaCarSide className='type-icon' /> Coupe
+           Coupe
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'miniVehicle')}>
-          <FaCarSide className='type-icon' /> Mini Vehicle
+           Mini Vehicle
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'bus')}>
-          <FaBus className='type-icon' /> Bus
+           Bus
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'miniBus')}>
-          <FaBus className='type-icon' /> Mini Bus
+           Mini Bus
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'pickup')}>
-          <FaTruck className='type-icon' /> Pick up
+          Pick up
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'convertible')}>
-          <FaCarSide className='type-icon' /> Convertible
+           Convertible
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'tractor')}>
-          <FaTractor className='type-icon' /> Tractor
+           Tractor
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'forklift')}>
-          <FaTools className='type-icon' /> Forklift
+          Forklift
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'machinery')}>
-          <FaTools className='type-icon' /> Machinery
+          Machinery
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'bus_20_seats')}>
-          <FaBus className='type-icon' /> Bus 20 Seats
+          Bus 20 Seats
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'unspecified')}>
-          <FaQuestion className='type-icon' /> Unspecified
+         Unspecified
         </li>
         <li className="type-item" onClick={() => handleFilterChange('type', 'others')}>
-          <FaSyncAlt className='type-icon' /> Others
+           Others
         </li>
       </ul>
     </div>

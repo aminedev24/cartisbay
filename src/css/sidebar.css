@@ -110,8 +110,9 @@
   text-align: center;
 }
 
-.make-item:hover , .discount-item:hover, .price-item:hover .type-item:hover  {
-  background-color: #e0e0e0; /* Highlight on hover */
+.make-item:hover , .discount-item:hover, .price-item:hover, .type-item:hover  {
+  background-color: #f1892b;
+  color: #fff;
 }
 
 .make-icon , .type-icon {
@@ -139,6 +140,3 @@
   justify-content: center;
 }
 
-.price-item:hover {
-  background-color: #f0f0f0; /* Background color on hover */
-}

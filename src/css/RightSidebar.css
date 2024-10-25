@@ -15,38 +15,6 @@
     margin-bottom: 15px; /* Space below the heading */
 }
 
-.right-sidebar ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-}
-
-.right-sidebar li {
-    margin-bottom: 10px; /* Space between list items */
-}
-
-.right-sidebar a {
-    text-decoration: none; /* Remove underline */
-    color: #2c3e50; /* Link color */
-    font-size: 1.2rem; /* Link font size */
-}
-
-.right-sidebar a:hover {
-    color: #e67e22; /* Change color on hover */
-}
-
-.image-section {
-    margin-bottom: 20px; /* Space between images and the rest of the sidebar content */
-    display: none;
-}
-
-.sidebar-image {
-    width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px; /* Optional: Round corners for images */
-    margin-bottom: 10px; /* Space between the two images */
-    cursor: pointer;
-}
-
 
 /* Container for the account creation section */
 .account-container {
@@ -60,11 +28,6 @@
     text-align: center;
     max-width: 500px; /* Limiting the maximum width */
     transition: transform 0.3s ease;
-}
-
-/* Hover effect for the entire container */
-.account-container:hover {
-    transform: translateY(-5px); /* Slight elevation on hover */
 }
 
 /* Header for the Create Account section */
@@ -93,67 +56,73 @@
     font-size: 1.6rem; /* Larger icon size */
 }
 
-/* Form styling */
-.account-form {
-    display: flex;
-    flex-direction: column; /* Vertical form layout */
-    padding: 25px; /* Generous padding inside form */
-    background-color: #f9f9f9; /* Light gray background for contrast */
-    border-radius: 10px; /* Slightly rounder corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
-}
+ /* Input Group Styling */
+ .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
 
-/* Form groups */
-.account-form .form-group {
-    display: flex;
-    flex-direction: column; /* Column layout for form fields */
-    margin-bottom: 20px; /* Space between fields */
-}
+  /* Input Styling */
+  .input-group input, .input-group select {
+    width: 80%;
+    padding: 7px 15px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    background: #f7f9fc;
+    transition: all 0.3s ease;
+    font-size: 16px;
+  }
 
-label {
-    font-weight: bold; /* Emphasized labels */
-    margin-bottom: 8px; /* More space below labels */
-    color: #333; /* Darker text color for labels */
-}
+  .input-group select {
+    width: 100%;
+  }
+  /* Input Focus Effect */
+  .input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 8px rgba(156, 174, 230, 0.6);
+  }
 
-/* Input fields */
-input {
-    padding: 9px; /* Comfortable padding */
-    border: 1px solid #ffa726; /* Orangish border */
-    border-radius: 8px; /* Rounded corners for input fields */
-    width: 90%; /* Full width input */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
-}
+  /* Floating Label */
+  .input-group label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f7f9fc;
+    padding: 0 5px;
+    color: #1e3a8a;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s ease;
+  }
 
-input:focus {
-    border-color: #ff5722; /* Orange border on focus */
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 8px rgba(255, 87, 34, 0.5); /* Softer shadow effect */
-}
+  /* Label Animation */
+  .input-group input:focus + label,
+  .input-group input.not-empty + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #9face6;
+  }
 
-/* Create Account button */
-.create-account-btn {
-    background-color: #304c9a; /* Dark blue background */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 8px; /* More rounded corners */
-    padding: 15px; /* Increased padding for better feel */
-    cursor: pointer; /* Pointer cursor */
-    font-size: .7rem; /* Standard button text size */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and click effects */
+  /* Button Styling */
+  .signup-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #1e3a8a;
+    color: white;
+    font-size: 16px;
     font-weight: bold;
-}
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
 
-.create-account-btn:hover {
-    background-color: #1e377f; /* Darker blue on hover */
-    transform: scale(1.05); /* Button enlarges slightly on hover */
-}
-
-.create-account-btn:active {
-    transform: scale(0.95); /* Button shrinks slightly on click */
-}
-
-
+  .signup-form button:hover {
+    background: linear-gradient(90deg, #1e377f, #27459c);
+  }
 
 .local-services .header {
     background-color: #1e377f;
@@ -173,10 +142,11 @@ input:focus {
     background-color: #f9f9f9; /* Light background for contrast */
     border: 1px solid #e0e0e0; /* Light border for separation */
     border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Add padding */
     margin: 20px auto; /* Center it horizontally */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+
 
 .header {
     display: flex; /* Flex layout for icon and title */
@@ -185,14 +155,12 @@ input:focus {
 }
 
 .service-icon {
-    color: #007BFF; /* Change color for visibility */
     font-size: 24px; /* Increase icon size */
-    margin-right: 10px; /* Space between icon and title */
 }
 
 .country-list {
     list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
+    padding: 5px 16px;
 }
 
 .country-item {
@@ -203,8 +171,9 @@ input:focus {
 }
 
 .country-item:hover {
-    background-color: #e0f7fa; /* Change background on hover */
+    background-color: #f1892b; /* Change background on hover */
     cursor: pointer; /* Pointer on hover */
+    color: #fff;
 }
 
 .country-item svg {

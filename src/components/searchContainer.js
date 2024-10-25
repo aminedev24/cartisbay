@@ -175,13 +175,26 @@ const SearchForm = () => {
                   value={formData.type}
                   onChange={handleChange}
                 >
-                  <option value="">Type</option>
-                  {/* Add more types as needed */}
+                 <option value="">Type</option>
                   <option value="sedan">Sedan</option>
-                  <option value="suv">SUV</option>
-                  <option value="truck">Truck</option>
-                  <option value="coupe">Coupe</option>
                   <option value="hatchback">Hatchback</option>
+                  <option value="suv">SUV</option>
+                  <option value="mini-van">Mini Van</option>
+                  <option value="van">Van</option>
+                  <option value="truck">Truck</option>
+                  <option value="wagon">Wagon</option>
+                  <option value="coupe">Coupe</option>
+                  <option value="mini-vehicle">Mini Vehicle</option>
+                  <option value="bus">Bus</option>
+                  <option value="mini-bus">Mini Bus</option>
+                  <option value="pickup">Pick up</option>
+                  <option value="convertible">Convertible</option>
+                  <option value="tractor">Tractor</option>
+                  <option value="forklift">Forklift</option>
+                  <option value="machinery">Machinery</option>
+                  <option value="bus-20-seats">Bus 20 Seats</option>
+                  <option value="unspecified">Unspecified</option>
+                  <option value="others">Others</option>
                 </select>
               </td>
               <td colSpan="2">

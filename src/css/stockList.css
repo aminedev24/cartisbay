@@ -56,6 +56,7 @@ button {
 
 button:hover {
   background-color: #f1892b; /* Darker shade on hover */
+  color: #fff;
 }
 
 .country-btn {
