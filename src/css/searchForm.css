@@ -20,12 +20,6 @@
     margin: 20px auto; /* Center the form */
   }
 
-  #make{
-    width: 90px;
-  }
-  #model {
-    width: 100px;
-  }
   .search-form table {
     width: 100%; /* Table takes full width */
     border-collapse: collapse; /* Collapse table borders */
