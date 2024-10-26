@@ -85,7 +85,7 @@
   .banner-video, .banner-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the video/image covers the entire container */
+    object-fit: fill; /* Ensures the video/image covers the entire container */
   }
   
 .label-cell {

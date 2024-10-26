@@ -63,12 +63,12 @@ function HomePage() {
             </div>
         ))}
         </div>
-
+{/*
         <section className="car-dismantling">
             <div className="dismantling-content">
             <h2>Car Dismantling Services</h2>
             <p>
-                Our car dismantling services ensure that every vehicle is carefully disassembled, with each part inspected, cleaned, and prepared for shipping.
+            Our car dismantling services provide careful disassembly for efficient shipping. Each vehicle is systematically broken down, with parts thoroughly inspected, cleaned, and packed to ensure safe, cost-effective transport to international destinations.
             </p>
             
             </div>
@@ -76,6 +76,7 @@ function HomePage() {
             <img src={`${process.env.PUBLIC_URL}/images/car-dismantlingBanner.jpg`} alt="Car Dismantling" />
             </div>
         </section>
+*/}
         
             <section className="stocklist-section">
              
