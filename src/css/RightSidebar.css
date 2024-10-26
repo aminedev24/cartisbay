@@ -99,7 +99,10 @@
 
   /* Label Animation */
   .input-group input:focus + label,
-  .input-group input.not-empty + label {
+  .input-group input.not-empty + label,
+  .input-group select:focus + label,
+.input-group select.not-empty + label
+   {
     top: -10px;
     left: 10px;
     font-size: 12px;
@@ -179,7 +182,5 @@
 .country-item svg {
     margin-right: 8px; /* Space between flag and name */
 }
-
-
 
 

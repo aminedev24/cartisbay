@@ -125,14 +125,23 @@ const SearchForm = () => {
   );
 
   return (
-    <div className="search-container">
+    <>
+    <div className="video-container">
+      <video className="banner-video" autoPlay loop muted>
+        <source src={`${process.env.PUBLIC_URL}/vids/hero.mp4`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {/* Optional: If you want to use an image instead of a video, uncomment the line below */}
+      {/* <img src="path_to_your_image.jpg" alt="Banner" className="banner-image" /> */}
+    </div>
+      <div className="search-container">
       <h4>Search Cars</h4>
       <form className="search-form" onSubmit={handleSubmit}>
         <table>
           <tbody>
             {/* First Row */}
             <tr>
-              <td><label htmlFor="make">Make:</label></td>
+              <td className="label-cell"><label htmlFor="make">Make:</label></td>
               <td>
                 <select
                   id="make"
@@ -149,7 +158,7 @@ const SearchForm = () => {
                 </select>
               </td>
 
-              <td><label htmlFor="model">Model:</label></td>
+              <td className="label-cell"><label htmlFor="model">Model:</label></td>
               <td>
                 <select
                   id="model"
@@ -167,7 +176,7 @@ const SearchForm = () => {
                 </select>
               </td>
 
-              <td><label htmlFor="type">Type:</label></td>
+              <td className="label-cell"><label htmlFor="type">Type:</label></td>
               <td>
                 <select
                   id="type"
@@ -206,7 +215,7 @@ const SearchForm = () => {
 
             {/* Second Row */}
             <tr>
-              <td><label htmlFor="steering">Steering:</label></td>
+              <td className="label-cell"><label htmlFor="steering">Steering:</label></td>
               <td>
                 <select
                   id="steering"
@@ -220,7 +229,7 @@ const SearchForm = () => {
                 </select>
               </td>
 
-              <td><label htmlFor="price">Price:</label></td>
+              <td className="label-cell"><label htmlFor="price">Price:</label></td>
               <td>
                 <select
                   id="price"
@@ -237,7 +246,7 @@ const SearchForm = () => {
                 </select>
               </td>
 
-              <td><label htmlFor="yearFrom">Year:</label></td>
+              <td className="label-cell"><label htmlFor="yearFrom">Year:</label></td>
               <td>
                 <select
                   id="yearFrom"
@@ -272,7 +281,8 @@ const SearchForm = () => {
           </tbody>
         </table>
       </form>
-    </div>
+      </div>
+    </>
   );
 };
 

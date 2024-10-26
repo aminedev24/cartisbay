@@ -61,6 +61,7 @@
     cursor: pointer; /* Pointer cursor on hover */
     font-size: 16px; /* Font size for button */
     margin-top: 10px; /* Space above button */
+    width: 100%;
   }
   
   .search-form .search-btn:hover {
@@ -72,4 +73,21 @@
   }
   
  
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 240px; /* Adjust height as desired */
+    overflow: hidden;
+    border-radius: 8px; /* Optional rounded corners */
+    margin-bottom: 20px; /* Adds space between video and search container */
+  }
   
+  .banner-video, .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video/image covers the entire container */
+  }
+  
+.label-cell {
+  width: 50px;
+}

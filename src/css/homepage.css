@@ -225,3 +225,55 @@
     font-weight: 600; /* Bold text for emphasis */
     color: #2c3e50; /* Darker text color */
 }
+
+
+  
+    
+    
+        @media screen and (max-width: 9999px) {
+          .layout, .header-top  {
+                margin: 0 auto;
+                width: 1590px;
+            }
+            .header-bottom {
+                margin-left: auto;
+                margin-right: auto;
+                width: 1590px;
+            }
+          }
+
+            
+
+      
+      
+        @media screen and (max-width: 1760px) {
+          .layout, .header-top {
+                margin: 0 auto;
+                width: 1460px;
+            }
+            .header-bottom {
+              margin-left: auto;
+              margin-right: auto;
+              width: 1460px;
+          }
+          }
+
+              
+    @media screen and (max-width: 1530px) {
+        .layout,.header-top {
+              margin: 0 auto;
+              width: 1330px;
+          }
+  
+          .header-bottom {
+              margin-left: auto;
+              margin-right: auto;
+              width: 1330px;
+          }
+        }
+
+          @media screen and (max-width: 1400px) {
+            .layout, .header-top, .header-bottom {
+                width: 1200px;
+            }
+        }
