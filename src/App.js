@@ -10,6 +10,7 @@ import HomePage from './components/homepage';
 import Contact from './components/contact';
 import HowToBuy from './components/howtobuy';
 import LeftSidebar from './components/sidebar'; // Import the LeftSidebar
+import './App.css';
 
 function App() {
   const [cars, setCars] = useState([]);
