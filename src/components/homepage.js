@@ -24,23 +24,23 @@ function HomePage() {
 
     const cards = [
         {
-          imgSrc: `${process.env.PUBLIC_URL}/images/usedTirestn.jpg`, 
+          imgSrc: `${process.env.PUBLIC_URL}/images/usedTiresen.jpg`, 
           title: 'Used tires',
         },
         {
-          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy4.jpg`, 
+          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuyen.jpg`, 
           title: 'How to Buy',
         },
         {
-          imgSrc:`${process.env.PUBLIC_URL}/images/car_parts.jpg`,
-          title: 'Car Parts',
+          imgSrc:`${process.env.PUBLIC_URL}/images/car-dismantling.jpg`,
+          title: 'Car Dismantling',
         },
         {
-          imgSrc: `${process.env.PUBLIC_URL}/images/machinery.jpg`,
+          imgSrc: `${process.env.PUBLIC_URL}/images/machineryen.jpg`,
           title: 'Machinery',
         },
         {
-          imgSrc:  `${process.env.PUBLIC_URL}/images/howtopay2.jpg`,
+          imgSrc:  `${process.env.PUBLIC_URL}/images/howtopayen.jpg`,
           title: 'How to Pay',
         },
       ];

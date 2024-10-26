@@ -2,10 +2,6 @@ import React, {useState} from "react";
 import CountryFlag from "react-country-flag"; // Import the CountryFlag component
 import "../css/RightSidebar.css"; // Import the CSS file for styling
 
-const countries = [
-  { name: "Namibia", code: "NA" },
-  { name: "Dr-Congo", code: "cd" },
-];
 
 const RightSidebar = () => {
 
@@ -29,7 +25,7 @@ const RightSidebar = () => {
 const localServices = [
   
   { name: "Namibia", code: "NA" },
-  { name: "Dr-congo", code: "DRC"}, 
+  { name: "Dr-congo", code: "cd"}, 
   
 ]
 
