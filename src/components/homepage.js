@@ -63,7 +63,7 @@ function HomePage() {
             </div>
         ))}
         </div>
-{/*
+
         <section className="car-dismantling">
             <div className="dismantling-content">
             <h2>Car Dismantling Services</h2>
@@ -76,7 +76,7 @@ function HomePage() {
             <img src={`${process.env.PUBLIC_URL}/images/car-dismantlingBanner.jpg`} alt="Car Dismantling" />
             </div>
         </section>
-        */}
+        
             <section className="stocklist-section">
              
                 <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
