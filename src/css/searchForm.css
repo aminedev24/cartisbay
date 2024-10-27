@@ -5,6 +5,7 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     max-width: 100%; /* Ensure container doesn't overflow */
     overflow: hidden; /* Prevent overflowing content */
+    margin: 20px 0;
 }
 
 .search-container h4 {
