@@ -34,7 +34,7 @@ const Header = () => {
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-          <div className="app-name">Artisbay</div>
+          <img src={`${process.env.PUBLIC_URL}/images/logoCut.png`} />
           <div className="header-search">
             <input type="text" placeholder="Search..." />
             <i className="fas fa-search search-icon"></i>

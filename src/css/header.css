@@ -50,6 +50,11 @@
   align-items: center;
 }
 
+.header-top img {
+  width: 130px;
+  margin: 0 46px;
+}
+
 .app-name {
   font-weight: bold;
   color: white;
@@ -121,7 +126,7 @@
 
 .right-links {
   position: absolute;
-  right: 26px; /* Align under search end */
+  right: 0; /* Align under search end */
 }
 
 /* Enhanced dropdown styles for used cars, used tires, and right links */
