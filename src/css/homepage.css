@@ -285,14 +285,19 @@
     
     
         @media screen and (max-width: 9999px) {
-          .layout, .header-top  {
+          .layout {
                 margin: 0 auto;
                 width: 1590px;
             }
             .header-bottom {
                 margin-left: auto;
                 margin-right: auto;
-                width: 1590px;
+                width: 1600px;
+            }
+
+            .header-top  {
+                margin: 0 auto;
+                width: 1560px;
             }
           }
 
@@ -301,9 +306,12 @@
       
       
         @media screen and (max-width: 1760px) {
-          .layout, .header-top {
+          .layout {
                 margin: 0 auto;
                 width: 1460px;
+            }
+            .header-top {
+                width: 1430px;
             }
             .header-bottom {
               margin-left: auto;

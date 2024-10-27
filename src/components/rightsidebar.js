@@ -41,9 +41,7 @@ const handleCountryChange = (event) => {
 const handleCountryBlur = (event) => {
   if (event.target.value) {
     event.target.classList.add("not-empty");
-  } else {
-    event.target.classList.remove("not-empty");
-  }
+  } 
 };
 
   return (
@@ -73,7 +71,7 @@ const handleCountryBlur = (event) => {
         
         {/* Country Selector */}
         <div className="input-group">
-          <select id="country" value={selectedCountry} onBlur={handleCountryBlur} onChange={handleCountryChange} required>
+          <select className="not-empty" id="country" value={selectedCountry} onBlur={handleCountryBlur} onChange={handleCountryChange} required>
             <option value="">Select Country</option>
             {countries.map((country) => (
               <option key={country.code} value={country.name}>

@@ -142,7 +142,6 @@
 }
 
 .local-services {
-    background-color: #f9f9f9; /* Light background for contrast */
     border: 1px solid #e0e0e0; /* Light border for separation */
     border-radius: 8px; /* Rounded corners */
     margin: 20px auto; /* Center it horizontally */
