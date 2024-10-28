@@ -103,7 +103,7 @@ const RightSidebar = () => {
 
       {/* Video Section */}
       <div className="video-section">
-        <video  src={`${process.env.PUBLIC_URL}/vids/localServices.mp4`}  autoPlay loop muted className="video"></video>
+        <video  src={`${process.env.PUBLIC_URL}/vids/local-services.mp4`}  autoPlay loop muted className="video"></video>
       </div>
 
       {/* Local Services Section */}

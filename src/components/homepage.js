@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Stocklist from "./stockList";
 import carData from './carData'; // Import car data
 import '../css/homepage.css'; // Add your CSS file for homepage styling
@@ -23,11 +23,18 @@ function HomePage() {
       const settings = {
         dots: true,
         infinite: true,
-        autoplay: true,
-        autoplaySpeed: 8000, 
         arrows: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 8000,
       };
 
+
+      const videos = [
+        `${process.env.PUBLIC_URL}/vids/used-tires.mp4`,
+        `${process.env.PUBLIC_URL}/vids/car-dismantling.mp4`,
+      ];
 
 
     useEffect(() => {
@@ -68,16 +75,20 @@ function HomePage() {
         <div className="homepage">
             {/* Stocklist */}
             
-        <section className="video-slider-section">
-            <Slider {...settings}>
-                <div className="video-slide">
-                <video src={`${process.env.PUBLIC_URL}/vids/hero.mp4`}  autoPlay loop muted></video>
-                </div>
-                <div className="video-slide">
-                <video src={`${process.env.PUBLIC_URL}/vids/car-dismantling.mp4`}  autoPlay loop muted></video>
-                </div>
-            </Slider>
-        </section>
+            <section className="video-slider-section">
+      <Slider {...settings}>
+        {videos.map((videoSrc, index) => (
+          <div className="video-slide" key={index}>
+            <video
+              src={videoSrc}
+              autoPlay
+              loop
+              muted
+            />
+          </div>
+        ))}
+      </Slider>
+    </section>
             <SearchForm />
             <div className="info-cards-container">
         {cards.map((card, index) => (
