@@ -42,7 +42,7 @@ const Header = () => {
           <div className="header-icons">
             <div className="header-item">Contact</div>
             <div className="header-item">
-              <i className="fas fa-shopping-cart icon"></i> Cart
+              <i className="fas fa-user-plus icon"></i> Register
             </div>
             <div
               className="header-item dropdown"

@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import LeftSidebar from "./sidebar";
 import RightSidebar from "./rightsidebar";
 import SearchForm from "./searchContainer";
+import Slider from 'react-slick';
+
+
 function HomePage() {
     const [cars, setCars] = useState([]);
     const [filters, setFilters] = useState({
@@ -16,6 +19,16 @@ function HomePage() {
         location: '',
         searchTerm: '',
       });
+
+      const settings = {
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,  // Switch videos every 5 seconds
+        arrows: false,
+      };
+
+
 
     useEffect(() => {
       setCars(carData);
@@ -54,6 +67,17 @@ function HomePage() {
         <div className="main-content">
         <div className="homepage">
             {/* Stocklist */}
+            
+        <section className="video-slider-section">
+            <Slider {...settings}>
+                <div className="video-slide">
+                <video src={`${process.env.PUBLIC_URL}/vids/hero.mp4`}  autoPlay loop muted></video>
+                </div>
+                <div className="video-slide">
+                <video src={`${process.env.PUBLIC_URL}/vids/car-dismantling.mp4`}  autoPlay loop muted></video>
+                </div>
+            </Slider>
+        </section>
             <SearchForm />
             <div className="info-cards-container">
         {cards.map((card, index) => (

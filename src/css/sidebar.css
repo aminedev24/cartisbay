@@ -96,18 +96,33 @@
   color: #FFF;
 }
 
-.make-list {
-  list-style-type: none; /* Remove default list styles */
-}
 
-.make-item , .price-item , .discount-item , .type-item {
+.makes-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; /* Aligns items horizontally */
+  justify-content: center; /* Aligns items vertically */
+}
+.make-list, .type-list, .price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.make-item , .type-item, .price-item {
+  margin-bottom: 10px; /* Adds space between items */
+  display: flex;
+  align-items: center; /* Aligns icon and text horizontally */
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
 }
+
+.type-item {
+  justify-content: center;
+}
+.make-icon {
+  margin-right: 10px; /* Adds space between icon and text */
+}
+
 
 .make-item:hover , .discount-item:hover, .price-item:hover, .type-item:hover  {
   background-color: #f1892b;

@@ -278,64 +278,103 @@
     height: auto;
     border-radius: 12px;
   }
+
+  .video-slider-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .video-slide video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px; /* Optional rounded corners */
+    margin: 20px 7px;
+
+  }
+  
+  .banner-video, .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video/image covers the entire container */
+  }
+  
+.label-cell {
+  width: 50px;
+}
+
   
 
 
   
     
     
-        @media screen and (max-width: 9999px) {
-          .layout {
-                margin: 0 auto;
-                width: 1590px;
-            }
-            .header-bottom {
-                margin-left: auto;
-                margin-right: auto;
-                width: 1600px;
-            }
+@media screen and (max-width: 9999px) {
+    .layout {
+        margin: 0 auto;
+        width: 1590px;
+    }
+    .header-bottom {
+        margin-left: auto;
+        margin-right: auto;
+        width: 1600px;
+    }
 
-            .header-top  {
-                margin: 0 auto;
-                width: 1560px;
-            }
-          }
+    .header-top  {
+        margin: 0 auto;
+        width: 1560px;
+    }
 
-            
+    
+    }
 
-      
-      
-        @media screen and (max-width: 1760px) {
-          .layout {
-                margin: 0 auto;
-                width: 1460px;
-            }
-            .header-top {
-                width: 1430px;
-            }
-            .header-bottom {
-              margin-left: auto;
-              margin-right: auto;
-              width: 1460px;
-          }
-          }
+    
 
-              
-    @media screen and (max-width: 1530px) {
-        .layout,.header-top {
-              margin: 0 auto;
-              width: 1330px;
-          }
-  
-          .header-bottom {
-              margin-left: auto;
-              margin-right: auto;
-              width: 1330px;
-          }
-        }
 
-          @media screen and (max-width: 1400px) {
-            .layout, .header-top, .header-bottom {
-                width: 1200px;
-            }
-        }
+
+@media screen and (max-width: 1760px) {
+    .layout {
+        margin: 0 auto;
+        width: 1460px;
+    }
+    .header-top {
+        width: 1430px;
+    }
+    .header-bottom {
+        margin-left: auto;
+        margin-right: auto;
+        width: 1460px;
+    }
+
+    .help {
+    right: 10px !important;
+}
+    }
+
+        
+@media screen and (max-width: 1530px) {
+.layout,.header-top {
+        margin: 0 auto;
+        width: 1330px;
+    }
+
+    .header-bottom {
+        margin-left: auto;
+        margin-right: auto;
+        width: 1330px;
+    }
+}
+
+    @media screen and (max-width: 1400px) {
+    .layout, .header-top, .header-bottom {
+        width: 1200px;
+    }
+}

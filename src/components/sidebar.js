@@ -44,14 +44,17 @@ const LeftSidebar = ({ setFilters }) => {
       <div className="make-header">
         <h4>Make</h4>
       </div>
-      <ul className="make-list">
-        {makes.map((make, index) => (
-          <li key={index} className="make-item">
-            <span className={`make-icon car-${make.toLowerCase()}`}></span> {/* Add icon */}
-            {make}
-          </li>
-        ))}
-      </ul>
+      <div className="makes-container">
+  <ul className="make-list">
+    {makes.map((make, index) => (
+      <li key={index} className="make-item">
+        <span className={`make-icon car-${make.toLowerCase()}`}></span>
+        {make}
+      </li>
+    ))}
+  </ul>
+</div>
+
 
       {/* Shop by Price Section */}
       <div className="price-header">
@@ -65,18 +68,6 @@ const LeftSidebar = ({ setFilters }) => {
         <li className="price-item" onClick={() => handleFilterChange('price', '2500_4000')}>$2500 - $4000</li>
       </ul>
 
-      {/* Shop by Discount Section */}
-      <div className="discount-header">
-        <h4><FaTag /> Shop by Discount</h4>
-      </div>
-      <ul className="discount-list">
-        <li className="discount-item" onClick={() => handleFilterChange('discount', '70_or_more')}>70% off or more</li>
-        <li className="discount-item" onClick={() => handleFilterChange('discount', '60_or_more')}>60% off or more</li>
-        <li className="discount-item" onClick={() => handleFilterChange('discount', '50_or_more')}>50% off or more</li>
-        <li className="discount-item" onClick={() => handleFilterChange('discount', '40_or_more')}>40% off or more</li>
-        <li className="discount-item" onClick={() => handleFilterChange('discount', '30_or_more')}>30% off or more</li>
-        <li className="discount-item" onClick={() => handleFilterChange('discount', '1_to_30')}>1% - 30% off</li>
-      </ul>
 
     {/* Shop by Type Section */}
     <div className="type-header">

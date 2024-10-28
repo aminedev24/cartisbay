@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/searchForm.css"; // Assuming you keep the CSS in a separate file
 
+
 const SearchForm = () => {
   const [formData, setFormData] = useState({
     make: "",
@@ -14,6 +15,9 @@ const SearchForm = () => {
     fuelType: "",
   });
 
+  
+
+  
   const [makesData, setMakesData] = useState([]);
   const [modelsData, setModelsData] = useState({});
 
@@ -126,13 +130,14 @@ const SearchForm = () => {
 
   return (
     <>
+
+{/*
     <div className="video-container">
       <video className="banner-video" autoPlay loop muted>
         <source src={`${process.env.PUBLIC_URL}/vids/hero.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      {/* Optional: If you want to use an image instead of a video, uncomment the line below */}
-      {/* <img src="path_to_your_image.jpg" alt="Banner" className="banner-image" /> */}
+    
     </div>
     <section className="car-dismantling">
             <div className="dismantling-content">
@@ -146,7 +151,7 @@ const SearchForm = () => {
             <img src={`${process.env.PUBLIC_URL}/images/car-dismantlingBanner.jpg`} alt="Car Dismantling" />
             </div>
         </section>
-        
+*/}     
       <div className="search-container">
       <h4>Search Cars</h4>
       <form className="search-form" onSubmit={handleSubmit}>

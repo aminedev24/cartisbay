@@ -11,6 +11,8 @@ import Contact from './components/contact';
 import HowToBuy from './components/howtobuy';
 import LeftSidebar from './components/sidebar'; // Import the LeftSidebar
 import './App.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const [cars, setCars] = useState([]);
