@@ -24,7 +24,7 @@ function HomePage() {
         dots: true,
         infinite: true,
         autoplay: true,
-        autoplaySpeed: 5000,  // Switch videos every 5 seconds
+        autoplaySpeed: 8000, 
         arrows: false,
       };
 
