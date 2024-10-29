@@ -10,7 +10,7 @@ const UsedTires = () => {
       {/* Image Container */}
       <div className="image-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/used-tires-banner.jpg`} // Update with the correct image path
+          src={`${process.env.PUBLIC_URL}/images/used-tires-lp.jpg`} // Update with the correct image path
           alt="High-Quality Used Tires"
           className="image"
         />
