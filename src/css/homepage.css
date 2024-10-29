@@ -349,6 +349,7 @@
     .layout {
         margin: 0 auto;
         width: 1438px;
+        max-width: 100%;
     }
     .header-top {
         width: 1430px;
@@ -369,17 +370,20 @@
 .layout,.header-top {
         margin: 0 auto;
         width: 1330px;
+        max-width: 100%;
     }
 
     .header-bottom {
         margin-left: auto;
         margin-right: auto;
         width: 1330px;
+        max-width: 100%;
     }
 }
 
     @media screen and (max-width: 1400px) {
     .layout, .header-top, .header-bottom {
         width: 1200px;
+        max-width: 100%;
     }
 }
