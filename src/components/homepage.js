@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import LeftSidebar from "./sidebar";
 import RightSidebar from "./rightsidebar";
 import SearchForm from "./searchContainer";
-import Slider from 'react-slick';
-
+import MediaSlider from "./slider";
 
 function HomePage() {
     const [cars, setCars] = useState([]);
@@ -20,21 +19,7 @@ function HomePage() {
         searchTerm: '',
       });
 
-      const settings = {
-        dots: true,
-        infinite: true,
-        arrows: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 8000,
-      };
-
-
-      const videos = [
-        `${process.env.PUBLIC_URL}/vids/used-tires.mp4`,
-        `${process.env.PUBLIC_URL}/vids/car-dismantling.mp4`,
-      ];
+ 
 
 
     useEffect(() => {
@@ -43,27 +28,33 @@ function HomePage() {
 
 
     const cards = [
-        {
-          imgSrc: `${process.env.PUBLIC_URL}/images/usedTiresen.jpg`, 
-          title: 'Used tires',
-        },
-        {
-          imgSrc: `${process.env.PUBLIC_URL}/images/howtobuyen.jpg`, 
-          title: 'How to Buy',
-        },
-        {
-          imgSrc:`${process.env.PUBLIC_URL}/images/car-dismantling.jpg`,
-          title: 'Car Dismantling',
-        },
-        {
-          imgSrc: `${process.env.PUBLIC_URL}/images/machineryen.jpg`,
-          title: 'Machinery',
-        },
-        {
-          imgSrc:  `${process.env.PUBLIC_URL}/images/howtopayen.jpg`,
-          title: 'How to Pay',
-        },
-      ];
+      {
+        imgSrc: `${process.env.PUBLIC_URL}/images/usedTiresen.jpg`, 
+        title: 'Used tires',
+        link: '/used-tires'
+      },
+      {
+        imgSrc: `${process.env.PUBLIC_URL}/images/howtobuyen.jpg`, 
+        title: 'How to Buy',
+        link: '/how-to-buy'
+      },
+      {
+        imgSrc: `${process.env.PUBLIC_URL}/images/car-dismantling.jpg`,
+        title: 'Car Dismantling',
+        link: '/car-dismantling'
+      },
+      {
+        imgSrc: `${process.env.PUBLIC_URL}/images/machineryen.jpg`,
+        title: 'Machinery',
+        link: '/machinery'
+      },
+      {
+        imgSrc: `${process.env.PUBLIC_URL}/images/howtopayen.jpg`,
+        title: 'How to Pay',
+        link: '/how-to-pay'
+      },
+    ]; 
+    
 
 
 
@@ -75,29 +66,18 @@ function HomePage() {
         <div className="homepage">
             {/* Stocklist */}
             
-            <section className="video-slider-section">
-      <Slider {...settings}>
-        {videos.map((videoSrc, index) => (
-          <div className="video-slide" key={index}>
-            <video
-              src={videoSrc}
-              autoPlay
-              loop
-              muted
-            />
-          </div>
-        ))}
-      </Slider>
-    </section>
+            <MediaSlider />
             <SearchForm />
             <div className="info-cards-container">
-        {cards.map((card, index) => (
-            <div className="info-card" key={index}>
-            <img src={card.imgSrc} alt={card.title} className="info-card-image" />
-            <h3 className="info-card-title">{card.title}</h3>
+              {cards.map((card, index) => (
+                <Link to={card.link} className="info-card-link" key={index}>
+                  <div className="info-card">
+                    <img src={card.imgSrc} alt={card.title} className="info-card-image" />
+                    <h3 className="info-card-title">{card.title}</h3>
+                  </div>
+                </Link>
+              ))}
             </div>
-        ))}
-        </div>
 {/*
       
 */}

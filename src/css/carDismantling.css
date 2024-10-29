@@ -1,0 +1,35 @@
+/* CarDismantling.css */
+.carDismantling-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px; /* Equivalent to p-6 */
+    background-color: #f7fafc; /* Equivalent to bg-gray-100 */
+  }
+  
+  .image-container {
+    width: 100%;
+    max-width: 600px; /* Adjust based on your design */
+    margin: auto;
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  }
+  
+  .text-container {
+    margin-top: 16px; /* Space for smaller screens */
+  }
+  
+  .title {
+    font-size: 24px; /* Equivalent to text-2xl */
+    font-weight: bold; /* Equivalent to font-bold */
+    color: #2d3748; /* Equivalent to text-gray-800 */
+  }
+  
+  .paragraph {
+    color: #4a5568; /* Equivalent to text-gray-700 */
+    line-height: 1.6; /* Leading relaxed */
+  }

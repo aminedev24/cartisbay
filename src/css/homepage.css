@@ -311,6 +311,11 @@
   width: 50px;
 }
 
+.info-card-link {
+    text-decoration: none;
+    color: inherit; /* Inherit text color */
+  }
+  
   
 
 

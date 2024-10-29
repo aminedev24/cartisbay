@@ -9,7 +9,8 @@
   overflow-y: auto; /* Scroll if content overflows */
   z-index: 100; /* Ensure it stays above other elements */
   transition: width 0.3s ease; /* Smooth transition for width changes */
-  font-family: Arial, sans-serif; /* Set a more readable font */
+  top: 0;
+  max-height: 94%;
 }
 
 .left-sidebar h2 {

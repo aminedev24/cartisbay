@@ -7,6 +7,9 @@
     height: 100%; /* Full height */
     background-color: #fff; /* Optional: Set a background color */
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .right-sidebar h2 {
@@ -19,9 +22,8 @@
 /* Container for the account creation section */
 .account-container {
     background-color: #fff; /* White background for contrast */
-    padding: 20px; /* More spacious padding */
+    padding: 18px 10px; /* More spacious padding */
     border: 1px solid #e67e22; /* Orange border */
-    border-radius: 12px; /* Slightly rounder corners */
     width: 87%; /* Slight width adjustment for sidebar space */
     margin: 0 auto;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Deeper shadow for better emphasis */
@@ -146,6 +148,7 @@
     border-radius: 8px; /* Rounded corners */
     margin: 20px auto; /* Center it horizontally */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%;
 }
 
 

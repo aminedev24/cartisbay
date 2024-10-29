@@ -13,6 +13,9 @@ import LeftSidebar from './components/sidebar'; // Import the LeftSidebar
 import './App.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CarDismantling from './components/carDismantling';
+/* src/index.css */
+
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -43,6 +46,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/howtobuy" element={<HowToBuy />} />
+          <Route path="/car-dismantling" element={<CarDismantling />} />
         </Routes>
       </div>
       <Footer />
