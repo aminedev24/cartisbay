@@ -34,7 +34,8 @@ const Header = () => {
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-          <img src={`${process.env.PUBLIC_URL}/images/logoCut.png`} />
+        <Link to='/'><img src={`${process.env.PUBLIC_URL}/images/logoCut.png`} /> </Link>
+        
           <div className="header-search">
             <input type="text" placeholder="Search..." />
             <i className="fas fa-search search-icon"></i>
@@ -63,13 +64,13 @@ const Header = () => {
             {/* Used Cars Links */}
             <div className="used-cars">
               <i className="fas fa-car icon"></i> 
-              <a href="#">Car dismantling</a>
+              <Link to={'/car-dismantling'}>Car dismantling</Link>
             </div>
 
             {/* Used Tires Links */}
             <div className="used-tires">
               <i className="fas fa-circle-notch icon"></i> 
-              <a href="#">Used Tires</a>
+              <Link to={'/used-tires'}>Used Tires</Link>
             </div>
 
           </div>

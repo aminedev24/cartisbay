@@ -1,0 +1,61 @@
+/* UsedTires.css */
+
+.usedTires-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px; /* Padding for the container */
+    background-color: #f7fafc; /* Light gray background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    max-width: 1200px; /* Maximum width for larger screens */
+    margin: auto; /* Center the container */
+}
+
+.usedTires-container .sidebar-image {
+    display: none;
+}
+/* Image container style */
+.image-container {
+    width: 100%;
+    max-width: 600px; /* Maximum width for images */
+    margin: 0 auto; /* Center the image */
+    border-radius: 12px; /* Rounded corners for image container */
+    overflow: hidden; /* Clip overflow */
+}
+
+/* Image style */
+.image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.image:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Text container style */
+.text-container {
+    margin-top: 24px; /* Space for smaller screens */
+    padding: 16px; /* Padding for text container */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Title style */
+.title {
+    font-size: 28px; /* Larger font size for titles */
+    font-weight: bold; /* Bold font weight */
+    color: #2d3748; /* Dark gray for titles */
+    margin-bottom: 16px; /* Space below title */
+}
+
+/* Paragraph style */
+.paragraph {
+    color: #4a5568; /* Medium gray for text */
+    line-height: 1.8; /* Increased line height for readability */
+    margin-bottom: 16px; /* Space below paragraphs */
+}
+
+
