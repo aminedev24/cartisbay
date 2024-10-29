@@ -10,7 +10,7 @@ const CarDismantling = () => {
       <LeftSidebar />
       <div className="image-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/car-dismantling.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/car-dismantling-lp.jpg`}
           alt="Car dismantling process"
           className="image"
         />
