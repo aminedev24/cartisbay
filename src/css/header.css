@@ -1,8 +1,4 @@
-/* Adjust min-width and width for full responsiveness */
-.header-container {
-  min-width: 1250px;
-  width: 100%;
-}
+
 
 /* General Styles */
 .main-header {

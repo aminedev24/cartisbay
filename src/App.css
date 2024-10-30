@@ -4,8 +4,21 @@ body {
   overflow-x: visible;
 }
 
-
+/* Adjust min-width and width for full responsiveness */
+.header-container {
+  min-width: 1250px;
+  width: 100%;
+}
   
+.footer {
+  min-width: 1200px;
+}
+
+
+.container , .layout {
+  min-width: 1250px; /* Fixed width */
+ 
+}
     
     
 @media screen and (max-width: 9999px) {

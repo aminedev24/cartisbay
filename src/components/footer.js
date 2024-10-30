@@ -49,15 +49,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-section">
-          <h4>Shop by Discount</h4>
-          <ul>
-            <li><a href="/discount/10">10% Off</a></li>
-            <li><a href="/discount/20">20% Off</a></li>
-            <li><a href="/discount/30">30% Off</a></li>
-            <li><a href="/discount/50">50% Off or more</a></li>
-          </ul>
-        </div>
+     
       </div>
 
       <p>&copy; 2024 Artisbay. All Rights Reserved.</p>

@@ -6,10 +6,6 @@
     overflow: hidden; /* Prevent overflow issues */
 }
 
-.container , .layout {
-    min-width: 1250px; /* Fixed width */
-   
-}
 
 .layout {
     position: relative;
