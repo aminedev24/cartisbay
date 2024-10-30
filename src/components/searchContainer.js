@@ -153,7 +153,7 @@ const SearchForm = () => {
         </section>
 */}     
       <div className="search-container">
-      <h4>Search Cars</h4>
+      <h4>Search vehicles</h4>
       <form className="search-form" onSubmit={handleSubmit}>
         <table>
           <tbody>
