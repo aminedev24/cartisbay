@@ -8,20 +8,18 @@ const MediaSlider = () => {
     dots: true,
     infinite: true,
     fade: true,
-    arrows: false,
+    arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 4000,
     pauseOnHover: false,
     pauseOnFocus: false,
   };
 
   const mediaItems = [
-    { type: 'video', src: `${process.env.PUBLIC_URL}/vids/hero.mp4` },
-    { type: 'video', src: `${process.env.PUBLIC_URL}/vids/car-dismantling.mp4` },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/used-tires-banner.jpg` },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/dismantling-banner.jpg` },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/used-tires-banner-comp.jpg` },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/dismantling-banner-comp.jpg` },
   ];
 
   const videoRefs = useRef([]);
