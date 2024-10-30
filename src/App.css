@@ -1,7 +1,7 @@
 
 
 body {
-  overflow-x: visible;
+  overflow-x: hidden;
 }
 
 /* Adjust min-width and width for full responsiveness */
