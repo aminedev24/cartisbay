@@ -180,3 +180,10 @@
   right: -18px;
   left: unset;
 }
+
+
+.header-container .banner-image {
+  width: 100%; /* Full width for the image */
+  height: 100px;
+
+}

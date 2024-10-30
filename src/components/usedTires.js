@@ -6,7 +6,7 @@ const UsedTires = () => {
   return (
     <div className="main-content">
       <section className="usedTires-container">
-        <LeftSidebar />
+       
 
         {/* Main Image */}
         <div className="image-container">

@@ -7,10 +7,10 @@ const CarDismantling = () => {
     <div className='main-content'>
     <section className="carDismantling-container">
       {/* Image */}
-      <LeftSidebar />
+
       <div className="image-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/car-dismantling-lp.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg`}
           alt="Car dismantling process"
           className="image"
         />
