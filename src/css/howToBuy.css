@@ -1,0 +1,35 @@
+.how-to-buy {
+    padding: 20px;
+    max-width: 430px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.how-to-buy h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.how-to-buy ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.how-to-buy h3 {
+    color: #ff9900; /* Change to your preferred color */
+}
+
+.how-to-buy p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) { 
+    .how-to-buy {
+        max-width: 300px;
+    }
+}

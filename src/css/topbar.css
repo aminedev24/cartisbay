@@ -1,0 +1,41 @@
+.top-bar {
+    background-color: #f8f9fa;
+    padding: 5px 10px;  /* Adjust padding for a better layout */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;  /* Smaller font size */
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+  }
+  
+  .app-info .app-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;  /* Reduced font size */
+    margin-right: 20px;  /* Space between app name and other elements */
+  }
+  
+  .extra-info {
+    display: flex;
+    align-items: center;  /* Align items vertically centered */
+    gap: 15px;  /* Adjust gap for a tighter layout */
+  }
+  
+  .extra-info .time,
+  .extra-info .exchange-rate {
+    color: #666;
+    font-size: 12px;  /* Smaller font size */
+  }
+  
+  .extra-info select {
+    margin-left: 10px; /* Space between text and select boxes */
+    padding: 5px; /* Padding for select boxes */
+    border-radius: 4px; /* Rounded corners for select boxes */
+    border: 1px solid #ccc; /* Border style */
+    font-size: 12px; /* Match font size */
+  }
+  
+.app-info span {
+    margin: 20px;
+}

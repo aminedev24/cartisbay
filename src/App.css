@@ -1,0 +1,77 @@
+
+/* Adjust min-width and width for full responsiveness */
+.header-container {
+  min-width: 1250px;
+  width: 100%;
+}
+  
+.footer {
+  min-width: 1200px;
+}
+
+    
+@media screen and (max-width: 9999px) {
+  .layout  {
+      margin: 0 auto;
+      max-width: 85%;
+  }
+  .header-bottom {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 85%;
+  }
+
+  .header-top , .used-tires-page  {
+      margin: 0 auto;
+      max-width: 85%;
+  }
+
+  
+  }
+
+  
+
+
+
+@media screen and (max-width: 1760px) {
+  .layout , .used-tires-page {
+      margin: 0 auto;
+      max-width: 90%;
+  }
+  .header-top {
+      max-width: 90%;
+  }
+  .header-bottom {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%;
+  }
+
+  .help {
+  right: 10px !important;
+}
+  }
+
+      
+@media screen and (max-width: 1530px) {
+.layout,.header-top, .used-tires-page {
+      margin: 0 auto;
+     
+      max-width: 93%;
+  }
+
+  .header-bottom {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 93%;
+  }
+}
+
+  @media screen and (max-width: 1400px) {
+  .layout, .header-top, .header-bottom ,  .used-tires-page {
+    
+      max-width: 100%;
+  }
+
+ 
+}

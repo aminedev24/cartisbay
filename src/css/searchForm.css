@@ -1,0 +1,77 @@
+.search-container {
+    background-color: #f1892b; /* Orange background */
+    padding: 5px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Ensure container doesn't overflow */
+    overflow: hidden; /* Prevent overflowing content */
+    margin: 20px 0;
+}
+
+.search-container h4 {
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 3px solid white; /* Add underline */
+    padding-bottom: 5px;
+}
+.search-form {
+    width: 100%; /* Full width for the form */
+    margin: 20px auto; /* Center the form */
+  }
+
+  .search-form table {
+    width: 100%; /* Table takes full width */
+    border-collapse: collapse; /* Collapse table borders */
+  }
+  
+  .search-form th,
+  .search-form td {
+    padding: 5px; /* Reduced space inside cells */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .search-form label {
+    font-weight: bold; /* Bold font for labels */
+    display: inline-block; /* Ensure labels take only necessary space */
+    color: #fff;
+  }
+  
+  .search-form select,
+  .search-form input[type="number"] {
+    width: 100%; /* Use percentage width for select inputs */
+    padding: 5px; /* Padding inside inputs */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .search-form .year-inputs {
+    display: flex; /* Flexbox for year inputs */
+    gap: 10px; /* Space between year inputs */
+  }
+  
+  .search-form .search-btn {
+    background-color: #304c9a;; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button */
+    margin-top: 10px; /* Space above button */
+    width: 100%;
+  }
+  
+  .search-form .search-btn:hover {
+    background-color: #1e377f;; /* Darker green on hover */
+  }
+  
+  .search-form td {
+    border-bottom: none; /* Remove bottom border for table cells */
+  }
+  
+ 
+ 
+

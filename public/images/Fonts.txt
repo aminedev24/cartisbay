@@ -1,0 +1,9 @@
+Fonts used in this design:
+
+Font: Passion One
+Author: Fontstage
+Url: https://fonts.google.com/specimen/Passion+One
+
+Font: Yanone Kaffeesatz
+Author: Yanone,Cyreal
+Url: https://fonts.google.com/specimen/Yanone+Kaffeesatz

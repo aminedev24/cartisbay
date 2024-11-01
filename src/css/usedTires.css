@@ -1,0 +1,198 @@
+.used-tires-page {
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    opacity: 0.8;
+}
+
+.hero-section h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 3rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    padding: 0 20px;
+    max-width: 80%;
+}
+
+/* Information Cards */
+/* Information Cards */
+.info-section {
+    display: flex;
+    flex-direction: column; /* Stack info cards vertically */
+    gap: 20px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+/* Info Card */
+
+.used-tires-page .info-card {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.used-tires-page .info-card:hover {
+    transform: translateY(-10px);
+}
+
+.used-tires-page .info-card img {
+    width: 150px; /* Fixed size for images */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.info-text {
+    flex: 1; /* Allow text to take the remaining space */
+}
+
+.info-card p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Steps and Order Form Section */
+.order-section {
+    display: flex;
+    flex-direction: column; /* Set column direction */
+    gap: 20px;
+    padding: 40px 0;
+    border-radius: 8px;
+}
+
+/* Steps Card */
+.steps-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.steps-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.steps-card ol {
+    padding-left: 20px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.steps-card li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.steps-card li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+/* Preparation Process */
+.preparation-process {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.preparation-process h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.preparation-process p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.preparation-process ul {
+    padding-left: 20px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.preparation-process li {
+    margin-bottom: 10px;
+}
+
+
+/* Shipping Process */
+.shipping-process {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-process h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.shipping-process p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.shipping-process ul {
+    padding-left: 20px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.shipping-process li {
+    margin-bottom: 10px;
+}
+
+.contact-button {
+    background-color: #1da1f3; /* Change this color as needed */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.contact-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+
+

@@ -1,0 +1,185 @@
+
+
+/* General Styles */
+.main-header {
+  background-color: #1e3a8a;
+  padding: 20px;
+  color: white;
+  border-bottom: 1px solid #2980b9;
+}
+
+.used-cars , .used-tires {
+  cursor: pointer;
+  position: relative;
+}
+
+/* General styling for the links container */
+.used-cars, .used-tires {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.used-cars i, .used-tires i {
+  margin-right: 8px;
+  color: #fff; /* Adjust the color for the icons */
+}
+
+.used-cars a, .used-tires a {
+  color: #fff; /* Adjust link color */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.used-cars a:hover, .used-tires a:hover {
+  text-decoration: underline;
+}
+
+.dropdown {
+  cursor: pointer;
+  position: relative;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top img {
+  width: 130px;
+  margin: 0 46px;
+}
+
+.app-name {
+  font-weight: bold;
+  color: white;
+  font-size: 2rem;
+  margin: 0 55px;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  margin: 0 45px;
+}
+
+.header-search input {
+  width: 100%;
+  padding: 10px 40px 10px 20px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.header-search input:focus {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  color: #888;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header-item {
+  cursor: pointer;
+  position: relative;
+}
+
+.header-item i {
+  margin-right: 5px;
+}
+
+/* Left and right links styling */
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+.left-links, .right-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Align the left-links and right-links under the search bar */
+.left-links {
+  position: absolute;
+  left: 284px; /* Align under search start */
+}
+
+.right-links {
+  position: absolute;
+  right: 0; /* Align under search end */
+}
+
+/* Enhanced dropdown styles for used cars, used tires, and right links */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 45px; /* Slightly adjusted for better placement */
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  border-radius: 10px;
+  z-index: 100;
+  color: #333; /* Darker text for better readability */
+  text-align: left; /* Aligned left for better UX */
+  width: 150px; /* Slightly wider for more content */
+  transition: all 0.3s ease; /* Smooth transition for dropdown appearance */
+}
+
+.dropdown-content.show {
+  display: block;
+  opacity: 1;
+}
+
+.dropdown-content a {
+  padding: 8px 10px; /* Adjusted padding for more balanced spacing */
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none; /* Removes border from the last link */
+}
+
+.dropdown-content a:hover {
+  background-color: #e0f3ff; /* Softer highlight color */
+  color: #1a73e8; /* Google blue for emphasis */
+  border-radius: 6px;
+}
+
+.help {
+  right: -40px !important;
+  left: unset;
+}
+
+.login {
+  right: -18px;
+  left: unset;
+}
+
+
+.header-container .banner-image {
+  width: 100%; /* Full width for the image */
+  height: 100px;
+
+}
