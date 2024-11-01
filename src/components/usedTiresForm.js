@@ -213,7 +213,7 @@ const OrderForm = () => {
               <div className="output">
               <h3>Real-Time Preview:</h3>
               {showForm && (
-                  <p>{`${formData.maker}: size ${formData.width} / ${formData.aspectRatio} R ${formData.rimDiameter} - ${formData.quantity} units`}</p>
+                  <p>{`${formData.maker}: size ${formData.width} / ${formData.aspectRatio} R ${formData.rimDiameter} ${formData.loadRating} ${formData.speedRating} - ${formData.quantity} units`}</p>
               )}
           </div>
             )}
