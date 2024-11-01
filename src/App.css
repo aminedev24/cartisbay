@@ -15,7 +15,7 @@
   min-width: 1250px; /* Fixed width */
  
 }
-@media screen and (max-width:300px) {
+@media screen and (max-width:500px) {
   body {
     zoom: .3;
   }
