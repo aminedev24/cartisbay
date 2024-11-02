@@ -179,7 +179,11 @@
 
 
 .header-container .banner-image {
-  width: 100%; /* Full width for the image */
   height: 100px;
 
+}
+
+.local-services-banner {
+  display: block;
+  margin: 0 auto;
 }

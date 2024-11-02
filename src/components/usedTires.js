@@ -8,18 +8,19 @@ const UsedTires = () => {
     <div className="used-tires-page">
       {/* Hero Section */}
       <section className="hero-section">
-        <img src={`${process.env.PUBLIC_URL}/images/used-tires-lp-comp.jpg`} alt="Used Tires" />
-        <h1>High-Quality Used Tires for Every Need</h1>
+        <img src={`${process.env.PUBLIC_URL}/images/used-tires-banner-comp2.jpg`} alt="Used Tires" />
+        
       </section>
 
       {/* Information Cards Section */}
       <section className="info-section">
+      <h1>High-Quality Used Tires for Every Need</h1>
         <div className="info-card">
-          <img src={`${process.env.PUBLIC_URL}/images/premium-selection.jpg`} alt="Premium Selection" />
+          <img src={`${process.env.PUBLIC_URL}/images/premium-selection-comp.jpg`} alt="Premium Selection" />
           <p>Explore our premium selection of high-quality used tires, expertly chosen to bring you value, performance, and safety. We offer a variety of all-season and summer tires in sizes from 13 to 18 inches, catering to diverse vehicle needs.</p>
         </div>
         <div className="info-card">
-          <img src={`${process.env.PUBLIC_URL}/images/doubling-tires.jpg`} alt="Doubling the Tires" />
+          <img src={`${process.env.PUBLIC_URL}/images/nesting-tires.jpg`} alt="Doubling the Tires" />
           <p>With our 40-foot containers, we can fit up to 2,000 tires, but by inserting smaller tires inside larger ones, we can load around 3,000 pieces, optimizing space for efficient delivery. We provide photos and in some cases videos of your order before loading, so you know exactly what to expect.</p>
         </div>
         <div className="info-card">
@@ -59,7 +60,6 @@ const UsedTires = () => {
             <li>Stay in touch to assist with any further needs until your order reaches you.</li>
           </ul>
           <p>Get in touch with us today to start your order!</p>
-          <button className="contact-button">Contact us!</button>
         </div>
 
         <OrderForm />

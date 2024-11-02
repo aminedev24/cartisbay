@@ -12,6 +12,13 @@ const OrderForm = () => {
         quantity: ''
     });
 
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    // Function to open popup
+    const openPopup = () => setIsPopupOpen(true);
+
+    // Function to close popup
+    const closePopup = () => setIsPopupOpen(false);
+
     const [orders, setOrders] = useState({});
     const [showForm, setShowForm] = useState(true);
     const [message, setMessage] = useState('');
@@ -144,10 +151,27 @@ const OrderForm = () => {
     };
 
     return (
-        <div className="order-form">
-            <h2>Order Your Tires</h2>
-            {showForm ? (
-                <form onSubmit={handleSubmit}>
+        <div className="order-form-container">
+
+
+    {/* Form and Real-Time Preview */}
+    <div className="order-form">
+        <h2>Choose the Best Tires for Your Needs</h2>
+        <button className='popup-btn' onClick={openPopup}>Check the tire size</button>
+
+        {/* Conditional rendering for the popup */}
+        {isPopupOpen && (
+                    <div className="popup" onClick={closePopup}>
+                        <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                            <span className="close" onClick={closePopup}>&times;</span>
+                            <img src={`${process.env.PUBLIC_URL}/images/tire-size-ilustratuion.jpg`} alt="Tire" className="popup-image" />
+                        </div>
+                    </div>
+        )}
+
+        {showForm ? (
+            <>
+                <form className="order-form" onSubmit={handleSubmit}>
                     <label>
                         Maker:
                         <select name="maker" value={formData.maker} onChange={handleChange}>
@@ -183,42 +207,42 @@ const OrderForm = () => {
                     </label>
                     <button type="submit">{editingOrder !== null ? 'Update Order' : 'Save Order'}</button>
                 </form>
-            ) : (
-              <div className="tire-selection-container">
-              <h3>Your Tire Selection:</h3>
-              {Object.keys(orders).map((maker) => (
-                  <div key={maker}>
-                      <h4>{maker}:</h4>
-                      {orders[maker].map((order, index) => (
-                          <div key={index} className="order-item">
-                              <p>
-                                  Size {order.width} / {order.aspectRatio} R {order.rimDiameter} - {order.quantity} units
-                              </p>
-                              <div className="button-container">
-                                  <button onClick={() => handleEditOrder(maker, index)} className="small-button">Edit</button>
-                                  <button onClick={() => handleDeleteOrder(maker, index)} className="small-button">Delete</button>
-                              </div>
-                          </div>
-                      ))}
-                  </div>
-              ))}
-              <p>Total Order: {totalUnits} units</p>
-              <p>{message}</p>
-              <button onClick={handleNewCategory}>Continue to a New Category</button>
-          </div>
-          
-            )}
 
-            {showForm && (
-              <div className="output">
-              <h3>Real-Time Preview:</h3>
-              {showForm && (
-                  <p>{`${formData.maker}: size ${formData.width} / ${formData.aspectRatio} R ${formData.rimDiameter} ${formData.loadRating} ${formData.speedRating} - ${formData.quantity} units`}</p>
-              )}
-          </div>
-            )}
+                {/* Real-Time Preview */}
+                <div className="output">
+                    <h3>Real-Time Preview:</h3>
+                    <p>
+                        {`${formData.maker}: size ${formData.width} / ${formData.aspectRatio} R ${formData.rimDiameter} - ${formData.loadRating} ${formData.speedRating} - ${formData.quantity} units`}
+                    </p>
+                </div>
+            </>
+        ) : (
+            <div className="tire-selection-container">
+                <h3>Your Tire Selection:</h3>
+                {Object.keys(orders).map((maker) => (
+                    <div key={maker}>
+                        <h4>{maker}:</h4>
+                        {orders[maker].map((order, index) => (
+                            <div key={index} className="order-item">
+                                <p>
+                                    Size {order.width} / {order.aspectRatio} R {order.rimDiameter} - {order.quantity} units
+                                </p>
+                                <div className="button-container">
+                                    <button onClick={() => handleEditOrder(maker, index)} className="small-button">Edit</button>
+                                    <button onClick={() => handleDeleteOrder(maker, index)} className="small-button">Delete</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+                <p><strong>Total Order:</strong> {totalUnits} units</p>
+                <p>{message}</p>
+                <button onClick={handleNewCategory}>Continue to a New Selection</button>
+            </div>
+        )}
+    </div>
+</div>
 
-        </div>
     );
 };
 

@@ -3,7 +3,6 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
-    max-width: 80%;
 }
 
 /* Hero Section */
@@ -13,11 +12,14 @@
     margin-bottom: 40px;
 }
 
+.info-section h1 {
+    text-align: center;
+}
+
 .hero-section img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    opacity: 0.8;
 }
 
 .hero-section h1 {
@@ -194,6 +196,5 @@
 .contact-button:hover {
     background-color: #0056b3; /* Darker shade for hover effect */
 }
-
 
 

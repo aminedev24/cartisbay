@@ -7,7 +7,13 @@
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
 }
+
+.order-form .order-form {
+    box-shadow: none;
+}
+
 
 .order-form h2 {
     grid-column: span 2; /* Span header across both columns */
@@ -26,13 +32,17 @@
 
 .order-form input,
 .order-form select {
-    width: 100%; /* Full width for inputs and selects */
+    width: 85%; /* Full width for inputs and selects */
     padding: 12px;
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
     transition: border-color 0.3s;
+}
+
+.order-form select {
+    width: 100%;
 }
 
 .order-form input:focus,
@@ -43,7 +53,7 @@
 
 /* Button Style */
 .order-form button {
-    background-color: #3498db;
+    background-color: #1da1f3;
     color: white;
     padding: 12px;
     border: none;
@@ -79,43 +89,47 @@
 /* Tire Selection Container Style */
 .tire-selection-container {
     margin-top: 20px;
-    padding: 15px;
+    padding: 20px; /* Slightly increased padding for a spacious feel */
     background-color: #f9f9f9; /* Light background color */
     border-radius: 8px;
     border: 1px solid #ddd; /* Light border for distinction */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .tire-selection-container h3 {
-    font-size: 1.8rem; /* Increase the size for better visibility */
+    font-size: 2rem; /* Increased size for better visibility */
     color: #333; /* Dark color for the title */
-    margin-bottom: 15px; /* Space below the title */
+    margin-bottom: 20px; /* Increased space below the title */
 }
 
 .tire-selection-container h4 {
-    font-size: 1.5rem; /* Subheading size */
+    font-size: 1.6rem; /* Subheading size */
     color: #555; /* Slightly darker text */
-    margin: 10px 0; /* Space above and below subheading */
+    margin: 15px 0; /* Space above and below subheading */
 }
 
 .tire-selection-container p {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Slightly larger font for readability */
     color: #555; /* Dark gray text */
-    margin: 5px 0; /* Space between paragraphs */
+    line-height: 1.5; /* Improved line height for better readability */
+    margin: 8px 0; /* Space between paragraphs */
 }
 
 .tire-selection-container button {
     margin-right: 10px; /* Space between buttons */
     background-color: #3498db; /* Button background color */
     color: white; /* Button text color */
-    padding: 8px 12px; /* Padding for buttons */
+    padding: 10px 15px; /* Padding for buttons */
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1rem; /* Standardize button text size */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth background color change and scaling */
 }
 
 .tire-selection-container button:hover {
     background-color: #2980b9; /* Darker shade on hover */
+    transform: translateY(-2px); /* Subtle lift effect on hover */
 }
 
 /* Order Item Style */
@@ -123,27 +137,86 @@
     display: flex; /* Use flexbox to align items */
     justify-content: space-between; /* Space between text and buttons */
     align-items: center; /* Center align vertically */
-    margin: 10px 0; /* Margin around each order item */
+    margin: 12px 0; /* Margin around each order item */
+    padding: 10px; /* Padding for order items */
+    background-color: #fff; /* White background for contrast */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
 /* Button Container Style */
 .button-container {
     display: flex; /* Flexbox for buttons */
-    gap: 5px; /* Space between buttons */
+    gap: 8px; /* Increased space between buttons for better usability */
 }
 
 /* Small Button Style */
 .small-button {
-    font-size: 0.8rem; /* Smaller font size for buttons */
-    padding: 5px 8px; /* Smaller padding for buttons */
+    font-size: 0.9rem; /* Slightly larger font size for better visibility */
+    padding: 6px 10px; /* Increased padding for a better click target */
     background-color: #3498db; /* Button background color */
     color: white; /* Button text color */
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth background color change and scaling */
 }
 
 .small-button:hover {
     background-color: #2980b9; /* Darker shade on hover */
+    transform: translateY(-1px); /* Subtle lift effect on hover */
+}
+
+.popup-btn {
+    justify-self: flex-end;
+    width: fit-content !important;
+}
+
+
+/* Tire Selection Container Style */
+.tire-selection-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Popup overlay style */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup content box */
+.popup-content {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Image inside popup */
+.popup-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
 }

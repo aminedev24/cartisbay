@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef} from 'react';
+import { Link ,useLocation} from 'react-router-dom';
 import '../css/header.css';
 import TopBar from './topbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -7,6 +7,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const dropdownRef = useRef([]);
+  const location = useLocation();
+
 
   const toggleDropdown = (dropdownName) => {
     setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
@@ -109,8 +111,12 @@ const Header = () => {
           </div>
         </div>
       </header>
+      {console.log(document.location.pathname)}
+      {location.pathname === '/' && (
+                <img src={`${process.env.PUBLIC_URL}/images/namibia.png`} className='local-services-banner' alt='local-services' />
+      )}      
 
-         
+        
           
     </div>
   );
