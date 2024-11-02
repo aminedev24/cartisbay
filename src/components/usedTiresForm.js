@@ -157,6 +157,8 @@ const OrderForm = () => {
     {/* Form and Real-Time Preview */}
     <div className="order-form">
         <h2>Choose the Best Tires for Your Needs</h2>
+
+        
         <button className='popup-btn' onClick={openPopup}>Check the tire size</button>
 
         {/* Conditional rendering for the popup */}
