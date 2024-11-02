@@ -163,12 +163,12 @@ const OrderForm = () => {
 
         {/* Conditional rendering for the popup */}
         {isPopupOpen && (
-                    <div className="popup" onClick={closePopup}>
-                        <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                            <span className="close" onClick={closePopup}>&times;</span>
-                            <img src={`${process.env.PUBLIC_URL}/images/tire-size-ilustratuion.jpg`} alt="Tire" className="popup-image" />
-                        </div>
-                    </div>
+            <div className="popup" onClick={closePopup}>
+                <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                    <span className="close" onClick={closePopup}>&times;</span>
+                    <img src={`${process.env.PUBLIC_URL}/images/tire-size-ilustratuion.jpg`} alt="Tire" className="popup-image" />
+                </div>
+            </div>
         )}
 
         {showForm ? (
