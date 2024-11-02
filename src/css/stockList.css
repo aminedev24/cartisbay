@@ -24,7 +24,7 @@
 .buttons-row {
   width: 100%; /* Full width */
   justify-content: center;
-  gap: 80px;
+  gap: 5px;
   flex-wrap: nowrap;
 }
 
@@ -49,9 +49,11 @@ button {
 
 .buttons-row button {
   font-weight: bold;
-  flex: 0 0 120px;
+  flex: 1 0 120px;
   display: flex;
   align-items: center;
+  padding:12px 10px ;
+  justify-content: center;
 }
 
 button:hover {
