@@ -36,7 +36,7 @@ const Header = () => {
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-        <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} /> </Link>
+        <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logoCut.png`} /> </Link>
         
           <div className="header-search">
             <input type="text" placeholder="Search..." />
