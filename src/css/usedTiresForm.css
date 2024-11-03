@@ -6,12 +6,11 @@
     background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-items: flex-start;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.order-form .order-form {
-    box-shadow: none;
+.order-form .order-form{
+    box-shadow: 0 4px 8px rgb(217 126 34);
 }
 
 
@@ -32,7 +31,7 @@
 .order-form input,
 .order-form select {
     width: 85%; /* Full width for inputs and selects */
-    padding: 12px;
+    padding: 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -76,6 +75,7 @@
     background-color: #eef2f5;
     padding: 15px;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(217 126 34);
 }
 
 .output h3 {
@@ -180,11 +180,11 @@
 .popup {
     position: absolute;
     left: 0;
-    right: 0;
+    right: 18%;
+    bottom:70%;
     margin: 0 auto;
     width: 90%;
     max-width: 207px;
-    background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -188,7 +188,7 @@ const OrderForm = () => {
               &times;
             </span>
             <img
-              src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration.png`}
+              src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration2.png`}
               alt="Tire"
               className="popup-image"
             />
