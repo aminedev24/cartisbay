@@ -15,9 +15,8 @@
 }
 
 
-.order-form h2 {
+.order-form h3 {
     grid-column: span 2; /* Span header across both columns */
-    font-size: 2rem; /* Larger font size for visibility */
     margin-bottom: 20px; /* Increased spacing below header */
     color: #333;
     text-align: center; /* Center the header text */
@@ -42,7 +41,7 @@
 }
 
 .order-form select {
-    width: 100%;
+    width: 95%;
 }
 
 .order-form input:focus,
@@ -86,85 +85,80 @@
 
 
 
-/* Tire Selection Container Style */
 .tire-selection-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    padding: 20px; /* Slightly increased padding for a spacious feel */
-    background-color: #f9f9f9; /* Light background color */
-    border-radius: 8px;
-    border: 1px solid #ddd; /* Light border for distinction */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .tire-selection-container h3 {
-    font-size: 2rem; /* Increased size for better visibility */
-    color: #333; /* Dark color for the title */
-    margin-bottom: 20px; /* Increased space below the title */
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
 }
 
 .tire-selection-container h4 {
-    font-size: 1.6rem; /* Subheading size */
-    color: #555; /* Slightly darker text */
-    margin: 15px 0; /* Space above and below subheading */
+    font-size: 20px;
+    margin: 10px 0;
+    color: #555;
 }
 
-.tire-selection-container p {
-    font-size: 1.1rem; /* Slightly larger font for readability */
-    color: #555; /* Dark gray text */
-    line-height: 1.5; /* Improved line height for better readability */
-    margin: 8px 0; /* Space between paragraphs */
-}
-
-.tire-selection-container button {
-    margin-right: 10px; /* Space between buttons */
-    background-color: #3498db; /* Button background color */
-    color: white; /* Button text color */
-    padding: 10px 15px; /* Padding for buttons */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem; /* Standardize button text size */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth background color change and scaling */
-}
-
-.tire-selection-container button:hover {
-    background-color: #2980b9; /* Darker shade on hover */
-    transform: translateY(-2px); /* Subtle lift effect on hover */
-}
-
-/* Order Item Style */
 .order-item {
-    display: flex; /* Use flexbox to align items */
-    justify-content: space-between; /* Space between text and buttons */
-    align-items: center; /* Center align vertically */
-    margin: 12px 0; /* Margin around each order item */
-    padding: 10px; /* Padding for order items */
-    background-color: #fff; /* White background for contrast */
-    border-radius: 4px; /* Rounded corners */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 10px;
+
 }
 
-/* Button Container Style */
+.order-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-item p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+
 .button-container {
-    display: flex; /* Flexbox for buttons */
-    gap: 8px; /* Increased space between buttons for better usability */
+    display: flex;
+    gap: 10px; /* Space between buttons */
 }
 
-/* Small Button Style */
 .small-button {
-    font-size: 0.9rem; /* Slightly larger font size for better visibility */
-    padding: 6px 10px; /* Increased padding for a better click target */
-    background-color: #3498db; /* Button background color */
-    color: white; /* Button text color */
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Smooth background color change and scaling */
+    margin-top: 0 !important;
+    transition: background-color 0.3s ease;
 }
 
 .small-button:hover {
-    background-color: #2980b9; /* Darker shade on hover */
-    transform: translateY(-1px); /* Subtle lift effect on hover */
+    background-color: #0056b3; /* Darker shade for hover */
+}
+
+.total-order {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #333;
+}
+
+.message {
+    color: #d9534f; /* Bootstrap danger color for messages */
 }
 
 .popup-btn {
@@ -185,19 +179,27 @@
 
 .popup {
     position: absolute;
-    top: 25%; /* Adjust to set the popup below the button */
-    left: 80%;
+    left: 0;
     right: 0;
     margin: 0 auto;
     width: 90%;
     max-width: 207px;
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly translucent background */
+    background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     z-index: 10;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: translateY(100%); /* Start off-screen */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.popup.visible {
+    transform: translateY(0); /* Slide up into view */
+    opacity: 1;
+    visibility: visible;
 }
 
 .popup-content {

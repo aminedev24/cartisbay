@@ -16,15 +16,15 @@ const UsedTires = () => {
       <section className="info-section">
       <h1>High-Quality Used Tires for Every Need</h1>
         <div className="info-card">
-          <img src={`${process.env.PUBLIC_URL}/images/premium-selection-comp.jpg`} alt="Premium Selection" />
+          <img src={`${process.env.PUBLIC_URL}/images/premium-selection.png`} alt="Premium Selection" />
           <p>Explore our premium selection of high-quality used tires, expertly chosen to bring you value, performance, and safety. We offer a variety of all-season and summer tires in sizes from 13 to 18 inches, catering to diverse vehicle needs.</p>
         </div>
         <div className="info-card">
-          <img src={`${process.env.PUBLIC_URL}/images/nesting-tires.jpg`} alt="Doubling the Tires" />
+          <img src={`${process.env.PUBLIC_URL}/images/nesting-tires.png`} alt="Doubling the Tires" />
           <p>With our 40-foot containers, we can fit up to 2,000 tires, but by inserting smaller tires inside larger ones, we can load around 3,000 pieces, optimizing space for efficient delivery. We provide photos and in some cases videos of your order before loading, so you know exactly what to expect.</p>
         </div>
         <div className="info-card">
-          <img src={`${process.env.PUBLIC_URL}/images/manually-inspected.jpg`} alt="Manually Inspected" />
+          <img src={`${process.env.PUBLIC_URL}/images/manually-inspected.png`} alt="Manually Inspected" />
           <p>Every tire is manually inspected to ensure it meets our quality standards before shipping. Trust us to deliver dependable, thoroughly-checked used tires for all your driving needs.</p>
         </div>
       </section>
@@ -32,7 +32,7 @@ const UsedTires = () => {
       {/* Steps and Order Form Section */}
       <section className="order-section">
         <div className="steps-card">
-          <h3>3 Simple Steps to Your Wholesale Tire Order</h3>
+          <h4>3 Simple Steps to Your Wholesale Tire Order</h4>
           <ol>
             <li><strong>Connect with Artisbay Inc:</strong> Reach out to discuss your needs, and we’ll guide you through the ordering process.</li>
             <li><strong>Send Your Order Details:</strong> Provide us with a list of your required tire sizes and the quantity for each.</li>
@@ -41,7 +41,7 @@ const UsedTires = () => {
         </div>
 
         <div className="preparation-process">
-          <h3>Preparation Process</h3>
+          <h4>Preparation Process</h4>
           <p>Relax while we source and prepare the best quality used tires for you. Here’s what we do:</p>
           <ul>
             <li>Contact our suppliers to compare prices and secure the best deals.</li>
@@ -52,7 +52,7 @@ const UsedTires = () => {
 
         {/* New Shipping Section */}
         <div className="shipping-process">
-          <h3>Shipping</h3>
+          <h4>Shipping</h4>
           <p>When the order is ready, we’ll:</p>
           <ul>
             <li>Book the earliest available container vessel and share booking details with you.</li>
