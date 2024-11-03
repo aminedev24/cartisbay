@@ -11,7 +11,7 @@ const OrderForm = () => {
     speedRating: "",
     quantity: "",
     type: "All-Season", // Default value
-    quality: "New", // Default value
+    //quality: "New", // Default value
   });
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -47,7 +47,7 @@ const OrderForm = () => {
       speedRating: formData.speedRating,
       quantity: parseInt(formData.quantity, 10),
       type: formData.type, // Include type
-      quality: formData.quality, // Include quality
+      //quality: formData.quality, // Include quality
     };
 
     // Update orders
@@ -77,8 +77,8 @@ const OrderForm = () => {
           order.width === newOrder.width &&
           order.aspectRatio === newOrder.aspectRatio &&
           order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type && // Check for type
-          order.quality === newOrder.quality, // Check for quality
+          order.type === newOrder.type 
+          //order.quality === newOrder.quality, // Check for quality
       );
 
       if (existingOrderIndex !== -1) {
@@ -108,7 +108,7 @@ const OrderForm = () => {
       speedRating: "",
       quantity: "",
       type: "All-Season", // Reset to default
-      quality: "New", // Reset to default
+      //quality: "New", // Reset to default
     });
     setEditingOrder(null); // Reset editing state
     setShowForm(false);
@@ -126,7 +126,7 @@ const OrderForm = () => {
       speedRating: orderToEdit.speedRating,
       quantity: orderToEdit.quantity,
       type: orderToEdit.type, // Set type
-      quality: orderToEdit.quality, // Set quality
+      //quality: orderToEdit.quality, // Set quality
     });
     setEditingOrder(index); // Set editing state
     setShowForm(true); // Show form for editing
@@ -161,7 +161,7 @@ const OrderForm = () => {
       speedRating: "",
       quantity: "",
       type: "All-Season", // Reset to default
-      quality: "New", // Reset to default
+      //quality: "New", // Reset to default
     });
     setShowForm(true);
     setMessage("");
@@ -175,7 +175,7 @@ const OrderForm = () => {
         <h3>Wholesale Tires Order</h3>
 
         <button className="popup-btn" onClick={openPopup}>
-          Check the tire size
+         How To Check the tire size
         </button>
 
         {/* Popup with slide-up effect */}
@@ -199,7 +199,7 @@ const OrderForm = () => {
           <>
             <form className="order-form" onSubmit={handleSubmit}>
               <label>
-                Maker:*
+                Maker:<span className="star">*</span>
                 <select
                   name="maker"
                   value={formData.maker}
@@ -212,7 +212,7 @@ const OrderForm = () => {
                 </select>
               </label>
 
-              {/* New Quality Field */}
+              {/* New Quality Field 
               <label>
                 Quality:
                 <select
@@ -225,14 +225,16 @@ const OrderForm = () => {
                   <option value="Low">Low</option>
                 </select>
               </label>
+              */}
 
               {/* New Type Field */}
               <label>
-                Type:
+                Type:<span className="star">*</span>
                 <select
                   name="type"
                   value={formData.type}
                   onChange={handleChange}
+                  required
                 >
                   <option value="All-Season">All-Season</option>
                   <option value="Winter">Winter</option>
@@ -243,7 +245,7 @@ const OrderForm = () => {
               </label>
 
               <label>
-                Width:*
+                Width:<span className="star">*</span>
                 <input
                   type="number"
                   name="width"
@@ -259,10 +261,11 @@ const OrderForm = () => {
                   name="aspectRatio"
                   value={formData.aspectRatio}
                   onChange={handleChange}
+                  placeholder="optional"
                 />
               </label>
               <label>
-                Rim Diameter:*
+                Rim Diameter:<span className="star">*</span>
                 <input
                   type="number"
                   name="rimDiameter"
@@ -278,6 +281,7 @@ const OrderForm = () => {
                   name="loadIndex"
                   value={formData.loadIndex}
                   onChange={handleChange}
+                  placeholder="optional"
                 />
               </label>
               <label>
@@ -287,11 +291,12 @@ const OrderForm = () => {
                   name="speedRating"
                   value={formData.speedRating}
                   onChange={handleChange}
+                  placeholder="optional"
                 />
               </label>
 
               <label>
-                Quantity:*
+                Quantity:<span className="star">*</span>
                 <input
                   type="number"
                   name="quantity"
@@ -326,7 +331,7 @@ const OrderForm = () => {
                       {order.rimDiameter} - {order.quantity} units
                     </p>
                     <p>
-                      <strong>Type:</strong> {order.type} <strong>Quality:</strong> {order.quality}
+                      <strong>Type:</strong> {order.type} {/*<strong>Quality:</strong> {order.quality}*/}
                     </p>
                     <div className="button-container">
                       <button

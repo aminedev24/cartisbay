@@ -129,12 +129,23 @@
   right: 0; /* Align under search end */
 }
 
+
+.dropdown-content::after {
+  content: "";
+  position: absolute;
+  top: 0; /* Position it above the dropdown */
+  right: 0; /* Adjust right positioning as needed */
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #2980b9  transparent; /* Arrow pointing down */
+}
+
 /* Enhanced dropdown styles for used cars, used tires, and right links */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 45px; /* Slightly adjusted for better placement */
-  left: 0;
+  top: 25px; /* Slightly adjusted for better placement */
+  right: 0;
   background-color: #ffffff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   padding: 12px;
@@ -145,6 +156,7 @@
   width: 150px; /* Slightly wider for more content */
   transition: all 0.3s ease; /* Smooth transition for dropdown appearance */
 }
+
 
 .dropdown-content.show {
   display: block;
@@ -171,10 +183,7 @@
   border-radius: 6px;
 }
 
-.help {
-  right: -40px !important;
-  left: unset;
-}
+
 
 .login {
   right: -18px;
