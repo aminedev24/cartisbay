@@ -199,7 +199,7 @@ const OrderForm = () => {
           <>
             <form className="order-form" onSubmit={handleSubmit}>
               <label>
-                Maker:
+                Maker:*
                 <select
                   name="maker"
                   value={formData.maker}
@@ -243,7 +243,7 @@ const OrderForm = () => {
               </label>
 
               <label>
-                Width:
+                Width:*
                 <input
                   type="number"
                   name="width"
@@ -262,7 +262,7 @@ const OrderForm = () => {
                 />
               </label>
               <label>
-                Rim Diameter:
+                Rim Diameter:*
                 <input
                   type="number"
                   name="rimDiameter"
@@ -291,7 +291,7 @@ const OrderForm = () => {
               </label>
 
               <label>
-                Quantity:
+                Quantity:*
                 <input
                   type="number"
                   name="quantity"

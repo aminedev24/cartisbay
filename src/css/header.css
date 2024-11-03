@@ -8,6 +8,10 @@
   border-bottom: 1px solid #2980b9;
 }
 
+.logo {
+  position: relative;
+  top: 10px;
+}
 .used-cars , .used-tires {
   cursor: pointer;
   position: relative;

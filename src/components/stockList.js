@@ -4,7 +4,7 @@ import { faCar, faStar, faHandshake, faMapMarkerAlt } from '@fortawesome/free-so
 import ReactCountryFlag from "react-country-flag";
 import CarCard from './carCard';
 import '../css/stockList.css';
-import {countries} from './countries'
+import {localServicesCountries} from './localServicesCountries'
 const Stocklist = ({ cars }) => {
   const [sortOption, setSortOption] = useState('newest');
   const [viewOption, setViewOption] = useState('grid');
@@ -44,7 +44,7 @@ const Stocklist = ({ cars }) => {
 
         <h4>View Vehicles in the Following Countries:</h4>
         <div className="countries-row">
-        {countries.map((country, index) => (
+        {localServicesCountries.map((country, index) => (
         <button key={index} className="country-btn">
           {country.code && (
             <ReactCountryFlag

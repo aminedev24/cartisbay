@@ -199,3 +199,24 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+
+  .phone-number-group {
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .phone-code {
+    background-color: #f0f0f0; /* Background color for phone code */
+    border: 1px solid #ccc; /* Border for phone code */
+    border-top-left-radius: 4px; /* Rounded corners */
+    border-bottom-left-radius: 4px; /* Rounded corners */
+    padding: 5px 10px; /* Padding inside the box */
+    font-weight: bold; /* Bold text for better visibility */
+    margin-right: -1px; /* Overlap with the input field */
+  }
+  
+  input[type="tel"] {
+    flex: 1; /* Allow the input to take remaining space */
+   
+  }
+  

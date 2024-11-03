@@ -1,31 +1,20 @@
 import React, { useState } from "react";
 import CountryFlag from "react-country-flag"; // Import the CountryFlag component
 import "../css/RightSidebar.css"; // Import the CSS file for styling
+import { countries } from './countries';
 
 const RightSidebar = () => {
-  const countries = [
-    { name: "United States", code: "US", phoneCode: "+1" },
-    { name: "Canada", code: "CA", phoneCode: "+1" },
-    { name: "Japan", code: "JP", phoneCode: "+81" },
-    { name: "Germany", code: "DE", phoneCode: "+49" },
-    { name: "France", code: "FR", phoneCode: "+33" },
-    { name: "United Kingdom", code: "GB", phoneCode: "+44" },
-    { name: "China", code: "CN", phoneCode: "+86" },
-    { name: "India", code: "IN", phoneCode: "+91" },
-    { name: "Australia", code: "AU", phoneCode: "+61" },
-    { name: "Brazil", code: "BR", phoneCode: "+55" },
-    { name: "South Africa", code: "ZA", phoneCode: "+27" },
-    { name: "Mexico", code: "MX", phoneCode: "+52" },
-    { name: "Nigeria", code: "NG", phoneCode: "+234" },
-  ];
-
   const localServices = [
     { name: "Namibia", code: "NA" },
-    { name: "Dr-congo", code: "CD" },
+    { name: "Dr-Congo", code: "CD" },
   ];
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleCountryChange = (event) => {
     const country = countries.find((c) => c.name === event.target.value);
@@ -39,6 +28,54 @@ const RightSidebar = () => {
     }
   };
 
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    const formData = {
+        'full-name': fullName,
+        email,
+        password,
+        country: selectedCountry,
+        phone
+    };
+
+    try {
+        const response = await fetch('/signup.php', {  // Change this line
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(formData).toString(),
+        });
+        
+        // Parse the response as text or JSON
+        const resultText = await response.text();
+        // If the response is JSON, you can try to parse it
+        let result;
+        try {
+            result = JSON.parse(resultText);
+        } catch (error) {
+            console.error('Response is not valid JSON:', resultText);
+            return;
+        }
+
+        if (result.success) {
+            // Handle success
+            console.log(result.success);
+        } else if (result.errors) {
+            // Handle multiple errors
+            result.errors.forEach(error => {
+                console.error(error);
+            });
+        } else {
+            // Handle generic error
+            console.error(result.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+
   return (
     <div className="right-sidebar">
       <div className="account-container">
@@ -50,17 +87,38 @@ const RightSidebar = () => {
         </div>
 
         {/* Account Creation Form */}
-        <form className="signup-form">
+        <form className="signup-form" onSubmit={handleSignup}>
           <div className="input-group">
-            <input type="text" id="full-name" required />
+            <input
+              name="full-name"
+              type="text"
+              id="full-name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)} // Update state on input change
+              required
+            />
             <label htmlFor="full-name">Full Name</label>
           </div>
           <div className="input-group">
-            <input type="email" id="email" required />
+            <input
+              name="email"
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // Update state on input change
+              required
+            />
             <label htmlFor="email">Email</label>
           </div>
           <div className="input-group">
-            <input type="password" id="password" required />
+            <input
+              name="password"
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Update state on input change
+              required
+            />
             <label htmlFor="password">Password</label>
           </div>
 
@@ -72,6 +130,7 @@ const RightSidebar = () => {
               value={selectedCountry}
               onBlur={handleCountryBlur}
               onChange={handleCountryChange}
+              name="country"
               required
             >
               <option value="">Select Country</option>
@@ -85,16 +144,19 @@ const RightSidebar = () => {
           </div>
 
           {/* Phone Number with Country Code */}
-          <div className="input-group">
+          <div className="input-group phone-number-group">
+            {phoneCode && (
+              <span className="phone-code">{phoneCode}</span>
+            )}
             <input
               type="tel"
               id="phone"
+              name="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)} // Update state on input change
               required
-              value={phoneCode}
-              onChange={(e) => setPhoneCode(e.target.value)}
-              placeholder={phoneCode ? `${phoneCode} Phone Number` : "Phone Number"}
+              placeholder="Phone Number"
             />
-            <label htmlFor="phone">Phone Number</label>
           </div>
 
           <button type="submit">Sign Up</button>
@@ -103,7 +165,7 @@ const RightSidebar = () => {
 
       {/* Video Section */}
       <div className="video-section">
-        <img  src={`${process.env.PUBLIC_URL}/images/local-services-comp.jpg`} />
+        <img src={`${process.env.PUBLIC_URL}/images/local-services-comp.jpg`} alt="Local Services" />
       </div>
 
       {/* Local Services Section */}

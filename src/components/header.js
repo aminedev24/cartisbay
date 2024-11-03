@@ -36,7 +36,7 @@ const Header = () => {
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-        <Link to='/'><img src={`${process.env.PUBLIC_URL}/images/logoCut.png`} /> </Link>
+        <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logoCut.png`} /> </Link>
         
           <div className="header-search">
             <input type="text" placeholder="Search..." />
@@ -113,7 +113,7 @@ const Header = () => {
       </header>
       {console.log(document.location.pathname)}
       {location.pathname === '/' && (
-        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/Blinking-bar-loop.gif`} className='local-services-banner' alt='local-services' loop/></a>
+        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/Blinking-bar-2.gif`} className='local-services-banner' alt='local-services' loop/></a>
       )}      
 
         
