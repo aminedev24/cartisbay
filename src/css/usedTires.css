@@ -78,7 +78,7 @@
     margin: 0 auto;
 }
 
-.info-card {
+.used-tires-page .info-card {
     padding: 15px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -93,7 +93,7 @@
     transform: translateY(-5px);
 }
 
-.info-card h3 {
+.used-tires-page .info-card h3 {
     font-size: 20px;
     color: #1da1f2;
     margin-bottom: 10px;

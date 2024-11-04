@@ -113,7 +113,7 @@ const Header = () => {
       </header>
       {console.log(document.location.pathname)}
       {location.pathname === '/' && (
-        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/Blinking-bar-2.gif`} className='local-services-banner' alt='local-services' loop/></a>
+        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/blinking-bar.gif`} className='local-services-banner' alt='local-services' loop/></a>
       )}      
 
         

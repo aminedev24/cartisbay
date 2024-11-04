@@ -9,7 +9,7 @@ const UsedTires = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <img
-          src={`${process.env.PUBLIC_URL}/images/used-tires-banner-comp2.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/used-tires-banner.png`}
           alt="Used Tires"
         />
       </section>

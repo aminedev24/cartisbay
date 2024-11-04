@@ -35,7 +35,7 @@ function HomePage() {
       link: "/how-to-buy",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/cars-dismantling.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-dismantling.jpg`,
       title: "Car Dismantling",
       link: "/car-dismantling",
     },
