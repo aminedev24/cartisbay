@@ -1,4 +1,9 @@
 /* Order Form */
+
+.order-form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .order-form {
     display: grid; /* Use grid layout */
     grid-template-columns: repeat(2, 1fr); /* Two columns */
@@ -7,6 +12,12 @@
     padding: 30px;
     border-radius: 8px;
     box-shadow:0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.hidden {
+    grid-template-columns: none;
 }
 
 .order-form .order-form{
@@ -14,7 +25,7 @@
 }
 
 
-.order-form h3 {
+.order-form h1 {
     grid-column: span 2; /* Span header across both columns */
     margin-bottom: 20px; /* Increased spacing below header */
     color: #333;
@@ -90,6 +101,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    max-width: 75%;
 }
 
 .tire-selection-container h3 {
@@ -112,10 +124,9 @@
     margin-bottom: 10px;
     position: relative;
     transition: box-shadow 0.3s ease;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
 
 }
 
@@ -178,9 +189,8 @@
 
 .popup {
     position: absolute;
-    left: 0;
-    right: 18%;
-    bottom:70%;
+    left: 51%;
+    bottom:4%;
     margin: 0 auto;
     width: 90%;
     max-width: 207px;

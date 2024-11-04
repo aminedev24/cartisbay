@@ -3,14 +3,14 @@ import "../css/usedTiresForm.css";
 
 const OrderForm = () => {
   const [formData, setFormData] = useState({
-    maker: "Yokohama",
+    maker: "",
     width: "",
     aspectRatio: "",
     rimDiameter: "",
     loadIndex: "",
     speedRating: "",
     quantity: "",
-    type: "All-Season", // Default value
+    type: "", // Default value
     //quality: "New", // Default value
   });
 
@@ -171,33 +171,31 @@ const OrderForm = () => {
   return (
     <div className="order-form-container">
       {/* Form and Real-Time Preview */}
-      <div className="order-form">
-        <h3>Wholesale Tires Order</h3>
+      <div className={`order-form ${showForm ? 'visible' : 'hidden'}`} >
+        <h1>Wholesale Tires Order</h1>
 
-        <button className="popup-btn" onClick={openPopup}>
-         How To Check the tire size
-        </button>
+      
 
         {/* Popup with slide-up effect */}
-        <div
-          className={`popup ${isPopupOpen ? "visible" : ""}`}
-          onClick={closePopup}
-        >
-          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={closePopup}>
-              &times;
-            </span>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration2.png`}
-              alt="Tire"
-              className="popup-image"
-            />
+        {showForm &&
+            <div
+            className={`popup visible`}
+            onClick={closePopup}
+          >
+            <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration2.png`}
+                alt="Tire"
+                className="popup-image"
+              />
+            </div>
           </div>
-        </div>
+        }
+      
 
         {showForm ? (
           <>
-            <form className="order-form" onSubmit={handleSubmit}>
+            <form className={`order-form`} onSubmit={handleSubmit}>
               <label>
                 Maker:<span className="star">*</span>
                 <select
@@ -205,6 +203,7 @@ const OrderForm = () => {
                   value={formData.maker}
                   onChange={handleChange}
                 >
+                  <option value="Make">Make</option>
                   <option value="Yokohama">Yokohama</option>
                   <option value="Bridgestone">Bridgestone</option>
                   <option value="Michelin">Michelin</option>
@@ -236,10 +235,10 @@ const OrderForm = () => {
                   onChange={handleChange}
                   required
                 >
+                  <option value="type">type</option>
                   <option value="All-Season">All-Season</option>
                   <option value="Winter">Winter</option>
                   <option value="Summer">Summer</option>
-                  <option value="Performance">Performance</option>
                   <option value="Off-Road">Off-Road</option>
                 </select>
               </label>
@@ -311,12 +310,15 @@ const OrderForm = () => {
             </form>
 
             {/* Real-Time Preview */}
+           
             <div className="output">
               <h3>Order Preview:</h3>
               <p>
-                {`${formData.maker}: size ${formData.width} / ${formData.aspectRatio} R ${formData.rimDiameter} - ${formData.loadIndex} ${formData.speedRating} - ${formData.quantity} units`}
+                {`${formData.maker ? formData.maker : ''}: size ${formData.width}${formData.aspectRatio ? ` / ${formData.aspectRatio}` : ''} R ${formData.rimDiameter}${formData.loadIndex ? ` - ${formData.loadIndex}` : ''}${formData.speedRating ? ` ${formData.speedRating}` : ''}${formData.type ? ` - ${formData.type}` : ''}${formData.quantity ? ` - quantity: ${formData.quantity} units` : ''}`}
               </p>
             </div>
+
+           
           </>
         ) : (
           <div className="tire-selection-container">
@@ -327,11 +329,14 @@ const OrderForm = () => {
                 {orders[maker].map((order, index) => (
                   <div key={index} className="order-item">
                     <p>
-                      <strong>Size</strong>: {order.width} / {order.aspectRatio} R{" "}
-                      {order.rimDiameter} - {order.quantity} units
+                      <strong>Size: </strong>{order.width} / {order.aspectRatio} R{" "}
+                      {order.rimDiameter}
                     </p>
                     <p>
-                      <strong>Type:</strong> {order.type} {/*<strong>Quality:</strong> {order.quality}*/}
+                    <strong>Quantity: </strong>{order.quantity} 
+                    </p>
+                    <p>
+                      <strong>Type: </strong> {order.type} {/*<strong>Quality:</strong> {order.quality}*/}
                     </p>
                     <div className="button-container">
                       <button

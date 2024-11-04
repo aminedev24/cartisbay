@@ -110,16 +110,22 @@ const RightSidebar = () => {
             />
             <label htmlFor="email">Email</label>
           </div>
-          <div className="input-group">
+
+          
+          {/* Phone Number with Country Code */}
+          <div className="input-group phone-number-group">
+            {phoneCode && (
+              <span className="phone-code">{phoneCode}</span>
+            )}
             <input
-              name="password"
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} // Update state on input change
+              type="tel"
+              id="phone"
+              name="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)} // Update state on input change
               required
+              placeholder="Phone Number"
             />
-            <label htmlFor="password">Password</label>
           </div>
 
           {/* Country Selector */}
@@ -143,21 +149,18 @@ const RightSidebar = () => {
             <label htmlFor="country">Country</label>
           </div>
 
-          {/* Phone Number with Country Code */}
-          <div className="input-group phone-number-group">
-            {phoneCode && (
-              <span className="phone-code">{phoneCode}</span>
-            )}
+          <div className="input-group">
             <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)} // Update state on input change
+              name="password"
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Update state on input change
               required
-              placeholder="Phone Number"
             />
+            <label htmlFor="password">Password</label>
           </div>
+
 
           <button type="submit">Sign Up</button>
         </form>
