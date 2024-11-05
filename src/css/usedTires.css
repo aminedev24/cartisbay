@@ -1,112 +1,89 @@
 .used-tires-page {
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
     color: #333;
-}
-
-/* Hero Section */
-.hero-section {
-    position: relative;
-    text-align: center;
-}
-
-.info-section h1 {
-    text-align: center;
-    font-size: 3em;
-}
-
-.hero-section img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.hero-section h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    font-size: 2rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    padding: 0 20px;
-    max-width: 80%;
 }
 
 .why-choose-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  background-image: url('../../public/images/container.jpg');
+  background-size: cover;
+  padding: 40px;
+  border-radius: 8px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+
+.why-choose-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  border-radius: 8px;
 }
 
 .why-choose-container h1 {
-    font-size: 3em;
-    color: #333;
-    margin-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  margin: 0;
+  font-size: 2rem;
 }
 
-/* Image Gallery Styling */
-.image-gallery {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 30px;
+.info-row {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+  margin-top: 60px;
+  top: 90px;
 }
 
-.image-gallery img {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+.info-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 25px;
+  width: 25%; /* Each card takes about a quarter of the row */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #333;
 }
 
-.image-gallery img:hover {
-    transform: scale(1.05);
+.info-card img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 5px;
+  object-fit: cover;
+  align-self: flex-start;
 }
 
-/* Information Section */
-.info-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 90%;
-    margin: 0 auto;
+.text-content {
+  text-align: left;
 }
 
-.used-tires-page .info-card {
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    transition: transform 0.3s ease;
-    border-left: 5px solid #1da1f2;
+.text-content h3 {
+  margin: 0 0 5px;
+  color: #1e3a8a;
+  font-size: 1rem;
 }
 
-.info-card:hover , .step-card:hover {
-    transform: translateY(-5px);
+.text-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.2;
 }
-
-.used-tires-page .info-card h3 {
-    font-size: 20px;
-    color: #1da1f2;
-    margin-bottom: 10px;
-}
-
-.info-card p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-}
-
+  
 .order-steps-container {
-    max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
     text-align: center;

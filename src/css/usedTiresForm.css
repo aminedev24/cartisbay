@@ -1,10 +1,5 @@
 /* Order Form */
 
-.order-form-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .order-form {
     display: grid; /* Use grid layout */
     grid-template-columns: repeat(2, 1fr); /* Two columns */
@@ -84,6 +79,7 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px #f1892b; /* Strong shadow for output */
+    position: relative;
 }
 
 .output h3 {
@@ -96,8 +92,7 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    max-width: 75%;
+    margin:20px;
 }
 
 .tire-selection-container h3 {
@@ -123,6 +118,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    justify-content: space-between;
 }
 
 .order-item:hover {
@@ -170,7 +166,7 @@
     width: fit-content !important;
 }
 
-.order-form {
+.form {
     position: relative;
 }
 
@@ -182,20 +178,11 @@
 
 .popup {
     position: absolute;
-    left: 51%;
-    bottom: 4%;
-    margin: 0 auto;
-    width: 90%;
+    bottom: 0;
     max-width: 207px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
     z-index: 10;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    transform: translateY(100%); /* Start off-screen */
-    opacity: 0;
-    visibility: hidden;
+   
+   
 }
 
 .popup.visible {

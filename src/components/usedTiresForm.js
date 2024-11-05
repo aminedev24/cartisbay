@@ -153,14 +153,14 @@ const OrderForm = () => {
   const handleNewCategory = () => {
     // Reset the form data for a new category
     setFormData({
-      maker: "Yokohama",
+      maker: "",
       width: "",
       aspectRatio: "",
       rimDiameter: "",
       loadIndex: "",
       speedRating: "",
       quantity: "",
-      type: "All-Season", // Reset to default
+      type: "", // Reset to default
       //quality: "New", // Reset to default
     });
     setShowForm(true);
@@ -171,31 +171,14 @@ const OrderForm = () => {
   return (
     <div className="order-form-container">
       {/* Form and Real-Time Preview */}
-      <div className={`order-form ${showForm ? 'visible' : 'hidden'}`} >
+      <div className={`order-form ${Object.keys(orders).length > 0 ? 'visible' : 'hidden'}`} >
         <h1>Wholesale Tires Order</h1>
 
       
 
-        {/* Popup with slide-up effect */}
-        {showForm &&
-            <div
-            className={`popup visible`}
-            onClick={closePopup}
-          >
-            <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration2.png`}
-                alt="Tire"
-                className="popup-image"
-              />
-            </div>
-          </div>
-        }
       
-
-        {showForm ? (
-          <>
-            <form className={`order-form`} onSubmit={handleSubmit}>
+      <>
+            <form className={`order-form form`} onSubmit={handleSubmit}>
               <label>
                 Maker:<span className="star">*</span>
                 <select
@@ -316,11 +299,30 @@ const OrderForm = () => {
               <p>
                 {`${formData.maker ? formData.maker : ''}: size ${formData.width}${formData.aspectRatio ? ` / ${formData.aspectRatio}` : ''} R ${formData.rimDiameter}${formData.loadIndex ? ` - ${formData.loadIndex}` : ''}${formData.speedRating ? ` ${formData.speedRating}` : ''}${formData.type ? ` - ${formData.type}` : ''}${formData.quantity ? ` - quantity: ${formData.quantity} units` : ''}`}
               </p>
+
+              
+              {/* Popup with slide-up effect */}
+              {showForm &&
+                  <div
+                  className={`popup ${Object.keys(orders).length > 1 ?'visible' : 'hidden'}`}
+                  onClick={closePopup}
+                >
+                  <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                    <img
+                      src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration2.png`}
+                      alt="Tire"
+                      className="popup-image"
+                    />
+                  </div>
+                </div>
+              }
             </div>
 
            
           </>
-        ) : (
+      {/* Show order details if there are saved orders */}
+      {Object.keys(orders).length > 0 && (
+      
           <div className="tire-selection-container">
             <h3>Your Tire Selection:</h3>
             {Object.keys(orders).map((maker) => (
@@ -333,10 +335,10 @@ const OrderForm = () => {
                       {order.rimDiameter}
                     </p>
                     <p>
-                    <strong>Quantity: </strong>{order.quantity} 
+                      <strong>Quantity: </strong>{order.quantity}
                     </p>
                     <p>
-                      <strong>Type: </strong> {order.type} {/*<strong>Quality:</strong> {order.quality}*/}
+                      <strong>Type: </strong> {order.type}
                     </p>
                     <div className="button-container">
                       <button
@@ -359,6 +361,7 @@ const OrderForm = () => {
             <p>
               <strong>Total Order:</strong> {totalUnits} units
             </p>
+
             <p>{message}</p>
             <button onClick={handleNewCategory}>
               Continue to a New Selection
@@ -367,6 +370,9 @@ const OrderForm = () => {
         )}
       </div>
     </div>
+
+
+  
   );
 };
 
