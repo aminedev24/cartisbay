@@ -2,12 +2,13 @@
 
 /* Adjust min-width and width for full responsiveness */
 .header-container {
-  min-width: 1250px;
-  width: 100%;
+  width: 1250px;
+  max-width: 100%;
 }
   
 .footer {
-  min-width: 1200px;
+  width: 1200px;
+  max-width: 100%;
 }
 
 
