@@ -81,7 +81,6 @@
 .sidebar-image {
   width: 100%; /* Make the image responsive */
   height: auto; /* Maintain aspect ratio */
-  border-radius: 10px; /* Optional: rounded corners for the image */
 }
 
 .make-header , .price-header, .discount-header , .type-header{

@@ -1,113 +1,150 @@
-/* Order Form */
-
-.order-form {
-    display: grid; /* Use grid layout */
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 20px; /* Space between grid items */
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 80%;
-    margin: 0 auto;
-}
-
-.order-form .order-form {
-    box-shadow: 0 4px 8px #f1892b; /* Strong shadow for emphasis */
-}
-
-.order-form h1 {
-    grid-column: span 2; /* Span header across both columns */
-    margin-bottom: 20px; /* Increased spacing below header */
-    color: #1e3a8a; /* Darker blue for header */
-    text-align: center; /* Center the header text */
-}
-
-.order-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #1e3a8a; /* Darker blue for labels */
-}
-
-.order-form input,
-.order-form select {
-    width: 85%; /* Full width for inputs and selects */
-    padding: 10px;
-    margin-top: 5px;
-    border: 2px solid #1da1f2; /* Thicker border for inputs */
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Add box-shadow transition */
-}
-
-.order-form select {
-    width: 95%;
-}
-
-.order-form input:focus,
-.order-form select:focus {
-    border-color: #f1892b; /* Highlight border color on focus */
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(241, 137, 43, 0.5); /* Glow effect on focus */
-}
-
-/* Button Style */
-.order-form button {
-    background-color: #1da1f2; /* Bright button color */
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
-    width: 100%; /* Full width for the button */
-    grid-column: span 2; /* Span button across both columns */
-    margin-top: 15px; /* Space above the button */
-}
-
-.order-form button:hover {
-    background-color: #1e3a8a; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift effect on hover */
-}
-
-/* Output Style */
-.output {
-    color: #333;
-    background-color: #eef2f5;
+.form-header {
+    align-self: flex-start;
+    width: 100%;
+  }
+  
+  .usedTiresForm-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 86%;
+    margin: auto;
+  }
+  
+  .half {
+    justify-content: flex-start !important;
+    gap: 34px;
+  }
+  
+  .form-header h1 {
+    background-color: #003366;
+    color: #fff;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px #f1892b; /* Strong shadow for output */
-    position: relative;
-}
+    text-align: center;
+    margin: 0 0 20px;
+  }
+  
+  .container-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .form-container {
+    width: 65%;
+    padding: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    width: 30%;
+    text-align: left;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .dimensions-inputs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .dimensions-inputs input {
+    width: 30%;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    color: #333;
+    white-space: nowrap;
+    gap: 10px;
+  }
+  
+  .radio-label input {
+    accent-color: #003366;
+  }
+  
+  button[type="submit"] {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #00509e;
+  }
+  
+  .promo {
+    background-color: #6EC1E4;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 30%;
+    max-width: 250px;
+    text-align: center;
+    align-self: flex-start;
+  }
+  
+  .promo h3 {
+    font-size: 18px;
+    color: #e67e22;
+    margin-bottom: 15px;
+  }
+  
 
-.output h3 {
-    font-size: 1.5rem; /* Increased font size for output heading */
-    color: #1e3a8a; /* Darker blue for output heading */
-}
-
-.tire-selection-container {
+  
+  .tire-selection-container {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin:20px;
-}
-
-.tire-selection-container h3 {
+    margin: 20px;
+  }
+  
+  .tire-selection-container h3 {
     font-size: 24px;
     margin-bottom: 15px;
     color: #1e3a8a; /* Darker blue for section headings */
-}
-
-.tire-selection-container h4 {
+  }
+  
+  .tire-selection-container h4 {
     font-size: 20px;
     margin: 10px 0;
     color: #555;
-}
-
-.order-item {
+  }
+  
+  .order-item {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -119,23 +156,23 @@
     align-items: center;
     gap: 14px;
     justify-content: space-between;
-}
-
-.order-item:hover {
+  }
+  
+  .order-item:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.order-item p {
+  }
+  
+  .order-item p {
     margin: 5px 0;
     line-height: 1.5;
-}
-
-.button-container {
+  }
+  
+  .button-container {
     display: flex;
     gap: 10px; /* Space between buttons */
-}
-
-.small-button {
+  }
+  
+  .small-button {
     background-color: #1da1f2; /* Bright small button color */
     color: white;
     border: none;
@@ -144,72 +181,132 @@
     cursor: pointer;
     margin-top: 0 !important;
     transition: background-color 0.3s ease;
-}
-
-.small-button:hover {
+  }
+  
+  .small-button:hover {
     background-color: #1e3a8a; /* Darker shade for hover */
-}
-
-.total-order {
+  }
+  
+  .total-order {
     font-size: 18px;
     font-weight: bold;
     margin-top: 20px;
     color: #333;
-}
-
-.message {
+  }
+  
+  .message {
     color: #d9534f; /* Bootstrap danger color for messages */
-}
-
-.popup-btn {
+  }
+  
+  .popup-btn {
     justify-self: flex-end;
     width: fit-content !important;
-}
-
-.form {
+  }
+  
+  .form {
     position: relative;
-}
-
-.popup-btn {
+  }
+  
+  .popup-btn {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-}
-
-.popup {
+  }
+  
+  .popup {
     position: absolute;
     bottom: 0;
     max-width: 207px;
     z-index: 10;
-   
-   
-}
-
-.popup.visible {
+  }
+  
+  .popup.visible {
     transform: translateY(0); /* Slide up into view */
     opacity: 1;
     visibility: visible;
-}
-
-.popup-content {
+  }
+  
+  .popup-content {
     position: relative;
     text-align: center;
-}
-
-.close {
+  }
+  
+  .close {
     position: absolute;
     top: 0;
     right: 0;
     font-size: 20px;
     cursor: pointer;
-}
-
-.popup-image {
+  }
+  
+  .popup-image {
     max-width: 100%;
     border-radius: 5px;
     margin-top: 10px;
-}
-
-.star {
+  }
+  
+  .star {
     color: #f1892b; /* Use your accent color */
-}
+  }
+  
+  .promo-and-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .continue-selection-btn {
+    background-color: #1da1f2; /* Green background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+  }
+  
+  .continue-selection-btn:hover {
+    background-color: #1e3a8a; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly increase button size on hover */
+  }
+  
+  .continue-selection-btn:focus {
+    outline: none; /* Remove outline */
+  }
+  
+  .continue-selection-btn:active {
+    background-color: #1e3a8a; /* Even darker green when clicked */
+    transform: scale(1); /* Return to normal size on click */
+  }
+  
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #00509e;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  

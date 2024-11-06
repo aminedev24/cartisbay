@@ -2,16 +2,22 @@
     margin: 0 auto;
     padding: 20px;
     color: #333;
+  
 }
 
 .why-choose-container {
-  background-image: url('../../public/images/container.jpg');
+  background-image: url('../../public/images/used-tires-banner.jpeg');
   background-size: cover;
   padding: 40px;
-  border-radius: 8px;
   color: #ffffff;
   text-align: center;
   position: relative;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+  max-width: 79%;
+  margin: 0 auto;
+
 }
 
 .why-choose-container::before {
@@ -23,7 +29,6 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  border-radius: 8px;
 }
 
 .why-choose-container h1 {
@@ -42,27 +47,61 @@
   gap: 15px;
   justify-content: center;
   z-index: 2;
-  position: relative;
+  position: absolute;
   margin-top: 60px;
-  top: 125px;
+  bottom:-85px;
+  left: 0;
 }
 
-.info-card {
+.used-tires-page .info-card {
   display: flex;
   align-items: center;
   background-color: #fff;
-  border-radius: 8px;
-  padding: 25px;
+  padding: 20px;
   width: 25%; /* Each card takes about a quarter of the row */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: #333;
+  aspect-ratio: 2 / 1; /* Maintain square aspect ratio */
+  
 }
 
-.info-card img {
+.order-now-btn {
+  background-color: #e67e22; 
+  color: white; /* White text */
+  font-size: 16px; /* Text size */
+  padding: 12px 24px; /* Padding for top/bottom and left/right */
+  border: none; /* No border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  position: absolute;
+  top: 65%;
+  z-index: 5;
+}
+
+.order-now-btn a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.order-now-btn:hover {
+  background-color: #eb842a; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.order-now-btn:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.order-now-btn:active {
+  background-color: #e68c3e; /* Even darker green when clicked */
+  transform: scale(1); /* Return to normal size when clicked */
+}
+
+
+.used-tires-page .info-card img {
   width: 60px;
   height: 60px;
   margin-right: 10px;
-  border-radius: 5px;
   object-fit: cover;
   align-self: flex-start;
 }
@@ -84,9 +123,10 @@
 }
   
 .order-steps-container {
-    margin: 80px auto;
+    margin: 80px auto 40px auto;
     padding: 20px;
     text-align: center;
+    margin-top: 80px;
 }
 
 .order-steps-container h2 {
@@ -100,11 +140,18 @@
     padding: 20px;
     margin: 15px auto;
     border-left: 5px solid #1da1f2;
-    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     transition: transform 0.3s ease;
     max-width: 85%;
+}
+
+.order-steps-container h1 {
+  background-color: #1e377f;
+  width: 86%;
+  margin: 0 auto;
+  color: #fff;
+  padding: 15px;
 }
 
 .step-card h3 {
@@ -137,7 +184,6 @@
     margin-top: 30px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     text-align: center;
     max-width: 85%;
     margin: 0 auto;

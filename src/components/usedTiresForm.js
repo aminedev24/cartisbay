@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../css/usedTiresForm.css";
-
+import TireSelection from "./tireSelection";
 const OrderForm = () => {
   const [formData, setFormData] = useState({
     maker: "",
@@ -77,8 +77,8 @@ const OrderForm = () => {
           order.width === newOrder.width &&
           order.aspectRatio === newOrder.aspectRatio &&
           order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type 
-          //order.quality === newOrder.quality, // Check for quality
+          order.type === newOrder.type,
+        //order.quality === newOrder.quality, // Check for quality
       );
 
       if (existingOrderIndex !== -1) {
@@ -100,14 +100,14 @@ const OrderForm = () => {
 
     // Reset form data
     setFormData({
-      maker: "Yokohama",
+      maker: "",
       width: "",
       aspectRatio: "",
       rimDiameter: "",
       loadIndex: "",
       speedRating: "",
       quantity: "",
-      type: "All-Season", // Reset to default
+      type: "", // Reset to default
       //quality: "New", // Reset to default
     });
     setEditingOrder(null); // Reset editing state
@@ -169,210 +169,161 @@ const OrderForm = () => {
   };
 
   return (
-    <div className="order-form-container">
-      {/* Form and Real-Time Preview */}
-      <div className={`order-form ${Object.keys(orders).length > 0 ? 'visible' : 'hidden'}`} >
-        <h1>Wholesale Tires Order</h1>
+    <div  id="usedTiresForm" class="usedTiresForm-container">
+      <div class="form-header">
+        <h1>Wholesale Tires Order</h1>
 
-      
-
-      
-      <>
-            <form className={`order-form form`} onSubmit={handleSubmit}>
-              <label>
-                Maker:<span className="star">*</span>
-                <select
-                  name="maker"
-                  value={formData.maker}
-                  onChange={handleChange}
-                >
-                  <option value="Make">Make</option>
-                  <option value="Yokohama">Yokohama</option>
-                  <option value="Bridgestone">Bridgestone</option>
-                  <option value="Michelin">Michelin</option>
-                  <option value="Continental">Continental</option>
-                </select>
-              </label>
-
-              {/* New Quality Field 
-              <label>
-                Quality:
-                <select
-                  name="quality"
-                  value={formData.quality}
-                  onChange={handleChange}
-                >
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
-                </select>
-              </label>
-              */}
-
-              {/* New Type Field */}
-              <label>
-                Type:<span className="star">*</span>
-                <select
-                  name="type"
-                  value={formData.type}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="type">type</option>
-                  <option value="All-Season">All-Season</option>
-                  <option value="Winter">Winter</option>
-                  <option value="Summer">Summer</option>
-                  <option value="Off-Road">Off-Road</option>
-                </select>
-              </label>
-
-              <label>
-                Width:<span className="star">*</span>
-                <input
-                  type="number"
-                  name="width"
-                  value={formData.width}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Aspect Ratio:
-                <input
-                  type="number"
-                  name="aspectRatio"
-                  value={formData.aspectRatio}
-                  onChange={handleChange}
-                  placeholder="optional"
-                />
-              </label>
-              <label>
-                Rim Diameter:<span className="star">*</span>
-                <input
-                  type="number"
-                  name="rimDiameter"
-                  value={formData.rimDiameter}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Load index:
-                <input
-                  type="number"
-                  name="loadIndex"
-                  value={formData.loadIndex}
-                  onChange={handleChange}
-                  placeholder="optional"
-                />
-              </label>
-              <label>
-                Speed Rating:
-                <input
-                  type="text"
-                  name="speedRating"
-                  value={formData.speedRating}
-                  onChange={handleChange}
-                  placeholder="optional"
-                />
-              </label>
-
-              <label>
-                Quantity:<span className="star">*</span>
-                <input
-                  type="number"
-                  name="quantity"
-                  value={formData.quantity}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <button type="submit">
-                {editingOrder !== null ? "Update Order" : "Save Order"}
-              </button>
-            </form>
-
-            {/* Real-Time Preview */}
-           
-            <div className="output">
-              <h3>Order Preview:</h3>
-              <p>
-                {`${formData.maker ? formData.maker : ''}: size ${formData.width}${formData.aspectRatio ? ` / ${formData.aspectRatio}` : ''} R ${formData.rimDiameter}${formData.loadIndex ? ` - ${formData.loadIndex}` : ''}${formData.speedRating ? ` ${formData.speedRating}` : ''}${formData.type ? ` - ${formData.type}` : ''}${formData.quantity ? ` - quantity: ${formData.quantity} units` : ''}`}
-              </p>
-
-              
-              {/* Popup with slide-up effect */}
-              {showForm &&
-                  <div
-                  className={`popup ${Object.keys(orders).length > 1 ?'visible' : 'hidden'}`}
-                  onClick={closePopup}
-                >
-                  <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/images/tire-size-ilustration2.png`}
-                      alt="Tire"
-                      className="popup-image"
-                    />
-                  </div>
-                </div>
-              }
-            </div>
-
-           
-          </>
-      {/* Show order details if there are saved orders */}
-      {Object.keys(orders).length > 0 && (
-      
-          <div className="tire-selection-container">
-            <h3>Your Tire Selection:</h3>
-            {Object.keys(orders).map((maker) => (
-              <div key={maker}>
-                <h4>{maker}:</h4>
-                {orders[maker].map((order, index) => (
-                  <div key={index} className="order-item">
-                    <p>
-                      <strong>Size: </strong>{order.width} / {order.aspectRatio} R{" "}
-                      {order.rimDiameter}
-                    </p>
-                    <p>
-                      <strong>Quantity: </strong>{order.quantity}
-                    </p>
-                    <p>
-                      <strong>Type: </strong> {order.type}
-                    </p>
-                    <div className="button-container">
-                      <button
-                        onClick={() => handleEditOrder(maker, index)}
-                        className="small-button"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDeleteOrder(maker, index)}
-                        className="small-button"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-            <p>
-              <strong>Total Order:</strong> {totalUnits} units
-            </p>
-
-            <p>{message}</p>
-            <button onClick={handleNewCategory}>
-              Continue to a New Selection
-            </button>
-          </div>
-        )}
       </div>
+      <div class="container-inner">
+        <div class="form-container">
+          <form action="#" onSubmit={handleSubmit}>
+            <div class="form-row">
+              <div class="form-group">
+                <label>
+                  Maker:<span class="star">*</span>
+                  <select
+                    name="maker"
+                    value={formData.maker}
+                    onChange={handleChange}
+                  >
+                    <option value="Make">Make</option>
+                    <option value="Yokohama">Yokohama</option>
+                    <option value="Bridgestone">Bridgestone</option>
+                    <option value="Michelin">Michelin</option>
+                    <option value="Continental">Continental</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  Type:<span class="star">*</span>
+                  <select
+                    name="type"
+                    value={formData.type}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="type">type</option>
+                    <option value="All-Season">All-Season</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Off-Road">Off-Road</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  Width:<span class="star">*</span>
+                  <input
+                    type="number"
+                    name="width"
+                    placeholder="width*"
+                    value={formData.width}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>
+                  Rim Diameter:<span class="star">*</span>
+                  <input
+                    type="number"
+                    name="rimDiameter"
+                    placeholder="rim Diameter*"
+                    value={formData.rimDiameter}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  Quantity:<span class="star">*</span>
+                  <input
+                    type="number"
+                    name="quantity"
+                    placeholder="quantity*"
+                    value={formData.quantity}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  Aspect Ratio:
+                  <input
+                    type="number"
+                    name="aspectRatio"
+                    value={formData.aspectRatio}
+                    onChange={handleChange}
+                    placeholder="optional"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="form-row half">
+              <div class="form-group">
+                <label>
+                  Speed Rating:
+                  <input
+                    type="text"
+                    name="speedRating"
+                    value={formData.speedRating}
+                    onChange={handleChange}
+                    placeholder="optional"
+                  />
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  Load index:
+                  <input
+                    type="number"
+                    name="loadIndex"
+                    value={formData.loadIndex}
+                    onChange={handleChange}
+                    placeholder="optional"
+                  />
+                </label>
+              </div>
+            </div>
+            <button type="submit">
+              {editingOrder !== null ? "Update Order" : "Save Order"}
+            </button>
+          </form>
+        </div>
+        <div class="promo">
+          <h3>Order Preview:</h3>
+          <p>
+            <strong>{`${formData.maker ? formData.maker : ""}`}</strong>
+            : size <strong>{formData.width}</strong>
+            {formData.aspectRatio ? ` / <strong>${formData.aspectRatio}</strong>` : ""}
+            R <strong>{formData.rimDiameter}</strong>
+            {formData.loadIndex ? ` - <strong>${formData.loadIndex}</strong>` : ""}
+            {formData.speedRating ? ` <strong>${formData.speedRating}</strong>` : ""}
+            {formData.type ? ` - <strong>${formData.type}</strong>` : ""}
+            {formData.quantity ? ` - quantity: <strong>${formData.quantity} units</strong>` : ""}
+          </p>
+
+        </div>
+      </div>
+      <TireSelection
+        orders={orders}
+        totalUnits={totalUnits}
+        message={message}
+        handleEditOrder={handleEditOrder}
+        handleDeleteOrder={handleDeleteOrder}
+        handleNewCategory={handleNewCategory}
+      />
+     
     </div>
-
-
-  
   );
 };
 

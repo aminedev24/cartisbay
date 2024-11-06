@@ -1,14 +1,19 @@
-import React from "react";
+import React,{useRef} from "react";
 import "../css/usedTires.css";
 import LeftSidebar from "./sidebar";
 import OrderForm from "./usedTiresForm";
 
 const UsedTires = () => {
+  const targetRef = useRef(null); 
+  const handleScroll = () => { 
+    if (targetRef.current) { targetRef.current.scrollIntoView({ behavior: 'smooth' }); 
+  }};
   return (
     <div className="used-tires-page">
       {/* Hero Section */}
       <div className="why-choose-container">
         <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
+        <button className="order-now-btn">Order Now</button>
 
         <div className="info-row">
           <div className="info-card">
@@ -70,8 +75,7 @@ const UsedTires = () => {
       </div>
 
       <div className="order-steps-container">
-        <h2>4 Simple Steps to Your Wholesale Tire Order</h2>
-
+        <h1>4 Simple Steps to Your Wholesale Tire Order</h1>
         <div className="step-card">
           <h3>Step 1: Send Your Order Details</h3>
           <p>
