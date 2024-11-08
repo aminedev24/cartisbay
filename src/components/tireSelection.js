@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import '../css/tireSelection.css';
 
 const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDeleteOrder, handleNewCategory }) => {
-  // Number of orders to show per page
-  const ordersPerPage = 3; 
-  const groupsPerPage = 1; // Show 1 group (maker) per page
+  const ordersPerPage = 3;
+  const groupsPerPage = 1;
 
-  // Initialize state for pagination
   const [pagination, setPagination] = useState({
-    // Set initial page for orders and groups
     currentOrderPage: Object.keys(orders).reduce((acc, maker) => {
-      acc[maker] = 1;  // Default to page 1 for each maker
+      acc[maker] = 1;
       return acc;
     }, {}),
     currentGroupPage: 1,
   });
 
-  // Calculate the total number of pages for orders for each maker
+  const [confirmationMessage, setConfirmationMessage] = useState("");
+
+  useEffect(() => {
+    console.log("Updated orders:", orders); // Debugging line to check orders
+    setPagination((prevPagination) => ({
+      ...prevPagination,
+      currentOrderPage: Object.keys(orders).reduce((acc, maker) => {
+        acc[maker] = 1;
+        return acc;
+      }, {}),
+    }));
+  }, [orders]);
+
   const calculateTotalPages = (makerOrders) => {
-    return Math.ceil(makerOrders.length / ordersPerPage);
+    return makerOrders && makerOrders.length > 0
+      ? Math.ceil(makerOrders.length / ordersPerPage)
+      : 1;
   };
 
-  // Calculate total number of pages for groups (makers)
   const calculateTotalGroupPages = () => {
-    return Math.ceil(Object.keys(orders).length / groupsPerPage);
+    return Math.max(1, Math.ceil(Object.keys(orders).length / groupsPerPage));
   };
 
-  // Handle page change for orders (each maker's orders)
   const handleOrderPageChange = (maker, direction) => {
     setPagination((prevState) => {
       const newOrderPage = prevState.currentOrderPage[maker] + direction;
@@ -40,7 +50,6 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
     });
   };
 
-  // Handle page change for groups (makers)
   const handleGroupPageChange = (direction) => {
     setPagination((prevState) => {
       const newGroupPage = prevState.currentGroupPage + direction;
@@ -51,7 +60,6 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
     });
   };
 
-  // Get the makers for the current group page
   const getCurrentGroupMakers = () => {
     const makers = Object.keys(orders);
     const startIndex = (pagination.currentGroupPage - 1) * groupsPerPage;
@@ -59,76 +67,109 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
     return makers.slice(startIndex, endIndex);
   };
 
+  const handleGroupSelection = (group) => {
+    setPagination((prevState) => ({
+      ...prevState,
+      currentGroupPage: group,
+    }));
+  };
+
   return (
-    <div  className="tire-selection-container">
+    <div className="tire-selection-container">
       <h3>Your Tire Selection:</h3>
 
-      {/* Pagination for groups */}
       <div className="pagination-controls">
-        <button 
-          onClick={() => handleGroupPageChange(-1)} 
+        <select
+          onChange={(e) => handleGroupSelection(Number(e.target.value))}
+          value={pagination.currentGroupPage}
+          className="group-dropdown"
+        >
+          {Array.from({ length: calculateTotalGroupPages() }, (_, index) => (
+            <option key={index} value={index + 1}>
+              Group {index + 1}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() => handleGroupPageChange(-1)}
           disabled={pagination.currentGroupPage === 1}
+          className="prev-next-button"
         >
           Prev Group
         </button>
-        <span>
-          Group Page {pagination.currentGroupPage} of {calculateTotalGroupPages()}
-        </span>
-        <button 
-          onClick={() => handleGroupPageChange(1)} 
+        <button
+          onClick={() => handleGroupPageChange(1)}
           disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
+          className="prev-next-button"
         >
           Next Group
         </button>
       </div>
 
-      {/* Render the orders for the makers on the current group page */}
       {getCurrentGroupMakers().map((maker) => {
         const makerOrders = orders[maker];
         const totalPages = calculateTotalPages(makerOrders);
-        const currentPageOrders = makerOrders.slice((pagination.currentOrderPage[maker] - 1) * ordersPerPage, pagination.currentOrderPage[maker] * ordersPerPage);
+        const currentPageOrders = makerOrders
+          ? makerOrders.slice(
+              (pagination.currentOrderPage[maker] - 1) * ordersPerPage,
+              pagination.currentOrderPage[maker] * ordersPerPage
+            )
+          : [];
 
         return (
-          <div key={maker}>
+          <div key={maker} className="maker-section">
             <h4>{maker}:</h4>
-            {currentPageOrders.map((order, index) => (
-              <div key={index} className="order-item">
-                <p>
-                  <strong>Size: </strong>
-                  {order.width} / {order.aspectRatio} R {order.rimDiameter}
-                </p>
-                <p>
-                  <strong>Quantity: </strong>
-                  {order.quantity}
-                </p>
-                <p>
-                  <strong>Type: </strong> {order.type}
-                </p>
-                <div className="button-container">
-                  <button onClick={() => handleEditOrder(maker, index)} className="small-button">
-                    Edit
-                  </button>
-                  <button onClick={() => handleDeleteOrder(maker, index)} className="small-button">
-                    Delete
-                  </button>
+            {currentPageOrders.length > 0 ? (
+              currentPageOrders.map((order, index) => (
+                <div key={index} className="order-item">
+                  <div className="order-info">
+                    <p>
+                      <strong>Size: </strong>
+                      {order.width} / {order.aspectRatio} R {order.rimDiameter}
+                    </p>
+                    <p>
+                      <strong>Quantity: </strong>
+                      {order.quantity}
+                    </p>
+                    <p>
+                      <strong>Type: </strong> {order.type}
+                    </p>
+                  </div>
+                  <div className="button-container">
+                    <button
+                      onClick={() => handleEditOrder(maker, index)}
+                      className="action-button edit-button"
+                    >
+                      <i className="fas fa-edit"></i> Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteOrder(maker, index)}
+                      className="action-button delete-button"
+                    >
+                      <i className="fas fa-trash-alt"></i> Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No orders available for {maker}.</p>
+            )}
 
-            {/* Pagination Controls for orders within this maker */}
             <div className="pagination-controls">
-              <button 
-                onClick={() => handleOrderPageChange(maker, -1)} 
+              <button
+                onClick={() => handleOrderPageChange(maker, -1)}
                 disabled={pagination.currentOrderPage[maker] === 1}
+                className="prev-next-button"
               >
                 Prev
               </button>
               <span>
                 Page {pagination.currentOrderPage[maker]} of {totalPages}
               </span>
-              <button 
-                onClick={() => handleOrderPageChange(maker, 1)} 
+              <button
+                onClick={() => handleOrderPageChange(maker, 1)}
                 disabled={pagination.currentOrderPage[maker] === totalPages}
+                className="prev-next-button"
               >
                 Next
               </button>
@@ -137,12 +178,22 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
         );
       })}
 
-      <p>
-        <strong>Total Order:</strong> {totalUnits} units
-      </p>
+      <div className="confirmation-message">{confirmationMessage}</div>
 
-      <p>{message}</p>
-      <button className="continue-selection-btn" onClick={handleNewCategory}>
+      <div className="total-order">
+        <p>
+          <strong>Total Order:</strong> {totalUnits} units
+        </p>
+        <p>{message}</p>
+      </div>
+
+      <button
+        className="continue-selection-btn"
+        onClick={() => {
+          setConfirmationMessage("Order saved successfully.");
+          handleNewCategory();
+        }}
+      >
         Continue to a New Selection
       </button>
     </div>

@@ -1,7 +1,7 @@
 
 
 /* Adjust min-width and width for full responsiveness */
-.header-container {
+.header-container, .used-tires-page {
   min-width: 1250px;
   max-width: 100%;
 }
@@ -12,19 +12,20 @@
 }
 
 
-.container , .layout {
+.container  {
   min-width: 1250px; /* Fixed width */
+  position: relative;
  
 }
 @media screen and (max-width:500px) {
   body {
-    zoom: .3;
+    zoom: 100%;
   }
   
 }
     
 @media screen and (max-width: 9999px) {
-  .layout,  .local-services-banner   {
+  .layout  {
       margin: 0 auto;
       width: 1590px;
   }
@@ -34,7 +35,7 @@
       width: 1560px;
   }
 
-  .header-top , .used-tires-page
+  .header-top
   {
       margin: 0 auto;
       width: 1560px;
@@ -49,7 +50,7 @@
 
 
 @media screen and (max-width: 1760px) {
-  .layout , .used-tires-page,  .local-services-banner {
+  .layout  {
       margin: 0 auto;
       width: 1438px;
       max-width: 100%;
@@ -71,7 +72,7 @@
 
       
 @media screen and (max-width: 1530px) {
-.layout,.header-top, .used-tires-page,  .local-services-banner {
+.layout,.header-top {
       margin: 0 auto;
       width: 1330px;
       max-width: 100%;
@@ -86,13 +87,11 @@
 }
 
   @media screen and (max-width: 1400px) {
-  .layout, .header-top, .header-bottom ,  .used-tires-page {
+  .layout, .header-top, .header-bottom{
       width: 1200px;
       max-width: 100%;
   }
-   .local-services-banner {
-    width: 100%;
-   }
+
 
  
 }

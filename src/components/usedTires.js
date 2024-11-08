@@ -9,12 +9,12 @@ const UsedTires = () => {
     if (targetRef.current) { targetRef.current.scrollIntoView({ behavior: 'smooth' }); 
   }};
   return (
+    <div>
     <div className="used-tires-page">
       {/* Hero Section */}
       <div className="why-choose-container">
         <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
-        <button className="order-now-btn">Order Now</button>
-
+       
         <div className="info-row">
           <div className="info-card">
             <img
@@ -144,6 +144,7 @@ const UsedTires = () => {
         </div>
       </div>
       <OrderForm />
+    </div>
     </div>
   );
 };

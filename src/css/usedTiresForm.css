@@ -10,14 +10,9 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 86%;
     margin: auto;
   }
   
-  .half {
-    justify-content: flex-start !important;
-    gap: 34px;
-  }
   
   .form-header h1 {
     background-color: #003366;
@@ -29,7 +24,7 @@
   
   .container-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     gap: 20px;
   }
@@ -41,8 +36,9 @@
   
   .form-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 15px;
+    gap: 40px;
   }
   
   .form-group {
@@ -55,12 +51,17 @@
     color: #333;
   }
   
+
   .form-group input,
   .form-group select {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+  }
+
+  .form-group input {
+    width: 87% !important;
   }
   
   .dimensions-inputs {
@@ -124,76 +125,8 @@
   
 
   
-  .tire-selection-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-  }
   
-  .tire-selection-container h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #1e3a8a; /* Darker blue for section headings */
-  }
-  
-  .tire-selection-container h4 {
-    font-size: 20px;
-    margin: 10px 0;
-    color: #555;
-  }
-  
-  .order-item {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 10px;
-    position: relative;
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    justify-content: space-between;
-  }
-  
-  .order-item:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .order-item p {
-    margin: 5px 0;
-    line-height: 1.5;
-  }
-  
-  .button-container {
-    display: flex;
-    gap: 10px; /* Space between buttons */
-  }
-  
-  .small-button {
-    background-color: #1da1f2; /* Bright small button color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-top: 0 !important;
-    transition: background-color 0.3s ease;
-  }
-  
-  .small-button:hover {
-    background-color: #1e3a8a; /* Darker shade for hover */
-  }
-  
-  .total-order {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #333;
-  }
-  
+
   .message {
     color: #d9534f; /* Bootstrap danger color for messages */
   }
@@ -255,58 +188,4 @@
     gap: 20px;
   }
   
-  .continue-selection-btn {
-    background-color: #1da1f2; /* Green background color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 100%;
-  }
-  
-  .continue-selection-btn:hover {
-    background-color: #1e3a8a; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly increase button size on hover */
-  }
-  
-  .continue-selection-btn:focus {
-    outline: none; /* Remove outline */
-  }
-  
-  .continue-selection-btn:active {
-    background-color: #1e3a8a; /* Even darker green when clicked */
-    transform: scale(1); /* Return to normal size on click */
-  }
-  
-
-  .pagination-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .pagination-btn {
-    background-color: #003366;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pagination-btn:hover {
-    background-color: #00509e;
-  }
-  
-  .pagination-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  
+ 

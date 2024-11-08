@@ -34,70 +34,47 @@ const OrderForm = () => {
     });
   };
 
-  // Updated handleSubmit function
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const newOrder = {
-      maker: formData.maker, // Include maker in the newOrder
+      maker: formData.maker,
       width: formData.width,
       aspectRatio: formData.aspectRatio,
       rimDiameter: formData.rimDiameter,
       loadIndex: formData.loadIndex,
       speedRating: formData.speedRating,
       quantity: parseInt(formData.quantity, 10),
-      type: formData.type, // Include type
-      //quality: formData.quality, // Include quality
+      type: formData.type,
     };
-
-    // Update orders
+  
     if (editingOrder !== null) {
-      // Edit existing order
+      // Edit an existing order
       const maker = formData.maker;
       const updatedOrders = { ...orders };
       const previousQuantity = updatedOrders[maker][editingOrder].quantity; // Get previous quantity
       updatedOrders[maker][editingOrder] = newOrder; // Update the specific order
       setOrders(updatedOrders);
-
+  
       // Update total units: subtract previous quantity and add new quantity
       setTotalUnits((prev) => prev - previousQuantity + newOrder.quantity);
       setMessage(`Your order has been updated!`);
     } else {
-      // Check for existing orders for the same maker and dimensions
+      // Add the new order separately without merging quantities
       const maker = formData.maker;
       const updatedOrders = { ...orders };
-
+  
       if (!updatedOrders[maker]) {
         updatedOrders[maker] = [];
       }
-
-      // Check if the order already exists
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type,
-        //order.quality === newOrder.quality, // Check for quality
-      );
-
-      if (existingOrderIndex !== -1) {
-        // If the order already exists, update the quantity
-        updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-        setOrders(updatedOrders);
-        setTotalUnits((prev) => prev + newOrder.quantity); // Update total units
-        setMessage(
-          `Your existing order has been updated with additional quantity!`,
-        );
-      } else {
-        // If it doesn't exist, add the new order
-        updatedOrders[maker].push(newOrder);
-        setOrders(updatedOrders);
-        setTotalUnits((prev) => prev + newOrder.quantity); // Update total units
-        setMessage(`Great, your order has been saved!`);
-      }
+  
+      // Directly push the new order without checking for existing orders
+      updatedOrders[maker].push(newOrder);
+      setOrders(updatedOrders);
+      setTotalUnits((prev) => prev + newOrder.quantity); // Update total units
+      setMessage(`Great, your order has been saved!`);
     }
-
+  
     // Reset form data
     setFormData({
       maker: "",
@@ -107,12 +84,12 @@ const OrderForm = () => {
       loadIndex: "",
       speedRating: "",
       quantity: "",
-      type: "", // Reset to default
-      //quality: "New", // Reset to default
+      type: "",
     });
     setEditingOrder(null); // Reset editing state
     setShowForm(false);
   };
+  
 
   // Updated handleEditOrder function
   const handleEditOrder = (maker, index) => {
@@ -169,7 +146,7 @@ const OrderForm = () => {
   };
 
   return (
-    <div  id="usedTiresForm" class="usedTiresForm-container">
+    <div id="usedTiresForm" class="usedTiresForm-container">
       <div class="form-header">
         <h1>Wholesale Tires Order</h1>
 
@@ -180,7 +157,7 @@ const OrderForm = () => {
             <div class="form-row">
               <div class="form-group">
                 <label>
-                  Maker:<span class="star">*</span>
+                  Make:<span class="star">*</span>
                   <select
                     name="maker"
                     value={formData.maker}
@@ -301,16 +278,43 @@ const OrderForm = () => {
         </div>
         <div class="promo">
           <h3>Order Preview:</h3>
-          <p>
-            <strong>{`${formData.maker ? formData.maker : ""}`}</strong>
-            : size <strong>{formData.width}</strong>
-            {formData.aspectRatio ? ` / <strong>${formData.aspectRatio}</strong>` : ""}
-            R <strong>{formData.rimDiameter}</strong>
-            {formData.loadIndex ? ` - <strong>${formData.loadIndex}</strong>` : ""}
-            {formData.speedRating ? ` <strong>${formData.speedRating}</strong>` : ""}
-            {formData.type ? ` - <strong>${formData.type}</strong>` : ""}
-            {formData.quantity ? ` - quantity: <strong>${formData.quantity} units</strong>` : ""}
-          </p>
+            <p>
+              <strong>{formData.maker || ""}</strong>: size{" "}
+              <strong>{formData.width}</strong>
+              {formData.aspectRatio && (
+                <>
+                  {" / "}
+                  <strong>{formData.aspectRatio}</strong>
+                </>
+              )}
+              {" R "}
+              <strong>{formData.rimDiameter}</strong>
+              {formData.loadIndex && (
+                <>
+                  {" - "}
+                  <strong>{formData.loadIndex}</strong>
+                </>
+              )}
+              {formData.speedRating && (
+                <>
+                  {" "}
+                  <strong>{formData.speedRating}</strong>
+                </>
+              )}
+              {formData.type && (
+                <>
+                  {" - "}
+                  <strong>{formData.type}</strong>
+                </>
+              )}
+              {formData.quantity && (
+                <>
+                  {" - quantity: "}
+                  <strong>{formData.quantity} units</strong>
+                </>
+              )}
+            </p>
+
 
         </div>
       </div>

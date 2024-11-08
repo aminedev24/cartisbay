@@ -38,7 +38,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div className='layout'>
+
         
         <Routes>
           <Route path="/" element={<HomePage cars={cars} />} />
@@ -50,7 +50,6 @@ function App() {
           <Route path="/car-dismantling" element={<CarDismantling />} />
           <Route path="/used-tires" element={<UsedTires />} />
         </Routes>
-      </div>
       <Footer />
     </Router>
   );
