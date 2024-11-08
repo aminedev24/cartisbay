@@ -1,4 +1,14 @@
+/* Force desktop styles for smaller screens */
+@media (max-width: 1024px) {
+  body {
+    transform: scale(0.75); /* Adjust scale as needed */
+    transform-origin: 0 0;
+    width: 135%;
+    height: auto;
+    overflow-x: hidden;
+  }
 
+}
 .header-container, .used-tires-page {
   min-width: 1250px;
   max-width: 100%;
