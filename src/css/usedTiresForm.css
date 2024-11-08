@@ -58,6 +58,9 @@
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    -webkit-appearance: none; /* Remove default styling on iOS */ 
+    -moz-appearance: none;/* Remove default styling on Firefox */
+      appearance: none; /* Remove default styling */
   }
 
   .form-group input {
