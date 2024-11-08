@@ -1,4 +1,7 @@
-
+body {
+  width: 100vw;
+  height: 100vh;
+}
 
 /* Adjust min-width and width for full responsiveness */
 .header-container, .used-tires-page {
