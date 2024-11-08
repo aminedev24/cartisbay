@@ -25,7 +25,7 @@
   .container-inner {
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 85%;
     gap: 20px;
   }
   

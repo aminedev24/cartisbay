@@ -83,17 +83,13 @@
 
 .order-now-btn:hover {
   background-color: #eb842a; /* Darker green on hover */
-  transform: scale(1.05); /* Slightly increase size on hover */
 }
 
 .order-now-btn:focus {
   outline: none; /* Remove focus outline */
 }
 
-.order-now-btn:active {
-  background-color: #e68c3e; /* Even darker green when clicked */
-  transform: scale(1); /* Return to normal size when clicked */
-}
+
 
 
 .used-tires-page .info-card img {
@@ -135,6 +131,8 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     transition: transform 0.3s ease;
+    width: 80%;
+    
 }
 
 .order-steps-container h1 {
