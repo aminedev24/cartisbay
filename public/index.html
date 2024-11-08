@@ -27,7 +27,16 @@
     <title>React App</title>
   </head>
   <body>
-    <script> if (window.innerWidth < 1024) { document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1024'); } </script>
+    <script>
+     if (window.innerWidth < 1024) 
+     { document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1024'); 
+
+     } 
+     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        document.body.style.width = "135%";
+      }
+
+     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
