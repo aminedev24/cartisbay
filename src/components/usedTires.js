@@ -14,7 +14,7 @@ const UsedTires = () => {
       {/* Hero Section */}
       <div className="why-choose-container">
         <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
-       
+        <button className='order-now-btn'>Order Now</button>
         <div className="info-row">
           <div className="info-card">
             <img

@@ -29,7 +29,7 @@
   z-index: 1;
 }
 
-.why-choose-container h1 {
+.why-choose-container h1 ,.order-now-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -72,7 +72,7 @@
   cursor: pointer; /* Change cursor to pointer on hover */
   transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
   position: absolute;
-  top: 65%;
+  top: 68%;
   z-index: 5;
 }
 
@@ -118,7 +118,6 @@
   
 .order-steps-container {
     margin: 200px 0 40px 0;
-    padding: 20px;
     text-align: center;
 }
 
