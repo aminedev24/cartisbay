@@ -39,6 +39,8 @@ const Header = () => {
         <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} /> </Link>
         
           <div className="header-search">
+            <div className="keyword-square">Search by Keyword</div>
+
             <input type="text" placeholder="Search..." />
             <i className="fas fa-search search-icon"></i>
           </div>

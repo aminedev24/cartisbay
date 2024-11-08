@@ -28,6 +28,16 @@
   }
 }
 
+@media (min-width: 1400px) {
+  .why-choose-container {
+    min-height: 400px; /* Increase min-height for larger screens */
+    max-height: 70vh;  /* Allow more height on larger screens */
+  }
+}
+
+    
+
+
 .why-choose-container h1, .order-now-btn {
   position: absolute;
   top: 50%;
@@ -180,7 +190,7 @@
 
 .step-card ul {
     margin-top: 10px;
-    padding-left: 20px;
+    padding-left: 30px;
     list-style: disc;
     color: #555;
 }

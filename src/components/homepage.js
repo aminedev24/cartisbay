@@ -52,6 +52,7 @@ function HomePage() {
   ];
 
   return (
+    <div className="layout">
     <div className="container">
       <LeftSidebar setFilters={setFilters} />
 
@@ -132,6 +133,7 @@ function HomePage() {
         </div>
       </div>
       <RightSidebar />
+    </div>
     </div>
   );
 }

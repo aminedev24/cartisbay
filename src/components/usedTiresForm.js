@@ -36,7 +36,7 @@ const OrderForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     const newOrder = {
       maker: formData.maker,
       width: formData.width,
@@ -47,7 +47,7 @@ const OrderForm = () => {
       quantity: parseInt(formData.quantity, 10),
       type: formData.type,
     };
-  
+
     if (editingOrder !== null) {
       // Edit an existing order
       const maker = formData.maker;
@@ -55,7 +55,7 @@ const OrderForm = () => {
       const previousQuantity = updatedOrders[maker][editingOrder].quantity; // Get previous quantity
       updatedOrders[maker][editingOrder] = newOrder; // Update the specific order
       setOrders(updatedOrders);
-  
+
       // Update total units: subtract previous quantity and add new quantity
       setTotalUnits((prev) => prev - previousQuantity + newOrder.quantity);
       setMessage(`Your order has been updated!`);
@@ -63,18 +63,18 @@ const OrderForm = () => {
       // Add the new order separately without merging quantities
       const maker = formData.maker;
       const updatedOrders = { ...orders };
-  
+
       if (!updatedOrders[maker]) {
         updatedOrders[maker] = [];
       }
-  
+
       // Directly push the new order without checking for existing orders
       updatedOrders[maker].push(newOrder);
       setOrders(updatedOrders);
       setTotalUnits((prev) => prev + newOrder.quantity); // Update total units
       setMessage(`Great, your order has been saved!`);
     }
-  
+
     // Reset form data
     setFormData({
       maker: "",
@@ -89,7 +89,6 @@ const OrderForm = () => {
     setEditingOrder(null); // Reset editing state
     setShowForm(false);
   };
-  
 
   // Updated handleEditOrder function
   const handleEditOrder = (maker, index) => {
@@ -149,7 +148,6 @@ const OrderForm = () => {
     <div id="usedTiresForm" class="usedTiresForm-container">
       <div class="form-header">
         <h1>Wholesale Tires Order</h1>
-
       </div>
       <div class="container-inner">
         <div class="form-container">
@@ -276,46 +274,64 @@ const OrderForm = () => {
             </button>
           </form>
         </div>
-        <div class="promo">
+        <div className="promo">
           <h3>Order Preview:</h3>
-            <p>
-              <strong>{formData.maker || ""}</strong>: size{" "}
-              <strong>{formData.width}</strong>
-              {formData.aspectRatio && (
-                <>
-                  {" / "}
-                  <strong>{formData.aspectRatio}</strong>
-                </>
-              )}
-              {" R "}
-              <strong>{formData.rimDiameter}</strong>
-              {formData.loadIndex && (
-                <>
-                  {" - "}
-                  <strong>{formData.loadIndex}</strong>
-                </>
-              )}
-              {formData.speedRating && (
-                <>
-                  {" "}
-                  <strong>{formData.speedRating}</strong>
-                </>
-              )}
-              {formData.type && (
-                <>
-                  {" - "}
-                  <strong>{formData.type}</strong>
-                </>
-              )}
-              {formData.quantity && (
-                <>
-                  {" - quantity: "}
-                  <strong>{formData.quantity} units</strong>
-                </>
-              )}
-            </p>
 
+          {/* Maker */}
+          {formData.maker && (
+            <div className="order-detail">
+              <strong>Make:</strong> <span>{formData.maker}</span>
+            </div>
+          )}
 
+          {/* Size */}
+          {formData.width && (
+            <div className="order-detail">
+              <strong>Width:</strong> <span>{formData.width}</span>
+            </div>
+          )}
+
+          {/* Aspect Ratio (only if available) */}
+          {formData.aspectRatio && (
+            <div className="order-detail">
+              <strong>Aspect Ratio:</strong> <span>{formData.aspectRatio}</span>
+            </div>
+          )}
+
+          {/* Rim Diameter */}
+          {formData.rimDiameter && (
+            <div className="order-detail">
+              <strong>Rim Diameter:</strong> <span>{formData.rimDiameter}</span>
+            </div>
+          )}
+
+          {/* Load Index (only if available) */}
+          {formData.loadIndex && (
+            <div className="order-detail">
+              <strong>Load Index:</strong> <span>{formData.loadIndex}</span>
+            </div>
+          )}
+
+          {/* Speed Rating (only if available) */}
+          {formData.speedRating && (
+            <div className="order-detail">
+              <strong>Speed Rating:</strong> <span>{formData.speedRating}</span>
+            </div>
+          )}
+
+          {/* Type (only if available) */}
+          {formData.type && (
+            <div className="order-detail">
+              <strong>Type:</strong> <span>{formData.type}</span>
+            </div>
+          )}
+
+          {/* Quantity (only if available) */}
+          {formData.quantity && (
+            <div className="order-detail">
+              <strong>Quantity:</strong> <span>{formData.quantity} units</span>
+            </div>
+          )}
         </div>
       </div>
       <TireSelection
@@ -326,7 +342,6 @@ const OrderForm = () => {
         handleDeleteOrder={handleDeleteOrder}
         handleNewCategory={handleNewCategory}
       />
-     
     </div>
   );
 };

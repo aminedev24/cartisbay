@@ -76,6 +76,7 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
 
   return (
     <div className="tire-selection-container">
+      <div>
       <h3>Your Tire Selection:</h3>
 
       <div className="pagination-controls">
@@ -196,6 +197,7 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
       >
         Continue to a New Selection
       </button>
+      </div>
     </div>
   );
 };
