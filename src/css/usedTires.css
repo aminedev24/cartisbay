@@ -11,12 +11,15 @@
   color: #ffffff;
   text-align: center;
   position: relative;
-  height: 55vh; /* Increased to allow space for the overlap */
+  height: 55vh; /* Default height for larger screens */
   display: flex;
   justify-content: center;
+  align-items: center; /* Center content vertically */
   margin: 0 auto;
   background-size: cover;
 }
+
+
 
 .why-choose-container::before {
   content: '';
@@ -178,3 +181,23 @@
 
 
 
+
+/* Adjust height for smaller screens */
+@media (max-width: 1024px) {
+  .why-choose-container {
+    height: 45vh; /* Adjust height for medium screens */
+    padding: 30px; /* Adjust padding if necessary */
+  }
+}
+
+@media (max-width: 600px) {
+  .why-choose-container {
+    height: 45vh; /* Adjust height for small screens */
+    padding: 20px; /* Adjust padding if necessary */
+  }
+
+  .info-row {
+    bottom: -32%;
+  }
+  
+}
