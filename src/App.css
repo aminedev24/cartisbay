@@ -45,7 +45,7 @@
       
   }
   .local-services-banner {
-    width: 1580px;
+    width: 1590px;
   }
   
   }
@@ -95,12 +95,5 @@
   }
 }
 
-  @media screen and (max-width: 1400px) {
-  .layout, .header-top, .header-bottom{
-      width: 1200px;
-      max-width: 100%;
-  }
 
 
- 
-}
