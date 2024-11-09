@@ -8,14 +8,7 @@
   border-bottom: 1px solid #2980b9;
 }
 
-.keyword-square {
-  background-color: #e0e0e0; /* Light gray background */
-  color: #333; /* Dark text */
-  font-size: 0.5rem; /* Small text size */
-  padding: 7px; /* Padding inside the square */
-  border: 1px solid #ccc; /* Border around the square */
 
-}
 
 .logo {
   position: relative;
@@ -85,6 +78,7 @@
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  border-radius: 16px;
 }
 
 .header-search input:focus {

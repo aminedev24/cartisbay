@@ -59,7 +59,7 @@
     gap: 40px;
   }
   
-  .form-group {
+  .usedTiresForm-container .form-group {
     width: 30%;
     text-align: left;
   }
@@ -71,8 +71,8 @@
   }
   
 
-  .form-group input,
-  .form-group select {
+  .usedTiresForm-container .form-group input,
+  .usedTiresForm-container .form-group select {
     width: 100%;
     padding: 15px;
     border: 1px solid #ccc;
@@ -86,7 +86,7 @@
   }
 
   .form-group input {
-    width: 87% !important;
+    width: 85% !important;
   }
   
   .dimensions-inputs {
@@ -140,6 +140,7 @@
     max-width: 250px;
     text-align: center;
     margin-bottom: 20px;
+    flex: 1;
   }
   
   .promo h3 {

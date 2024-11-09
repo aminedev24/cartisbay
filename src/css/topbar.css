@@ -1,17 +1,17 @@
 .top-bar {
-    background-color: #f8f9fa;
+    background-color: #1da1f2;
     padding: 5px 10px;  /* Adjust padding for a better layout */
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-size: 12px;  /* Smaller font size */
-    border-bottom: 1px solid #ddd;
     font-weight: bold;
+    color: #fff;
   }
   
   .app-info .app-name {
     font-weight: bold;
-    color: #333;
+    color: #fff;
     font-size: 14px;  /* Reduced font size */
     margin-right: 20px;  /* Space between app name and other elements */
   }
@@ -24,7 +24,7 @@
   
   .extra-info .time,
   .extra-info .exchange-rate {
-    color: #666;
+    color: #fff;
     font-size: 12px;  /* Smaller font size */
   }
   

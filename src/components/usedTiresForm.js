@@ -187,7 +187,10 @@ const OrderForm = () => {
                 </label>
               </div>
 
-              <div class="form-group">
+             
+            </div>
+            <div class="form-row">
+            <div class="form-group">
                 <label>
                   Width:<span class="star">*</span>
                   <input
@@ -200,7 +203,22 @@ const OrderForm = () => {
                   />
                 </label>
               </div>
+              <div class="form-group">
+                <label>
+                  Aspect Ratio:
+                  <input
+                    type="number"
+                    name="aspectRatio"
+                    value={formData.aspectRatio}
+                    onChange={handleChange}
+                    placeholder="optional"
+                  />
+                </label>
+              </div>
+
+             
             </div>
+
             <div class="form-row">
               <div class="form-group">
                 <label>
@@ -208,7 +226,7 @@ const OrderForm = () => {
                   <input
                     type="number"
                     name="rimDiameter"
-                    placeholder="rim Diameter*"
+                    placeholder="Rim Diameter*"
                     value={formData.rimDiameter}
                     onChange={handleChange}
                     required
@@ -229,18 +247,7 @@ const OrderForm = () => {
                 </label>
               </div>
 
-              <div class="form-group">
-                <label>
-                  Aspect Ratio:
-                  <input
-                    type="number"
-                    name="aspectRatio"
-                    value={formData.aspectRatio}
-                    onChange={handleChange}
-                    placeholder="optional"
-                  />
-                </label>
-              </div>
+             
             </div>
             <div class="form-row half">
               <div class="form-group">
@@ -274,6 +281,7 @@ const OrderForm = () => {
             </button>
           </form>
         </div>
+        
         <div className="promo">
           <h3>Order Preview:</h3>
 
@@ -333,6 +341,7 @@ const OrderForm = () => {
             </div>
           )}
         </div>
+   
       </div>
       <TireSelection
         orders={orders}

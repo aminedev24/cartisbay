@@ -28,7 +28,7 @@
 
     
 @media screen and (max-width: 9999px) {
-  .layout  {
+  .layout ,.order-steps-container, .usedTiresForm-container {
       margin: 0 auto;
       width: 1590px;
   }
@@ -55,7 +55,7 @@
 
 
 @media screen and (max-width: 1760px) {
-  .layout  {
+  .layout ,.order-steps-container, .usedTiresForm-container {
       margin: 0 auto;
       width: 1438px;
       max-width: 100%;
@@ -81,7 +81,7 @@
 
       
 @media screen and (max-width: 1530px) {
-.layout,.header-top , .local-services-banner{
+.layout,.header-top , .local-services-banner, .order-steps-container, .usedTiresForm-container{
       margin: 0 auto;
       width: 1330px;
       max-width: 100%;

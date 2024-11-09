@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React,{useRef, useState} from "react";
 import "../css/usedTires.css";
 import LeftSidebar from "./sidebar";
 import OrderForm from "./usedTiresForm";
@@ -8,6 +8,12 @@ const UsedTires = () => {
   const handleScroll = () => { 
     if (targetRef.current) { targetRef.current.scrollIntoView({ behavior: 'smooth' }); 
   }};
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div>
     <div className="used-tires-page">
@@ -140,9 +146,20 @@ const UsedTires = () => {
             order form is here to simplify the process, so you can send us your
             tire requirements quickly and accurately.
           </p>
+          <button className="order-now-btn" onClick={openModal}>Start Order</button>
         </div>
       </div>
-      <OrderForm />
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={closeModal}>
+              &times;
+            </button>
+            <OrderForm /> {/* Insert OrderForm component here */}
+          </div>
+        </div>
+      )}
+ 
     </div>
     </div>
   );

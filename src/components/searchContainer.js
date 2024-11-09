@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/searchForm.css"; // Assuming you keep the CSS in a separate file
 
-
 const SearchForm = () => {
   const [formData, setFormData] = useState({
     make: "",
@@ -15,9 +14,6 @@ const SearchForm = () => {
     fuelType: "",
   });
 
-  
-
-  
   const [makesData, setMakesData] = useState([]);
   const [modelsData, setModelsData] = useState({});
 
@@ -67,17 +63,21 @@ const SearchForm = () => {
     "skoda",
     "citroën",
     "opel",
-    "saab"
+    "saab",
   ];
-  
+
   // Fetch makes from the NHTSA API
   useEffect(() => {
     const fetchMakes = async () => {
       try {
-        const response = await fetch("https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json");
+        const response = await fetch(
+          "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json",
+        );
         const data = await response.json();
         const makes = data.Results.map((make) => make.Make_Name.toLowerCase());
-        const filteredMakes = makes.filter((make) => popularMakes.includes(make)); // Only keep popular makes
+        const filteredMakes = makes.filter((make) =>
+          popularMakes.includes(make),
+        ); // Only keep popular makes
         setMakesData(filteredMakes);
       } catch (error) {
         console.error("Error fetching makes:", error);
@@ -90,7 +90,9 @@ const SearchForm = () => {
   // Function to fetch models for a selected make
   const fetchModels = async (make) => {
     try {
-      const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`);
+      const response = await fetch(
+        `https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`,
+      );
       const data = await response.json();
       const models = data.Results.map((model) => model.Model_Name);
       setModelsData((prev) => ({ ...prev, [make]: models }));
@@ -125,180 +127,121 @@ const SearchForm = () => {
   // Years range from 1980 to current year
   const yearOptions = Array.from(
     { length: new Date().getFullYear() - 1979 },
-    (_, i) => 1980 + i
+    (_, i) => 1980 + i,
   );
 
   return (
     <>
-
-{/*
-    <div className="video-container">
-      <video className="banner-video" autoPlay loop muted>
-        <source src={`${process.env.PUBLIC_URL}/vids/hero.mp4`} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    
-    </div>
-    <section className="car-dismantling">
-            <div className="dismantling-content">
-            <h2>Car Dismantling Services</h2>
-            <p>
-            Our car dismantling services provide careful disassembly for efficient shipping. Each vehicle is systematically broken down, with parts thoroughly inspected, cleaned, and packed to ensure safe, cost-effective transport to international destinations.
-            </p>
-            
-            </div>
-            <div className="dismantling-image">
-            <img src={`${process.env.PUBLIC_URL}/images/car-dismantlingBanner.jpg`} alt="Car Dismantling" />
-            </div>
-        </section>
-*/}     
       <div className="search-container">
-      <h4>Search vehicles</h4>
-      <form className="search-form" onSubmit={handleSubmit}>
-        <table>
-          <tbody>
-            {/* First Row */}
-            <tr>
-              <td className="label-cell"><label htmlFor="make">Make:</label></td>
-              <td>
-                <select
-                  id="make"
-                  name="make"
-                  value={formData.make}
-                  onChange={handleChange}
-                >
-                  <option value="">Make</option>
-                  {makesData.map((make) => (
-                    <option key={make} value={make}>
-                      {make.charAt(0).toUpperCase() + make.slice(1)}
-                    </option>
-                  ))}
-                </select>
-              </td>
+        <h4>Search vehicles</h4>
+        <form className="search-form" onSubmit={handleSubmit}>
+          {/* Top row: Make, Model, Type */}
+          <div className="form-group">
+            <label htmlFor="make">Make:</label>
+            <select
+              id="make"
+              name="make"
+              value={formData.make}
+              onChange={handleChange}
+            >
+              <option value="">Make</option>
+              {makesData.map((make) => (
+                <option key={make} value={make}>
+                  {make.charAt(0).toUpperCase() + make.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
 
-              <td className="label-cell"><label htmlFor="model">Model:</label></td>
-              <td>
-                <select
-                  id="model"
-                  name="model"
-                  value={formData.model}
-                  onChange={handleChange}
-                  disabled={!formData.make}
-                >
-                  <option value="">Model</option>
-                  {getModelsForMake().map((model) => (
-                    <option key={model} value={model.toLowerCase()}>
-                      {model}
-                    </option>
-                  ))}
-                </select>
-              </td>
+          <div className="form-group">
+            <label htmlFor="model">Model:</label>
+            <select
+              id="model"
+              name="model"
+              value={formData.model}
+              onChange={handleChange}
+              disabled={!formData.make}
+            >
+              <option value="">Model</option>
+              {getModelsForMake().map((model) => (
+                <option key={model} value={model.toLowerCase()}>
+                  {model}
+                </option>
+              ))}
+            </select>
+          </div>
 
-              <td className="label-cell"><label htmlFor="type">Type:</label></td>
-              <td>
-                <select
-                  id="type"
-                  name="type"
-                  value={formData.type}
-                  onChange={handleChange}
-                >
-                 <option value="">Type</option>
-                  <option value="sedan">Sedan</option>
-                  <option value="hatchback">Hatchback</option>
-                  <option value="suv">SUV</option>
-                  <option value="mini-van">Mini Van</option>
-                  <option value="van">Van</option>
-                  <option value="truck">Truck</option>
-                  <option value="wagon">Wagon</option>
-                  <option value="coupe">Coupe</option>
-                  <option value="mini-vehicle">Mini Vehicle</option>
-                  <option value="bus">Bus</option>
-                  <option value="mini-bus">Mini Bus</option>
-                  <option value="pickup">Pick up</option>
-                  <option value="convertible">Convertible</option>
-                  <option value="tractor">Tractor</option>
-                  <option value="forklift">Forklift</option>
-                  <option value="machinery">Machinery</option>
-                  <option value="bus-20-seats">Bus 20 Seats</option>
-                  <option value="unspecified">Unspecified</option>
-                  <option value="others">Others</option>
-                </select>
-              </td>
-              <td colSpan="2">
-                <button type="submit" className="search-btn">
-                  Search
-                </button>
-              </td>
-            </tr>
+          <div className="form-group">
+            <label htmlFor="type">Type:</label>
+            <select
+              id="type"
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+            >
+              <option value="">Type</option>
+              {/* List of options for vehicle types */}
+            </select>
+          </div>
 
-            {/* Second Row */}
-            <tr>
-              <td className="label-cell"><label htmlFor="steering">Steering:</label></td>
-              <td>
-                <select
-                  id="steering"
-                  name="steering"
-                  value={formData.steering}
-                  onChange={handleChange}
-                >
-                  <option value="">Steering</option>
-                  <option value="left">Left</option>
-                  <option value="right">Right</option>
-                </select>
-              </td>
+          {/* Second row: Price, Year From, Year To */}
+          <div className="form-group">
+            <label htmlFor="price">Price:</label>
+            <select
+              id="price"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+            >
+              <option value="">Price</option>
+              <option value="under500">Under $500</option>
+              {/* More price options */}
+            </select>
+          </div>
 
-              <td className="label-cell"><label htmlFor="price">Price:</label></td>
-              <td>
-                <select
-                  id="price"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                >
-                  <option value="">Price</option>
-                  <option value="under500">Under $500</option>
-                  <option value="under1000">Under $1,000</option>
-                  <option value="under1500">Under $1,500</option>
-                  <option value="under2000">Under $2,000</option>
-                  <option value="under2500">Under $2,500</option>
-                </select>
-              </td>
+          <div className="year-group">
+            <div className="form-group">
+              <label htmlFor="yearFrom">Year From:</label>
+              <select
+                id="yearFrom"
+                name="yearFrom"
+                value={formData.yearFrom}
+                onChange={handleChange}
+              >
+                <option value="">From</option>
+                {yearOptions.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-              <td className="label-cell"><label htmlFor="yearFrom">Year:</label></td>
-              <td>
-                <select
-                  id="yearFrom"
-                  name="yearFrom"
-                  value={formData.yearFrom}
-                  onChange={handleChange}
-                >
-                  <option value="">From</option>
-                  {yearOptions.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <select
-                  id="yearTo"
-                  name="yearTo"
-                  value={formData.yearTo}
-                  onChange={handleChange}
-                >
-                  <option value="">To</option>
-                  {yearOptions.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+            <div className="form-group">
+              <label htmlFor="yearTo">Year To:</label>
+              <select
+                id="yearTo"
+                name="yearTo"
+                value={formData.yearTo}
+                onChange={handleChange}
+              >
+                <option value="">To</option>
+                {yearOptions.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Third row: Search button */}
+          <div className="form-group">
+            <button type="submit" className="search-btn">
+              Search
+            </button>
+          </div>
+        </form>
       </div>
     </>
   );

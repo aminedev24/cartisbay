@@ -1,6 +1,6 @@
 /* General Layout */
 .tire-selection-container {
-  width: 50%;
+  width: 400px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -9,18 +9,20 @@
   flex-direction: column;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #2980b9;
+  flex: 1;
 }
 
 h3 {
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
-  color: #f9f9f9;
+  color: #fff;
 }
 
 h4 {
   font-size: 20px;
   margin-bottom: 10px;
+  color: #e0e0e0;
 }
 
 /* Pagination Controls */
@@ -78,6 +80,8 @@ h4 {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .order-info {
