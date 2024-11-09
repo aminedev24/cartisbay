@@ -11,10 +11,10 @@
 .keyword-square {
   background-color: #e0e0e0; /* Light gray background */
   color: #333; /* Dark text */
-  font-size: 0.6rem; /* Small text size */
-  padding: 5px; /* Padding inside the square */
+  font-size: 0.5rem; /* Small text size */
+  padding: 7px; /* Padding inside the square */
   border: 1px solid #ccc; /* Border around the square */
-  border-radius: 4px; /* Rounded corners */
+
 }
 
 .logo {
