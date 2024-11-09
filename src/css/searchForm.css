@@ -67,3 +67,10 @@
 .search-btn:hover {
   background-color: #555;
 }
+
+
+/* Style options when hovered */
+.search-form select option:hover {
+  background-color: #7d2020; /* Change to the desired hover color */
+  color: #fff; /* Text color when hovering */
+}

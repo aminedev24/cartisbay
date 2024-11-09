@@ -180,7 +180,25 @@ const SearchForm = () => {
               onChange={handleChange}
             >
               <option value="">Type</option>
-              {/* List of options for vehicle types */}
+              <option value="sedan">Sedan</option>
+              <option value="hatchback">Hatchback</option>
+              <option value="suv">SUV</option>
+              <option value="mini-van">Mini Van</option>
+              <option value="van">Van</option>
+              <option value="truck">Truck</option>
+              <option value="wagon">Wagon</option>
+              <option value="coupe">Coupe</option>
+              <option value="mini-vehicle">Mini Vehicle</option>
+              <option value="bus">Bus</option>
+              <option value="mini-bus">Mini Bus</option>
+              <option value="pickup">Pick up</option>
+              <option value="convertible">Convertible</option>
+              <option value="tractor">Tractor</option>
+              <option value="forklift">Forklift</option>
+              <option value="machinery">Machinery</option>
+              <option value="bus-20-seats">Bus 20 Seats</option>
+              <option value="unspecified">Unspecified</option>
+              <option value="others">Others</option>
             </select>
           </div>
 
@@ -195,7 +213,10 @@ const SearchForm = () => {
             >
               <option value="">Price</option>
               <option value="under500">Under $500</option>
-              {/* More price options */}
+              <option value="under1000">Under $1,000</option>
+              <option value="under1500">Under $1,500</option>
+              <option value="under2000">Under $2,000</option>
+              <option value="under2500">Under $2,500</option>
             </select>
           </div>
 

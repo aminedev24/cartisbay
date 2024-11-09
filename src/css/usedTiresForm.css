@@ -73,7 +73,7 @@
 
   .usedTiresForm-container .form-group input,
   .usedTiresForm-container .form-group select {
-    width: 100%;
+    width: 85%;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
