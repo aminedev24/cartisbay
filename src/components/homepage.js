@@ -40,8 +40,8 @@ function HomePage() {
       link: "/car-dismantling",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/machinery.png`,
-      title: "Machinery",
+      imgSrc: `${process.env.PUBLIC_URL}/images/auctions.png`,
+      title: "Auctions",
       link: "/machinery",
     },
     {

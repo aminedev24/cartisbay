@@ -20,6 +20,7 @@ const MediaSlider = () => {
   const mediaItems = [
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/used-tires-banner-comp.jpg` },
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/dismantling-banner-comp.jpg` },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/paypalbanner.jpeg` }
   ];
 
   const videoRefs = useRef([]);

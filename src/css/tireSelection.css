@@ -10,18 +10,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #2980b9;
   flex: 1;
+  height: fit-content;
 }
 
-h3 {
+.tire-selection-container h3 {
   text-align: center;
   font-size: 24px;
-  margin-bottom: 20px;
   color: #fff;
 }
 
-h4 {
+.tire-selection-container h4 {
   font-size: 20px;
-  margin-bottom: 10px;
   color: #e0e0e0;
 }
 
@@ -30,11 +29,10 @@ h4 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .group-dropdown {
-  padding: 8px 15px;
+  padding: 17px 15px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -59,10 +57,7 @@ h4 {
   cursor: not-allowed;
 }
 
-/* Order Section */
-.maker-section {
-  margin-bottom: 40px;
-}
+
 
 .order-items {
   display: flex;
@@ -88,6 +83,8 @@ h4 {
   display: flex;
   align-items: center;
   gap: 10px; /* Space between order-info items */
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .order-info p {

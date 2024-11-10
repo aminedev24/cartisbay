@@ -11,76 +11,33 @@ const UsedTires = () => {
     }
   };
 
+
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const [orders, setOrders] = useState({});
+  const [totalUnits, setTotalUnits] = useState(0);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const [formData, setFormData] = useState({
+    maker: "",
+    width: "",
+    aspectRatio: "",
+    rimDiameter: "",
+    loadIndex: "",
+    speedRating: "",
+    quantity: "",
+    type: "",
+  });
+
+  const updateFormData = (updatedData) => setFormData(updatedData);
+
+
   return (
     <div>
       <div className="used-tires-page">
-        {/* Hero Section 
-        <div className="why-choose-container">
-          <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
-          <div className="info-row">
-            <div className="info-card">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/premium-selection.png`}
-                alt="Premium Selection"
-              />
-              <div className="text-content">
-                <h3>Premium Selection</h3>
-                <p>
-                  High-quality, carefully selected used tires for all seasons
-                  and conditions.
-                </p>
-              </div>
-            </div>
-
-            <div className="info-card">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/nesting-tires.png`}
-                alt="Space-Optimized Shipping"
-              />
-              <div className="text-content">
-                <h3>Space-Optimized Shipping</h3>
-                <p>
-                  Efficient “tires nesting” allows up to 3,000 tires per
-                  container, saving freight costs.
-                </p>
-              </div>
-            </div>
-
-            <div className="info-card">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/manually-inspected.png`}
-                alt="Meticulous Inspection"
-              />
-              <div className="text-content">
-                <h3>Meticulous Inspection</h3>
-                <p>
-                  Manual inspection ensures quality and safety in every tire we
-                  sell.
-                </p>
-              </div>
-            </div>
-
-            <div className="info-card">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/bulking.png`}
-                alt="Wholesale Pricing & Bulk Availability"
-              />
-              <div className="text-content">
-                <h3>Wholesale Pricing</h3>
-                <p>
-                  Affordable pricing for bulk orders, perfect for dealers and
-                  fleet managers.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-*/}
         <header class="hero-section">
           <div class="hero-content">
             <h1 class="hero-title">
@@ -89,61 +46,53 @@ const UsedTires = () => {
           </div>
         </header>
 
-        <section className="main-reasons">
-  <div className="reason-card premium-selection">
-    <div className="icon-container">
-      <img
-        src={`${process.env.PUBLIC_URL}/images/premium-selection.png`}
-        alt="Premium Selection Icon"
-        className="reason-icon"
-      />
-    </div>
-    <h3>Premium Selection</h3>
-    <p>
-      Discover our curated collection of high-quality used tires, expertly chosen to deliver unbeatable value, performance, and safety.
-    </p>
-  </div>
-  <div className="reason-card space-optimized-shipping">
-    <div className="icon-container">
-      <img
-        src={`${process.env.PUBLIC_URL}/images/nesting-tires.png`}
-        alt="Space-Optimized Shipping Icon"
-        className="reason-icon"
-      />
-    </div>
-    <h3>Space-Optimized Shipping</h3>
-    <p>
-      By utilizing our 40-foot containers, we maximize your order’s volume without compromising on quality.
-    </p>
-  </div>
-  <div className="reason-card meticulous-inspection">
-    <div className="icon-container">
-      <img
-        src={`${process.env.PUBLIC_URL}/images/manually-inspected.png`}
-        alt="Inspection Icon"
-        className="reason-icon"
-      />
-    </div>
-    <h3>Meticulous Inspection</h3>
-    <p>
-      Each tire undergoes a manual inspection by our experts to meet our strict quality standards. We check for tread depth, structural integrity, and overall condition to guarantee reliability.
-    </p>
-  </div>
-  <div className="reason-card wholesale-pricing">
-    <div className="icon-container">
-      <img
-        src={`${process.env.PUBLIC_URL}/images/bulking.png`}
-        alt="Wholesale Pricing Icon"
-        className="reason-icon"
-      />
-    </div>
-    <h3>Wholesale Pricing & Bulk Availability</h3>
-    <p>
-      Take advantage of our competitive wholesale prices tailored for bulk purchases. Whether you’re a dealership, repair shop, or fleet manager, our bulk pricing makes it easy to stock up on high-quality tires while keeping costs low.
-    </p>
-  </div>
-</section>
-
+        <section class="reasons">
+          <div class="reason">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/premium-selection.png`}
+              alt="Premium Selection"
+            />
+            <h2>Premium Selection</h2>
+            <p>
+              Discover our curated collection of high-quality used tires,
+              expertly chosen to deliver unbeatable value, performance, and
+              safety.
+            </p>
+          </div>
+          <div class="reason">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/nesting-tires.png`}
+              alt="Space-Optimized Shipping"
+            />
+            <h2>Space-Optimized Shipping</h2>
+            <p>
+              By utilizing our 40-foot containers, we maximize your order’s
+              volume without compromising on quality.
+            </p>
+          </div>
+          <div class="reason">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/bulking.png`}
+              alt="Wholesale Pricing & Bulk Availability"
+            />
+            <h2>Wholesale Pricing & Bulk Availability</h2>
+            <p>
+              Take advantage of our competitive wholesale prices tailored for
+              bulk purchases.
+            </p>
+          </div>
+          <div class="reason">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/manually-inspected.png`}
+              alt="Meticulous Inspection"
+            />
+            <h2>Meticulous Inspection</h2>
+            <p>
+              Each tire undergoes a manual inspection to meet our strict quality
+              standards.
+            </p>
+          </div>
+        </section>
 
         <div className="order-steps-container">
           <h1>4 Simple Steps to Your Wholesale Tire Order</h1>
@@ -214,7 +163,8 @@ const UsedTires = () => {
               your tire requirements quickly and accurately.
             </p>
             <button className="order-now-btn" onClick={openModal}>
-              Start Order
+              {Object.keys(orders).length > 0 ? 'Resume Order': 'Start Order'}
+             
             </button>
           </div>
         </div>
@@ -224,7 +174,14 @@ const UsedTires = () => {
               <button className="close-btn" onClick={closeModal}>
                 &times;
               </button>
-              <OrderForm /> {/* Insert OrderForm component here */}
+              <OrderForm 
+                formData={formData}
+                setFormData={updateFormData}
+                orders={orders}
+                setOrders={setOrders}
+                totalUnits={totalUnits}
+                setTotalUnits={setTotalUnits}
+              />
             </div>
           </div>
         )}

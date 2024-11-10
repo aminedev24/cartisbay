@@ -37,6 +37,7 @@ const TopBar = () => {
       <div className="extra-info">
         <span className="time">Japan Standard Time: {japanTime}</span>
         <span className="exchange-rate">USD/JPY: $1 = ¥{usdToYenRate}</span>
+        {/*
         <select value={country} onChange={(e) => setCountry(e.target.value)}>
           <option value="Japan">Japan</option>
           <option value="USA">USA</option>
@@ -52,6 +53,7 @@ const TopBar = () => {
           <option value="Japanese">Japanese</option>
           <option value="French">French</option>
         </select>
+        */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import CountryFlag from "react-country-flag";
 import "../css/RightSidebar.css";
 import { countries } from './countries';
@@ -15,6 +15,33 @@ const RightSidebar = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [fade, setFade] = useState(true); // Track fading state
+
+
+  const images = [
+    `${process.env.PUBLIC_URL}/images/local-services-comp.jpg`,
+    `${process.env.PUBLIC_URL}/images/fromeurope.jpeg`
+  ];
+  const [currentImage, setCurrentImage] = useState(images[0]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setFade(false); // Start fading out the current image
+
+      setTimeout(() => {
+        // Update image after fade-out completes
+        setCurrentImage((prevImage) => {
+          const nextImageIndex = (images.indexOf(prevImage) + 1) % images.length;
+          return images[nextImageIndex];
+        });
+        setFade(true); // Start fading in the new image
+      }, 500); // This delay should match the fade-out time in CSS
+    }, 60000); // 60000 milliseconds = 1 minute
+
+    return () => clearInterval(intervalId);
+  }, [images]);
+
+
 
   const handleCountryChange = (event) => {
     const country = countries.find((c) => c.name === event.target.value);
@@ -153,7 +180,12 @@ const RightSidebar = () => {
       </div>
       
       <div className="video-section">
-        <img src={`${process.env.PUBLIC_URL}/images/local-services-comp.jpg`} alt="Local Services" />
+        <img
+        src={currentImage}
+        alt="cars from"
+        className={`fade-image ${fade ? 'fade-in' : 'fade-out'}`}
+      />
+
       </div>
 
       <div className="local-services">

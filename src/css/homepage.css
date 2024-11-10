@@ -312,3 +312,27 @@ option {
 .info-card:hover .info-card-title {
     color: #f1892b; /* Highlighted title color when info-card is hovered */
 }
+
+.slick-dots {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    bottom: 4px !important;
+}
+
+.slick-dots li button:before {
+    font-size: 10px !important;
+}
+
+ .slick-prev {
+    left: 0 !important;
+ }
+
+ .slick-next {
+    right: 0 !important;
+ }
+.slick-prev, .slick-next {
+    z-index: 5;
+   
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCar, faStar, faHandshake, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faStar, faHandshake, faMapMarkerAlt,faPercentage } from '@fortawesome/free-solid-svg-icons';
 import ReactCountryFlag from "react-country-flag";
 import CarCard from './carCard';
 import '../css/stockList.css';
@@ -38,11 +38,11 @@ const Stocklist = ({ cars }) => {
             <FontAwesomeIcon icon={faStar} /> Premium Class
           </button>
           <button className="from-partners-btn">
-            <FontAwesomeIcon icon={faHandshake} /> From Our Partners
+            <FontAwesomeIcon icon={faPercentage} /> Discounted Stock
           </button>
         </div>
 
-        <h4>View Vehicles in the Following Countries:</h4>
+        <h4>From our partners:</h4>
         <div className="countries-row">
         {localServicesCountries.map((country, index) => (
         <button key={index} className="country-btn">

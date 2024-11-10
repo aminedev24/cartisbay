@@ -118,7 +118,7 @@
   }
   
   button[type="submit"] {
-    background-color: #003366;
+    background-color: #1da1f2;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -154,7 +154,7 @@
   
 
   .message {
-    color: #d9534f; /* Bootstrap danger color for messages */
+    color: #fff; /* Bootstrap danger color for messages */
   }
   
   .popup-btn {
@@ -227,4 +227,24 @@
   
   .order-detail span {
     margin-left: 5px;
+  }
+
+
+  .contact-message, .mandatory-note {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+  }
+  .mandatory-note {
+    display: inline-block;
+    margin-left: 10%;
+  }
+  .textArea {
+    width:62% !important;
+    margin-top: 10px;
+  }
+
+  .textArea textarea {
+    padding: 5px;
   }
