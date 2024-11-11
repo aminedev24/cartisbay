@@ -32,7 +32,7 @@ function HomePage() {
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy.png`,
       title: "How to Buy",
-      link: "/how-to-buy",
+      link: "/howtobuy",
     },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/car-dismantling.jpg`,
@@ -42,7 +42,7 @@ function HomePage() {
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/auctions.png`,
       title: "Auctions",
-      link: "/machinery",
+      link: "/auctions",
     },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/howtopayen.jpg`,

@@ -43,6 +43,11 @@ const UsedTires = () => {
             <h1 class="hero-title">
               Why Choose Artisbay Inc. for Your Used Tires
             </h1>
+            <button className={`order-now-btn ${Object.keys(orders).length > 0 ? 'resume-animation' : ''}`}
+               onClick={openModal}>
+              {Object.keys(orders).length > 0 ? 'Resume Order': 'Start Order'}
+             
+            </button>
           </div>
         </header>
 
@@ -162,10 +167,13 @@ const UsedTires = () => {
               Our order form is here to simplify the process, so you can send us
               your tire requirements quickly and accurately.
             </p>
-            <button className="order-now-btn" onClick={openModal}>
-              {Object.keys(orders).length > 0 ? 'Resume Order': 'Start Order'}
-             
+            <button
+              className={`order-now-btn ${Object.keys(orders).length > 0 ? 'resume-animation' : ''}`}
+              onClick={openModal}
+            >
+              {Object.keys(orders).length > 0 ? 'Resume Order' : 'Start Order'}
             </button>
+
           </div>
         </div>
         {isModalOpen && (

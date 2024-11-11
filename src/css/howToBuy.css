@@ -1,35 +1,92 @@
-.how-to-buy {
+/* Center the entire wrapper and allow it to fill the page */
+.howToBuy-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Align items at the top of the page */
     padding: 20px;
-    max-width: 430px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.how-to-buy h2 {
+    height: auto; /* Allow content to expand */
+  }
+  
+  /* Main container adjustments */
+  .howToBuy-container {
+    width: 100%;
+    max-width: 1000px;  /* Increase the width to take up more space */
     text-align: center;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+  
+  .howToBuy-image {
+    max-width: 700px;
+  }
+  .howToBuy-image img {
+    width: 100%; /* Adjust the width as needed */
+    height: auto;
+    margin-bottom: 20px; /* Space between image and heading */
+  }
+
+  .howToBuy-container h2 {
+    font-size: 2.5em; /* Larger font for the heading */
     margin-bottom: 20px;
-}
-
-.how-to-buy ol {
-    list-style-type: decimal;
-    padding-left: 20px;
-}
-
-.how-to-buy h3 {
-    color: #ff9900; /* Change to your preferred color */
-}
-
-.how-to-buy p {
+  }
+  
+  .intro-text {
+    margin-bottom: 40px;
+    font-size: 1.3em; /* Increase font size for better readability */
     color: #555;
-    line-height: 1.6;
+    max-width: 700px;
+  }
+  
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Increase the gap between steps */
+    align-items: center;
+    width: 100%;
+  }
+  
+  .step {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+  }
+  
+  .step-text {
+    flex: 1;
+    max-width: 450px;  /* Allow text to take more width */
+    text-align: left;
+    padding-right: 20px;  /* Add some space between text and image */
+  }
+  
+  .step-text h3 {
+    font-size: 1.8em; /* Increase the size of subheadings */
     margin-bottom: 15px;
-}
-
-@media (max-width: 768px) { 
-    .how-to-buy {
-        max-width: 300px;
-    }
-}
+  }
+  
+  .step-text ul {
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 35px;
+  }
+  
+  .step-text li {
+    margin-bottom: 12px;  /* Increase space between list items */
+  }
+  
+  .step-image {
+    flex: 0 0 200px;  /* Increase image size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .step-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 8px;
+  }
+  
+ 

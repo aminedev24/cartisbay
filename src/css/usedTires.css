@@ -4,121 +4,6 @@
   
 }
 
-.icon-container img {
-  width: 130px;
-}
-
-/* Main Reasons Section */
-.main-reasons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  padding: 50px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Reason Cards */
-.reason-card {
-  background: #fff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%; /* Ensures the card is consistent in height */
-  box-sizing: border-box;
-}
-
-.reason-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.reason-card h3 {
-  font-size: 1.8rem;
-  color: #fff;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.reason-card p {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 20px;
-  line-height: 1.5;
-  text-align: center;
-  max-height: 150px;  /* Limiting text height */
-  overflow: hidden;   /* Ensures all cards have similar length of text */
-}
-
-.icon-container {
-  width: 60px;
-  height: 60px;
-  background-color: #f5f5f5;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-
-
-
-
-/* Specific card color variations */
-.premium-selection {
-  background-color: #ff9f00; /* Orange */
-  border-left: 4px solid #17a2b8; /* Teal accent */
-}
-
-.space-optimized-shipping {
-  background-color: #1e3a8a; /* Green */
-  border-left: 4px solid #ff9f00; /* Red accent */
-}
-
-.meticulous-inspection {
-  background-color: #2196f3; /* Blue */
-  border-left: 4px solid #1e3a8a; /* Yellow accent */
-}
-
-.wholesale-pricing {
-  background-color: #e91e63; /* Pink */
-  border-left: 4px solid #007bff; /* Blue accent */
-}
-
-/* Media Query for Larger Screens (Above 1024px) */
-@media (min-width: 1024px) {
-  /* Main Reasons Section - Layout */
-  .main-reasons {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
-    gap: 40px;
-  }
-
-  /* Reason Cards - Adjust padding and font size */
-  .reason-card {
-    padding: 30px; /* Slightly less padding */
-    width: 90%; /* Makes the card width responsive, ensuring it adjusts on large screens */
-  }
-
-  .reason-card h3 {
-    font-size: 2rem; /* Larger headings */
-  }
-
-  .reason-card p {
-    font-size: 1.1rem; /* Slightly larger text for readability */
-    max-height: 180px; /* Adjusted height for larger text */
-  }
-
-
- 
-}
 
 /* Hero Section */
 .hero-section {
@@ -126,7 +11,7 @@
   color: #fff;
   padding: 80px 20px;
   text-align: center;
-  min-height: 150px; /* Minimum height for small screens */
+  min-height: 250px; /* Minimum height for small screens */
   position: relative;
   max-height: 55vh; /* Constrain maximum height for consistency */
 }
@@ -137,6 +22,13 @@
   margin-bottom: 20px;
 }   
 
+.hero-content{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 .order-now-btn {
   background-color: #e67e22; 
   color: white; /* White text */
@@ -144,8 +36,9 @@
   padding: 12px 24px; /* Padding for top/bottom and left/right */
   border: none; /* No border */
   cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  transition: transform 0.3s ease;
   z-index: 5;
+  position: relative;
 }
 
 .order-now-btn a {
@@ -161,83 +54,106 @@
   outline: none; /* Remove focus outline */
 }
 
-
-
-
-.used-tires-page .info-card img {
-  width: 60px;
-  height: 60px;
-  margin-right: 10px;
-  object-fit: cover;
-  align-self: flex-start;
+/* Apply pulsing animation directly on the button */
+.resume-animation {
+  animation: pulse 2s infinite ease-in-out;
 }
 
-.text-content h3 {
-  margin: 0 0 5px;
-  color: #1e3a8a;
-  font-size: 1rem;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Slight pulsing effect */
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-.text-content p {
-  margin: 0;
-  font-size: 0.85rem;
-  line-height: 1.2;
-  color: #333;
-}
-  
+
+/* Overall container for the order steps */
 .order-steps-container {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-.order-steps-container h2 {
-    font-size: 26px;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-/* Styling for each step card */
-.step-card {
-    padding: 20px;
-    margin: 15px auto;
-    border-left: 5px solid #1da1f2;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    transition: transform 0.3s ease;
-    
-}
-
+/* Heading styling */
 .order-steps-container h1 {
-  background-color: #1e377f;
-  margin: 0 auto;
-  color: #fff;
-  padding: 15px;
+  font-size: 2.5em;
+  color: #1e377f;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-transform: uppercase; /* More emphasis */
 }
 
-.used-tires-page .step-card h3 {
-    font-size: 20px;
-    color: #1da1f2;
-    margin-bottom: 10px;
+/* Styling for individual step cards */
+.step-card {
+  background-color: #fff;
+  padding: 30px;
+  margin: 20px;
+  border-left: 5px solid #1da1f2;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  flex: 1; /* Ensures equal width for each card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px; /* Rounded corners */
+}
+
+.step-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.step-card h3 {
+  font-size: 1.8em;
+  color: #1da1f2;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .step-card p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
+  font-size: 1.2em;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
+/* List style inside each step */
 .step-card ul {
-    margin-top: 10px;
-    padding-left: 30px;
-    list-style: disc;
-    color: #555;
+  padding-left: 30px;
+  list-style-type: disc;
+  color: #555;
 }
 
 .step-card li {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 8px;
+  font-size: 1.2em;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+/* Styling for the container holding all steps */
+.order-steps-container .steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  margin-bottom: 40px;
+}
+
+/* Call to action section */
+.order-call-to-action {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-call-to-action p {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* Call-to-action styling */
@@ -247,6 +163,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 20px auto;
+    max-width: 1000px;
 }
 
 
@@ -292,6 +209,8 @@
 @media screen and (max-width:1400px ){
   .step-card {
     width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
   
 }
@@ -300,7 +219,6 @@
 .reasons {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
   padding: 40px;
   max-width: 1665px;
   margin: 0 AUTO;
@@ -310,7 +228,6 @@
   position: relative;
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid #f1892b;
-  border-radius: 10px;
   padding: 20px;
   margin: 20px;
   width: 300px;

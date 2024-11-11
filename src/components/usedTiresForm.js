@@ -23,81 +23,140 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   }, [formData]);
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  if (!formData.maker || !formData.type || !formData.width || !formData.rimDiameter || !formData.quantity) {
-    setMessage("Please fill in all required fields.");
-    return;
-  }
-
-  const newOrder = {
-    maker: formData.maker,
-    width: formData.width,
-    aspectRatio: formData.aspectRatio,
-    rimDiameter: formData.rimDiameter,
-    loadIndex: formData.loadIndex,
-    speedRating: formData.speedRating,
-    quantity: parseInt(formData.quantity, 10),
-    type: formData.type,
-  };
-
-  const maker = formData.maker;
-  const updatedOrders = { ...orders };
-
-  // Check if the order with the same maker, width, rimDiameter, and type already exists
-  const existingOrderIndex = updatedOrders[maker]?.findIndex(
-    (order) =>
-      order.width === newOrder.width &&
-      order.rimDiameter === newOrder.rimDiameter &&
-      order.type === newOrder.type
-  );
-
-  if (editingOrder !== null) {
-    const previousOrder = updatedOrders[maker][editingOrder];
-    const previousQuantity = previousOrder.quantity;
-
-    // If order exists, update the quantity; otherwise, update the order
-    if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
-      updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-      updatedOrders[maker].splice(editingOrder, 1); // Remove the old order
-      setTotalUnits((prev) => prev - previousQuantity + updatedOrders[maker][existingOrderIndex].quantity);
-      setMessage(`Order quantity updated!`);
-    } else {
-      updatedOrders[maker][editingOrder] = newOrder;
-      setTotalUnits((prev) => prev - previousQuantity + newOrder.quantity);
-      setMessage(`Your order has been updated!`);
+    e.preventDefault();
+  
+    if (!formData.maker || !formData.type || !formData.width || !formData.rimDiameter || !formData.quantity) {
+      setMessage("Please fill in all required fields.");
+      return;
     }
-  } else {
-    if (existingOrderIndex !== -1) {
-      // If order exists, add the quantity to the existing one
-      updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-      setTotalUnits((prev) => prev + newOrder.quantity);
-      setMessage(`Quantity updated for existing order!`);
-    } else {
-      // If order does not exist, add it as a new one
-      if (!updatedOrders[maker]) {
-        updatedOrders[maker] = [];
+  
+    const newOrder = {
+      maker: formData.maker,
+      width: formData.width,
+      aspectRatio: formData.aspectRatio,
+      rimDiameter: formData.rimDiameter,
+      loadIndex: formData.loadIndex,
+      speedRating: formData.speedRating,
+      quantity: parseInt(formData.quantity, 10),
+      type: formData.type,
+    };
+  
+    const maker = formData.maker;
+    const updatedOrders = { ...orders };
+  
+    if (!updatedOrders[maker]) {
+      updatedOrders[maker] = [];
+    }
+  
+    console.log("---- Order Submission ----");
+    console.log("Initial Total Units:", totalUnits);
+  
+    if (editingOrder !== null) {
+      const previousOrder = orders[maker][editingOrder];
+      console.log("Editing Existing Order:", previousOrder);
+  
+      // Subtract the old order's quantity from the total before updating
+      setTotalUnits((prev) => {
+        const updatedTotal = prev - previousOrder.quantity;
+        console.log("Subtracted Previous Order Quantity:", previousOrder.quantity);
+        console.log("Total After Subtraction:", updatedTotal);
+        return updatedTotal;
+      });
+  
+      const existingOrderIndex = updatedOrders[maker].findIndex(
+        (order) =>
+          order.width === newOrder.width &&
+          order.aspectRatio === newOrder.aspectRatio &&
+          order.rimDiameter === newOrder.rimDiameter &&
+          order.type === newOrder.type
+      );
+  
+      if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
+        const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
+        console.log("Found Matching Order to Accumulate:", accumulatedOrder);
+  
+        accumulatedOrder.quantity += newOrder.quantity;
+        console.log("New Accumulated Quantity:", accumulatedOrder.quantity);
+  
+        setTotalUnits((prev) => {
+          const updatedTotal = prev + newOrder.quantity;
+          console.log("Total After Adding Accumulated Quantity:", updatedTotal);
+          return updatedTotal;
+        });
+  
+        updatedOrders[maker].splice(editingOrder, 1);
+  
+        setMessage(`Your order has been updated and quantities have been accumulated!`);
+      } else {
+        updatedOrders[maker][editingOrder] = newOrder;
+  
+        setTotalUnits((prev) => {
+          const updatedTotal = prev + newOrder.quantity;
+          console.log("Total After Updating with New Quantity:", updatedTotal);
+          return updatedTotal;
+        });
+  
+        setMessage(`Your order has been updated!`);
       }
-      updatedOrders[maker].push(newOrder);
-      setTotalUnits((prev) => prev + newOrder.quantity);
-      setMessage(`Great, your order has been saved!`);
+    } else {
+      const existingOrderIndex = updatedOrders[maker].findIndex(
+        (order) =>
+          order.width === newOrder.width &&
+          order.aspectRatio === newOrder.aspectRatio &&
+          order.rimDiameter === newOrder.rimDiameter &&
+          order.type === newOrder.type
+      );
+  
+      if (existingOrderIndex !== -1) {
+        updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
+        console.log("Found Existing Order. Updated Quantity:", updatedOrders[maker][existingOrderIndex].quantity);
+  
+        setTotalUnits((prev) => {
+          const updatedTotal = prev + newOrder.quantity;
+          console.log("Total After Adding Existing Order Quantity:", updatedTotal);
+          return updatedTotal;
+        });
+  
+        setMessage(`Your order has been updated and quantities have been accumulated!`);
+      } else {
+        updatedOrders[maker].push(newOrder);
+  
+        setTotalUnits((prev) => {
+          const updatedTotal = prev + newOrder.quantity;
+          console.log("Added New Order. Total After Addition:", updatedTotal);
+          return updatedTotal;
+        });
+  
+        setMessage(`Your new order has been added!`);
+      }
     }
-  }
+  
+    console.log("Final Total Units After Submission:", totalUnits);
+    console.log("---------------------------");
+  
+    setOrders(updatedOrders);
+    setFormData({
+      maker: "",
+      width: "",
+      aspectRatio: "",
+      rimDiameter: "",
+      loadIndex: "",
+      speedRating: "",
+      quantity: "",
+      type: "",
+    });
+    setEditingOrder(null);
+    setShowForm(false);
+  };
+  
+  
+  
+  
+  
+  
+  
 
-  setOrders(updatedOrders);
-  setFormData({
-    maker: "",
-    width: "",
-    aspectRatio: "",
-    rimDiameter: "",
-    loadIndex: "",
-    speedRating: "",
-    quantity: "",
-    type: "",
-  });
-  setEditingOrder(null);
-  setShowForm(false);
-};
-
+  const [originalQuantity, setOriginalQuantity] = useState(null);
 
   const handleEditOrder = (maker, index) => {
     const orderToEdit = orders[maker][index];

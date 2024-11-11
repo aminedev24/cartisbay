@@ -99,14 +99,14 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
             disabled={pagination.currentGroupPage === 1}
             className="prev-next-button"
           >
-            Prev Group
+            Prev Make
           </button>
           <button
             onClick={() => handleGroupPageChange(1)}
             disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
             className="prev-next-button"
           >
-            Next Group
+            Next Make
           </button>
         </div>
 
