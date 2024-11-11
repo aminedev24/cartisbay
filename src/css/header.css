@@ -118,6 +118,7 @@
 .left-links, .right-links {
   display: flex;
   gap: 20px;
+  align-items: end;
 }
 
 /* Align the left-links and right-links under the search bar */

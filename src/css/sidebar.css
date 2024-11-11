@@ -2,7 +2,7 @@
   padding: 20px; /* Add some padding for spacing */
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow for more depth */
   border-right: 1px solid #ddd; /* Separate with a border */
-  height: 98%; /* Full height of the viewport */
+  height: 100%; /* Full height of the viewport */
   width: 235px; /* Fixed width for better usability */
   position: absolute; /* Keep it fixed */
   left: 0; /* Align it to the left */
@@ -10,7 +10,6 @@
   z-index: 100; /* Ensure it stays above other elements */
   transition: width 0.3s ease; /* Smooth transition for width changes */
   top: 0;
-  max-height: 94%;
 }
 
 .left-sidebar h2 {
