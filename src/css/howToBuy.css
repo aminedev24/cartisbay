@@ -10,7 +10,6 @@
   /* Main container adjustments */
   .howToBuy-container {
     width: 100%;
-    max-width: 1000px;  /* Increase the width to take up more space */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -18,9 +17,7 @@
     padding: 30px 20px;
   }
   
-  .howToBuy-image {
-    max-width: 700px;
-  }
+
   .howToBuy-image img {
     width: 100%; /* Adjust the width as needed */
     height: auto;
