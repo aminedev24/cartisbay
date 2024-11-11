@@ -41,7 +41,7 @@ const UsedTires = () => {
         <header class="hero-section">
           <div class="hero-content">
             <h1 class="hero-title">
-              Why Choose Artisbay Inc. for Your Used Tires
+              Used Tires
             </h1>
             <button className={`order-now-btn ${Object.keys(orders).length > 0 ? 'resume-animation' : ''}`}
                onClick={openModal}>
@@ -50,7 +50,10 @@ const UsedTires = () => {
             </button>
           </div>
         </header>
-
+        <div className='reasons-wrapper'>
+        <h1 >
+          Why Choose Artisbay Inc. for Your Used Tires
+        </h1>
         <section class="reasons">
           <div class="reason">
             <img
@@ -98,7 +101,7 @@ const UsedTires = () => {
             </p>
           </div>
         </section>
-
+        </div>
         <div className="order-steps-container">
           <h1>4 Simple Steps to Your Wholesale Tire Order</h1>
           <div className="step-card">
@@ -176,6 +179,7 @@ const UsedTires = () => {
 
           </div>
         </div>
+        
         {isModalOpen && (
           <div className="modal-overlay" onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>

@@ -79,12 +79,13 @@
 }
 
 /* Heading styling */
-.order-steps-container h1 {
+.order-steps-container h1 , .reasons-wrapper h1 {
   font-size: 2.5em;
   color: #1e377f;
   margin-bottom: 40px;
   font-weight: bold;
   text-transform: uppercase; /* More emphasis */
+  text-align: center;
 }
 
 /* Styling for individual step cards */
