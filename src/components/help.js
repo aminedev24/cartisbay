@@ -43,7 +43,6 @@ const HelpPage = () => {
           {topics.help.map((topic, index) => (
             <button key={index} onClick={() => setSelectedTopic(topic)}>{topic.name}</button>
           ))}
-          <h2>How to Buy</h2>
           {topics.buying.map((topic, index) => (
             <button key={index} onClick={() => setSelectedTopic(topic)}>{topic.name}</button>
           ))}
