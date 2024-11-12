@@ -6,63 +6,76 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   const [showForm, setShowForm] = useState(true);
   const [message, setMessage] = useState("");
   const [editingOrder, setEditingOrder] = useState(null);
-  const [isFormValid, setIsFormValid] = useState(false); // To track form validity
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [percentageFill, setPercentageFill] = useState(0); // New state for percentage fill
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    // Update width, aspect ratio, and rim diameter when tire size is selected
+    if (name === 'tireSize') {
+      const [width, aspectRatio, rimDiameter] = value.split(/\/|R/);
+      setFormData((prevData) => ({
+        ...prevData,
+        width,
+        aspectRatio,
+        rimDiameter,
+      }));
+    }
   };
 
   useEffect(() => {
-    // Check if required fields are filled out to validate the form
     const requiredFieldsFilled =
-      formData.maker && formData.type && formData.width && formData.rimDiameter && formData.quantity;
+      formData.maker && formData.type && formData.quantity && formData.tireSize;
     setIsFormValid(requiredFieldsFilled);
   }, [formData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    if (!formData.maker || !formData.type || !formData.width || !formData.rimDiameter || !formData.quantity) {
+
+    if (!formData.maker || !formData.type || !formData.tireSize || !formData.quantity) {
       setMessage("Please fill in all required fields.");
       return;
     }
-  
+
+    const [width, aspectRatio, rimDiameter] = formData.tireSize.split(/\/|R/);
+    
     const newOrder = {
       maker: formData.maker,
-      width: formData.width,
-      aspectRatio: formData.aspectRatio,
-      rimDiameter: formData.rimDiameter,
+      width,
+      aspectRatio,
+      rimDiameter,
       loadIndex: formData.loadIndex,
       speedRating: formData.speedRating,
       quantity: parseInt(formData.quantity, 10),
       type: formData.type,
     };
-  
+
     const maker = formData.maker;
     const updatedOrders = { ...orders };
-  
+
     if (!updatedOrders[maker]) {
       updatedOrders[maker] = [];
     }
-  
+
     console.log("---- Order Submission ----");
     console.log("Initial Total Units:", totalUnits);
-  
+
+    let newTotalUnits = totalUnits; // Use a local variable to track the total units
+
     if (editingOrder !== null) {
       const previousOrder = orders[maker][editingOrder];
       console.log("Editing Existing Order:", previousOrder);
-  
+
       // Subtract the old order's quantity from the total before updating
-      setTotalUnits((prev) => {
-        const updatedTotal = prev - previousOrder.quantity;
-        console.log("Subtracted Previous Order Quantity:", previousOrder.quantity);
-        console.log("Total After Subtraction:", updatedTotal);
-        return updatedTotal;
-      });
-  
+      newTotalUnits -= previousOrder.quantity;
+      console.log("Subtracted Previous Order Quantity:", previousOrder.quantity);
+      console.log("Total After Subtraction:", newTotalUnits);
+
       const existingOrderIndex = updatedOrders[maker].findIndex(
         (order) =>
           order.width === newOrder.width &&
@@ -70,32 +83,25 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
           order.rimDiameter === newOrder.rimDiameter &&
           order.type === newOrder.type
       );
-  
+
       if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
         const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
         console.log("Found Matching Order to Accumulate:", accumulatedOrder);
-  
+
         accumulatedOrder.quantity += newOrder.quantity;
         console.log("New Accumulated Quantity:", accumulatedOrder.quantity);
-  
-        setTotalUnits((prev) => {
-          const updatedTotal = prev + newOrder.quantity;
-          console.log("Total After Adding Accumulated Quantity:", updatedTotal);
-          return updatedTotal;
-        });
-  
+
+        newTotalUnits += newOrder.quantity; // Update the total units
+        console.log("Total After Adding Accumulated Quantity:", newTotalUnits);
+
         updatedOrders[maker].splice(editingOrder, 1);
-  
+
         setMessage(`Your order has been updated and quantities have been accumulated!`);
       } else {
         updatedOrders[maker][editingOrder] = newOrder;
-  
-        setTotalUnits((prev) => {
-          const updatedTotal = prev + newOrder.quantity;
-          console.log("Total After Updating with New Quantity:", updatedTotal);
-          return updatedTotal;
-        });
-  
+
+        newTotalUnits += newOrder.quantity; // Update the total units
+        console.log("Total After Updating with New Quantity:", newTotalUnits);
         setMessage(`Your order has been updated!`);
       }
     } else {
@@ -106,69 +112,70 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
           order.rimDiameter === newOrder.rimDiameter &&
           order.type === newOrder.type
       );
-  
+
       if (existingOrderIndex !== -1) {
         updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
         console.log("Found Existing Order. Updated Quantity:", updatedOrders[maker][existingOrderIndex].quantity);
-  
-        setTotalUnits((prev) => {
-          const updatedTotal = prev + newOrder.quantity;
-          console.log("Total After Adding Existing Order Quantity:", updatedTotal);
-          return updatedTotal;
-        });
-  
+
+        newTotalUnits += newOrder.quantity; // Update the total units
+        console.log("Total After Adding Existing Order Quantity:", newTotalUnits);
         setMessage(`Your order has been updated and quantities have been accumulated!`);
       } else {
         updatedOrders[maker].push(newOrder);
-  
-        setTotalUnits((prev) => {
-          const updatedTotal = prev + newOrder.quantity;
-          console.log("Added New Order. Total After Addition:", updatedTotal);
-          return updatedTotal;
-        });
-  
+        newTotalUnits += newOrder.quantity; // Update the total units
+        console.log("Added New Order. Total After Addition:", newTotalUnits);
         setMessage(`Your new order has been added!`);
       }
     }
-  
-    console.log("Final Total Units After Submission:", totalUnits);
+
+    // Now, set the total units and calculate the percentage fill
+    setTotalUnits(newTotalUnits);
+    const newPercentageFill = (newTotalUnits / 3000) * 100;
+    setPercentageFill(newPercentageFill);
+
+    console.log("Final Total Units After Submission:", newTotalUnits);
     console.log("---------------------------");
-  
+
     setOrders(updatedOrders);
     setFormData({
       maker: "",
-      width: "",
-      aspectRatio: "",
-      rimDiameter: "",
+      quantity: "",
       loadIndex: "",
       speedRating: "",
-      quantity: "",
-      type: "",
+      type : "",
+      tireSize: "", // Reset tire size
     });
     setEditingOrder(null);
     setShowForm(false);
   };
-  
-  
-  
-  
-  
-  
-  
 
-  const [originalQuantity, setOriginalQuantity] = useState(null);
+  const tireSizes = [
+    { diameter: 13, sizes: ["155/80R13", "165/80R13", "175/70R13", "185/70R13", "185/65R13", "195/65R13", "175/65R13", "155/70R13", "145/80R13", "165/70R13"] },
+    { diameter: 14, sizes: ["165/70R14", "175/70R14", "185/70R14", "185/65R14", "195/65R14", "195/70R14", "205/65R14", "205/60R14", "215/60R14", "225/60R14", "185/60R14", "195/60R14"] },
+    { diameter: 15, sizes: ["185/65R15", "195/65R15", "205/65R15", "205/60R15", "215/65R15", "225/65R15", "195/60R15", "205/55R15", "215/60R15", "225/60R15", "235/60R15", "245/60R15"] },
+    { diameter: 16, sizes: ["205/55R16", "215/55R16", "225/55R16", "205/60R16", "215/60R16", "225/60R16", "235/60R16", "245/60R16", "215/65R16", "225/65R16", "235/65R16"] },
+    { diameter: 17, sizes: ["215/45R17", "225/45R17", "235/45R17", "245/45R17", "255/45R17", "215/50R17", "225/50R17", "235/50R17", "215/55R17", "225/55R17", "235/55R17", "225/60R17"] },
+    { diameter: 18, sizes: ["225/40R18", "235/40R18", "245/40R18", "255/40R18", "265/40R18", "225/45R18", "235/45R18", "245/45R18", "255/45R18", "275/40R18 ", "285/40R18", "245/50R18"] },
+    { diameter: 19, sizes: ["225/35R19", "235/35R19", "245/35R19", "255/35R19", "265/35R19", "275/35R19", "285/35R19", "225/40R19", "235/40R19", "245/40R19", "255/40R19", "275/40R19"] },
+    { diameter: 20, sizes: ["245/35R20", "255/35R20", "265/35R20", "275/35R20", "285/35R20", "295/35R20", "305/35R20", "245/40R20", "255/40R20", "265/40R20", "275/40R20", "285/40R20"] },
+    { diameter: 21, sizes: ["255/30R21", "265/30R21", "275/30R21", "285/30R21", "295/30R21", "305/30R21", "255/35R21", "265/35R21", "275/35R21", "285/35R21", "295/35R21", "315/30R21"] },
+    { diameter: 22, sizes: ["265/30R22", "275/30R22", "285/30R22", "295/30R22", "305/30R22", "315/30R22", "325/30R22", "335/30R22", "295/35R22", "305/35R22"] },
+    { diameter: 23, sizes: ["285/35R23", "305/30R23", "325/30R23"] },
+    { diameter: 24, sizes: ["295/30R24", "305/30R24", "325/30R24", "335/30R24"] },
+    { diameter: 26, sizes: ["295/30R26", "305/30R26", "315/30R26", "325/30R26"] },
+    { diameter: 28, sizes: ["295/25R28", "315/30R28", "325/35R28"] },
+    { diameter: 30, sizes: ["315/30R30", "325/30R30", "335/30R30"] }
+  ];
 
   const handleEditOrder = (maker, index) => {
     const orderToEdit = orders[maker][index];
     setFormData({
       maker: maker,
-      width: orderToEdit.width,
-      aspectRatio: orderToEdit.aspectRatio,
-      rimDiameter: orderToEdit.rimDiameter,
+      quantity: orderToEdit.quantity,
       loadIndex: orderToEdit.loadIndex,
       speedRating: orderToEdit.speedRating,
-      quantity: orderToEdit.quantity,
       type: orderToEdit.type,
+      tireSize: `${orderToEdit.width}/${orderToEdit.aspectRatio}R${orderToEdit.rimDiameter}`, // Set tire size for editing
     });
     setEditingOrder(index);
     setShowForm(true);
@@ -189,13 +196,11 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   const handleNewCategory = () => {
     setFormData({
       maker: "",
-      width: "",
-      aspectRatio: "",
-      rimDiameter: "",
+      quantity: "",
       loadIndex: "",
       speedRating: "",
-      quantity: "",
       type: "",
+      tireSize: "", // Reset tire size
     });
     setShowForm(true);
     setMessage("");
@@ -210,11 +215,10 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
 
       <div className="container-inner">
         <div className="form-container">
-          {/* Conditionally render order preview */}
-          {formData.width && formData.aspectRatio && formData.rimDiameter &&  (
+          {formData.tireSize && (
             <div className="order-preview" style={{ color: 'orange', padding: '10px', marginBottom: '20px' }}>
               <p>
-                {formData.width} / {formData.aspectRatio} R {formData.rimDiameter}
+                {formData.tireSize}
               </p>
             </div>
           )}
@@ -223,7 +227,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
             <div className="form-row">
               <div className="form-group">
                 <label>
-                  Make:<span className="star">*</span>
+                  Make:<span className=" star">*</span>
                   <select name="maker" value={formData.maker} onChange={handleChange} required>
                     <option value="">Select Make</option>
                     <option value="Yokohama">Yokohama</option>
@@ -233,6 +237,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
                   </select>
                 </label>
               </div>
+              
               <div className="form-group">
                 <label>
                   Type:<span className="star">*</span>
@@ -249,24 +254,22 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
             <div className="form-row">
               <div className="form-group">
                 <label>
-                  Width:<span className="star">*</span>
-                  <input type="number" name="width" placeholder="width*" value={formData.width} onChange={handleChange} required />
+                  Tire Size: <span className="star">*</span>
+                  <select name="tireSize" value={formData.tireSize} onChange={handleChange} required>
+                    <option value="">Select Tire Size</option>
+                    {tireSizes.map((tire) => (
+                      <optgroup key={tire.diameter} label={`Diameter ${tire.diameter}`}>
+                        {tire.sizes.map((size) => (
+                          <option key={size} value={size}>
+                            {size}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
                 </label>
               </div>
-              <div className="form-group">
-                <label>
-                  Aspect Ratio:
-                  <input type="number" name="aspectRatio" value={formData.aspectRatio} onChange={handleChange} placeholder="optional" />
-                </label>
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group">
-                <label>
-                  Rim Diameter:<span className="star">*</span>
-                  <input type="number" name="rimDiameter" placeholder="Rim Diameter*" value={formData.rimDiameter} onChange={handleChange} required />
-                </label>
-              </div>
+
               <div className="form-group">
                 <label>
                   Quantity:<span className="star">*</span>
@@ -295,7 +298,12 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
             {message && <p className="message">{message}</p>}
           </form>
 
-          {/* Text Area for Message */}
+           {/* Display the percentage fill */}
+           <div className="percentage-fill" style={{ marginTop: '20px', fontWeight: 'bold' }}>
+            Stock Percentage Fill: {percentageFill.toFixed(2)}%
+          </div>
+
+
           <div className="form-group textArea">
             <textarea
               name="customerMessage"
@@ -306,10 +314,11 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
             />
           </div>
 
-          {/* Additional Message below the Text Area */}
           <p className="contact-message">
             If you need any further assistance with your order or the use of this form, just get in touch with us. We are here to help!
           </p>
+
+         
         </div>
 
         <TireSelection

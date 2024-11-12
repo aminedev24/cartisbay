@@ -30,6 +30,7 @@ const UsedTires = () => {
     speedRating: "",
     quantity: "",
     type: "",
+    tireSize: "",
   });
 
   const updateFormData = (updatedData) => setFormData(updatedData);
@@ -184,7 +185,7 @@ const UsedTires = () => {
           <div className="modal-overlay" onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <button className="close-btn" onClick={closeModal}>
-                &times;
+                &minus;
               </button>
               <OrderForm 
                 formData={formData}

@@ -1,7 +1,6 @@
 .help-page {
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
   
   .hero-section {
@@ -32,6 +31,7 @@
     padding: 10px;
     text-align: left;
     margin: 5px 0;
+    text-transform: capitalize;
   }
   
   .content-area {
@@ -43,3 +43,8 @@
     margin-top: 0;
   }
   
+  /* Style for the active button */
+  button.active {
+    background-color: #f1892b; /* Or any color you want */
+    color: white;
+  }

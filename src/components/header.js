@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef} from 'react';
-import { Link ,useLocation} from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../css/header.css';
 import TopBar from './topbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -8,7 +8,6 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const dropdownRef = useRef([]);
   const location = useLocation();
-
 
   const toggleDropdown = (dropdownName) => {
     setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
@@ -36,8 +35,7 @@ const Header = () => {
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-        <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} /> </Link>
-        
+          <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} /></Link>
           <div className="header-search">
             <input type="text" placeholder="Search by keyword..." />
             <i className="fas fa-search search-icon"></i>
@@ -63,23 +61,17 @@ const Header = () => {
 
         <div className="header-bottom">
           <div className="left-links">
-            {/* Used Cars Links */}
             <div className="used-cars">
-              <i className="fas fa-car icon"></i> 
+              <i className="fas fa-car icon"></i>
               <Link to={'/car-dismantling'}>Car dismantling</Link>
             </div>
-
-            {/* Used Tires Links */}
             <div className="used-tires">
-              <i className="fas fa-circle-notch icon"></i> 
+              <i className="fas fa-circle-notch icon"></i>
               <Link to={'/used-tires'}>Used Tires</Link>
             </div>
-
           </div>
 
-          {/* Right-side links */}
           <div className="right-links">
-            {/* Local Services Dropdown */}
             <div
               className="nav-item dropdown"
               ref={(el) => (dropdownRef.current[2] = el)}
@@ -92,21 +84,20 @@ const Header = () => {
               </div>
             </div>
             <div className="nav-item">Reviews</div>
-             {/* Overview Dropdown */}
-             <div
+            <div
               className="nav-item dropdown"
               ref={(el) => (dropdownRef.current[1] = el)}
               onClick={() => toggleDropdown('overview')}
             >
               Help <span className="arrow">🔽</span>
               <div className={`dropdown-content help ${activeDropdown === 'overview' ? 'show' : ''}`}>
-                <Link to={'/help'}>Help</Link>
-                <a href="#">Company Profile</a>
-                <a href="#">Bank Information</a>
-                <a href="#">Why Choose Artisbay</a>
-                <a href="#">Languages</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Anti-Social Forces Policy</a>
+                <Link to={'/help?topic=Company%20Profile'}>Company Profile</Link>
+                <Link to={'/help?topic=Bank%20Information'}>Bank Information</Link>
+                <Link to={'/help?topic=Why%20Choose%20Artisbay%20Inc.'}>Why Choose Artisbay</Link>
+                <Link to={'/help?topic=Terms%20%26%20Conditions'}>Terms & Conditions</Link>
+                <Link to={'/help?topic=Anti-Social%20Force%20Policy'}>Anti-Social Force Policy</Link>
+                <Link to={'/help?topic=How%20to%20Buy'}>How To Buy</Link>
+                <Link to={'/help?topic=How%20to%20Buy%20Used%20Tires'}>How To Used Tires</Link>
               </div>
             </div>
           </div>
@@ -114,11 +105,8 @@ const Header = () => {
       </header>
       {console.log(document.location.pathname)}
       {location.pathname === '/' && (
-        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/blinkingBar.gif`} className='local-services-banner' alt='local-services' loop/></a>
-      )}      
-
-        
-          
+        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/blinkingBar.gif`} className='local-services-banner' alt='local-services' loop /></a>
+      )}
     </div>
   );
 };

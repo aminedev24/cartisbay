@@ -2,6 +2,7 @@
     align-self: flex-start;
     width: 100%;
   }
+
   
   .usedTiresForm-container {
     display: flex;
@@ -14,6 +15,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: auto;
     position: relative;
+    color: #fff;
   }
 
   .container-inner , .tire-selection-container , .form-header{
@@ -43,12 +45,11 @@
   .container-inner {
     display: flex;
     justify-content: space-evenly;
-    width: 85%;
     gap: 20px;
+    width: 70%;
   }
   
   .form-container {
-    width: 65%;
     padding: 20px;
   }
   
@@ -248,4 +249,11 @@
 
   .textArea textarea {
     padding: 5px;
+    resize: none;
+  }
+
+  .order-preview p {
+    display: inline;
+    font-size: 2em;
+    font-weight: bold;
   }
