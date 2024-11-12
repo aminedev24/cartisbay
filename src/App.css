@@ -14,7 +14,7 @@
   max-width: 100%;
 }
   
-.footer , .howToBuy-wrapper {
+.footer {
   min-width: 1200px;
   max-width: 100%;
 }
@@ -94,6 +94,7 @@
       max-width: 100%;
   }
 }
+
 
 
 

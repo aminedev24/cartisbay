@@ -1,0 +1,53 @@
+/* Wrapper for the company profile */
+.company-profile-wrapper {
+    padding: 40px;
+  }
+  
+  .company-profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .company-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .detail-item {
+    width: 48%; /* Allows two items per row on larger screens */
+    margin-bottom: 15px;
+  }
+  
+  .detail-item h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .detail-item p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .detail-item a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .detail-item a:hover {
+    text-decoration: underline;
+  }

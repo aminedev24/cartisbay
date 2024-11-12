@@ -1,0 +1,45 @@
+.help-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-section {
+    background-size: cover;
+    color: white;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .help-main-content {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .sidebar {
+    width: 20%;
+    padding-right: 20px;
+    max-width: 200px;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    margin: 5px 0;
+  }
+  
+  .content-area {
+    width: 75%;
+    padding: 20px;
+  }
+  
+  .content-area h2 {
+    margin-top: 0;
+  }
+  

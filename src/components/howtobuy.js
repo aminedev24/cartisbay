@@ -42,14 +42,27 @@ const HowToBuy = () => {
       imageUrl: `${process.env.PUBLIC_URL}/images/delivery.png`,
     },
   ];
-
+  const icons = [
+    { title: "Order", imageUrl: `${process.env.PUBLIC_URL}/images/ordericon.png` },
+    { title: "Payment", imageUrl: `${process.env.PUBLIC_URL}/images/paymenticon.png` },
+    { title: "Shipment", imageUrl: `${process.env.PUBLIC_URL}/images/shipmenticon.png`},
+    { title: "Delivery", imageUrl: `${process.env.PUBLIC_URL}/images/deliveryicon.png`},
+  ];
   return (
     <div className="howToBuy-wrapper">
       <div className="howToBuy-container">
-        <div className="howToBuy-image">
-          <img src={`${process.env.PUBLIC_URL}/images/howtobuybanner.jpeg`} alt="How to Buy" />
-        </div>
         <h2>How to Buy a Used Car on Artisbay Inc.</h2>
+         {/* Overview Icons Section */}
+
+         <div className="overview-icons">
+          {icons.map((icon, index) => (
+            <div className="icon-item" key={index}>
+              <img src={icon.imageUrl} alt={`${icon.title} Icon`} />
+              <h4>{icon.title}</h4>
+            </div>
+          ))}
+        </div>
+
         <p className="intro-text">
           At Artisbay Inc., we offer a wide selection of used cars sourced from trusted partners in Japan and overseas.
           Our simple, step-by-step process makes it easy for anyone to purchase their ideal car, even with no prior experience.
