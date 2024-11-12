@@ -112,11 +112,6 @@ const TermsAndConditions = () => (
     </p>
     <h2>Signature and Agreement Acknowledgment</h2>
     <p>This agreement is effective as of the date signed below by both parties.</p>
-    <h2>Ichinomiya Motors Representative:</h2>
-    <p>Tawoue Tiofack Edouard (Signature)</p>
-    <h2>Artisbay Ltd. Representative:</h2>
-    <p>Satou Yumiko (Signature)</p>
-    <h2>Date:</h2>
   </div>
 );
 
