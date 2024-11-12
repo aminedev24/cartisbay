@@ -84,17 +84,6 @@ const AntiSocialForcesPolicy = () => {
         </p>
       </section>
       <section>
-        <h2>Signature and Agreement Acknowledgment</h2>
-        <p>
-          This agreement is effective as of the date signed below by both parties.
-        </p>
-        <p>
-          Ichinomiya Motors Representative: Tawoue Tiofack Edouard (Signature)
-        </p>
-        <p>
-          Artisbay Ltd. Representative: Satou Yumiko (Signature)
-        </p>
-        <p>Date:</p>
       </section>
     </div>
   );
