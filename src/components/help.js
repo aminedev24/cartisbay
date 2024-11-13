@@ -6,20 +6,21 @@ import '../css/help.css';
 import TermsAndConditions from './terms';
 import AntiSocialForcesPolicy from './asf';
 import WhyChooseUs from './whyChooseUs';
+import CarDismantlingService from './dismantling';
 
 // Define the topics
 const topics = {
   help: [
-    { name: "Company Profile", component: <CompanyProfile />, image: `${process.env.PUBLIC_URL}/images/company-profile.jpg` },
+    { name: "Company Profile", component: <CompanyProfile />, image: `${process.env.PUBLIC_URL}/images/companyProfile.jpg` },
     { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
-    { name: "Why Choose Artisbay Inc.", content: <WhyChooseUs />, image: "why-choose-us.jpg" },
+    { name: "Why Choose Artisbay Inc. for used tires", content: <WhyChooseUs />, image: "why-choose-us.jpg" },
     { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
     { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
     { name: "How to Buy", component: <HowToBuy />, image: `${process.env.PUBLIC_URL}/images/howtobuybanner.jpeg` },
     { name: "How to Buy Used Tires", content: "Step-by-step for buying used tires...", image: "used-tires.jpg" },
   ],
   buying: [
-    { name: "Dismantled Cars", content: "Information on dismantled cars...", image: "dismantled-cars.jpg" },
+    { name: "Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg` },
     { name: "How to Pay", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
   ]
 };

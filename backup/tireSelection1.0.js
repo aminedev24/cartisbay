@@ -50,7 +50,6 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
     });
   };
 
-  {/*
   const handleGroupPageChange = (direction) => {
     setPagination((prevState) => {
       const newGroupPage = prevState.currentGroupPage + direction;
@@ -60,7 +59,6 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
       };
     });
   };
-*/}
 
   const getCurrentGroupMakers = () => {
     const makers = Object.keys(orders);
@@ -78,42 +76,35 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
 
   return (
     <div className="tire-selection-container">
+      <div>
       <h3>Your Tire Selection:</h3>
 
       <div className="pagination-controls">
-      
-        {/*
+        <select
+          onChange={(e) => handleGroupSelection(Number(e.target.value))}
+          value={pagination.currentGroupPage}
+          className="group-dropdown"
+        >
+          {Array.from({ length: calculateTotalGroupPages() }, (_, index) => (
+            <option key={index} value={index + 1}>
+              Group {index + 1}
+            </option>
+          ))}
+        </select>
         <button
           onClick={() => handleGroupPageChange(-1)}
           disabled={pagination.currentGroupPage === 1}
           className="prev-next-button"
         >
-          &larr;
+          Prev Group
         </button>
-
         <button
           onClick={() => handleGroupPageChange(1)}
           disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
           className="prev-next-button"
         >
-           &rarr;
+          Next Group
         </button>
-        */}
-        {Object.keys(orders).length > 0 && (
-          <select
-            onChange={(e) => handleGroupSelection(Number(e.target.value))}
-            value={pagination.currentGroupPage}
-            className="group-dropdown"
-          >
-            {Object.keys(orders).map((maker, index) => (
-              <option key={index} value={index + 1}>
-                {maker}
-              </option>
-            ))}
-          </select>
-        )}
-
-       
       </div>
 
       {getCurrentGroupMakers().map((maker) => {
@@ -128,44 +119,39 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
 
         return (
           <div key={maker} className="maker-section">
+            <h4>{maker}:</h4>
             {currentPageOrders.length > 0 ? (
-              <table className="orders-table">
-                <thead>
-                  <tr>
-                    <th>Make</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                    <th>Type</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentPageOrders.map((order, index) => (
-                    <tr key={index}>
-                      <td>{order.maker}</td>
-                      <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>                      
-                      <td>{order.quantity}</td>
-                      <td>{order.type}</td>
-                      <td>
-                        <div className='table-btns'>
-                        <button
-                          onClick={() => handleEditOrder(maker, index)}
-                          className="action-button edit-button"
-                        >
-                          <i className="fas fa-edit"></i> 
-                        </button>
-                        <button
-                          onClick={() => handleDeleteOrder(maker, index)}
-                          className="action-button delete-button"
-                        >
-                          <i className="fas fa-trash-alt"></i>
-                        </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              currentPageOrders.map((order, index) => (
+                <div key={index} className="order-item">
+                  <div className="order-info">
+                    <p>
+                      <strong>Size: </strong>
+                      {order.width} / {order.aspectRatio} R {order.rimDiameter}
+                    </p>
+                    <p>
+                      <strong>Quantity: </strong>
+                      {order.quantity}
+                    </p>
+                    <p>
+                      <strong>Type: </strong> {order.type}
+                    </p>
+                  </div>
+                  <div className="button-container">
+                    <button
+                      onClick={() => handleEditOrder(maker, index)}
+                      className="action-button edit-button"
+                    >
+                      <i className="fas fa-edit"></i> Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteOrder(maker, index)}
+                      className="action-button delete-button"
+                    >
+                      <i className="fas fa-trash-alt"></i> Delete
+                    </button>
+                  </div>
+                </div>
+              ))
             ) : (
               <p>No orders available for {maker}.</p>
             )}
@@ -211,6 +197,7 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
       >
         Continue to a New Selection
       </button>
+      </div>
     </div>
   );
 };

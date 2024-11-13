@@ -97,7 +97,6 @@ const Header = () => {
                 <Link to={'/help?topic=Terms%20%26%20Conditions'}>Terms & Conditions</Link>
                 <Link to={'/help?topic=Anti-Social%20Force%20Policy'}>Anti-Social Force Policy</Link>
                 <Link to={'/help?topic=How%20to%20Buy'}>How To Buy</Link>
-                <Link to={'/help?topic=How%20to%20Buy%20Used%20Tires'}>How To Used Tires</Link>
               </div>
             </div>
           </div>

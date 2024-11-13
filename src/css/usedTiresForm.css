@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-evenly;
     gap: 20px;
-    width: 70%;
+    width: 80%;
   }
   
   .form-container {
@@ -75,7 +75,7 @@
   .usedTiresForm-container .form-group input,
   .usedTiresForm-container .form-group select {
     width: 85%;
-    padding: 15px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
    
@@ -256,4 +256,86 @@
     display: inline;
     font-size: 2em;
     font-weight: bold;
+  }
+
+  
+  .checkbox-wrapper-21 {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    margin: 10px 0; /* Add some margin for spacing */
+  }
+  
+  .checkbox-wrapper-21 .control {
+    display: flex; /* Use flexbox for the control */
+    align-items: center; /* Center items vertically */
+    position: relative;
+    cursor: pointer;
+    font-size: 18px;
+    width: 83%; /* Make the control take full width */
+    background-color: rgb(226 226 226 / 10%);
+    border: solid .5px;
+    padding: 3px;
+  }
+  
+  .checkbox-wrapper-21 .label-text {
+    margin-right: 56px; /* Space between label and checkbox */
+    flex: 1; /* Allow label to take available space */
+  }
+  
+  .checkbox-wrapper-21 .control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  .checkbox-wrapper-21 .control__indicator {
+    position: relative; /* Change to relative for better alignment */
+    height: 20px;
+    width: 20px;
+    background: #e6e6e6;
+    border-radius: 4px; /* Optional: rounded corners */
+  }
+  
+  .checkbox-wrapper-21 .control:hover input ~ .control__indicator,
+  .checkbox-wrapper-21 .control input:focus ~ .control__indicator {
+    background: #ccc;
+  }
+  
+  .checkbox-wrapper-21 .control input:checked ~ .control__indicator {
+    background: #1da1f2;
+  }
+  
+  .checkbox-wrapper-21 .control:hover input:not([disabled]):checked ~ .control__indicator,
+  .checkbox-wrapper-21 .control input:checked:focus ~ .control__indicator {
+    background: #0e647d;
+  }
+  
+  .checkbox-wrapper-21 .control input:disabled ~ .control__indicator {
+    background: #e6e6e6;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  .checkbox-wrapper-21 .control__indicator:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+  
+  .checkbox-wrapper-21 .control input:checked ~ .control__indicator:after {
+    display: block;
+  }
+  
+  .checkbox-wrapper-21 .control--checkbox .control__indicator:after {
+    left: 8px;
+    top: 4px;
+    width: 3px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .checkbox-wrapper-21 .control--checkbox input:disabled ~ .control__indicator:after {
+    border-color: #7b7b7b;
   }
