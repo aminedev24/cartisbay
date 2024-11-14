@@ -8,6 +8,7 @@
     color: white;
     padding: 40px;
     text-align: center;
+    min-width: 1200px;
   }
   
   .help-main-content {
