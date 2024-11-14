@@ -45,12 +45,12 @@
   .container-inner {
     display: flex;
     justify-content: space-evenly;
-    gap: 20px;
-    width: 83%;
+    width: 96%;
   }
   
   .form-container {
     padding: 20px;
+    flex: 1;
   }
   
   .form-row {

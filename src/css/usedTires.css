@@ -209,12 +209,16 @@
 }
 
 /* General Styles */
-.reasons {
+.reasons, .order-steps-container {
   display: flex;
   justify-content: space-around;
   padding: 40px;
   max-width: 1665px;
   margin: 0 AUTO;
+}
+
+.order-steps-container {
+  flex-direction: column;
 }
 
 .reason {

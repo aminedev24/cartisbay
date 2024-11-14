@@ -53,7 +53,8 @@ const HelpPage = () => {
 
   return (
     <div className="help-page">
-      <div className="hero-section" style={{ backgroundImage: `url(${selectedTopic.image})` }}></div>
+      {/* Directly display the image instead of using a hero container */}
+      <img src={selectedTopic.image} alt={selectedTopic.name} className="topic-image" />
       <div className="help-main-content">
         <div className="sidebar">
           <h2>Help</h2>

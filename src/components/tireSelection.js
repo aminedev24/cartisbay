@@ -6,6 +6,17 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [selectedGroup, setSelectedGroup] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const groupsPerPage = 1;
+
+  const [pagination, setPagination] = useState({
+    currentOrderPage: Object.keys(orders).reduce((acc, maker) => {
+      acc[maker] = 1;
+      return acc;
+    }, {}),
+    currentGroupPage: 1,
+  });
+
+
 
   useEffect(() => {
     console.log("Updated orders:", orders);
@@ -23,12 +34,42 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
   const selectedMaker = getCurrentGroupMakers();
   const makerOrders = selectedMaker ? orders[selectedMaker] : [];
 
+  
+  const calculateTotalGroupPages = () => {
+    return Math.max(1, Math.ceil(Object.keys(orders).length / groupsPerPage));
+  };
+
+
+  const handleGroupPageChange = (direction) => {
+    setPagination((prevState) => {
+      const newGroupPage = prevState.currentGroupPage + direction;
+      return {
+        ...prevState,
+        currentGroupPage: Math.max(1, Math.min(calculateTotalGroupPages(), newGroupPage)),
+      };
+    });
+  };
+
+
   return (
     <div className="tire-selection-container">
       <h3>Your Tire Selection:</h3>
 
       <div className="pagination-controls">
+
+            
+        <button
+          onClick={() => handleGroupPageChange(-1)}
+          disabled={pagination.currentGroupPage === 1}
+          className="prev-next-button"
+        >
+          &larr;
+        </button>
+
+      
         {Object.keys(orders).length > 0 && (
+          <>
+          <label htmlFor='group-dropdown'>Make</label>
           <select
             onChange={(e) => handleGroupSelection(Number(e.target.value))}
             value={selectedGroup}
@@ -40,7 +81,16 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
               </option>
             ))}
           </select>
+          </>
         )}
+
+        <button
+          onClick={() => handleGroupPageChange(1)}
+          disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
+          className="prev-next-button"
+        >
+           &rarr;
+        </button>
       </div>
 
       <div className="maker-section">
