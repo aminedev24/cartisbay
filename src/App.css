@@ -1,18 +1,5 @@
 /* Force desktop styles for smaller screens */
-@media (max-width: 900px) {
-  body {
-    transform: scale(0.75);
-    transform-origin: 0 0;
-    width: 135%;
-    height: auto;
-    overflow-x: hidden;
-  }
 
-  #root {
-    min-width: fit-content;
-  }
-
-}
 
 body {
   overflow-x: hidden;

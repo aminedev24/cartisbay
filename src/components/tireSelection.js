@@ -4,41 +4,20 @@ import Modal from './ordersModal'; // Import the Modal component
 
 const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDeleteOrder, handleNewCategory }) => {
   const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [selectedGroup, setSelectedGroup] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const groupsPerPage = 1;
 
   const [pagination, setPagination] = useState({
-    currentOrderPage: Object.keys(orders).reduce((acc, maker) => {
-      acc[maker] = 1;
-      return acc;
-    }, {}),
     currentGroupPage: 1,
   });
-
-
 
   useEffect(() => {
     console.log("Updated orders:", orders);
   }, [orders]);
 
-  const handleGroupSelection = (group) => {
-    setSelectedGroup(group);
-  };
-
-  const getCurrentGroupMakers = () => {
-    const makers = Object.keys(orders);
-    return makers[selectedGroup - 1];
-  };
-
-  const selectedMaker = getCurrentGroupMakers();
-  const makerOrders = selectedMaker ? orders[selectedMaker] : [];
-
-  
   const calculateTotalGroupPages = () => {
     return Math.max(1, Math.ceil(Object.keys(orders).length / groupsPerPage));
   };
-
 
   const handleGroupPageChange = (direction) => {
     setPagination((prevState) => {
@@ -50,14 +29,26 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
     });
   };
 
+  const getCurrentGroupMakers = () => {
+    const makers = Object.keys(orders);
+    return makers[pagination.currentGroupPage - 1]; // Use currentGroupPage to get the maker
+  };
+
+  const selectedMaker = getCurrentGroupMakers();
+  const makerOrders = selectedMaker ? orders[selectedMaker] : [];
+
+  const handleGroupSelection = (group) => {
+    setPagination((prevState) => ({
+      ...prevState,
+      currentGroupPage: group,
+    }));
+  };
 
   return (
     <div className="tire-selection-container">
       <h3>Your Tire Selection:</h3>
 
       <div className="pagination-controls">
-
-            
         <button
           onClick={() => handleGroupPageChange(-1)}
           disabled={pagination.currentGroupPage === 1}
@@ -66,21 +57,20 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
           &larr;
         </button>
 
-      
         {Object.keys(orders).length > 0 && (
           <>
-          <label htmlFor='group-dropdown'>Make</label>
-          <select
-            onChange={(e) => handleGroupSelection(Number(e.target.value))}
-            value={selectedGroup}
-            className="group-dropdown"
-          >
-            {Object.keys(orders).map((maker, index) => (
-              <option key={index} value={index + 1}>
-                {maker}
-              </option>
-            ))}
-          </select>
+            <label htmlFor='group-dropdown'>Make</label>
+            <select
+              onChange={(e) => handleGroupSelection(Number(e.target.value))}
+              value={pagination.currentGroupPage} // Use currentGroupPage for the dropdown
+              className="group-dropdown"
+            >
+              {Object.keys(orders).map((maker, index) => (
+                <option key={index} value={index + 1}>
+                  {maker}
+                </option>
+              ))}
+            </select>
           </>
         )}
 
@@ -89,7 +79,7 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
           disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
           className="prev-next-button"
         >
-           &rarr;
+          &rarr;
         </button>
       </div>
 
@@ -157,18 +147,17 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
 
         <button
           className="show-orders-btn"
-          disabled= {Object.keys(orders).length === 0}
+          disabled={Object.keys(orders).length === 0}
           onClick={() => setIsModalOpen(true)} // Open the modal
         >
           Show All Orders
         </button>
       </div>  
- 
 
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)} // Close the modal
-        orders={makerOrders} // Pass the orders to the modal
+        orders={orders} // Pass all orders to the modal
       />
     </div>
   );

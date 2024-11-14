@@ -28,6 +28,9 @@ const Modal = ({ isOpen, onClose, orders }) => {
     printWindow.print();
   };
 
+  // Flatten the orders object into an array
+  const allOrders = Object.values(orders).flat();
+
   return (
     <div className="modal-overlay">
       <div className="modal-content orders">
@@ -43,7 +46,7 @@ const Modal = ({ isOpen, onClose, orders }) => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order, index) => (
+              {allOrders.map((order, index) => (
                 <tr key={index}>
                   <td>{order.maker}</td>
                   <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>

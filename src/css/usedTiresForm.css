@@ -74,7 +74,7 @@
 
   .usedTiresForm-container .form-group input,
   .usedTiresForm-container .form-group select {
-    width: 85%;
+    width: 87%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -271,10 +271,11 @@
     position: relative;
     cursor: pointer;
     font-size: 18px;
-    width: 83%; /* Make the control take full width */
+    min-width: 83%;
     background-color: rgb(226 226 226 / 10%);
     border: solid .5px;
-    padding: 3px;
+    padding: 10px 5px;
+    max-width: 150px;
   }
   
   .checkbox-wrapper-21 .label-text {
@@ -338,4 +339,9 @@
   
   .checkbox-wrapper-21 .control--checkbox input:disabled ~ .control__indicator:after {
     border-color: #7b7b7b;
+  }
+
+  .form-group input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label */
+    transform: scale(1.5); /* Increase size of checkbox */
   }
