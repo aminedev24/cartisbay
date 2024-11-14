@@ -1,7 +1,7 @@
 /* Force desktop styles for smaller screens */
 @media (max-width: 900px) {
   body {
-    transform: scale(0.75); /* Adjust scale as needed */
+   /* transform: scale(0.75);  Adjust scale as needed */
     transform-origin: 0 0;
     width: 135%;
     height: auto;
@@ -18,8 +18,21 @@ body {
   overflow-x: hidden;
 }
 
-#root {
+.header-container, .used-tires-page, .help-page{
+  min-width: 1250px;
+  max-width: 100%;
+}
+  
+.footer {
   min-width: 1200px;
+  max-width: 100%;
+}
+
+
+.container  {
+  min-width: 1250px; /* Fixed width */
+  position: relative;
+ 
 }
 
     
