@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import '../css/tireSelection.css';
+import Modal from './ordersModal'; // Import the Modal component
 
 const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDeleteOrder, handleNewCategory }) => {
   const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [selectedGroup, setSelectedGroup] = useState(1); // State to track the selected group
+  const [selectedGroup, setSelectedGroup] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   useEffect(() => {
-    console.log("Updated orders:", orders); // Debugging line to check orders
+    console.log("Updated orders:", orders);
   }, [orders]);
 
   const handleGroupSelection = (group) => {
@@ -15,7 +17,7 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
 
   const getCurrentGroupMakers = () => {
     const makers = Object.keys(orders);
-    return makers[selectedGroup - 1]; // Get the selected maker based on the group
+    return makers[selectedGroup - 1];
   };
 
   const selectedMaker = getCurrentGroupMakers();
@@ -81,7 +83,7 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
             </tbody>
           </table>
         ) : (
-          <p>No orders available for {selectedMaker}.</p>
+          <p>No orders available.</p>
         )}
       </div>
 
@@ -93,15 +95,31 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
         </p>
         <p>{message}</p>
       </div>
+      <div className='table-btns'>
+        <button
+          className="continue-selection-btn"
+          onClick={() => {
+            handleNewCategory();
+          }}
+        >
+          Continue to a New Selection
+        </button>
 
-      <button
-        className="continue-selection-btn"
-        onClick={() => {
-          handleNewCategory();
-        }}
-      >
-        Continue to a New Selection
-      </button>
+        <button
+          className="show-orders-btn"
+          disabled= {Object.keys(orders).length === 0}
+          onClick={() => setIsModalOpen(true)} // Open the modal
+        >
+          Show All Orders
+        </button>
+      </div>  
+ 
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)} // Close the modal
+        orders={makerOrders} // Pass the orders to the modal
+      />
     </div>
   );
 };

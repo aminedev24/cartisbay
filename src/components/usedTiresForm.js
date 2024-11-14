@@ -341,7 +341,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
           </form>
 
           <div className="percentage-fill" style={{ marginTop: '20px', fontWeight: 'bold' }}>
-            Stock Percentage Fill: {percentageFill.toFixed(2)}%
+            Container Percentage Fill: {percentageFill.toFixed(2)}%
           </div>
 
           <div className="form-group textArea">

@@ -57,10 +57,7 @@ const UsedTires = () => {
         </h1>
         <section class="reasons">
           <div class="reason">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/premium-selection.png`}
-              alt="Premium Selection"
-            />
+          
             <h2>Premium Selection</h2>
             <p>
               Discover our curated collection of high-quality used tires,
@@ -69,10 +66,7 @@ const UsedTires = () => {
             </p>
           </div>
           <div class="reason">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/nesting-tires.png`}
-              alt="Space-Optimized Shipping"
-            />
+            
             <h2>Space-Optimized Shipping</h2>
             <p>
               By utilizing our 40-foot containers, we maximize your order’s
@@ -80,10 +74,7 @@ const UsedTires = () => {
             </p>
           </div>
           <div class="reason">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/bulking.png`}
-              alt="Wholesale Pricing & Bulk Availability"
-            />
+         
             <h2>Wholesale Pricing & Bulk Availability</h2>
             <p>
               Take advantage of our competitive wholesale prices tailored for
@@ -91,10 +82,6 @@ const UsedTires = () => {
             </p>
           </div>
           <div class="reason">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/manually-inspected.png`}
-              alt="Meticulous Inspection"
-            />
             <h2>Meticulous Inspection</h2>
             <p>
               Each tire undergoes a manual inspection to meet our strict quality
