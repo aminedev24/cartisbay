@@ -76,16 +76,22 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   const handleEditOrder = (maker, index) => {
     const orderToEdit = orders[maker][index];
     setFormData({
-      maker: maker,
-      quantity: orderToEdit.quantity,
-      loadIndex: orderToEdit.loadIndex,
-      speedRating: orderToEdit.speedRating,
-      type: orderToEdit.type,
-      tireSize: `${orderToEdit.width}/${orderToEdit.aspectRatio}R${orderToEdit.rimDiameter}`, // Set tire size for editing
+        maker: maker,
+        quantity: orderToEdit.quantity,
+        loadIndex: orderToEdit.loadIndex,
+        speedRating: orderToEdit.speedRating,
+        type: orderToEdit.type,
+        tireSize: `${orderToEdit.width}/${orderToEdit.aspectRatio}R${orderToEdit.rimDiameter}`,
     });
     setEditingOrder(index);
     setShowForm(true);
-  };
+
+    // Calculate initial percentage fill based on the current total units
+    const totalCapacity = doubleLoading ? 3000 : 2000;
+    const newTotalUnits = totalUnits - orderToEdit.quantity; // Remove the quantity of the order being edited
+    const fill = (newTotalUnits / totalCapacity) * 100;
+    setPercentageFill(fill);
+};
 
   useEffect(() => {
     const requiredFieldsFilled =
@@ -97,73 +103,73 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
     e.preventDefault();
 
     if (!formData.maker || !formData.type || !formData.tireSize || !formData.quantity) {
-      setMessage("Please fill in all required fields.");
-      return;
+        setMessage("Please fill in all required fields.");
+        return;
     }
 
     const [width, aspectRatio, rimDiameter] = formData.tireSize.split(/\/|R/);
 
     const newOrder = {
-      maker: formData.maker,
-      width,
-      aspectRatio,
-      rimDiameter,
-      loadIndex: formData.loadIndex,
-      speedRating: formData.speedRating,
-      quantity: parseInt(formData.quantity, 10),
-      type: formData.type,
+        maker: formData.maker,
+        width,
+        aspectRatio,
+        rimDiameter,
+        loadIndex: formData.loadIndex,
+        speedRating: formData.speedRating,
+        quantity: parseInt(formData.quantity, 10),
+        type: formData.type,
     };
 
     const maker = formData.maker;
     const updatedOrders = { ...orders };
 
     if (!updatedOrders[maker]) {
-      updatedOrders[maker] = [];
+        updatedOrders[maker] = [];
     }
 
     let newTotalUnits = totalUnits;
 
     if (editingOrder !== null) {
-      const previousOrder = orders[maker][editingOrder];
-      newTotalUnits -= previousOrder.quantity;
+        const previousOrder = orders[maker][editingOrder];
+        newTotalUnits -= previousOrder.quantity; // Subtract the quantity of the order being edited
 
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type
-      );
+        const existingOrderIndex = updatedOrders[maker].findIndex(
+            (order) =>
+                order.width === newOrder.width &&
+                order.aspectRatio === newOrder.aspectRatio &&
+                order.rimDiameter === newOrder.rimDiameter &&
+                order.type === newOrder.type
+        );
 
-      if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
-        const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
-        accumulatedOrder.quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity;
-        updatedOrders[maker].splice(editingOrder, 1);
-        setMessage(`Your order has been updated and quantities have been accumulated!`);
-      } else {
-        updatedOrders[maker][editingOrder] = newOrder;
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your order has been updated!`);
-      }
+        if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
+            const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
+            accumulatedOrder.quantity += newOrder.quantity;
+            newTotalUnits += newOrder.quantity;
+            updatedOrders[maker].splice(editingOrder, 1);
+            setMessage(`Your order has been updated and quantities have been accumulated!`);
+        } else {
+            updatedOrders[maker][editingOrder] = newOrder;
+            newTotalUnits += newOrder.quantity;
+            setMessage(`Your order has been updated!`);
+        }
     } else {
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type
-      );
+        const existingOrderIndex = updatedOrders[maker].findIndex(
+            (order) =>
+                order.width === newOrder.width &&
+                order.aspectRatio === newOrder.aspectRatio &&
+                order.rimDiameter === newOrder.rimDiameter &&
+                order.type === newOrder.type
+        );
 
-      if (existingOrderIndex !== -1) {
-        updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your order has been updated and quantities have been accumulated!`);
-      } else {
-        updatedOrders[maker].push(newOrder);
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your new order has been added!`);
-      }
+        if (existingOrderIndex !== -1) {
+            updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
+            newTotalUnits += newOrder.quantity;
+            setMessage(`Your order has been updated and quantities have been accumulated!`);
+        } else {
+            updatedOrders[maker].push(newOrder);
+            newTotalUnits += newOrder.quantity;
+            setMessage(`Your new order has been added!`);
+        }
     }
 
     setTotalUnits(newTotalUnits);
@@ -173,17 +179,17 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
 
     setOrders(updatedOrders);
     setFormData({
-      maker: "",
-      quantity: "",
-      loadIndex: "",
-      speedRating: "",
-      type: "",
-      tireSize: "",
-      rimDiameter: "",
+        maker: "",
+        quantity: "",
+        loadIndex: "",
+        speedRating: "",
+        type: "",
+        tireSize: "",
+        rimDiameter: "",
     });
     setEditingOrder(null);
     setShowForm(false);
-  };
+};
 
   const handleDeleteOrder = (maker, index) => {
     const updatedOrders = { ...orders };
