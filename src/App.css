@@ -1,7 +1,7 @@
 /* Force desktop styles for smaller screens */
 @media (max-width: 900px) {
   body {
-   /* transform: scale(0.75);  Adjust scale as needed */
+    transform: scale(0.75);
     transform-origin: 0 0;
     width: 135%;
     height: auto;
