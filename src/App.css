@@ -18,7 +18,7 @@ body {
   overflow-x: hidden;
 }
 
-.header-container, .used-tires-page , .help-main-content{
+.header-container, .used-tires-page, .help-page{
   min-width: 1250px;
   max-width: 100%;
 }

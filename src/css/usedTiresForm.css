@@ -45,7 +45,7 @@
   .container-inner {
     display: flex;
     justify-content: space-evenly;
-    width: 96%;
+    width: 83%;
   }
   
   .form-container {
@@ -61,7 +61,7 @@
   }
   
   .usedTiresForm-container .form-group {
-    width: 30%;
+    width: 40%;
     text-align: left;
   }
   
