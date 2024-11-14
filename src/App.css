@@ -18,21 +18,8 @@ body {
   overflow-x: hidden;
 }
 
-.header-container, .used-tires-page, .help-page{
-  min-width: 1250px;
-  max-width: 100%;
-}
-  
-.footer {
+#root {
   min-width: 1200px;
-  max-width: 100%;
-}
-
-
-.container  {
-  min-width: 1250px; /* Fixed width */
-  position: relative;
- 
 }
 
     
