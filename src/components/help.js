@@ -7,10 +7,12 @@ import TermsAndConditions from './terms';
 import AntiSocialForcesPolicy from './asf';
 import WhyChooseUs from './whyChooseUs';
 import CarDismantlingService from './dismantling';
-
+import ArtisbayOverview from './overview';
+import EnvironmentalMessage from './envirementPolicy';
 // Define the topics
 const topics = {
   help: [
+    { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
     { name: "Company Profile", component: <CompanyProfile />, image: `${process.env.PUBLIC_URL}/images/companyProfile.jpg` },
     { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
     { name: "Why Choose Artisbay Inc. for used tires", content: <WhyChooseUs />, image: "why-choose-us.jpg" },
@@ -22,6 +24,7 @@ const topics = {
   buying: [
     { name: "Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg` },
     { name: "How to Pay", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
+    { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
   ]
 };
 

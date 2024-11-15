@@ -1,4 +1,4 @@
-.terms-container ,.asf, .whyChooseUs, .dismantling {
+.terms-container ,.asf, .whyChooseUs, .dismantling , .overview , .envirement-policy {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
@@ -7,18 +7,18 @@
     border: 1px solid #ddd;
   }
   
-  .terms-container h1, .asf h1, .whyChooseUs h1, .dismantling h1 {
+  .terms-container h1, .asf h1, .whyChooseUs h1, .dismantling h1, .overview h1 {
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  .terms-container h2 , .asf h2 , .whyChooseUs h2 {
+  .terms-container h2 , .asf h2 , .whyChooseUs h2 ,.envirement-policy h2 {
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
   }
   
-  .terms-container p, .asf p , .whyChooseUs p ,.dismantling p  {
+  .terms-container p, .asf p , .whyChooseUs p ,.dismantling p , .overview p , .envirement-policy p  {
     margin-bottom: 10px;
   }
   
