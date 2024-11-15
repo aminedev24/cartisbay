@@ -11,6 +11,8 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   const [doubleLoading, setDoubleLoading] = useState(false);
   const [selectedDiameter, setSelectedDiameter] = useState(""); // State for selected diameter
   const [availableSizes, setAvailableSizes] = useState([]); // State for available sizes
+  const [isQuantityValid, setIsQuantityValid] = useState(true); // New state for quantity validity
+
 
   const tireSizes = [
     { diameter: 13, sizes: ["155/80R13", "165/80R13", "175/70R13", "185/70R13", "185/65R13", "195/65R13", "175/65R13", "155/70R13", "145/80R13", "165/70R13"] },
@@ -29,6 +31,16 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
     { diameter: 28, sizes: ["295/25R28", "315/30R28", "325/35R28"] },
     { diameter: 30, sizes: ["315/30R30", "325/30R30", "335/30R30"] }
   ];
+
+  useEffect(() => {
+    // Calculate initial percentage fill based on existing orders
+    const existingQuantity = Object.values(orders).flat().reduce((acc, order) => acc + order.quantity, 0);
+    const totalCapacity = doubleLoading ? 3000 : 2000;
+    const fill = (existingQuantity / totalCapacity) * 100;
+    setPercentageFill(fill > 100 ? 100 : fill); // Ensure fill does not exceed 100%
+  }, [orders, doubleLoading]); // Recalculate when orders or double loading changes
+
+  
 
   const handleDiameterChange = (e) => {
     const diameter = parseInt(e.target.value);
@@ -49,29 +61,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
     }));
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value,
-    }));
 
-    // Calculate percentage fill when quantity changes
-    if (name === 'quantity') {
-      const quantity = parseInt(value) || 0;
-      const totalCapacity = doubleLoading ? 3000 : 2000;
-      const newTotalUnits = totalUnits + quantity;
-      const fill = (newTotalUnits / totalCapacity) * 100;
-
-      if (fill > 100) {
-        setMessage("The container is full. Consider using double loading to add up to 3000 units");
-        setPercentageFill(100);
-      } else {
-        setPercentageFill(fill);
-        setMessage("");
-      }
-    }
-  };
 
   const handleEditOrder = (maker, index) => {
     const orderToEdit = orders[maker][index];
@@ -87,7 +77,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
     setShowForm(true);
 
     // Calculate initial percentage fill based on the current total units
-    const totalCapacity = doubleLoading ? 3000 : 2000;
+    const totalCapacity = doubleLoading ? 3001 : 2001;
     const newTotalUnits = totalUnits - orderToEdit.quantity; // Remove the quantity of the order being edited
     const fill = (newTotalUnits / totalCapacity) * 100;
     setPercentageFill(fill);
@@ -99,6 +89,47 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
     setIsFormValid(requiredFieldsFilled);
   }, [formData]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+        ...prevData,
+        [name]: value,
+    }));
+
+    // Calculate percentage fill when quantity changes
+    if (name === 'quantity') {
+        const quantity = parseInt(value) || 0;
+        const totalCapacity = doubleLoading ? 3000 : 2000;
+
+        // Check if the quantity exceeds the maximum allowed value
+        if (quantity > totalCapacity) {
+            setMessage(`The quantity cannot exceed ${totalCapacity}.`);
+            setFormData(prevData => ({
+                ...prevData,
+                quantity: totalCapacity // Set to max allowed value
+            }));
+            setIsQuantityValid(false); // Set quantity validity to false
+        } else if (quantity < 1) {
+            setIsQuantityValid(false); // Set quantity validity to false if less than 1
+            setMessage("Quantity must be at least 1.");
+        } else {
+            setIsQuantityValid(true); // Set quantity validity to true
+            setMessage(""); // Clear message if valid
+        }
+
+        // Calculate new total units based on the current state
+        const existingQuantity = Object.values(orders).flat().reduce((acc, order) => acc + order.quantity, 0);
+        const newTotalUnits = editingOrder !== null 
+            ? existingQuantity - orders[formData.maker][editingOrder].quantity + quantity 
+            : existingQuantity + quantity;
+
+        const fill = (newTotalUnits / (doubleLoading ? 3000 : 2000)) * 100;
+
+        // Update percentage fill
+        setPercentageFill(fill > 100 ? 100 : fill); // Ensure fill does not exceed 100%
+    }
+};
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -108,7 +139,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
     }
 
     const [width, aspectRatio, rimDiameter] = formData.tireSize.split(/\/|R/);
-
+    const quantity = Math.min(parseInt(formData.quantity, 10), doubleLoading ? 3000 : 2000); // Ensure quantity does not exceed max
     const newOrder = {
         maker: formData.maker,
         width,
@@ -116,7 +147,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
         rimDiameter,
         loadIndex: formData.loadIndex,
         speedRating: formData.speedRating,
-        quantity: parseInt(formData.quantity, 10),
+        quantity: quantity,
         type: formData.type,
     };
 
@@ -127,11 +158,24 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
         updatedOrders[maker] = [];
     }
 
-    let newTotalUnits = totalUnits;
+    let existingQuantity = Object.values(updatedOrders).flat().reduce((acc, order) => acc + order.quantity, 0);
+    let newTotalUnits = existingQuantity;
+
+    // Calculate new total units before adding the new order
+    const potentialNewTotalUnits = editingOrder !== null 
+        ? newTotalUnits - orders[formData.maker][editingOrder].quantity + quantity 
+        : newTotalUnits + quantity;
+
+    // Check if the new total units exceed the maximum capacity
+    const totalCapacity = doubleLoading ? 3000 : 2000;
+    if (potentialNewTotalUnits > totalCapacity) {
+        setMessage(`The total units cannot exceed ${totalCapacity}. Please consider using double loading.`);
+        return; // Prevent submission if it exceeds capacity
+    }
 
     if (editingOrder !== null) {
         const previousOrder = orders[maker][editingOrder];
-        newTotalUnits -= previousOrder.quantity; // Subtract the quantity of the order being edited
+        newTotalUnits -= previousOrder.quantity; // Subtract the previous quantity
 
         const existingOrderIndex = updatedOrders[maker].findIndex(
             (order) =>
@@ -144,12 +188,12 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
         if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
             const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
             accumulatedOrder.quantity += newOrder.quantity;
-            newTotalUnits += newOrder.quantity;
+            newTotalUnits += newOrder.quantity; // Add the new quantity
             updatedOrders[maker].splice(editingOrder, 1);
             setMessage(`Your order has been updated and quantities have been accumulated!`);
         } else {
-            updatedOrders[maker][editingOrder] = newOrder;
-            newTotalUnits += newOrder.quantity;
+            updatedOrders[maker][editingOrder] = newOrder; // Update the order
+            newTotalUnits += newOrder.quantity; // Add the new quantity
             setMessage(`Your order has been updated!`);
         }
     } else {
@@ -163,32 +207,31 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
 
         if (existingOrderIndex !== -1) {
             updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-            newTotalUnits += newOrder.quantity;
+            newTotalUnits += newOrder.quantity; // Add the new quantity
             setMessage(`Your order has been updated and quantities have been accumulated!`);
         } else {
             updatedOrders[maker].push(newOrder);
-            newTotalUnits += newOrder.quantity;
+            newTotalUnits += newOrder.quantity; // Add the new quantity
             setMessage(`Your new order has been added!`);
         }
     }
 
-    setTotalUnits(newTotalUnits);
-    const totalCapacity = doubleLoading ? 3000 : 2000;
-    const newPercentageFill = (newTotalUnits / totalCapacity) * 100;
-    setPercentageFill(newPercentageFill);
-
+    // Proceed with the order submission
     setOrders(updatedOrders);
+    setTotalUnits(newTotalUnits);
+    setMessage("Order submitted successfully!");
+
+    // Clear the form data
     setFormData({
-        maker: "",
-        quantity: "",
-        loadIndex: "",
-        speedRating: "",
-        type: "",
-        tireSize: "",
-        rimDiameter: "",
+        maker: '',
+        type: '',
+        tireSize: '',
+        loadIndex: '',
+        speedRating: '',
+        quantity: '',
     });
-    setEditingOrder(null);
-    setShowForm(false);
+    setIsQuantityValid(true); // Reset quantity validity
+    setPercentageFill((newTotalUnits / (doubleLoading ? 3000 : 2000)) * 100); // Update percentage fill after submission
 };
 
   const handleDeleteOrder = (maker, index) => {
@@ -224,7 +267,13 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   return (
     <div id="usedTiresForm" className="usedTiresForm-container">
       <div className="form-header">
-        <h1>Wholesale Tires Order</h1>
+        <div>
+            <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="Logo" className="logo" />
+            <h1>Wholesale Tires Order</h1>
+            <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="Logo" className="logo" />
+
+        </div>
+      
       </div>
 
       <div className="container-inner">
@@ -339,12 +388,26 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
 
             </div>
           
-            <button disabled={percentageFill >= 100} type="submit">
-              {editingOrder !== null ? "Update Order" : "Save Order"}
+           
+            <div className="table-btns">
+            <button disabled={!isQuantityValid} type="submit">
+                {editingOrder !== null ? "Update Order" : "Save Order"}
             </button>
-            <p className="mandatory-note">the mark * is mandatory</p>
+            <button
+              type='reset'
+              className="continue-selection-btn"
+              onClick={() => {
+                handleNewCategory();
+              }}
+            >
+              Reset
+            </button>
+            </div>
+            <p className="mandatory-note">* is mandatory</p>
             {message && <p className="message">{message}</p>}
+
           </form>
+
 
           <div className="percentage-fill" style={{ marginTop: '20px', fontWeight: 'bold' }}>
             Container Percentage Fill: {percentageFill.toFixed(2)}%
@@ -367,8 +430,11 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
 
         <TireSelection
           orders={orders}
+          setOrders={setOrders}
           totalUnits={totalUnits}
+          setTotalUnits={setTotalUnits}
           message={message}
+          percentageFill={percentageFill}
           handleEditOrder={handleEditOrder}
           handleDeleteOrder={handleDeleteOrder}
           handleNewCategory={handleNewCategory}

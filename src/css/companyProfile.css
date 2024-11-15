@@ -28,6 +28,7 @@
   .detail-item {
     width: 48%; /* Allows two items per row on larger screens */
     margin-bottom: 15px;
+    text-align: center;
   }
   
   .detail-item h3 {

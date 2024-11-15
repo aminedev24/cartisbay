@@ -49,7 +49,6 @@ const HowToBuy = () => {
     { title: "Delivery", imageUrl: `${process.env.PUBLIC_URL}/images/deliveryicon.png`},
   ];
   return (
-    <div className="howToBuy-wrapper">
       <div className="howToBuy-container">
         <h2>How to Buy a Used Car on Artisbay Inc.</h2>
          {/* Overview Icons Section */}
@@ -85,7 +84,7 @@ const HowToBuy = () => {
           ))}
         </div>
       </div>
-    </div>
+    
   );
 };
 

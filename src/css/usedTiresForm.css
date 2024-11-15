@@ -34,12 +34,22 @@
   }
   
   
-  .form-header h1 {
+  .form-header {
     background-color: #003366;
     color: #fff;
     padding: 15px;
     text-align: center;
-    margin: 0 0 20px;
+  }
+
+  .form-header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .form-header .logo {
+    width: 50px;
   }
   
   .container-inner {
@@ -237,6 +247,7 @@
     color: #fff;
     text-align: center;
     font-weight: bold;
+    max-width: 345px;
   }
   .mandatory-note {
     display: inline-block;
@@ -344,4 +355,23 @@
   .form-group input[type="checkbox"] {
     margin-right: 10px; /* Space between checkbox and label */
     transform: scale(1.5); /* Increase size of checkbox */
+  }
+
+
+  .image-container {
+     position: relative; width: 350px; /* Adjust width as needed */ 
+     margin: auto; 
+    } 
+  .image-container img { 
+    width: 100%; /* Ensure the image fits within the container */ 
+    height: auto; 
+  } 
+  .image-container .text { 
+    position: absolute; 
+    top: 56%; 
+    left: 28%;
+    transform:translate(-50%, -50%) perspective(600px) rotateX(2deg) rotateY(334deg); 
+    font-size: 1.6em; /* Adjust font size as needed */ 
+    color: white; 
+    font-weight: bold; 
   }

@@ -15,13 +15,17 @@ body {
   overflow-x: hidden;
 }
 
-.header-container, .used-tires-page, .help-page{
+.header-container, .used-tires-page{
   min-width: 1250px;
   max-width: 100%;
 }
+
+.help-page {
+  min-width: 1200px;
+}
   
 .footer {
-  min-width: 1200px;
+  min-width: 1210px;
   max-width: 100%;
 }
 
@@ -34,7 +38,7 @@ body {
 
     
 @media screen and (max-width: 9999px) {
-  .layout , .usedTiresForm-container, .car-details {
+  .layout , .usedTiresForm-container, .car-details, .help-page {
       margin: 0 auto;
       width: 1590px;
   }
@@ -61,7 +65,7 @@ body {
 
 
 @media screen and (max-width: 1760px) {
-  .layout , .usedTiresForm-container, .car-details {
+  .layout , .usedTiresForm-container, .car-details, .help-page {
       margin: 0 auto;
       width: 1438px;
       max-width: 100%;
@@ -87,7 +91,7 @@ body {
 
       
 @media screen and (max-width: 1530px) {
-.layout,.header-top , .local-services-banner, .usedTiresForm-container, .car-details{
+.layout,.header-top , .local-services-banner, .usedTiresForm-container, .car-details , .help-page{
       margin: 0 auto;
       width: 1330px;
       max-width: 100%;
@@ -101,6 +105,11 @@ body {
   }
 }
 
-
+@media screen and (max-width: 1366px) {
+  .help-page {
+    width: 1250px;
+  }
+  
+}
 
 

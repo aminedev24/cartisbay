@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/tireSelection.css';
 import Modal from './ordersModal'; // Import the Modal component
 
-const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDeleteOrder, handleNewCategory }) => {
+const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotalUnits, message, handleEditOrder, handleDeleteOrder, handleNewCategory }) => {
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const groupsPerPage = 1;
@@ -10,6 +10,8 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
   const [pagination, setPagination] = useState({
     currentGroupPage: 1,
   });
+
+  const [selectedType, setSelectedType] = useState(''); // State to track selected type for filtering
 
   useEffect(() => {
     console.log("Updated orders:", orders);
@@ -37,6 +39,11 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
   const selectedMaker = getCurrentGroupMakers();
   const makerOrders = selectedMaker ? orders[selectedMaker] : [];
 
+  // Filter orders based on selectedType
+  const filteredOrders = selectedType
+    ? makerOrders.filter(order => order.type === selectedType)
+    : makerOrders;
+
   const handleGroupSelection = (group) => {
     setPagination((prevState) => ({
       ...prevState,
@@ -44,22 +51,20 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
     }));
   };
 
+  const handleClearOrders = () => {
+    setOrders({});
+    setTotalUnits(0);
+  };
+
   return (
     <div className="tire-selection-container">
-      <h3>Your Tire Selection:</h3>
-
+      <h3>Your Order List:</h3>
       <div className="pagination-controls">
-        <button
-          onClick={() => handleGroupPageChange(-1)}
-          disabled={pagination.currentGroupPage === 1}
-          className="prev-next-button"
-        >
-          &larr;
-        </button>
+    
 
         {Object.keys(orders).length > 0 && (
           <>
-            <label htmlFor='group-dropdown'>Make</label>
+            <label htmlFor='group-dropdown'>Make:</label>
             <select
               onChange={(e) => handleGroupSelection(Number(e.target.value))}
               value={pagination.currentGroupPage} // Use currentGroupPage for the dropdown
@@ -74,6 +79,33 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
           </>
         )}
 
+       <label htmlFor='type-filter'>Type:</label>
+        <select
+          id='type-filter'
+          className='group-dropdown'
+          value={selectedType}
+          onChange={(e) => setSelectedType(e.target.value)} // Update selectedType
+        >
+          <option value=''>All</option>
+          <option value='Summer'>Summer</option>
+          <option value='Winter'>Winter</option>
+          <option value='All-Season '>All-Season</option>
+          {/* Add more types as needed */}
+        </select>
+
+       
+       
+
+      </div>
+      <div className="make-list-controls">
+      <button
+          onClick={() => handleGroupPageChange(-1)}
+          disabled={pagination.currentGroupPage === 1}
+          className="prev-next-button"
+        >
+          &larr;
+        </button>
+
         <button
           onClick={() => handleGroupPageChange(1)}
           disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
@@ -81,52 +113,55 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
         >
           &rarr;
         </button>
-      </div>
 
-      <div className="maker-section">
-        {makerOrders.length > 0 ? (
-          <table className="orders-table">
-            <thead>
-              <tr>
-                <th>Make</th>
-                <th>Size</th>
-                <th>Quantity</th>
-                <th>Type</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {makerOrders.map((order, index) => (
-                <tr key={index}>
-                  <td>{order.maker}</td>
-                  <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>
-                  <td>{order.quantity}</td>
-                  <td>{order.type}</td>
-                  <td>
-                    <div className='table-btns'>
-                      <button
-                        onClick={() => handleEditOrder(selectedMaker, index)}
-                        className="action-button edit-button"
-                      >
-                        <i className="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onClick={() => handleDeleteOrder(selectedMaker, index)}
-                        className="action-button delete-button"
-                      >
-                        <i className="fas fa-trash-alt"></i>
-                      </button>
-                    </div>
-                  </td>
+      </div>
+    
+
+      <div className='orders-wrapper'>
+        <div className="maker-section">
+          {filteredOrders.length > 0 ? (
+            <table className="orders-table">
+              <thead>
+                <tr>
+                  <th>Make</th>
+                  <th>Size</th>
+                  <th>Quantity</th>
+                  <th>Type</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No orders available.</p>
-        )}
+              </thead>
+              <tbody>
+                {filteredOrders.map((order, index) => (
+                  <tr key={index}>
+                    <td>{order.maker}</td>
+                    <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>
+                    <td>{order.quantity}</td>
+                    <td>{order.type}</td>
+                    <td>
+                      <div className='table-btns'>
+                        <button
+                          onClick={() => handleEditOrder(selectedMaker, index)}
+                          className="action-button edit-button"
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                        <button
+                          onClick={() => handleDeleteOrder(selectedMaker, index)}
+                          className="action-button delete-button"
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No orders available.</p>
+          )}
+        </div>
       </div>
-
       <div className="confirmation-message">{confirmationMessage}</div>
 
       <div className="total-order">
@@ -138,21 +173,24 @@ const TireSelection = ({ orders, totalUnits, message, handleEditOrder, handleDel
       <div className='table-btns'>
         <button
           className="continue-selection-btn"
-          onClick={() => {
-            handleNewCategory();
-          }}
+          onClick={handleClearOrders}
         >
-          Continue to a New Selection
+          Clear Orders
         </button>
 
         <button
-          className="show-orders-btn"
+          className="continue-selection-btn"
           disabled={Object.keys(orders).length === 0}
           onClick={() => setIsModalOpen(true)} // Open the modal
         >
           Show All Orders
         </button>
-      </div>  
+      </div>
+
+      <div className="image-container">
+        <img src={`${process.env.PUBLIC_URL}/images/container.png`} alt="Container Image" />
+        <div className="text">{percentageFill.toLocaleString()}</div>
+      </div>
 
       <Modal
         isOpen={isModalOpen}
