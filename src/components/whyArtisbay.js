@@ -2,8 +2,8 @@ import React from 'react';
 
 const ArtisbayInfo = () => {
   return (
-    <div>
-      <h1>Why Choose Artisbay Inc.?</h1>
+    <div className='whyChoose'>
+
       <div>
         <h2>1. Expertise and Experience</h2>
         <p>

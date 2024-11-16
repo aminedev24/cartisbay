@@ -10,24 +10,27 @@ import CarDismantlingService from './dismantling';
 import ArtisbayOverview from './overview';
 import EnvironmentalMessage from './envirementPolicy';
 import PaymentPolicy from './securityNotice';
-
+import PaypalInfo from './paypal'; 
+import ArtisbayInfo from './whyArtisbay';
   // Define the topics
   const topics = {
     help: [
       { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
       { name: "Company Profile", component: <CompanyProfile/> },
       { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
-      { name: "Why Choose Artisbay Inc. for used tires", content: <WhyChooseUs />, image: "why-choose-us.jpg" },
+      { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: "why-choose-us.jpg" },
       { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
       { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
       { name: "How to Buy", component: <HowToBuy />},
       { name: "How to Buy Used Tires", content: "Step-by-step for buying used tires...", image: "used-tires.jpg" },
     ],
     buying: [
-      { name: "Dismantled Cars", content: <CarDismantlingService />},
+      { name: "how to buy Dismantled Cars", content: <CarDismantlingService />},
       { name: "About payement", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
-      { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" },
-      { name: "security notice", content: <PaymentPolicy />, image: "envirement.jpg" }
+      { name: "security", content: <PaymentPolicy />, image: "envirement.jpg" },
+      { name: "paypal", content: <PaypalInfo />, image: "envirement.jpg" },
+      { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
+      
     ]
   };
 
