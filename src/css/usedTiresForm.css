@@ -3,7 +3,6 @@
     width: 100%;
   }
 
-  
   .usedTiresForm-container {
     display: flex;
     flex-direction: column;
@@ -37,7 +36,7 @@
   .form-header {
     background-color: #003366;
     color: #fff;
-    padding: 15px;
+    padding: 15px 0;
     text-align: center;
   }
 
@@ -261,6 +260,7 @@
   .textArea textarea {
     padding: 5px;
     resize: none;
+    height: 80px;
   }
 
   .order-preview p {

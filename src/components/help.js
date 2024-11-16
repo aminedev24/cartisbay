@@ -24,7 +24,7 @@ import EnvironmentalMessage from './envirementPolicy';
     ],
     buying: [
       { name: "Dismantled Cars", content: <CarDismantlingService />},
-      { name: "How to Pay", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
+      { name: "About payement", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
       { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
     ]
   };

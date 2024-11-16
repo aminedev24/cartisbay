@@ -279,7 +279,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
       <div className="container-inner">
         <div className="form-container">
           {formData.tireSize && (
-            <div className="order-preview" style={{display:'inline', color: 'orange', padding: '10px', marginBottom: '10px' }}>
+            <div className="order-preview" style={{display:'inline', color: 'orange', marginBottom: '10px' }}>
               <p>{formData.tireSize}</p>
             </div>
           )}
