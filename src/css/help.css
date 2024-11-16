@@ -1,6 +1,12 @@
+html, body {
+  height: 100%; /* Ensure the body takes up the full height of the viewport */
+  margin: 0; /* Remove default margin */
+}
+
 .help-page {
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Ensure the help page takes at least the full height of the viewport */
   }
   
   .hero-section {
@@ -12,6 +18,7 @@
   
   .help-main-content {
     display: flex;
+    flex: 1;
     padding: 20px;
     justify-content: center;
   }
@@ -28,6 +35,8 @@
     width: 50%;
     padding-right: 20px;
     max-width: 200px;
+    position: sticky;
+    
   }
   
   .sidebar h2 {
@@ -45,6 +54,7 @@
   
   .content-area {
     padding: 20px;
+    flex: 1;
   }
   
   .content-area h2 {

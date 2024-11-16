@@ -9,34 +9,36 @@ import WhyChooseUs from './whyChooseUs';
 import CarDismantlingService from './dismantling';
 import ArtisbayOverview from './overview';
 import EnvironmentalMessage from './envirementPolicy';
-// Define the topics
-const topics = {
-  help: [
-    { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
-    { name: "Company Profile", component: <CompanyProfile />, image: `${process.env.PUBLIC_URL}/images/companyProfile.jpg` },
-    { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
-    { name: "Why Choose Artisbay Inc. for used tires", content: <WhyChooseUs />, image: "why-choose-us.jpg" },
-    { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
-    { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
-    { name: "How to Buy", component: <HowToBuy />, image: `${process.env.PUBLIC_URL}/images/howtobuybanner.jpeg` },
-    { name: "How to Buy Used Tires", content: "Step-by-step for buying used tires...", image: "used-tires.jpg" },
-  ],
-  buying: [
-    { name: "Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg` },
-    { name: "How to Pay", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
-    { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
-  ]
-};
+
+  // Define the topics
+  const topics = {
+    help: [
+      { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
+      { name: "Company Profile", component: <CompanyProfile/> },
+      { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
+      { name: "Why Choose Artisbay Inc. for used tires", content: <WhyChooseUs />, image: "why-choose-us.jpg" },
+      { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
+      { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
+      { name: "How to Buy", component: <HowToBuy />},
+      { name: "How to Buy Used Tires", content: "Step-by-step for buying used tires...", image: "used-tires.jpg" },
+    ],
+    buying: [
+      { name: "Dismantled Cars", content: <CarDismantlingService />},
+      { name: "How to Pay", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
+      { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
+    ]
+  };
+
 
 const HelpPage = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const query = new URLSearchParams(location.search);
-  const topicParam = query.get('topic');
+    // Set the selected topic based on the URL parameter or default to the first topic
+    const location = useLocation();
+    const navigate = useNavigate();
+    const query = new URLSearchParams(location.search);
+    const topicParam = query.get('topic');
+    const initialTopic = topics.help.find(topic => topic.name === topicParam) || topics.help[0];
+    const [selectedTopic, setSelectedTopic] = useState(initialTopic);
 
-  // Set the selected topic based on the URL parameter or default to the first topic
-  const initialTopic = topics.help.find(topic => topic.name === topicParam) || topics.help[0];
-  const [selectedTopic, setSelectedTopic] = useState(initialTopic);
 
   // Update the URL whenever the selected topic changes
   const handleTopicChange = (topic) => {
@@ -57,7 +59,6 @@ const HelpPage = () => {
   return (
     <div className="help-page">
       {/* Directly display the image instead of using a hero container */}
-      <img src={selectedTopic.image} alt={selectedTopic.name} className="topic-image" />
       <div className="help-main-content">
         <div className="sidebar">
           <h2>Help</h2>

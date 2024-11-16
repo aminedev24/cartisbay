@@ -4,6 +4,8 @@ import '../css/terms.css';
 const CarDismantlingService = () => {
   return (
     <div className='dismantling'>
+      <img src={`${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg`} alt={'car-dismantling-banner'} className="topic-image" />
+
       <h1>Tailored Car Dismantling and Shipping from Japan</h1>
       <p>
         We offer you the flexibility to choose cars directly from Japan’s main auctions, purchasing them only when they meet your specific requirements.

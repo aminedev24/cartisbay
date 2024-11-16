@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/companyProfile.css';
 
-const CompanyProfile = () => {
+const CompanyProfile = (selectedTopic) => {
   const companyDetails = {
     name: "Artisbay Inc.",
     founded: "November 2024",
@@ -13,6 +13,8 @@ const CompanyProfile = () => {
 
   return (
     <div className="company-profile-wrapper">
+      <img src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`} alt={'company-profile'} className="topic-image" />
+
       <div className="company-profile-container">
         <h2>Company Profile</h2>
         <div className="company-details">
