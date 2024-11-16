@@ -14,6 +14,7 @@
 .order-wrapper {
   height: 250px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
 }
 
