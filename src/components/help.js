@@ -9,6 +9,7 @@ import WhyChooseUs from './whyChooseUs';
 import CarDismantlingService from './dismantling';
 import ArtisbayOverview from './overview';
 import EnvironmentalMessage from './envirementPolicy';
+import PaymentPolicy from './securityNotice';
 
   // Define the topics
   const topics = {
@@ -25,7 +26,8 @@ import EnvironmentalMessage from './envirementPolicy';
     buying: [
       { name: "Dismantled Cars", content: <CarDismantlingService />},
       { name: "About payement", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
-      { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
+      { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" },
+      { name: "security notice", content: <PaymentPolicy />, image: "envirement.jpg" }
     ]
   };
 
