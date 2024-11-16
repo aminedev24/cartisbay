@@ -76,45 +76,49 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
                 </option>
               ))}
             </select>
+
+            <label htmlFor='type-filter'>Type:</label>
+            <select
+              id='type-filter'
+              className='group-dropdown'
+              value={selectedType}
+              onChange={(e) => setSelectedType(e.target.value)} // Update selectedType
+            >
+              <option value=''>All</option>
+              <option value='Summer'>Summer</option>
+              <option value='Winter'>Winter</option>
+              <option value='All-Season '>All-Season</option>
+              {/* Add more types as needed */}
+            </select>
+
+            <div className="make-list-controls">
+            <button
+                onClick={() => handleGroupPageChange(-1)}
+                disabled={pagination.currentGroupPage === 1}
+                className="prev-next-button"
+              >
+                &larr;
+              </button>
+
+              <button
+                onClick={() => handleGroupPageChange(1)}
+                disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
+                className="prev-next-button"
+              >
+                &rarr;
+              </button>
+
+            </div>
           </>
         )}
 
-       <label htmlFor='type-filter'>Type:</label>
-        <select
-          id='type-filter'
-          className='group-dropdown'
-          value={selectedType}
-          onChange={(e) => setSelectedType(e.target.value)} // Update selectedType
-        >
-          <option value=''>All</option>
-          <option value='Summer'>Summer</option>
-          <option value='Winter'>Winter</option>
-          <option value='All-Season '>All-Season</option>
-          {/* Add more types as needed */}
-        </select>
+      
 
        
        
 
       </div>
-      <div className="make-list-controls">
-      <button
-          onClick={() => handleGroupPageChange(-1)}
-          disabled={pagination.currentGroupPage === 1}
-          className="prev-next-button"
-        >
-          &larr;
-        </button>
-
-        <button
-          onClick={() => handleGroupPageChange(1)}
-          disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
-          className="prev-next-button"
-        >
-          &rarr;
-        </button>
-
-      </div>
+     
     
 
       <div className='orders-wrapper'>
