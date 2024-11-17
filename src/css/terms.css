@@ -1,4 +1,4 @@
-.terms-container ,.asf, .whyChoose, .dismantling , .overview , .envirement-policy, .security-notice, .paypal, .howtopay {
+.terms-container ,.asf, .whyChoose, .dismantling , .overview , .envirement-policy, .security-notice, .paypal, .howtopay, .aboutusedtires {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
@@ -6,12 +6,12 @@
     margin: 20px;
   }
   
-  .terms-container h1, .asf h1, .whyChoose h1, .dismantling h1, .overview h1, .pypal h1, .howtopay h1 {
+  .terms-container h1, .asf h1, .whyChoose h1, .dismantling h1, .overview h1, .pypal h1, .howtopay h1 ,.aboutusedtires h1 {
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  .terms-container h2 , .asf h2 , .whyChoose h2 ,.envirement-policy h2 ,.security-notice h2 , .paypal h2, .howtopay h2 {
+  .terms-container h2 , .asf h2 , .whyChoose h2 ,.envirement-policy h2 ,.security-notice h2 , .paypal h2, .howtopay h2, .aboutusedtires h2{
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -21,16 +21,16 @@
     color: red;
   }
   
-  .terms-container p, .asf p , .whyChoose p ,.dismantling p , .overview p , .envirement-policy p , .security-notice p, .paypal p, .howtopay p  {
+  .terms-container p, .asf p , .whyChoose p ,.dismantling p , .overview p , .envirement-policy p , .security-notice p, .paypal p, .howtopay p , .aboutusedtires p {
     margin-bottom: 10px;
   }
   
-  .terms-container ul, .asf ul, .whyChoose ul , .security-notice ul , .paypal ul , .howtopay ul{
+  .terms-container ul, .asf ul, .whyChoose ul , .security-notice ul , .paypal ul , .howtopay ul , .aboutusedtires ul{
     list-style-type: disc;
     margin-left: 20px;
   }
   
-  .terms-container ul li, .asf ul li , .whyChoose ul li, .whyChoose ol li, .security-notice ol li , .security-notice ul li, .paypal ul li , .paypal ol li , .howtopay ul li, .howtopay ol li{
+  .terms-container ul li, .asf ul li , .whyChoose ul li, .whyChoose ol li, .security-notice ol li , .security-notice ul li, .paypal ul li , .paypal ol li , .howtopay ul li, .howtopay ol li, .aboutusedtires ul li{
     margin-bottom: 5px;
   }
   

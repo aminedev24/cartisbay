@@ -13,7 +13,7 @@ import PaymentPolicy from './securityNotice';
 import PaypalInfo from './paypal'; 
 import ArtisbayInfo from './whyArtisbay';
 import PaymentMethods from './paymentMethods';
-
+import UsedTiresFAQ from './aboutusedtires';
   // Define the topics
   const topics = {
     help: [
@@ -25,7 +25,7 @@ import PaymentMethods from './paymentMethods';
       { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
       { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
       { name: "How to Buy", component: <HowToBuy />},
-      { name: "How to Buy Used Tires", content: "Step-by-step for buying used tires...", image: "used-tires.jpg" },
+      { name: "about uesed Tires", component: <UsedTiresFAQ />, image: "used-tires.jpg" },
     ],
     buying: [
       { name: "about Dismantled Cars", content: <CarDismantlingService />},
