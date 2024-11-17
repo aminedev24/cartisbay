@@ -91,6 +91,7 @@ const Header = () => {
             >
               Help <span className="arrow">🔽</span>
               <div className={`dropdown-content help ${activeDropdown === 'overview' ? 'show' : ''}`}>
+                <Link to={'/help?topic=Help'}>Help</Link>
                 <Link to={'/help?topic=Company%20Profile'}>Company Profile</Link>
                 <Link to={'/help?topic=Bank%20Information'}>Bank Information</Link>
                 <Link to={'/help?topic=Why%20Choose%20Artisbay%20Inc.'}>Why Choose Artisbay</Link>

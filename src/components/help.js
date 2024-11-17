@@ -15,6 +15,7 @@ import ArtisbayInfo from './whyArtisbay';
   // Define the topics
   const topics = {
     help: [
+      { name: "help", content: <h1>All you need to know <br />about us</h1>, image: 'overview.jpg' },
       { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
       { name: "Company Profile", component: <CompanyProfile/> },
       { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
@@ -61,19 +62,22 @@ const HelpPage = () => {
     }
   }, [topicParam]);
 
+  console.log(selectedTopic)
   return (
     <div className="help-page">
       {/* Directly display the image instead of using a hero container */}
-      <div className="help-main-content">
+      <div className={`help-main-content ${selectedTopic.name == 'help' ? 'help-lp': ''}`}>
         <div className="sidebar">
           <h2>Help</h2>
+          <img width={'50px'} src={`${process.env.PUBLIC_URL}/images/arrows.png`} />
           {topics.help.map((topic, index) => (
             <button
               key={index}
               onClick={() => handleTopicChange(topic)} // Update topic and URL
               className={selectedTopic.name === topic.name ? 'active' : ''}
             >
-              {topic.name}
+            {topic.name}
+              
             </button>
           ))}
           {topics.buying.map((topic, index) => (
@@ -86,8 +90,9 @@ const HelpPage = () => {
             </button>
           ))}
         </div>
-        <div className="content-area">
-          <h2>{selectedTopic.name}</h2>
+        <div className={`content-area`}>
+          <h2>{selectedTopic.name == 'help' ? '' : selectedTopic.name}</h2>
+
           {selectedTopic.component || <>{selectedTopic.content}</>}
         </div>
       </div>
