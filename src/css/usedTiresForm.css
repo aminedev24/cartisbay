@@ -363,6 +363,7 @@
   .image-container {
      position: relative; width: 350px; /* Adjust width as needed */ 
      margin: auto; 
+     top: 20px;
     } 
   .image-container img { 
     width: 100%; /* Ensure the image fits within the container */ 
