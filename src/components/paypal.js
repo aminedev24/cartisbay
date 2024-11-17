@@ -4,6 +4,8 @@ const PaypalInfo = () => {
   return (
     <div className='paypal'>
       <h1>Simple & Secure Payments with PayPal</h1>
+      <img src={`${process.env.PUBLIC_URL}/images/paypalbanner.png`} alt={'company-profile'} className="topic-image" />
+
       <p>
         At Artisbay Inc., we prioritize security and convenience in every transaction. That’s why we’ve chosen PayPal as our trusted partner to process all payments safely and seamlessly.
       </p>

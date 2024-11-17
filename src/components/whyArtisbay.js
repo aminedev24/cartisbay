@@ -3,6 +3,7 @@ import React from 'react';
 const ArtisbayInfo = () => {
   return (
     <div className='whyChoose'>
+      <img src={`${process.env.PUBLIC_URL}/images/whyChooseUs.jpeg`} alt={'company-profile'} className="topic-image" />
 
       <div>
         <h2>1. Expertise and Experience</h2>
@@ -41,7 +42,10 @@ const ArtisbayInfo = () => {
         </p>
       </div>
       <p>
-        Choose Artisbay Inc. for quality you can trust, transparency you can rely on, and a customer experience built on respect and integrity. We look forward to serving you!      </p>
+        Choose Artisbay Inc. for quality you can trust, transparency you can rely on, and a customer experience built on respect and integrity. We look forward to serving you!
+      </p>
+
+
     </div>
   );
 };

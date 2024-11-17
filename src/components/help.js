@@ -12,6 +12,8 @@ import EnvironmentalMessage from './envirementPolicy';
 import PaymentPolicy from './securityNotice';
 import PaypalInfo from './paypal'; 
 import ArtisbayInfo from './whyArtisbay';
+import PaymentMethods from './paymentMethods';
+
   // Define the topics
   const topics = {
     help: [
@@ -26,11 +28,11 @@ import ArtisbayInfo from './whyArtisbay';
       { name: "How to Buy Used Tires", content: "Step-by-step for buying used tires...", image: "used-tires.jpg" },
     ],
     buying: [
-      { name: "how to buy Dismantled Cars", content: <CarDismantlingService />},
-      { name: "About payement", content: "Instructions on payment methods...", image: "how-to-pay.jpg" },
+      { name: "about Dismantled Cars", content: <CarDismantlingService />},
+      { name: "About payement", component: <PaymentMethods />, image: "how-to-pay.jpg" },
       { name: "security", content: <PaymentPolicy />, image: "envirement.jpg" },
       { name: "paypal", content: <PaypalInfo />, image: "envirement.jpg" },
-      { name: "envirement policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
+      { name: "Environment policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
       
     ]
   };
