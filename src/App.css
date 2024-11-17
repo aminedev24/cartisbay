@@ -1,18 +1,9 @@
 /* Force desktop styles for smaller screens */
 /* Force desktop styles for smaller screens */
 @media (max-width: 900px) {
-  body {
-    transform: scale(0.75); /* Adjust scale as needed */
-    transform-origin: 0 0;
-    width: 135%;
-    height: auto;
-    overflow-x: hidden;
-  }
-
-}
-
 body {
   overflow-x: hidden;
+}
 }
 
 .header-container, .used-tires-page{
