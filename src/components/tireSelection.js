@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import '../css/tireSelection.css';
-import Modal from './ordersModal'; // Import the Modal component
+import React, { useState, useEffect } from "react";
+import "../css/tireSelection.css";
+import Modal from "./ordersModal"; // Import the Modal component
 
-const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotalUnits, message, handleEditOrder, handleDeleteOrder, handleNewCategory }) => {
+const TireSelection = ({
+  orders,
+  setOrders,
+  percentageFill,
+  totalUnits,
+  setTotalUnits,
+  message,
+  handleEditOrder,
+  handleDeleteOrder,
+  handleNewCategory,
+}) => {
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const groupsPerPage = 1;
@@ -11,7 +21,7 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
     currentGroupPage: 1,
   });
 
-  const [selectedType, setSelectedType] = useState(''); // State to track selected type for filtering
+  const [selectedType, setSelectedType] = useState(""); // State to track selected type for filtering
 
   useEffect(() => {
     console.log("Updated orders:", orders);
@@ -26,7 +36,10 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
       const newGroupPage = prevState.currentGroupPage + direction;
       return {
         ...prevState,
-        currentGroupPage: Math.max(1, Math.min(calculateTotalGroupPages(), newGroupPage)),
+        currentGroupPage: Math.max(
+          1,
+          Math.min(calculateTotalGroupPages(), newGroupPage),
+        ),
       };
     });
   };
@@ -41,7 +54,7 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
 
   // Filter orders based on selectedType
   const filteredOrders = selectedType
-    ? makerOrders.filter(order => order.type === selectedType)
+    ? makerOrders.filter((order) => order.type === selectedType)
     : makerOrders;
 
   const handleGroupSelection = (group) => {
@@ -60,11 +73,9 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
     <div className="tire-selection-container">
       <h3>Your Order List:</h3>
       <div className="pagination-controls">
-    
-
         {Object.keys(orders).length > 0 && (
           <>
-            <label htmlFor='group-dropdown'>Make:</label>
+            <label htmlFor="group-dropdown">Make:</label>
             <select
               onChange={(e) => handleGroupSelection(Number(e.target.value))}
               value={pagination.currentGroupPage} // Use currentGroupPage for the dropdown
@@ -77,22 +88,22 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
               ))}
             </select>
 
-            <label htmlFor='type-filter'>Type:</label>
+            <label htmlFor="type-filter">Type:</label>
             <select
-              id='type-filter'
-              className='group-dropdown'
+              id="type-filter"
+              className="group-dropdown"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)} // Update selectedType
             >
-              <option value=''>All</option>
-              <option value='Summer'>Summer</option>
-              <option value='Winter'>Winter</option>
-              <option value='All-Season '>All-Season</option>
+              <option value="">All</option>
+              <option value="Summer">Summer</option>
+              <option value="Winter">Winter</option>
+              <option value="All-Season ">All-Season</option>
               {/* Add more types as needed */}
             </select>
 
             <div className="make-list-controls">
-            <button
+              <button
                 onClick={() => handleGroupPageChange(-1)}
                 disabled={pagination.currentGroupPage === 1}
                 className="prev-next-button"
@@ -102,28 +113,21 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
 
               <button
                 onClick={() => handleGroupPageChange(1)}
-                disabled={pagination.currentGroupPage === calculateTotalGroupPages()}
+                disabled={
+                  pagination.currentGroupPage === calculateTotalGroupPages()
+                }
                 className="prev-next-button"
               >
                 &rarr;
               </button>
-
             </div>
           </>
         )}
-
-      
-
-       
-       
-
       </div>
-     
-    
 
-      <div className='orders-wrapper'>
+      <div className="orders-wrapper">
         <div className="maker-section">
-          {filteredOrders.length > 0 ? (
+          
             <table className="orders-table">
               <thead>
                 <tr>
@@ -142,7 +146,7 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
                     <td>{order.quantity}</td>
                     <td>{order.type}</td>
                     <td>
-                      <div className='table-btns'>
+                      <div className="table-btns">
                         <button
                           onClick={() => handleEditOrder(selectedMaker, index)}
                           className="action-button edit-button"
@@ -150,7 +154,9 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
                           <i className="fas fa-edit"></i>
                         </button>
                         <button
-                          onClick={() => handleDeleteOrder(selectedMaker, index)}
+                          onClick={() =>
+                            handleDeleteOrder(selectedMaker, index)
+                          }
                           className="action-button delete-button"
                         >
                           <i className="fas fa-trash-alt"></i>
@@ -161,12 +167,9 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
                 ))}
               </tbody>
             </table>
-          ) : (
-            <p>No orders available.</p>
-          )}
+         
         </div>
       </div>
-      <div className="confirmation-message">{confirmationMessage}</div>
 
       <div className="total-order">
         <p>
@@ -174,11 +177,8 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
         </p>
         <p>{message}</p>
       </div>
-      <div className='table-btns'>
-        <button
-          className="continue-selection-btn"
-          onClick={handleClearOrders}
-        >
+      <div className="table-btns">
+        <button className="continue-selection-btn" onClick={handleClearOrders}>
           Clear Orders
         </button>
 
@@ -192,7 +192,10 @@ const TireSelection = ({ orders, setOrders, percentageFill, totalUnits, setTotal
       </div>
 
       <div className="image-container">
-        <img src={`${process.env.PUBLIC_URL}/images/container.png`} alt="Container Image" />
+        <img
+          src={`${process.env.PUBLIC_URL}/images/container.png`}
+          alt="Container Image"
+        />
         <div className="text">{percentageFill.toLocaleString()}</div>
       </div>
 

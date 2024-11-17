@@ -67,20 +67,21 @@ const HelpPage = () => {
   console.log(selectedTopic)
   return (
     <div className="help-page">
-      {/* Directly display the image instead of using a hero container */}
-      <div className={`help-main-content ${selectedTopic.name == 'help' ? 'help-lp': ''}`}>
+      <div className={`help-main-content ${selectedTopic.name === 'help' ? 'help-lp' : ''}`}>
         <div className="sidebar">
           <h2>Help</h2>
           <img width={'50px'} src={`${process.env.PUBLIC_URL}/images/arrows.png`} />
           {topics.help.map((topic, index) => (
-            <button
-              key={index}
-              onClick={() => handleTopicChange(topic)} // Update topic and URL
-              className={selectedTopic.name === topic.name ? 'active' : ''}
-            >
-            {topic.name}
-              
-            </button>
+            // Only render the button if the topic name is not "help"
+            topic.name !== 'help' && (
+              <button
+                key={index}
+                onClick={() => handleTopicChange(topic)} // Update topic and URL
+                className={selectedTopic.name === topic.name ? 'active' : ''} 
+              >
+                {topic.name}
+              </button>
+            )
           ))}
           {topics.buying.map((topic, index) => (
             <button
@@ -93,13 +94,12 @@ const HelpPage = () => {
           ))}
         </div>
         <div className={`content-area`}>
-          <h2>{selectedTopic.name == 'help' ? '' : selectedTopic.name}</h2>
-
+          <h2>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
           {selectedTopic.component || <>{selectedTopic.content}</>}
         </div>
       </div>
     </div>
-  );
+);
 };
 
 export default HelpPage;

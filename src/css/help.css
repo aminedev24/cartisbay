@@ -3,6 +3,10 @@
     flex-direction: column;
     min-height: 100vh; /* Ensure the help page takes at least the full height of the viewport */
   }
+
+  .hidden {
+    display: none;
+  }
   
   .hero-section {
     background-size: cover;
