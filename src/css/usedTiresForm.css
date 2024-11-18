@@ -219,10 +219,13 @@
 
 
   .form-group input[type="checkbox"] {
-    margin-right: 10px; /* Space between checkbox and label */
     transform: scale(1.5); /* Increase size of checkbox */
   }
 
+  .checkbox-container {
+    flex-direction: row;
+    align-items: center;
+  }
 
   .image-container {
      position: relative; width: 350px; /* Adjust width as needed */ 

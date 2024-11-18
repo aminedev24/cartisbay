@@ -35,6 +35,11 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
   useEffect(() => {
     const existingQuantity = Object.values(orders).flat().reduce((acc, order) => acc + order.quantity, 0);
     const totalCapacity = doubleLoading ? 3000 : 2000;
+      // Alert the user if the quantity is exactly 2000
+      if (existingQuantity === 2000) {
+        alert("A 40ft HC container can hold 2,000 units with standard loading. If you wish to load up to 3,000 units, please consider the double-loading option.");
+    }
+
     const fill = (existingQuantity / totalCapacity) * 100;
     setPercentageFill(fill); // Allow percentage to exceed 100%
   }, [orders, doubleLoading]);
@@ -138,10 +143,7 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
         return; // Prevent submission if it exceeds capacity
     }
 
-    // Alert the user if the quantity is exactly 2000
-    if (quantity === 2000) {
-        alert("A 40ft HC container can hold 2,000 units with standard loading. If you wish to load up to 3,000 units, please consider the double-loading option.");
-    }
+  
 
     if (editingOrder !== null) {
         const previousOrder = orders[maker][editingOrder];
@@ -316,6 +318,17 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
                   Load Index:
                   <input type="number" name="loadIndex" value={formData.loadIndex} onChange={handleChange} placeholder="optional" />
                 </label>
+              </div>
+
+              <div className="form-group checkbox-container">
+                  <label>
+                    Double Loading (up to 3000 units)
+                  </label>
+                  <input 
+                      type="checkbox" 
+                      checked={doubleLoading} 
+                      onChange={() => setDoubleLoading(!doubleLoading)} 
+                    />
               </div>
             </div>
           

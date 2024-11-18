@@ -170,7 +170,7 @@ const TireSelection = ({
          
         </div>
       </div>
-
+      <div>
       <div className="total-order">
         <p>
           <strong>Total Order:</strong> {totalUnits} units
@@ -197,6 +197,7 @@ const TireSelection = ({
           alt="Container Image"
         />
         <div className="text">{percentageFill.toLocaleString()}</div>
+      </div>
       </div>
 
       <Modal
