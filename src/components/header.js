@@ -91,13 +91,14 @@ const Header = () => {
             >
               Help <span className="arrow">🔽</span>
               <div className={`dropdown-content help ${activeDropdown === 'overview' ? 'show' : ''}`}>
-                <Link to={'/help?topic=Help'}>Help</Link>
+                <Link to={'/help?topic=help'}>Help</Link>
                 <Link to={'/help?topic=Company%20Profile'}>Company Profile</Link>
                 <Link to={'/help?topic=Bank%20Information'}>Bank Information</Link>
                 <Link to={'/help?topic=Why%20Choose%20Artisbay%20Inc.'}>Why Choose Artisbay</Link>
                 <Link to={'/help?topic=Terms%20%26%20Conditions'}>Terms & Conditions</Link>
                 <Link to={'/help?topic=Anti-Social%20Force%20Policy'}>Anti-Social Force Policy</Link>
-                <Link to={'/help?topic=How%20to%20Buy'}>How To Buy</Link>
+                <Link to={'/help?topic=How%20to%20Buy%20used%20cars'}>How To Buy</Link>
+                <Link to={'/help?topic=About%20payement'}>How To Pay</Link>
               </div>
             </div>
           </div>

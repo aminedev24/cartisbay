@@ -84,134 +84,112 @@ const OrderForm = ({ formData, setFormData, orders, setOrders, setTotalUnits, to
       ...prevData,
       [name]: value,
     }));
-
-    if (name === 'quantity') {
-      const quantity = parseInt(value) || 0;
-      const totalCapacity = doubleLoading ? 3000 : 2000;
-
-      if (quantity < 1) {
-        setIsQuantityValid(false);
-        setMessage("Quantity must be at least 1.");
-      } else {
-        setIsQuantityValid(true);
-        setMessage("");
-      }
-
-      const existingQuantity = Object.values(orders).flat().reduce((acc, order) => acc + order.quantity, 0);
-      const newTotalUnits = editingOrder !== null 
-        ? existingQuantity - orders[formData.maker][editingOrder].quantity + quantity 
-        : existingQuantity + quantity;
-
-      const fill = (newTotalUnits / (doubleLoading ? 3000 : 2000)) * 100;
-
-      setPercentageFill(fill); // Allow percentage to exceed 100%
-
-      // Inform the user when reaching 2000 units
-      if (newTotalUnits >= 2000 && !hasPromptedForDoubleLoading) {
-        const userConfirmed = window.confirm("You have reached 2000 units. Would you like to consider double loading?");
-        if (userConfirmed) {
-          setDoubleLoading(true);
-        }
-        setHasPromptedForDoubleLoading(true); // Set the flag to true after prompting
-      } else if (newTotalUnits >= 3000) {
-        alert("You have reached 3000 units.");
-      }
-    }
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.maker || !formData.type || !formData.tireSize || !formData.quantity) {
-      setMessage("Please fill in all required fields.");
-      return;
+        setMessage("Please fill in all required fields.");
+        return;
     }
 
     const [width, aspectRatio, rimDiameter] = formData.tireSize.split(/\/|R/);
-    const quantity = parseInt(formData.quantity, 10);
+    let quantity = parseInt(formData.quantity, 10); // Parse quantity from form data
+
+    // Ensure quantity is a valid number
+    if (isNaN(quantity) || quantity < 1) {
+        setMessage("Quantity must be at least 1.");
+        return; // Prevent submission if quantity is less than 1
+    }
+
+    const totalCapacity = doubleLoading ? 3000 : 2000; // Determine total capacity
+
     const newOrder = {
-      maker: formData.maker,
-      width,
-      aspectRatio,
-      rimDiameter,
-      loadIndex: formData.loadIndex,
-      speedRating: formData.speedRating,
-      quantity: quantity,
-      type: formData.type,
+        maker: formData.maker,
+        width,
+        aspectRatio,
+        rimDiameter,
+        loadIndex: formData.loadIndex,
+        speedRating: formData.speedRating,
+        quantity: quantity,
+        type: formData.type,
     };
 
     const maker = formData.maker;
     const updatedOrders = { ...orders };
 
     if (!updatedOrders[maker]) {
-      updatedOrders[maker] = [];
+        updatedOrders[maker] = [];
     }
 
     let existingQuantity = Object.values(updatedOrders).flat().reduce((acc, order) => acc + order.quantity, 0);
     let newTotalUnits = existingQuantity;
 
+    // Calculate new total units before adding the new order
     const potentialNewTotalUnits = editingOrder !== null 
-      ? newTotalUnits - orders[formData.maker][editingOrder].quantity + quantity 
-      : newTotalUnits + quantity;
+        ? newTotalUnits - orders[formData.maker][editingOrder].quantity + quantity 
+        : newTotalUnits + quantity;
 
-    if (editingOrder !== null) {
-      const previousOrder = orders[maker][editingOrder];
-      newTotalUnits -= previousOrder.quantity;
-
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type
-      );
-
-      if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
-        const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
-        accumulatedOrder.quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity;
-        updatedOrders[maker].splice(editingOrder, 1);
-        setMessage(`Your order has been updated!`);
-      } else {
-        updatedOrders[maker][editingOrder] = newOrder;
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your order has been updated!`);
-      }
-    } else {
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type
-      );
-
-      if (existingOrderIndex !== -1) {
-        updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your order has been updated and quantities have been accumulated!`);
-      } else {
-        updatedOrders[maker].push(newOrder);
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your new order has been added!`);
-      }
+    // Check if the new total units exceed the maximum capacity
+    if (potentialNewTotalUnits > totalCapacity) {
+        setMessage(`The total units cannot exceed ${totalCapacity}. Please consider using double loading.`);
+        return; // Prevent submission if it exceeds capacity
     }
 
+    // Alert the user if the quantity is exactly 2000
+    if (quantity === 2000) {
+        alert("A 40ft HC container can hold 2,000 units with standard loading. If you wish to load up to 3,000 units, please consider the double-loading option.");
+    }
+
+    if (editingOrder !== null) {
+        const previousOrder = orders[maker][editingOrder];
+        newTotalUnits -= previousOrder.quantity; // Subtract the previous quantity
+
+        const existingOrderIndex = updatedOrders[maker].findIndex(
+            (order) =>
+                order.width === newOrder.width &&
+                order.aspectRatio === newOrder.aspectRatio &&
+                order.rimDiameter === newOrder.rimDiameter &&
+                order.type === newOrder.type
+        );
+
+        if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
+            const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
+            accumulatedOrder.quantity += newOrder.quantity;
+            newTotalUnits += newOrder.quantity; // Add the new quantity
+            updatedOrders[maker].splice(editingOrder, 1);
+            setMessage(`Your order has been updated and quantities have been accumulated!`);
+        } else {
+            updatedOrders[maker][editingOrder] = newOrder; // Update the order
+            newTotalUnits += newOrder.quantity; // Add the new quantity
+            setMessage(`Your order has been updated!`);
+        }
+    } else {
+        const existingOrderIndex = updatedOrders[maker].findIndex(
+            (order) =>
+                order.width === newOrder.width &&
+                order.aspectRatio === newOrder.aspectRatio &&
+                order.rimDiameter === newOrder.rimDiameter &&
+                order.type === newOrder.type
+        );
+
+        if (existingOrderIndex !== -1) {
+            updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
+            newTotalUnits += newOrder.quantity; // Add the new quantity
+            setMessage(`Your order has been updated and quantities have been accumulated!`);
+        } else {
+            updatedOrders[maker].push(newOrder);
+            newTotalUnits += newOrder.quantity; // Add the new quantity
+            setMessage(`Your new order has been added!`);
+        }
+    }
+
+    // Proceed with the order submission
     setOrders(updatedOrders);
     setTotalUnits(newTotalUnits);
-    setMessage("Order submitted successfully!");
-
-    setFormData({
-      maker: '',
-      type: '',
-      tireSize: '',
-      loadIndex: '',
-      speedRating: '',
-      quantity: '',
-    });
-    setIsQuantityValid(true);
-    setPercentageFill((newTotalUnits / (doubleLoading ? 3000 : 2000)) * 100);
-  };
+  }
 
   const handleDeleteOrder = (maker, index) => {
     const updatedOrders = { ...orders };

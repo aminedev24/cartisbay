@@ -371,8 +371,8 @@
   } 
   .image-container .text { 
     position: absolute; 
-    top: 56%; 
-    left: 28%;
+    top: 45%; 
+    left: 36%;
     transform:translate(-50%, -50%) perspective(600px) rotateX(2deg) rotateY(334deg); 
     font-size: 1.6em; /* Adjust font size as needed */ 
     color: white; 
