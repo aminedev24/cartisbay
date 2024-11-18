@@ -24,7 +24,7 @@ import UsedTiresFAQ from './aboutusedtires';
       { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: "why-choose-us.jpg" },
       { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
       { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
-      { name: "How to Buy", component: <HowToBuy />},
+      { name: "How to Buy used cars", component: <HowToBuy />},
       { name: "about uesed Tires", component: <UsedTiresFAQ />, image: "used-tires.jpg" },
     ],
     buying: [
@@ -69,7 +69,7 @@ const HelpPage = () => {
     <div className="help-page">
       <div className={`help-main-content ${selectedTopic.name === 'help' ? 'help-lp' : ''}`}>
         <div className="sidebar">
-          <h2>Help</h2>
+          <button className='btn-header' onClick={() => handleTopicChange(topics.help[0])}><h2>Help</h2></button>
           <img width={'50px'} src={`${process.env.PUBLIC_URL}/images/arrows.png`} />
           {topics.help.map((topic, index) => (
             // Only render the button if the topic name is not "help"
