@@ -18,7 +18,7 @@ import Auction from './auction';
   // Define the topics
   const topics = {
     help: [
-      { name: "help", content: <h1>All you need to know <br />about us</h1>, image: 'overview.jpg' },
+      { name: "help", content: <h1>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/help.jpeg` },
       { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
       { name: "Company Profile", component: <CompanyProfile/> },
       { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
@@ -33,7 +33,7 @@ import Auction from './auction';
       { name: "About payement", component: <PaymentMethods />, image: "how-to-pay.jpg" },
       { name: "security", content: <PaymentPolicy />, image: "envirement.jpg" },
       { name: "paypal", content: <PaypalInfo />, image: "envirement.jpg" },
-      { name: "Environment policy", content: <EnvironmentalMessage />, image: "envirement.jpg" },
+      { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: "envirement.jpg" },
       { name: "auction", content: <Auction />, image: "bank-info.jpg" }
 
       
@@ -73,6 +73,7 @@ const HelpPage = () => {
 
   return (
     <div className="help-page">
+      {/*{selectedTopic.name == 'help' ?<div className='hero-section-help'></div> : ''}*/}
       <div className={`help-main-content ${selectedTopic.name === 'help' ? 'help-lp' : ''}`}>
         <div className="sidebar">
           <button className='btn-header' onClick={() => handleTopicChange(topics.help[0])}><h2>Help</h2></button>
