@@ -42,7 +42,7 @@ function HomePage() {
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/auctions.png`,
       title: "Auctions",
-      link: "/auctions",
+      link: "/help?topic=auction",
     },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/howtopayen.jpg`,

@@ -14,6 +14,7 @@ import PaypalInfo from './paypal';
 import ArtisbayInfo from './whyArtisbay';
 import PaymentMethods from './paymentMethods';
 import UsedTiresFAQ from './aboutusedtires';
+import Auction from './auction';
   // Define the topics
   const topics = {
     help: [
@@ -32,7 +33,9 @@ import UsedTiresFAQ from './aboutusedtires';
       { name: "About payement", component: <PaymentMethods />, image: "how-to-pay.jpg" },
       { name: "security", content: <PaymentPolicy />, image: "envirement.jpg" },
       { name: "paypal", content: <PaypalInfo />, image: "envirement.jpg" },
-      { name: "Environment policy", content: <EnvironmentalMessage />, image: "envirement.jpg" }
+      { name: "Environment policy", content: <EnvironmentalMessage />, image: "envirement.jpg" },
+      { name: "auction", content: <Auction />, image: "bank-info.jpg" }
+
       
     ]
   };
