@@ -30,7 +30,7 @@ function HomePage() {
       link: "/used-tires",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/howtobuyen.jpg`,
       title: "How to Buy",
       link: "/help?topic=How%20to%20Buy%20used%20cars",
     },

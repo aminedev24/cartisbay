@@ -46,7 +46,7 @@
   .sidebar {
     width: 50%;
     padding-right: 20px;
-    max-width: 200px;
+    max-width: 217px;
     position: sticky;
     text-align: center;
     
@@ -60,7 +60,7 @@
     display: block;
     width: 100%;
     padding: 10px;
-    text-align: center;
+    text-align: left;
     margin: 10px 0;
     text-transform: capitalize;
     border: none;

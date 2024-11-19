@@ -25,7 +25,7 @@ import UsedTiresFAQ from './aboutusedtires';
       { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
       { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
       { name: "How to Buy used cars", component: <HowToBuy />},
-      { name: "about uesed Tires", component: <UsedTiresFAQ />, image: "used-tires.jpg" },
+      { name: "about used Tires", component: <UsedTiresFAQ />, image: "used-tires.jpg" },
     ],
     buying: [
       { name: "about Dismantled Cars", content: <CarDismantlingService />},
