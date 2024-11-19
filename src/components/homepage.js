@@ -37,7 +37,7 @@ function HomePage() {
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/car-dismantling.jpg`,
       title: "Car Dismantling",
-      link: "/car-dismantling",
+      link: "/help?topic=about%20Dismantled%20Cars",
     },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/auctions.png`,

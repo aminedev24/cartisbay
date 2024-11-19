@@ -56,15 +56,18 @@ const HelpPage = () => {
 
   useEffect(() => {
     // Update the selected topic if the URL changes
+    console.log("Current topicParam:", topicParam); // Debugging line
     if (topicParam) {
-      const foundTopic = topics.help.find(topic => topic.name === topicParam);
+      const foundTopic = topics.help.find(topic => topic.name === topicParam) || 
+                         topics.buying.find(topic => topic.name === topicParam);
       if (foundTopic) {
         setSelectedTopic(foundTopic);
+      } else {
+        console.warn("Topic not found:", topicParam); // Debugging line
       }
     }
   }, [topicParam]);
 
-  console.log(selectedTopic)
   return (
     <div className="help-page">
       <div className={`help-main-content ${selectedTopic.name === 'help' ? 'help-lp' : ''}`}>
