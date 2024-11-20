@@ -15,6 +15,7 @@ import ArtisbayInfo from './whyArtisbay';
 import PaymentMethods from './paymentMethods';
 import UsedTiresFAQ from './aboutusedtires';
 import Auction from './auction';
+import TelegraphicTransfer from './telegraphicTransfer'
   // Define the topics
   const topics = {
     help: [
@@ -33,6 +34,7 @@ import Auction from './auction';
       { name: "About payement", component: <PaymentMethods />, image: "how-to-pay.jpg" },
       { name: "security", content: <PaymentPolicy />, image: "envirement.jpg" },
       { name: "paypal", content: <PaypalInfo />, image: "envirement.jpg" },
+      { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: "envirement.jpg" },
       { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: "envirement.jpg" },
       { name: "auction", content: <Auction />, image: "bank-info.jpg" }
 

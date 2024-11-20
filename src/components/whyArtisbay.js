@@ -3,7 +3,7 @@ import React from 'react';
 const ArtisbayInfo = () => {
   return (
     <div className='whyChoose'>
-      <img src={`${process.env.PUBLIC_URL}/images/whychooseus2.jpeg`} alt={'company-profile'} className="topic-image" />
+      <img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/whychooseus2.jpeg`} alt={'company-profile'} className="topic-image" />
 
       <div>
         <h2>1. Expertise and Experience</h2>

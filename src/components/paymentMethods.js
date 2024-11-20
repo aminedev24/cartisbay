@@ -4,7 +4,7 @@ const PaymentMethods = () => {
   return (
     <div className='howtopay'>
       <h1>Payment Methods at Artisbay Inc.</h1>
-      <img src={`${process.env.PUBLIC_URL}/images/howtopaybanner.jpeg`} alt={'company-profile'} className="topic-image" />
+      <img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/aboutpayment.jpeg`} alt={'company-profile'} className="topic-image" />
       <p>At Artisbay Inc., we provide secure and reliable payment options to meet the needs of our global customers.</p>
       
       <h2>1. Telegraphic Transfer (T/T)</h2>

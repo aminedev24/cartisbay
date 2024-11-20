@@ -1,10 +1,27 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const UsedTiresFAQ = () => {
   return (
     <div className='aboutusedtires'>
       <h1>Artisbay Inc. Used Tires FAQ</h1>
       <img src={`${process.env.PUBLIC_URL}/images/used-tires-banner.jpeg`} alt={'howtobuy-banner'} className="topic-image" />
+
+      <h1>Why Choose Used Tires from Japan?</h1>
+      <p>
+        Japan is renowned for its high standards in vehicle maintenance, and used tires are no exception. Japanese roads are exceptionally well-maintained, and strict speed limits mean that tires endure less wear and tear compared to those in other countries. Additionally, Japanese drivers tend to replace their tires more frequently, ensuring that pre-owned tires are often in excellent condition with plenty of remaining tread life.
+      </p>
+      <h2>Why Buy Used Tires from Artisbay Inc.?</h2>
+      <ul>
+        <li><strong>Premium Selection:</strong> High-quality, pre-owned tires sourced from Japan’s well-maintained roads.</li>
+        <li><strong>Space-Optimized Shipping:</strong> Expert tire nesting ensures efficient packing, reducing shipping costs.</li>
+        <li><strong>Wholesale Pricing:</strong> Competitive rates with bulk availability for all your needs.</li>
+        <li><strong>Meticulous Inspection:</strong> Every tire undergoes thorough quality checks for your peace of mind.</li>
+      </ul>
+      <p>
+        Ready to stock up on high-quality used tires? Visit our dedicated <Link to='/used-tires'>Wholesale Tire Orders</Link> page to explore our selection and place your order today. With Artisbay Inc., you’re guaranteed quality, reliability, and exceptional service.
+      </p>
+
 
       <h2>What types of used tires does Artisbay Inc. offer?</h2>
       <p>We specialize in high-quality used tires for various vehicles, including passenger cars, SUVs, light trucks, and commercial vehicles. Our inventory includes a wide range of sizes, tread depths, and brands to meet your specific needs.</p>
