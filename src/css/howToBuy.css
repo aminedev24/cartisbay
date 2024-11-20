@@ -122,3 +122,22 @@
 }
 
 
+.cta-container {
+  text-align: center;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.cta-button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  color: white;
+  background-color: #f1892b; /* Change to your preferred color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #f2913d; /* Darker shade on hover */
+}

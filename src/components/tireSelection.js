@@ -22,6 +22,7 @@ const TireSelection = ({
   });
 
   const [selectedType, setSelectedType] = useState(""); // State to track selected type for filtering
+  const [selectedMaker, setSelectedMaker] = useState("All Makes"); // Default to "All Makes"
 
   useEffect(() => {
     console.log("Updated orders:", orders);
@@ -44,25 +45,15 @@ const TireSelection = ({
     });
   };
 
-  const getCurrentGroupMakers = () => {
-    const makers = Object.keys(orders);
-    return makers[pagination.currentGroupPage - 1]; // Use currentGroupPage to get the maker
-  };
-
-  const selectedMaker = getCurrentGroupMakers();
-  const makerOrders = selectedMaker ? orders[selectedMaker] : [];
+  // Get orders for the selected maker or all makers
+  const makerOrders = selectedMaker === "All Makes"
+    ? Object.values(orders).flat() // Flatten all orders if "All Makes" is selected
+    : orders[selectedMaker] || []; // Get orders for the selected maker
 
   // Filter orders based on selectedType
-  const filteredOrders = selectedType
-    ? makerOrders.filter((order) => order.type === selectedType)
-    : makerOrders;
-
-  const handleGroupSelection = (group) => {
-    setPagination((prevState) => ({
-      ...prevState,
-      currentGroupPage: group,
-    }));
-  };
+  const filteredOrders = makerOrders.filter((order) => {
+    return selectedType ? order.type === selectedType : true;
+  });
 
   const handleClearOrders = () => {
     setOrders({});
@@ -77,12 +68,18 @@ const TireSelection = ({
           <>
             <label htmlFor="group-dropdown">Make:</label>
             <select
-              onChange={(e) => handleGroupSelection(Number(e.target.value))}
-              value={pagination.currentGroupPage} // Use currentGroupPage for the dropdown
+              onChange={(e) => {
+                const selected = e.target.value;
+                setSelectedMaker(selected);
+                // Reset pagination when changing maker
+                setPagination({ currentGroupPage: 1 });
+              }}
+              value={selectedMaker}
               className="group-dropdown"
             >
+              <option value="All Makes">All Makes</option>
               {Object.keys(orders).map((maker, index) => (
-                <option key={index} value={index + 1}>
+                <option key={index} value={maker}>
                   {maker}
                 </option>
               ))}
@@ -98,106 +95,85 @@ const TireSelection = ({
               <option value="">All</option>
               <option value="Summer">Summer</option>
               <option value="Winter">Winter</option>
-              <option value="All-Season ">All-Season</option>
+              <option value="All-Season">All-Season</option>
               {/* Add more types as needed */}
             </select>
 
-            <div className="make-list-controls">
-              <button
-                onClick={() => handleGroupPageChange(-1)}
-                disabled={pagination.currentGroupPage === 1}
-                className="prev-next-button"
-              >
-                &larr;
-              </button>
-
-              <button
-                onClick={() => handleGroupPageChange(1)}
-                disabled={
-                  pagination.currentGroupPage === calculateTotalGroupPages()
-                }
-                className="prev-next-button"
-              >
-                &rarr;
-              </button>
-            </div>
           </>
         )}
       </div>
 
-      <div className="orders-wrapper">
+      <div className ="orders-wrapper">
         <div className="maker-section">
-          
-            <table className="orders-table">
-              <thead>
-                <tr>
-                  <th>Make</th>
-                  <th>Size</th>
-                  <th>Quantity</th>
-                  <th>Type</th>
-                  <th>Actions</th>
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>Make</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredOrders.map((order, index) => (
+                <tr key={index}>
+                  <td>{order.maker}</td>
+                  <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>
+                  <td>{order.quantity}</td>
+                  <td>{order.type}</td>
+                  <td>
+                    <div className="table-btns">
+                      <button
+                        onClick={() => handleEditOrder(selectedMaker, index)}
+                        className="action-button edit-button"
+                      >
+                        <i className="fas fa-edit"></i>
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleDeleteOrder(selectedMaker, index)
+                        }
+                        className="action-button delete-button"
+                      >
+                        <i className="fas fa-trash-alt"></i>
+                      </button>
+                    </div>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {filteredOrders.map((order, index) => (
-                  <tr key={index}>
-                    <td>{order.maker}</td>
-                    <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>
-                    <td>{order.quantity}</td>
-                    <td>{order.type}</td>
-                    <td>
-                      <div className="table-btns">
-                        <button
-                          onClick={() => handleEditOrder(selectedMaker, index)}
-                          className="action-button edit-button"
-                        >
-                          <i className="fas fa-edit"></i>
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleDeleteOrder(selectedMaker, index)
-                          }
-                          className="action-button delete-button"
-                        >
-                          <i className="fas fa-trash-alt"></i>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-         
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
       <div>
-      <div className="total-order">
-        <p>
-          <strong>Total Order:</strong> {totalUnits} units
-        </p>
-        <p>{message}</p>
-      </div>
-      <div className="table-btns">
-        <button className="continue-selection-btn" onClick={handleClearOrders}>
-          Clear Orders
-        </button>
+        <div className="total-order">
+          <p>
+            <strong>Total Order:</strong> {totalUnits} units
+          </p>
+          <p>{message}</p>
+        </div>
+        <div className="table-btns">
+          <button className="continue-selection-btn" onClick={handleClearOrders}>
+            Clear Orders
+          </button>
 
-        <button
-          className="continue-selection-btn"
-          disabled={Object.keys(orders).length === 0}
-          onClick={() => setIsModalOpen(true)} // Open the modal
-        >
-          Show All Orders
-        </button>
-      </div>
+          <button
+            className="continue-selection-btn"
+            disabled={Object.keys(orders).length === 0}
+            onClick={() => setIsModalOpen(true)} // Open the modal
+          >
+            Show All Orders
+          </button>
+        </div>
 
-      <div className="image-container">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/container2.png`}
-          alt="Container Image"
-        />
-        <div className="text">{percentageFill.toLocaleString()}</div>
-      </div>
+        <div className="image-container">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/container2.png`}
+            alt="Container Image"
+          />
+          <div className="text">{percentageFill.toLocaleString()}</div>
+        </div>
       </div>
 
       <Modal

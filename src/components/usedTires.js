@@ -14,6 +14,8 @@ const UsedTires = () => {
 
   
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasPromptedForDoubleLoading, setHasPromptedForDoubleLoading] = useState(false); // New state variable
+
   
   const [orders, setOrders] = useState({});
   const [totalUnits, setTotalUnits] = useState(0);
@@ -181,6 +183,8 @@ const UsedTires = () => {
                 setOrders={setOrders}
                 totalUnits={totalUnits}
                 setTotalUnits={setTotalUnits}
+                hasPromptedForDoubleLoading={hasPromptedForDoubleLoading}
+                setHasPromptedForDoubleLoading={setHasPromptedForDoubleLoading}
               />
             </div>
           </div>

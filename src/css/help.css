@@ -28,11 +28,30 @@
     background-size: cover;
   }
 
-  .help-lp h1 {
+  .commitment-topic-lp {
+    background-image: url('../../public/images/eco1copy.jpeg');
+    background-size: cover;
+  }
+  
+  .hero {
+    position: relative;
+  }
+  .hero h1 {
+    position: absolute; 
+    top: 50%; 
+    left: 6%; 
+    transform: translateY(-50%); 
+    color: #1da1f2; 
+    padding: 10px; 
+    font-size: 2em; /* Adjust font size as needed */
+    text-shadow: 1px 1px 1px #ffffff; /* Added text shadow */
+  }
+
+  .help-header {
     color: #1da1f2;
     justify-self: center;
     text-align: center;
-    text-shadow: 1px 1px 2px #fff; /* Added text shadow */
+    text-shadow: 1px 1px 1px #333; /* Added text shadow */
 
   }
   
@@ -47,7 +66,6 @@
     width: 100%; /* Makes the image responsive */
     height: auto; /* Maintains the aspect ratio */
     max-height: 400px; /* Sets a maximum height for the image */
-    margin-bottom: 20px; /* Adds space below the image */
     object-fit: cover;
   }
   
@@ -75,7 +93,7 @@
     color: #333;
     font-weight: bold;
     background-color: transparent;
-    text-shadow: 1px 1px 2px #ecf0f1; /* Added text shadow */
+    text-shadow: 1px 1px 5px #333; /* Added text shadow */
     background-color: rgba(255, 255, 255, 0.5); /* Light background with transparency */
     font-size: 16px;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/terms.css';
+import { Link } from 'react-router-dom';
 
 const TermsAndConditions = () => (
   <div className="terms-container">
@@ -110,8 +111,12 @@ const TermsAndConditions = () => (
       with the Service, the Tokyo District Court or the court of jurisdiction where the Company’s 
       headquarters is located shall have exclusive jurisdiction
     </p>
-    <h2>Signature and Agreement Acknowledgment</h2>
-    <p>This agreement is effective as of the date signed below by both parties.</p>
+    <div className='cta-container'> 
+      <p className='cta-text'>Have any questions? We're here to help!</p> 
+      <button className='cta-btn'>
+         <Link to='/contact'>Contact Us</Link> 
+      </button>
+  </div>
   </div>
 );
 

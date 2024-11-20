@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 const UsedTiresFAQ = () => {
   return (
     <div className='aboutusedtires'>
-      <h1>Artisbay Inc. Used Tires FAQ</h1>
       <img src={`${process.env.PUBLIC_URL}/images/used-tires-banner.jpeg`} alt={'howtobuy-banner'} className="topic-image" />
 
       <h1>Why Choose Used Tires from Japan?</h1>

@@ -69,11 +69,13 @@
     justify-content: flex-start;
     margin-bottom: 15px;
     gap: 40px;
+    flex-wrap: wrap;
   }
   
   .usedTiresForm-container .form-group {
     flex: 0 1 40%; /* Allow flexibility and set a base width */
     text-align: left;
+    max-width: 45%; /* Prevent exceeding this width */
     min-width: 200px;
   }
 
@@ -180,7 +182,8 @@
   }
   .textArea {
     margin-top: 10px;
-    flex: 0 1 80% !important;
+    flex: 0 1 83% !important;
+    max-width: unset !important;
   }
 
   .textArea textarea {
@@ -236,4 +239,58 @@
     font-weight: bold; 
   }
 
+/* Modal.css */
+.alert-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay for better contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.alert-modal-content {
+  background: #fff; /* White background for the modal */
+  padding: 30px; /* Increased padding for better spacing */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: center;
+  max-width: 400px; /* Limit the width of the modal */
+  width: 90%; /* Responsive width */
+}
+
+.alert-modal-content h2 {
+  margin: 0 0 15px; /* Spacing below the heading */
+  font-size: 24px; /* Larger font size for the heading */
+  color: #333; /* Darker color for better readability */
+}
+
+.alert-modal-content p {
+  margin: 0 0 20px; /* Spacing below the paragraph */
+  font-size: 18px; /* Increased font size for better readability */
+  line-height: 1.6; /* Increased line height for better spacing */
+  font-weight: 400; /* Normal weight for the paragraph */
+  color: #555; /* Softer, neutral color for the message */
+  padding: 10px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners for the paragraph background */
+}
+
+.alert-modal-content button {
+  background-color: #003366; /* Bootstrap primary color */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners for the button */
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 16px; /* Font size for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.alert-modal-content button:hover {
+  background-color: #114b84; /* Darker shade on hover */
+}
   

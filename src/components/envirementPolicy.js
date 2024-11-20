@@ -3,8 +3,7 @@ import React from 'react';
 const EnvironmentalMessage = () => {
   return (
     <div className='envirement-policy'>
-      <img src={`${process.env.PUBLIC_URL}/images/eco2.jpeg`} alt={'EnvironmentalMessage'} className="topic-image" />
-
+      {/*
       <h1>Environmental Responsibility</h1>
       <p>
         A Message from Artisbay Inc. on Environmental Responsibility
@@ -19,6 +18,8 @@ const EnvironmentalMessage = () => {
         While we understand this isn’t a strict requirement, we ask that you do your best to adopt responsible recycling and disposal practices wherever possible. By doing so, you’re helping to create a more sustainable future for everyone.
       </p>
       <p>Thank you for your support and for considering this important aspect of our shared responsibility.</p>
+    
+    */}
     </div>
   );
 };

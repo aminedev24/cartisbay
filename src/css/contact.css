@@ -10,6 +10,11 @@
   margin-bottom: 20px;
 }
 
+.contact-form textarea {
+  resize: none;
+  height: 60px;
+}
+
 .intro-text,
 .inventory-info {
   font-size: 16px;

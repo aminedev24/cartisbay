@@ -41,7 +41,7 @@ const Header = () => {
             <i className="fas fa-search search-icon"></i>
           </div>
           <div className="header-icons">
-            <div className="header-item">Contact</div>
+            <div className="header-item"><Link to='/contact'>Contact</Link></div>
             <div className="header-item">
               <i className="fas fa-user-plus icon"></i> Register
             </div>

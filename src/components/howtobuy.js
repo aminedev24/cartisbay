@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/howToBuy.css';
+import {Link} from 'react-router-dom';
 
 const HowToBuy = () => {
   const steps = [
@@ -82,8 +83,12 @@ const HowToBuy = () => {
               <div className="step-image">
                 <img src={step.imageUrl} alt={step.title} />
               </div>
+             
             </div>
           ))}
+        </div>
+        <div className="cta-container"> 
+          <button className="cta-button"><Link to='/vehicleInquiry'>Order Now</Link></button> 
         </div>
       </div>
     

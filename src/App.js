@@ -16,6 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CarDismantling from './components/carDismantling';
 import UsedTires from './components/usedTires';
 import HelpPage from './components/help';
+import InquiryForm from './components/vehiculeEnquiry';
 /* src/index.css */
 
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/car-dismantling" element={<CarDismantling />} />
           <Route path="/used-tires" element={<UsedTires />} />
           <Route path="/help" element={<HelpPage />} />
+          <Route path="/vehicleInquiry" element={<InquiryForm />} />
         </Routes>
       <Footer />
     </Router>

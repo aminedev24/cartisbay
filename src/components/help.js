@@ -19,7 +19,7 @@ import TelegraphicTransfer from './telegraphicTransfer'
   // Define the topics
   const topics = {
     help: [
-      { name: "help", content: <h1>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/help.jpeg` },
+      { name: "help", content: <h1 className='help-header'>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/help.jpeg` },
       { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
       { name: "Company Profile", component: <CompanyProfile/> },
       { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
@@ -75,8 +75,21 @@ const HelpPage = () => {
 
   return (
     <div className="help-page">
-      {/*{selectedTopic.name == 'help' ?<div className='hero-section-help'></div> : ''}*/}
-      <div className={`help-main-content ${selectedTopic.name === 'help' ? 'help-lp' : ''}`}>
+      {selectedTopic.name === 'help' ? (
+          <img src={`${process.env.PUBLIC_URL}/images/helpcopy.jpeg`} className='topic-image' />
+      ) : selectedTopic.name === 'our commitment to Sustainability' ? (
+          <div className='hero'>
+          <img src={`${process.env.PUBLIC_URL}/images/eco2.jpeg`} className='topic-image' />
+          <h1>Eco friendly</h1>
+          </div>
+      ) : (
+          ''
+      )}
+      <div className={`help-main-content ${
+            selectedTopic.name === 'help' ? 'help-lp' : 
+            selectedTopic.name === 'our commitment to Sustainability' ? 'commitment-topic-lp' : ''
+        }`}
+        >
         <div className="sidebar">
           <button className='btn-header' onClick={() => handleTopicChange(topics.help[0])}><h2>Help</h2></button>
           <img width={'50px'} src={`${process.env.PUBLIC_URL}/images/arrows.png`} />
@@ -103,7 +116,9 @@ const HelpPage = () => {
           ))}
         </div>
         <div className={`content-area`}>
-          <h2>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
+          <h2 className={selectedTopic.name == 'our commitment to Sustainability' ? 'help-header': ''}>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
+
+      
           {selectedTopic.component || <>{selectedTopic.content}</>}
         </div>
       </div>

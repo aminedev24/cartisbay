@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/usedTiresForm.css";
 import TireSelection from "./tireSelection";
+import Modal from './alertModal';
 
 const OrderForm = ({
   formData,
@@ -9,6 +10,8 @@ const OrderForm = ({
   setOrders,
   setTotalUnits,
   totalUnits,
+  hasPromptedForDoubleLoading,
+  setHasPromptedForDoubleLoading
 }) => {
   const [showForm, setShowForm] = useState(true);
   const [message, setMessage] = useState("");
@@ -19,8 +22,8 @@ const OrderForm = ({
   const [selectedDiameter, setSelectedDiameter] = useState("");
   const [availableSizes, setAvailableSizes] = useState([]);
   const [isQuantityValid, setIsQuantityValid] = useState(true);
-  const [hasPromptedForDoubleLoading, setHasPromptedForDoubleLoading] =
-    useState(false); // New state variable
+  const [modalMessage, setModalMessage] = useState(""); // State for modal message
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
   const tireSizes = [
     {
@@ -206,16 +209,19 @@ const OrderForm = ({
       .flat()
       .reduce((acc, order) => acc + order.quantity, 0);
     const totalCapacity = doubleLoading ? 3000 : 2000;
-    // Alert the user if the quantity is exactly 2000
-    if (existingQuantity === 2000) {
-      alert(
-        "A 40ft HC container can hold 2,000 units with standard loading. If you wish to load up to 3,000 units, please consider the double-loading option.",
+
+    // Show modal if the quantity is exactly 2000 and hasn't been prompted yet
+    if (existingQuantity >= 2000 && !hasPromptedForDoubleLoading) {
+      setModalMessage(
+        "A 40ft HC container can hold 2,000 units with standard loading. If you wish to load up to 3,000 units, please consider the double-loading option."
       );
+      setShowModal(true);
+      setHasPromptedForDoubleLoading(true); // Set the flag to true after showing the modal
     }
 
     const fill = (existingQuantity / totalCapacity) * 100;
     setPercentageFill(fill); // Allow percentage to exceed 100%
-  }, [orders, doubleLoading]);
+  }, [orders, doubleLoading, hasPromptedForDoubleLoading]); // Add hasPromptedForDoubleLoading to dependencies
 
   const handleDiameterChange = (e) => {
     const diameter = parseInt(e.target.value);
@@ -239,6 +245,7 @@ const OrderForm = ({
 
   const handleEditOrder = (maker, index) => {
     const orderToEdit = orders[maker][index];
+    console.log(maker, index)
     setFormData({
       maker: maker,
       quantity: orderToEdit.quantity,
@@ -267,7 +274,8 @@ const OrderForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
+    // Validation checks
     if (
       !formData.maker ||
       !formData.type ||
@@ -277,18 +285,18 @@ const OrderForm = ({
       setMessage("Please fill in all required fields.");
       return;
     }
-
+  
     const [width, aspectRatio, rimDiameter] = formData.tireSize.split(/\/|R/);
-    let quantity = parseInt(formData.quantity, 10); // Parse quantity from form data
-
-    // Ensure quantity is a valid number
+    let quantity = parseInt(formData.quantity, 10);
+  
+    // Ensure quantity is valid
     if (isNaN(quantity) || quantity < 1) {
       setMessage("Quantity must be at least 1.");
-      return; // Prevent submission if quantity is less than 1
+      return;
     }
-
-    const totalCapacity = doubleLoading ? 3000 : 2000; // Determine total capacity
-
+  
+    const totalCapacity = doubleLoading ? 3000 : 2000;
+  
     const newOrder = {
       maker: formData.maker,
       width,
@@ -299,58 +307,47 @@ const OrderForm = ({
       quantity: quantity,
       type: formData.type,
     };
-
+  
     const maker = formData.maker;
     const updatedOrders = { ...orders };
-
+  
     if (!updatedOrders[maker]) {
       updatedOrders[maker] = [];
     }
-
+  
     let existingQuantity = Object.values(updatedOrders)
       .flat()
       .reduce((acc, order) => acc + order.quantity, 0);
     let newTotalUnits = existingQuantity;
-
-    // Calculate new total units before adding the new order
+  
+    // Calculate potential new total units
     const potentialNewTotalUnits =
       editingOrder !== null
-        ? newTotalUnits -
-          orders[formData.maker][editingOrder].quantity +
-          quantity
+        ? newTotalUnits - orders[formData.maker][editingOrder].quantity + quantity
         : newTotalUnits + quantity;
-
-    // Check if the new total units exceed the maximum capacity
-    if (potentialNewTotalUnits > totalCapacity) {
-      setMessage(
-        `The total units cannot exceed ${totalCapacity}. Please consider using double loading.`,
-      );
-      return; // Prevent submission if it exceeds capacity
-    }
-
+  
+    // Check for existing orders and update accordingly
     if (editingOrder !== null) {
       const previousOrder = orders[maker][editingOrder];
-      newTotalUnits -= previousOrder.quantity; // Subtract the previous quantity
-
+      newTotalUnits -= previousOrder.quantity;
+  
       const existingOrderIndex = updatedOrders[maker].findIndex(
         (order) =>
           order.width === newOrder.width &&
           order.aspectRatio === newOrder.aspectRatio &&
           order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type,
+          order.type === newOrder.type
       );
-
+  
       if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
         const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
         accumulatedOrder.quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity; // Add the new quantity
+        newTotalUnits += newOrder.quantity;
         updatedOrders[maker].splice(editingOrder, 1);
-        setMessage(
-          `Your order has been updated and quantities have been accumulated!`,
-        );
+        setMessage(`Your order has been updated and quantities have been accumulated!`);
       } else {
-        updatedOrders[maker][editingOrder] = newOrder; // Update the order
-        newTotalUnits += newOrder.quantity; // Add the new quantity
+        updatedOrders[maker][editingOrder] = newOrder;
+        newTotalUnits += newOrder.quantity;
         setMessage(`Your order has been updated!`);
       }
     } else {
@@ -359,25 +356,34 @@ const OrderForm = ({
           order.width === newOrder.width &&
           order.aspectRatio === newOrder.aspectRatio &&
           order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type,
+          order.type === newOrder.type
       );
-
+  
       if (existingOrderIndex !== -1) {
         updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity; // Add the new quantity
-        setMessage(
-          `Your order has been updated and quantities have been accumulated!`,
-        );
+        newTotalUnits += newOrder.quantity;
+        setMessage(`Your order has been updated and quantities have been accumulated!`);
       } else {
         updatedOrders[maker].push(newOrder);
-        newTotalUnits += newOrder.quantity; // Add the new quantity
+        newTotalUnits += newOrder.quantity;
         setMessage(`Your new order has been added!`);
       }
     }
-
+  
     // Proceed with the order submission
     setOrders(updatedOrders);
     setTotalUnits(newTotalUnits);
+  
+    // Clear the form after successful submission
+    setFormData({
+      maker: "",
+      quantity: "",
+      loadIndex: "",
+      speedRating: "",
+      type: "",
+      tireSize: "",
+      rimDiameter: "",
+    }); // Reset form data to initial state
   };
 
   const handleDeleteOrder = (maker, index) => {
@@ -408,8 +414,18 @@ const OrderForm = ({
     setHasPromptedForDoubleLoading(false); // Reset the prompt flag when starting a new category
   };
 
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+
   return (
     <div id="usedTiresForm" className="usedTiresForm-container">
+      {showModal && (
+        <Modal message={modalMessage} onClose={handleCloseModal} />
+      )}
+
       <header className="form-header">
         <div>
           <img

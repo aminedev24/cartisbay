@@ -1,0 +1,88 @@
+
+  .enquiryContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 1200px;
+    min-width: 1200px;
+  }
+  h2 {
+    font-size: 24px;
+    color: #000;
+    border-bottom: 2px solid #f0ad4e;
+    padding-bottom: 5px;
+}
+.form-section {
+    margin-bottom: 20px;
+}
+.enquiryContainer .form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-direction: row;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group textarea {
+    width: 100%;
+    height: 100px;
+}
+.form-group .full-width {
+    width: 100%;
+}
+.form-group .half-width {
+    width: 48%;
+}
+.form-group .quarter-width {
+    width: 48%;
+}
+.form-group .third-width {
+    width: 31%;
+}
+.form-group .small-width {
+    width: 48%;
+}
+.form-group .info-icon {
+    margin-left: 5px;
+    color: #17a2b8;
+    position: absolute;
+    margin-top: 15px;
+}
+.form-group .info-icon:hover {
+    cursor: pointer;
+}
+.submit-section {
+    text-align: center;
+    margin-top: 20px;
+}
+.submit-section button {
+    background-color: #f0ad4e;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.submit-section button:hover {
+    background-color: #ec971f;
+}
+.checkbox-section {
+    text-align: center;
+    margin-top: 10px;
+}
+.checkbox-section input {
+    margin-right: 5px;
+}
+.required-star {
+    color: red;
+}

@@ -1,10 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const PaymentMethods = () => {
   return (
     <div className='howtopay'>
-      <h1>Payment Methods at Artisbay Inc.</h1>
+      
       <img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/aboutpayment.jpeg`} alt={'company-profile'} className="topic-image" />
+      <h1>Payment Methods at Artisbay Inc.</h1>
       <p>At Artisbay Inc., we provide secure and reliable payment options to meet the needs of our global customers.</p>
       
       <h2>1. Telegraphic Transfer (T/T)</h2>
@@ -54,6 +56,12 @@ const PaymentMethods = () => {
       
       <h3>How will I know when my payment has been received?</h3>
       <p>Once your payment is verified in our account, we will notify you via email. To expedite this process, please send us a copy of your T/T receipt. Most payments are confirmed within a few business days, but processing times may vary depending on your bank and other factors.</p>
+      <div className='cta-container'> 
+          <p className='cta-text'>Have any questions? We're here to help!</p> 
+          <button className='cta-btn'>
+            <Link to='/contact'>Contact Us</Link> 
+          </button>
+        </div>
     </div>
   );
 };
