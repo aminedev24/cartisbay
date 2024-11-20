@@ -72,7 +72,7 @@
   }
   
   .usedTiresForm-container .form-group {
-    flex: 0 1 40%; /* Allow flexibility and set a base width */
+    flex: 0 1 calc(50% - 60px); /* Two items per row with space */
     text-align: left;
     min-width: 200px;
   }
