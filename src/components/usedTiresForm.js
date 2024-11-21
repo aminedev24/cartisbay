@@ -244,8 +244,9 @@ const OrderForm = ({
   };
 
   const handleEditOrder = (maker, index) => {
-    const orderToEdit = orders[maker][index];
     console.log(maker, index)
+    const orderToEdit = orders[maker][index];
+  
     setFormData({
       maker: maker,
       quantity: orderToEdit.quantity,

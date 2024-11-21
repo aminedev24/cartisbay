@@ -69,7 +69,6 @@
     justify-content: flex-start;
     margin-bottom: 15px;
     gap: 40px;
-    flex-wrap: wrap;
   }
   
   .usedTiresForm-container .form-group {
