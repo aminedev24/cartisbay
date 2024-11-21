@@ -6,7 +6,7 @@
     min-height: 1200px;
     min-width: 1200px;
   }
-  h2 {
+  .enquiryContainer h2 {
     font-size: 24px;
     color: #000;
     border-bottom: 2px solid #f0ad4e;

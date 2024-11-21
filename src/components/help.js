@@ -79,8 +79,7 @@ const HelpPage = () => {
           <img src={`${process.env.PUBLIC_URL}/images/helpcopy.jpeg`} className='topic-image' />
       ) : selectedTopic.name === 'our commitment to Sustainability' ? (
           <div className='hero'>
-          <img src={`${process.env.PUBLIC_URL}/images/eco2.jpeg`} className='topic-image' />
-          <h1>Eco friendly</h1>
+          <img src={`${process.env.PUBLIC_URL}/images/ecofriendly2copy.jpeg`} className='topic-image' />
           </div>
       ) : (
           ''

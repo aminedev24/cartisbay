@@ -7,7 +7,10 @@
   color: white;
 }
 
-
+.header-item a {
+  color: inherit;
+  text-decoration: none;
+}
 
 .logo {
   position: relative;
