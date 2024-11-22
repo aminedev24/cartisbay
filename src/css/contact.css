@@ -1,31 +1,49 @@
-
-body {
-  overflow-x: hidden;
-}
 .contact-container {
-  text-align: center;
+  display: grid; /* Use grid for layout */
+  grid-template-columns: 1fr; /* Only one column for the form */
+  gap: 20px; /* Space between elements */
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  position: relative;
-  width: 60%;
+  width: 60%; /* Set the width of the container */
   margin: 20px auto;
-  max-width: 900px;
+  max-width: 1000px; /* Increase max width */
+  position: relative; /* Set position relative for absolute positioning of the image */
 }
+
 .contact-container h1 {
   font-size: 36px;
   color: #1da1f2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .contact-container p {
   font-size: 16px;
   color: #333;
   margin: 10px 0;
 }
-.contact-container form {
-  margin-top: 20px;
+
+.contact-container .form-container {
+  display: flex; /* Use flexbox for the form container */
+  flex-direction: column; /* Stack form elements vertically */
+  padding: 20px; /* Add padding to the form */
+  border-radius: 8px; /* Optional: rounded corners for the form */
 }
-.contact-container input, .contact-container textarea {
+
+.form-container {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-container form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  align-items: center;
+}
+
+.contact-container input,
+.contact-container textarea {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -36,6 +54,7 @@ body {
 .contact-container textarea {
   resize: none;
 }
+
 .contact-container button {
   background-color: #1da1f2;
   color: #fff;
@@ -44,15 +63,28 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  width: 100%;
 }
+
 .contact-container button:hover {
   background-color: #0056b3;
 }
+
 .contact-container .contact-image-container {
-  position: absolute;
-  right: -300px;
-  bottom: 0;
+  position: absolute; /* Position the image container absolutely */
+  bottom: 0; 
+  right: -230px; /* Adjust the right position to keep it outside the form */
 }
-.contact-container .contact-image-container  img {
-  max-height: 500px;
+
+.contact-container .contact-image-container img {
+  max-height: 500px; /* Limit the height of the image */
+  width: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+@media screen and (min-width: 768px) {
+  .contact-container {
+    min-height: 90vh;
+  }
+  
 }

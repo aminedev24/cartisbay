@@ -468,6 +468,11 @@ const OrderForm = ({
                     <option value="Bridgestone">Bridgestone</option>
                     <option value="Michelin">Michelin</option>
                     <option value="Continental">Continental</option>
+                    <option value="Tayo Tires">Toyo Tires</option>
+                    <option value="Falken">Falken</option>
+                    <option value="Sumitomo">Sumitomo</option>
+                    <option value="Dunlop">Dunlop</option>
+                    <option value="Nitto">Nitto</option>
                   </select>
                 </label>
               </div>
@@ -485,7 +490,6 @@ const OrderForm = ({
                     <option value="All-Season">All-Season</option>
                     <option value="Winter">Winter</option>
                     <option value="Summer">Summer</option>
-                    <option value="Off-Road">Off-Road</option>
                   </select>
                 </label>
               </div>

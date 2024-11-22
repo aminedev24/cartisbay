@@ -18,9 +18,9 @@ const MediaSlider = () => {
   };
 
   const mediaItems = [
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/used-tires-banner-comp.jpg` },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/dismantling-banner-comp.jpg` },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/paypalbannerclick.jpeg` }
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/homepage/slider/used-tires-banner-comp.jpg` },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/homepage/slider/dismantling-banner-comp.jpg` },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/homepage/slider/paypalbannerclick.jpeg` }
   ];
 
   const videoRefs = useRef([]);
