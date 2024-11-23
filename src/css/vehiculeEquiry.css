@@ -3,13 +3,13 @@
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    min-height: 1200px;
     min-width: 1200px;
+    max-width: 1300px;
   }
   .enquiryContainer h2 {
     font-size: 24px;
     color: #000;
-    border-bottom: 2px solid #f0ad4e;
+    border-bottom: 2px solid #f1892b;
     padding-bottom: 5px;
 }
 .form-section {
@@ -21,10 +21,11 @@
     margin-bottom: 15px;
     flex-direction: row;
 }
-.form-group label {
+.enquiryContainer .form-group label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color:#000;
 }
 .form-group input, .form-group select, .form-group textarea {
     width: 100%;
@@ -65,7 +66,7 @@
     margin-top: 20px;
 }
 .submit-section button {
-    background-color: #f0ad4e;
+    background-color: #f1892b;
     color: #fff;
     padding: 15px 30px;
     border: none;
@@ -85,4 +86,19 @@
 }
 .required-star {
     color: red;
+}
+
+textarea {
+    resize: none;
+}
+
+@media only screen and (max-width: 762px) {
+    .enquiryContainer .form-group {
+        margin-bottom: 30px !important;
+
+    }
+
+    .enquiryContainer {
+        min-height: 100vh;
+    }
 }

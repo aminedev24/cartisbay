@@ -166,7 +166,7 @@ const InquiryForm = () => {
       <div className="checkbox-section">
         <input type="checkbox" id="receive-news" name="receive-news" />
         <label htmlFor="receive-news">
-          Receive news, coupons and special deals
+          Receive news
         </label>
       </div>
     </div>

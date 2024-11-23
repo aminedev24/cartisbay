@@ -3,7 +3,7 @@ import React from 'react';
 const EnvironmentalMessage = () => {
   return (
     <div className='envirement-policy'>
-      {/*
+      
       <h1>Environmental Responsibility</h1>
       <p>
         A Message from Artisbay Inc. on Environmental Responsibility
@@ -19,7 +19,7 @@ const EnvironmentalMessage = () => {
       </p>
       <p>Thank you for your support and for considering this important aspect of our shared responsibility.</p>
     
-    */}
+    
     </div>
   );
 };

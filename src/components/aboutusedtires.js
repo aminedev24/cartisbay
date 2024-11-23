@@ -18,7 +18,7 @@ const UsedTiresFAQ = () => {
         <li><strong>Meticulous Inspection:</strong> Every tire undergoes thorough quality checks for your peace of mind.</li>
       </ul>
       <p>
-        Ready to stock up on high-quality used tires? Visit our dedicated <Link to='/used-tires'>Wholesale Tire Orders</Link> page to explore our selection and place your order today. With Artisbay Inc., you’re guaranteed quality, reliability, and exceptional service.
+        Ready to stock up on high-quality used tires? Visit our dedicated <Link className='cta-link' to='/used-tires'>Wholesale Tire Orders</Link> page to explore our selection and place your order today. With Artisbay Inc., you’re guaranteed quality, reliability, and exceptional service.
       </p>
 
 
@@ -62,6 +62,14 @@ const UsedTiresFAQ = () => {
         <li>We’ll send you a detailed quote and inventory options.</li>
         <li>Confirm your order and arrange payment via T/T or PayPal.</li>
       </ol>
+      <div className="cta-container"> 
+        <p>
+          <strong>Get in touch with us today to start your order!</strong>{" "}
+              Our order form is here to simplify the process, so you can send us
+              your tire requirements quickly and accurately.
+        </p>
+          <button className="cta-button"><Link to='/used-tires'>Order Now</Link></button> 
+      </div>
     </div>
   );
 };

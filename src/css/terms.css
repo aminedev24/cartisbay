@@ -66,3 +66,15 @@
     color: inherit;
     text-decoration: none;
   }
+
+  .envirement-policy {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    padding: 20px; /* Add padding to the container */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for better visibility */
+  }
+  
+  .cta-link {
+    color:#1da1f2;
+    font-weight: bold;
+  }

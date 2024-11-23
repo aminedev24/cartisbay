@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ArtisbayInfo = () => {
   return (
@@ -44,7 +45,12 @@ const ArtisbayInfo = () => {
       <p>
         Choose Artisbay Inc. for quality you can trust, transparency you can rely on, and a customer experience built on respect and integrity. We look forward to serving you!
       </p>
-
+      <div className='cta-container'> 
+        <p className='cta-text'>Have any questions? We're here to help!</p> 
+        <button className='cta-btn'>
+          <Link to='/contact'>Contact Us</Link> 
+        </button>
+      </div>
 
     </div>
   );
