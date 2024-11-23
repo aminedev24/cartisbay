@@ -1,0 +1,42 @@
+/* theme.css */
+
+/* Default (Light Theme) */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #1a0dab;
+    --button-background: #007bff;
+    --button-text: #ffffff;
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --link-color: #bb86fc;
+    --button-background: #3700b3;
+    --button-text: #ffffff;
+  }
+  
+  /* Apply the variables */
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  a {
+    color: var(--link-color);
+  }
+  
+  button {
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }

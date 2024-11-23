@@ -581,7 +581,7 @@ const OrderForm = ({
 
               <div className="form-group checkbox-container">
                 <label htmlFor="checkbox">
-                  Double Loading (up to 3000 units)
+                  Double Loading
                 </label>
                 <input
                   id="checkbox"

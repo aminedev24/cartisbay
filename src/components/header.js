@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import '../css/header.css';
 import TopBar from './topbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import ThemeToggle from './toggletheme';
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -101,6 +102,7 @@ const Header = () => {
                 <Link to={'/help?topic=About%20payement'}>How To Pay</Link>
               </div>
             </div>
+            {/*<div className="nav-item"><ThemeToggle /></div>*/}
           </div>
         </div>
       </header>
