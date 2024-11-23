@@ -10,7 +10,10 @@
 
 # production
 /build
-
+src/css/css-minified
+src/output
+src/cssutils.py
+src/main.py
 # misc
 .DS_Store
 .env.local
