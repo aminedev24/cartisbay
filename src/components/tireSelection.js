@@ -32,19 +32,6 @@ const TireSelection = ({
     return Math.max(1, Math.ceil(Object.keys(orders).length / groupsPerPage));
   };
 
-  const handleGroupPageChange = (direction) => {
-    setPagination((prevState) => {
-      const newGroupPage = prevState.currentGroupPage + direction;
-      return {
-        ...prevState,
-        currentGroupPage: Math.max(
-          1,
-          Math.min(calculateTotalGroupPages(), newGroupPage),
-        ),
-      };
-    });
-  };
-
   // Get orders for the selected maker or all makers
   const makerOrders = selectedMaker === "All Makes"
     ? Object.values(orders).flat() // Flatten all orders if "All Makes" is selected
@@ -58,6 +45,15 @@ const TireSelection = ({
   const handleClearOrders = () => {
     setOrders({});
     setTotalUnits(0);
+  };
+
+  const handleEditOrderClick = (order) => {
+    // Get the maker from the order being edited
+    const maker = order.maker; // This should be the maker of the order
+    const index = orders[maker].findIndex(o => o === order); // Find the index of the order in the original orders
+
+    // Call the parent's handleEditOrder function with the selected maker and index
+    handleEditOrder(maker, index);
   };
 
   return (
@@ -98,12 +94,11 @@ const TireSelection = ({
               <option value="All-Season">All-Season</option>
               {/* Add more types as needed */}
             </select>
-
           </>
         )}
       </div>
 
-      <div className ="orders-wrapper">
+      <div className="orders-wrapper">
         <div className="maker-section">
           <table className="orders-table">
             <thead>
@@ -125,14 +120,14 @@ const TireSelection = ({
                   <td>
                     <div className="table-btns">
                       <button
-                        onClick={() => handleEditOrder(selectedMaker, index)}
+                        onClick={() => handleEditOrderClick(order)}
                         className="action-button edit-button"
                       >
                         <i className="fas fa-edit"></i>
                       </button>
                       <button
                         onClick={() =>
-                          handleDeleteOrder(selectedMaker, index)
+                          handleDeleteOrder(order.maker, index)
                         }
                         className="action-button delete-button"
                       >
@@ -169,7 +164,7 @@ const TireSelection = ({
 
         <div className="image-container">
           <img
-            src={`${process.env.PUBLIC_URL}/images/container2.png`}
+            src={`${process.env.PUBLIC_URL}/images/containericon3copy.png`}
             alt="Container Image"
           />
           <div className="text">{percentageFill.toLocaleString()}</div>

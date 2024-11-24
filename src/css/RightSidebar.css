@@ -70,7 +70,6 @@
     width: 80%;
     padding: 7px 15px;
     border: 2px solid transparent;
-    border-radius: 25px;
     background: #f7f9fc;
     transition: all 0.3s ease;
     font-size: 16px;
@@ -220,11 +219,10 @@
   }
   
   .phone-code {
-    background-color: #f0f0f0; /* Background color for phone code */
     border: 1px solid #ccc; /* Border for phone code */
     border-top-left-radius: 4px; /* Rounded corners */
     border-bottom-left-radius: 4px; /* Rounded corners */
-    padding: 5px 10px; /* Padding inside the box */
+    padding: 8px 10px; /* Padding inside the box */
     font-weight: bold; /* Bold text for better visibility */
     margin-right: -1px; /* Overlap with the input field */
   }
@@ -234,3 +232,12 @@
    
   }
   
+
+  /* Add this for the select element to trigger the label animation */
+.input-group select:focus + label,
+.input-group select:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #9face6;
+}

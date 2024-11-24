@@ -31,6 +31,7 @@
   .commitment-topic-lp {
     background-image: url('../../public/images/eco1copy.jpeg');
     background-size: cover;
+    background-position: center;
   }
   
   .hero {
@@ -107,6 +108,7 @@
   
   .content-area h2 {
     margin-top: 0;
+    text-transform: capitalize;
   }
   
   /* Style for the active button */

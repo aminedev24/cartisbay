@@ -71,14 +71,31 @@
     padding: 20px; /* Add padding to the container */
     border-radius: 8px; /* Optional: rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for better visibility */
-  }
-  
-  .cta-link {
-    color:#1da1f2;
-    font-weight: bold;
-  }
+    max-width: 800px; /* Limit the width for better readability */
+    margin: 20px auto; /* Center the container */
+}
 
-  .envirement-policy p {
-    text-shadow: 1px 1px 5px #555;
+.envirement-policy h1 {
+    font-size: 26px; /* Larger font size for the header */
+    color: #2c3e50; /* Darker color for better readability */
+    margin-bottom: 15px; /* Space below the header */
+}
+
+.envirement-policy p {
+    font-size: 18px; /* Increase font size for better readability */
+    line-height: 1.6; /* Increase line height for better spacing */
+    color: #34495e; /* Darker color for better readability */
+    margin-bottom: 15px; /* Space between paragraphs */
+    text-shadow: 1px 1px 1px #1da1f2;
     font-weight: bold;
-  }
+}
+
+.cta-link {
+    color: #1da1f2; /* Color for the link */
+    font-weight: bold; /* Bold text for emphasis */
+    text-decoration: underline; /* Underline for links */
+}
+
+.cta-link:hover {
+    color: #0d8bcf; /* Darker color on hover */
+}

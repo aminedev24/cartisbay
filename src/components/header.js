@@ -7,6 +7,8 @@ import ThemeToggle from './toggletheme';
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [currentGifIndex, setCurrentGifIndex] = useState(0);
+  const [showGifs, setShowGifs] = useState(true); // Set to true immediately
   const dropdownRef = useRef([]);
   const location = useLocation();
 
@@ -31,12 +33,28 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (showGifs) {
+      const interval = setInterval(() => {
+        setCurrentGifIndex((prevIndex) => (prevIndex + 1) % gifs.length);
+      }, 4000); // Change GIF every 3 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [showGifs]);
+
+  // Array of GIF URLs
+  const gifs = [
+    `${process.env.PUBLIC_URL}/images/security-alert-motion.gif`,
+    `${process.env.PUBLIC_URL}/images/cars-disman-info-bar.gif`,
+  ];
+
   return (
     <div className='header-container'>
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-          <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} /></Link>
+          <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Logo" /></Link>
           <div className="header-search">
             <input type="text" placeholder="Search by keyword..." />
             <i className="fas fa-search search-icon"></i>
@@ -106,9 +124,12 @@ const Header = () => {
           </div>
         </div>
       </header>
-      {console.log(document.location.pathname)}
       {location.pathname === '/' && (
-        <a href="#"><img src={`${process.env.PUBLIC_URL}/images/blinkingBar.gif`} className='local-services-banner' alt='local-services' loop /></a>
+        <>
+          <div className="gifs-container">
+            <img src={gifs[currentGifIndex]} alt={`GIF ${currentGifIndex + 1}`} />
+          </div>
+        </>
       )}
     </div>
   );

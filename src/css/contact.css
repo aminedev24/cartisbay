@@ -12,6 +12,7 @@
   font-weight: bold;
 }
 .contact-container input[type="text"],
+.contact-container input[type="tel"],
 .contact-container input[type="email"],
 .contact-container select,
 .contact-container textarea {
@@ -24,6 +25,7 @@
 }
 .contact-container input[type="text"]::placeholder,
 .contact-container input[type="email"]::placeholder,
+.contact-container input[type="tel"]::placeholder,
 .contact-container textarea::placeholder {
   color: #ccc;
 }
@@ -51,8 +53,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
-.contact-container p {
-  font-size: 16px;
+.contact-container h2 {
   color: #333;
   text-align: center;
   margin: 20px 0;

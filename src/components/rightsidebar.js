@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CountryFlag from "react-country-flag";
 import "../css/RightSidebar.css";
 import { countries } from './countries';
@@ -16,7 +16,6 @@ const RightSidebar = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [fade, setFade] = useState(true); // Track fading state
-
 
   const images = [
     `${process.env.PUBLIC_URL}/images/local-services-comp.jpg`,
@@ -40,8 +39,6 @@ const RightSidebar = () => {
 
     return () => clearInterval(intervalId);
   }, [images]);
-
-
 
   const handleCountryChange = (event) => {
     const country = countries.find((c) => c.name === event.target.value);
@@ -129,7 +126,7 @@ const RightSidebar = () => {
               onChange={(e) => handleInputChange(setEmail, e)}
               required
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email </label>
           </div>
 
           <div className="input-group phone-number-group">
@@ -151,10 +148,11 @@ const RightSidebar = () => {
               value={selectedCountry}
               onChange={handleCountryChange}
               name="country"
+              className={selectedCountry ? "not-empty" : ""}
               required
             >
               <option value="">Select Country</option>
-              {countries.map((country) => (
+              {countries.sort((a, b) => a.name.localeCompare(b.name)).map((country) => (
                 <option key={country.code} value={country.name}>
                   {country.name}
                 </option>
@@ -181,11 +179,10 @@ const RightSidebar = () => {
       
       <div className="video-section">
         <img
-        src={currentImage}
-        alt="cars from"
-        className={`fade-image ${fade ? 'fade-in' : 'fade-out'}`}
-      />
-
+          src={currentImage}
+          alt="cars from"
+          className={`fade-image ${fade ? 'fade-in' : 'fade-out'}`}
+        />
       </div>
 
       <div className="local-services">

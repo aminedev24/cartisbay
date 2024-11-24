@@ -244,20 +244,40 @@ const OrderForm = ({
   };
 
   const handleEditOrder = (maker, index) => {
-    console.log(maker, index)
+    console.log("Maker:", maker);
+    console.log("Index:", index);
+    console.log("Orders:", orders);
+
+    // Check if orders[maker] is defined and is an array
+    if (!orders[maker]) {
+        console.error(`No orders found for maker: ${maker}`);
+        return;
+    }
+
+    if (index < 0 || index >= orders[maker].length) {
+        console.error(`Index ${index} is out of bounds for maker: ${maker}`);
+        return;
+    }
+
     const orderToEdit = orders[maker][index];
-  
+
+    // Check if orderToEdit is defined
+    if (!orderToEdit) {
+        console.error(`No order found at index ${index} for maker: ${maker}`);
+        return;
+    }
+
     setFormData({
-      maker: maker,
-      quantity: orderToEdit.quantity,
-      loadIndex: orderToEdit.loadIndex,
-      speedRating: orderToEdit.speedRating,
-      type: orderToEdit.type,
-      tireSize: `${orderToEdit.width}/${orderToEdit.aspectRatio}R${orderToEdit.rimDiameter}`,
+        maker: maker,
+        quantity: orderToEdit.quantity,
+        loadIndex: orderToEdit.loadIndex,
+        speedRating: orderToEdit.speedRating,
+        type: orderToEdit.type,
+        tireSize: `${orderToEdit.width}/${orderToEdit.aspectRatio}R${orderToEdit.rimDiameter}`,
     });
     setEditingOrder(index);
     setShowForm(true);
-  };
+};
 
   useEffect(() => {
     const requiredFieldsFilled =
