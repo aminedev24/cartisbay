@@ -21,13 +21,13 @@ import TelegraphicTransfer from './telegraphicTransfer';
 const topics = {
   help: [
     { name: "help", content: <h1 className='help-header'>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/helpcopy.jpeg` },
-    { name: "Overview", component: <ArtisbayOverview />, image:`${process.env.PUBLIC_URL}/images/companyProfile2.jpg`},
+    { name: "Overview", component: <ArtisbayOverview />, image:`${process.env.PUBLIC_URL}/images/overview.jpg`},
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofilecopy.jpg`},
     { name: "Bank Information", content: "Bank information and payment options...", image: `` },
     { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseus2copy.jpg` },
     { name: "Terms & Conditions", content: <TermsAndConditions />, image: `` },
     { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `` },
-    { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuynew.jpeg`},
+    { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent.jpeg`},
     { name: "about used Tires", component: <UsedTiresFAQ />, image: `${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`},
   ],
   buying: [
