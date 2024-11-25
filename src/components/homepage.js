@@ -7,6 +7,8 @@ import LeftSidebar from "./sidebar";
 import RightSidebar from "./rightsidebar";
 import SearchForm from "./searchContainer";
 import MediaSlider from "./slider";
+import Makestypes from "./makestypes";
+import { FaHandPointer } from "react-icons/fa";
 
 function HomePage() {
   const [cars, setCars] = useState([]);
@@ -54,7 +56,7 @@ function HomePage() {
   return (
     <div className="layout">
     <div className="container">
-      <LeftSidebar setFilters={setFilters} />
+      
 
       <div className="main-content">
         <div className="homepage">
@@ -63,6 +65,8 @@ function HomePage() {
 
           <MediaSlider />
           <SearchForm />
+
+        
           <div className="info-cards-container">
             {cards.map((card, index) => (
               <Link to={card.link} className="info-card-link" key={index}>
@@ -78,22 +82,31 @@ function HomePage() {
             ))}
           </div>
 
+          <Makestypes />
+
+          <div>
+            <div className="ad-header-container">
+                <div className="ad-banner"></div> {/* Banner Image */}
+                <div className="small-image-container">
+                    <div className="overlay"></div> {/* Overlay for better readability */}
+
+                    <div className="icon-container">
+                        <FaHandPointer className="small-icon" />
+                        <span className="click-text">Click Here</span>
+                    </div>
+                    <img src={`${process.env.PUBLIC_URL}/images/formsh.png`} alt="Small Image" className="small-image" /> {/* Small Image */}
+                </div>
+            </div>
+
+            <div className="text-content">
+                <h2>Why choose tires from japan</h2>
+                <p>Ready to stock up on high-quality used tires? Visit our dedicated <Link className='cta-link' to='/used-tires'>Wholesale Tire Orders</Link> page to explore our selection and place your order today. With Artisbay Inc., you’re guaranteed quality, reliability, and exceptional service.
+                </p>
+            </div>
+        </div>
+
           <section className="stocklist-section">
             <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
-          </section>
-
-          {/* Featured Cars Section */}
-          <section className="featured-cars">
-            <h2>Featured Cars</h2>
-            <div className="featured-car-list">
-              {cars.slice(0, 3).map((car) => (
-                <div key={car.id} className="featured-car">
-                  <img src={car.image} alt={car.name} />
-                  <h3>{car.name}</h3>
-                  <p>${car.price}</p>
-                </div>
-              ))}
-            </div>
           </section>
 
           {/* Why Choose Us Section */}
@@ -106,18 +119,7 @@ function HomePage() {
             </ul>
           </section>
 
-          {/* Customer Testimonials */}
-          <section className="testimonials">
-            <h2>What Our Customers Say</h2>
-            <div className="testimonial">
-              <p>"Great experience with fast shipping. Highly recommend!"</p>
-              <span>- John Doe</span>
-            </div>
-            <div className="testimonial">
-              <p>"Reliable service and quality cars. Will buy again!"</p>
-              <span>- Jane Smith</span>
-            </div>
-          </section>
+        
 
           {/* Contact CTA Section */}
           <section className="contact-cta">

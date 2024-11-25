@@ -1,7 +1,6 @@
 /* General Styles */
 .main-content {
-    margin-left: 270px; /* Width of left sidebar */
-    margin-right: 270px;
+    margin-right: 350px;
     padding: 20px 30px; /* Default padding */
     overflow: hidden; /* Prevent overflow issues */
 }
@@ -24,51 +23,6 @@ option {
     flex: 1;
 }
 
-
-/* Featured Cars */
-.featured-cars {
-    padding: 30px 0; /* Reduced padding */
-    text-align: center;
-    background-color: #f9f9f9;
-}
-
-.featured-car {
-    background-color: #fff;
-    padding: 10px; /* Further reduced padding */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 45%; /* Adjusted width to fit two cars side by side */
-    min-width: 180px; /* Reduced minimum width to allow more flexibility */
-    margin: 10px; /* Added margin for spacing */
-}
-
-.featured-car:hover {
-    transform: translateY(-4px); /* Slightly reduced lift on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adjusted hover shadow */
-}
-
-.featured-car img {
-    width: 100%;
-    height: 120px; /* Further reduced height */
-    object-fit: cover;
-}
-
-.featured-car h3 {
-    margin-top: 5px; /* Further reduced margin */
-    color: #2c3e50; /* Deep blue-gray */
-}
-
-.featured-car p {
-    font-size: 0.9rem; /* Further reduced font size */
-    color: #e67e22; /* Soft orange for pricing */
-}
-
-.featured-car-list {
-    display: grid; /* Use grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between items */
-    padding: 0 10px; /* Reduced padding */
-}
 
 /* Why Choose Us */
 .why-choose-us {
@@ -157,12 +111,6 @@ option {
 /* Responsive Styles */
 @media (max-width: 768px) {
  
-  
-
-    .featured-car {
-        min-width: 200px; /* Minimum width to prevent excessive shrinking */
-    }
-
     .why-choose-us h2,
     .stocklist-section h2 {
         font-size: 1.5rem; /* Adjusted heading size */
@@ -182,13 +130,6 @@ option {
         font-size: 1.2rem; /* Smaller contact CTA text */
     }
 }
-
-@media (max-width: 480px) {
-    .featured-car img {
-        height: 80px; /* Further reduce height on very small screens */
-    }
-}
-
 
 .info-cards-container {
     display: grid;
@@ -335,4 +276,149 @@ option {
 .slick-prev, .slick-next {
     z-index: 5;
    
+}
+
+.main-container {
+    display: flex; /* Aligns the containers side by side */
+    justify-content: space-between; /* Ensures equal spacing between them */
+    width: 100%; /* Ensures the container takes the full width */
+    max-width: 1200px; /* Optional: Set a max width for the parent container */
+    margin: 10px auto; /* Center the container */
+    gap: 10px;
+    flex-direction: column;
+}
+
+.type-container, .make-container {
+    flex: 1; /* Allows both containers to take equal space */
+    padding: 20px; /* Adds padding inside the containers */
+    border: 1px solid #ddd; /* Border for both containers */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Ensures 4 items per row */
+    gap: 10px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+}
+
+.grid-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.grid-item span {
+    font-size: 14px;
+}
+
+.brands {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    gap: 10px;
+}
+
+.brand {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px; /* Reduced padding for smaller size */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 12px; /* Reduced font size for brand text */
+}
+
+.brand img {
+    max-width: 40px; /* Reduced size of brand logos */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 5px; /* Reduced margin */
+}
+
+.brand p {
+    margin: 0;
+    font-size: 12px; /* Reduced font size for brand text */
+    text-transform: uppercase;
+}
+
+
+.ad-header-container {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically centered */
+    padding: 20px; /* Padding around the header container */
+}
+
+.ad-banner {
+    background-image: url('../../public/images/tiresfromjapan.jpeg'); /* Replace with your banner image URL */
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image */
+    height: 200px; /* Set height for the banner */
+    flex: 1; /* Allow the banner to take available space */
+}
+
+.small-image-container {
+    margin-left: 20px; /* Space between the banner and small image */
+    position: relative;
+}
+
+.small-image {
+    width: 250px; /* Set width for the small image */
+    height: auto; /* Maintain aspect ratio */
+
+}
+
+.text-content {
+    padding: 20px; /* Padding around the text content */
+}
+
+.icon-container {
+    position: absolute; /* Position absolute to overlay the small image */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the center */
+    text-align: center; /* Center text */
+    z-index: 5;
+}
+
+.small-icon {
+    font-size: 30px; /* Size of the hand pointer icon */
+    color: #e67e22;
+}
+
+.small-icon , .click-text {
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.click-text {
+    display: block; /* Make the text a block element */
+    margin-top: 5px; /* Space between icon and text */
+    font-size: 28px; /* Font size for the text */
+    color: #e67e22; /* Text color */
+}
+
+
+.overlay {
+    position: absolute; /* Position absolute to overlay the small image */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.3); /* Black background with 50% opacity */
+    z-index: 1; /* Ensure the overlay is above the image */
 }

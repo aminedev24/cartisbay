@@ -139,6 +139,7 @@ const RightSidebar = () => {
               onChange={(e) => handleInputChange(setPhone, e)}
               required
               placeholder="Phone Number"
+              className={phoneCode ? "shrink" : ''}
             />
           </div>
 

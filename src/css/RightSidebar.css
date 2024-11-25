@@ -3,7 +3,7 @@
     position: absolute; /* Position it absolutely */
     top: 0; /* Align to the top */
     right: 0; /* Align to the right */
-    width: 235px; /* Set the desired width */
+    width: 300px; /* Set the desired width */
     height: 100%; /* Full height */
     background-color: #fff; /* Optional: Set a background color */
     padding: 20px;
@@ -73,11 +73,9 @@
     background: #f7f9fc;
     transition: all 0.3s ease;
     font-size: 16px;
+    box-sizing: content-box;
   }
 
-  .input-group select {
-    width: 100%;
-  }
   /* Input Focus Effect */
   .input-group input:focus, .input-group select:focus {
     outline: none;
@@ -216,6 +214,7 @@
   .phone-number-group {
     display: flex; /* Flexbox for alignment */
     align-items: center; /* Center items vertically */
+    justify-content: center;
   }
   
   .phone-code {
@@ -226,12 +225,6 @@
     font-weight: bold; /* Bold text for better visibility */
     margin-right: -1px; /* Overlap with the input field */
   }
-  
-  input[type="tel"] {
-    flex: 1; /* Allow the input to take remaining space */
-   
-  }
-  
 
   /* Add this for the select element to trigger the label animation */
 .input-group select:focus + label,
@@ -240,4 +233,8 @@
   left: 10px;
   font-size: 12px;
   color: #9face6;
+}
+
+.shrink {
+  width: 60% !important;
 }
