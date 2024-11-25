@@ -5,7 +5,7 @@ const PaymentMethods = () => {
   return (
     <div className='howtopay'>
       
-      <img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/aboutpayment.jpeg`} alt={'company-profile'} className="topic-image" />
+      {/*<img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/aboutpayment.jpeg`} alt={'company-profile'} className="topic-image" />*/}
       <h1>Payment Methods at Artisbay Inc.</h1>
       <p>At Artisbay Inc., we provide secure and reliable payment options to meet the needs of our global customers.</p>
       

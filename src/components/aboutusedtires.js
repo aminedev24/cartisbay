@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const UsedTiresFAQ = () => {
   return (
     <div className='aboutusedtires'>
-      <img src={`${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`} alt={'howtobuy-banner'} className="topic-image" />
+      {/*<img src={`${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`} alt={'howtobuy-banner'} className="topic-image" />*/}
 
       <h1>Why Choose Used Tires from Japan?</h1>
       <p>

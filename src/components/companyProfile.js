@@ -13,7 +13,7 @@ const CompanyProfile = (selectedTopic) => {
 
   return (
     <div className="company-profile-wrapper">
-      <img src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`} alt={'company-profile'} className="topic-image" />
+      {/*<img src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`} alt={'company-profile'} className="topic-image" />*/}
 
       <div className="company-profile-container">
         <h2>Company Profile</h2>

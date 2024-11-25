@@ -4,7 +4,7 @@ const TelegraphicTransfer = () => {
   return (
     <div className = 'terms-container'>
    
-      <img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/banktransfer.jpeg`} alt={'company-profile'} className="topic-image" />
+      {/*<img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/banktransfer.jpeg`} alt={'company-profile'} className="topic-image" />*/}
       <ol>
       <h1>How to Make a Payment via Telegraphic Transfer (T/T)</h1>
         <li>

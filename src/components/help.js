@@ -15,85 +15,69 @@ import ArtisbayInfo from './whyArtisbay';
 import PaymentMethods from './paymentMethods';
 import UsedTiresFAQ from './aboutusedtires';
 import Auction from './auction';
-import TelegraphicTransfer from './telegraphicTransfer'
-  // Define the topics
-  const topics = {
-    help: [
-      { name: "help", content: <h1 className='help-header'>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/help.jpeg` },
-      { name: "Overview", component: <ArtisbayOverview />, image: 'overview.jpg' },
-      { name: "Company Profile", component: <CompanyProfile/> },
-      { name: "Bank Information", content: "Bank information and payment options...", image: "bank-info.jpg" },
-      { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: "why-choose-us.jpg" },
-      { name: "Terms & Conditions", content: <TermsAndConditions />, image: "terms-conditions.jpg" },
-      { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: "anti-social-force-policy.jpg" },
-      { name: "How to Buy used cars", component: <HowToBuy />},
-      { name: "about used Tires", component: <UsedTiresFAQ />, image: "used-tires.jpg" },
-    ],
-    buying: [
-      { name: "about Dismantled Cars", content: <CarDismantlingService />},
-      { name: "About payement", component: <PaymentMethods />, image: "how-to-pay.jpg" },
-      { name: "security", content: <PaymentPolicy />, image: "envirement.jpg" },
-      { name: "paypal", content: <PaypalInfo />, image: "envirement.jpg" },
-      { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: "envirement.jpg" },
-      { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: "envirement.jpg" },
-      { name: "auction", content: <Auction />, image: "bank-info.jpg" }
+import TelegraphicTransfer from './telegraphicTransfer';
 
-      
-    ]
-  };
-
+// Define the topics
+const topics = {
+  help: [
+    { name: "help", content: <h1 className='help-header'>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/helpcopy.jpeg` },
+    { name: "Overview", component: <ArtisbayOverview />, image:`${process.env.PUBLIC_URL}/images/companyProfile2.jpg`},
+    { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofilecopy.jpg`},
+    { name: "Bank Information", content: "Bank information and payment options...", image: `` },
+    { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseus2copy.jpg` },
+    { name: "Terms & Conditions", content: <TermsAndConditions />, image: `` },
+    { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `` },
+    { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuynew.jpeg`},
+    { name: "about used Tires", component: <UsedTiresFAQ />, image: `${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`},
+  ],
+  buying: [
+    { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg`},
+    { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentcopy.jpg` },
+    { name: "security", content: <PaymentPolicy />, image: `` },
+    { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannercopy.png` },
+    { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/banktransfercopy.jpg` },
+    { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/ecofriendly2copy.jpeg` },
+    { name: "auction", content: <Auction />, image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` }
+  ]
+};
 
 const HelpPage = () => {
-    // Set the selected topic based on the URL parameter or default to the first topic
-    const location = useLocation();
-    const navigate = useNavigate();
-    const query = new URLSearchParams(location.search);
-    const topicParam = query.get('topic');
-    const initialTopic = topics.help.find(topic => topic.name === topicParam) || topics.help[0];
-    const [selectedTopic, setSelectedTopic] = useState(initialTopic);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const query = new URLSearchParams(location.search);
+  const topicParam = query.get('topic');
+  const initialTopic = topics.help.find(topic => topic.name === topicParam) || topics.help[0];
+  const [selectedTopic, setSelectedTopic] = useState(initialTopic);
 
-
-  // Update the URL whenever the selected topic changes
   const handleTopicChange = (topic) => {
     setSelectedTopic(topic);
     navigate(`/help?topic=${encodeURIComponent(topic.name)}`); // Update the URL
   };
 
   useEffect(() => {
-    // Update the selected topic if the URL changes
-    console.log("Current topicParam:", topicParam); // Debugging line
     if (topicParam) {
       const foundTopic = topics.help.find(topic => topic.name === topicParam) || 
                          topics.buying.find(topic => topic.name === topicParam);
       if (foundTopic) {
         setSelectedTopic(foundTopic);
-      } else {
-        console.warn("Topic not found:", topicParam); // Debugging line
       }
     }
   }, [topicParam]);
 
   return (
-    <div className="help-page">
-      {selectedTopic.name === 'help' ? (
-          <img src={`${process.env.PUBLIC_URL}/images/helpcopy.jpeg`} className='topic-image' />
-      ) : selectedTopic.name === 'our commitment to Sustainability' ? (
-          <div className='hero'>
-          <img src={`${process.env.PUBLIC_URL}/images/ecofriendly2copy.jpeg`} className='topic-image' />
-          </div>
-      ) : (
-          ''
+    <div className=" help-page">
+      {selectedTopic.image && (
+        <img src={selectedTopic.image} alt={selectedTopic.name} className="topic-image" />
       )}
       <div className={`help-main-content ${
             selectedTopic.name === 'help' ? 'help-lp' : 
             selectedTopic.name === 'our commitment to Sustainability' ? 'commitment-topic-lp' : ''
         }`}
-        >
+      >
         <div className="sidebar">
           <button className='btn-header' onClick={() => handleTopicChange(topics.help[0])}><h2>Help</h2></button>
           <img width={'50px'} src={`${process.env.PUBLIC_URL}/images/arrows.png`} />
           {topics.help.map((topic, index) => (
-            // Only render the button if the topic name is not "help"
             topic.name !== 'help' && (
               <button
                 key={index}
@@ -115,14 +99,12 @@ const HelpPage = () => {
           ))}
         </div>
         <div className={`content-area`}>
-          <h2 className={selectedTopic.name == 'our commitment to Sustainability' ? 'help-header': ''}>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
-
-      
+          <h2 className={selectedTopic.name === 'our commitment to Sustainability' ? 'help-header': ''}>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
           {selectedTopic.component || <>{selectedTopic.content}</>}
         </div>
       </div>
     </div>
-);
+  );
 };
 
 export default HelpPage;

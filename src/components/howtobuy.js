@@ -51,7 +51,7 @@ const HowToBuy = () => {
   ];
   return (
       <div className="howToBuy-container">
-        <img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/howtobuytransparentbackground.png`} alt={'howtobuy-banner'} className="topic-image" />
+        {/*<img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/howtobuytransparentbackground.png`} alt={'howtobuy-banner'} className="topic-image" />*/}
 
         <h2>How to Buy a Used Car on Artisbay Inc.</h2>
          {/* Overview Icons Section */}
