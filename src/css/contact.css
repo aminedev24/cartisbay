@@ -5,6 +5,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
+  min-height: 90vh;
 }
 .contact-container label {
   display: block;

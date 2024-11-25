@@ -71,7 +71,6 @@
     padding: 20px; /* Add padding to the container */
     border-radius: 8px; /* Optional: rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for better visibility */
-    max-width: 800px; /* Limit the width for better readability */
     margin: 20px auto; /* Center the container */
 }
 
@@ -86,7 +85,7 @@
     line-height: 1.6; /* Increase line height for better spacing */
     color: #34495e; /* Darker color for better readability */
     margin-bottom: 15px; /* Space between paragraphs */
-    text-shadow: 1px 1px 1px #1da1f2;
+    text-shadow: 1px 2px 4px #1da1f2;
     font-weight: bold;
 }
 

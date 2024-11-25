@@ -45,8 +45,7 @@ const Header = () => {
 
   // Array of GIF URLs
   const gifs = [
-    `${process.env.PUBLIC_URL}/images/security-alert-motion.gif`,
-    `${process.env.PUBLIC_URL}/images/cars-disman-info-bar.gif`,
+    `${process.env.PUBLIC_URL}/images/security-alert.gif`,
   ];
 
   return (
@@ -127,7 +126,7 @@ const Header = () => {
       {location.pathname === '/' && (
         <>
           <div className="gifs-container">
-            <img src={gifs[currentGifIndex]} alt={`GIF ${currentGifIndex + 1}`} />
+            <Link to='/help?topic=security'><img src={gifs[currentGifIndex]} alt={`GIF ${currentGifIndex + 1}`} /></Link>
           </div>
         </>
       )}
