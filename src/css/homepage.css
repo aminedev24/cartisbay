@@ -5,7 +5,6 @@
     overflow: hidden; /* Prevent overflow issues */
 }
 
-
 .layout {
     position: relative;
 }
@@ -421,4 +420,13 @@ option {
     height: 100%; /* Full height */
     background-color: rgba(0, 0, 0, 0.3); /* Black background with 50% opacity */
     z-index: 1; /* Ensure the overlay is above the image */
+}
+
+.image-slider-section {
+    height:300px;
+    overflow:hidden;
+}
+
+.slick-slide img {
+    max-height: 300px;
 }

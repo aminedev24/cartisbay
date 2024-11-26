@@ -113,9 +113,9 @@ function HomePage() {
           <section className="why-choose-us">
             <h2>Why Choose Us?</h2>
             <ul>
-              <li>Experienced in global car export logistics</li>
-              <li>Wide selection of vehicles from trusted manufacturers</li>
-              <li>Competitive pricing and shipping options</li>
+              <li>1. Expertise and Experience</li>
+              <li>2. High-Quality Products</li>
+              <li>3. Customized Services for Every Need</li>
             </ul>
           </section>
 

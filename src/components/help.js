@@ -24,20 +24,20 @@ const topics = {
     { name: "Overview", component: <ArtisbayOverview />, image:`${process.env.PUBLIC_URL}/images/overview.jpg`},
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofilecopy.jpg`},
     { name: "Bank Information", content: "Bank information and payment options...", image: `` },
-    { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseus2copy.jpg` },
+    { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
     { name: "Terms & Conditions", content: <TermsAndConditions />, image: `` },
     { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `` },
-    { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent.jpeg`},
-    { name: "about used Tires", component: <UsedTiresFAQ />, image: `${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`},
+    { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent2.jpeg`},
+    { name: "about used Tires", component: <UsedTiresFAQ />, image: `${process.env.PUBLIC_URL}/images/tiresfromjapanrecent.jpeg`},
   ],
   buying: [
-    { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/car-dismantling-lp-comp.jpg`},
-    { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentcopy.jpg` },
+    { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
+    { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
     { name: "security", content: <PaymentPolicy />, image: `` },
-    { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannercopy.png` },
-    { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/banktransfercopy.jpg` },
+    { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannerrecent.jpeg` },
+    { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/telegraphictransferrecent.jpeg` },
     { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/ecofriendly2copy.jpeg` },
-    { name: "auction", content: <Auction />, image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` }
+    { name: "auction", content: <Auction />, image: `${process.env.PUBLIC_URL}/images/comingsoonrecent.jpeg` }
   ]
 };
 
