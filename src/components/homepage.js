@@ -83,10 +83,14 @@ function HomePage() {
           </div>
 
           <Makestypes />
-
+          <RightSidebar />
+          </div>
+          </div>
           <div>
             <div className="ad-header-container">
-                <div className="ad-banner"></div> {/* Banner Image */}
+                
+                <img src={`${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`} className="ad-banner" /> 
+
                 <div className="small-image-container">
                     <div className="overlay"></div> {/* Overlay for better readability */}
 
@@ -103,6 +107,12 @@ function HomePage() {
                 <p>Ready to stock up on high-quality used tires? Visit our dedicated <Link className='cta-link' to='/used-tires'>Wholesale Tire Orders</Link> page to explore our selection and place your order today. With Artisbay Inc., you’re guaranteed quality, reliability, and exceptional service.
                 </p>
             </div>
+            <div className='paypal-ad-container'> 
+            <img src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner.jpeg`} className='ad-banner' alt="Small Image"  /> 
+
+
+            </div>
+
         </div>
 
           <section className="stocklist-section">
@@ -133,9 +143,8 @@ function HomePage() {
             </Link>
           </section>
         </div>
-      </div>
-      <RightSidebar />
-    </div>
+      
+     
     </div>
   );
 }

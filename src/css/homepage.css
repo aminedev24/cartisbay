@@ -51,6 +51,7 @@ option {
 .stocklist-section {
     background-color: #f9f9f9;
     text-align: center;
+    margin: 20px;
 }
 
 .stocklist-section h2 {
@@ -364,11 +365,10 @@ option {
 }
 
 .ad-banner {
-    background-image: url('../../public/images/tiresfromjapan.jpeg'); /* Replace with your banner image URL */
-    background-size: cover; /* Cover the entire div */
-    background-position: center; /* Center the image */
-    height: 200px; /* Set height for the banner */
+    height: 350px; /* Set height for the banner */
     flex: 1; /* Allow the banner to take available space */
+   width: 100%;
+    
 }
 
 .small-image-container {
@@ -429,4 +429,12 @@ option {
 
 .slick-slide img {
     max-height: 300px;
+}
+
+.paypal-ad-container {
+    display: flex;
+}
+
+.paypal-ad-container {
+    padding: 20px;
 }
