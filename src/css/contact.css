@@ -1,11 +1,11 @@
 .contact-container {
-  width: 40%;
+  width: 600px;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  min-height: 90vh;
+  height: 80vh;
 }
 .contact-container label {
   display: block;
