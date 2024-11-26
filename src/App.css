@@ -24,7 +24,7 @@ body {
 .container  {
   min-width: 1250px; /* Fixed width */
   position: relative;
- 
+ min-height: 100vh;
 }
 
     
