@@ -5,7 +5,6 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  min-height: 100vh;
 }
 .contact-container label {
   display: block;
@@ -58,4 +57,12 @@
   color: #333;
   text-align: center;
   margin: 20px 0;
+}
+
+@media screen and (max-width: 900px) {
+  .contact-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
