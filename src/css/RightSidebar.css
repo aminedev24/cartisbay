@@ -1,8 +1,5 @@
 /* Assuming your RightSidebar component has a class name */
 .right-sidebar {
-    position: absolute; /* Position it absolutely */
-    top: 0; /* Align to the top */
-    right: 0; /* Align to the right */
     width: 300px; /* Set the desired width */
     background-color: #fff; /* Optional: Set a background color */
     padding: 20px;

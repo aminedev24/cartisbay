@@ -1,8 +1,6 @@
 /* General Styles */
 .main-content {
-    margin-right: 350px;
-    padding: 20px 30px; /* Default padding */
-    overflow: hidden; /* Prevent overflow issues */
+  display: flex;
 }
 
 .layout {
@@ -14,9 +12,9 @@ option {
 }
 
 .homepage {
+    padding: 20px 0px 0px 30px;
+    overflow: hidden; /* Prevent overflow issues */
     color: #444; /* Soft dark gray for general text */
-    padding: 0;
-    margin: 0;
     display: flex; /* Use flexbox to align elements */
     flex-direction: column; /* Keep the layout vertical for desktop */
     flex: 1;
@@ -135,7 +133,7 @@ option {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Keep five columns */
     gap: 30px; /* Increased space between cards */
-    padding: 20px 0 ; /* Padding around the container */
+    padding: 30px; /* Padding around the container */
 }
 
 .info-card {

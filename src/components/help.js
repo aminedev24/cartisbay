@@ -25,18 +25,18 @@ const topics = {
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofilecopy.jpg`},
     { name: "Bank Information", content: "Bank information and payment options...", image: `` },
     { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
-    { name: "Terms & Conditions", content: <TermsAndConditions />, image: `` },
-    { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `` },
+    { name: "Terms & Conditions", content: <TermsAndConditions />, image:  `${process.env.PUBLIC_URL}/images/terms&conditions.png` },
+    { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `${process.env.PUBLIC_URL}/images/asf.png` },
     { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent2.jpeg`},
     { name: "about used Tires", component: <UsedTiresFAQ />, image: `${process.env.PUBLIC_URL}/images/tiresfromjapanrecent.jpeg`},
   ],
   buying: [
     { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
     { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
-    { name: "security", content: <PaymentPolicy />, image: `` },
+    { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},
     { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannerrecent.jpeg` },
     { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/telegraphictransferrecent.jpeg` },
-    { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/ecofriendly2copy.jpeg` },
+    { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/eco3.png` },
     { name: "auction", content: <Auction />, image: `${process.env.PUBLIC_URL}/images/comingsoonrecent.jpeg` }
   ]
 };

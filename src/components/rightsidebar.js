@@ -177,8 +177,8 @@ const RightSidebar = () => {
           <button type="submit">Sign Up</button>
         </form>
       </div>
-      
-      <div className="video-section">
+      {/* 
+        <div className="video-section">
         <img
           src={currentImage}
           alt="cars from"
@@ -186,6 +186,8 @@ const RightSidebar = () => {
         />
       </div>
 
+     
+      
       <div className="local-services">
         <div className="header">
           <span className="service-icon">
@@ -206,6 +208,7 @@ const RightSidebar = () => {
           ))}
         </ul>
       </div>
+       */}
     </div>
   );
 };

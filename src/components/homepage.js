@@ -27,27 +27,27 @@ function HomePage() {
 
   const cards = [
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/homepage/thumbnails/usedTires.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/usedtires.png`,
     
       link: "/used-tires",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/homepage/thumbnails/howtobuyen.jpg`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/howtobuy.png`,
       
       link: "/help?topic=How%20to%20Buy%20used%20cars",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/homepage/thumbnails/car-dismantling.jpg`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/cardismantling.png`,
      
       link: "/help?topic=about%20Dismantled%20Cars",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/homepage/thumbnails/auctions.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/auction.png`,
     
       link: "/help?topic=auction",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/homepage/thumbnails/howtopayen.jpg`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/howtopay.png`,
      
       link: "/help?topic=About%20payement",
     },
@@ -60,13 +60,13 @@ function HomePage() {
 
       <div className="main-content">
         <div className="homepage">
-          {/* Stocklist */}
-      
-
           <MediaSlider />
           <SearchForm />
-
-        
+         
+          
+          </div>
+          <RightSidebar />
+          </div>
           <div className="info-cards-container">
             {cards.map((card, index) => (
               <Link to={card.link} className="info-card-link" key={index}>
@@ -83,9 +83,6 @@ function HomePage() {
           </div>
 
           <Makestypes />
-          <RightSidebar />
-          </div>
-          </div>
           <div>
             <div className="ad-header-container">
                 
