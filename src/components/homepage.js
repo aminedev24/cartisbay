@@ -27,27 +27,27 @@ function HomePage() {
 
   const cards = [
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/usedtires.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/usedtires.png`,
     
       link: "/used-tires",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/howtobuy.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/howtobuy.png`,
       
       link: "/help?topic=How%20to%20Buy%20used%20cars",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/cardismantling.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/cardismantling.png`,
      
       link: "/help?topic=about%20Dismantled%20Cars",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/auction.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/auction.png`,
     
       link: "/help?topic=auction",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/thumbnails/howtopay.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/howtopay.png`,
      
       link: "/help?topic=About%20payement",
     },
