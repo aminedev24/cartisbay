@@ -319,7 +319,6 @@ option {
 
 .grid-item img {
     width: 50px;
-    height: 50px;
     margin-bottom: 5px;
 }
 
@@ -359,13 +358,14 @@ option {
 .ad-header-container {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Align items vertically centered */
-    padding: 20px; /* Padding around the header container */
+    padding: 25px; /* Padding around the header container */
+    position: relative;
 }
 
 .ad-banner {
     height: 350px; /* Set height for the banner */
     flex: 1; /* Allow the banner to take available space */
-   width: 100%;
+    width: 100%;
     
 }
 
@@ -387,14 +387,14 @@ option {
 .icon-container {
     position: absolute; /* Position absolute to overlay the small image */
     top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    right: 5%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Offset the center */
     text-align: center; /* Center text */
     z-index: 5;
 }
 
 .small-icon {
-    font-size: 30px; /* Size of the hand pointer icon */
+    font-size: 108px; /* Size of the hand pointer icon */
     color: #e67e22;
 }
 
@@ -407,6 +407,7 @@ option {
     margin-top: 5px; /* Space between icon and text */
     font-size: 28px; /* Font size for the text */
     color: #e67e22; /* Text color */
+    text-transform: uppercase;
 }
 
 
@@ -429,10 +430,21 @@ option {
     max-height: 300px;
 }
 
-.paypal-ad-container {
+.ad-container {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.paypal-ad-container {
+.ad-container {
     padding: 20px;
+}
+
+.bold-text {
+    font-weight: bold; /* Makes the text bold */
+    font-size: 1.5em; /* Increases the font size */
+    color: #1da1f2; /* Changes the text color to a bright, eye-catching orange */
+    text-align: center; /* Centers the text */
+    margin: 10px 0; /* Adds some space above and below the text */
+
 }

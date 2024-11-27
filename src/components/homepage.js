@@ -86,17 +86,12 @@ function HomePage() {
           <div>
             <div className="ad-header-container">
                 
-                <img src={`${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`} className="ad-banner" /> 
-
-                <div className="small-image-container">
-                    <div className="overlay"></div> {/* Overlay for better readability */}
-
-                    <div className="icon-container">
+                <img src={`${process.env.PUBLIC_URL}/images/tiressmallbanner.jpeg`} className="ad-banner" /> 
+                <div className="icon-container">
                         <FaHandPointer className="small-icon" />
                         <span className="click-text">Click Here</span>
-                    </div>
-                    <img src={`${process.env.PUBLIC_URL}/images/formsh.png`} alt="Small Image" className="small-image" /> {/* Small Image */}
                 </div>
+              
             </div>
 
             <div className="text-content">
@@ -104,13 +99,18 @@ function HomePage() {
                 <p>Ready to stock up on high-quality used tires? Visit our dedicated <Link className='cta-link' to='/used-tires'>Wholesale Tire Orders</Link> page to explore our selection and place your order today. With Artisbay Inc., you’re guaranteed quality, reliability, and exceptional service.
                 </p>
             </div>
-            <div className='paypal-ad-container'> 
-            <img src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner.jpeg`} className='ad-banner' alt="Small Image"  /> 
+            <div className='ad-container'> 
+     
+              <p className='bold-text'>Discover the convenience of PayPal for secure and fast payments. Sign up today and start experiencing seamless transactions.</p>
+              <img src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner.jpeg`} className='ad-banner' alt="PayPal Banner"  /> 
+              
+          
+              <p className='bold-text'>Don't miss out! Register now to unlock exclusive benefits and gain access to a world of easy online services.</p>
+              <img src={`${process.env.PUBLIC_URL}/images/registernow.jpeg`} className='ad-banner' alt="Register Now Banner"  /> 
+          </div>
 
 
-            </div>
-
-        </div>
+          </div>
 
           <section className="stocklist-section">
             <Stocklist cars={cars} filters={filters} setFilters={setFilters} />

@@ -6,42 +6,42 @@ const Makestypes = () => {
   const bodyTypes = [
     {
       name: "SEDAN",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/va4kVR0rEvqTHtZeS536eGeNYvR203lyVttGMYKLykErqGpnA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/sedan.png`,
       alt: "Sedan car icon"
     },
     {
       name: "HATCHBACK",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/BQMRiY9I6h7fM6ZeVKvNbtgj8pm6aeHvi6BoMCJVujFxqGpnA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/hatch.png`,
       alt: "Hatchback car icon"
     },
     {
       name: "SUV",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/FMQBgsshxqpRL5XDNOO2CIQfGfbB4WsQgLdbsEvmH2OaVj0TA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/suv.png`,
       alt: "SUV car icon"
     },
     {
       name: "WAGON",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/Z1eV0HDVCOX6NyY31CvlidJr5hpoR85vt7vvAnLl8X9tqR6JA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/wagon.png`,
       alt: "Wagon car icon"
     },
     {
       name: "VAN",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/f5ou5Bv8Az0qGahKE8mXvejdEGTCm45gJn7PwGGH8E0WVj0TA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/van.png`,
       alt: "Van car icon"
     },
     {
       name: "TRUCK",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/qamcemH6QUWSeEWeHjiSRaKeVqh2r4pWjpuvqhy62dNOVNSPB.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/truck.png`,
       alt: "Truck car icon"
     },
     {
       name: "HYBRID",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/49555WXV7jINAx30zo16T6gM0n1vwJ4wELNeNje3QJDXVj0TA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/hybrid.png`,
       alt: "Hybrid car icon"
     },
     {
       name: "MINI",
-      imgSrc: "https://storage.googleapis.com/a1aa/image/8hDeU5ExeaheSIQNmmRvlLC2F6cEXrDBtisFMayHlvk6qGpnA.jpg",
+      imgSrc: `${process.env.PUBLIC_URL}/images/car-icons/mini.png`,
       alt: "Mini car icon"
     }
   ];
