@@ -448,3 +448,11 @@ option {
     margin: 10px 0; /* Adds some space above and below the text */
 
 }
+
+.bordered {
+    border: 2px solid #f1892b; /* Adds a border with a bright, eye-catching orange color */
+    padding: 15px; /* Adds space inside the border */
+    margin-bottom: 20px; /* Adds space between each container */
+    border-radius: 10px; /* Rounds the corners of the border */
+  }
+  

@@ -100,13 +100,14 @@ function HomePage() {
                 </p>
             </div>
             <div className='ad-container'> 
-     
-              <p className='bold-text'>Discover the convenience of PayPal for secure and fast payments. Sign up today and start experiencing seamless transactions.</p>
-              <img src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner3.png`} className='ad-banner' alt="PayPal Banner"  /> 
-              
-          
+              <div className="bordered">
+                <p className='bold-text'>Discover the convenience of PayPal for secure and fast payments. Sign up today and start experiencing seamless transactions.</p>
+                <img src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner3.png`} className='ad-banner' alt="PayPal Banner"  /> 
+              </div>
+              <div className="bordered">
               <p className='bold-text'>Don't miss out! Register now to unlock exclusive benefits and gain access to a world of easy online services.</p>
               <img src={`${process.env.PUBLIC_URL}/images/registernow.jpeg`} className='ad-banner' alt="Register Now Banner"  /> 
+              </div>
           </div>
 
 
