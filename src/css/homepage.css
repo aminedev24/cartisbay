@@ -475,3 +475,21 @@ option {
     right: 14%;
     background-color: #1da1f2;
   }
+
+  .small-banner-container {
+    position: relative;
+  }
+
+  .small-banner-btn {
+    position: absolute;
+    top: 64%;
+    left: 48%;
+    font-size: 7px;
+  }
+
+  .eco-btn {
+    left: unset;
+    right: 3%;
+    top: 70%;
+    width: 13%;
+  }

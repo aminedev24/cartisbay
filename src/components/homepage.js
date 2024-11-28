@@ -134,17 +134,25 @@ function HomePage() {
                 Be careful, avoid being scammed! Confirm our correct bank account before you send your money!
               </p>
               <div className='small-banners'>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/securityadd.png`}
-                className="small-banner"
-                alt="security alert banner"
-              />
+                <div className="small-banner-container">
+                  <img
+                  src={`${process.env.PUBLIC_URL}/images/securityadd.png`}
+                  className="small-banner"
+                  alt="security alert banner"
+                />
+                <button className="small-banner-btn"><Link to='/help?topic=security'>Read more</Link></button>
+                </div>
+             
+              <div className="small-banner-container">
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/ecoadd.png`}
+                  className="small-banner"
+                  alt="economic banner"
+                />
+                <button className="small-banner-btn eco-btn"><Link to='/help?topic=our%20commitment%20to%C2%A0Sustainability'>Read more</Link></button>
 
-              <img
-                src={`${process.env.PUBLIC_URL}/images/ecoadd.png`}
-                className="small-banner"
-                alt="economic banner"
-              />
+              </div>
+             
 
               </div>
              
