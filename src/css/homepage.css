@@ -25,7 +25,6 @@ option {
 .why-choose-us {
     padding: 40px 20px;
     text-align: center;
-    border-radius: 12px; /* More pronounced rounded corners */
 }
 
 .why-choose-us h2 {
@@ -54,9 +53,8 @@ option {
 }
 
 .why-choose-us img {
-    max-width: 100%; /* Responsive image */
+    width: 100%; /* Responsive image */
     height: auto; /* Maintain aspect ratio */
-    border-radius: 12px; /* Rounded corners for the image */
     margin-top: 20px; /* Space above the image */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
 }
@@ -283,9 +281,7 @@ option {
 .main-container {
     display: flex; /* Aligns the containers side by side */
     justify-content: space-between; /* Ensures equal spacing between them */
-    width: 100%; /* Ensures the container takes the full width */
-    max-width: 1200px; /* Optional: Set a max width for the parent container */
-    margin: 10px auto; /* Center the container */
+    margin: 10px 30px; /* Center the container */
     gap: 10px;
     flex-direction: column;
 }
@@ -481,13 +477,17 @@ option {
 
   .small-banner-container {
     position: relative;
+    width: 100%;
   }
 
+  .small-banner-btn img {
+    width: 100%;
+  }
   .small-banner-btn {
     position: absolute;
     top: 57%;
     left: 52%;
-    font-size: 10px;
+    font-size: 15px;
     width: 18%;
   }
 

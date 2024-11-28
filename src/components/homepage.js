@@ -162,9 +162,7 @@ function HomePage() {
         {/* Why Choose Us Section */}
         <section className="why-choose-us">
             <h2>Why Choose Us?</h2>
-            <img src={`${process.env.PUBLIC_URL}/images/whychooseushome.png`} alt="Why Choose Us" />
-            <div className='small-banners'>
-                <div className="small-banner-container">
+            <div className="small-banner-container">
                   <img
                   src={`${process.env.PUBLIC_URL}/images/ecofriendlyhome.png`}
                   className="small-banner"
@@ -172,22 +170,22 @@ function HomePage() {
                 />
                 <Link to='/help?topic=our%20commitment%20to%C2%A0Sustainability'><button className="small-banner-btn eco-btn">Read more</button></Link>
                 
-                </div>
-              </div>
-            <p>
+            </div>
+            <img src={`${process.env.PUBLIC_URL}/images/whychooseushome.png`} alt="Why Choose Us" />
+            
+            <p className='bold-text'>
                 With over 40 years of experience and a passion for quality, 
                 we deliver high-standard used vehicles, tires, and parts tailored to your needs. 
                 Our transparent processes and detailed documentation ensure confidence and trust 
-                in every transaction.
+                in every transaction. <Link className="cta-link" to="/help?topic=Why%20Choose%20Artisbay%20Inc.">
+                Read more
+              </Link>
             </p>
-
-            <button className="cta-button"><Link to='/help?topic=Why%20Choose%20Artisbay%20Inc.'>Learn more</Link></button> 
-
         </section>
 
         {/* Contact CTA Section */}
         <section className="contact-cta">
-          <h2>Ready to Export?</h2>
+          <h2>Need help?</h2>
           <p>
             Contact us today and let us help you export your next car with ease!
           </p>
