@@ -61,7 +61,7 @@ option {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
 }
 
-.why-choose-us .cta-button {
+.why-choose-us .cta-button, .bordered .cta-button {
     font-size: small !important;
 }
 
@@ -458,5 +458,6 @@ option {
     padding: 15px; /* Adds space inside the border */
     margin-bottom: 20px; /* Adds space between each container */
     border-radius: 10px; /* Rounds the corners of the border */
+    text-align: center;
   }
   
