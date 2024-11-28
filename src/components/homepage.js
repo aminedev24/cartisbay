@@ -140,7 +140,8 @@ function HomePage() {
                   className="small-banner"
                   alt="security alert banner"
                 />
-                <button className="small-banner-btn"><Link to='/help?topic=security'>Read more</Link></button>
+                <Link to='/help?topic=security'><button className="small-banner-btn">Read more</button></Link>
+                
                 </div>
               </div>
              
