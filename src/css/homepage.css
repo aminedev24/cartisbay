@@ -482,14 +482,13 @@ option {
 
   .small-banner-btn {
     position: absolute;
-    top: 64%;
-    left: 48%;
-    font-size: 7px;
+    top: 57%;
+    left: 52%;
+    font-size: 10px;
+    width: 18%;
   }
 
-  .eco-btn {
-    left: unset;
-    right: 3%;
-    top: 70%;
-    width: 13%;
+  .small-banner-btn a {
+    color: inherit;
+    text-decoration: none;
   }

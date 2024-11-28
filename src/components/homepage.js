@@ -136,24 +136,12 @@ function HomePage() {
               <div className='small-banners'>
                 <div className="small-banner-container">
                   <img
-                  src={`${process.env.PUBLIC_URL}/images/securityadd.png`}
+                  src={`${process.env.PUBLIC_URL}/images/dontbevictim.png`}
                   className="small-banner"
                   alt="security alert banner"
                 />
                 <button className="small-banner-btn"><Link to='/help?topic=security'>Read more</Link></button>
                 </div>
-             
-              <div className="small-banner-container">
-                <img
-                  src={`${process.env.PUBLIC_URL}/images/ecoadd.png`}
-                  className="small-banner"
-                  alt="economic banner"
-                />
-                <button className="small-banner-btn eco-btn"><Link to='/help?topic=our%20commitment%20to%C2%A0Sustainability'>Read more</Link></button>
-
-              </div>
-             
-
               </div>
              
             
@@ -177,7 +165,7 @@ function HomePage() {
                 Our transparent processes and detailed documentation ensure confidence and trust 
                 in every transaction.
             </p>
-            
+
             <button className="cta-button"><Link to='/help?topic=Why%20Choose%20Artisbay%20Inc.'>Learn more</Link></button> 
 
         </section>
