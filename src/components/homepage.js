@@ -177,11 +177,7 @@ function HomePage() {
                 Our transparent processes and detailed documentation ensure confidence and trust 
                 in every transaction.
             </p>
-            <ul>
-                <li>1. Expertise and Experience</li>
-                <li>2. High-Quality Products</li>
-                <li>3. Customized Services for Every Need</li>
-            </ul>
+            
             <button className="cta-button"><Link to='/help?topic=Why%20Choose%20Artisbay%20Inc.'>Learn more</Link></button> 
 
         </section>
