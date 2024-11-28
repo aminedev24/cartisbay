@@ -81,7 +81,7 @@ function HomePage() {
         <div>
           <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/tiressmallbanner.jpeg`}
+              src={`${process.env.PUBLIC_URL}/images/tiresfromjapanhome.png`}
               className="ad-banner"
             />
             <div className="icon-container">
