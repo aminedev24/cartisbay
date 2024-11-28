@@ -163,7 +163,17 @@ function HomePage() {
         <section className="why-choose-us">
             <h2>Why Choose Us?</h2>
             <img src={`${process.env.PUBLIC_URL}/images/whychooseushome.png`} alt="Why Choose Us" />
-
+            <div className='small-banners'>
+                <div className="small-banner-container">
+                  <img
+                  src={`${process.env.PUBLIC_URL}/images/ecofriendlyhome.png`}
+                  className="small-banner"
+                  alt="eco friendly banner"
+                />
+                <Link to='/help?topic=our%20commitment%20to%C2%A0Sustainability'><button className="small-banner-btn eco-btn">Read more</button></Link>
+                
+                </div>
+              </div>
             <p>
                 With over 40 years of experience and a passion for quality, 
                 we deliver high-standard used vehicles, tires, and parts tailored to your needs. 
