@@ -283,7 +283,6 @@ option {
     justify-content: space-between; /* Ensures equal spacing between them */
     margin: 10px 30px; /* Center the container */
     gap: 10px;
-    flex-direction: column;
 }
 
 .type-container, .make-container {
