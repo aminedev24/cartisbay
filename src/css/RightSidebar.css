@@ -2,7 +2,7 @@
 .right-sidebar {
     width: 300px; /* Set the desired width */
     background-color: #fff; /* Optional: Set a background color */
-    padding: 20px;
+    padding:20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,8 +17,8 @@
 
 /* Container for the account creation section */
 .account-container {
-    background-color: #fff; /* White background for contrast */
-    padding: 18px 10px; /* More spacious padding */
+    background-color: #1da1f2; /* White background for contrast */
+    padding: 26px 10px; /* More spacious padding */
     border: 1px solid #e67e22; /* Orange border */
     width: 92%; /* Slight width adjustment for sidebar space */
     margin: 0 auto;
@@ -219,6 +219,7 @@
     padding: 8px 10px; /* Padding inside the box */
     font-weight: bold; /* Bold text for better visibility */
     margin-right: -1px; /* Overlap with the input field */
+    background-color: #f9f9f9;
   }
 
   /* Add this for the select element to trigger the label animation */
@@ -232,4 +233,12 @@
 
 .shrink {
   width: 60% !important;
+}
+
+.account-container button[type='submit'] {
+  background-color: #f1892b;
+}
+
+.header h2 {
+  color: #fff;
 }

@@ -13,6 +13,7 @@ const RightSidebar = () => {
   const [phoneCode, setPhoneCode] = useState("");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [fade, setFade] = useState(true); // Track fading state
@@ -62,37 +63,10 @@ const RightSidebar = () => {
       email,
       password,
       country: selectedCountry,
-      phone
+      phone,
+      company
     };
 
-    try {
-      const response = await fetch('/signup.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      const resultText = await response.text();
-      let result;
-      try {
-        result = JSON.parse(resultText);
-      } catch (error) {
-        console.error('Response is not valid JSON:', resultText);
-        return;
-      }
-
-      if (result.success) {
-        console.log(result.success);
-      } else if (result.errors) {
-        result.errors.forEach(error => console.error(error));
-      } else {
-        console.error(result.error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
   };
 
   return (
@@ -164,6 +138,18 @@ const RightSidebar = () => {
 
           <div className="input-group">
             <input
+              name="company"
+              type="company"
+              id="company"
+              value={company}
+              onChange={(e) => handleInputChange(setCompany, e)}
+              
+            />
+            <label htmlFor="company">Company</label>
+          </div>
+
+          <div className="input-group">
+            <input
               name="password"
               type="password"
               id="password"
@@ -173,6 +159,7 @@ const RightSidebar = () => {
             />
             <label htmlFor="password">Password</label>
           </div>
+          
 
           <button type="submit">Sign Up</button>
         </form>
