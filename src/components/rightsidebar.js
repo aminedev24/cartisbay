@@ -133,7 +133,6 @@ const RightSidebar = () => {
                 </option>
               ))}
             </select>
-            <label htmlFor="country">Country</label>
           </div>
 
           <div className="input-group">

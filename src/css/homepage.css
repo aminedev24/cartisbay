@@ -63,6 +63,7 @@ option {
 
 .why-choose-us .cta-button, .bordered .cta-button {
     font-size: small !important;
+  
 }
 
 /* Stocklist Section */
@@ -459,5 +460,18 @@ option {
     margin-bottom: 20px; /* Adds space between each container */
     border-radius: 10px; /* Rounds the corners of the border */
     text-align: center;
+    position: relative;
   }
   
+  .small-banners {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .bordered .cta-btn {
+    position: absolute;
+    top: 70%;
+    right: 14%;
+    background-color: #1da1f2;
+  }

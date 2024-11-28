@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "../css/usedTires.css";
 import LeftSidebar from "./sidebar";
 import OrderForm from "./usedTiresForm";
+import { useLocation } from "react-router-dom";
 
 const UsedTires = () => {
   const targetRef = useRef(null);
@@ -15,6 +16,7 @@ const UsedTires = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasPromptedForDoubleLoading, setHasPromptedForDoubleLoading] = useState(false); // New state variable
+  const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
   
   const [orders, setOrders] = useState({});

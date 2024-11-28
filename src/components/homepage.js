@@ -108,14 +108,13 @@ function HomePage() {
                 Discover the convenience of PayPal for secure and fast payments.
                 Sign up today and start experiencing seamless transactions.
               </p>
-              <Link to='/help?topic=paypal'>
+             
               <img
-                src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner3.png`}
+                src={`${process.env.PUBLIC_URL}/images/paypalbannerhome.png`}
                 className="ad-banner"
                 alt="PayPal Banner"
               />
-              </Link>
-              <button className="cta-button"><Link to='/help?topic=paypal'>Learn more</Link></button> 
+              <button className="cta-btn"><Link to='/help?topic=paypal'>Details</Link></button>
 
             </div>
             <div className="bordered">
@@ -134,14 +133,22 @@ function HomePage() {
               <p className="bold-text">
                 Be careful, avoid being scammed! Confirm our correct bank account before you send your money!
               </p>
-              <Link to='/help?topic=security'>
+              <div className='small-banners'>
               <img
-                src={`${process.env.PUBLIC_URL}/images/securitysmallbanner.png`}
-                className="ad-banner"
+                src={`${process.env.PUBLIC_URL}/images/securityadd.png`}
+                className="small-banner"
                 alt="security alert banner"
               />
-              </Link>
-              <button className="cta-button"><Link to='/help?topic=security'>Learn more</Link></button> 
+
+              <img
+                src={`${process.env.PUBLIC_URL}/images/ecoadd.png`}
+                className="small-banner"
+                alt="economic banner"
+              />
+
+              </div>
+             
+            
 
             </div>
           </div>
