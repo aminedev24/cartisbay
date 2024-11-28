@@ -475,6 +475,8 @@ option {
     top: 70%;
     right: 14%;
     background-color: #1da1f2;
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .small-banner-container {

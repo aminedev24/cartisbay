@@ -90,7 +90,7 @@ function HomePage() {
             </div>
 
             <div className="text-content">
-            <h2>Why choose tires from japan</h2>
+            
             <p>
               Ready to stock up on high-quality used tires? Visit our dedicated
               <Link className="cta-link" to="/used-tires">

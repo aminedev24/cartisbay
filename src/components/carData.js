@@ -7,7 +7,7 @@ const carData = [
     year: '2023',
     price: 10000,
     location: 'New York',
-    image: `${process.env.PUBLIC_URL}/images/silversadan.jpg`, // Use process.env.PUBLIC_URL
+    image: `${process.env.PUBLIC_URL}/images/silverSadan.jpg`, // Use process.env.PUBLIC_URL
     description: 'A reliable car for export.',
     dateAdded: '2023-01-01',
     popularity: 5,
@@ -34,7 +34,7 @@ const carData = [
     year: '2022',
     price: 22000,
     location: 'Osaka',
-    image: `${process.env.PUBLIC_URL}/images/subaruimprezasports.JPG`, // Use process.env.PUBLIC_URL
+    image: `${process.env.PUBLIC_URL}/images/subrauimprezasports.JPG`, // Use process.env.PUBLIC_URL
     description: 'A sporty compact car with all-wheel drive.',
     dateAdded: '2023-10-02',
     popularity: 5,
