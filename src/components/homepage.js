@@ -88,9 +88,8 @@ function HomePage() {
               <FaHandPointer className="small-icon" />
               <span className="click-text">Click Here</span>
             </div>
-          </div>
 
-          <div className="text-content">
+            <div className="text-content">
             <h2>Why choose tires from japan</h2>
             <p>
               Ready to stock up on high-quality used tires? Visit our dedicated
@@ -102,7 +101,30 @@ function HomePage() {
               exceptional service.
             </p>
           </div>
+          </div>
+
+         
           <div className="ad-container">
+
+          <div className="bordered">
+              <p className="bold-text">
+                Be careful, avoid being scammed! Confirm our correct bank account before you send your money!
+              </p>
+              <div className='small-banners'>
+                <div className="small-banner-container">
+                  <img
+                  src={`${process.env.PUBLIC_URL}/images/dontbevictim.png`}
+                  className="small-banner"
+                  alt="security alert banner"
+                />
+                <Link to='/help?topic=security'><button className="small-banner-btn">Read more</button></Link>
+                
+                </div>
+              </div>
+             
+            
+
+            </div>
             <div className="bordered">
               <p className="bold-text">
                 Discover the convenience of PayPal for secure and fast payments.
@@ -129,25 +151,7 @@ function HomePage() {
               />
             </div>
 
-            <div className="bordered">
-              <p className="bold-text">
-                Be careful, avoid being scammed! Confirm our correct bank account before you send your money!
-              </p>
-              <div className='small-banners'>
-                <div className="small-banner-container">
-                  <img
-                  src={`${process.env.PUBLIC_URL}/images/dontbevictim.png`}
-                  className="small-banner"
-                  alt="security alert banner"
-                />
-                <Link to='/help?topic=security'><button className="small-banner-btn">Read more</button></Link>
-                
-                </div>
-              </div>
-             
-            
-
-            </div>
+          
           </div>
         </div>
 
