@@ -108,11 +108,15 @@ function HomePage() {
                 Discover the convenience of PayPal for secure and fast payments.
                 Sign up today and start experiencing seamless transactions.
               </p>
+              <Link to='/help?topic=paypal'>
               <img
                 src={`${process.env.PUBLIC_URL}/images/paypalsmallbanner3.png`}
                 className="ad-banner"
                 alt="PayPal Banner"
               />
+              </Link>
+              <button className="cta-button"><Link to='/help?topic=paypal'>Learn more</Link></button> 
+
             </div>
             <div className="bordered">
               <p className="bold-text">
@@ -125,6 +129,21 @@ function HomePage() {
                 alt="Register Now Banner"
               />
             </div>
+
+            <div className="bordered">
+              <p className="bold-text">
+                Be careful, avoid being scammed! Confirm our correct bank account before you send your money!
+              </p>
+              <Link to='/help?topic=security'>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/securitysmallbanner.png`}
+                className="ad-banner"
+                alt="security alert banner"
+              />
+              </Link>
+              <button className="cta-button"><Link to='/help?topic=security'>Learn more</Link></button> 
+
+            </div>
           </div>
         </div>
 
@@ -134,12 +153,22 @@ function HomePage() {
 
         {/* Why Choose Us Section */}
         <section className="why-choose-us">
-          <h2>Why Choose Us?</h2>
-          <ul>
-            <li>1. Expertise and Experience</li>
-            <li>2. High-Quality Products</li>
-            <li>3. Customized Services for Every Need</li>
-          </ul>
+            <h2>Why Choose Us?</h2>
+            <img src={`${process.env.PUBLIC_URL}/images/whychooseushome.png`} alt="Why Choose Us" />
+
+            <p>
+                With over 40 years of experience and a passion for quality, 
+                we deliver high-standard used vehicles, tires, and parts tailored to your needs. 
+                Our transparent processes and detailed documentation ensure confidence and trust 
+                in every transaction.
+            </p>
+            <ul>
+                <li>1. Expertise and Experience</li>
+                <li>2. High-Quality Products</li>
+                <li>3. Customized Services for Every Need</li>
+            </ul>
+            <button className="cta-button"><Link to='/help?topic=Why%20Choose%20Artisbay%20Inc.'>Learn more</Link></button> 
+
         </section>
 
         {/* Contact CTA Section */}

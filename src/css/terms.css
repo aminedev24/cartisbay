@@ -93,6 +93,7 @@
     color: #1da1f2; /* Color for the link */
     font-weight: bold; /* Bold text for emphasis */
     text-decoration: underline; /* Underline for links */
+    padding: 0 5px;
 }
 
 .cta-link:hover {

@@ -23,14 +23,21 @@ option {
 
 /* Why Choose Us */
 .why-choose-us {
-    padding: 50px 20px;
-    background-color: #fff;
+    padding: 40px 20px;
     text-align: center;
+    border-radius: 12px; /* More pronounced rounded corners */
 }
 
 .why-choose-us h2 {
-    color: #34495e; /* Deep blue-gray */
     margin-bottom: 20px;
+    font-size: 2.5em; /* Larger font size for emphasis */
+    font-weight: 700; /* Bold text */
+}
+
+.why-choose-us p {
+    margin-bottom: 30px; /* Increased bottom margin for spacing */
+    font-size: 1.2em; /* Slightly larger font for readability */
+    line-height: 1.8; /* Improved line height for better readability */
 }
 
 .why-choose-us ul {
@@ -42,7 +49,20 @@ option {
 
 .why-choose-us li {
     margin: 15px 0;
-    color: #7f8c8d; /* Soft gray */
+    font-size: 1.1em; /* Slightly larger font for readability */
+    position: relative; /* For adding icons or styles */
+}
+
+.why-choose-us img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 12px; /* Rounded corners for the image */
+    margin-top: 20px; /* Space above the image */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+}
+
+.why-choose-us .cta-button {
+    font-size: small !important;
 }
 
 /* Stocklist Section */
@@ -56,27 +76,6 @@ option {
     color: #2c3e50;
 }
 
-/* Testimonials Section */
-.testimonials {
-    padding: 50px 0;
-    background-color: #fff;
-    text-align: center;
-}
-
-.testimonial {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #ecf0f1;
-    padding: 20px;
-    color: #2c3e50;
-}
-
-.testimonial span {
-    display: block;
-    margin-top: 10px;
-    color: #7f8c8d;
-}
-
 /* Contact CTA Section */
 .contact-cta {
     padding: 50px 0;
@@ -87,6 +86,10 @@ option {
 
 .contact-cta p {
     margin-bottom: 30px;
+}
+
+.contact-cta h2 {
+    color: #fff;
 }
 
 .contact-cta .cta-button {
@@ -383,7 +386,7 @@ option {
 }
 
 .text-content {
-    padding: 20px; /* Padding around the text content */
+    padding: 0 20px; /* Padding around the text content */
 }
 
 .icon-container {
