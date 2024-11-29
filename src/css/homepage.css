@@ -78,7 +78,7 @@ option {
 /* Contact CTA Section */
 .contact-cta {
     padding: 50px 0;
-    background-color: #2c3e50;
+    background-color: #1da1f2;
     color: white;
     text-align: center;
 }
@@ -359,9 +359,49 @@ option {
 .ad-header-container {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Align items vertically centered */
-    padding: 25px; /* Padding around the header container */
+    padding: 30px; /* Padding around the header container */
     position: relative;
     flex-direction: column;
+}
+
+.pointer {
+    position: absolute; /* Position the pointer */
+    top:48%; /* Center vertically */
+    right: 14%; /* Position the pointer to the right */
+    transform: translate(-50%, -50%); /* Offset the center */
+    font-size: 24px; /* Size of the pointer */
+    cursor: pointer; /* Pointer cursor */
+    width: 10%;
+    height: 19%;
+}
+.order-now , .pointer ,.cta-btn-link , .register-now-btn {
+    background-color: transparent;
+    color: transparent;
+}
+
+.cta-btn-link {
+    position: absolute;
+    bottom: 15%;
+    left: 40%;
+    width: 12%;
+}
+
+.register-now-btn {
+    position: absolute;
+    top: 55%;
+    left: 56%;
+    width: 37%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 20%;
+}
+.order-now {
+    position: absolute;
+    bottom: 3%;
+    width: 13%;
+    left: 42%;
+    height: 8%;
+    
 }
 
 .ad-banner {
@@ -374,6 +414,10 @@ option {
 .small-image-container {
     margin-left: 20px; /* Space between the banner and small image */
     position: relative;
+}
+
+.small-banner-container img {
+    width: 100%;
 }
 
 .small-image {

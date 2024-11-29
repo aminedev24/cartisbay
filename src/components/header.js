@@ -61,7 +61,7 @@ const Header = () => {
           <div className="header-icons">
             <div className="header-item"><Link to='/contact'>Contact</Link></div>
             <div className="header-item">
-              <i className="fas fa-user-plus icon"></i> Register
+              <i className="fas fa-user-plus icon"></i> <Link to='/register'>Register</Link>
             </div>
             <div
               className="header-item dropdown"

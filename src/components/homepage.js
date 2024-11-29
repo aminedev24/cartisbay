@@ -81,26 +81,13 @@ function HomePage() {
         <div>
           <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/tiresfromjapanhome.png`}
+              src={`${process.env.PUBLIC_URL}/images/tiresfromjapanhome2.png`}
               className="ad-banner"
             />
-            <div className="icon-container">
-              <FaHandPointer className="small-icon" />
-              <span className="click-text">Click Here</span>
-            </div>
-
-            <div className="text-content">
-            
-            <p>
-              Ready to stock up on high-quality used tires? Visit our dedicated
-              <Link className="cta-link" to="/used-tires">
-                Wholesale Tire Orders
-              </Link>
-              page to explore our selection and place your order today. With
-              Artisbay Inc., you’re guaranteed quality, reliability, and
-              exceptional service.
-            </p>
-          </div>
+            <Link to='used-tires'><button className="pointer">pointer</button></Link>
+            <Link to='used-tires'><button className="order-now">order now</button></Link>
+            <Link to='used-tires'><button className="cta-btn-link">help</button></Link>
+        
           </div>
 
          
@@ -149,6 +136,7 @@ function HomePage() {
                 className="ad-banner"
                 alt="Register Now Banner"
               />
+              <Link to='/register'><button className="register-now-btn">Register now</button></Link>
             </div>
 
           
@@ -187,7 +175,7 @@ function HomePage() {
         <section className="contact-cta">
           <h2>Need help?</h2>
           <p>
-            Contact us today and let us help you export your next car with ease!
+            Contact us today and let us help you import your next car with ease!
           </p>
           <Link className="cta-button" to="/contact">
             Contact Us

@@ -17,6 +17,7 @@ import CarDismantling from './components/carDismantling';
 import UsedTires from './components/usedTires';
 import HelpPage from './components/help';
 import InquiryForm from './components/vehiculeEnquiry';
+import RegisterForm from './components/register';
 /* src/index.css */
 
 
@@ -35,6 +36,7 @@ function App() {
     setCars(carData); // Use the imported carData
   }, []);
 
+  useEffect(() => { const images = document.querySelectorAll('img'); images.forEach(img => { img.setAttribute('loading', 'lazy'); }); }, []);
 
   
   return (
@@ -53,6 +55,7 @@ function App() {
           <Route path="/used-tires" element={<UsedTires />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/vehicleInquiry" element={<InquiryForm />} />
+          <Route path="/register" element={<RegisterForm />} />
         </Routes>
       <Footer />
     </Router>

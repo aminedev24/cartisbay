@@ -6,24 +6,26 @@ body {
 }
 }
 
+html {
+  min-width: 1200px;
+}
+
 .header-container, .used-tires-page{
-  min-width: 1250px;
+
   max-width: 100%;
 }
 
 .help-page {
-  min-width: 1200px;
+
 }
   
 .footer {
-  min-width: 1210px;
-  max-width: 100%;
+
 }
 
 
 .container  {
-  min-width: 1250px; /* Fixed width */
-  position: relative;
+
  min-height: 100vh;
 }
 

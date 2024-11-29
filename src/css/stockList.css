@@ -61,7 +61,7 @@ button {
   gap: 9px;
 }
 
-button:hover {
+.stocklist button:hover {
   background-color: #f1892b; /* Darker shade on hover */
   color: #fff;
 }
