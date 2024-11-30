@@ -367,12 +367,12 @@ option {
 .pointer {
     position: absolute; /* Position the pointer */
     top:48%; /* Center vertically */
-    right: 14%; /* Position the pointer to the right */
+    right: 0%; /* Position the pointer to the right */
     transform: translate(-50%, -50%); /* Offset the center */
     font-size: 24px; /* Size of the pointer */
     cursor: pointer; /* Pointer cursor */
-    width: 10%;
-    height: 19%;
+    width: 25%;
+    height: 50%;
 }
 .order-now , .pointer ,.cta-btn-link , .register-now-btn {
     background-color: transparent;

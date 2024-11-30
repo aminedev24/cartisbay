@@ -98,11 +98,4 @@ html {
   }
 }
 
-@media screen and (max-width: 1366px) {
-  .help-page {
-    min-width: 1250px;
-  }
-  
-}
-
 
