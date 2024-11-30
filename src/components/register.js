@@ -1,6 +1,6 @@
 import React , { useState, useEffect } from 'react';
 import { countries } from './countries';
-
+import { useLocation } from 'react-router-dom';
 const RegisterForm = () => {
 
     const [selectedCountry, setSelectedCountry] = useState("");
@@ -11,6 +11,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [fade, setFade] = useState(true); // Track fading state
+    const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
     const handleSignup = async (event) => {
         event.preventDefault();

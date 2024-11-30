@@ -1,51 +1,32 @@
 import React from 'react';
 import '../css/footer.css';
-
+import {Link} from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-links">
         <div className="footer-section">
-          <h4>Shop by Make</h4>
+          <h4>About Us</h4>
           <ul>
-            <li><a href="/make/toyota">Toyota</a></li>
-            <li><a href="/make/honda">Honda</a></li>
-            <li><a href="/make/ford">Ford</a></li>
-            <li><a href="/make/nissan">Nissan</a></li>
+            <li><Link to={'/help?topic=help'}>Help</Link></li>
+            <li><Link to="/help?topic=Company%20Profile">Company Profile</Link></li>
+            <li><Link to="/help?topic=Why%20Choose%20Artisbay%20Inc.">Why Choose Artisbay</Link></li>
+            <li><Link to="/help?topic=Terms%20%26%20Conditions">Terms & Conditions</Link></li>
+            <li><Link to="/help?topic=Anti-Social%20Force%20Policy">Anti-Social Force Policy</Link></li>
+            <li><Link to="/help?topic=How%20to%20Buy%20used%20cars">How To Buy</Link></li>
+            <li><Link to="/help?topic=About%20payement">How To Pay</Link></li>
             {/* Add more makes as needed */}
           </ul>
         </div>
         
         <div className="footer-section">
-          <h4>Shop by Year</h4>
+          <h4>Usefull Links</h4>
           <ul>
-            <li><a href="/year/2024">2024</a></li>
-            <li><a href="/year/2023">2023</a></li>
-            <li><a href="/year/2022">2022</a></li>
-            <li><a href="/year/2021">2021</a></li>
+            <li><Link to="/used-tires">Used tires</Link></li>
+            <li><Link to="/register">register</Link></li>
+            <li><Link to="/login">login</Link></li>
+           
             {/* Add more years as needed */}
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h4>Shop by Type</h4>
-          <ul>
-            <li><a href="/type/suv">SUV</a></li>
-            <li><a href="/type/sedan">Sedan</a></li>
-            <li><a href="/type/truck">Truck</a></li>
-            <li><a href="/type/coupe">Coupe</a></li>
-            {/* Add more types as needed */}
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h4>Shop by Price</h4>
-          <ul>
-            <li><a href="/price/under-10000">$10,000 and under</a></li>
-            <li><a href="/price/10000-20000">$10,000 - $20,000</a></li>
-            <li><a href="/price/20000-30000">$20,000 - $30,000</a></li>
-            <li><a href="/price/above-30000">$30,000 and above</a></li>
-            {/* Adjust price ranges as needed */}
           </ul>
         </div>
 

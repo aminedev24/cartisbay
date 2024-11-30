@@ -49,7 +49,7 @@ const HelpPage = () => {
   const initialTopic = topics.help.find(topic => topic.name === topicParam) || topics.help[0];
   const [selectedTopic, setSelectedTopic] = useState(initialTopic);
 
-  const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); }, [pathname,topicParam]);
 
   const handleTopicChange = (topic) => {
     setSelectedTopic(topic);

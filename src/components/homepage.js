@@ -81,15 +81,13 @@ function HomePage() {
         <div>
           <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/tiresfromjapanhome2.png`}
+              src={`${process.env.PUBLIC_URL}/images/whytiresfromjapan.jpeg`}
               className="ad-banner"
             />
-            <Link to='used-tires'><button className="pointer">pointer</button></Link>
-            <Link to='used-tires'><button className="order-now">order now</button></Link>
-            <Link to='used-tires'><button className="cta-btn-link">help</button></Link>
+            <Link to='/help?topic=about%20used%20Tires'><button className="order-now">read more</button></Link>
         
           </div>
-
+            
          
           <div className="ad-container">
 

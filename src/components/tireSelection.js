@@ -142,13 +142,17 @@ const TireSelection = ({
         </div>
       </div>
       <div>
+    
         <div className="total-order">
           <p>
             <strong>Total Order:</strong> {totalUnits} units
           </p>
           <p>{message}</p>
         </div>
-        <div className="table-btns">
+     
+      </div>
+
+      <div className="table-btns">
           <button className="continue-selection-btn" onClick={handleClearOrders}>
             Clear Orders
           </button>
@@ -169,8 +173,6 @@ const TireSelection = ({
           />
           <div className="text">{percentageFill.toLocaleString()}</div>
         </div>
-      </div>
-
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)} // Close the modal

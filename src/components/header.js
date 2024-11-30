@@ -111,7 +111,6 @@ const Header = () => {
               <div className={`dropdown-content help ${activeDropdown === 'overview' ? 'show' : ''}`}>
                 <Link to={'/help?topic=help'}>Help</Link>
                 <Link to={'/help?topic=Company%20Profile'}>Company Profile</Link>
-                <Link to={'/help?topic=Bank%20Information'}>Bank Information</Link>
                 <Link to={'/help?topic=Why%20Choose%20Artisbay%20Inc.'}>Why Choose Artisbay</Link>
                 <Link to={'/help?topic=Terms%20%26%20Conditions'}>Terms & Conditions</Link>
                 <Link to={'/help?topic=Anti-Social%20Force%20Policy'}>Anti-Social Force Policy</Link>

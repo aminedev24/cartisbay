@@ -397,9 +397,9 @@ option {
 }
 .order-now {
     position: absolute;
-    bottom: 3%;
-    width: 13%;
-    left: 42%;
+    bottom: 30%;
+    width: 18%;
+    left: 73%;
     height: 8%;
     
 }
@@ -540,6 +540,7 @@ option {
   }
 
   .eco-btn {
-    left: 80%;
-    top: 73%;
+    left: 78%;
+    top: 80%;
+    width: 21%;
   }
