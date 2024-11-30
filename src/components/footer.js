@@ -4,7 +4,12 @@ import {Link} from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="footer">
+
       <div className="footer-links">
+        <div className='footer-section'>
+        <Link className='logo' to='/'><img width='200' src={`${process.env.PUBLIC_URL}/images/logo3.png`} alt="Logo" /></Link>
+
+        </div>
         <div className="footer-section">
           <h4>About Us</h4>
           <ul>

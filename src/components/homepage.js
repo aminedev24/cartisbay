@@ -78,6 +78,11 @@ function HomePage() {
         </div>
 
         <Makestypes />
+
+        <section className="stocklist-section">
+          <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
+        </section>
+        
         <div>
           <div className="ad-header-container">
             <img
@@ -140,10 +145,6 @@ function HomePage() {
           
           </div>
         </div>
-
-        <section className="stocklist-section">
-          <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
-        </section>
 
         {/* Why Choose Us Section */}
         <section className="why-choose-us">

@@ -53,7 +53,7 @@ const Header = () => {
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-          <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Logo" /></Link>
+          <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo3.png`} alt="Logo" /></Link>
           <div className="header-search">
             <input type="text" placeholder="Search by keyword..." />
             <i className="fas fa-search search-icon"></i>
