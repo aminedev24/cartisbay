@@ -9,8 +9,7 @@
     justify-content: center;
     align-items: center;
     background-image: url('../../public/images/TireBanner.jpg');
-    background-size: cover;
-    background-position:center ;
+    background-repeat:round ;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: auto;
     position: relative;

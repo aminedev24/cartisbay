@@ -1,61 +1,31 @@
-import React, { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import { countries } from './countries';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-
+import { useLocation } from 'react-router-dom';
 const RegisterForm = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [phoneCode, setPhoneCode] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  
-  const navigate = useNavigate(); // Initialize navigate
 
-  const handleSignup = async (event) => {
-    event.preventDefault();
-    const formData = {
-      'full-name': fullName,
-      email,
-      password,
-      country: selectedCountry,
-      phone,
-      company,
-    };
+    const [selectedCountry, setSelectedCountry] = useState("");
+    const [phoneCode, setPhoneCode] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [company, setCompany] = useState("");
+    const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
+    const [fade, setFade] = useState(true); // Track fading state
+    const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
-    try {
-      const response = await fetch('http://localhost/cartisbay-clean/signup.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      const resultText = await response.text();
-      let result;
-
-      try {
-        result = JSON.parse(resultText);
-      } catch (error) {
-        console.error('Response is not valid JSON:', resultText);
-        return;
-      }
-
-      if (result.success) {
-        console.log(result.success);
-        navigate('/'); // Redirect to the homepage
-      } else if (result.errors) {
-        result.errors.forEach(error => console.error(error));
-      } else {
-        console.error(result.error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
+    const handleSignup = async (event) => {
+        event.preventDefault();
+        const formData = {
+          'full-name': fullName,
+          email,
+          password,
+          country: selectedCountry,
+          phone,
+          company
+        };
+    
+      };
+      
   const handleCountryChange = (event) => {
     const country = countries.find((c) => c.name === event.target.value);
     setSelectedCountry(event.target.value);
@@ -70,10 +40,9 @@ const RegisterForm = () => {
       event.target.classList.remove("not-empty");
     }
   };
-
-  return (
-    <div className="register-container">
-      <div className="account-container">
+    return (
+        <div className="register-container">
+            <div className="account-container">
         <div className="header">
           <span className="person-icon">
             <i className="fas fa-user-plus"></i>
@@ -144,6 +113,7 @@ const RegisterForm = () => {
               id="company"
               value={company}
               onChange={(e) => handleInputChange(setCompany, e)}
+              
             />
             <label htmlFor="company">Company</label>
           </div>
@@ -159,12 +129,13 @@ const RegisterForm = () => {
             />
             <label htmlFor="password">Password</label>
           </div>
+          
 
           <button type="submit">Sign Up</button>
         </form>
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default RegisterForm;

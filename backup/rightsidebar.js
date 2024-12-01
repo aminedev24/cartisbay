@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import CountryFlag from "react-country-flag";
+import "../css/RightSidebar.css";
 import { countries } from './countries';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
-const RegisterForm = () => {
+const RightSidebar = () => {
+  const localServices = [
+    { name: "Namibia", code: "NA" },
+    { name: "Dr-Congo", code: "CD" },
+  ];
+
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
   const [fullName, setFullName] = useState("");
@@ -10,51 +16,30 @@ const RegisterForm = () => {
   const [company, setCompany] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  
-  const navigate = useNavigate(); // Initialize navigate
+  const [fade, setFade] = useState(true); // Track fading state
 
-  const handleSignup = async (event) => {
-    event.preventDefault();
-    const formData = {
-      'full-name': fullName,
-      email,
-      password,
-      country: selectedCountry,
-      phone,
-      company,
-    };
+  const images = [
+    `${process.env.PUBLIC_URL}/images/local-services-comp.jpg`,
+    `${process.env.PUBLIC_URL}/images/fromeurope.jpeg`
+  ];
+  const [currentImage, setCurrentImage] = useState(images[0]);
 
-    try {
-      const response = await fetch('http://localhost/cartisbay-clean/signup.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setFade(false); // Start fading out the current image
 
-      const resultText = await response.text();
-      let result;
+      setTimeout(() => {
+        // Update image after fade-out completes
+        setCurrentImage((prevImage) => {
+          const nextImageIndex = (images.indexOf(prevImage) + 1) % images.length;
+          return images[nextImageIndex];
+        });
+        setFade(true); // Start fading in the new image
+      }, 500); // This delay should match the fade-out time in CSS
+    }, 60000); // 60000 milliseconds = 1 minute
 
-      try {
-        result = JSON.parse(resultText);
-      } catch (error) {
-        console.error('Response is not valid JSON:', resultText);
-        return;
-      }
-
-      if (result.success) {
-        console.log(result.success);
-        navigate('/'); // Redirect to the homepage
-      } else if (result.errors) {
-        result.errors.forEach(error => console.error(error));
-      } else {
-        console.error(result.error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    return () => clearInterval(intervalId);
+  }, [images]);
 
   const handleCountryChange = (event) => {
     const country = countries.find((c) => c.name === event.target.value);
@@ -71,8 +56,50 @@ const RegisterForm = () => {
     }
   };
 
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    const formData = {
+      'full-name': fullName,
+      email,
+      password,
+      country: selectedCountry,
+      phone,
+      company
+    };
+
+    try {
+      const response = await fetch('/signup.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      const resultText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(resultText);
+      } catch (error) {
+        console.error('Response is not valid JSON:', resultText);
+        return;
+      }
+
+      if (result.success) {
+        console.log(result.success);
+      } else if (result.errors) {
+        result.errors.forEach(error => console.error(error));
+      } else {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
   return (
-    <div className="register-container">
+    <div className="right-sidebar">
       <div className="account-container">
         <div className="header">
           <span className="person-icon">
@@ -144,6 +171,7 @@ const RegisterForm = () => {
               id="company"
               value={company}
               onChange={(e) => handleInputChange(setCompany, e)}
+              
             />
             <label htmlFor="company">Company</label>
           </div>
@@ -159,12 +187,45 @@ const RegisterForm = () => {
             />
             <label htmlFor="password">Password</label>
           </div>
+          
 
           <button type="submit">Sign Up</button>
         </form>
       </div>
+      {/* 
+        <div className="video-section">
+        <img
+          src={currentImage}
+          alt="cars from"
+          className={`fade-image ${fade ? 'fade-in' : 'fade-out'}`}
+        />
+      </div>
+
+     
+      
+      <div className="local-services">
+        <div className="header">
+          <span className="service-icon">
+            <i className="fas fa-map-marker-alt"></i>
+          </span>
+          <h4>Local Services</h4>
+        </div>
+        <ul className="country-list">
+          {localServices.map((country) => (
+            <li key={country.name} className="country-item">
+              <CountryFlag
+                countryCode={country.code}
+                svg
+                style={{ width: "20px", height: "20px", marginRight: "8px" }}
+              />
+              {country.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+       */}
     </div>
   );
 };
 
-export default RegisterForm;
+export default RightSidebar;

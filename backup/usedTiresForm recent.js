@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../css/usedTiresForm.css";
 import TireSelection from "./tireSelection";
 import Modal from './alertModal';
-import { useUser } from "./userContext"; // Importing the useUser hook to access user data
-import {Link} from 'react-router-dom';
 
 const OrderForm = ({
   formData,
@@ -26,7 +24,6 @@ const OrderForm = ({
   const [isQuantityValid, setIsQuantityValid] = useState(true);
   const [modalMessage, setModalMessage] = useState(""); // State for modal message
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
-  const { user, loading } = useUser(); // Accessing the user from context
 
   const tireSizes = [
     {
@@ -296,11 +293,16 @@ const OrderForm = ({
     }));
   };
 
-  const handleSaveOrder = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
   
     // Validation checks
-    if (!formData.maker || !formData.type || !formData.tireSize || !formData.quantity) {
+    if (
+      !formData.maker ||
+      !formData.type ||
+      !formData.tireSize ||
+      !formData.quantity
+    ) {
       setMessage("Please fill in all required fields.");
       return;
     }
@@ -393,41 +395,6 @@ const OrderForm = ({
     setOrders(updatedOrders);
     setTotalUnits(newTotalUnits);
   
-    // Prepare the data to be sent to the backend
-    const orderData = {
-      user_id: user.uid,
-      maker: formData.maker,
-      width,
-      aspectRatio,
-      rimDiameter,
-      loadIndex: formData.loadIndex,
-      speedRating: formData.speedRating,
-      quantity: quantity,
-      type: formData.type,
-    };
-  
-    try {
-      // Send the order data to the backend API
-      const response = await fetch('http://localhost/cartisbay-clean/saveOrder.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
-  
-      const result = await response.json();
-      console.log(orderData)
-  
-      if (response.ok) {
-        setMessage("Your order has been successfully saved!");
-      } else {
-        setMessage(result.message || "An error occurred while saving the order.");
-      }
-    } catch (error) {
-      setMessage("An error occurred while connecting to the server.");
-    }
-  
     // Clear the form after successful submission
     setFormData({
       maker: "",
@@ -439,7 +406,7 @@ const OrderForm = ({
       rimDiameter: "",
     }); // Reset form data to initial state
   };
-  
+
   const handleDeleteOrder = (maker, index) => {
     const updatedOrders = { ...orders };
     const quantityToRemove = updatedOrders[maker][index].quantity;
@@ -496,31 +463,15 @@ const OrderForm = ({
         </div>
       </header>
 
-               {/* Check if user is logged in */}
-               {user ? (
-            // If logged in, display a welcome message
-            <p className="welcome-message">
-              Welcome, {user.name}! You can now send your order.
-            </p>
-          ) : (
-            // If not logged in, display login/register prompt
-            <p className="login-prompt">
-              Please <Link to='/login' className="cta-link" href="/login">log in</Link> or
-              <Link to='/register' className="cta-link" href="/register">register</Link> to send an order.
-            </p>
-          )}
-          
       <div className="container-inner">
         <article className="form-container">
-   
-
           {formData.tireSize && (
             <div className="order-preview">
               <p>{formData.tireSize}</p>
             </div>
           )}
 
-          <form action="#" onSubmit={handleSaveOrder}>
+          <form action="#" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
                 <label>
