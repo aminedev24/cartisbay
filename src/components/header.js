@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useUser } from './userContext'; // Import useUser hook
 import '../css/header.css';
 import TopBar from './topbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import ThemeToggle from './toggletheme';
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [currentGifIndex, setCurrentGifIndex] = useState(0);
-  const [showGifs, setShowGifs] = useState(true); // Set to true immediately
   const dropdownRef = useRef([]);
   const location = useLocation();
+
+  const { user, logout } = useUser(); // Access user and logout from context
 
   const toggleDropdown = (dropdownName) => {
     setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
@@ -26,6 +26,11 @@ const Header = () => {
     }
   };
 
+  const logoutHandler = () => {
+    logout(); // Call the logout function from context
+    setActiveDropdown(null); // Close the dropdown menu after logout
+  };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -33,50 +38,53 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (showGifs) {
-      const interval = setInterval(() => {
-        setCurrentGifIndex((prevIndex) => (prevIndex + 1) % gifs.length);
-      }, 4000); // Change GIF every 3 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [showGifs]);
-
-  // Array of GIF URLs
-  const gifs = [
-    `${process.env.PUBLIC_URL}/images/security-alert.gif`,
-  ];
-
   return (
     <div className='header-container'>
       <TopBar />
       <header className="main-header">
         <div className="header-top">
-          <Link className='logo' to='/'><img src={`${process.env.PUBLIC_URL}/images/logo3.png`} alt="Logo" /></Link>
+          <Link className='logo' to='/'>
+            <img src={`${process.env.PUBLIC_URL}/images/logo3.png`} alt="Logo" />
+          </Link>
           <div className="header-search">
             <input type="text" placeholder="Search by keyword..." />
             <i className="fas fa-search search-icon"></i>
           </div>
           <div className="header-icons">
-            <div className="header-item"><Link to='/contact'>Contact</Link></div>
             <div className="header-item">
-              <i className="fas fa-user-plus icon"></i> <Link to='/register'>Register</Link>
+              <Link to='/contact'>Contact</Link>
             </div>
-            <div
-              className="header-item dropdown"
-              ref={(el) => (dropdownRef.current[0] = el)}
-              onClick={() => toggleDropdown('login')}
-            >
-              <i className="fas fa-user icon"></i> Login
-              <div className={`dropdown-content login ${activeDropdown === 'login' ? 'show' : ''}`}>
-                <a href="#">Profile</a>
-                <a href="#">Logout</a>
+            {!user ? (
+              <>
+                <div className="header-item">
+                  <i className="fas fa-user-plus icon"></i> <Link to='/register'>Register</Link>
+                </div>
+                <div
+                  className="header-item dropdown"
+                  ref={(el) => (dropdownRef.current[0] = el)}
+                  onClick={() => toggleDropdown('login')}
+                >
+                  <i className="fas fa-user icon"></i> Login
+                  <div className={`dropdown-content login ${activeDropdown === 'login' ? 'show' : ''}`}>
+                    <Link to="/login">Sign In</Link>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div
+                className="header-item dropdown"
+                ref={(el) => (dropdownRef.current[1] = el)}
+                onClick={() => toggleDropdown('profile')}
+              >
+                <i className="fas fa-user icon"></i> {user.name || 'Profile'}
+                <div className={`dropdown-content profile ${activeDropdown === 'profile' ? 'show' : ''}`}>
+                  <Link to="/profile">Profile</Link>
+                  <button onClick={logoutHandler} className="logout-btn">Logout</button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
-
         <div className="header-bottom">
           <div className="left-links">
             <div className="used-cars">
@@ -111,6 +119,7 @@ const Header = () => {
               <div className={`dropdown-content help ${activeDropdown === 'overview' ? 'show' : ''}`}>
                 <Link to={'/help?topic=help'}>Help</Link>
                 <Link to={'/help?topic=Company%20Profile'}>Company Profile</Link>
+                <Link to={'/help?topic=Bank%20Information'}>Bank Information</Link>
                 <Link to={'/help?topic=Why%20Choose%20Artisbay%20Inc.'}>Why Choose Artisbay</Link>
                 <Link to={'/help?topic=Terms%20%26%20Conditions'}>Terms & Conditions</Link>
                 <Link to={'/help?topic=Anti-Social%20Force%20Policy'}>Anti-Social Force Policy</Link>
@@ -122,13 +131,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-      {location.pathname === '/' && (
-        <>
-          <div className="gifs-container">
-            <Link to='/help?topic=security'><img src={gifs[currentGifIndex]} alt={`GIF ${currentGifIndex + 1}`} /></Link>
-          </div>
-        </>
-      )}
     </div>
   );
 };

@@ -25,7 +25,7 @@ const RegisterForm = () => {
     };
 
     try {
-      const response = await fetch('http://localhost/cartisbay-clean/signup.php', {
+      const response = await fetch('../../server/signup.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -44,8 +44,9 @@ const RegisterForm = () => {
       }
 
       if (result.success) {
-        console.log(result.success);
+        //console.log(result.success);
         navigate('/'); // Redirect to the homepage
+        window.location.reload();
       } else if (result.errors) {
         result.errors.forEach(error => console.error(error));
       } else {

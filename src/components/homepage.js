@@ -78,10 +78,13 @@ function HomePage() {
         </div>
 
         <Makestypes />
-
+        {/*
         <section className="stocklist-section">
           <Stocklist cars={cars} filters={filters} setFilters={setFilters} />
         </section>
+
+        */}
+        
         
         <div>
           <div className="ad-header-container">

@@ -2,10 +2,10 @@
 // signup.php
 
 // Database connection parameters
-$host = 'localhost'; // Your database host
-$db = 'artisbay'; // Your database name
-$user = 'root'; // Your database user, usually 'root' in local setups
-$pass = ''; // Your database password, leave blank if using XAMPP/WAMP by default
+$host = 'localhost:3306'; // Your database host
+$db = 'yqjezvte_artisbay'; // Your database name
+$user = 'abdennour'; // Your database user, usually 'root' in local setups
+$pass = 'phpmyadminplt001'; // Your database password, leave blank if using XAMPP/WAMP by default
 
 // Create a new MySQLi connection
 $conn = new mysqli($host, $user, $pass, $db);

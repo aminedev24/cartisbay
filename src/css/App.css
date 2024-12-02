@@ -99,3 +99,15 @@ html {
 }
 
 
+@media screen and (max-width: 768px) {
+  .login-container {
+    height: 100vh;
+    box-shadow: unset !important;
+
+  }
+
+  .login-form {
+    scale: 2.5;
+  }
+  
+}

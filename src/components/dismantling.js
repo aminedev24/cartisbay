@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/terms.css';
+import {Link} from 'react-router-dom';
 
 const CarDismantlingService = () => {
   return (
@@ -19,7 +20,7 @@ const CarDismantlingService = () => {
       <p>
         We provide photo options at every stage—before, during, and after loading—so you have complete visibility. With us, you get a fully customized, secure, and cost-effective car dismantling and shipping service that meets your needs.
       </p>
-      <button onClick={() => alert('Contact us to discuss your order')}>Contact us</button>
+      <Link to='/contact'><button className='cta-btn' >Contact us</button></Link>
     </div>
   );
 };

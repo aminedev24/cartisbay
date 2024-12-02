@@ -14,6 +14,7 @@ const Login = () => {
     if (localStorage.getItem('session_token')) {
       // If the session token exists, redirect to homepage
       navigate('/'); // Redirect to homepage (or wherever you want)
+      window.location.reload()
     }
   }, [navigate]);
 
@@ -25,7 +26,7 @@ const Login = () => {
     formData.append('password', password);
 
     try {
-      const response = await fetch('http://localhost/cartisbay-clean/login.php', { // Pointing to the correct endpoint
+      const response = await fetch('../../server/login.php', { // Pointing to the correct endpoint
         method: 'POST',
         body: formData,
       });

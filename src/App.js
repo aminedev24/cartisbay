@@ -10,7 +10,7 @@ import HomePage from './components/homepage';
 import Contact from './components/contact';
 //import HowToBuy from './components/howtobuy';
 import LeftSidebar from './components/sidebar'; // Import the LeftSidebar
-import './App.css';
+import './css/App.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CarDismantling from './components/carDismantling';
@@ -18,6 +18,9 @@ import UsedTires from './components/usedTires';
 import HelpPage from './components/help';
 import InquiryForm from './components/vehiculeEnquiry';
 import RegisterForm from './components/register';
+import { UserProvider } from './components/userContext';
+import Login from './components/login';
+
 /* src/index.css */
 
 
@@ -37,9 +40,10 @@ function App() {
   }, []);
 
   useEffect(() => { const images = document.querySelectorAll('img'); images.forEach(img => { img.setAttribute('loading', 'lazy'); }); }, []);
-  
+
   
   return (
+    <UserProvider>
     <Router>
       <Header />
 
@@ -55,10 +59,12 @@ function App() {
           <Route path="/used-tires" element={<UsedTires />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/vehicleInquiry" element={<InquiryForm />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterForm />} />
         </Routes>
       <Footer />
     </Router>
+    </UserProvider>
   );
 }
 

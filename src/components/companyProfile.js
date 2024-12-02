@@ -8,7 +8,7 @@ const CompanyProfile = (selectedTopic) => {
     address: "Miyagi Ken Sendai city",
     mainBusiness: "Platform for the sale and export of used vehicles Sale and export of new and used auto part",
     annualSales: "[To be confirmed in 2026]",
-    url: "https://www.artisbay.com",
+    url: "https://artisbay.com",
   };
 
   return (

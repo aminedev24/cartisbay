@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const PaymentPolicy = () => {
   return (
     <div className='security-notice'>
@@ -16,7 +16,7 @@ const PaymentPolicy = () => {
         <li><strong>Responsibility Disclaimer:</strong> Any payment made, received, or transferred outside our authorized channels is at the sole discretion and responsibility of the individuals involved. Artisbay Inc. accepts no liability for any costs, losses, or disputes arising from such unauthorized activities.</li>
         <li><strong>Company Rights:</strong> In cases where this policy is violated, Artisbay Inc. reserves the right to cancel, terminate, modify, or suspend any ongoing transactions or deals with the concerned customer.</li>
       </ol>
-      <p>For your security, always confirm details directly with us and use only our authorized payment channels. If you have any concerns, contact us immediately.</p>
+      <p>For your security, always confirm details directly with us and use only our authorized payment channels. If you have any concerns, <Link className='cta-link' to='/contact'>contact us immediately.</Link></p>
     </div>
   );
 };

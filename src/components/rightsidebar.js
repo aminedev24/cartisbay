@@ -67,7 +67,36 @@ const RightSidebar = () => {
       company
     };
 
+    try {
+      const response = await fetch('../../server/signup.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      const resultText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(resultText);
+      } catch (error) {
+        console.error('Response is not valid JSON:', resultText);
+        return;
+      }
+
+      if (result.success) {
+        console.log(result.success);
+      } else if (result.errors) {
+        result.errors.forEach(error => console.error(error));
+      } else {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+
 
   return (
     <div className="right-sidebar">
