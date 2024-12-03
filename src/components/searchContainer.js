@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../css/searchForm.css"; // Assuming you keep the CSS in a separate file
 
 const SearchForm = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [formData, setFormData] = useState({
     make: "",
     model: "",
@@ -71,12 +73,12 @@ const SearchForm = () => {
     const fetchMakes = async () => {
       try {
         const response = await fetch(
-          "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json",
+          "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"
         );
         const data = await response.json();
         const makes = data.Results.map((make) => make.Make_Name.toLowerCase());
         const filteredMakes = makes.filter((make) =>
-          popularMakes.includes(make),
+          popularMakes.includes(make)
         ); // Only keep popular makes
         setMakesData(filteredMakes);
       } catch (error) {
@@ -91,7 +93,7 @@ const SearchForm = () => {
   const fetchModels = async (make) => {
     try {
       const response = await fetch(
-        `https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`,
+        `https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`
       );
       const data = await response.json();
       const models = data.Results.map((model) => model.Model_Name);
@@ -115,19 +117,38 @@ const SearchForm = () => {
     }
   };
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Search Data:", formData);
+  
+    const queryParams = {};
+    Object.keys(formData).forEach((key) => {
+      if (formData[key]) {
+        // Capitalize the first letter for specific fields
+        if (key === "make") {
+          queryParams[key] = capitalizeFirstLetter(formData[key]);
+        } else {
+          queryParams[key] = formData[key];
+        }
+      }
+    });
+  
+    const queryString = new URLSearchParams(queryParams).toString();
+    navigate(`/stocklist?${queryString}`);
   };
 
-  const getModelsForMake = () => {
+ const getModelsForMake = () => {
     return formData.make ? modelsData[formData.make] || [] : [];
   };
 
   // Years range from 1980 to current year
   const yearOptions = Array.from(
     { length: new Date().getFullYear() - 1979 },
-    (_, i) => 1980 + i,
+    (_, i) => 1980 + i
   );
 
   return (
@@ -246,7 +267,7 @@ const SearchForm = () => {
                 value={formData.yearTo}
                 onChange={handleChange}
               >
-                <option value="">To</option>
+                < option value="">To</option>
                 {yearOptions.map((year) => (
                   <option key={year} value={year}>
                     {year}

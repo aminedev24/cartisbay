@@ -5,7 +5,7 @@ const carData = [
     make: 'Toyota',
     model: 'Corolla',
     year: '2023',
-    price: 10000,
+    price: 1000,
     location: 'New York',
     image: `${process.env.PUBLIC_URL}/images/silverSadan.jpg`, // Use process.env.PUBLIC_URL
     description: 'A reliable car for export.',
@@ -19,7 +19,7 @@ const carData = [
     make: 'Honda',
     model: 'Civic',
     year: '2022',
-    price: 12000,
+    price: 1200,
     location: 'Los Angeles',
     image: `${process.env.PUBLIC_URL}/images/view.jpg`, // Use process.env.PUBLIC_URL
     description: 'A stylish and efficient car.',
@@ -33,7 +33,7 @@ const carData = [
     make: 'Subaru',
     model: 'Impreza Sports',
     year: '2022',
-    price: 22000,
+    price: 2200,
     location: 'Osaka',
     image: `${process.env.PUBLIC_URL}/images/subrauimprezasports.JPG`, // Use process.env.PUBLIC_URL
     description: 'A sporty compact car with all-wheel drive.',
@@ -47,7 +47,7 @@ const carData = [
     make: 'Subaru',
     model: 'Forester',
     year: '2023',
-    price: 25000,
+    price: 2500,
     location: 'Kyoto',
     image: `${process.env.PUBLIC_URL}/images/subaruforester.JPG`, // Use process.env.PUBLIC_URL
     description: 'A reliable SUV with great off-road capability.',
@@ -61,7 +61,7 @@ const carData = [
     make: 'Honda',
     model: 'Step WGN',
     year: '2021',
-    price: 20000,
+    price: 2000,
     location: 'Tokyo',
     image: `${process.env.PUBLIC_URL}/images/hondastepwgn.JPG`, // Use process.env.PUBLIC_URL
     description: 'A spacious and versatile family van.',
