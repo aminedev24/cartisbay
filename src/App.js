@@ -25,6 +25,23 @@ import Login from './components/login';
 
 
 function App() {
+  
+  const [bodyWidth, setBodyWidth] = useState(window.screen.width);
+
+  useEffect(() => {
+    const updateWidth = () => setBodyWidth(window.screen.width);
+
+    window.addEventListener("resize", updateWidth);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.minWidth = `${bodyWidth}px`;
+    console.log(bodyWidth)
+  }, [bodyWidth]);
+
   const [cars, setCars] = useState([]);
   const [filters, setFilters] = useState({
     make: '',

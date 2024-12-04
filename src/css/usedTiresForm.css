@@ -216,7 +216,7 @@
     margin-right: 10px;
   }
 
-  .image-container {
+ .usedTiresForm-container .image-container {
      position: relative; 
      width: 350px; /* Adjust width as needed */ 
      margin: auto; 

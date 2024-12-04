@@ -388,18 +388,18 @@ option {
 
 .register-now-btn {
     position: absolute;
-    top: 55%;
-    left: 56%;
-    width: 37%;
+    top: 69%;
+    left: 62%;
+    width: 30%;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     height: 20%;
 }
 .order-now {
     position: absolute;
-    bottom: 30%;
-    width: 18%;
-    left: 73%;
+    bottom: 36%;
+    width: 12%;
+    left: 63%;
     height: 8%;
     
 }

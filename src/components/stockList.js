@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCar, faStar, faHandshake, faMapMarkerAlt,faPercentage } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faStar, faHandshake, faMapMarkerAlt, faPercentage } from '@fortawesome/free-solid-svg-icons';
 import ReactCountryFlag from "react-country-flag";
 import CarCard from './carCard';
 import '../css/stockList.css';
-import {localServicesCountries} from './localServicesCountries'
+import { localServicesCountries } from './localServicesCountries';
+
 const Stocklist = ({ cars }) => {
+  const history = useNavigate();
+  const location = useLocation();
   const [sortOption, setSortOption] = useState('newest');
   const [viewOption, setViewOption] = useState('grid');
 
-  const filteredCars = cars; // Your filter logic
+  const queryParams = new URLSearchParams(location.search);
+  const selectedMake = queryParams.get('make');
+  const selectedBodyType = queryParams.get('bodyType');
+
+  const filteredCars = cars.filter(car => {
+    const makeMatch = selectedMake ? car.make === selectedMake : true;
+    const bodyTypeMatch = selectedBodyType ? car.bodyType === selectedBodyType : true;
+    return makeMatch && bodyTypeMatch;
+  });
+
+  const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 200); }, [queryParams]);
+
 
   const sortedCars = filteredCars.sort((a, b) => {
     switch (sortOption) {
@@ -23,44 +38,49 @@ const Stocklist = ({ cars }) => {
     }
   });
 
-
+  const handleFilterChange = (make, bodyType) => {
+    const params = new URLSearchParams();
+    if (make) params.set('make', make);
+    if (bodyType) params.set('bodyType', bodyType);
+    
+    history.push({ search: params.toString() });
+  };
 
   return (
     <div className="stocklist">
-
       {/* New Arrivals Section */}
       <div className="new-arrivals-container">
         <div className="buttons-row">
-          <button className="new-arrival-btn">
+          <button className="new-arrival-btn" onClick={() => handleFilterChange('Toyota', null)}>
             <FontAwesomeIcon icon={faCar} /> New Arrival
           </button>
-          <button className="premium-class-btn">
+          <button className="premium-class-btn" onClick={() => handleFilterChange('Honda', null)}>
             <FontAwesomeIcon icon={faStar} /> Premium Class
           </button>
-          <button className="from-partners-btn">
+          <button className="from-partners-btn" onClick={() => handleFilterChange(null, 'SUV')}>
             <FontAwesomeIcon icon={faPercentage} /> Discounted Stock
           </button>
         </div>
 
         <h4>From our partners:</h4>
         <div className="countries-row">
-        {localServicesCountries.map((country, index) => (
-        <button key={index} className="country-btn">
-          {country.code && (
-            <ReactCountryFlag
-              countryCode={country.code}
-              svg
-              style={{
-                width: '1.5em',
-                height: '1.5em',
-                marginRight: '8px',
-              }}
-              title={country.name}
-            />
-          )}
-          {country.name}
-        </button>
-      ))}
+          {localServicesCountries.map((country, index) => (
+            <button key={index} className="country-btn">
+              {country.code && (
+                <ReactCountryFlag
+                  countryCode={country.code}
+                  svg
+                  style ={{
+                  width: '1.5em',
+                  height: '1.5em',
+                  marginRight: '8px',
+                }}
+                title={country.name}
+              />
+            )}
+            {country.name}
+          </button>
+        ))}
         </div>
       </div>
 

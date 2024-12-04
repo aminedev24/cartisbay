@@ -11,6 +11,7 @@ const carData = [
     description: 'A reliable car for export.',
     dateAdded: '2023-01-01',
     popularity: 5,
+    bodyType: 'Sedan',
   },
   {
     id: 2,
@@ -24,8 +25,8 @@ const carData = [
     description: 'A stylish and efficient car.',
     dateAdded: '2023-01-02',
     popularity: 4,
+    bodyType: 'Sedan',
   },
-
   {
     id: 3,
     name: 'Subaru Impreza Sports',
@@ -38,6 +39,7 @@ const carData = [
     description: 'A sporty compact car with all-wheel drive.',
     dateAdded: '2023-10-02',
     popularity: 5,
+    bodyType: 'Hatchback',
   },
   {
     id: 4,
@@ -51,6 +53,7 @@ const carData = [
     description: 'A reliable SUV with great off-road capability.',
     dateAdded: '2023-10-03',
     popularity: 5,
+    bodyType: 'SUV',
   },
   {
     id: 5,
@@ -64,6 +67,7 @@ const carData = [
     description: 'A spacious and versatile family van.',
     dateAdded: '2023-10-01',
     popularity: 4,
+    bodyType: 'Van',
   }
 ];
 

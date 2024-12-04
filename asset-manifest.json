@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/repos/static/css/main.54ec35ea.css",
+    "main.js": "/repos/static/js/main.412839f7.js",
+    "static/js/453.d1cd0238.chunk.js": "/repos/static/js/453.d1cd0238.chunk.js",
+    "static/media/eco1copy.jpeg": "/repos/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
+    "static/media/TireBanner.jpg": "/repos/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
+    "static/media/used-tires-banner.jpeg": "/repos/static/media/used-tires-banner.b4de323e8b0ae1a20a96.jpeg",
+    "static/media/Help.jpeg": "/repos/static/media/Help.8b9170007596b4f409f3.jpeg",
+    "static/media/car-makes-icons.svg?gtc92f": "/repos/static/media/car-makes-icons.5887cab9f6dcec54f2f5.svg",
+    "static/media/fa-solid-900.ttf": "/repos/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/custumersupportcopy.JPEG": "/repos/static/media/custumersupportcopy.0a69171f9c039e13995c.JPEG",
+    "static/media/fa-brands-400.ttf": "/repos/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
+    "static/media/fa-solid-900.woff2": "/repos/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/fa-brands-400.woff2": "/repos/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/car-makes-icons.eot?gtc92f": "/repos/static/media/car-makes-icons.bf967c12a6e7e4d8b65b.eot",
+    "static/media/car-makes-icons.woff?gtc92f": "/repos/static/media/car-makes-icons.da6932fc85780f0b262b.woff",
+    "static/media/car-makes-icons.ttf?gtc92f": "/repos/static/media/car-makes-icons.5560f91d48a01b0a6b0f.ttf",
+    "static/media/fa-regular-400.ttf": "/repos/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/car-makes-icons.woff2?gtc92f": "/repos/static/media/car-makes-icons.bd9b9d280fdab147db37.woff2",
+    "static/media/fa-regular-400.woff2": "/repos/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/fa-v4compatibility.ttf": "/repos/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fa-v4compatibility.woff2": "/repos/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "static/media/slick.svg": "/repos/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/repos/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/repos/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "index.html": "/repos/index.html",
+    "static/media/slick.woff": "/repos/static/media/slick.295183786cd8a1389865.woff",
+    "main.54ec35ea.css.map": "/repos/static/css/main.54ec35ea.css.map",
+    "main.412839f7.js.map": "/repos/static/js/main.412839f7.js.map",
+    "453.d1cd0238.chunk.js.map": "/repos/static/js/453.d1cd0238.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54ec35ea.css",
+    "static/js/main.412839f7.js"
+  ]
+}

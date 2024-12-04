@@ -73,3 +73,11 @@
   background-color: #7d2020; /* Change to the desired hover color */
   color: #fff; /* Text color when hovering */
 }
+
+@media screen and (max-width:930px) {
+  .year-group {
+    place-items: flex-end;
+    gap: 0;
+  }
+  
+}

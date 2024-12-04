@@ -51,6 +51,16 @@ function HomePage() {
 
       link: "/help?topic=About%20payement",
     },
+    {
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/security.png`,
+
+      link: "/help?topic=security",
+    },
+    {
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/eco.png`,
+
+      link: "/help?topic=our%20commitment%20to%C2%A0Sustainability",
+    }
   ];
 
   return (
@@ -89,7 +99,7 @@ function HomePage() {
         <div>
           <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/whytiresfromjapan.jpeg`}
+              src={`${process.env.PUBLIC_URL}/images/tiresfromjapanhome.jpeg`}
               className="ad-banner"
             />
             <Link to='/help?topic=about%20used%20Tires'><button className="order-now">read more</button></Link>
@@ -138,7 +148,7 @@ function HomePage() {
                 gain access to a world of easy online services.
               </p>
               <img
-                src={`${process.env.PUBLIC_URL}/images/registernow.jpeg`}
+                src={`${process.env.PUBLIC_URL}/images/registernowhome.jpeg`}
                 className="ad-banner"
                 alt="Register Now Banner"
               />
