@@ -68,7 +68,7 @@ const RightSidebar = () => {
     };
 
     try {
-      const response = await fetch('../../server/signup.php', {
+      const response = await fetch('server/signup.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

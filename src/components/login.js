@@ -26,7 +26,7 @@ const Login = () => {
     formData.append('password', password);
 
     try {
-      const response = await fetch('../../server/login.php', { // Pointing to the correct endpoint
+      const response = await fetch('server/login.php', { // Pointing to the correct endpoint
         method: 'POST',
         body: formData,
       });

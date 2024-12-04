@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
     }
 
     try {
-      const response = await fetch('/server/check_login.php', {
+      const response = await fetch('server/check_login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -395,7 +395,7 @@ const OrderForm = ({
   
     // Prepare the data to be sent to the backend
     const orderData = {
-     // user_id: user.uid || '',
+      user_id: user.uid,
       maker: formData.maker,
       width,
       aspectRatio,
@@ -408,7 +408,7 @@ const OrderForm = ({
   
     try {
       // Send the order data to the backend API
-      const response = await fetch('../../server/saveOrder.php', {
+      const response = await fetch('server/saveOrder.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

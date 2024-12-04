@@ -2,6 +2,12 @@
 // signup.php
 
 // Database connection parameters
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
+// Database connection parameters
 $host = 'localhost:3306'; // Your database host
 $db = 'yqjezvte_artisbay'; // Your database name
 $user = 'abdennour'; // Your database user, usually 'root' in local setups
@@ -29,16 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    // Generate a unique ID
+    $uid = uniqid('user_', true); // Generates a unique ID prefixed with 'user_'
+
     // Hash the password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO users (full_name, email, password, country, phone) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $fullName, $email, $hashedPassword, $country, $phone);
+    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $uid, $fullName, $email, $hashedPassword, $country, $phone);
 
     // Execute the statement
     if ($stmt->execute()) {
-        echo "Account created successfully.";
+        echo "Account created successfully. Your User ID is: " . $uid;
     } else {
         echo "Error: " . $stmt->error;
     }
