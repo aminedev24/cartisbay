@@ -39,7 +39,7 @@ function HomePage() {
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/cardismantling.png`,
 
-      link: "/help?topic=about%20Dismantled%20Cars",
+      link: "/car-dismantling",
     },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/auction.png`,
@@ -116,7 +116,7 @@ function HomePage() {
               src={`${process.env.PUBLIC_URL}/images/dismantlingbannerforhome.jpeg`}
               className="ad-banner"
             />
-            <Link to='/help?topic=about%20Dismantled%20Cars'><button className="dismantling-btn">read more</button></Link>
+            <Link to='/car-dismantling'><button className="dismantling-btn">read more</button></Link>
         
           </div>
             

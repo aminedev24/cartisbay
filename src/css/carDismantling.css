@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px; /* Equivalent to p-6 */
-  max-width: 1200px; /* Set a max width for larger screens */
+  max-width: 1400px; /* Set a max width for larger screens */
   margin: auto; /* Center the container */
 }
 
@@ -26,30 +26,80 @@
   transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 
-
-/* Text container style */
-.text-container {
-  margin-top: 24px; /* Increased space for smaller screens */
-  padding: 16px; /* Added padding */
-  background-color: #ffffff; /* White background for contrast */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+.pdf-container {
+  font-family: 'Arial', sans-serif;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-/* Title style */
-.title {
-  font-size: 28px; /* Larger font size for titles */
-  font-weight: bold; /* Bold font weight */
-  color: #2d3748; /* Dark gray for titles */
-  margin-bottom: 16px; /* Space below title */
-}
-
-/* Paragraph style */
-.paragraph {
-  color: #4a5568; /* Medium gray for text */
-  line-height: 1.8; /* Increased line height for readability */
-  margin-bottom: 16px; /* Space below paragraphs */
-  font-size: 16px; /* Set a base font size */
+.pdf-container h1 {
   text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
+.pdf-container ol {
+  padding-left: 20px;
+  list-style: none; /* Remove default list styling */
+  counter-reset: item; /* Reset counter for custom numbering */
+}
+
+.pdf-container ol li {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.pdf-container ol li::before {
+  content: counter(item) ". "; /* Custom counter for ordered list items */
+  counter-increment: item; /* Increment counter for each list item */
+  position: absolute;
+  left: -40px; /* Positioning for the counter */
+  top: 15px; /* Align with the text */
+  font-weight: bold;
+  color: #1da1f2; /* Color for the counter */
+  font-size: 1.2em; /* Font size for the counter */
+}
+
+.pdf-container strong {
+  color: #1da1f2; /* Color for strong text */
+}
+
+.pdf-container li:hover {
+  background-color: #f1f1f1; /* Background color on hover */
+  border-color: #ccc; /* Border color on hover */
+}
+
+.pdf-container li p {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.pdf-container li strong {
+  display: block; /* Make strong text a block element */
+  margin-bottom: 5px; /* Space below strong text */
+}
+
+/* Ensure that the unordered list items are styled normally */
+.pdf-container ul {
+  padding-left: 20px; /* Indentation for unordered list */
+  list-style-type: disc; /* Default bullet points for unordered list */
+}
+
+.pdf-container ul li {
+  margin-bottom: 10px; /* Space between unordered list items */
+  padding: 0; /* No padding for unordered list items */
+  background: none; /* No background for unordered list items */
+  border: none; /* No border for unordered list items */
+  box-shadow: none; /* No shadow for unordered list items */
+}
+
+.pdf-container ul li:before {
+  content: '' !important;
+}
