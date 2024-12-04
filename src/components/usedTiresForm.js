@@ -408,7 +408,7 @@ const OrderForm = ({
   
     try {
       // Send the order data to the backend API
-      const response = await fetch('server/saveOrder.php', {
+      const response = await fetch('../../../server/saveOrder.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
