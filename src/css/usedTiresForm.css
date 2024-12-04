@@ -218,7 +218,7 @@
 
  .usedTiresForm-container .image-container {
      position: relative; 
-     width: 350px; /* Adjust width as needed */ 
+     width: 100%; /* Adjust width as needed */ 
      margin: auto; 
      top: 20px;
     } 

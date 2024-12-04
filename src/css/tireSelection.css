@@ -9,6 +9,7 @@
   width: 60%;
   box-sizing: border-box;
   position: relative;
+  max-width: 100%;
 }
 
 .orders-wrapper {
