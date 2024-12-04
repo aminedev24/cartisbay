@@ -110,6 +110,15 @@ function HomePage() {
             <Link to='/help?topic=about%20used%20Tires'><button className="order-now">read more</button></Link>
         
           </div>
+
+          <div className="ad-header-container">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/dismantlingbannerforhome.jpeg`}
+              className="ad-banner"
+            />
+            <Link to='/help?topic=about%20Dismantled%20Cars'><button className="dismantling-btn">read more</button></Link>
+        
+          </div>
             
          
           <div className="ad-container">

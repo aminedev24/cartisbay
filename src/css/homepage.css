@@ -374,7 +374,7 @@ option {
     width: 25%;
     height: 50%;
 }
-.order-now , .pointer ,.cta-btn-link , .register-now-btn , .eco-btn , .small-banner-btn{
+.order-now , .pointer ,.cta-btn-link , .register-now-btn , .eco-btn , .small-banner-btn , .dismantling-btn{
     background-color: transparent;
     color: transparent;
 }
@@ -402,6 +402,14 @@ option {
     left: 63%;
     height: 8%;
     
+}
+
+.dismantling-btn {
+    position: absolute;
+    bottom: 12%;
+    right: 8%;
+    width: 12%;
+    height: 7%;
 }
 
 .ad-banner {
