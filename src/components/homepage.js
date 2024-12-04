@@ -32,7 +32,7 @@ function HomePage() {
       link: "/used-tires",
     },
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/howtobuy.png`,
+      imgSrc: `${process.env.PUBLIC_URL}/images/howToBuy.png`,
 
       link: "/help?topic=How%20to%20Buy%20used%20cars",
     },
@@ -45,6 +45,11 @@ function HomePage() {
       imgSrc: `${process.env.PUBLIC_URL}/images/auction.png`,
 
       link: "/help?topic=auction",
+    },
+    {
+      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/machinery.png`,
+
+      link: "/help?topic=Machinery",
     },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/howtopay.png`,

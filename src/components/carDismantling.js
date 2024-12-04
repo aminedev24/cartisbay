@@ -16,6 +16,14 @@ const CarDismantling = () => {
         />
       </div>
 
+      <div className="image-container">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/dismantling&cuttinglp.jpeg`}
+          alt="Car dismantling process"
+          className="image"
+        />
+      </div>
+
    
     </section>
     </div>

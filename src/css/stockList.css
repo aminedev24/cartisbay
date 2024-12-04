@@ -2,6 +2,7 @@
 .stocklist {
   padding: 20px;
   font-family: Arial, sans-serif;
+  height: 100vh;
 }
 
 /* New Arrivals Container */

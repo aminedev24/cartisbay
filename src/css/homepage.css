@@ -133,7 +133,7 @@ option {
 
 .info-cards-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Keep five columns */
+    grid-template-columns: repeat(8, 1fr); /* Keep five columns */
     gap: 30px; /* Increased space between cards */
     padding: 30px; /* Padding around the container */
 }
