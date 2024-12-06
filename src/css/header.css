@@ -111,7 +111,7 @@
 /* Left and right links styling */
 .header-bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
   position: relative;
@@ -122,18 +122,6 @@
   gap: 20px;
   align-items: end;
 }
-
-/* Align the left-links and right-links under the search bar */
-.left-links {
-  position: absolute;
-  left: 265px; /* Align under search start */
-}
-
-.right-links {
-  position: absolute;
-  right: 15px; /* Align under search end */
-}
-
 
 .dropdown-content::after {
   content: "";

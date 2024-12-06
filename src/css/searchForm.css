@@ -3,7 +3,7 @@
   padding: 5px 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   max-width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Prevent overflow */
 }
 
 .search-container h4 {
@@ -17,16 +17,22 @@
 
 .search-form {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Three columns for Make, Model, Type */
+  grid-template-columns: repeat(3, 1fr); /* Three columns for Make, Model, Type */
   grid-template-rows: auto auto auto; /* Three rows for input sections and button */
-  gap: 10px;
+  gap: 10px; /* Adjust gap as needed */
   align-items: center;
 }
 
 .year-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns for Year From and Year To */
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  margin: 0; /* Remove margin to prevent overflow */
+  max-width: 100%;
+  gap: 5px;
+}
+
+.year-group .form-group {
+  flex: 1;
 }
 
 .form-group {
@@ -67,17 +73,9 @@
   background-color: #555;
 }
 
-
 /* Style options when hovered */
 .search-form select option:hover {
   background-color: #7d2020; /* Change to the desired hover color */
   color: #fff; /* Text color when hovering */
 }
 
-@media screen and (max-width:930px) {
-  .year-group {
-    place-items: flex-end;
-    gap: 0;
-  }
-  
-}
