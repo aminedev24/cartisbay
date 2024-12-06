@@ -66,7 +66,7 @@ const Header = () => {
                 >
                   <i className="fas fa-user icon"></i> Login
                   <div className={`dropdown-content login ${activeDropdown === 'login' ? 'show' : ''}`}>
-                    <Link to="/login">Sign In</Link>
+                    <Link to="/login">Login In</Link>
                   </div>
                 </div>
               </>

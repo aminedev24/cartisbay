@@ -395,7 +395,7 @@ const OrderForm = ({
   
     // Prepare the data to be sent to the backend
     const orderData = {
-      user_id: user.uid,
+      user_id :user.uid ?  user.uid : '',
       maker: formData.maker,
       width,
       aspectRatio,

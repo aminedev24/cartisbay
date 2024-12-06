@@ -25,18 +25,26 @@
   height: auto;
   transition: transform 0.3s ease; /* Smooth zoom effect */
 }
-
 .pdf-container {
   font-family: 'Arial', sans-serif;
-  margin: 20px auto;
+  margin: 0px auto;
   padding: 20px;
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.pdf-container h1, .pdf-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .pdf-container h1 {
-  text-align: center;
-  color: #333;
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 2.5em; /* Larger font size for main title */
+}
+
+.pdf-container h2 {
+  font-size: 2em; /* Slightly smaller for subheadings */
 }
 
 .pdf-container ol {
@@ -45,7 +53,7 @@
   counter-reset: item; /* Reset counter for custom numbering */
 }
 
-.pdf-container ol li {
+.pdf-container ol li, .cutting-style {
   margin-bottom: 15px;
   padding: 15px;
   background-color: #fff;
@@ -56,7 +64,7 @@
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-.pdf-container ol li::before {
+.pdf-container ol li::before, .cutting-style ul li::before {
   content: counter(item) ". "; /* Custom counter for ordered list items */
   counter-increment: item; /* Increment counter for each list item */
   position: absolute;
@@ -67,7 +75,7 @@
   font-size: 1.2em; /* Font size for the counter */
 }
 
-.pdf-container strong {
+.pdf-container strong , .cutting-style h3 {
   color: #1da1f2; /* Color for strong text */
 }
 
@@ -92,7 +100,7 @@
   list-style-type: disc; /* Default bullet points for unordered list */
 }
 
-.pdf-container ul li {
+.howToOrder ul li {
   margin-bottom: 10px; /* Space between unordered list items */
   padding: 0; /* No padding for unordered list items */
   background: none; /* No background for unordered list items */
@@ -102,4 +110,19 @@
 
 .pdf-container ul li:before {
   content: '' !important;
+}
+
+.cutting-style ul li {
+  padding: 10px 15px; /* Padding for better spacing */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.cutting-style ul li:hover {
+  background-color: #1da1f2; /* Darker blue on hover */
+  border-color: #99c2ff; /* Darker border on hover */
+  color: #fff;
+}
+
+.cutting-style p {
+  text-align: left;
 }

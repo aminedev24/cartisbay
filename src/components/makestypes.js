@@ -75,7 +75,14 @@ const Makestypes = () => {
   };
 
   return (
+    <div className="wrapper">
+      <div class="header">
+        <h1>
+        Vehicle quick search
+      </h1>
+      </div>
     <div className="main-container">
+       
       <div className="type-container">
         <div className="title">Body Type</div>
         <div className="grid">
@@ -99,6 +106,7 @@ const Makestypes = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

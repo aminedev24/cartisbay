@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.minWidth = `${bodyWidth}px`;
+    document.body.style.minWidth = `${bodyWidth -30}px`;
     console.log(bodyWidth)
   }, [bodyWidth]);
 

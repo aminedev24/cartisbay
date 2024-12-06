@@ -281,7 +281,6 @@ option {
 .main-container {
     display: flex; /* Aligns the containers side by side */
     justify-content: space-between; /* Ensures equal spacing between them */
-    margin: 10px 30px; /* Center the container */
     gap: 10px;
 }
 
@@ -491,7 +490,7 @@ option {
 }
 
 .ad-container {
-    padding: 20px;
+    padding: 30px;
 }
 
 .bold-text {
@@ -506,7 +505,6 @@ option {
     border: 2px solid #f1892b; /* Adds a border with a bright, eye-catching orange color */
     padding: 15px; /* Adds space inside the border */
     margin-bottom: 20px; /* Adds space between each container */
-    border-radius: 10px; /* Rounds the corners of the border */
     text-align: center;
     position: relative;
   }
@@ -552,3 +550,94 @@ option {
     top: 80%;
     width: 21%;
   }
+
+/* Useful links */
+.usefulLinks_wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.usefulLinks_container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 36px;
+    text-shadow: 2px 2px 5px #1da1f2;
+    display: inline-block;
+    background: #fff;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+    left: 73px;
+}
+
+.wrapper {
+    margin: 0 30px;
+}
+
+.usefulLinks_wrapper .header::before , .wrapper .header::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: orange;
+    z-index: 0;
+}
+
+.links {
+    width: 55%;
+    display: flex;
+    gap: 15px; /* Space between items */
+}
+
+.links a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Make the link a block element */
+    width: 100%; /* Ensure it takes full width */
+    padding: 10px; /* Add padding for better click area */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove default margin */
+}
+
+.links ul li {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+    font-weight: bold;
+}
+
+.image-usefulLinks_container {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-usefulLinks_container img {
+    max-width: 50%;
+    height: auto;
+}

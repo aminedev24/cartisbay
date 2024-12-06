@@ -29,7 +29,7 @@
 }
 
 /* Header for the Create Account section */
-.header {
+.account-container .header {
     display: flex;
     align-items: center;
     justify-content: center;
