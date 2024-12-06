@@ -25,15 +25,18 @@
 
 .year-group {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping */
   margin: 0; /* Remove margin to prevent overflow */
   max-width: 100%;
   gap: 5px;
 }
 
+
 .year-group .form-group {
   flex: 1;
 }
+
+
+
 
 .form-group {
   display: flex;
@@ -79,3 +82,11 @@
   color: #fff; /* Text color when hovering */
 }
 
+
+
+@media screen and (max-width: 930px) {
+  .year-group .form-group {
+    flex: unset;
+    margin: 0 4px;
+  }
+}

@@ -263,3 +263,73 @@
   transform: scale(1.05);
 }
 
+
+/* tire ratings */
+.tire-rating-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.rating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between cards */
+}
+
+.rating-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rating-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.rating-title {
+  color: #007BFF;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.rating-details {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Allow the list to grow and fill space */
+}
+
+.rating-details li {
+  margin: 10px 0;
+  color: #555;
+  padding: 12px;
+  background-color: #f0f8ff; /* Light background for list items */
+  border-left: 4px solid #007BFF; /* Blue left border */
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 4px; /* Rounded corners */
+}
+
+.rating-details li:hover {
+  background-color: #e0f7fa; /* Change background on hover */
+  transform: scale(1.02); /* Slightly scale up on hover */
+}

@@ -5,6 +5,34 @@ import OrderForm from "./usedTiresForm";
 import { useLocation } from "react-router-dom";
 
 const UsedTires = () => {
+
+  const ratings = [
+    {
+      title: "Best Quality (70% and Up)",
+      treadDepth: "5.6 mm (7/32 inches) or more",
+      sidewallCondition: "Clean; no cracks, bulges, or visible damage.",
+      overallCondition: "Nearly new with minimal wear and strong structural integrity."
+    },
+    {
+      title: "Good Quality (50% - 69%)",
+      treadDepth: "4 mm to 5.5 mm (5/32 to 7/32 inches)",
+      sidewallCondition: "Generally good, no major cracks or bulges.",
+      overallCondition: "Shows moderate wear but remains safe."
+    },
+    {
+      title: "Fair Quality (30% - 49%)",
+      treadDepth: "2.4 mm to 3.9 mm (3/32 to 5/32 inches)",
+      sidewallCondition: "Signs of aging, such as cracks, dry rot, or potential bulging.",
+      overallCondition: "Heavily worn with reduced safety and performance."
+    },
+    {
+      title: "Poor Quality (Below 30%)",
+      treadDepth: "1.6 mm to 2.3 mm (2/32 to 3/32 inches)",
+      sidewallCondition: "Advanced signs of aging, deep cracks, or bulging.",
+      overallCondition: "Unsuitable for road use. Replacement is mandatory."
+    }
+  ];
+
   const targetRef = useRef(null);
   const handleScroll = () => {
     if (targetRef.current) {
@@ -55,6 +83,21 @@ const UsedTires = () => {
             </button>
           </div>
         </header>
+        <div className="tire-rating-container">
+            <h1 className="title">Passenger Car Tire Quality Ratings</h1>
+            <div className="rating-grid">
+              {ratings.map((rating, index) => (
+                <div className="rating-card" key={index}>
+                  <h2 className="rating-title">{rating.title}</h2>
+                  <ul className="rating-details">
+                    <li><strong>Tread Depth:</strong> {rating.treadDepth}</li>
+                    <li><strong>Sidewall Condition:</strong> {rating.sidewallCondition}</li>
+                    <li><strong>Overall Condition:</strong> {rating.overallCondition}</li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
         <div className='reasons-wrapper'>
         <h1 >
           Why Choose Artisbay Inc. for Your Used Tires

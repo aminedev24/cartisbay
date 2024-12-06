@@ -489,6 +489,12 @@ option {
     max-height: 300px;
 }
 
+@media  screen and (max-width:1200px) {
+    .slick-slide img {
+        height: 300px !important;
+    }
+    
+}
 .ad-container {
     display: flex;
     flex-direction: column;
@@ -573,7 +579,7 @@ option {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
+   
 }
 
 .header {
