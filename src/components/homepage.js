@@ -181,10 +181,10 @@ const links2 = [
             <Link to="/car-dismantling">
               <button className="security-btn">read more</button>
             </Link>
-            <Link to="/car-dismantling">
+            <Link to="/help?topic=paypal">
               <button className="paypal-btn">read more</button>
             </Link>
-            <Link to="/car-dismantling">
+            <Link to="/help?topic=telegraphic%20transfer">
               <button className="bank-btn">read more</button>
             </Link>
             </div>
