@@ -480,6 +480,9 @@ const OrderForm = ({
         <Modal message={modalMessage} onClose={handleCloseModal} />
       )}
 
+      <div className="overlay overlay-filter"></div> {/* First overlay for opacity filter */}
+      <div className="overlay overlay-image"></div>
+
       <header className="form-header">
         <div>
           <img

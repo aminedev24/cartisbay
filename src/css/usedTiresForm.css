@@ -291,3 +291,23 @@
   background-color: #114b84; /* Darker shade on hover */
 }
   
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1; /* Ensure the overlays are above the background but below the content */
+}
+
+.overlay-filter {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black filter */
+}
+
+.overlay-image {
+  background-image: url('../../public/images/underconstructionstamp.jpeg'); /* Replace with your overlay image path */
+  background-size: cover; /* Cover the entire overlay */
+  background-position: center; /* Center the overlay image */
+  opacity: 0.7; /* Adjust opacity as needed (0 to 1) */
+  z-index: 10;
+}

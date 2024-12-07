@@ -11,15 +11,13 @@ const Footer = () => {
 
         </div>
         <div className="footer-section">
-          <h4>About Us</h4>
+          <h4>Help</h4>
           <ul>
             <li><Link to={'/help?topic=help'}>Help</Link></li>
             <li><Link to="/help?topic=Company%20Profile">Company Profile</Link></li>
-            <li><Link to="/help?topic=Why%20Choose%20Artisbay%20Inc.">Why Choose Artisbay</Link></li>
             <li><Link to="/help?topic=Terms%20%26%20Conditions">Terms & Conditions</Link></li>
             <li><Link to="/help?topic=Anti-Social%20Force%20Policy">Anti-Social Force Policy</Link></li>
-            <li><Link to="/help?topic=How%20to%20Buy%20used%20cars">How To Buy</Link></li>
-            <li><Link to="/help?topic=About%20payement">How To Pay</Link></li>
+            <li><Link to="/help?topic=privacy">Privacy</Link></li>
             {/* Add more makes as needed */}
           </ul>
         </div>
@@ -27,11 +25,13 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Usefull Links</h4>
           <ul>
+         
+            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/login">Login</Link></li>
             <li><Link to="/used-tires">Used tires</Link></li>
-            <li><Link to="/register">register</Link></li>
-            <li><Link to="/login">login</Link></li>
-           
-            {/* Add more years as needed */}
+            <li><Link to="/car-dismantling">Cars cutting & Dismantling </Link></li>
+            <li><Link to="/help?topic=Sustainability">Eco friendly</Link></li>
+          
           </ul>
         </div>
 

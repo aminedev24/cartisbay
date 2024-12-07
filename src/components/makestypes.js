@@ -76,11 +76,8 @@ const Makestypes = () => {
 
   return (
     <div className="wrapper">
-      <div class="header">
-        <h1>
-        Vehicle quick search
-      </h1>
-      </div>
+    <img className="title-img" src={`${process.env.PUBLIC_URL}/images/vehicleQuickSearch.png`} alt="vehicle quick search" />
+
     <div className="main-container">
        
       <div className="type-container">
@@ -96,16 +93,20 @@ const Makestypes = () => {
       </div>
 
       <div className="make-container">
-        <div className="title">Makes</div>
-        <div className="brands">
-          {makes.map((make, index) => (
-            <div className="brand" key={index} onClick={() => handleFilterChange(make.name, null)}>
-              <span className={`make-icon car-${make.name.toLowerCase()}`}></span>
-              <p>{make.name}</p>
+            <div className="title">Makes</div>
+            <div className="brands">
+                {makes.map((make, index) => (
+                    <div className="brand" key={index} onClick={() => handleFilterChange(make.name, null)}>
+                        <img 
+                            src={`${process.env.PUBLIC_URL}/images/makes/${make.name.toLowerCase()}-logo.png`} 
+                            alt={make.name} 
+                            className="make-icon" 
+                        />
+                        <p>{make.name}</p>
+                    </div>
+                ))}
             </div>
-          ))}
         </div>
-      </div>
     </div>
     </div>
   );

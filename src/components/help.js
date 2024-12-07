@@ -16,7 +16,7 @@ import PaymentMethods from './paymentMethods';
 import UsedTiresFAQ from './aboutusedtires';
 import Auction from './auction';
 import TelegraphicTransfer from './telegraphicTransfer';
-
+import PrivacyPolicy from './privacy';
 // Define the topics
 const topics = {
   help: [
@@ -24,7 +24,7 @@ const topics = {
     { name: "Overview", component: <ArtisbayOverview />, image:`${process.env.PUBLIC_URL}/images/overview.jpg`},
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofilecopy.jpg`},
     { name: "Bank Information", content: "Bank information and payment options...", image: `` },
-    { name: "Why Choose Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
+    { name: "Why Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
     { name: "Terms & Conditions", content: <TermsAndConditions />, image:  `${process.env.PUBLIC_URL}/images/terms&conditions.png` },
     { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `${process.env.PUBLIC_URL}/images/asf.png` },
     { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent2.jpeg`},
@@ -34,9 +34,11 @@ const topics = {
     { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
     { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
     { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},
+    { name: "privacy policy", content: <PrivacyPolicy />, image:  `${process.env.PUBLIC_URL}/images/privacybanner.png`},
+
     { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannerrecent.jpeg` },
     { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/telegraphictransferrecent.jpeg` },
-    { name: "our commitment to Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/eco3.png` },
+    { name: "Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/eco3.png` },
     { name: "auction", content: <Auction />, image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` },
     { name: "Machinery", content:'', image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` }
   ]
@@ -74,7 +76,7 @@ const HelpPage = () => {
       )}
       <div className={`help-main-content ${
             selectedTopic.name === 'help' ? 'help-lp' : 
-            selectedTopic.name === 'our commitment to Sustainability' ? 'commitment-topic-lp' : ''
+            selectedTopic.name === 'Sustainability' ? 'commitment-topic-lp' : ''
         }`}
       >
         <div className="sidebar">

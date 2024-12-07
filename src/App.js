@@ -28,6 +28,7 @@ function App() {
   
   const [bodyWidth, setBodyWidth] = useState(window.screen.width);
 
+  /*
   useEffect(() => {
     const updateWidth = () => setBodyWidth(window.screen.width);
 
@@ -41,7 +42,7 @@ function App() {
     document.body.style.minWidth = `${bodyWidth -30}px`;
     console.log(bodyWidth)
   }, [bodyWidth]);
-
+*/
   const [cars, setCars] = useState([]);
   const [filters, setFilters] = useState({
     make: '',

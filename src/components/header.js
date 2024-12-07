@@ -60,14 +60,9 @@ const Header = () => {
                   <i className="fas fa-user-plus icon"></i> <Link to='/register'>Register</Link>
                 </div>
                 <div
-                  className="header-item dropdown"
-                  ref={(el) => (dropdownRef.current[0] = el)}
-                  onClick={() => toggleDropdown('login')}
+                  className="header-item"
                 >
-                  <i className="fas fa-user icon"></i> Login
-                  <div className={`dropdown-content login ${activeDropdown === 'login' ? 'show' : ''}`}>
-                    <Link to="/login">Login In</Link>
-                  </div>
+                  <i className="fas fa-user icon"></i><Link to="/login">Login</Link>
                 </div>
               </>
             ) : (

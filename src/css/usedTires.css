@@ -79,7 +79,7 @@
 }
 
 /* Heading styling */
-.order-steps-container h1 , .reasons-wrapper h1 {
+.order-steps-container h1 , .reasons-wrapper h1, .title {
   font-size: 2.5em;
   color: #1e377f;
   margin-bottom: 40px;
@@ -199,21 +199,12 @@
 }
 
 
-@media screen and (max-width:1400px ){
-  .step-card {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-}
-
 /* General Styles */
-.reasons, .order-steps-container {
+.order-steps-container {
   display: flex;
   justify-content: space-around;
-  padding: 40px;
-  max-width: 1665px;
+  padding: 20px;
+  max-width: 1450px;
   margin: 0 AUTO;
 }
 
@@ -226,7 +217,6 @@
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid #f1892b;
   padding: 20px;
-  margin: 20px;
   width: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
@@ -254,7 +244,6 @@
   color: #333;
   font-size: 1.1em;
   line-height: 1.6;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
 }
 
@@ -266,32 +255,27 @@
 
 /* tire ratings */
 .tire-rating-container {
-  max-width: 1200px;
+  max-width: 1450px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
 }
 
 .title {
   text-align: center;
-  color: #333;
   margin-bottom: 30px;
   font-size: 2em;
   font-weight: bold;
 }
 
 .rating-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
   gap: 20px; /* Space between cards */
 }
 
 .rating-card {
   background-color: #ffffff;
-  border-radius: 10px;
   padding: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -306,7 +290,7 @@
 }
 
 .rating-title {
-  color: #007BFF;
+  color: #1da1f2;
   margin-bottom: 15px;
   font-size: 1.5em;
   font-weight: 600;
@@ -323,8 +307,8 @@
   margin: 10px 0;
   color: #555;
   padding: 12px;
-  background-color: #f0f8ff; /* Light background for list items */
-  border-left: 4px solid #007BFF; /* Blue left border */
+  background-color: #fff; /* Light background for list items */
+  border-left: 4px solid #1da1f2; /* Blue left border */
   transition: background-color 0.3s, transform 0.3s;
   border-radius: 4px; /* Rounded corners */
 }
@@ -332,4 +316,126 @@
 .rating-details li:hover {
   background-color: #e0f7fa; /* Change background on hover */
   transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+.reasons-wrapper {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.reasons {
+  display: flex;
+  gap: 20px;
+}
+
+/* tire depth */
+/* General styling for the container */
+.tire-depth {
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h2, h3 {
+  color: #333;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+/* Paragraph styles */
+p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #1da1f2;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* List styles */
+ol {
+  padding-left: 20px;
+  font-size: 1em;
+  color: #555;
+}
+
+ol li {
+  margin-bottom: 20px;
+}
+
+ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+ul li {
+  font-size: 0.95em;
+}
+
+/* Styling for strong text inside lists */
+strong {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Add some spacing before and after the table */
+table + h3 {
+  margin-top: 40px;
+}
+
+/* Style for bullet points inside the list */
+ul li {
+  margin-bottom: 8px;
+}
+
+/* Responsive Design - Adjusting table layout for smaller screens */
+@media (max-width: 768px) {
+  table, th, td {
+    font-size: 0.9em;
+  }
+
+  /* Stacking tables vertically for small screens */
+  table {
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
 }

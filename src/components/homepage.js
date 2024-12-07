@@ -115,9 +115,8 @@ const links2 = [
         <Makestypes />
         <div class="usefulLinks_wrapper">
           <div class="usefulLinks_container">
-            <div class="header">
-              <h1>Usefull Links</h1>
-            </div>
+            <img className="title-img" src={`${process.env.PUBLIC_URL}/images/usefullLinksTitle.png`} alt="usefullLinks" />
+            
             <div className="links">
             <ul>
                 {links1.map((link, index) => (
@@ -142,6 +141,7 @@ const links2 = [
                 width="600"
               />
             </div>
+           
           </div>
         </div>
         {/*
@@ -154,7 +154,7 @@ const links2 = [
         <div>
           <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/tiresfromjapanhome.jpeg`}
+              src={`${process.env.PUBLIC_URL}/images/tiresbannerhome.jpeg`}
               className="ad-banner"
             />
             <Link to="/help?topic=about%20used%20Tires">
@@ -164,7 +164,7 @@ const links2 = [
 
           <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/dismantlingbannerforhome.jpeg`}
+              src={`${process.env.PUBLIC_URL}/images/dismantlinghome.jpeg`}
               className="ad-banner"
             />
             <Link to="/car-dismantling">
@@ -172,24 +172,21 @@ const links2 = [
             </Link>
           </div>
 
-          <div className="ad-container">
-            <div className="bordered">
-              <p className="bold-text">
-                Be careful, avoid being scammed! Confirm our correct bank
-                account before you send your money!
-              </p>
-              <div className="small-banners">
-                <div className="small-banner-container">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/images/dontbevictim.png`}
-                    className="small-banner"
-                    alt="security alert banner"
-                  />
-                  <Link to="/help?topic=security">
-                    <button className="small-banner-btn">Read more</button>
-                  </Link>
-                </div>
-              </div>
+          <div className="ad-header-container">
+            <div className='bordered'>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/paymentmethodshome.png`}
+              className="ad-banner"
+            />
+            <Link to="/car-dismantling">
+              <button className="security-btn">read more</button>
+            </Link>
+            <Link to="/car-dismantling">
+              <button className="paypal-btn">read more</button>
+            </Link>
+            <Link to="/car-dismantling">
+              <button className="bank-btn">read more</button>
+            </Link>
             </div>
           </div>
         </div>
