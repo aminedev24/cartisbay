@@ -17,7 +17,7 @@ const Footer = () => {
             <li><Link to="/help?topic=Company%20Profile">Company Profile</Link></li>
             <li><Link to="/help?topic=Terms%20%26%20Conditions">Terms & Conditions</Link></li>
             <li><Link to="/help?topic=Anti-Social%20Force%20Policy">Anti-Social Force Policy</Link></li>
-            <li><Link to="/help?topic=privacy">Privacy</Link></li>
+            <li><Link to="/help?topic=privacy%20policy">Privacy</Link></li>
             {/* Add more makes as needed */}
           </ul>
         </div>
