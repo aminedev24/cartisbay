@@ -85,7 +85,8 @@ const links2 = [
     { text: "ABOUT PAYMENT", path: "/help?topic=About%20payement" },
     { text: "SECURITY", path: "/help?topic=security" },
     { text: "PAYPAL", path: "/help?topic=paypal" },
-    { text: "TELEGRAPHIC TRANSFER", path: "/help?topic=telegraphic%20transfer" }
+    { text: "TELEGRAPHIC TRANSFER", path: "/help?topic=telegraphic%20transfer" },
+    { text: "ECO FRIENDLY", path: "/help?topic=Sustainability" }
 ];
 
   return (

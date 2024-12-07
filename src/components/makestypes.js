@@ -76,7 +76,7 @@ const Makestypes = () => {
 
   return (
     <div className="wrapper">
-    <img className="title-img" src={`${process.env.PUBLIC_URL}/images/vehicleQuickSearch.png`} alt="vehicle quick search" />
+    <img className="title-img" src={`${process.env.PUBLIC_URL}/images/vehiclequicksearchtitle.png`} alt="vehicle quick search" />
 
     <div className="main-container">
        

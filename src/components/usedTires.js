@@ -84,6 +84,40 @@ const UsedTires = () => {
           </div>
         </header>
         <div className="usedTires-wrapper">
+        <div className="reasons-wrapper">
+            <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
+            <section class="reasons">
+              <div class="reason">
+                <h2>Premium Selection</h2>
+                <p>
+                  Discover our curated collection of high-quality used tires,
+                  expertly chosen to deliver unbeatable value, performance, and
+                  safety.
+                </p>
+              </div>
+              <div class="reason">
+                <h2>Space-Optimized Shipping</h2>
+                <p>
+                  By utilizing our 40-foot containers, we maximize your order’s
+                  volume without compromising on quality.
+                </p>
+              </div>
+              <div class="reason">
+                <h2>Wholesale Pricing & Bulk Availability</h2>
+                <p>
+                  Take advantage of our competitive wholesale prices tailored
+                  for bulk purchases.
+                </p>
+              </div>
+              <div class="reason">
+                <h2>Meticulous Inspection</h2>
+                <p>
+                  Each tire undergoes a manual inspection to meet our strict
+                  quality standards.
+                </p>
+              </div>
+            </section>
+          </div>
           <div className="tire-rating-container">
             <h1 className="tireRating-title">Passenger Car Tire Quality Ratings</h1>
             <div className="rating-grid">
@@ -107,12 +141,16 @@ const UsedTires = () => {
               ))}
             </div>
             <div className="tire-depth">
+              
               <h2>Tire Tread Depth</h2>
               <p>
                 Tire tread depth is a key indicator of a tire's remaining
                 lifespan and performance. Below is a breakdown of ratings
-                commonly used by Japanese exporters for passenger cars:
+                commonly used by Japanese exporters for:
               </p>
+              <div className="tables">
+                <div className="passenger">
+                  <h3>passenger cars:</h3>
               <table>
                
                 <tr>
@@ -143,6 +181,8 @@ const UsedTires = () => {
                 </tr>
                 </tbody>
               </table>
+              </div>
+              <div className="small-trucks">
               <h3>Small trucks and SUVs:</h3>
               <table>
                 <thead>
@@ -175,6 +215,9 @@ const UsedTires = () => {
                   </tr>
                 </tbody>
               </table>
+              </div>
+              </div>
+              </div>
               <h3>Additional Notes</h3>
               <ol>
                 <li>
@@ -228,42 +271,8 @@ const UsedTires = () => {
                   </p>
                 </li>
               </ol>
-            </div>
           </div>
-          <div className="reasons-wrapper">
-            <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
-            <section class="reasons">
-              <div class="reason">
-                <h2>Premium Selection</h2>
-                <p>
-                  Discover our curated collection of high-quality used tires,
-                  expertly chosen to deliver unbeatable value, performance, and
-                  safety.
-                </p>
-              </div>
-              <div class="reason">
-                <h2>Space-Optimized Shipping</h2>
-                <p>
-                  By utilizing our 40-foot containers, we maximize your order’s
-                  volume without compromising on quality.
-                </p>
-              </div>
-              <div class="reason">
-                <h2>Wholesale Pricing & Bulk Availability</h2>
-                <p>
-                  Take advantage of our competitive wholesale prices tailored
-                  for bulk purchases.
-                </p>
-              </div>
-              <div class="reason">
-                <h2>Meticulous Inspection</h2>
-                <p>
-                  Each tire undergoes a manual inspection to meet our strict
-                  quality standards.
-                </p>
-              </div>
-            </section>
-          </div>
+   
           <div className="order-steps-container">
             <h1>4 Simple Steps to Your Wholesale Tire Order</h1>
             <div className="step-card">

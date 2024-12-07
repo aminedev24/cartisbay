@@ -314,7 +314,6 @@
 }
 
 .rating-details li:hover {
-  background-color: #e0f7fa; /* Change background on hover */
   transform: scale(1.02); /* Slightly scale up on hover */
 }
 
@@ -437,4 +436,13 @@ ul li {
   h3 {
     font-size: 1.4em;
   }
+}
+
+.tables {
+  display: flex;
+  gap: 10px;
+}
+
+.passenger , .small-trucks {
+  flex: 1;
 }
