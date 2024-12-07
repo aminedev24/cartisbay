@@ -178,7 +178,7 @@ const links2 = [
               src={`${process.env.PUBLIC_URL}/images/paymentmethodshome.png`}
               className="ad-banner"
             />
-            <Link to="/car-dismantling">
+            <Link to="/help?topic=security">
               <button className="security-btn">read more</button>
             </Link>
             <Link to="/help?topic=paypal">
@@ -200,7 +200,7 @@ const links2 = [
               className="small-banner"
               alt="eco friendly banner"
             />
-            <Link to="/help?topic=our%20commitment%20to%C2%A0Sustainability">
+            <Link to="/help?topic=Sustainability">
               <button className="small-banner-btn eco-btn">Read more</button>
             </Link>
           </div>
@@ -216,7 +216,7 @@ const links2 = [
             ensure confidence and trust in every transaction.{" "}
             <Link
               className="cta-link"
-              to="/help?topic=Why%20Choose%20Artisbay%20Inc."
+              to="/help?topic=Why%20Artisbay%20Inc."
             >
               Read more
             </Link>

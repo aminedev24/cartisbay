@@ -81,6 +81,7 @@ option {
     background-color: #1da1f2;
     color: white;
     text-align: center;
+    margin: 20px;
 }
 
 .contact-cta p {
@@ -677,7 +678,7 @@ option {
 }
 
 .image-usefulLinks_container img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
 }
 

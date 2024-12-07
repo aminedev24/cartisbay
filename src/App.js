@@ -53,6 +53,8 @@ function App() {
     searchTerm: '',
   });
 
+  
+
   useEffect(() => {
     setCars(carData); // Use the imported carData
   }, []);
