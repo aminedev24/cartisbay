@@ -43,7 +43,6 @@ const topics = {
     { name: "Machinery", content:'', image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` }
   ]
 };
-
 const HelpPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -51,8 +50,16 @@ const HelpPage = () => {
   const topicParam = query.get('topic');
   const initialTopic = topics.help.find(topic => topic.name === topicParam) || topics.help[0];
   const [selectedTopic, setSelectedTopic] = useState(initialTopic);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
 
-  const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); }, [pathname,topicParam]);
+  useEffect(() => {
+    const foundTopic = topics.help.find(topic => topic.name === topicParam) || 
+                       topics.buying.find(topic => topic.name === topicParam);
+    if (foundTopic) {
+      setSelectedTopic(foundTopic);
+    }
+    setIsLoading(false); // Set loading to false after determining the topic
+  }, [topicParam]);
 
   const handleTopicChange = (topic) => {
     setSelectedTopic(topic);
@@ -60,17 +67,15 @@ const HelpPage = () => {
   };
 
   useEffect(() => {
-    if (topicParam) {
-      const foundTopic = topics.help.find(topic => topic.name === topicParam) || 
-                         topics.buying.find(topic => topic.name === topicParam);
-      if (foundTopic) {
-        setSelectedTopic(foundTopic);
-      }
-    }
-  }, [topicParam]);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Show loading state
+  }
 
   return (
-    <div className=" help-page">
+    <div className="help-page">
       {selectedTopic.image && (
         <img src={selectedTopic.image} alt={selectedTopic.name} className="topic-image" />
       )}
@@ -104,7 +109,7 @@ const HelpPage = () => {
           ))}
         </div>
         <div className={`content-area`}>
-          <h2 className={selectedTopic.name === 'our commitment to Sustainability' ? 'help-header': ''}>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
+          <h2 className={selectedTopic.name === 'our commitment to Sustainability' ? 'help-header': ''}>{selectedTopic.name === 'help' ? '' : selectedTopic.name}</h2>
           {selectedTopic.component || <>{selectedTopic.content}</>}
         </div>
       </div>

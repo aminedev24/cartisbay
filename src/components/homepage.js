@@ -136,9 +136,7 @@ const links2 = [
             <div class="image-usefulLinks_container">
               <img
                 alt="A large signboard with the ARTISBAY logo and the text 'ARTISBAY INC. DESIGNED TO SERVE YOU' in front of a modern building with glass windows."
-                height="400"
                 src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`}
-                width="600"
               />
             </div>
            
