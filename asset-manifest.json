@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cartisbay/static/css/main.f2017d52.css",
-    "main.js": "/cartisbay/static/js/main.e71526fc.js",
+    "main.js": "/cartisbay/static/js/main.b1bc717a.js",
     "static/js/453.d1cd0238.chunk.js": "/cartisbay/static/js/453.d1cd0238.chunk.js",
     "static/media/eco1copy.jpeg": "/cartisbay/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
     "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
@@ -28,11 +28,11 @@
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "main.f2017d52.css.map": "/cartisbay/static/css/main.f2017d52.css.map",
-    "main.e71526fc.js.map": "/cartisbay/static/js/main.e71526fc.js.map",
+    "main.b1bc717a.js.map": "/cartisbay/static/js/main.b1bc717a.js.map",
     "453.d1cd0238.chunk.js.map": "/cartisbay/static/js/453.d1cd0238.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2017d52.css",
-    "static/js/main.e71526fc.js"
+    "static/js/main.b1bc717a.js"
   ]
 }
