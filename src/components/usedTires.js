@@ -85,7 +85,7 @@ const UsedTires = () => {
         </header>
         <div className="usedTires-wrapper">
           <div className="tire-rating-container">
-            <h1 className="title">Passenger Car Tire Quality Ratings</h1>
+            <h1 className="tireRating-title">Passenger Car Tire Quality Ratings</h1>
             <div className="rating-grid">
               {ratings.map((rating, index) => (
                 <div className="rating-card" key={index}>
