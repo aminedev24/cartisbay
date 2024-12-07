@@ -683,11 +683,8 @@ option {
 
 @media screen and (max-width: 1000px) {
     .image-usefulLinks_container img {
-        max-width: 100%; /* Reduced image size on smaller screens */
+        max-width: 80%; /* Reduced image size on smaller screens */
     }
 
-    .links {
-        width: 100%; /* Full width for links on smaller screens */
-        
-    }
+   
 }
