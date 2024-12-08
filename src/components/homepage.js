@@ -114,7 +114,10 @@ const links2 = [
         </div>
 
         <Makestypes />
-        <div class="usefulLinks_wrapper">
+        <div className="usefulLinks_wrapper">
+          <div className="news&updates">
+            
+          </div>
           <div class="usefulLinks_container">
             <img className="title-img" src={`${process.env.PUBLIC_URL}/images/usefullLinksTitle.png`} alt="usefullLinks" />
             

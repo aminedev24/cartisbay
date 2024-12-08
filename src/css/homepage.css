@@ -324,12 +324,12 @@ option {
 }
 
 .grid-item img {
-    width: 50px;
+    width: 65px;
     margin-bottom: 5px;
 }
 
 .grid-item span {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .brands {
@@ -350,14 +350,14 @@ option {
 }
 
 .brand img {
-    max-width: 40px; /* Reduced size of brand logos */
+    max-width: 65px; /* Reduced size of brand logos */
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 5px; /* Reduced margin */
 }
 
 .brand p {
     margin: 0;
-    font-size: 12px; /* Reduced font size for brand text */
+    font-size: 15px; /* Reduced font size for brand text */
     text-transform: uppercase;
 }
 
@@ -678,6 +678,18 @@ option {
 }
 
 .image-usefulLinks_container img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
+}
+
+@media screen and (max-width:1200px){
+    .image-usefulLinks_container img {
+        margin: 15px;
+        max-width: 95%;
+    }    
+
+    .image-usefulLinks_container {
+        align-items:unset;
+    }
+
 }
