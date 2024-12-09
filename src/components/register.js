@@ -26,7 +26,7 @@ const RegisterForm = () => {
     };
 
     try {
-      const response = await fetch('D:\github\cartisbay\sever\signup.php', {
+      const response = await fetch('sever/signup.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
