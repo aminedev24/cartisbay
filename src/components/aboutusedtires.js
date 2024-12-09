@@ -61,7 +61,7 @@ const UsedTiresFAQ = () => {
       </p>
 
       <div className="faq-container">
-           
+            <h1 className="faq-title">Frequently Asked Questions</h1>
             {faq.map((item, index) => (
                 <div key={index} className="faq-item">
                     <h2 className="faq-question">{item.Q}</h2>
