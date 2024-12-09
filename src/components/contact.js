@@ -62,11 +62,18 @@ console.log(isPortrait, isSmallScreen)
     }
 };
   return (
-      <div className='form-wrapper'>
+      <div 
+        className='form-wrapper'
+        style={{
+            height: isSmallScreen ? '90vh': ''
+        }}
+        >
+        
       <div 
        className="contact-container"
        style={{
-          scale: isSmallScreen && isPortrait ? '1.7' : '', // Set scale based on both conditions
+          scale: isSmallScreen && isPortrait ? '1.5' : '', // Set scale based on both conditions
+          
         }}
       >
         <h1>We like to hear from you!</h1>

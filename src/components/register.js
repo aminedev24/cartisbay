@@ -76,13 +76,19 @@ const RegisterForm = () => {
 
   return (
 
-    <div className="register-container">
+    <div 
+      className="register-container"
+      style={{
+        height: isSmallScreen ? '90vh' : '',
+      }}  
+    >
       <div 
         className="account-container"
         style={{
-          scale: isSmallScreen && isPortrait ? '3' : '1.5', // Set scale based on both conditions
-          width: '24%',
+          scale: isSmallScreen && isPortrait ? '2.5' : '1', // Set scale based on both conditions
+          width: isSmallScreen && isPortrait ? '24%': '50%',
           margin: '0 auto',
+          
          
         }}
       >
