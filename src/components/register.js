@@ -80,7 +80,7 @@ const RegisterForm = () => {
       <div 
         className="account-container"
         style={{
-          scale: isSmallScreen && isPortrait ? '3.5' : '1.5', // Set scale based on both conditions
+          scale: isSmallScreen && isPortrait ? '3' : '1.5', // Set scale based on both conditions
           width: '24%',
           margin: '0 auto',
          
