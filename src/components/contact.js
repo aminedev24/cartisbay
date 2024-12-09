@@ -19,25 +19,41 @@ const Contact = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        country: '',
-        phone: '',
-        enquiry: '',
-        message: ''
-      });
-    }, 2000);
-  };
+    try {
+        const response = await fetch('/server/send_email.php', { // Adjust the path as necessary
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(formData), // Convert formData to URL-encoded string
+        });
 
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            setSubmitted(true);
+            setFormData({
+                name: '',
+                email: '',
+                country: '',
+                phone: '',
+                enquiry: '',
+                message: ''
+            });
+        } else {
+            alert(result.message); // Show error message
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('There was an error submitting the form. Please try again later.');
+    } finally {
+        setIsSubmitting(false);
+    }
+};
   return (
     <div className="container">
       <div className="contact-container">
