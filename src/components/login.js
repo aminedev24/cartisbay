@@ -32,7 +32,7 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
 
       if (data.status === 'success') {
         // Storing session token and user data in localStorage (or cookies)
@@ -43,7 +43,7 @@ const Login = () => {
         setMessage(`Welcome, ${data.user.name}!`);
 
         // Redirect to homepage after successful login
-        navigate('/'); // Redirect to homepage
+        //navigate('/'); // Redirect to homepage
       } else {
         setMessage(data.message);
       }

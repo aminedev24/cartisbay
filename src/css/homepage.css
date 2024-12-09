@@ -626,16 +626,15 @@ option {
 .wrapper , .newsupdates {
     margin: 0 30px;
 }
-.newsupdates {
+.news-item-container {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    text-align: center; /* Center text */
 }
 
 .news-item {
     font-size: 1.2em; /* Increase font size */
     color: #333; /* Dark text color */
     margin: 10px 0; /* Space between news items */
-    padding: 10px; /* Padding around text */
+    padding: 10px 20px; /* Padding around text */
     background-color: #ffffff; /* White background for news items */
     border-radius: 5px; /* Rounded corners for news items */
     transition: transform 0.2s; /* Smooth transition for hover effect */
@@ -688,7 +687,7 @@ option {
 .image-usefulLinks_container {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -700,7 +699,7 @@ option {
 @media screen and (max-width:1200px){
     .image-usefulLinks_container img {
         margin: 15px;
-        max-width: 85%;
+        max-width: 90%;
     }    
 
     .image-usefulLinks_container {

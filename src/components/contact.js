@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import '../css/contact.css';
 import CountryList from './countryList'; // Import the CountryList
+import useCheckScreenSize from './screenSize'; // Adjust the path as necessary
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,9 +20,15 @@ const Contact = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  
+  const { isSmallScreen, isPortrait } = useCheckScreenSize();
+
+console.log(isPortrait, isSmallScreen)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
 
     try {
         const response = await fetch('/server/send_email.php', { // Adjust the path as necessary
@@ -55,8 +62,13 @@ const Contact = () => {
     }
 };
   return (
-    <div className="container">
-      <div className="contact-container">
+      <div className='form-wrapper'>
+      <div 
+       className="contact-container"
+       style={{
+          scale: isSmallScreen && isPortrait ? '1.7' : '', // Set scale based on both conditions
+        }}
+      >
         <h1>We like to hear from you!</h1>
         <h2>Contact Us</h2>
         <p>
@@ -99,7 +111,7 @@ const Contact = () => {
           </button>
         </form>
       </div>
-    </div>
+      </div>
   );
 };
 

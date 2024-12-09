@@ -4,9 +4,9 @@ header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json; charset=UTF-8");
 
 // Database connection parameters
-$host = 'localhost:3306'; // Your database host
+$host = 'localhost'; // Your database host
 $db = 'yqjezvte_artisbay'; // Your database name
-$user = 'abdennour'; // Your database user, usually 'root' in local setups
+$user = 'yqjezvte_abdennour'; // Your database user, usually 'root' in local setups
 $pass = 'phpmyadminplt001'; // Your database password, leave blank if using XAMPP/WAMP by default
 
 

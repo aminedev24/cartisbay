@@ -337,17 +337,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading styles */
-h2, h3 {
-  color: #333;
-  font-size: 1.8em;
-  margin-bottom: 10px;
-}
-
-h3 {
-  margin-top: 30px;
-}
-
 /* Paragraph styles */
 p {
   font-size: 1em;

@@ -13,7 +13,7 @@ const Footer = () => {
           <p className="logo-description">Artisbay Inc. An online-based platform for the sale and export of used vehicles and auto parts.</p>
         </div>
         <div className="footer-section">
-          <h4>Help</h4>
+         
           <ul>
             <li><Link to={'/help?topic=help'}>Help</Link></li>
             <li><Link to="/help?topic=Company%20Profile">Company Profile</Link></li>
@@ -23,7 +23,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-section">
-          <h4>Useful Links</h4>
+          
           <ul>
             <li><Link to="/register">Register</Link></li>
             <li><Link to="/login">Login</Link></li>

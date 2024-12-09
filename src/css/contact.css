@@ -1,3 +1,9 @@
+.form-wrapper {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
 .contact-container {
   width: 600px;
   margin: 20px auto;
@@ -57,12 +63,4 @@
   color: #333;
   text-align: center;
   margin: 20px 0;
-}
-
-@media screen and (max-width: 900px) {
-  .contact-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
 }

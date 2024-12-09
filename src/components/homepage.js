@@ -8,7 +8,7 @@ import SearchForm from "./searchContainer";
 import MediaSlider from "./slider";
 import Makestypes from "./makestypes";
 import { FaHandPointer } from "react-icons/fa";
-
+import useCheckScreenSize from "./screenSize";
 function HomePage() {
   const [cars, setCars] = useState([]);
   const [filters, setFilters] = useState({
@@ -19,22 +19,9 @@ function HomePage() {
     location: "",
     searchTerm: "",
   });
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  useEffect(() => {
-    const checkScreenWidth = () => {
-      setIsSmallScreen(window.innerWidth <= 1000);
-    };
+  const isSmallScreen = useCheckScreenSize();
 
-    // Initial check
-    checkScreenWidth();
-
-    // Listen for resize events
-    window.addEventListener("resize", checkScreenWidth);
-
-    // Clean up the event listener
-    return () => window.removeEventListener("resize", checkScreenWidth);
-  }, []);
 
 
   useEffect(() => {
@@ -115,7 +102,13 @@ const links2 = [
           </div>
           <RightSidebar />
         </div>
-        <div className="info-cards-container">
+        <div 
+          className="info-cards-container"
+          style={{
+            gridTemplateColumns: isSmallScreen ? 'repeat(4, 1fr)' : 'repeat(8,1fr)',
+           
+          }}
+        >
           {cards.map((card, index) => (
             <Link to={card.link} className="info-card-link" key={index}>
               <div className="info-card">
@@ -209,8 +202,11 @@ const links2 = [
 
         <div className="newsupdates">
           <img className="title-img" src={`${process.env.PUBLIC_URL}/images/news&updatestitle.png`} alt="usefullLinks" />
+          <div className="news-item-container">
             <p className="news-item">2024/11/15 Artisbay Inc was born</p>
             <p className="news-item">2024/12/02 Artisbay Inc website published</p>
+          </div>
+           
         </div>
 
         {/* Why Choose Us Section */}

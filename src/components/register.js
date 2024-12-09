@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { countries } from './countries';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-
+import useCheckScreenSize from './screenSize';
 const RegisterForm = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
@@ -10,7 +10,8 @@ const RegisterForm = () => {
   const [company, setCompany] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  
+  const isSmallScreen = useCheckScreenSize();
+
   const navigate = useNavigate(); // Initialize navigate
 
   const handleSignup = async (event) => {
@@ -25,7 +26,7 @@ const RegisterForm = () => {
     };
 
     try {
-      const response = await fetch('/server/signup.php', {
+      const response = await fetch('D:\github\cartisbay\sever\signup.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -73,8 +74,17 @@ const RegisterForm = () => {
   };
 
   return (
+
     <div className="register-container">
-      <div className="account-container">
+      <div 
+        className="account-container"
+        style={{
+          scale: isSmallScreen ? '3.5' : '',
+          width: '24%',
+          margin: '0 auto',
+         
+        }}
+      >
         <div className="header">
           <span className="person-icon">
             <i className="fas fa-user-plus"></i>

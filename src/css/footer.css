@@ -15,7 +15,7 @@
 
 .footer-links {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   margin-bottom: 20px;
   align-items: center;
@@ -58,7 +58,7 @@
 
 .logo-description {
   margin-top: 10px; /* Space between logo and description */
-  font-size: 12px; /* Adjust font size as needed */
+  font-size: 15px; /* Adjust font size as needed */
   color: #e0e0e0; /* A lighter color for the description */
   text-align: center; /* Center align the text */
 }

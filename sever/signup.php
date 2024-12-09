@@ -8,17 +8,20 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 
 // Database connection parameters
-$host = 'localhost:3306'; // Your database host
-$db = 'yqjezvte_artisbay'; // Your database name
-$user = 'abdennour'; // Your database user, usually 'root' in local setups
-$pass = 'phpmyadminplt001'; // Your database password, leave blank if using XAMPP/WAMP by default
+$host = 'localhost'; // Your database host
+$db = 'artisbay'; // Your database name
+$user = 'root'; // Your database user, usually 'root' in local setups
+$pass = ''; // Your database password, leave blank if using XAMPP/WAMP by default
 
-// Create a new MySQLi connection
+
 $conn = new mysqli($host, $user, $pass, $db);
 
 // Check the connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // Set response header to application/json
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'error' => 'Connection failed: ' . $conn->connect_error]);
+    exit;
 }
 
 // Handle form submission
@@ -31,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate input
     if (empty($fullName) || empty($email) || empty($password) || empty($country) || empty($phone)) {
-        echo "All fields are required.";
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'error' => 'All fields are required.']);
         exit;
     }
 
@@ -41,15 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Hash the password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone) VALUES (?, ?, ?, ?, ?, ?)");
+   // Prepare and bind
+    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone, joined_date) VALUES (?, ?, ?, ?, ?, ?, NOW())");
     $stmt->bind_param("ssssss", $uid, $fullName, $email, $hashedPassword, $country, $phone);
 
     // Execute the statement
     if ($stmt->execute()) {
-        echo "Account created successfully. Your User ID is: " . $uid;
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true, 'uid' => $uid]);
     } else {
-        echo "Error: " . $stmt->error;
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'error' => 'Error: ' . $stmt->error]);
     }
 
     // Close statement and connection
