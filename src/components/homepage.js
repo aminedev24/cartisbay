@@ -131,9 +131,7 @@ const links2 = [
 
         <Makestypes />
         <div className="usefulLinks_wrapper">
-          <div className="news&updates">
-            
-          </div>
+          
           <div class="usefulLinks_container">
             <img className="title-img" src={`${process.env.PUBLIC_URL}/images/usefullLinksTitle.png`} alt="usefullLinks" />
             
@@ -207,6 +205,12 @@ const links2 = [
             </Link>
             </div>
           </div>
+        </div>
+
+        <div className="newsupdates">
+          <img className="title-img" src={`${process.env.PUBLIC_URL}/images/news&updatestitle.png`} alt="usefullLinks" />
+            <p className="news-item">2024/11/15 Artisbay Inc was born</p>
+            <p className="news-item">2024/12/02 Artisbay Inc website published</p>
         </div>
 
         {/* Why Choose Us Section */}

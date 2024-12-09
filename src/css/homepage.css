@@ -294,6 +294,7 @@ option {
 .type-container, .make-container {
     flex: 1; /* Allows both containers to take equal space */
     box-sizing: border-box; /* Ensures padding and border are included in the width */
+    border: 1px solid #ddd;
 }
 
 
@@ -301,6 +302,7 @@ option {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    padding: 20px;
 }
 
 .grid {
@@ -584,6 +586,7 @@ option {
     left: 78%;
     top: 80%;
     width: 21%;
+    height: 12%;
   }
 
 /* Useful links */
@@ -620,8 +623,22 @@ option {
     left: 73px;
 }
 
-.wrapper {
+.wrapper , .newsupdates {
     margin: 0 30px;
+}
+.newsupdates {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center text */
+}
+
+.news-item {
+    font-size: 1.2em; /* Increase font size */
+    color: #333; /* Dark text color */
+    margin: 10px 0; /* Space between news items */
+    padding: 10px; /* Padding around text */
+    background-color: #ffffff; /* White background for news items */
+    border-radius: 5px; /* Rounded corners for news items */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
 }
 
 .title-img {

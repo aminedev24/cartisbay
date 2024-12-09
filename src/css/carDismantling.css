@@ -19,6 +19,10 @@
   overflow: hidden; /* Clip overflow */
 }
 
+.cutting {
+  margin: 55px auto;
+}
+
 /* Image style */
 .image {
   width: 100%;
