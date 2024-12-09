@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/sidebar.css';
+//import '../css/sidebar.css';
 import 'car-makes-icons/dist/style.css'; // Assuming this package provides make icons
 import { FaShuttleVan,FaTag,FaDollarSign,FaCarSide, FaTruck, FaBus, FaMotorcycle, FaTractor, FaTools, FaQuestion, FaSyncAlt } from 'react-icons/fa'; // Added more icons
 import axios from 'axios'; // Or you can use fetch instead

@@ -95,7 +95,7 @@
   margin: 20px 0;
   border-left: 5px solid #f1892b;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  text-align: center;
   flex: 1; /* Ensures equal width for each card */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px; /* Rounded corners */
@@ -125,6 +125,7 @@
   padding-left: 30px;
   list-style-type: disc;
   color: #555;
+  list-style-position: inside;
 }
 
 .step-card li {

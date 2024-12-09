@@ -139,7 +139,7 @@ option {
     padding: 30px; /* Padding around the container */
 }
 
-@media screen and (max-width: 1000px){
+@media (max-width: 1000px){
     .info-cards-container {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -293,8 +293,6 @@ option {
 
 .type-container, .make-container {
     flex: 1; /* Allows both containers to take equal space */
-    padding: 20px; /* Adds padding inside the containers */
-    border: 1px solid #ddd; /* Border for both containers */
     box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 

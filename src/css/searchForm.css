@@ -84,7 +84,7 @@
 
 
 
-@media screen and (max-width: 930px) {
+@media (max-width: 930px) {
   .year-group .form-group {
     flex: unset;
     margin: 0 4px;

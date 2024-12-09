@@ -3,7 +3,6 @@ import Stocklist from "./stockList";
 import carData from "./carData"; // Import car data
 import "../css/homepage.css"; // Add your CSS file for homepage styling
 import { Link } from "react-router-dom";
-import LeftSidebar from "./sidebar";
 import RightSidebar from "./rightsidebar";
 import SearchForm from "./searchContainer";
 import MediaSlider from "./slider";
@@ -20,6 +19,8 @@ function HomePage() {
     location: "",
     searchTerm: "",
   });
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
 
   useEffect(() => {
     setCars(carData);
