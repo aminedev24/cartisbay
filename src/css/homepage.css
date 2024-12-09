@@ -685,7 +685,7 @@ option {
 @media screen and (max-width:1200px){
     .image-usefulLinks_container img {
         margin: 15px;
-        max-width: 95%;
+        max-width: 85%;
     }    
 
     .image-usefulLinks_container {

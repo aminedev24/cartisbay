@@ -117,11 +117,6 @@
   transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
 }
 
-.cutting-style ul li:hover {
-  background-color: #1da1f2; /* Darker blue on hover */
-  border-color: #99c2ff; /* Darker border on hover */
-  color: #fff;
-}
 
 .cutting-style p {
   text-align: left;

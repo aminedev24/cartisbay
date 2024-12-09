@@ -23,7 +23,7 @@ const CarDismantling = () => {
 
         <div className="image-container">
           <img
-            src={`${process.env.PUBLIC_URL}/images/dismantling&cuttinglp.jpeg`}
+            src={`${process.env.PUBLIC_URL}/images/cuttingstyles.jpeg`}
             alt="Car dismantling process"
             className="image"
           />
