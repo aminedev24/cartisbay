@@ -27,83 +27,49 @@ body {
 
     
 @media screen and (max-width: 9999px) {
-  .layout , .usedTiresForm-container, .car-details, .help-page {
-      margin: 0 auto;
-      width: 1590px;
-  }
-  .header-bottom   {
-      margin-left: auto;
-      margin-right: auto;
-      width: 1560px;
-  }
-
-  .header-top
-  {
-      margin: 0 auto;
-      width: 1560px;
-      
-  }
-  .local-services-banner {
-    width: 1590px;
-  }
-  
-  }
-
-  
-
-
+    .layout, .usedTiresForm-container, .car-details, .help-page {
+        margin: 0 auto;
+        width: 90%; /* Use percentage */
+        max-width: 1590px; /* Set a max-width */
+    }
+    .header-bottom, .header-top, .local-services-banner {
+        margin: 0 auto;
+        width: 90%; /* Use percentage */
+        max-width: 1560px; /* Set a max-width */
+    }
+}
 
 @media screen and (max-width: 1760px) {
-  .layout , .usedTiresForm-container, .car-details, .help-page {
+    .layout, .usedTiresForm-container, .car-details, .help-page {
+        margin: 0 auto;
+        width: 90%; /* Use percentage */
+        max-width: 1438px; /* Set a max-width */
+    }
+    .header-top, .header-bottom {
+        width: 90%; /* Use percentage */
+        max-width: 1460px; /* Set a max-width */
+    }
+}
+
+@media screen and (max-width: 1530px) {
+    .layout, .header-top, .local-services-banner, .usedTiresForm-container, .car-details, .help-page {
+        margin: 0 auto;
+        width: 90%; /* Use percentage */
+        max-width: 1330px; /* Set a max-width */
+    }
+    .header-bottom {
+        width: 90%; /* Use percentage */
+        max-width: 1330px; /* Set a max-width */
+    }
+}
+
+@media screen and (max-width: 1500px) {
+  .layout, .header-top, .local-services-banner, .usedTiresForm-container, .car-details, .help-page {
       margin: 0 auto;
-      width: 1438px;
-      max-width: 100%;
-      
-  }
-  .header-top {
-      width: 1430px;
+      width: 100%; /* Use percentage */
   }
   .header-bottom {
-      margin-left: auto;
-      margin-right: auto;
-      width: 1460px;
+      width: 90%; /* Use percentage */
+      max-width: 1330px; /* Set a max-width */
   }
-
-  .local-services-banner {
-    width: 1440px;
-  }
-
-  .help {
-  right: 10px !important;
-}
-  }
-
-      
-@media screen and (max-width: 1530px) {
-.layout,.header-top , .local-services-banner, .usedTiresForm-container, .car-details , .help-page{
-      margin: 0 auto;
-      width: 1330px;
-      max-width: 100%;
-  }
-
-  .header-bottom  {
-      margin-left: auto;
-      margin-right: auto;
-      width: 1330px;
-      max-width: 100%;
-  }
-}
-
-
-@media screen and (max-width: 768px) {
-  .login-container {
-    height: 100vh;
-    box-shadow: unset !important;
-
-  }
-
-  .login-form {
-    scale: 2.5;
-  }
-  
 }
