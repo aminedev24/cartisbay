@@ -72,7 +72,7 @@ console.log(isPortrait, isSmallScreen)
       <div 
        className="contact-container"
        style={{
-          scale: isSmallScreen && isPortrait ? '1.5' : '', // Set scale based on both conditions
+          scale: isSmallScreen && isPortrait ? '1.5' : '1', // Set scale based on both conditions
           
         }}
       >
