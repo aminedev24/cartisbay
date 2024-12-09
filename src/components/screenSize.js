@@ -15,15 +15,18 @@ const useCheckScreenSize = () => {
             setIsPortrait(e.matches);
         };
 
+        // Initial checks
+        checkScreenWidth();
+        
         // Listen for resize events
         window.addEventListener("resize", checkScreenWidth);
         
         // Listen for orientation changes
+        
         const orientationMediaQuery = window.matchMedia('(orientation: portrait)');
         orientationMediaQuery.addEventListener('change', checkOrientation);
 
-        // Initial checks
-        checkScreenWidth();
+        
         checkOrientation(orientationMediaQuery);
 
         // Clean up the event listeners

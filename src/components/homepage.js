@@ -22,7 +22,7 @@ function HomePage() {
 
   const isSmallScreen = useCheckScreenSize();
 
-
+  console.log(isSmallScreen)
 
   useEffect(() => {
     setCars(carData);
@@ -105,7 +105,7 @@ const links2 = [
         <div 
           className="info-cards-container"
           style={{
-            gridTemplateColumns: isSmallScreen ? 'repeat(4, 1fr)' : 'repeat(8,1fr)',
+            gridTemplateColumns: isSmallScreen.isSmallScreen ? 'repeat(4, 1fr)' : 'repeat(8,1fr)',
            
           }}
         >
