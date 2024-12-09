@@ -6,7 +6,7 @@ const CompanyProfile = (selectedTopic) => {
     name: "Artisbay Inc.",
     founded: "November 2024",
     address: "Miyagi Ken Sendai city",
-    mainBusiness: "Platform for the sale and export of used vehicles Sale and export of new and used auto part",
+    mainBusiness: "Platform for the sale and export of used vehicles Sale",
     annualSales: "[To be confirmed in 2026]",
     url: "https://artisbay.com",
   };

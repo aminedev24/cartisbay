@@ -4,6 +4,7 @@
     color: #333;
     padding: 20px;
     margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .terms-container h1, .asf h1, .whyChoose h1, .dismantling h1, .overview h1, .pypal h1, .howtopay h1 ,.aboutusedtires h1 {
@@ -73,6 +74,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for better visibility */
     margin: 20px auto; /* Center the container */
     background-color: rgba(255, 255, 255, 0.5);
+    max-width: 600px;
 }
 
 .envirement-policy h1 {

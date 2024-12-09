@@ -21,6 +21,21 @@ function HomePage() {
   });
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  useEffect(() => {
+    const checkScreenWidth = () => {
+      setIsSmallScreen(window.innerWidth <= 1000);
+    };
+
+    // Initial check
+    checkScreenWidth();
+
+    // Listen for resize events
+    window.addEventListener("resize", checkScreenWidth);
+
+    // Clean up the event listener
+    return () => window.removeEventListener("resize", checkScreenWidth);
+  }, []);
+
 
   useEffect(() => {
     setCars(carData);
