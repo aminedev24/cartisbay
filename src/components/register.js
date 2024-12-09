@@ -10,9 +10,10 @@ const RegisterForm = () => {
   const [company, setCompany] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const isSmallScreen = useCheckScreenSize();
+  const { isSmallScreen, isPortrait } = useCheckScreenSize();
 
   const navigate = useNavigate(); // Initialize navigate
+  console.log(isSmallScreen)
 
   const handleSignup = async (event) => {
     event.preventDefault();
@@ -79,7 +80,7 @@ const RegisterForm = () => {
       <div 
         className="account-container"
         style={{
-          scale: isSmallScreen ? '3.5' : '',
+          scale: isSmallScreen && isPortrait ? '3.5' : '1.5', // Set scale based on both conditions
           width: '24%',
           margin: '0 auto',
          
