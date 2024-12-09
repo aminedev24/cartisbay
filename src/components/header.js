@@ -1,28 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useUser } from './userContext'; // Import useUser hook
+import { useUser  } from './userContext'; // Import useUser  hook
 import '../css/header.css';
 import TopBar from './topbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const dropdownRef = useRef([]);
+  const dropdownRef = useRef(null); // Use a single ref for the dropdown
   const location = useLocation();
 
-  const { user, logout } = useUser(); // Access user and logout from context
+  const { user, logout } = useUser (); // Access user and logout from context
 
   const toggleDropdown = (dropdownName) => {
     setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
   };
 
   const handleClickOutside = (event) => {
-    if (dropdownRef.current) {
-      const dropdowns = dropdownRef.current;
-      const isClickInsideDropdown = dropdowns.some((dropdown) => dropdown && dropdown.contains(event.target));
-      if (!isClickInsideDropdown) {
-        setActiveDropdown(null);
-      }
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setActiveDropdown(null);
     }
   };
 
@@ -59,16 +55,14 @@ const Header = () => {
                 <div className="header-item">
                   <i className="fas fa-user-plus icon"></i> <Link to='/register'>Register</Link>
                 </div>
-                <div
-                  className="header-item"
-                >
+                <div className="header-item">
                   <i className="fas fa-user icon"></i><Link to="/login">Login</Link>
                 </div>
               </>
             ) : (
               <div
                 className="header-item dropdown"
-                ref={(el) => (dropdownRef.current[1] = el)}
+                ref={dropdownRef} // Assign the ref to the dropdown
                 onClick={() => toggleDropdown('profile')}
               >
                 <i className="fas fa-user icon"></i> {user.name || 'Profile'}
@@ -95,11 +89,10 @@ const Header = () => {
           <div className="right-links">
             <div
               className="nav-item dropdown"
-              ref={(el) => (dropdownRef.current[2] = el)}
               onClick={() => toggleDropdown('localServices')}
             >
               Local Services <span className="arrow">🔽</span>
-              <div className={`dropdown-content ${activeDropdown === 'localServices' ? 'show' : ''}`}>
+              <div className={`dropdown-content ${activeDropdown === 'localServices' ? 'show ' : ''}`}>
                 <a href="#">Namibia</a>
                 <a href="#">DR-Congo</a>
               </div>
@@ -107,7 +100,6 @@ const Header = () => {
             <div className="nav-item">Reviews</div>
             <div
               className="nav-item dropdown"
-              ref={(el) => (dropdownRef.current[1] = el)}
               onClick={() => toggleDropdown('overview')}
             >
               Help <span className="arrow">🔽</span>
@@ -122,7 +114,6 @@ const Header = () => {
                 <Link to={'/help?topic=About%20payement'}>How To Pay</Link>
               </div>
             </div>
-            {/*<div className="nav-item"><ThemeToggle /></div>*/}
           </div>
         </div>
       </header>
