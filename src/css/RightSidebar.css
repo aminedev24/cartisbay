@@ -6,6 +6,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+.right-sidebar .message {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 0px);
+    width: 80%;
 }
 
 .right-sidebar h2 {
@@ -18,7 +28,7 @@
 /* Container for the account creation section */
 .account-container {
     background-color: #1da1f2; /* White background for contrast */
-    padding: 24px 10px; /* More spacious padding */
+    padding: 26px 10px; /* More spacious padding */
     border: 1px solid #e67e22; /* Orange border */
     width: 92%; /* Slight width adjustment for sidebar space */
     margin: 0 auto;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CountryFlag from "react-country-flag";
 import CountryList from './countryList';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const [fullName, setFullName] = useState("");
@@ -10,6 +11,9 @@ const SignupForm = () => {
   const [phone, setPhone] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
+  const [message, setMessage] = useState(""); // State for message
+  const [isError, setIsError] = useState(false); // State to track if the message is an error
+  const navigate = useNavigate();
 
   const handleCountryChange = (event) => {
     const country = CountryList().find((c) => c.label === event.target.value);
@@ -28,6 +32,8 @@ const SignupForm = () => {
 
   const handleSignup = async (event) => {
     event.preventDefault();
+    setMessage("Signing up..."); // Set message when signup starts
+    setIsError(false); // Reset error state
     const formattedPhone = `${phoneCode} ${phone}`.trim();
     
     const formData = {
@@ -54,23 +60,39 @@ const SignupForm = () => {
         result = JSON.parse(resultText);
       } catch (error) {
         console.error('Response is not valid JSON:', resultText);
+        setMessage("An error occurred. Please try again."); // Set error message
+        setIsError(true);
         return;
       }
 
       if (result.success) {
-        console.log(result.success);
+        setMessage("Signup successful! Redirecting to login..."); // Success message
+        setTimeout(() => {
+          navigate('/login');
+        }, 4000); // Redirect after 2 seconds
       } else if (result.errors) {
+        setMessage("Signup failed. Please check your input."); // Error message
+        setIsError(true);
         result.errors.forEach(error => console.error(error));
       } else {
+        setMessage("An error occurred. Please try again."); // General error message
+        setIsError(true);
         console.error(result.error);
       }
     } catch (error) {
       console.error('Error:', error);
+      setMessage("An error occurred. Please try again."); // Set error message
+      setIsError(true);
     }
   };
 
   return (
     <form className="signup-form" onSubmit={handleSignup}>
+      {message && (
+        <div className={`message ${isError ? 'error' : 'success'}`}>
+          {message}
+        </div>
+      )} {/* Display message */}
       <div className="input-group">
         <input
           name="full-name"
@@ -129,11 +151,10 @@ const SignupForm = () => {
       <div className="input-group">
         <input
           name="company"
-          type="company"
+          type="text"
           id="company"
           value={company}
           onChange={(e) => handleInputChange(setCompany, e)}
-          
         />
         <label htmlFor="company">Company</label>
       </div>
@@ -149,7 +170,6 @@ const SignupForm = () => {
         />
         <label htmlFor="password">Password</label>
       </div>
-      
 
       <button type="submit">Sign Up</button>
     </form>
