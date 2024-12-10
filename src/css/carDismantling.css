@@ -30,7 +30,6 @@
   transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 .pdf-container {
-  font-family: 'Arial', sans-serif;
   margin: 0px auto;
   padding: 20px;
   border-radius: 8px; /* Rounded corners for the container */

@@ -7,7 +7,6 @@ const CountryList = () => {
     { value: 'DZA', label: 'Algeria', countryCode: '+213' },
     { value: 'AND', label: 'Andorra', countryCode: '+376' },
     { value: 'AGO', label: 'Angola', countryCode: '+244' },
-    { value: 'ATG', label: 'Antigua and Barbuda', countryCode: '+1-268' },
     { value: 'ARG', label: 'Argentina', countryCode: '+54' },
     { value: 'ARM', label: 'Armenia', countryCode: '+374' },
     { value: 'AUS', label: 'Australia', countryCode: '+61' },
