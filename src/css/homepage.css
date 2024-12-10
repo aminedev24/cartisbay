@@ -251,8 +251,7 @@ option {
     text-decoration: none;
     color: inherit; /* Inherit text color */
   }
-  
-  .info-card:hover,  .step-card:hover   {
+ .step-card:hover   {
     border: solid .5px #f1892b;
     color: #f1892b; /* Highlighted title color */
   }
