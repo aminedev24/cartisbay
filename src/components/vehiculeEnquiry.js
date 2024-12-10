@@ -29,6 +29,29 @@ const InquiryForm = () => {
     }
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(event.target); // Get form data
+
+    try {
+      const response = await fetch('server/sendInquiry.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (result.status === "success") {
+        alert(result.message); // Show success message
+      } else {
+        alert(result.message); // Show error message
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while sending the inquiry.');
+    }
+  };
+
   return (
     <div className="enquiryContainer">
       <div className="form-section">
