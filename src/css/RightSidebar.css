@@ -18,7 +18,7 @@
 /* Container for the account creation section */
 .account-container {
     background-color: #1da1f2; /* White background for contrast */
-    padding: 26px 10px; /* More spacious padding */
+    padding: 24px 10px; /* More spacious padding */
     border: 1px solid #e67e22; /* Orange border */
     width: 92%; /* Slight width adjustment for sidebar space */
     margin: 0 auto;
@@ -216,7 +216,7 @@
     border: 1px solid #ccc; /* Border for phone code */
     border-top-left-radius: 4px; /* Rounded corners */
     border-bottom-left-radius: 4px; /* Rounded corners */
-    padding: 8px 10px; /* Padding inside the box */
+    padding: 9px 10px; /* Padding inside the box */
     font-weight: bold; /* Bold text for better visibility */
     margin-right: -1px; /* Overlap with the input field */
     background-color: #f9f9f9;
@@ -231,10 +231,13 @@
   color: #9face6;
 }
 
-.shrink {
+.right-sidebar .shrink {
   width: 60% !important;
 }
 
+.account-container .shrink {
+  width: 69%;
+}
 .account-container button[type='submit'] {
   background-color: #f1892b;
 }
@@ -243,7 +246,7 @@
   color: #fff;
 }
 
-.register-container {
+.register-wrapper {
   margin: 20px;
 }
 .register-container label {

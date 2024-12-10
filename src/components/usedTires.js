@@ -69,44 +69,7 @@ const UsedTires = () => {
 
   const updateFormData = (updatedData) => setFormData(updatedData);
 
-  const faq = [
-    {
-        Q: "What types of used tires does Artisbay Inc. offer?",
-        A: "We specialize in high-quality used tires for various vehicles, including passenger cars, SUVs, light trucks, and commercial vehicles. Our inventory includes a wide range of sizes, tread depths, and brands to meet your specific needs."
-    },
-    {
-        Q: "How do you ensure the quality of used tires?",
-        A: "All our used tires are thoroughly inspected for tread depth, sidewall integrity, and overall condition. Tires that do not meet our strict safety and performance standards are excluded from our inventory."
-    },
-    {
-        Q: "Can I request specific brands or sizes?",
-        A: "Yes, we offer a wide variety of brands and sizes. Let us know your requirements, and we’ll check our inventory or source them for you."
-    },
-    {
-        Q: "Do you provide detailed photos of the tires before purchase?",
-        A: "Yes, we provide detailed photos and descriptions, including tread depth and condition, to ensure complete transparency."
-    },
-    {
-        Q: "What is the minimum order quantity for used tires?",
-        A: "Orders typically start at container-sized shipments. Contact us for specific details and recommendations based on your location and needs."
-    },
-    {
-        Q: "Do you offer discounts for bulk purchases?",
-        A: "Our prices are wholesale and competitively set. While we do not generally offer additional discounts, we encourage you to contact us to discuss options. Discounts may be considered for returning customers or large quantities based on various factors."
-    },
-    {
-        Q: "What are the shipping options for used tires?",
-        A: "We ship exclusively via containerized shipments to ensure cost efficiency and quality preservation during transit."
-    },
-    {
-        Q: "What loading options are available for containers?",
-        A: "We offer two primary loading techniques: 1) Double Loading (Nesting Technique): Tires are nested together to maximize space. This method allows us to load approximately 3,000 tires for standard passenger car sizes (excluding truck and machinery tires). 2) Standard Loading: Tires are loaded individually to simplify unloading and handling. This method accommodates around 2,000 tires for standard passenger car sizes. Our team will help you choose the best option based on your order and preferences."
-    },
-    {
-        Q: "Are there any guarantees or return policies for used tires?",
-        A: "Used tires are sold 'as-is.' However, if you encounter any issues, please contact us, and we’ll do our best to assist."
-    }
-];
+ 
 
 
   return (

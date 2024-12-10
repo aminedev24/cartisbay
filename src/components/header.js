@@ -95,6 +95,7 @@ const Header = () => {
               <div className={`dropdown-content ${activeDropdown === 'localServices' ? 'show ' : ''}`}>
                 <a href="#">Namibia</a>
                 <a href="#">DR-Congo</a>
+                <a href="#">Tanzania</a>
               </div>
             </div>
             <div className="nav-item">Reviews</div>

@@ -2,6 +2,7 @@ import React, { useState , useEffect} from 'react';
 import '../css/contact.css';
 import CountryList from './countryList'; // Import the CountryList
 import useCheckScreenSize from './screenSize'; // Adjust the path as necessary
+import { useLocation } from 'react-router-dom';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,10 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   
   const { isSmallScreen, isPortrait } = useCheckScreenSize();
@@ -72,7 +77,7 @@ console.log(isPortrait, isSmallScreen)
       <div 
        className="contact-container"
        style={{
-          scale: isSmallScreen && isPortrait ? '1.5' : isSmallScreen ? '1' : '', // Set scale based on both conditions
+          scale: isSmallScreen && isPortrait ? '1.5' : isSmallScreen ? '.8' : '', // Set scale based on both conditions
           
         }}
       >

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../css/carDismantling.css"; // Import the CSS file
 import LeftSidebar from "./sidebar";
-
+import { Link } from "react-router-dom";
 const CarDismantling = () => {
   useEffect(() => {
     // Scroll to the top of the page
@@ -160,6 +160,14 @@ const CarDismantling = () => {
             </li>
           </ol>
         </div>
+
+        <div className='cta-container'> 
+          <p className='cta-text'>Have any questions? We're here to help!</p> 
+          <button className='cta-btn'>
+            <Link to='/contact'>Contact Us</Link> 
+          </button>
+        </div>
+
       </section>
     </div>
   );

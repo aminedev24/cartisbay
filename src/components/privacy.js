@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PrivacyPolicy = () => {
   return (
@@ -51,7 +52,7 @@ const PrivacyPolicy = () => {
       <p>This Privacy Policy may be updated periodically. The latest version will always be available on our website.</p>
       
       <h2>8. Contact Us</h2>
-      <p>If you have any questions about this Privacy Policy, please contact us.</p>
+      <p>If you have any questions about this Privacy Policy, <Link className='cta-link' to='/contact'>please contact us.</Link></p>
     </div>
   );
 };

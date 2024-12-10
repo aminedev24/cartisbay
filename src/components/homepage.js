@@ -67,7 +67,7 @@ function HomePage() {
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/eco.png`,
 
-      link: "/help?topic=our%20commitment%20to%C2%A0Sustainability",
+      link: "/help?topic=Sustainability",
     },
   ];
 
@@ -75,7 +75,7 @@ function HomePage() {
     { text: "OVERVIEW", path: "/help?topic=Overview" },
     { text: "COMPANY PROFILE", path: "/help?topic=Company%20Profile" },
     { text: "BANK INFORMATION", path: "/help?topic=Bank%20Information" },
-    { text: "WHY CHOOSE ARTISBAY INC", path: "/help?topic=Why%20Choose%20Artisbay%20Inc." },
+    { text: "WHY ARTISBAY INC", path: "/help?topic=Why%20Artisbay%20Inc." },
     { text: "TERMS AND CONDITIONS", path: "/help?topic=Terms%20%26%20Conditions" },
     { text: "ANTI SOCIAL FORCES POLICY", path: "/help?topic=Anti-Social%20Force%20Policy" },
     { text: "HOW TO BUY CARS ON ARTISBAY INC", path: "/help?topic=How%20to%20Buy%20used%20cars" },
@@ -205,6 +205,7 @@ const links2 = [
           <div className="news-item-container">
             <p className="news-item">2024/11/15 Artisbay Inc was born</p>
             <p className="news-item">2024/12/02 Artisbay Inc website published</p>
+            <p className="news-item">Holidays from 28 December to 5 January </p>
           </div>
            
         </div>

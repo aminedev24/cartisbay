@@ -21,6 +21,8 @@
   align-items: center;
 }
 
+
+
 .footer-section {
   margin: 10px;
   text-align: left;
@@ -47,12 +49,16 @@
   margin: 5px 0;
 }
 
-.footer-section ul li a {
+.footer-section ul li a ,.logo-container a {
   text-decoration: none;
   color: #fff;
 }
 
-.footer-section ul li a:hover {
+.logo-container a {
+  margin: 10px;
+}
+
+.footer-section ul li a:hover , .logo-container a:hover {
   color: #e67e22;
 }
 

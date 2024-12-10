@@ -11,6 +11,7 @@ const Footer = () => {
             <img width='130' src={`${process.env.PUBLIC_URL}/images/logo3.png`} alt="Logo" />
           </Link>
           <p className="logo-description">Artisbay Inc. An online-based platform for the sale and export of used vehicles and auto parts.</p>
+          <a href="mailto:contact@artisbay.com">contact@artisbay.com</a>
         </div>
         <div className="footer-section">
          
