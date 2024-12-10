@@ -53,6 +53,7 @@ const InquiryForm = () => {
   };
 
   return (
+    <form onSubmit={handleSubmit}>
     <div className="enquiryContainer">
       <div className="form-section">
         <h2>Your Information</h2>
@@ -243,6 +244,7 @@ const InquiryForm = () => {
         </label>
       </div>
     </div>
+    </form>
   );
 };
 

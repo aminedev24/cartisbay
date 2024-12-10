@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $steering = htmlspecialchars(trim($_POST['steering']));
 
     // Prepare email
-    $to = "order@artisbay.com"; // Replace with your email
+    $to = "vehicleOrder@artisbay.com"; // Replace with your email
     $subject = "New Vehicle Inquiry from $name";
     $body = "Name: $name\nAddress: $address\nEmail: $email\nCountry: $country\nTel: $tel\nPort: $port\nMessage: $message\n\nVehicle Information:\nMake: $make\nModel: $model\nRegistration Year: $yearFrom to $yearTo\nPrice: $priceFrom to $priceTo\nBody Type: $bodyType\nMileage: $mileageFrom to $mileageTo\nTransmission: $transmission\nSteering: $steering";
     $headers = "From: $email";
