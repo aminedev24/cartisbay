@@ -79,6 +79,7 @@ function HomePage() {
     { text: "TERMS AND CONDITIONS", path: "/help?topic=Terms%20%26%20Conditions" },
     { text: "ANTI SOCIAL FORCES POLICY", path: "/help?topic=Anti-Social%20Force%20Policy" },
     { text: "HOW TO BUY CARS ON ARTISBAY INC", path: "/help?topic=How%20to%20Buy%20used%20cars" },
+   
     
 ];
 
@@ -87,7 +88,7 @@ const links2 = [
     { text: "ABOUT DISMANTLED CARS", path: "/help?topic=about%20Dismantled%20Cars" },
     { text: "ABOUT PAYMENT", path: "/help?topic=About%20payement" },
     { text: "SECURITY", path: "/help?topic=security" },
-    { text: "PAYPAL", path: "/help?topic=paypal" },
+    { text: "PRIVACY", path: "/help?topic=privacy%20policy" },
     { text: "TELEGRAPHIC TRANSFER", path: "/help?topic=telegraphic%20transfer" },
     { text: "ECO FRIENDLY", path: "/help?topic=Sustainability" }
 ];
