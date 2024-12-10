@@ -293,7 +293,6 @@ option {
 .type-container, .make-container {
     flex: 1; /* Allows both containers to take equal space */
     box-sizing: border-box; /* Ensures padding and border are included in the width */
-    border: 1px solid #ddd;
 }
 
 
