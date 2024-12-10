@@ -47,6 +47,7 @@ const Login = () => {
 
         // Redirect to homepage after successful login
         navigate('/'); // Redirect to homepage
+        window.location.reload();
       } else {
         setMessage(data.message);
         setMessageType('error'); // Set message type to error
