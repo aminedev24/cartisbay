@@ -19,8 +19,10 @@ const MediaSlider = () => {
   };
 
   const mediaItems = [
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/tiresslider.jpeg` , link : '/used-tires' },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/dismantlingslider.jpeg`, link: '/help?topic=about%20Dismantled%20Cars' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaSlider.jpeg` , link : '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoSlider.jpeg`, link: '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider.jpeg`, link: '#' },
+
   ];
 
   return (

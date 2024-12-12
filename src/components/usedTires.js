@@ -56,12 +56,12 @@ const UsedTires = () => {
   const closeModal = () => setIsModalOpen(false);
 
   const [formData, setFormData] = useState({
-    maker: "",
+    make: "",
     width: "",
-    aspectRatio: "",
-    rimDiameter: "",
-    loadIndex: "",
-    speedRating: "",
+    aspect_ratio: "",
+    rim_diameter: "",
+    load_index: "",
+    speed_rating: "",
     quantity: "",
     type: "",
     tireSize: "",

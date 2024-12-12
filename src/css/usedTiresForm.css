@@ -16,6 +16,14 @@
     color: #fff;
   }
 
+  .login-prompt, .welcome-message {
+    z-index: 5;
+  }
+
+  .userName {
+    color: #1da1f2;
+    font-weight: bold;
+  }
   .container-inner , .tire-selection-container , .form-header{
     z-index: 5;
   }
@@ -114,6 +122,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+    outline: none;
   }
   
   button[type="submit"]:hover {

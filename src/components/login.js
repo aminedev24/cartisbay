@@ -1,66 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importing the useNavigate hook for redirection
+import { useNavigate } from 'react-router-dom';
 import '../css/login.css';
 import useCheckScreenSize from './screenSize';
+import { useUser  } from './userContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); // New state for message type
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const [messageType, setMessageType] = useState('');
+  const navigate = useNavigate();
   const { isPortrait, isSmallScreen } = useCheckScreenSize();
+  const { user, loading, login } = useUser ();
 
   // Check if the user is already logged in when the component mounts
   useEffect(() => {
-    if (localStorage.getItem('session_token')) {
-      // If the session token exists, redirect to homepage
-      navigate('/'); // Redirect to homepage (or wherever you want)
-      window.location.reload();
+    if (!loading && user) {
+      // Redirect to homepage if user is logged in
+      const timeoutId = setTimeout(() => {
+        navigate('/'); // Redirect after 2 seconds
+        window.location.reload();
+      }, 4000); // 2000 milliseconds = 2 seconds
+
+      return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
     }
-  }, [navigate]);
+  }, [loading, user, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-
     try {
-      const response = await fetch('/server/login.php', { // Pointing to the correct endpoint
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (data.status === 'success') {
-        // Storing session token and user data in localStorage (or cookies)
-        localStorage.setItem('session_token', data.session_token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-
-        setIsLoggedIn(true);
-        setMessage(`Welcome, ${data.user.name}!`);
-        setMessageType('success'); // Set message type to success
-
-        // Redirect to homepage after successful login
-        navigate('/'); // Redirect to homepage
-        window.location.reload();
-      } else {
-        setMessage(data.message);
-        setMessageType('error'); // Set message type to error
-      }
+      await login(email, password); // Use the login function from UserProvider
+      setMessage(`Welcome, ${email}!`); // Show a welcome message
+      setMessageType('success'); // Set message type to success
+      // No need to navigate here; it will be handled in the useEffect
     } catch (error) {
-      setMessage('An error occurred. Please try again.');
+      setMessage('Login failed. Please check your credentials and try again.');
       setMessageType('error'); // Set message type to error
       console.error('Error:', error);
     }
   };
 
   return (
-    <div 
+    <div
       className='login-form-wrapper'
       style={{
         height: isSmallScreen ? '90vh' : '',
@@ -74,7 +56,7 @@ const Login = () => {
           scale: isSmallScreen ? '2.5' : '',
         }}
       >
-        {isLoggedIn ? (
+        {user ? ( // Check if user is logged in
           <p>{message}</p>
         ) : (
           <form className='login-form' onSubmit={handleLogin}>
@@ -83,6 +65,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 value={email}
+                name='email'
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -92,6 +75,7 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
+                name='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

@@ -4,7 +4,7 @@ import TireSelection from "./tireSelection";
 import Modal from './alertModal';
 import { useUser } from "./userContext"; // Importing the useUser hook to access user data
 import {Link} from 'react-router-dom';
-
+import {TireSizes} from './tireSizes';
 const OrderForm = ({
   formData,
   setFormData,
@@ -24,188 +24,21 @@ const OrderForm = ({
   const [selectedDiameter, setSelectedDiameter] = useState("");
   const [availableSizes, setAvailableSizes] = useState([]);
   const [isQuantityValid, setIsQuantityValid] = useState(true);
-  const [modalMessage, setModalMessage] = useState(""); // State for modal message
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
   const { user, loading } = useUser(); // Accessing the user from context
 
-  const tireSizes = [
-    {
-      diameter: 13,
-      sizes: [
-        "155/80R13",
-        "165/80R13",
-        "175/70R13",
-        "185/70R13",
-        "185/65R13",
-        "195/65R13",
-        "175/65R13",
-        "155/70R13",
-        "145/80R13",
-        "165/70R13",
-      ],
-    },
-    {
-      diameter: 14,
-      sizes: [
-        "165/70R14",
-        "175/70R14",
-        "185/70R14",
-        "185/65R14",
-        "195/65R14",
-        "195/70R14",
-        "205/65R14",
-        "205/60R14",
-        "215/60R14",
-        "225/60R14",
-        "185/60R14",
-        "195/60R14",
-      ],
-    },
-    {
-      diameter: 15,
-      sizes: [
-        "185/65R15",
-        "195/65R15",
-        "205/65R15",
-        "205/60R15",
-        "215/65R15",
-        "225/65R15",
-        "195/60R15",
-        "205/55R15",
-        "215/60R15",
-        "225/60R15",
-        "235/60R15",
-        "245/60R15",
-      ],
-    },
-    {
-      diameter: 16,
-      sizes: [
-        "205/55R16",
-        "215/55R16",
-        "225/55R16",
-        "205/60R16",
-        "215/60R16",
-        "225/60R16",
-        "235/60R16",
-        "245/60R16",
-        "215/65R16",
-        "225/65R16",
-        "235/65R16",
-      ],
-    },
-    {
-      diameter: 17,
-      sizes: [
-        "215/45R17",
-        "225/45R17",
-        "235/45R17",
-        "245/45R17",
-        "255/45R17",
-        "215/50R17",
-        "225/50R17",
-        "235/50R17",
-        "215/55R17",
-        "225/55R17",
-        "235/55R17",
-        "225/60R17",
-      ],
-    },
-    {
-      diameter: 18,
-      sizes: [
-        "225/40R18",
-        "235/40R18",
-        "245/40R18",
-        "255/40R18",
-        "265/40R18",
-        "225/45R18",
-        "235/45R18",
-        "245/45R18",
-        "255/45R18",
-        "275/40R18",
-        "285/40R18",
-        "245/50R18",
-      ],
-    },
-    {
-      diameter: 19,
-      sizes: [
-        "225/35R19",
-        "235/35R19",
-        "245/35R19",
-        "255/35R19",
-        "265/35R19",
-        "275/35R19",
-        "285/35R19",
-        "225/40R19",
-        "235/40R19",
-        "245/40R19",
-        "255/40R19",
-        "275/40R19",
-      ],
-    },
-    {
-      diameter: 20,
-      sizes: [
-        "245/35R20",
-        "255/35R20",
-        "265/35R20",
-        "275/35R20",
-        "285/35R20",
-        "295/35R20",
-        "305/35R20",
-        "245/40R20",
-        "255/40R20",
-        "265/40R20",
-        "275/40R20",
-        "285/40R20",
-      ],
-    },
-    {
-      diameter: 21,
-      sizes: [
-        "255/30R21",
-        "265/30R21",
-        "275/30R21",
-        "285/30R21",
-        "295/30R21",
-        "305/30R21",
-        "255/35R21",
-        "265/35R21",
-        "275/35R21",
-        "285/35R21",
-        "295/35R21",
-        "315/30R21",
-      ],
-    },
-    {
-      diameter: 22,
-      sizes: [
-        "265/30R22",
-        "275/30R22",
-        "285/30R22",
-        "295/30R22",
-        "305/30R22",
-        "315/30R22",
-        "325/30R22",
-        "335/30R22",
-        "295/35R22",
-        "305/35R22",
-      ],
-    },
-    { diameter: 23, sizes: ["285/35R23", "305/30R23", "325/30R23"] },
-    {
-      diameter: 24,
-      sizes: ["295/30R24", "305/30R24", "325/30R24", "335/30R24"],
-    },
-    {
-      diameter: 26,
-      sizes: ["295/30R26", "305/30R26", "315/30R26", "325/30R26"],
-    },
-    { diameter: 28, sizes: ["295/25R28", "315/30R28", "325/35R28"] },
-    { diameter: 30, sizes: ["315/30R30", "325/30R30", "335/30R30"] },
-  ];
+  const [modalMessage, setModalMessage] = useState(""); // Message to show in the modal
+  const [modalType, setModalType] = useState(""); // Type of modal: 'warning' or 'confirmation'
+  const [selectedOrderIndex, setSelectedOrderIndex] = useState(null); 
+
+
+    // Define modal types
+  const MODAL_TYPES = {
+    WARNING: "warning",
+    CONFIRMATION: "confirmation",
+    CLEAR_ALL: "clear_all", // New type for clearing all orders
+  };
+
 
   useEffect(() => {
     const existingQuantity = Object.values(orders)
@@ -218,19 +51,21 @@ const OrderForm = ({
       setModalMessage(
         "A 40ft HC container can hold 2,000 units with standard loading. If you wish to load up to 3,000 units, please consider the double-loading option."
       );
+      setModalType(MODAL_TYPES.WARNING);
       setShowModal(true);
       setHasPromptedForDoubleLoading(true); // Set the flag to true after showing the modal
     }
 
     const fill = (existingQuantity / totalCapacity) * 100;
     setPercentageFill(fill); // Allow percentage to exceed 100%
+    setTotalUnits(existingQuantity);
   }, [orders, doubleLoading, hasPromptedForDoubleLoading]); // Add hasPromptedForDoubleLoading to dependencies
 
   const handleDiameterChange = (e) => {
     const diameter = parseInt(e.target.value);
     setSelectedDiameter(diameter);
     const sizes =
-      tireSizes.find((tire) => tire.diameter === diameter)?.sizes || [];
+      TireSizes.find((tire) => tire.diameter === diameter)?.sizes || [];
     setAvailableSizes(sizes);
     setFormData((prevData) => ({
       ...prevData,
@@ -246,45 +81,127 @@ const OrderForm = ({
     }));
   };
 
-  const handleEditOrder = (maker, index) => {
-    console.log("Maker:", maker);
+  //console.log(user)
+
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+      
+        if (!user || !user.uid) {
+          console.error('User not authenticated');
+          return;
+        }
+  
+        const response = await fetch('http://127.0.0.1/artisbay-server/server/fetchTires.php', {
+          method: 'GET',
+          credentials: 'include', // Send cookies
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.uid}`, // Pass the UID in the Authorization header
+          },
+        });
+  
+        if (!response.ok) {
+          const errorMessage = `Network response was not ok: ${response.status} ${response.statusText}`;
+          throw new Error(errorMessage);
+        }
+  
+        const data = await response.json();
+        setOrders(data); // Set the fetched orders
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+  
+    fetchOrders();
+  }, []);
+
+
+  const handleSendOrderEmail = async () => {
+    // Prepare the data to be sent to the backend
+    const { make, load_index, speed_rating, quantity, type, customerMessage } = formData;
+  
+    // Split the tireSize string into width, aspect ratio, and rim diameter
+    const [width, aspect_ratio, rim_diameter] = formData.tireSize.split(/\/|R/);
+  
+    const orderData = {
+      user_id: user.uid ? user.uid : '',
+      email: user.email,
+      make,
+      width,
+      aspect_ratio,
+      rim_diameter,
+      load_index,
+      speed_rating,
+      quantity: parseInt(quantity, 10),
+      type,
+      customerMessage: customerMessage || "",
+    };
+  
+    try {
+      const response = await fetch('http://localhost/artisbay-server/server/sendTireOrder.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        setMessage("Your order has been successfully sent!");
+      } else {
+        setMessage(result.message || "An error occurred while sending the order.");
+      }
+    } catch (error) {
+      setMessage("An error occurred while connecting to the server.");
+    }
+  };
+
+  const handleEditOrder = (make, index) => {
+    console.log("Maker:", make);
     console.log("Index:", index);
     console.log("Orders:", orders);
 
     // Check if orders[maker] is defined and is an array
-    if (!orders[maker]) {
-        console.error(`No orders found for maker: ${maker}`);
+    if (!orders.some(order => order.make === make)) {
+        console.error(`No orders found for maker: ${make}`);
+        return;
+    }
+    const ordersForMake = orders.filter(order => order.make === make);
+
+    // Check if the index is within the bounds of the orders for the specific make
+    if (index < 0 || index >= ordersForMake.length) {
+        console.error(`Index ${index} is out of bounds for maker: ${make}`);
         return;
     }
 
-    if (index < 0 || index >= orders[maker].length) {
-        console.error(`Index ${index} is out of bounds for maker: ${maker}`);
-        return;
-    }
-
-    const orderToEdit = orders[maker][index];
-
+    const orderToEdit = ordersForMake[index];
+    console.log('orderToedit :', orderToEdit)
     // Check if orderToEdit is defined
     if (!orderToEdit) {
-        console.error(`No order found at index ${index} for maker: ${maker}`);
+        console.error(`No order found at index ${index} for maker: ${make}`);
         return;
     }
 
     setFormData({
-        maker: maker,
+        make: make,
         quantity: orderToEdit.quantity,
-        loadIndex: orderToEdit.loadIndex,
-        speedRating: orderToEdit.speedRating,
+        load_index: orderToEdit.load_index,
+        speed_rating: orderToEdit.speed_rating,
+        rim_diameter: orderToEdit.rim_diameter,
         type: orderToEdit.type,
-        tireSize: `${orderToEdit.width}/${orderToEdit.aspectRatio}R${orderToEdit.rimDiameter}`,
+        tireSize: `${orderToEdit.width}/${orderToEdit.aspect_ratio}R${orderToEdit.rim_diameter}`,
     });
     setEditingOrder(index);
     setShowForm(true);
 };
-
   useEffect(() => {
     const requiredFieldsFilled =
-      formData.maker && formData.type && formData.quantity && formData.tireSize;
+      formData.make && formData.type && formData.quantity && formData.tireSize;
     setIsFormValid(requiredFieldsFilled);
   }, [formData]);
 
@@ -298,175 +215,266 @@ const OrderForm = ({
 
   const handleSaveOrder = async (e) => {
     e.preventDefault();
-  
+
     // Validation checks
-    if (!formData.maker || !formData.type || !formData.tireSize || !formData.quantity) {
-      setMessage("Please fill in all required fields.");
-      return;
+    if (!formData.make || !formData.type || !formData.tireSize || !formData.quantity) {
+        setMessage("Please fill in all required fields.");
+        return;
     }
-  
-    const [width, aspectRatio, rimDiameter] = formData.tireSize.split(/\/|R/);
+
+    const [width, aspect_ratio, rim_diameter] = formData.tireSize.split(/\/|R/);
     let quantity = parseInt(formData.quantity, 10);
-  
+
     // Ensure quantity is valid
     if (isNaN(quantity) || quantity < 1) {
-      setMessage("Quantity must be at least 1.");
-      return;
+        setMessage("Quantity must be at least 1.");
+        return;
     }
-  
-    const totalCapacity = doubleLoading ? 3000 : 2000;
-  
+
     const newOrder = {
-      maker: formData.maker,
-      width,
-      aspectRatio,
-      rimDiameter,
-      loadIndex: formData.loadIndex,
-      speedRating: formData.speedRating,
-      quantity: quantity,
-      type: formData.type,
+        make: formData.make,
+        width: parseInt(width, 10),
+        aspect_ratio: parseInt(aspect_ratio, 10),
+        rim_diameter: parseInt(rim_diameter, 10),
+        load_index: formData.load_index,
+        speed_rating: formData.speed_rating,
+        quantity: quantity,
+        type: formData.type,
     };
-  
-    const maker = formData.maker;
-    const updatedOrders = { ...orders };
-  
-    if (!updatedOrders[maker]) {
-      updatedOrders[maker] = [];
-    }
-  
-    let existingQuantity = Object.values(updatedOrders)
-      .flat()
-      .reduce((acc, order) => acc + order.quantity, 0);
-    let newTotalUnits = existingQuantity;
-  
-    // Calculate potential new total units
-    const potentialNewTotalUnits =
-      editingOrder !== null
-        ? newTotalUnits - orders[formData.maker][editingOrder].quantity + quantity
-        : newTotalUnits + quantity;
-  
+
+    const updatedOrders = [...orders]; // Create a copy of the existing orders array
+    let newTotalUnits = updatedOrders.reduce((acc, order) => acc + order.quantity, 0);
+
     // Check for existing orders and update accordingly
     if (editingOrder !== null) {
-      const previousOrder = orders[maker][editingOrder];
-      newTotalUnits -= previousOrder.quantity;
-  
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type
-      );
-  
-      if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
-        const accumulatedOrder = updatedOrders[maker][existingOrderIndex];
-        accumulatedOrder.quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity;
-        updatedOrders[maker].splice(editingOrder, 1);
-        setMessage(`Your order has been updated and quantities have been accumulated!`);
-      } else {
-        updatedOrders[maker][editingOrder] = newOrder;
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your order has been updated!`);
-      }
+        const previousOrder = updatedOrders[editingOrder];
+        if (previousOrder) {
+            newTotalUnits -= previousOrder.quantity;
+
+            const existingOrderIndex = updatedOrders.findIndex(
+                (order) =>
+                    order.width === newOrder.width &&
+                    order.aspect_ratio === newOrder.aspect_ratio &&
+                    order.rim_diameter === newOrder.rim_diameter &&
+                    order.type === newOrder.type &&
+                    order.make === newOrder.make
+            );
+
+            if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
+                const accumulatedOrder = updatedOrders[existingOrderIndex];
+                accumulatedOrder.quantity += newOrder.quantity;
+                newTotalUnits += newOrder.quantity;
+                updatedOrders.splice(editingOrder, 1);
+                setMessage(`Your order has been updated and quantities have been accumulated!`);
+            } else {
+                updatedOrders[editingOrder] = newOrder;
+                newTotalUnits += newOrder.quantity;
+                setMessage(`Your order has been updated!`);
+            }
+        } else {
+            setMessage("Error: Unable to find the order to edit.");
+            return;
+        }
     } else {
-      const existingOrderIndex = updatedOrders[maker].findIndex(
-        (order) =>
-          order.width === newOrder.width &&
-          order.aspectRatio === newOrder.aspectRatio &&
-          order.rimDiameter === newOrder.rimDiameter &&
-          order.type === newOrder.type
-      );
-  
-      if (existingOrderIndex !== -1) {
-        updatedOrders[maker][existingOrderIndex].quantity += newOrder.quantity;
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your order has been updated and quantities have been accumulated!`);
-      } else {
-        updatedOrders[maker].push(newOrder);
-        newTotalUnits += newOrder.quantity;
-        setMessage(`Your new order has been added!`);
-      }
+        const existingOrderIndex = updatedOrders.findIndex(
+            (order) =>
+                order.width === newOrder.width &&
+                order.aspect_ratio === newOrder.aspect_ratio &&
+                order.rim_diameter === newOrder.rim_diameter &&
+                order.type === newOrder.type &&
+                order.make === newOrder.make
+        );
+
+        if (existingOrderIndex !== -1) {
+            updatedOrders[existingOrderIndex].quantity += newOrder.quantity;
+            newTotalUnits += newOrder.quantity;
+            setMessage(`Your order has been updated and quantities have been accumulated!`);
+        } else {
+            updatedOrders.push(newOrder);
+            newTotalUnits += newOrder.quantity;
+            setMessage(`Your new order has been added!`);
+        }
     }
-  
-    // Proceed with the order submission
+
     setOrders(updatedOrders);
     setTotalUnits(newTotalUnits);
-  
-    // Prepare the data to be sent to the backend
+
+    // Prepare order data for submission
     const orderData = {
-      user_id :user.uid ?  user.uid : '',
-      maker: formData.maker,
-      width,
-      aspectRatio,
-      rimDiameter,
-      loadIndex: formData.loadIndex,
-      speedRating: formData.speedRating,
-      quantity: quantity,
-      type: formData.type,
+        order_id: editingOrder !== null ? orders[editingOrder]?.id : null,
+        user_id: user.uid,
+        make: formData.make,
+        width: newOrder.width,
+        aspect_ratio: newOrder.aspect_ratio,
+        rim_diameter: newOrder.rim_diameter,
+        quantity: quantity,
+        type: formData.type,
     };
-  
+
+    if (formData.load_index) {
+        orderData.load_index = formData.load_index;
+    }
+    if (formData.speed_rating) {
+        orderData.speed_rating = formData.speed_rating;
+    }
+
+    console.log(`Payload sent to server: ${JSON.stringify(orderData)}`);
+
     try {
-      // Send the order data to the backend API
-      const response = await fetch('/server/saveorder.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
-  
-      const result = await response.json();
-      console.log(orderData)
-  
-      if (response.ok) {
-        setMessage("Your order has been successfully saved!");
-      } else {
-        setMessage(result.message || "An error occurred while saving the order.");
-      }
+        const url = editingOrder !== null
+            ? 'http://localhost/artisbay-server/server/edit_order.php'
+            : 'http://localhost/artisbay-server/server/saveOrder.php';
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            setMessage(result.message || `Server error: ${response.statusText}`);
+        } else if (result.success) {
+            setMessage("Your order has been successfully saved!");
+        } else {
+            setMessage(result.message || "An error occurred while saving the order.");
+        }
     } catch (error) {
-      setMessage("An error occurred while connecting to the server.");
+        setMessage(`An error occurred while connecting to the server: ${error.message}`);
     }
-  
-    // Clear the form after successful submission
+
     setFormData({
-      maker: "",
-      quantity: "",
-      loadIndex: "",
-      speedRating: "",
-      type: "",
-      tireSize: "",
-      rimDiameter: "",
-    }); // Reset form data to initial state
-  };
+        make: "",
+        quantity: "",
+        load_index: "",
+        speed_rating: "",
+        type: "",
+        tireSize: "",
+    });
+};
+
   
-  const handleDeleteOrder = (maker, index) => {
-    const updatedOrders = { ...orders };
-    const quantityToRemove = updatedOrders[maker][index].quantity;
-    updatedOrders[maker].splice(index, 1);
-    if (updatedOrders[maker].length === 0) {
-      delete updatedOrders[maker];
+  // Open confirmation modal when deleting an order
+const handleDeleteOrder = (index) => {
+  // Ensure the index is valid
+  if (index < 0 || index >= orders.length) {
+    console.error(`Index ${index} is out of bounds.`);
+    return;
+  }
+
+  // Open the confirmation modal
+  setModalMessage(`Are you sure you want to delete this order?`);
+  setModalType(MODAL_TYPES.CONFIRMATION);
+  setSelectedOrderIndex(index);
+  setShowModal(true);
+};
+
+// Handle deletion confirmation
+const handleConfirmDelete = async () => {
+  if (selectedOrderIndex === null) return;
+
+  const orderId = orders[selectedOrderIndex].id;
+  const quantityToRemove = orders[selectedOrderIndex].quantity;
+
+  try {
+    // Make a DELETE request to the backend
+    const response = await fetch('http://localhost/artisbay-server/server/delete_order.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ order_id: orderId }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      setMessage(result.message || `Failed to delete the order.`);
+      return;
     }
+
+    // Remove the order locally
+    const updatedOrders = orders.filter((_, i) => i !== selectedOrderIndex);
     setOrders(updatedOrders);
-    setTotalUnits(totalUnits - quantityToRemove);
-    setMessage(`Order has been deleted.`);
-  };
+    setTotalUnits((prevTotal) => prevTotal - quantityToRemove);
+    setMessage(`Order deleted successfully.`);
+  } catch (error) {
+    setMessage(`An error occurred while deleting the order: ${error.message}`);
+  } finally {
+    // Close modal after handling
+    setShowModal(false);
+    setSelectedOrderIndex(null);
+  }
+};
+
+// Handle cancel action in confirmation modal
+const handleCancelDelete = () => {
+  setShowModal(false);
+  setSelectedOrderIndex(null);
+};
+
 
   const handleNewCategory = () => {
     setFormData({
-      maker: "",
+      make: "",
       quantity: "",
-      loadIndex: "",
-      speedRating: "",
+      load_index: "",
+      speed_rating: "",
       type: "",
       tireSize: "",
-      rimDiameter: "",
+      rim_diameter: "",
     });
     setShowForm(true);
     setMessage("");
     setEditingOrder(null);
     setHasPromptedForDoubleLoading(false); // Reset the prompt flag when starting a new category
   };
+
+  
+const handleClearOrders = () => {
+  // Show a confirmation modal asking if the user is sure they want to clear all orders
+  setModalMessage("Are you sure you want to clear all orders?");
+  setModalType(MODAL_TYPES.CLEAR_ALL); // Set modal type to 'clear_all'
+  setShowModal(true);
+};
+
+const handleConfirmClearAll = async () => {
+  const clearAllData = {
+    clear_all: true,  // Indicate that we want to clear all orders
+  };
+
+  try {
+    const response = await fetch('http://localhost/artisbay-server/server/delete_order.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(clearAllData),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      setMessage(result.message || `Server error: ${response.statusText}`);
+    } else if (result.success) {
+      setMessage("All orders have been cleared.");
+      // Clear the orders in the frontend state
+      setOrders([]);
+      setTotalUnits(0);
+    } else {
+      setMessage(result.message || "An error occurred while clearing orders.");
+    }
+  } catch (error) {
+    setMessage(`An error occurred: ${error.message}`);
+  }
+
+  setShowModal(false); // Close the modal after action
+};
+
+
+const handleCancelClearAll = () => {
+  setShowModal(false); // Close the modal
+};
+
 
   // Function to close the modal
   const handleCloseModal = () => {
@@ -476,13 +484,19 @@ const OrderForm = ({
 
   return (
     <div id="usedTiresForm" className="usedTiresForm-container">
-      {showModal && (
-        <Modal message={modalMessage} onClose={handleCloseModal} />
-      )}
+          {showModal && (
+            <Modal
+              message={modalMessage}
+              onClose={() => setShowModal(false)} // Close modal on close button click
+              onConfirm={modalType === MODAL_TYPES.CLEAR_ALL ? handleConfirmClearAll : modalType === MODAL_TYPES.CONFIRMATION ? handleConfirmDelete : null} // Handle confirmation only in the appropriate modal
+              onCancel={modalType === MODAL_TYPES.CLEAR_ALL ? handleCancelClearAll : modalType === MODAL_TYPES.CONFIRMATION ? handleCancelDelete : null} // Handle cancel action in confirmation modal
+              type={modalType}
+            />
+          )}
 
-      <div className="overlay overlay-filter"></div> {/* First overlay for opacity filter */}
+      {/*<div className="overlay overlay-filter"></div>
       <div className="overlay overlay-image"></div>
-
+      */}
       <header className="form-header">
         <div>
           <img
@@ -500,20 +514,20 @@ const OrderForm = ({
       </header>
 
                {/* Check if user is logged in */}
-               {user ? (
-            // If logged in, display a welcome message
-            <p className="welcome-message">
-              Welcome, {user.name}! You can now send your order.
-            </p>
+               {!user ? (
+           
+             // If not logged in, display login/register prompt
+             <p className="login-prompt">
+             Please <Link to='/login' className="cta-link" href="/login">log in</Link> or
+             <Link to='/register' className="cta-link" href="/register">register</Link> to send an order.
+           </p>
           ) : (
-            // If not logged in, display login/register prompt
-            <p className="login-prompt">
-              Please <Link to='/login' className="cta-link" href="/login">log in</Link> or
-              <Link to='/register' className="cta-link" href="/register">register</Link> to send an order.
+            // If logged in, display a welcome message
+            <>
+            <p className="welcome-message">
+              Welcome, <span className="userName">{user.name}!</span> You can now send your order.
             </p>
-          )}
-          
-      <div className="container-inner">
+            <div className="container-inner">
         <article className="form-container">
    
 
@@ -529,8 +543,8 @@ const OrderForm = ({
                 <label>
                   Make:<span className="star">*</span>
                   <select
-                    name="maker"
-                    value={formData.maker}
+                    name="make"
+                    value={formData.make}
                     onChange={handleChange}
                     required
                   >
@@ -578,7 +592,7 @@ const OrderForm = ({
                     required
                   >
                     <option value="">Select Diameter</option>
-                    {tireSizes.map((tire) => (
+                    {TireSizes.map((tire) => (
                       <option key={tire.diameter} value={tire.diameter}>
                         {tire.diameter}
                       </option>
@@ -628,7 +642,7 @@ const OrderForm = ({
                   Speed Rating:
                   <input
                     type="text"
-                    name="speedRating"
+                    name="speed_Rating"
                     value={formData.speedRating}
                     onChange={handleChange}
                     placeholder="optional"
@@ -643,8 +657,8 @@ const OrderForm = ({
                   Load Index:
                   <input
                     type="number"
-                    name="loadIndex"
-                    value={formData.loadIndex}
+                    name="load_index"
+                    value={formData.load_index}
                     onChange={handleChange}
                     placeholder="optional"
                   />
@@ -699,6 +713,16 @@ const OrderForm = ({
           </div>
             </div>
 
+            <button
+              type="button"
+              className="send-order-btn"
+              onClick={handleSendOrderEmail}
+            >
+              Send Order
+            </button>
+
+
+
           <p className="contact-message">
             If you need any further assistance with your order or the use of
             this form, just get in touch with us. We are here to help!
@@ -715,8 +739,14 @@ const OrderForm = ({
           handleEditOrder={handleEditOrder}
           handleDeleteOrder={handleDeleteOrder}
           handleNewCategory={handleNewCategory}
+          handleClearOrders={handleClearOrders}
         />
       </div>
+            </>
+
+          )}
+          
+      
     </div>
   );
 };

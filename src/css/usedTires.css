@@ -364,11 +364,11 @@ th {
   text-align: center;
 }
 
-tbody tr:nth-child(even) {
+.tables tbody tr:nth-child(even) {
   background-color: #fafafa;
 }
 
-tbody tr:hover {
+.tables tbody tr:hover {
   background-color: #f1f1f1;
 }
 
@@ -394,7 +394,6 @@ ul li {
 /* Styling for strong text inside lists */
 strong {
   font-weight: bold;
-  color: #222;
 }
 
 /* Add some spacing before and after the table */
