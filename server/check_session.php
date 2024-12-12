@@ -1,6 +1,6 @@
 <?php
-//session_start();
-header("Access-Control-Allow-Origin: http://localhost:3000"); // Adjust if necessary
+session_start();
+header("Access-Control-Allow-Origin: http://artisbay.com"); // Adjust if necessary
 header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json; charset=UTF-8");
 

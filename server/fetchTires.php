@@ -1,6 +1,6 @@
 <?php
 // Allow CORS for your frontend domain
-header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Origin: http://artisbay.com");
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Include Authorization header
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Credentials: true");

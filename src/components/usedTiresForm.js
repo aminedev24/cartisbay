@@ -93,7 +93,7 @@ const OrderForm = ({
           return;
         }
   
-        const response = await fetch('http://127.0.0.1/artisbay-server/server/fetchTires.php', {
+        const response = await fetch('server/fetchTires.php', {
           method: 'GET',
           credentials: 'include', // Send cookies
           headers: {
@@ -141,7 +141,7 @@ const OrderForm = ({
     };
   
     try {
-      const response = await fetch('http://localhost/artisbay-server/server/sendTireOrder.php', {
+      const response = await fetch('server/sendTireOrder.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -322,8 +322,8 @@ const OrderForm = ({
 
     try {
         const url = editingOrder !== null
-            ? 'http://localhost/artisbay-server/server/edit_order.php'
-            : 'http://localhost/artisbay-server/server/saveOrder.php';
+            ? 'server/edit_order.php'
+            : 'server/saveOrder.php';
 
         const response = await fetch(url, {
             method: 'POST',
@@ -379,7 +379,7 @@ const handleConfirmDelete = async () => {
 
   try {
     // Make a DELETE request to the backend
-    const response = await fetch('http://localhost/artisbay-server/server/delete_order.php', {
+    const response = await fetch('server/delete_order.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ order_id: orderId }),
@@ -443,7 +443,7 @@ const handleConfirmClearAll = async () => {
   };
 
   try {
-    const response = await fetch('http://localhost/artisbay-server/server/delete_order.php', {
+    const response = await fetch('delete_order.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
