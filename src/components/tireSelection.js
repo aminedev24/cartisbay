@@ -35,10 +35,10 @@ const TireSelection = ({
   }) : [];
 
 
-  const handleEditOrderClick = (order, index) => {
-    const make = order.make; // This should be the maker of the order
-    handleEditOrder(make, index);
-  };
+  const handleEditOrderClick = (order) => {
+    handleEditOrder(order);
+};
+
 
   return (
     <div className="tire-selection-container">
@@ -103,12 +103,13 @@ const TireSelection = ({
                   <td>{order.type}</td>
                   <td>
                     <div className="table-btns">
-                      <button
-                        onClick={() => handleEditOrderClick(order, index)}
+                    <button
+                        onClick={() => handleEditOrderClick(order)}
                         className="action-button edit-button"
                       >
                         <i className="fas fa-edit"></i>
                       </button>
+
                       <button
                         onClick={() => handleDeleteOrder(index)}
                         className="action-button delete-button"

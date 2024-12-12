@@ -99,7 +99,7 @@ const OrderForm = ({
           return;
         }
   
-        const response = await fetch('server/fetchTires.php', {
+        const response = await fetch(`${apiUrl}/fetchTires.php`, {
           method: 'GET',
           credentials: 'include', // Send cookies
           headers: {
@@ -115,7 +115,6 @@ const OrderForm = ({
   
         const data = await response.json();
         setOrders(data); // Set the fetched orders
-        console.log(data)
       } catch (error) {
         console.error('Error fetching orders:', error);
       }
@@ -167,44 +166,35 @@ const OrderForm = ({
     }
   };
 
-  const handleEditOrder = (make, index) => {
-    console.log("Maker:", make);
-    console.log("Index:", index);
-    console.log("Orders:", orders);
+  const handleEditOrder = (order) => {
+    console.log("Order to edit:", order);
 
-    // Check if orders[maker] is defined and is an array
-    if (!orders.some(order => order.make === make)) {
-        console.error(`No orders found for maker: ${make}`);
-        return;
-    }
-    const ordersForMake = orders.filter(order => order.make === make);
-
-    // Check if the index is within the bounds of the orders for the specific make
-    if (index < 0 || index >= ordersForMake.length) {
-        console.error(`Index ${index} is out of bounds for maker: ${make}`);
-        return;
-    }
-
-    const orderToEdit = ordersForMake[index];
-    console.log('orderToedit :', orderToEdit)
-    // Check if orderToEdit is defined
-    if (!orderToEdit) {
-        console.error(`No order found at index ${index} for maker: ${make}`);
-        return;
-    }
-
+    // Set the form data based on the order to edit
     setFormData({
-        make: make,
-        quantity: orderToEdit.quantity,
-        load_index: orderToEdit.load_index,
-        speed_rating: orderToEdit.speed_rating,
-        rim_diameter: orderToEdit.rim_diameter,
-        type: orderToEdit.type,
-        tireSize: `${orderToEdit.width}/${orderToEdit.aspect_ratio}R${orderToEdit.rim_diameter}`,
+        make: order.make,
+        quantity: order.quantity,
+        load_index: order.load_index,
+        speed_rating: order.speed_rating,
+        rim_diameter: order.rim_diameter,
+        type: order.type,
+        tireSize: `${order.width}/${order.aspect_ratio}R${order.rim_diameter}`,
     });
-    setEditingOrder(index);
+
+    // Find the index of the order in the original `orders` array
+    const originalIndex = orders.findIndex(
+        (o) => o === order
+    );
+
+    if (originalIndex === -1) {
+        console.error("Order not found in original orders array.");
+        return;
+    }
+
+    setEditingOrder(originalIndex);
     setShowForm(true);
 };
+
+
   useEffect(() => {
     const requiredFieldsFilled =
       formData.make && formData.type && formData.quantity && formData.tireSize;
@@ -342,6 +332,12 @@ const OrderForm = ({
         if (!response.ok) {
             setMessage(result.message || `Server error: ${response.statusText}`);
         } else if (result.success) {
+            // If order is new, update with the returned order_id
+            if (!editingOrder && result.order_id) {
+                newOrder.id = result.order_id; // Assign the new order ID
+                updatedOrders.push(newOrder);
+                setOrders(updatedOrders);
+            }
             setMessage("Your order has been successfully saved!");
         } else {
             setMessage(result.message || "An error occurred while saving the order.");
@@ -359,6 +355,7 @@ const OrderForm = ({
         tireSize: "",
     });
 };
+
 
   
   // Open confirmation modal when deleting an order

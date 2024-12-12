@@ -19,7 +19,7 @@ const Login = () => {
       // Redirect to homepage if user is logged in
       const timeoutId = setTimeout(() => {
         navigate('/'); // Redirect after 2 seconds
-        //window.location.reload();
+        window.location.reload();
       }, 4000); // 2000 milliseconds = 2 seconds
 
       return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
