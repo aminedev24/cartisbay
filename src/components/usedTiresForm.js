@@ -31,6 +31,12 @@ const OrderForm = ({
   const [modalType, setModalType] = useState(""); // Type of modal: 'warning' or 'confirmation'
   const [selectedOrderIndex, setSelectedOrderIndex] = useState(null); 
 
+    // Dynamically set API URL based on environment
+    const apiUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost/artisbay-server/server'  // Development URL
+    : '/server';  // Production URL (relative path)
+
+
 
     // Define modal types
   const MODAL_TYPES = {
@@ -141,7 +147,7 @@ const OrderForm = ({
     };
   
     try {
-      const response = await fetch('server/sendTireOrder.php', {
+      const response = await fetch(`${apiUrl}/sendTireOrder.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -322,8 +328,8 @@ const OrderForm = ({
 
     try {
         const url = editingOrder !== null
-            ? 'server/edit_order.php'
-            : 'server/saveOrder.php';
+            ? `${apiUrl}/edit_order.php`
+            : `${apiUrl}/saveOrder.php`;
 
         const response = await fetch(url, {
             method: 'POST',
@@ -379,7 +385,7 @@ const handleConfirmDelete = async () => {
 
   try {
     // Make a DELETE request to the backend
-    const response = await fetch('server/delete_order.php', {
+    const response = await fetch(`${apiUrl}/delete_order.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ order_id: orderId }),
@@ -443,7 +449,7 @@ const handleConfirmClearAll = async () => {
   };
 
   try {
-    const response = await fetch('delete_order.php', {
+    const response = await fetch(`${apiUrl}/delete_order.php`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

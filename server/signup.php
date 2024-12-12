@@ -1,5 +1,6 @@
 <?php
 // signup.php
+session_start();
 
 // Database connection parameters
 header("Access-Control-Allow-Origin: *");
@@ -8,7 +9,6 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 
 include 'db_connection.php'; // Include your database connection
-
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Generate a unique ID
     $uid = uniqid('user_', true); // Generates a unique ID prefixed with 'user_'
-    $_SESSION['uid'] = $uid
+    $_SESSION['uid'] = $uid; // <-- Corrected line, added the semicolon
+
     // Hash the password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 

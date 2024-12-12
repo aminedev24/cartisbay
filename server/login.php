@@ -1,6 +1,17 @@
 <?php
+session_start();
 
-header("Access-Control-Allow-Origin: http://artisbay.com"); // Adjust if necessary
+// Get the Origin header from the request
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+// Set the allowed origins dynamically
+$allowedOrigins = ['http://localhost:3000', 'http://artisbay.com'];
+
+// Check if the incoming request's origin matches any of the allowed origins
+if (in_array($origin, $allowedOrigins)) {
+    header("Access-Control-Allow-Origin: $origin");
+}
+
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json; charset=UTF-8");

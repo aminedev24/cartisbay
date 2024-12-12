@@ -15,6 +15,12 @@ const SignupForm = () => {
   const [isError, setIsError] = useState(false); // State to track if the message is an error
   const navigate = useNavigate();
 
+    // Dynamically set API URL based on environment
+    const apiUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost/artisbay-server/server'  // Development URL
+    : '/server';  // Production URL (relative path)
+
+
   const handleCountryChange = (event) => {
     const country = CountryList().find((c) => c.label === event.target.value);
     setSelectedCountry(event.target.value);
@@ -46,7 +52,7 @@ const SignupForm = () => {
     };
 
     try {
-      const response = await fetch('server/signup.php', {
+      const response = await fetch(`${apiUrl}/signup.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
