@@ -4,7 +4,7 @@
 $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 
 // Set the allowed origins dynamically
-$allowedOrigins = ['http://localhost:3000', 'http://artisbay.com'];
+$allowedOrigins = ['http://localhost:3000', 'https://artisbay.com'];
 
 // Check if the incoming request's origin matches any of the allowed origins
 if (in_array($origin, $allowedOrigins)) {

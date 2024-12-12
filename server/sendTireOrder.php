@@ -5,6 +5,8 @@ header("Access-Control-Allow-Methods: POST, OPTIONS"); // Allow POST and OPTIONS
 header("Access-Control-Allow-Credentials: true"); // Allow credentials (cookies, authorization headers, etc.)
 header('Content-Type: application/json');
 
+include 'db_connection.php'; // Include your database connection
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect and sanitize input data
     $maker = isset($_POST['make']) ? htmlspecialchars(trim($_POST['make'])) : null;
@@ -30,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare email
-    $to = "me@example.com"; // Replace with your email
+    $to = "orders@artisbay.com"; // Replace with your email
     $subject = "New Tire Order Received";
     $body = "New Tire Order Details:\n\n" .
             "Maker: $maker\n" .
@@ -47,7 +49,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send email
     if (mail($to, $subject, $body, $headers)) {
-        echo json_encode(["status" => "success", "message" => "Order sent successfully!"]);
+        // Email sent successfully, now clear the orders from the database
+        $conn = db_connect(); // Ensure you have a function to establish a database connection
+
+        // SQL query to delete the relevant tire orders
+        $sql = "DELETE FROM tireorders WHERE make = ? AND width = ? AND aspect_ratio = ? AND rim_diameter = ? AND load_index = ? AND speed_rating = ? AND type = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("siiiiss", $maker, $width, $aspectRatio, $rimDiameter, $loadIndex, $speedRating, $type);
+            if ($stmt->execute()) {
+                echo json_encode(["status" => "success", "message" => "Order sent and cleared from the database."]);
+            } else {
+                echo json_encode(["status" => "error", "message" => "Order sent, but failed to clear from the database."]);
+            }
+            $stmt->close();
+        } else {
+            echo json_encode(["status" => "error", "message" => "Database query preparation failed."]);
+        }
+
+        $conn->close();
     } else {
         // Capture more detailed error message if mail fails
         $error = error_get_last();
@@ -56,8 +77,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "message" => "Failed to send order. Error: " . $error['message']
         ]);
     }
-} else {
-    // Handle incorrect request method
-    echo json_encode(["status" => "error", "message" => "Invalid request method. Only POST requests are allowed."]);
-}
-?>
