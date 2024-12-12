@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.83128e9a.css",
-    "main.js": "/cartisbay/static/js/main.19a2475c.js",
+    "main.css": "/cartisbay/static/css/main.f60e1b51.css",
+    "main.js": "/cartisbay/static/js/main.3439784b.js",
     "static/js/453.d1cd0238.chunk.js": "/cartisbay/static/js/453.d1cd0238.chunk.js",
     "static/media/eco1copy.jpeg": "/cartisbay/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
     "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
@@ -17,6 +17,7 @@
     "static/media/car-makes-icons.eot?gtc92f": "/cartisbay/static/media/car-makes-icons.bf967c12a6e7e4d8b65b.eot",
     "static/media/car-makes-icons.woff?gtc92f": "/cartisbay/static/media/car-makes-icons.da6932fc85780f0b262b.woff",
     "static/media/car-makes-icons.ttf?gtc92f": "/cartisbay/static/media/car-makes-icons.5560f91d48a01b0a6b0f.ttf",
+    "static/media/register1.jpeg": "/cartisbay/static/media/register1.46d80a1203c627d1680e.jpeg",
     "static/media/fa-regular-400.ttf": "/cartisbay/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
     "static/media/car-makes-icons.woff2?gtc92f": "/cartisbay/static/media/car-makes-icons.bd9b9d280fdab147db37.woff2",
     "static/media/fa-regular-400.woff2": "/cartisbay/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
@@ -27,12 +28,12 @@
     "static/media/slick.ttf": "/cartisbay/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
-    "main.83128e9a.css.map": "/cartisbay/static/css/main.83128e9a.css.map",
-    "main.19a2475c.js.map": "/cartisbay/static/js/main.19a2475c.js.map",
+    "main.f60e1b51.css.map": "/cartisbay/static/css/main.f60e1b51.css.map",
+    "main.3439784b.js.map": "/cartisbay/static/js/main.3439784b.js.map",
     "453.d1cd0238.chunk.js.map": "/cartisbay/static/js/453.d1cd0238.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.83128e9a.css",
-    "static/js/main.19a2475c.js"
+    "static/css/main.f60e1b51.css",
+    "static/js/main.3439784b.js"
   ]
 }
