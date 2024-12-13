@@ -125,11 +125,20 @@ const OrderForm = ({
 
 
   const handleSendOrderEmail = async () => {
-    const { orderId, email } = formData; // Extract orderId and email from formData
+    // Ensure orders have been fetched
+    if (orders.length === 0) {
+        setMessage("No orders found to send.");
+        return;
+    }
 
+    const email = user.email; // Extract email from user state (assumed you have the user's email)
+    
+    // Extract the order IDs from the fetched orders
+    const orderIds = orders.map(order => order.id); // Assuming 'id' is the order ID
+    console.log(orderIds)
     const orderData = {
-        order_id: orderId,
-        email: email
+        order_ids: orderIds, // Send the array of order IDs
+        email: email,
     };
 
     try {
@@ -152,6 +161,7 @@ const OrderForm = ({
         setMessage("An error occurred while connecting to the server.");
     }
 };
+
 
 
   const handleEditOrder = (order) => {
