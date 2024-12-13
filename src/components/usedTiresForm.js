@@ -125,46 +125,34 @@ const OrderForm = ({
 
 
   const handleSendOrderEmail = async () => {
-    // Prepare the data to be sent to the backend
-    const { make, load_index, speed_rating, quantity, type, customerMessage } = formData;
-  
-    // Split the tireSize string into width, aspect ratio, and rim diameter
-    const [width, aspect_ratio, rim_diameter] = formData.tireSize.split(/\/|R/);
-  
+    const { orderId, email } = formData; // Extract orderId and email from formData
+
     const orderData = {
-      user_id: user.uid ? user.uid : '',
-      email: user.email,
-      make,
-      width,
-      aspect_ratio,
-      rim_diameter,
-      load_index,
-      speed_rating,
-      quantity: parseInt(quantity, 10),
-      type,
-      customerMessage: customerMessage || "",
+        order_id: orderId,
+        email: email
     };
-  
+
     try {
-      const response = await fetch(`${apiUrl}/sendTireOrder.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
-  
-      const result = await response.json();
-  
-      if (response.ok) {
-        setMessage("Your order has been successfully sent!");
-      } else {
-        setMessage(result.message || "An error occurred while sending the order.");
-      }
+        const response = await fetch(`${apiUrl}/sendTireOrder.php`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            setMessage("Your order has been successfully sent!");
+        } else {
+            setMessage(result.message || "An error occurred while sending the order.");
+        }
     } catch (error) {
-      setMessage("An error occurred while connecting to the server.");
+        setMessage("An error occurred while connecting to the server.");
     }
-  };
+};
+
 
   const handleEditOrder = (order) => {
     console.log("Order to edit:", order);
