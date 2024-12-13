@@ -94,7 +94,7 @@ const OrderForm = ({
     const fetchOrders = async () => {
       try {
       
-        if (!user || !user.uid) {
+        if (!user || !user.id) {
           console.error('User not authenticated');
           return;
         }
@@ -135,12 +135,14 @@ const OrderForm = ({
     
     // Extract the order IDs from the fetched orders
     const orderIds = orders.map(order => order.id); // Assuming 'id' is the order ID
+    console.log(email)
     console.log(orderIds)
     const orderData = {
         order_ids: orderIds, // Send the array of order IDs
         email: email,
     };
 
+    console.log(orderData)
     try {
         const response = await fetch(`${apiUrl}/sendTireOrder.php`, {
             method: 'POST',
@@ -154,6 +156,7 @@ const OrderForm = ({
 
         if (response.ok) {
             setMessage("Your order has been successfully sent!");
+            setOrders([]);
         } else {
             setMessage(result.message || "An error occurred while sending the order.");
         }
@@ -163,7 +166,19 @@ const OrderForm = ({
 };
 
 
+ useEffect(() => {
+    const requiredFieldsFilled =
+      formData.make && formData.type && formData.quantity && formData.tireSize;
+    setIsFormValid(requiredFieldsFilled);
+  }, [formData]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
   const handleEditOrder = (order) => {
     console.log("Order to edit:", order);
 
@@ -192,26 +207,12 @@ const OrderForm = ({
     setShowForm(true);
 };
 
-
-  useEffect(() => {
-    const requiredFieldsFilled =
-      formData.make && formData.type && formData.quantity && formData.tireSize;
-    setIsFormValid(requiredFieldsFilled);
-  }, [formData]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSaveOrder = async (e) => {
+const handleSaveOrder = async (e) => {
     e.preventDefault();
 
     // Validation checks
     if (!formData.make || !formData.type || !formData.tireSize || !formData.quantity) {
+        console.log('Validation failed: Missing required fields.');
         setMessage("Please fill in all required fields.");
         return;
     }
@@ -221,10 +222,12 @@ const OrderForm = ({
 
     // Ensure quantity is valid
     if (isNaN(quantity) || quantity < 1) {
+        console.log('Validation failed: Invalid quantity.');
         setMessage("Quantity must be at least 1.");
         return;
     }
 
+    // Construct the new order object
     const newOrder = {
         make: formData.make,
         width: parseInt(width, 10),
@@ -234,116 +237,20 @@ const OrderForm = ({
         speed_rating: formData.speed_rating,
         quantity: quantity,
         type: formData.type,
+        id: null,  // Temporarily set the ID to null for new orders
     };
 
-    const updatedOrders = [...orders]; // Create a copy of the existing orders array
-    let newTotalUnits = updatedOrders.reduce((acc, order) => acc + order.quantity, 0);
+    console.log('New Order before saving: ', newOrder);
 
-    // Check for existing orders and update accordingly
+    // Handle adding or editing an order
     if (editingOrder !== null) {
-        const previousOrder = updatedOrders[editingOrder];
-        if (previousOrder) {
-            newTotalUnits -= previousOrder.quantity;
-
-            const existingOrderIndex = updatedOrders.findIndex(
-                (order) =>
-                    order.width === newOrder.width &&
-                    order.aspect_ratio === newOrder.aspect_ratio &&
-                    order.rim_diameter === newOrder.rim_diameter &&
-                    order.type === newOrder.type &&
-                    order.make === newOrder.make
-            );
-
-            if (existingOrderIndex !== -1 && existingOrderIndex !== editingOrder) {
-                const accumulatedOrder = updatedOrders[existingOrderIndex];
-                accumulatedOrder.quantity += newOrder.quantity;
-                newTotalUnits += newOrder.quantity;
-                updatedOrders.splice(editingOrder, 1);
-                setMessage(`Your order has been updated and quantities have been accumulated!`);
-            } else {
-                updatedOrders[editingOrder] = newOrder;
-                newTotalUnits += newOrder.quantity;
-                setMessage(`Your order has been updated!`);
-            }
-        } else {
-            setMessage("Error: Unable to find the order to edit.");
-            return;
-        }
+        await editOrder(newOrder);
     } else {
-        const existingOrderIndex = updatedOrders.findIndex(
-            (order) =>
-                order.width === newOrder.width &&
-                order.aspect_ratio === newOrder.aspect_ratio &&
-                order.rim_diameter === newOrder.rim_diameter &&
-                order.type === newOrder.type &&
-                order.make === newOrder.make
-        );
-
-        if (existingOrderIndex !== -1) {
-            updatedOrders[existingOrderIndex].quantity += newOrder.quantity;
-            newTotalUnits += newOrder.quantity;
-            setMessage(`Your order has been updated and quantities have been accumulated!`);
-        } else {
-            updatedOrders.push(newOrder);
-            newTotalUnits += newOrder.quantity;
-            setMessage(`Your new order has been added!`);
-        }
+        await addOrder(newOrder);
     }
 
-    setOrders(updatedOrders);
-    setTotalUnits(newTotalUnits);
-
-    // Prepare order data for submission
-    const orderData = {
-        order_id: editingOrder !== null ? orders[editingOrder]?.id : null,
-        user_id: user.uid,
-        make: formData.make,
-        width: newOrder.width,
-        aspect_ratio: newOrder.aspect_ratio,
-        rim_diameter: newOrder.rim_diameter,
-        quantity: quantity,
-        type: formData.type,
-    };
-
-    if (formData.load_index) {
-        orderData.load_index = formData.load_index;
-    }
-    if (formData.speed_rating) {
-        orderData.speed_rating = formData.speed_rating;
-    }
-
-    console.log(`Payload sent to server: ${JSON.stringify(orderData)}`);
-
-    try {
-        const url = editingOrder !== null
-            ? `${apiUrl}/edit_order.php`
-            : `${apiUrl}/saveOrder.php`;
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(orderData),
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            setMessage(result.message || `Server error: ${response.statusText}`);
-        } else if (result.success) {
-            // If order is new, update with the returned order_id
-            if (!editingOrder && result.order_id) {
-                newOrder.id = result.order_id; // Assign the new order ID
-                updatedOrders.push(newOrder);
-                setOrders(updatedOrders);
-            }
-            setMessage("Your order has been successfully saved!");
-        } else {
-            setMessage(result.message || "An error occurred while saving the order.");
-        }
-    } catch (error) {
-        setMessage(`An error occurred while connecting to the server: ${error.message}`);
-    }
-
+    // Clear form data
+    console.log('Clearing form data...');
     setFormData({
         make: "",
         quantity: "",
@@ -354,9 +261,121 @@ const OrderForm = ({
     });
 };
 
+const addOrder = async (newOrder) => {
+    const updatedOrders = [...(orders || [])]; // Default to empty array if orders is falsy
+    updatedOrders.push(newOrder); // Add the new order to the list
 
-  
-  // Open confirmation modal when deleting an order
+    // Prepare order data for submission
+    const orderData = {
+        order_id: null,  // Send the ID as null for new orders
+        user_id: user.uid,
+        make: newOrder.make,
+        width: newOrder.width,
+        aspect_ratio: newOrder.aspect_ratio,
+        rim_diameter: newOrder.rim_diameter,
+        quantity: newOrder.quantity,
+        type: newOrder.type,
+    };
+
+    if (newOrder.load_index) {
+        orderData.load_index = newOrder.load_index;
+    }
+    if (newOrder.speed_rating) {
+        orderData.speed_rating = newOrder.speed_rating;
+    }
+
+    console.log(`Payload sent to server for new order: ${JSON.stringify(orderData)}`);
+
+    try {
+        const response = await fetch(`${apiUrl}/saveOrder.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData),
+        });
+
+        const result = await response.json();
+        console.log('Server Response for new order: ', result);
+
+        if (!response.ok) {
+            console.log('Error: Response not ok.');
+            setMessage(result.message || `Server error: ${response.statusText}`);
+        } else if (result.message === 'Order saved successfully!' && result.order_id) {
+            console.log('New order saved successfully.');
+            // Update the newly added order with the order_id from the response
+            newOrder.id = result.order_id;
+            setOrders(updatedOrders); // Update the state with the new order ID
+            setMessage("Your new order has been successfully saved!");
+        } else {
+            console.log('Error: Server response indicates failure.');
+            setMessage(result.message || "An error occurred while saving the order.");
+        }
+    } catch (error) {
+        console.log('Error: An error occurred during the fetch request.');
+        setMessage(`An error occurred while connecting to the server: ${error.message}`);
+    }
+};
+
+const editOrder = async (updatedOrder) => {
+    const updatedOrders = [...(orders || [])]; // Default to empty array if orders is falsy
+    const previousOrder = updatedOrders[editingOrder];
+
+    if (previousOrder) {
+        updatedOrders[editingOrder] = { ...previousOrder, ...updatedOrder }; // Update the order with new values
+    }
+
+    // Prepare order data for submission
+    const orderData = {
+        order_id: previousOrder.id,  // Use the existing order's ID
+        user_id: user.uid,
+        make: updatedOrder.make,
+        width: updatedOrder.width,
+        aspect_ratio: updatedOrder.aspect_ratio,
+        rim_diameter: updatedOrder.rim_diameter,
+        quantity: updatedOrder.quantity,
+        type: updatedOrder.type,
+    };
+
+    if (updatedOrder.load_index) {
+        orderData.load_index = updatedOrder.load_index;
+    }
+    if (updatedOrder.speed_rating) {
+        orderData.speed_rating = updatedOrder.speed_rating;
+    }
+
+    console.log(`Payload sent to server for editing order: ${JSON.stringify(orderData)}`);
+
+    try {
+        const response = await fetch(`${apiUrl}/edit_order.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData),
+        });
+
+        const result = await response.json();
+        console.log('Server Response for editing order: ', result);
+
+        if (!response.ok) {
+            console.log('Error: Response not ok.');
+            setMessage(result.message || `Server error: ${response.statusText}`);
+            setEditingOrder(null)
+        } else if (result.message === 'Order updated successfully.') {
+            console.log('Order updated successfully.');
+            setOrders(updatedOrders); // Update the state with the edited order
+            setMessage("Your order has been successfully updated!");
+            setEditingOrder(null)
+        } else {
+            console.log('Error: Server response indicates failure.');
+            setMessage(result.message || "An error occurred while updating the order.");
+            setEditingOrder(null)
+        }
+    } catch (error) {
+        console.log('Error: An error occurred during the fetch request.');
+        setMessage(`An error occurred while connecting to the server: ${error.message}`);
+        setEditingOrder(null)
+    }
+};
+
+// Open confirmation modal when deleting an order
 const handleDeleteOrder = (index) => {
   // Ensure the index is valid
   if (index < 0 || index >= orders.length) {

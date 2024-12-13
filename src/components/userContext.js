@@ -4,52 +4,59 @@ import Cookies from 'js-cookie';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null);
+  const [user, setUser] = useState(null); // No user data in cookies
   const [loading, setLoading] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false); // Flag to prevent multiple submissions
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Dynamically set API URL based on environment
-  const apiUrl = process.env.NODE_ENV === 'development'
-    ? 'http://localhost/artisbay-server/server'  // Development URL
-    : '/server';  // Production URL (relative path)
+  // API URL setup
+  const apiUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost/artisbay-server/server'
+      : '/server';
 
-    const login = async (email, password) => {
-      if (isSubmitting) return;
-      setIsSubmitting(true);
-    
-      try {
-        const formData = new URLSearchParams();
-        formData.append("email", email);
-        formData.append("password", password);
-    
-        const response = await fetch(`${apiUrl}/login.php`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded", // Prevent preflight
-          },
-          body: formData.toString(), // Use URL-encoded body
-          credentials: "include",
+  // Login Function
+  const login = async (email, password) => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    try {
+      const formData = new URLSearchParams();
+      formData.append('email', email);
+      formData.append('password', password);
+
+      const response = await fetch(`${apiUrl}/login.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+        credentials: 'include', // Important for session cookies
+      });
+
+      const data = await response.json();
+      if (data.status === 'success') {
+        // Set only token, avoid storing user details in cookies
+        Cookies.set('session_token', data.token, {
+          expires: 7,
+          secure: true, // Only over HTTPS
+          sameSite: 'Strict',
         });
-    
-        const data = await response.json();
-        if (data.status === "success") {
-          setUser(data.user);
-          Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
-        } else {
-          console.error(data.message);
-          throw new Error(data.message);
-        }
-      } catch (error) {
-        console.error("Error logging in:", error);
-      } finally {
-        setIsSubmitting(false);
+        setUser(data.user); // Set user locally in state
+      } else {
+        console.error(data.message);
+        throw new Error(data.message);
       }
-    };
-    
-  // Function to handle user logout
+    } catch (error) {
+      console.error('Error logging in:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Logout Function
   const logout = async () => {
-    if (isSubmitting) return; // Prevent multiple submissions
-    setIsSubmitting(true); // Disable the button while submitting
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(`${apiUrl}/logout.php`, {
@@ -57,47 +64,49 @@ export const UserProvider = ({ children }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Ensure cookies are sent for logout
+        credentials: 'include',
       });
 
       const data = await response.json();
       if (data.status === 'success') {
         setUser(null);
-        Cookies.remove('user'); // Remove user data from cookies
-        //window.location.reload(); // Reload the page to reflect logout
+        Cookies.remove('session_token'); // Remove the session token
       } else {
         console.error(data.message);
       }
     } catch (error) {
       console.error('Error logging out:', error);
     } finally {
-      setIsSubmitting(false); // Re-enable the button after the request completes
+      setIsSubmitting(false);
     }
   };
 
-  // Check login status on component mount (page reload)
+  // Check User Session
   useEffect(() => {
     const checkSession = async () => {
       try {
         const response = await fetch(`${apiUrl}/check_session.php`, {
           method: 'GET',
-          credentials: 'include', // Ensure cookies are sent
+          credentials: 'include',
         });
 
         const data = await response.json();
+        console.log(data.user)
         if (data.status === 'success') {
-          setUser(data.user); // Set user from session
-          Cookies.set('user', JSON.stringify(data.user), { expires: 7 }); // Update the cookie
+          setUser(data.user); // Set user from validated backend session
+        } else {
+          Cookies.remove('session_token'); // Ensure no invalid tokens remain
+          setUser(null);
         }
       } catch (error) {
         console.error('Error checking session:', error);
       } finally {
-        setLoading(false); // Set loading to false once the session check is complete
+        setLoading(false);
       }
     };
 
     checkSession();
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, loading, login, logout }}>
@@ -106,7 +115,7 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the UserContext
+// Custom hook for consuming UserContext
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {

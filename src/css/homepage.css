@@ -626,6 +626,12 @@ option {
 }
 .news-item-container {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-item-container img {
+    width: 20%;
 }
 
 .news-item {

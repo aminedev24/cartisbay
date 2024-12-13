@@ -20,10 +20,11 @@ const TireSelection = ({
   const [selectedType, setSelectedType] = useState(""); // State to track selected type for filtering
   const [selectedMaker, setSelectedMaker] = useState("All Makes"); // Default to "All Makes"
 
+  /*
   useEffect(() => {
     console.log("Updated orders:", orders);
   }, [orders]);
-
+*/
   const uniqueMakes = Array.isArray(orders) ? Array.from(new Set(orders.map((order) => order.make))) : [];
 
   // Get orders for the selected maker or all makers

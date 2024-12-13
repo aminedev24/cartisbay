@@ -49,6 +49,8 @@ const UsedTires = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+
+
   const [orders, setOrders] = useState({});
   const [totalUnits, setTotalUnits] = useState(0);
 

@@ -204,9 +204,14 @@ const links2 = [
         <div className="newsupdates">
           <img className="title-img" src={`${process.env.PUBLIC_URL}/images/news&updatestitle.png`} alt="usefullLinks" />
           <div className="news-item-container">
+            <div className="news-items">
             <p className="news-item">2024/11/15 Artisbay Inc was born</p>
             <p className="news-item">2024/12/02 Artisbay Inc website published</p>
             <p className="news-item">Holidays from 28 December to 5 January </p>
+
+            </div>
+           
+            <img src={ `${process.env.PUBLIC_URL}/images/homepage/companynewsicon.png`} />
           </div>
            
         </div>
