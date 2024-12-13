@@ -67,10 +67,12 @@ const InquiryForm = () => {
     fetchUserData();
   }, []); // This useEffect will run once when the component is mounted
 
+  /*
   useEffect(() => {
     console.log("Updated userData:", userData);
   }, [userData]);
-  
+  */
+ 
   //console.log(userData)
   const handleMakeChange = async (event) => {
     const make = event.target.value;

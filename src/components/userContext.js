@@ -91,7 +91,7 @@ export const UserProvider = ({ children }) => {
         });
 
         const data = await response.json();
-        console.log(data.user)
+        //console.log(data.user)
         if (data.status === 'success') {
           setUser(data.user); // Set user from validated backend session
         } else {

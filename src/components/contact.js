@@ -100,14 +100,6 @@ const Contact = () => {
 
       if (result.status === 'success') {
         setSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          country: '',
-          phone: '',
-          enquiry: '',
-          message: ''
-        });
       } else {
         alert(result.message); // Show error message
       }

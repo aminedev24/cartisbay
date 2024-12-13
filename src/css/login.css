@@ -114,7 +114,6 @@
   
   .right-sidebar h2 {
     font-size: 1.8rem; /* Heading size */
-    color: #34495e; /* Heading color */
     margin-bottom: 15px; /* Space below the heading */
   }
   
@@ -262,7 +261,7 @@
   }
   
   .account-container .shrink {
-  width: 69%;
+  width: 65%;
   }
   .account-container button[type='submit'] {
   background-color: #f1892b;
