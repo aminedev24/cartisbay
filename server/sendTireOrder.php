@@ -22,12 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate the inputs
     if (!$maker || !$email || !$width || !$aspectRatio || !$rimDiameter || !$loadIndex || !$speedRating || !$quantity || !$type) {
-        echo json_encode(["status" => "error", "message" => "Missing required fields."]);
+        $errorMessage = "Missing required fields.";
+        error_log($errorMessage);  // Log error
+        echo json_encode(["status" => "error", "message" => $errorMessage]);
         exit; // Stop the script execution
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(["status" => "error", "message" => "Invalid email format."]);
+        $errorMessage = "Invalid email format.";
+        error_log($errorMessage);  // Log error
+        echo json_encode(["status" => "error", "message" => $errorMessage]);
         exit;
     }
 
@@ -61,19 +65,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->execute()) {
                 echo json_encode(["status" => "success", "message" => "Order sent and cleared from the database."]);
             } else {
-                echo json_encode(["status" => "error", "message" => "Order sent, but failed to clear from the database."]);
+                $errorMessage = "Order sent, but failed to clear from the database.";
+                error_log($errorMessage);  // Log error
+                echo json_encode(["status" => "error", "message" => $errorMessage]);
             }
             $stmt->close();
         } else {
-            echo json_encode(["status" => "error", "message" => "Database query preparation failed."]);
+            $errorMessage = "Database query preparation failed.";
+            error_log($errorMessage);  // Log error
+            echo json_encode(["status" => "error", "message" => $errorMessage]);
         }
 
         $conn->close();
     } else {
         // Capture more detailed error message if mail fails
         $error = error_get_last();
+        $errorMessage = "Failed to send order. Error: " . $error['message'];
+        error_log($errorMessage);  // Log error
         echo json_encode([
             "status" => "error",
-            "message" => "Failed to send order. Error: " . $error['message']
+            "message" => $errorMessage
         ]);
     }
+}
+?>

@@ -20,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $requiredFields = ['order_id', 'make', 'quantity', 'rim_diameter', 'type', 'width', 'aspect_ratio'];
     foreach ($requiredFields as $field) {
         if (!isset($data[$field]) || empty($data[$field])) {
-            echo json_encode(['success' => false, 'message' => "Missing or empty field: $field"]);
+            $errorMessage = "Missing or empty field: $field";
+            error_log($errorMessage); // Log the error
+            echo json_encode(['success' => false, 'message' => $errorMessage]);
             exit;
         }
     }
@@ -44,15 +46,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         SET make=?, quantity=?, load_index=?, speed_rating=?, rim_diameter=?, type=?, width=?, aspect_ratio=? 
         WHERE id=?
     ");
+    if ($stmt === false) {
+        $errorMessage = 'Failed to prepare the SQL statement: ' . $conn->error;
+        error_log($errorMessage); // Log the error
+        echo json_encode(['success' => false, 'message' => $errorMessage]);
+        exit;
+    }
+
     $stmt->bind_param("sissssssi", $make, $quantity, $load_index, $speed_rating, $rim_diameter, $type, $width, $aspect_ratio, $orderId);
 
     if ($stmt->execute()) {
         echo json_encode(['success' => true, 'message' => 'Order updated successfully.']);
     } else {
+        $errorMessage = 'Failed to update order: ' . $stmt->error;
+        error_log($errorMessage); // Log the error
         echo json_encode(['success' => false, 'message' => 'Failed to update order.']);
     }
 
     $stmt->close();
+} else {
+    $errorMessage = 'Invalid request method: ' . $_SERVER['REQUEST_METHOD'];
+    error_log($errorMessage); // Log the error
 }
 
 $conn->close();

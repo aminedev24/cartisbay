@@ -38,8 +38,8 @@ const SignupForm = () => {
 
   const handleSignup = async (event) => {
     event.preventDefault();
-    setMessage("Signing up..."); // Set message when signup starts
-    setIsError(false); // Reset error state
+    setMessage("Signing up...");
+    setIsError(false);
     const formattedPhone = `${phoneCode} ${phone}`.trim();
     
     const formData = {
@@ -50,7 +50,7 @@ const SignupForm = () => {
       phone: formattedPhone,
       company
     };
-
+  
     try {
       const response = await fetch(`${apiUrl}/signup.php`, {
         method: 'POST',
@@ -59,38 +59,39 @@ const SignupForm = () => {
         },
         body: new URLSearchParams(formData).toString(),
       });
-
+  
       const resultText = await response.text();
       let result;
       try {
         result = JSON.parse(resultText);
       } catch (error) {
         console.error('Response is not valid JSON:', resultText);
-        setMessage("An error occurred. Please try again."); // Set error message
+        setMessage("An error occurred. Please try again.");
         setIsError(true);
         return;
       }
-
+  
       if (result.success) {
-        setMessage("Signup successful! Redirecting to login..."); // Success message
+        setMessage("Signup successful! Redirecting to login...");
         setTimeout(() => {
           navigate('/login');
-        }, 4000); // Redirect after 2 seconds
+        }, 4000);
       } else if (result.errors) {
-        setMessage("Signup failed. Please check your input."); // Error message
+        setMessage("Signup failed. Please check your input.");
         setIsError(true);
         result.errors.forEach(error => console.error(error));
       } else {
-        setMessage("An error occurred. Please try again."); // General error message
+        setMessage("An error occurred. Please try again.");
         setIsError(true);
         console.error(result.error);
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage("An error occurred. Please try again."); // Set error message
+      setMessage("An error occurred. Please try again.");
       setIsError(true);
     }
   };
+  
 
   return (
     <form className="signup-form" onSubmit={handleSignup}>

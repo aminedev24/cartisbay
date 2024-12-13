@@ -4,7 +4,7 @@
 $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 
 // Set the allowed origins dynamically
-$allowedOrigins = ['http://localhost:3000', 'https://artisbay.com'];
+$allowedOrigins = ['http://localhost:3001', 'https://artisbay.com'];
 
 // Check if the incoming request's origin matches any of the allowed origins
 if (in_array($origin, $allowedOrigins)) {
@@ -26,8 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 // Retrieve the Authorization header
 $headers = getallheaders();
 if (!isset($headers['Authorization'])) {
+    $errorMessage = 'Unauthorized: Missing Authorization header';
+    error_log($errorMessage); // Log the error
     http_response_code(401);
-    echo json_encode(['message' => 'Unauthorized: Missing Authorization header']);
+    echo json_encode(['message' => $errorMessage]);
     exit();
 }
 
@@ -36,8 +38,10 @@ $authHeader = $headers['Authorization'];
 $uid = str_replace('Bearer ', '', $authHeader);
 
 if (empty($uid)) {
+    $errorMessage = 'Unauthorized: Invalid UID';
+    error_log($errorMessage); // Log the error
     http_response_code(401);
-    echo json_encode(['message' => 'Unauthorized: Invalid UID']);
+    echo json_encode(['message' => $errorMessage]);
     exit();
 }
 
@@ -46,6 +50,8 @@ $query = "SELECT * FROM tireorders WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 
 if ($stmt === false) {
+    $errorMessage = 'Database query preparation failed: ' . $conn->error;
+    error_log($errorMessage); // Log the error
     http_response_code(500);
     echo json_encode(['message' => 'Database query preparation failed', 'error' => $conn->error]);
     exit();
@@ -53,6 +59,8 @@ if ($stmt === false) {
 
 // Bind the UID as a parameter
 if (!$stmt->bind_param("s", $uid)) {
+    $errorMessage = 'Parameter binding failed: ' . $stmt->error;
+    error_log($errorMessage); // Log the error
     http_response_code(500);
     echo json_encode(['message' => 'Parameter binding failed', 'error' => $stmt->error]);
     exit();
@@ -60,6 +68,8 @@ if (!$stmt->bind_param("s", $uid)) {
 
 // Execute the statement
 if (!$stmt->execute()) {
+    $errorMessage = 'Database query execution failed: ' . $stmt->error;
+    error_log($errorMessage); // Log the error
     http_response_code(500);
     echo json_encode(['message' => 'Database query execution failed', 'error' => $stmt->error]);
     exit();

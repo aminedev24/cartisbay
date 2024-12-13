@@ -13,36 +13,39 @@ export const UserProvider = ({ children }) => {
     ? 'http://localhost/artisbay-server/server'  // Development URL
     : '/server';  // Production URL (relative path)
 
-  // Function to handle user login
-  const login = async (email, password) => {
-    if (isSubmitting) return; // Prevent multiple submissions
-    setIsSubmitting(true); // Disable the button while submitting
-
-    try {
-      const response = await fetch(`${apiUrl}/login.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }), // Send login credentials
-        credentials: 'include', // Ensure cookies are sent and received
-      });
-
-      const data = await response.json();
-      if (data.status === 'success') {
-        setUser(data.user); // Set user in state
-        Cookies.set('user', JSON.stringify(data.user), { expires: 7 }); // Store user data in cookies for 7 days
-      } else {
-        console.error(data.message);
-        throw new Error(data.message);
+    const login = async (email, password) => {
+      if (isSubmitting) return;
+      setIsSubmitting(true);
+    
+      try {
+        const formData = new URLSearchParams();
+        formData.append("email", email);
+        formData.append("password", password);
+    
+        const response = await fetch(`${apiUrl}/login.php`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Prevent preflight
+          },
+          body: formData.toString(), // Use URL-encoded body
+          credentials: "include",
+        });
+    
+        const data = await response.json();
+        if (data.status === "success") {
+          setUser(data.user);
+          Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
+        } else {
+          console.error(data.message);
+          throw new Error(data.message);
+        }
+      } catch (error) {
+        console.error("Error logging in:", error);
+      } finally {
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      console.error('Error logging in:', error);
-    } finally {
-      setIsSubmitting(false); // Re-enable the button after the request completes
-    }
-  };
-
+    };
+    
   // Function to handle user logout
   const logout = async () => {
     if (isSubmitting) return; // Prevent multiple submissions
@@ -61,7 +64,7 @@ export const UserProvider = ({ children }) => {
       if (data.status === 'success') {
         setUser(null);
         Cookies.remove('user'); // Remove user data from cookies
-        window.location.reload(); // Reload the page to reflect logout
+        //window.location.reload(); // Reload the page to reflect logout
       } else {
         console.error(data.message);
       }

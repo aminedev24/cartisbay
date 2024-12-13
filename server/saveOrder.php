@@ -25,9 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check for missing fields
     $missingFields = array_filter($requiredFields, fn($field) => !isset($data[$field]));
 
-    // If there are missing fields, return an error message
+    // If there are missing fields, log the error and return an error message
     if (!empty($missingFields)) {
-        echo json_encode(['message' => 'Missing required fields: ' . implode(', ', $missingFields)]);
+        $missingFieldsMessage = 'Missing required fields: ' . implode(', ', $missingFields);
+        error_log($missingFieldsMessage); // Log the missing fields error
+        echo json_encode(['message' => $missingFieldsMessage]);
         http_response_code(400); // Bad request if fields are missing
         exit;
     }
@@ -49,6 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Prepare and bind parameters
     $stmt = $conn->prepare($sql);
+    
+    if ($stmt === false) {
+        $errorMessage = "Failed to prepare the SQL statement. Error: " . $conn->error;
+        error_log($errorMessage); // Log error for failed query preparation
+        echo json_encode(['message' => 'Error preparing the SQL statement.']);
+        http_response_code(500); // Internal Server Error
+        exit;
+    }
+
     $stmt->bind_param(
         "sssiiisii", 
         $uid, // Use uid from session
@@ -68,6 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode(['message' => 'Order saved successfully!', 'order_id' => $order_id]);
         http_response_code(200); // OK status code
     } else {
+        $errorMessage = "Error executing the SQL statement. Error: " . $stmt->error;
+        error_log($errorMessage); // Log error for failed query execution
         echo json_encode(['message' => 'Error saving the order.']);
         http_response_code(500); // Internal Server Error if something goes wrong
     }

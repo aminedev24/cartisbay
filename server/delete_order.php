@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             echo json_encode(['success' => true, 'message' => 'All orders have been cleared.']);
         } else {
+            error_log('Failed to clear all orders: ' . $stmt->error); // Log error
             echo json_encode(['success' => false, 'message' => 'Failed to clear all orders.']);
         }
         $stmt->close();
@@ -36,13 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             echo json_encode(['success' => true, 'message' => 'Order deleted successfully.']);
         } else {
+            error_log('Failed to delete order with ID ' . $orderId . ': ' . $stmt->error); // Log error
             echo json_encode(['success' => false, 'message' => 'Failed to delete the order.']);
         }
 
         $stmt->close();
     } else {
+        error_log('Invalid request: Missing or invalid fields in the POST data.'); // Log invalid data error
         echo json_encode(['success' => false, 'message' => 'Missing or invalid fields']);
     }
+} else {
+    error_log('Invalid request method: ' . $_SERVER['REQUEST_METHOD']); // Log method error
 }
 
 $conn->close();

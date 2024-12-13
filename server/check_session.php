@@ -5,7 +5,7 @@ session_start();
 $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 
 // Set the allowed origins dynamically
-$allowedOrigins = ['http://localhost:3000', 'https://artisbay.com'];
+$allowedOrigins = ['http://localhost:3001', 'https://artisbay.com'];
 
 // Check if the incoming request's origin matches any of the allowed origins
 if (in_array($origin, $allowedOrigins)) {
@@ -22,7 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
     exit;
 }
 
+// Check if session variables are set and log session data
 if (isset($_SESSION['user_id'])) {
+    // Log the session contents to the error log
+    error_log("Session Data checklogin: " . print_r($_SESSION, true));
+
+    // Return the session data in the response
     echo json_encode([
         'status' => 'success',
         'user' => [
@@ -33,6 +38,9 @@ if (isset($_SESSION['user_id'])) {
         ]
     ]);
 } else {
+    // If session is not set, log it as well
+    error_log("Session not set or expired.");
+
     echo json_encode(['status' => 'failure']);
 }
 ?>
