@@ -52,7 +52,8 @@ const Contact = () => {
         const data = await response.json();
         console.log(data);
         if (data.error) {
-          alert(data.error); // Handle errors (e.g., user not logged in)
+          //alert(data.error); // Handle errors (e.g., user not logged in)
+          return
         } else {
           setUserData({
             fullName: data.data.full_name,
@@ -63,7 +64,7 @@ const Contact = () => {
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
-        alert('An error occurred while fetching user data.');
+        //alert('An error occurred while fetching user data.');
       }
     };
 
@@ -126,7 +127,7 @@ const Contact = () => {
       >
         <h1>We like to hear from you!</h1>
         <h2>Contact Us</h2>
-        <p>
+        <p className='contact-prompt'>
           If you have any questions or would like to learn more about our offerings, please don’t hesitate to reach out using the form below. We’re always eager to connect with our customers and will respond as promptly as possible.
         </p>
         {submitted && <p className="success-message">Thank you for your message! We will get back to you shortly.</p>}

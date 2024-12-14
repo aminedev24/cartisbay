@@ -1,5 +1,5 @@
 .footer {
-  background-color: #1e3a8a;
+  background-color: #1da1f2;
   color: white;
   padding: 20px;
   text-align: center;
@@ -9,61 +9,20 @@
   z-index: 200;
 }
 
-.footer p {
-  margin: 0;
-}
-
-.footer-links {
+.footer-upper {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 20px;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  align-items: center;
+}
+.footer-upper img {
+  margin-right: 20px;
+}
+.header .info {
+  line-height: 1.6;
 }
 
-
-
-.footer-section {
-  margin: 10px;
-  text-align: left;
-}
-
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center align the logo and description */
-  max-width: 150px; /* Set a maximum width for the logo container */
-}
-
-.footer-section h4 {
-  font-weight: bold;
-  color: #e67e22;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin: 5px 0;
-}
-
-.footer-section ul li a ,.logo-container a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.logo-container a {
-  margin: 10px;
-}
-
-.footer-section ul li a:hover , .logo-container a:hover {
-  color: #e67e22;
-}
-
-.logo-description {
-  margin-top: 10px; /* Space between logo and description */
-  font-size: 15px; /* Adjust font size as needed */
-  color: #e0e0e0; /* A lighter color for the description */
-  text-align: center; /* Center align the text */
+.footer-upper a {
+  color: inherit;
 }

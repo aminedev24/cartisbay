@@ -28,18 +28,23 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
-      await login(email, password); // Use the login function from UserProvider
-      setMessage(`Welcome, ${email}!`); // Show a welcome message
-      setMessageType('success'); // Set message type to success
-      // No need to navigate here; it will be handled in the useEffect
+      const response = await login(email, password); // Use login function
+  
+      if (response.status === "success") {
+        setMessage(`Welcome, ${response.user.name || email}!`); // Display welcome message
+        setMessageType("success");
+      } else {
+        throw new Error(response.message || "Login failed. Please try again.");
+      }
     } catch (error) {
-      setMessage('Login failed. Please check your credentials and try again.');
-      setMessageType('error'); // Set message type to error
-      console.error('Error:', error);
+      setMessage(error.message);
+      setMessageType("error");
+      console.error("Login error:", error);
     }
   };
+  
 
   return (
     <div

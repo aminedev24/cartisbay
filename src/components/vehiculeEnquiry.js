@@ -46,9 +46,10 @@ const InquiryForm = () => {
         });
 
         const data = await response.json();
-        console.log(data)
+        //console.log(data)
         if (data.error) {
-          alert(data.error); // Handle errors (e.g., user not logged in)
+          //alert(data.error); // Handle errors (e.g., user not logged in)
+          return
         } else {
           setUserData({
             fullName: data.data.full_name, // Correctly map the full_name key
@@ -91,7 +92,7 @@ const InquiryForm = () => {
     event.preventDefault(); // Prevent the default form submission
   
     const formData = new FormData(event.target); // Get form data
-    console.log(formData)
+    //console.log(formData)
     try {
       const response = await fetch(`${apiUrl}/sendInquiry.php`, {
         method: 'POST',
@@ -99,13 +100,13 @@ const InquiryForm = () => {
       });
   
       // Log response for debugging
-      console.log('Response Status:', response.status);
+     // console.log('Response Status:', response.status);
       const result = await response.json();
   
       if (response.status === 200 && result.status === "success") {
-        alert(result.message); // Show success message
+        //alert(result.message); // Show success message
       } else {
-        alert(result.message); // Show error message
+        //alert(result.message); // Show error message
       }
     } catch (error) {
       console.error('Error:', error);

@@ -17,6 +17,7 @@ import UsedTiresFAQ from './aboutusedtires';
 import Auction from './auction';
 import TelegraphicTransfer from './telegraphicTransfer';
 import PrivacyPolicy from './privacy';
+import SellInArtisbay from './sellinartisbay';
 // Define the topics
 const topics = {
   help: [
@@ -33,6 +34,7 @@ const topics = {
   buying: [
     { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
     { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
+    { name: "sell on artisbay", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonartisbay.jpeg` },
     { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},
     { name: "privacy policy", content: <PrivacyPolicy />, image:  `${process.env.PUBLIC_URL}/images/privacybanner.png`},
 

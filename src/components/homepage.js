@@ -9,6 +9,7 @@ import MediaSlider from "./slider";
 import Makestypes from "./makestypes";
 import { FaHandPointer } from "react-icons/fa";
 import useCheckScreenSize from "./screenSize";
+import { useLocation } from "react-router-dom";
 function HomePage() {
   const [cars, setCars] = useState([]);
   const [filters, setFilters] = useState({
@@ -21,8 +22,11 @@ function HomePage() {
   });
 
   const isSmallScreen = useCheckScreenSize();
+  
 
-  console.log(isSmallScreen)
+
+
+  //console.log(isSmallScreen)
 
   useEffect(() => {
     setCars(carData);
@@ -30,30 +34,11 @@ function HomePage() {
 
   const cards = [
     {
-      imgSrc: `${process.env.PUBLIC_URL}/images/usedtires.png`,
-
-      link: "/used-tires",
-    },
-    {
       imgSrc: `${process.env.PUBLIC_URL}/images/howToBuy.png`,
 
       link: "/help?topic=How%20to%20Buy%20used%20cars",
     },
-    {
-      imgSrc: `${process.env.PUBLIC_URL}/images/cardismantling.png`,
 
-      link: "/car-dismantling",
-    },
-    {
-      imgSrc: `${process.env.PUBLIC_URL}/images/auction.png`,
-
-      link: "/help?topic=auction",
-    },
-    {
-      imgSrc: `${process.env.PUBLIC_URL}/images/Thumbnails/machinery.png`,
-
-      link: "/help?topic=Machinery",
-    },
     {
       imgSrc: `${process.env.PUBLIC_URL}/images/howtopay.png`,
 
@@ -106,7 +91,7 @@ const links2 = [
         <div 
           className="info-cards-container"
           style={{
-            gridTemplateColumns: isSmallScreen.isSmallScreen ? 'repeat(4, 1fr)' : 'repeat(8,1fr)',
+            gridTemplateColumns: isSmallScreen.isSmallScreen ? 'repeat(4, 1fr)' : 'repeat(4,1fr)',
            
           }}
         >
@@ -221,7 +206,7 @@ const links2 = [
           <h2>Why Choose Us?</h2>
           <div className="small-banner-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/ecofriendlyhome.png`}
+              src={`${process.env.PUBLIC_URL}/images/ecohome.png`}
               className="small-banner"
               alt="eco friendly banner"
             />

@@ -99,3 +99,7 @@
 .cta-link:hover {
     color: #0d8bcf; /* Darker color on hover */
 }
+
+.terms-container .contact-prompt {
+  display: none;
+}

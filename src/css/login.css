@@ -261,7 +261,7 @@
   }
   
   .account-container .shrink {
-  width: 65%;
+  width: 68%;
   }
   .account-container button[type='submit'] {
   background-color: #f1892b;
@@ -278,3 +278,20 @@
   left:35px;
   }
   
+  .register-container .modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .register-container .modal-content {
+    background-color: #fff;
+  }
+
+  .terms-highlight {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .register-container .terms {
+    max-width: 400px;
+  }

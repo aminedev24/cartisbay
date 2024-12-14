@@ -20,11 +20,11 @@ const TireSelection = ({
   const [selectedType, setSelectedType] = useState(""); // State to track selected type for filtering
   const [selectedMaker, setSelectedMaker] = useState("All Makes"); // Default to "All Makes"
 
-  /*
+  
   useEffect(() => {
     console.log("Updated orders:", orders);
   }, [orders]);
-*/
+
   const uniqueMakes = Array.isArray(orders) ? Array.from(new Set(orders.map((order) => order.make))) : [];
 
   // Get orders for the selected maker or all makers
@@ -135,7 +135,9 @@ const TireSelection = ({
       </div>
 
       <div className="table-btns">
-        <button className="continue-selection-btn" onClick={handleClearOrders}>
+        <button 
+          className="continue-selection-btn" onClick={handleClearOrders} 
+          disabled={Object.keys(orders).length === 0}>
           Clear Orders
         </button>
 

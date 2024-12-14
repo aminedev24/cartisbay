@@ -7,19 +7,37 @@
   position: relative;
 }
 
+.right-sidebar .account-container {
+  padding: 5px 10px;
+}
+
 .welcome-banner {
   position: relative;
   background-image: url('../../public/images/homepage/register1.jpeg');
-  background-position: center;
   background-size: cover;
-  height: 100%;
+  height: 50%;
   display: flex;
   justify-content: center;
 }
 
+.register-banner {
+  position: relative;
+  background-image: url('../../public//images/homepage/register0.jpeg');
+  height: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.shipment-banner {
+  position: relative;
+  background-image: url('../../public//images/homepage/Shippingschedulepost.jpeg');
+  height: 50%;
+  background-size: cover;
+}
+
 .welcome-banner h2 {
   position: absolute;
-  top: 12%;
+  top: 7%;
   color: #ffff;
 }
 

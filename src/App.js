@@ -20,13 +20,14 @@ import InquiryForm from './components/vehiculeEnquiry';
 import RegisterForm from './components/register';
 import { UserProvider } from './components/userContext';
 import Login from './components/login';
-
+import { useLocation } from 'react-router-dom';
 /* src/index.css */
 
 
 function App() {
   
   const [bodyWidth, setBodyWidth] = useState(window.screen.width);
+
 
   /*
   useEffect(() => {

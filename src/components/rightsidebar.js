@@ -11,29 +11,22 @@ const RightSidebar = () => {
   <div className="account-container">
   {!user ? (
     <>
-      <div className="header">
-        <span className="person-icon">
-          <i className="fas fa-user-plus"></i>
-        </span>
-        <h2>Create an Account</h2>
-      </div>
-      <div className="image-section">
-        <Link to='/register'>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/homepage/register0.jpeg`}
-            alt="register-ad"
-          />
-        </Link>
-      </div>
+     
+      <Link to='register'><div className="register-banner"></div></Link>
     </>
   ) : (
     <>
-     <div className="image-section welcome-banner">
+     <div className="welcome-banner">
        <h2>welcome {`${user.name}`}</h2>
     </div>
       
     </>
   )}
+
+<div className="shipment-banner">
+
+</div>
+  
   
   </div>
 </div>

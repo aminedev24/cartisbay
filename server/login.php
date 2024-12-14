@@ -6,7 +6,6 @@ ini_set('session.cookie_secure', 1); // Ensure HTTPS is enabled
 ini_set('session.cookie_samesite', 'Strict');
 session_start();
 
-
 session_regenerate_id(true); // Regenerate session ID
 
 // Allowed Origins (CORS)
@@ -25,17 +24,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 
-    if (!$email || !$password) {
-        echo json_encode(["status" => "error", "message" => "Email and password are required."]);
+    // Validate input (email should be in correct format)
+    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL) || !$password) {
+        echo json_encode(["status" => "error", "message" => "Wrong email or password."]); // Generalized error message
         exit;
     }
 
     // Prepare SQL Query to Prevent SQL Injection
-    $stmt = $conn->prepare("SELECT id, uid, full_name, email, password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, `uid`, full_name, email, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
+    // If email exists in the database
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $uid, $fullName, $emailFromDb, $hashedPassword);
         $stmt->fetch();
@@ -81,10 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]
             ]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Invalid credentials."]);
+            // Wrong password
+            echo json_encode(["status" => "error", "message" => "Wrong email or password."]); // Generalized error message
         }
     } else {
-        echo json_encode(["status" => "error", "message" => "User not found."]);
+        // If email does not exist
+        echo json_encode(["status" => "error", "message" => "Wrong email or password."]); // Generalized error message
     }
     $stmt->close();
 } else {

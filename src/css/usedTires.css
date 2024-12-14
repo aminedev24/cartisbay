@@ -79,7 +79,7 @@
 }
 
 /* Heading styling */
-.order-steps-container h1 , .reasons-wrapper h1, .tireRating-title {
+.order-steps-container h1 , .reasons-wrapper h1, .tireRating-title, .tire-width-container h1 , .tire-depth h2 {
   font-size: 2.5em;
   color: #1e377f;
   margin-bottom: 40px;
@@ -435,5 +435,29 @@ ul li {
   flex: 1;
 }
 
+/* TireWidth.css */
+/* TireWidth.css */
+.tire-width-container {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
 
+.tire-width-container p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.tire-width-container ol {
+  margin-left: 20px;
+}
+
+.tire-width-container li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #444;
+}

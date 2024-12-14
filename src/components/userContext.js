@@ -18,40 +18,39 @@ export const UserProvider = ({ children }) => {
   const login = async (email, password) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
-
+  
     try {
       const formData = new URLSearchParams();
-      formData.append('email', email);
-      formData.append('password', password);
-
+      formData.append("email", email);
+      formData.append("password", password);
+  
       const response = await fetch(`${apiUrl}/login.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formData.toString(),
-        credentials: 'include', // Important for session cookies
+        credentials: "include", // Important for session cookies
       });
-
+  
       const data = await response.json();
-      if (data.status === 'success') {
-        // Set only token, avoid storing user details in cookies
-        Cookies.set('session_token', data.token, {
+  
+      if (data.status === "success") {
+        Cookies.set("session_token", data.token, {
           expires: 7,
-          secure: true, // Only over HTTPS
-          sameSite: 'Strict',
+          secure: true,
+          sameSite: "Strict",
         });
-        setUser(data.user); // Set user locally in state
-      } else {
-        console.error(data.message);
-        throw new Error(data.message);
+        setUser(data.user);
       }
+  
+      return data; // Return server response to be handled by calling function
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error("Error logging in:", error);
+      throw new Error("Failed to login. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   // Logout Function
   const logout = async () => {
@@ -71,6 +70,7 @@ export const UserProvider = ({ children }) => {
       if (data.status === 'success') {
         setUser(null);
         Cookies.remove('session_token'); // Remove the session token
+        window.location.reload();
       } else {
         console.error(data.message);
       }
