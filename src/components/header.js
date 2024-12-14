@@ -115,7 +115,6 @@ const Header = () => {
                 <a href="#">Tanzania</a>
               </div>
             </div>
-            <div className="nav-item">Reviews</div>
             <div
               className="nav-item dropdown"
               ref={(el) => (dropdownRefs.current['overview'] = el)}
