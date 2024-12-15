@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 //import './Artisbay.css'; // Import the CSS file
 import Contact from './contact';
 function SellInArtisbay() {
+  const [sell, setSell] = useState(true)
   return (
     <div className="terms-container">
       <h1 className="heading">Join Artisbay Inc. and Expand Your Reach to Global Markets</h1>
@@ -42,7 +43,7 @@ function SellInArtisbay() {
         Partner with Artisbay Inc. Today! Artisbay Inc. empowers local Japanese car dealers to expand their reach and connect with a global market. With trusted shipping to Dar es Salaam and Walvis Bay, cost-effective logistics, and targeted marketing, you'll have everything you need to grow your business - without any upfront fees.
       </p>
 
-      <Contact />
+      <Contact sell={sell} setSell={setSell} />
 
       
     </div>

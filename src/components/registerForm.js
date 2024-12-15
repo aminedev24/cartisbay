@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import CountryList from "./countryList";
 import { useNavigate } from "react-router-dom";
-import TermsAndConditions from "./terms";
 
-
-const SignupForm = () => {
+const SignupForm = ({ setIsModalOpen })  => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -13,7 +11,7 @@ const SignupForm = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
@@ -78,6 +76,7 @@ const SignupForm = () => {
   };
 
   return (
+    <div className="signup-container">
     <form className="signup-form" onSubmit={handleSignup}>
       {message && (
         <div className={`message ${isError ? "error" : "success"}`}>
@@ -176,25 +175,12 @@ const SignupForm = () => {
         </label>
       </div>
 
-      {isModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
-          >
-            <TermsAndConditions />
-            <button
-              className="close-modal"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+    
 
       <button type="submit">Sign Up</button>
     </form>
+   
+    </div>
   );
 };
 

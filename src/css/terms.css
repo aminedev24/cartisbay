@@ -103,3 +103,11 @@
 .terms-container .contact-prompt {
   display: none;
 }
+
+.terms-container .contact-container {
+  scale: unset !important;
+}
+
+.terms-container .contact-wrapper {
+  height: unset !important;
+}

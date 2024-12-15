@@ -201,19 +201,21 @@ const links2 = [
            
         </div>
 
-        {/* Why Choose Us Section */}
-        <section className="why-choose-us">
-          <h2>Why Choose Us?</h2>
-          <div className="small-banner-container">
+        <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/ecohome.png`}
-              className="small-banner"
+              src={`${process.env.PUBLIC_URL}/images/ecohome.jpeg`}
+              className="ad-banner"
               alt="eco friendly banner"
             />
             <Link to="/help?topic=Sustainability">
               <button className="small-banner-btn eco-btn">Read more</button>
             </Link>
           </div>
+
+        {/* Why Choose Us Section */}
+        <section className="why-choose-us">
+          <h2>Why Choose Us?</h2>
+         
           <img
             src={`${process.env.PUBLIC_URL}/images/whychooseushome.png`}
             alt="Why Choose Us"

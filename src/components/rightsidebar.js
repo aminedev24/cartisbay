@@ -12,7 +12,13 @@ const RightSidebar = () => {
   {!user ? (
     <>
      
-      <Link to='register'><div className="register-banner"></div></Link>
+      <Link to='register'><div className="register-banner">
+        <div className="header">
+            <span className="person-icon">
+              <i className="fas fa-user-plus"></i>
+            </span>
+            <h2>Create an Account</h2>
+          </div></div></Link>
     </>
   ) : (
     <>

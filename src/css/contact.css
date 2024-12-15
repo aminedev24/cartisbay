@@ -40,12 +40,12 @@
 .contact-container button {
   width: 100%;
   padding: 10px;
-  background-color: #ffcc00;
+  background-color: #1da1f2;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
-  color: #000;
+  color: #fff;
   cursor: pointer;
 }
 .contact-container button:hover {

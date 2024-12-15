@@ -81,7 +81,6 @@
     flex: 0 1 40%; /* Allow flexibility and set a base width */
     text-align: left;
     max-width: 45%; /* Prevent exceeding this width */
-    min-width: 200px;
   }
 
   .form-grid {
@@ -182,13 +181,10 @@
   .contact-message {
     width: 80%;
   }
-  .mandatory-note {
-    display: inline-block;
-    margin-left: 10%;
-  }
+
   .textArea {
     margin-top: 10px;
-    flex: 0 1 83% !important;
+    flex: 0 1 80% !important;
     max-width: unset !important;
   }
 

@@ -18,6 +18,7 @@
   height: 50%;
   display: flex;
   justify-content: center;
+  margin: 10px 0;
 }
 
 .register-banner {
@@ -31,7 +32,7 @@
 .shipment-banner {
   position: relative;
   background-image: url('../../public//images/homepage/Shippingschedulepost.jpeg');
-  height: 50%;
+  height: 45%;
   background-size: cover;
 }
 
@@ -64,4 +65,13 @@
 /* Optional: Specific styles for the additional image */
 .additional-image {
   margin-top: 20px; /* Space above the additional image */
+}
+
+.account-container a {
+  text-decoration: none;
+}
+
+.right-sidebar .header {
+  position: relative;
+  top: -15px;
 }

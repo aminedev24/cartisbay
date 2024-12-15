@@ -766,6 +766,7 @@ const OrderForm = ({
                 type="button"
                 className="send-order-btn"
                 onClick={handleSendOrderEmail}
+                disabled={!user}
               >
                 Send Order
               </button>
