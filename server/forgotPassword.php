@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resetLink = BASE_URL . "/#/reset-password/$token"; // Updated for React route
             $subject = "Password Reset Request";
             $message = "Click the link below to reset your password:\n\n$resetLink\n\nThis link will expire in 1 hour.";
-            $headers = "From: noreply@yourdomain.com";
+            $headers = "From: contact@artisbay.com";
 
             // Check if email is sent successfully
             if (mail($email, $subject, $message, $headers)) {

@@ -186,6 +186,17 @@ const links2 = [
           </div>
         </div>
 
+        <div className="ad-header-container">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/sellhome.jpeg`}
+              className="ad-banner"
+              alt="sell banner"
+            />
+            <Link to="/help?topic=Sustainability">
+              <button className="small-banner-btn eco-btn">Read more</button>
+            </Link>
+        </div>
+
         <div className="newsupdates">
           <img className="title-img" src={`${process.env.PUBLIC_URL}/images/news&updatestitle.png`} alt="usefullLinks" />
           <div className="news-item-container">
@@ -210,7 +221,7 @@ const links2 = [
             <Link to="/help?topic=Sustainability">
               <button className="small-banner-btn eco-btn">Read more</button>
             </Link>
-          </div>
+        </div>
 
         {/* Why Choose Us Section */}
         <section className="why-choose-us">
