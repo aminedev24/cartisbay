@@ -153,14 +153,18 @@ const Contact = ({ sell }) => {
             value={formData.country} 
             onChange={handleChange}
           >
-            <option value="" disabled>Select</option>
+         
             {sell ? (
               <option value="Japan">Japan</option>
             ) : (
+              
               CountryList().map(country => (
+                <>
+                <option value="" disabled>Select</option>
                 <option key={country.label} value={country.label}>
                   {country.label}
                 </option>
+                </>
               ))
             )}
           </select>
@@ -185,10 +189,16 @@ const Contact = ({ sell }) => {
             value={formData.enquiry} 
             onChange={handleChange}
           >
-            <option value="" disabled>Select</option>
-            <option value="General">General Inquiry</option>
-            <option value="Support">Support</option>
-            <option value="Sales">Sales</option>
+            
+            {sell ? <option value='Sales'>Sles</option> : 
+              <>
+              <option value="" disabled>Select</option>
+               <option value="General">General Inquiry</option>
+               <option value="Support">Support</option>
+               <option value="Sales">Sales</option>
+               </>
+            }
+           
           </select>
 
           <label htmlFor="message">Message<span className="required">*</span></label>

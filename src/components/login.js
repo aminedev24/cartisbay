@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../css/login.css';
 import useCheckScreenSize from './screenSize';
-import { useUser  } from './userContext';
+import { useUser } from './userContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ const Login = () => {
   const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
   const { isPortrait, isSmallScreen } = useCheckScreenSize();
-  const { user, loading, login } = useUser ();
+  const { user, loading, login } = useUser();
 
   // Check if the user is already logged in when the component mounts
   useEffect(() => {
@@ -19,8 +19,7 @@ const Login = () => {
       // Redirect to homepage if user is logged in
       const timeoutId = setTimeout(() => {
         navigate('/'); // Redirect after 2 seconds
-        //window.location.reload();
-      }, 4000); // 2000 milliseconds = 2 seconds
+      }, 2000);
 
       return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
     }
@@ -28,69 +27,75 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const response = await login(email, password); // Use login function
-  
-      if (response.status === "success") {
+      const response = await login(email, password);
+
+      if (response.status === 'success') {
         setMessage(`Welcome, ${response.user.name || email}!`); // Display welcome message
-        setMessageType("success");
+        setMessageType('success');
       } else {
-        throw new Error(response.message || "Login failed. Please try again.");
+        throw new Error(response.message || 'Login failed. Please try again.');
       }
     } catch (error) {
       setMessage(error.message);
-      setMessageType("error");
-      console.error("Login error:", error);
+      setMessageType('error');
+      console.error('Login error:', error);
     }
   };
-  
 
   return (
     <div
-      className='login-form-wrapper'
+      className="login-form-wrapper"
       style={{
         height: isSmallScreen ? '90vh' : '',
         display: isSmallScreen ? 'flex' : '',
         alignItems: isSmallScreen ? 'center' : '',
-      }} 
+      }}
     >
-      <div 
-        className='login-container'
+      <div
+        className="login-container"
         style={{
           scale: isSmallScreen ? '2.5' : '',
         }}
       >
-        {user ? ( // Check if user is logged in
+        {user ? (
           <p>{message}</p>
         ) : (
-          <form className='login-form' onSubmit={handleLogin}>
+          <form className="login-form" onSubmit={handleLogin}>
             <div className="input-group">
               <input
                 type="email"
                 id="email"
                 value={email}
-                name='email'
+                name="email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <label htmlFor="email" className={email ? 'float' : ''}>Email</label>
+              <label htmlFor="email" className={email ? 'float' : ''}>
+                Email
+              </label>
             </div>
             <div className="input-group">
               <input
                 type="password"
                 id="password"
-                name='password'
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <label htmlFor="password" className={password ? 'float' : ''}>Password</label>
+              <label htmlFor="password" className={password ? 'float' : ''}>
+                Password
+              </label>
             </div>
-            <button type="submit" className="login-button">Login</button>
-            {message && (
-              <p className={`message ${messageType}`}>{message}</p> // Add class based on message type
-            )}
+            <button type="submit" className="login-button">
+              Login
+            </button>
+            <div className="forgot-password-link">
+              <Link to="/forgot-password">Forgot Password?</Link> {/* Forgot password link */}
+            </div>
+            {message && <p className={`message ${messageType}`}>{message}</p>}
           </form>
         )}
       </div>

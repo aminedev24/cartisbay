@@ -260,66 +260,55 @@ const OrderForm = ({
   };
 
   const addOrder = async (newOrder) => {
-    // Prepare order data for submission
+    // Simulate order submission when not logged in
+    if (!user || !user.uid) {
+      console.warn("User is not logged in. Order will not be saved on the server.");
+  
+      // Simulate the addition of the order locally for UI feedback
+      setOrders((prevOrders) => {
+        const ordersArray = Array.isArray(prevOrders) ? prevOrders : [];
+        return [...ordersArray, { ...newOrder, id: "TEMP_ID" }];
+      });
+  
+      setMessage("Order added locally but not saved. Please log in to save.");
+      return;
+    }
+  
+    // Prepare the order for server submission
     const orderData = {
-      order_id: null, // Send the ID as null for new orders
-      user_id: user.uid,
+      order_id: null,
+      user_id: user ? user.uid : '',
       make: newOrder.make,
       width: newOrder.width,
       aspect_ratio: newOrder.aspect_ratio,
       rim_diameter: newOrder.rim_diameter,
       quantity: newOrder.quantity,
       type: newOrder.type,
+      ...(newOrder.load_index && { load_index: newOrder.load_index }),
+      ...(newOrder.speed_rating && { speed_rating: newOrder.speed_rating }),
     };
-
-    if (newOrder.load_index) {
-      orderData.load_index = newOrder.load_index;
-    }
-    if (newOrder.speed_rating) {
-      orderData.speed_rating = newOrder.speed_rating;
-    }
-
-    console.log(
-      `Payload sent to server for new order: ${JSON.stringify(orderData)}`,
-    );
-
+  
     try {
       const response = await fetch(`${apiUrl}/saveOrder.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
       });
-
+  
       const result = await response.json();
-      console.log("Server Response for new order: ", result);
-      console.log(
-        `result.message: ${result.message}, result.id: ${result.order_id}`,
-      );
-      if (!response.ok) {
-        console.log("Error: Response not ok.");
-        setMessage(result.message || `Server error: ${response.statusText}`);
-      } else if (
-        result.message === "Order saved successfully!" &&
-        result.order_id > 0
-      ) {
-        console.log("New order saved successfully.");
-        // Update the newly added order with the order_id from the response
-        newOrder.id = result.order_id; // Set the ID from the server response
-        setOrders((prevOrders) => [...prevOrders, newOrder]); // Update the state with the new order
-        setMessage("Your new order has been successfully saved!");
+      if (response.ok && result.order_id > 0) {
+        newOrder.id = result.order_id; // Use server ID
+        setOrders((prevOrders) => [...prevOrders, newOrder]);
+        setMessage("Order saved successfully!");
       } else {
-        console.log("Error: Server response indicates failure.");
-        setMessage(
-          result.message || "An error occurred while saving the order.",
-        );
+        throw new Error(result.message || "Failed to save order.");
       }
     } catch (error) {
-      console.log("Error: An error occurred during the fetch request.");
-      setMessage(
-        `An error occurred while connecting to the server: ${error.message}`,
-      );
+      console.error("Error saving order:", error.message);
+      setMessage(`Error: ${error.message}`);
     }
   };
+  
 
   const editOrder = async (updatedOrder) => {
     const updatedOrders = [...(orders || [])]; // Default to empty array if orders is falsy

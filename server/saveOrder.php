@@ -14,8 +14,9 @@ include 'db_connection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     $requiredFields = ['user_id', 'make', 'type', 'width', 'aspect_ratio', 'rim_diameter', 'quantity'];
-    $missingFields = array_filter($requiredFields, fn($field) => !isset($data[$field]));
+    $missingFields = array_filter($requiredFields, fn($field) => empty($data[$field]));
 
+    // Check for missing fields
     if (!empty($missingFields)) {
         $missingFieldsMessage = 'Missing required fields: ' . implode(', ', $missingFields);
         error_log($missingFieldsMessage);
@@ -24,7 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    $uid = $data['user_id'];
+    $uid = $data['user_id'] ?? null;
+    if (empty($uid)) {
+        $errorMessage = "User not logged in. Orders cannot be saved without a valid user ID.";
+        error_log($errorMessage);
+        echo json_encode(['message' => $errorMessage]);
+        http_response_code(401); // Unauthorized
+        exit;
+    }
     $make = $data['make'];
     $type = $data['type'];
     $width = $data['width'];
@@ -38,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    
+
     if ($stmt === false) {
         $errorMessage = "Failed to prepare the SQL statement. Error: " . $conn->error;
         error_log($errorMessage);

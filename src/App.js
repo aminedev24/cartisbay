@@ -21,6 +21,9 @@ import RegisterForm from './components/register';
 import { UserProvider } from './components/userContext';
 import Login from './components/login';
 import { useLocation } from 'react-router-dom';
+import ResetPassword from './components/resetPassword';
+import ForgotPassword from './components/forgotPassword';
+
 /* src/index.css */
 
 
@@ -82,7 +85,9 @@ function App() {
           <Route path="/vehicleInquiry" element={<InquiryForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterForm />} />
-        </Routes>
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} /> {/* Token in URL */}
+          </Routes>
       <Footer />
     </Router>
     </UserProvider>

@@ -162,6 +162,7 @@ const SignupForm = ({ setIsModalOpen })  => {
           type="checkbox"
           id="agree-to-terms"
           checked={agreeToTerms}
+          required
           onChange={() => setAgreeToTerms(!agreeToTerms)}
         />
         <label htmlFor="agree-to-terms">
