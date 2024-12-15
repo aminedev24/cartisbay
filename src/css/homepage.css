@@ -364,7 +364,7 @@ option {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Align items vertically centered */
     padding: 30px; /* Padding around the header container */
-
+    position: relative;
 }
 
 .pointer {
