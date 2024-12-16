@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.107e950a.css",
+    "main.css": "/cartisbay/static/css/main.c6e3d721.css",
     "main.js": "/cartisbay/static/js/main.cad96674.js",
     "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
     "static/media/eco1copy.jpeg": "/cartisbay/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
@@ -32,12 +32,12 @@
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.107e950a.css.map": "/cartisbay/static/css/main.107e950a.css.map",
+    "main.c6e3d721.css.map": "/cartisbay/static/css/main.c6e3d721.css.map",
     "main.cad96674.js.map": "/cartisbay/static/js/main.cad96674.js.map",
     "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.107e950a.css",
+    "static/css/main.c6e3d721.css",
     "static/js/main.cad96674.js"
   ]
 }
