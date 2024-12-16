@@ -12,7 +12,7 @@ option {
 }
 
 .homepage {
-    padding: 20px 0px 0px 30px;
+    padding: 20px 0px 0px 20px;
     overflow: hidden; /* Prevent overflow issues */
     color: #444; /* Soft dark gray for general text */
     display: flex; /* Use flexbox to align elements */
@@ -136,7 +136,7 @@ option {
     display: grid;
     grid-template-columns: repeat(8, 1fr); /* Keep five columns */
     gap: 30px; /* Increased space between cards */
-    padding: 30px; /* Padding around the container */
+    padding: 20px; /* Padding around the container */
 }
 
 @media (max-width: 1000px){
@@ -363,7 +363,7 @@ option {
 .ad-header-container {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Align items vertically centered */
-    padding: 30px; /* Padding around the header container */
+    padding: 20px; /* Padding around the header container */
     position: relative;
 }
 
@@ -379,7 +379,7 @@ option {
 }
 .order-now , .pointer ,.cta-btn-link , .register-now-btn ,
  .eco-btn , .small-banner-btn , .security-btn , .dismantling-btn,
- .paypal-btn, .bank-btn{
+ .paypal-btn, .bank-btn, .sell-btn{
     background-color: transparent;
     color: transparent;
 }
@@ -574,6 +574,15 @@ option {
     width: 18%;
   }
 
+  .sell-btn {
+    position: absolute;
+    bottom: 16%;
+    right: 8%;
+    width: 21%;
+    height: 11%;
+
+  }
+
   .small-banner-btn a {
     color: inherit;
     text-decoration: none;
@@ -588,7 +597,7 @@ option {
 
 /* Useful links */
 .usefulLinks_wrapper {
-    margin: 0 30px;
+    margin: 0 20px;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -621,7 +630,7 @@ option {
 }
 
 .wrapper , .newsupdates {
-    margin: 0 30px;
+    margin: 0 20px;
 }
 .news-item-container {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -630,7 +639,7 @@ option {
 }
 
 .news-item-container img {
-    width: 20%;
+    width: 15%;
 }
 
 .news-item {

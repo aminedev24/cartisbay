@@ -193,7 +193,7 @@ const links2 = [
               alt="sell banner"
             />
             <Link to="/help?topic=sell%20on%20artisbay">
-              <button className="small-banner-btn eco-btn">Read more</button>
+              <button className="sell-btn">Read more</button>
             </Link>
         </div>
 

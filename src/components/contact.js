@@ -181,13 +181,14 @@ const Contact = ({ sell }) => {
             onChange={handleChange} 
           />
 
-          <label htmlFor="enquiry">Enquiry Type<span className="required">*</span></label>
+          <label  style={{display: sell ? 'none': ''}}  htmlFor="enquiry">Enquiry Type<span className="required">*</span></label>
           <select 
             id="enquiry" 
             name="enquiry" 
             required 
             value={formData.enquiry} 
             onChange={handleChange}
+            style={{display: sell ? 'none': ''}}
           >
             
             {sell ? <option value='Sales'>Sles</option> : 

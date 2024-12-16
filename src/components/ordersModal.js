@@ -29,10 +29,19 @@ const Modal = ({ isOpen, onClose, orders }) => {
               width: 100%;
               border-collapse: collapse;
               background-image: url('${bgImage}');
-              -webkit-print-color-adjust: exact; 
-              background-repeat: no-repeat;
-              background-position: center;
+            
             }
+              @media print {
+              table {
+              
+                background-image: url('${bgImage}');
+                -webkit-print-color-adjust: exact !important;                 
+                color-adjust: exact !important;   
+                print-color-adjust: exact !important;
+                background-repeat: no-repeat;
+                background-position: center;
+                }
+              }
             th, td {
               text-align: center;
               border: 1px solid #ddd;
@@ -87,8 +96,8 @@ const Modal = ({ isOpen, onClose, orders }) => {
             <tbody>
               {allOrders.map((order, index) => (
                 <tr key={index}>
-                  <td>{order.maker}</td>
-                  <td>{`${order.width}/${order.aspectRatio}R${order.rimDiameter}`}</td>
+                  <td>{order.make}</td>
+                  <td>{`${order.width}/${order.aspect_ratio}R${order.rim_diameter}`}</td>
                   <td>{order.quantity}</td>
                   <td>{order.type}</td>
                 </tr>

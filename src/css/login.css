@@ -111,13 +111,6 @@
   }
   
 
-  
-  .right-sidebar h2 {
-    font-size: 1.8rem; /* Heading size */
-    margin-bottom: 15px; /* Space below the heading */
-  }
-  
-  
   /* Container for the account creation section */
   .account-container {
     background-color: #1da1f2; /* White background for contrast */

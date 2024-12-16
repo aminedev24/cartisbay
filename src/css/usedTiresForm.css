@@ -124,7 +124,7 @@
     outline: none;
   }
   
-  button[type="submit"]:hover {
+ .usedTiresForm-container button[type="submit"]:hover {
     background-color: #00509e;
   }
   
