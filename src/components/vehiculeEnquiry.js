@@ -9,6 +9,8 @@ const InquiryForm = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedPort, setSelectedPort] = useState("");
   const [selectedMake, setSelectedMake] = useState(""); // State for selected make
+  const [notification, setNotification] = useState({ type: "", message: "" });
+
   
     // Dynamically set API URL based on environment
     const apiUrl = process.env.NODE_ENV === 'development'
@@ -60,8 +62,8 @@ const InquiryForm = () => {
           
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
-        alert('An error occurred while fetching user data.');
+        //console.error('Error fetching user data:', error);
+        return
       }
     };
 
@@ -105,19 +107,43 @@ const InquiryForm = () => {
   
       if (response.status === 200 && result.status === "success") {
         //alert(result.message); // Show success message
+        setNotification({ type: "success", message: "Inquiry sent successfully!" });
+        //setMessage(""); // Clear message field
+        setSelectedMake(""); // Clear selected make
+        setModels([]); // Clear selected models
+        window.scrollTo(0,0)
       } else {
+        setNotification({ type: "error", message: "Failed to send inquiry. Please try again." });
+        window.scrollTo(0,0)
+
         //alert(result.message); // Show error message
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred while sending the inquiry.');
+      setNotification({ type: "error", message: "An error occurred while sending the inquiry." });
+      window.scrollTo(0,0)
+
+      //alert('An error occurred while sending the inquiry.');
     }
   };
+  
+  useEffect(() => {
+    if (notification.message) {
+      const timer = setTimeout(() => setNotification({ type: "", message: "" }), 5000);
+      return () => clearTimeout(timer); // Cleanup timer on component unmount or notification change
+    }
+  }, [notification]);
   
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="enquiryContainer">
+      {notification.message && (
+        <div className={`message-status ${notification.type}`}>
+          {notification.message}
+        </div>
+      )}
+
       <div className="form-section">
       <h2>Your Information</h2>
       <div className="form-group">
