@@ -27,7 +27,7 @@ body {
 
     
 @media screen and (max-width: 9999px) {
-    .layout, .usedTiresForm-container, .car-details, .help-page {
+    .layout, .usedTiresForm-container, .car-details, .help-page , .footer-inner {
         margin: 0 auto;
         width: 90%; /* Use percentage */
         max-width: 1590px; /* Set a max-width */
@@ -40,7 +40,7 @@ body {
 }
 
 @media screen and (max-width: 1760px) {
-    .layout, .usedTiresForm-container, .car-details, .help-page {
+    .layout, .usedTiresForm-container, .car-details, .help-page , .footer-inner  {
         margin: 0 auto;
         width: 90%; /* Use percentage */
         max-width: 1438px; /* Set a max-width */
@@ -52,7 +52,7 @@ body {
 }
 
 @media screen and (max-width: 1530px) {
-    .layout, .header-top, .local-services-banner, .usedTiresForm-container, .car-details, .help-page {
+    .layout, .header-top, .local-services-banner, .usedTiresForm-container, .car-details, .help-page, .footer-inner  {
         margin: 0 auto;
         width: 90%; /* Use percentage */
         max-width: 1330px; /* Set a max-width */
@@ -64,7 +64,7 @@ body {
 }
 
 @media screen and (max-width: 1500px) {
-  .layout, .header-top, .local-services-banner, .usedTiresForm-container, .car-details, .help-page {
+  .layout, .header-top, .local-services-banner, .usedTiresForm-container, .car-details, .help-page, .footer-inner  {
       margin: 0 auto;
       width: 100%; /* Use percentage */
   }

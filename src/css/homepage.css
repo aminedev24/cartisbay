@@ -440,7 +440,7 @@ option {
 }
 
 .ad-banner {
-    height: 350px; /* Set height for the banner */
+    height: auto; /* Set height for the banner */
     flex: 1; /* Allow the banner to take available space */
     width: 100%;
     

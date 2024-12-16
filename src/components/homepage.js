@@ -189,7 +189,7 @@ const links2 = [
         <div className="ad-header-container">
             <img
               src={`${process.env.PUBLIC_URL}/images/sellhome.jpeg`}
-              className="sell-ad-banner"
+              className="ad-banner"
               alt="sell banner"
             />
             <Link to="/help?topic=sell%20on%20artisbay">
