@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.c6e3d721.css",
-    "main.js": "/cartisbay/static/js/main.cad96674.js",
+    "main.css": "/cartisbay/static/css/main.8fa9e353.css",
+    "main.js": "/cartisbay/static/js/main.17e27d72.js",
     "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
     "static/media/eco1copy.jpeg": "/cartisbay/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
     "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
@@ -10,16 +10,13 @@
     "static/media/car-makes-icons.svg?gtc92f": "/cartisbay/static/media/car-makes-icons.5887cab9f6dcec54f2f5.svg",
     "static/media/fa-solid-900.ttf": "/cartisbay/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
     "static/media/custumersupportcopy.JPEG": "/cartisbay/static/media/custumersupportcopy.0a69171f9c039e13995c.JPEG",
-    "static/media/Shippingschedulepost.jpeg": "/cartisbay/static/media/Shippingschedulepost.e5e57ebea012b468e63e.jpeg",
     "static/media/fa-brands-400.ttf": "/cartisbay/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
     "static/media/fa-solid-900.woff2": "/cartisbay/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
     "static/media/underconstructionstamp.jpeg": "/cartisbay/static/media/underconstructionstamp.6158dc6c2fc87ba523c3.jpeg",
-    "static/media/register0.jpeg": "/cartisbay/static/media/register0.061d47aefff0f92520c7.jpeg",
     "static/media/fa-brands-400.woff2": "/cartisbay/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
     "static/media/car-makes-icons.eot?gtc92f": "/cartisbay/static/media/car-makes-icons.bf967c12a6e7e4d8b65b.eot",
     "static/media/car-makes-icons.woff?gtc92f": "/cartisbay/static/media/car-makes-icons.da6932fc85780f0b262b.woff",
     "static/media/car-makes-icons.ttf?gtc92f": "/cartisbay/static/media/car-makes-icons.5560f91d48a01b0a6b0f.ttf",
-    "static/media/register1.jpeg": "/cartisbay/static/media/register1.46d80a1203c627d1680e.jpeg",
     "static/media/fa-regular-400.ttf": "/cartisbay/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
     "static/media/car-makes-icons.woff2?gtc92f": "/cartisbay/static/media/car-makes-icons.bd9b9d280fdab147db37.woff2",
     "static/media/fa-regular-400.woff2": "/cartisbay/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
@@ -32,12 +29,12 @@
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.c6e3d721.css.map": "/cartisbay/static/css/main.c6e3d721.css.map",
-    "main.cad96674.js.map": "/cartisbay/static/js/main.cad96674.js.map",
+    "main.8fa9e353.css.map": "/cartisbay/static/css/main.8fa9e353.css.map",
+    "main.17e27d72.js.map": "/cartisbay/static/js/main.17e27d72.js.map",
     "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c6e3d721.css",
-    "static/js/main.cad96674.js"
+    "static/css/main.8fa9e353.css",
+    "static/js/main.17e27d72.js"
   ]
 }
