@@ -37,6 +37,7 @@
   height: 50%; /* Each banner takes half the container */
   box-sizing: border-box;
   position: relative;
+  margin: 5px;
 }
 
 .right-sidebar .shipment-banner {

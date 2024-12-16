@@ -8,40 +8,41 @@ const Modal = ({ isOpen, onClose, orders }) => {
     const logoSrc = `${process.env.PUBLIC_URL}/images/logo.png`;
     const bgImage = `${process.env.PUBLIC_URL}/images/orderlistprintbackground.jpeg`;
     const printWindow = window.open('', '_blank');
-  
+
     printWindow.document.write(`
       <html>
         <head>
           <title>Print Orders</title>
           <style>
+            * {
+              -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+              color-adjust: exact !important;                   /* Firefox */
+            }
+
             body {
               font-family: Arial, sans-serif;
+              margin: 0;
             }
+
             .header {
               text-align: center;
               margin-bottom: 20px;
             }
+
             .header img {
               width: 100px;
               height: auto;
             }
+
             table {
               width: 100%;
               border-collapse: collapse;
               background-image: url('${bgImage}');
-            
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
             }
-              @media print {
-              table {
-              
-                background-image: url('${bgImage}');
-                -webkit-print-color-adjust: exact !important;                 
-                color-adjust: exact !important;   
-                print-color-adjust: exact !important;
-                background-repeat: no-repeat;
-                background-position: center;
-                }
-              }
+
             th, td {
               text-align: center;
               border: 1px solid #ddd;
@@ -52,8 +53,23 @@ const Modal = ({ isOpen, onClose, orders }) => {
               color: #333;
               z-index: 1;
             }
+
             th {
               background-color: rgba(29, 161, 242, 0.7);
+            }
+
+            @media print {
+              body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+              }
+
+              table {
+                background-image: url('${bgImage}') !important;
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+              }
             }
           </style>
         </head>
@@ -63,28 +79,32 @@ const Modal = ({ isOpen, onClose, orders }) => {
           </div>
           <h2>Your Orders</h2>
           <div>${printContent.innerHTML}</div>
-        
         </body>
       </html>
     `);
-  
+
     printWindow.document.close();
     printWindow.focus(); // Focus on the new window
     printWindow.print();
     printWindow.close(); // Close the window after printing
   };
-  
+
   // Flatten the orders object into an array
   const allOrders = Object.values(orders).flat();
   const totalQuantity = allOrders.reduce((total, order) => total + order.quantity, 0);
-
 
   return (
     <div className="modal-overlay">
       <div className="modal-content orders">
         <button className="close-btn" onClick={onClose}>&minus;</button>
         <div id="printable-content">
-          <table className="orders-table">
+          <table 
+           style={{
+            WebkitPrintColorAdjust: 'exact',
+            backgroundImage: `url(${process.env.PUBLIC_URL}/images/orderlistprintbackground.jpeg)`,
+            backgroundSize: 'cover'
+          }} 
+          className="orders-table print-table">
             <thead>
               <tr>
                 <th>Make</th>
@@ -105,9 +125,8 @@ const Modal = ({ isOpen, onClose, orders }) => {
             </tbody>
           </table>
           <div className="total">Total Quantity: {totalQuantity}</div>
-
         </div>
-        <button className='print-button' onClick={handlePrint}>Print Orders</button>
+        <button className="print-button" onClick={handlePrint}>Print Orders</button>
       </div>
     </div>
   );

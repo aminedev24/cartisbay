@@ -44,8 +44,12 @@ h4 {
   padding: 10px;
   text-align: center;
   white-space: nowrap; /* Prevent text wrapping */
+  
 }
 
+.print-table td {
+  color: #333;
+}
 .orders-table th {
   background-color: #1da1f2; /* Light blue header */
   color: white;
