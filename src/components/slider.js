@@ -19,9 +19,9 @@ const MediaSlider = () => {
   };
 
   const mediaItems = [
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaSlider.jpeg` , link : '#' },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoSlider.jpeg`, link: '#' },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider.jpeg`, link: '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaSlider2.jpeg` , link : '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoSlider2.jpeg`, link: '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider2.jpeg`, link: '#' },
 
   ];
 

@@ -1,58 +1,43 @@
-/* Ensure the right sidebar has sufficient height */
+/* CSS for the right sidebar container */
 .right-sidebar {
-  width: 300px; /* Fixed width for sidebar */
-  background-color: #fff; /* Optional: Set a background color */
-  padding: 20px 10px 0px 5px; /* Adjust padding */
+  width: 300px;
+  background-color: #fff;
+  margin: 20px 10px 0px 5px;
   display: flex;
-  flex-direction: column; /* Align children vertically */
+  flex-direction: column; 
   box-sizing: border-box; /* Include padding in the total dimensions */
 }
 
-.right-sidebar h2 {
-  font-size: 1.5rem; /* Heading size */
-  margin-bottom: 15px; /* Space below the heading */
-  position: absolute;
-  top: 5%;
-}
-
-/* Account container takes full sidebar height */
-.right-sidebar .account-container {
-  flex: 1; /* Fill available space in sidebar */
+/* Make right sidebar elements fill available space */
+.right-sidebar > * {
+  flex: 1; 
   display: flex;
-  flex-direction: column; /* Stack banners vertically */
-  justify-content: space-between; /* Space out banners evenly */
-  box-sizing: border-box; /* Include padding */
-  padding: 10px;
+  justify-content: center;
   align-items: center;
 }
 
-/* Banners share space dynamically */
-.right-sidebar .register-banner,
-.right-sidebar .shipment-banner,
-.right-sidebar .welcome-banner {
-  flex: 1; /* Allow banners to share space equally */
-  display: flex;
-  justify-content: center; /* Center images horizontally */
-  align-items: center; /* Center images vertically */
-  height: 50%; /* Each banner takes half the container */
-  box-sizing: border-box;
-  position: relative;
-  margin: 5px;
+.shipment-banner {
+  margin-top: 20px;
 }
 
-.right-sidebar .shipment-banner {
-  margin-bottom: 0; /* Remove margin for last banner */
+
+/* Optional: Images should adjust dynamically */
+.right-sidebar img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Images adjust dynamically within banners */
-.right-sidebar .register-banner img,
-.right-sidebar .shipment-banner img,
-.right-sidebar .welcome-banner img {
-  width: 100%; /* Fill the width of the parent container */
-  height: 100%; /* Fill the height of the parent container */
-  display: block; /* Avoid inline spacing */
+.welcome-banner img , .register-banner img {
+  height: 280px;
 }
 
+.right-sidebar .account-container {
+  flex-direction: column;
+  padding: 0;
+  background-color: unset;
+  border: unset;
+  box-shadow: unset;
+}
 .register-banner, .welcome-banner, .shipment-banner {
   position: relative;
 } 
@@ -64,20 +49,26 @@
 
 .sign-in-btn {
   position: absolute;
-  top: 23%;
-  left: 35%;
+  top: 83%;
+  width: 100%;
+  left: 0%;
 }
 
 .register-btn {
   position: absolute;
-  top: 1%;
-  width: 77%;
-  height: 13%;
-  left: 12%;
+  top: 3%;
+  width: 96%;
+  height: 78%;
+  left: 2%;
 }
 
 .welcome-banner {
   display: flex;
   justify-content: center;
- 
+}
+
+.welcome-banner h2 {
+  position: absolute;
+  top: 5%;
+  color: #fff;
 }

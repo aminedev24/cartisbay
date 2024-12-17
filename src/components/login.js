@@ -44,6 +44,18 @@ const Login = () => {
     }
   };
 
+   // Timer to clear the message after 5 seconds
+   useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage('');
+        setMessageType('');
+      }, 5000); // Message disappears after 5 seconds
+
+      return () => clearTimeout(timer); // Cleanup timer on unmount or message change
+    }
+  }, [message]);
+
   return (
     <div
       className="login-form-wrapper"

@@ -12,7 +12,7 @@ const RightSidebar = () => {
   {!user ? (
     <>
     <div className="register-banner">
-      <img src={`${process.env.PUBLIC_URL}/images/homepage/register002.png`} />
+      <img src={`${process.env.PUBLIC_URL}/images/homepage/register0.png`} />
       <Link to='/login'><button className="sign-in-btn">sign in</button></Link>
       <Link to='register'><button className="register-btn">register</button></Link>
     </div>   
@@ -22,14 +22,22 @@ const RightSidebar = () => {
      <div className="welcome-banner">
       
        <h2>welcome {`${user.name}`}</h2>
-       <img src={`${process.env.PUBLIC_URL}/images/homepage/register112.png`} />
+       <img src={`${process.env.PUBLIC_URL}/images/homepage/register1.png`} />
     </div>
       
     </>
   )}
 
 
-  <div className="shipment-banner"><img src={`${process.env.PUBLIC_URL}/images/homepage/shipping2.png`} /></div>
+  <div 
+    className="shipment-banner"
+    style={{
+      marginTop : user ? "20px" : "18px",
+    }}
+  >
+    <img src={`${process.env.PUBLIC_URL}/images/homepage/shipping.png`} />
+    
+  </div>
   
   </div>
 </div>

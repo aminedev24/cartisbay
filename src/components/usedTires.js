@@ -49,8 +49,6 @@ const UsedTires = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-
-
   const [orders, setOrders] = useState({});
   const [totalUnits, setTotalUnits] = useState(0);
 
@@ -71,9 +69,6 @@ const UsedTires = () => {
 
   const updateFormData = (updatedData) => setFormData(updatedData);
 
- 
-
-
   return (
     <div>
       <div className="used-tires-page">
@@ -89,7 +84,7 @@ const UsedTires = () => {
           </div>
         </header>
         <div className="usedTires-wrapper">
-        <div className="reasons-wrapper">
+          <div className="reasons-wrapper">
             <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
             <section class="reasons">
               <div class="reason">
@@ -122,35 +117,12 @@ const UsedTires = () => {
                 </p>
               </div>
             </section>
-        </div>
+          </div>
 
-        <div className="tire-width-container">
-      <h1>Tire Width</h1>
-      <p>
-        Tire widths typically range from about 135 mm to 335 mm for passenger vehicles, although specialty and performance tires may vary. Here’s a breakdown of common widths:
-      </p>
-      <ol>
-        <li>
-          <strong>Narrow tires</strong>: 135 mm to 175 mm - Often found on compact cars and economy vehicles.
-        </li>
-        <li>
-          <strong>Standard tires</strong>: 185 mm to 225 mm - Common on mid-sized sedans and family vehicles.
-        </li>
-        <li>
-          <strong>Wider tires</strong>: 225 mm to 305 mm - Typically used on sports cars and performance vehicles.
-        </li>
-        <li>
-          <strong>Ultra-wide tires</strong>: 305 mm and above - Generally seen on high-performance or racing vehicles.
-        </li>
-      </ol>
-      <p>
-        When selecting tires, it’s important to consider the vehicle specifications, driving conditions, and personal preferences for handling and comfort. Always consult your vehicle’s manual or a tire specialist for the best fit.
-      </p>
-    </div>
-
-          
           <div className="tire-rating-container">
-            <h1 className="tireRating-title">Passenger Car Tire Quality Ratings</h1>
+            <h1 className="tireRating-title">
+              Passenger Car Tire Quality Ratings
+            </h1>
             <div className="rating-grid">
               {ratings.map((rating, index) => (
                 <div className="rating-card" key={index}>
@@ -172,7 +144,6 @@ const UsedTires = () => {
               ))}
             </div>
             <div className="tire-depth">
-              
               <h2>Tire Tread Depth</h2>
               <p>
                 Tire tread depth is a key indicator of a tire's remaining
@@ -182,128 +153,160 @@ const UsedTires = () => {
               <div className="tables">
                 <div className="passenger">
                   <h3>passenger cars:</h3>
-              <table>
-               
-                <tr>
-                  <th>Tread Depth Remaining</th>
-                  <th>Condition</th>
-                  <th>Approximate Tread Depth</th>
-                </tr>
-                <tbody>
-                <tr>
-                  <td>70% and above</td>
-                  <td>Excellent</td>
-                  <td>5.6 mm and above</td>
-                </tr>
-                <tr>
-                  <td>50%</td>
-                  <td>Good</td>
-                  <td>4 mm</td>
-                </tr>
-                <tr>
-                  <td>30%</td>
-                  <td>Fair</td>
-                  <td>2.4~3 mm</td>
-                </tr>
-                <tr>
-                  <td>Less than 30%</td>
-                  <td>Poor (but legal)</td>
-                  <td>1.6~2.4 mm</td>
-                </tr>
-                </tbody>
-              </table>
+                  <table>
+                    <tr>
+                      <th>Tread Depth Remaining</th>
+                      <th>Condition</th>
+                      <th>Approximate Tread Depth</th>
+                    </tr>
+                    <tbody>
+                      <tr>
+                        <td>70% and above</td>
+                        <td>Excellent</td>
+                        <td>5.6 mm and above</td>
+                      </tr>
+                      <tr>
+                        <td>50%</td>
+                        <td>Good</td>
+                        <td>4 mm</td>
+                      </tr>
+                      <tr>
+                        <td>30%</td>
+                        <td>Fair</td>
+                        <td>2.4~3 mm</td>
+                      </tr>
+                      <tr>
+                        <td>Less than 30%</td>
+                        <td>Poor (but legal)</td>
+                        <td>1.6~2.4 mm</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="small-trucks">
+                  <h3>Small trucks and SUVs:</h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Tread Depth Remaining</th>
+                        <th>Condition</th>
+                        <th>Approximate Tread Depth</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>70% and above</td>
+                        <td>Excellent</td>
+                        <td>7 mm and above</td>
+                      </tr>
+                      <tr>
+                        <td>50%</td>
+                        <td>Good</td>
+                        <td>5-7 mm</td>
+                      </tr>
+                      <tr>
+                        <td>30%</td>
+                        <td>Fair</td>
+                        <td>3-5 mm</td>
+                      </tr>
+                      <tr>
+                        <td>Less than 30%</td>
+                        <td>Poor (but legal)</td>
+                        <td>1.6-3 mm</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <div className="small-trucks">
-              <h3>Small trucks and SUVs:</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Tread Depth Remaining</th>
-                    <th>Condition</th>
-                    <th>Approximate Tread Depth</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>70% and above</td>
-                    <td>Excellent</td>
-                    <td>7 mm and above</td>
-                  </tr>
-                  <tr>
-                    <td>50%</td>
-                    <td>Good</td>
-                    <td>5-7 mm</td>
-                  </tr>
-                  <tr>
-                    <td>30%</td>
-                    <td>Fair</td>
-                    <td>3-5 mm</td>
-                  </tr>
-                  <tr>
-                    <td>Less than 30%</td>
-                    <td>Poor (but legal)</td>
-                    <td>1.6-3 mm</td>
-                  </tr>
-                </tbody>
-              </table>
-              </div>
-              </div>
-              </div>
-              <h3>Additional Notes</h3>
+            </div>
+            <h3>Additional Notes</h3>
+            <ol>
+              <li>
+                <strong>New Tire Tread Depth:</strong>
+                <ul>
+                  <li>
+                    A new passenger car tire typically has a tread depth of
+                    about 8-9 mm.
+                  </li>
+                  <li>
+                    For other tire types:
+                    <ul>
+                      <li>Performance tires: Around 7 mm.</li>
+                      <li>SUV and light truck tires: 10-12 mm.</li>
+                      <li>
+                        Winter tires: 9-12 mm for better snow and ice traction.
+                      </li>{" "}
+                      <li>
+                        Truck and bus tires: 12-20 mm, depending on application.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Legal Minimum Tread Depth:</strong>
+                <p>
+                  It's important to check the legal minimum tread depth required
+                  in your country, as it can vary depending on local laws. For
+                  example, in Japan, the legal minimum tread depth for passenger
+                  vehicles is 1.6 mm, below which tires are deemed unfit for
+                  road use.
+                </p>
+              </li>
+              <li>
+                <strong>Practical Safety Limit:</strong>
+                <p>
+                  Tires with less than 30% tread remaining may still be legal
+                  but are generally unsafe for optimal performance, especially
+                  in wet or challenging conditions.
+                </p>
+              </li>
+              <li>
+                <strong>Safety Recommendation:</strong>
+                <p>
+                  Regularly checking tread depth is essential for safety, as
+                  insufficient tread significantly reduces traction,
+                  particularly in wet conditions.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <div className="tire-width-wrapper">
+            <div className="tire-width-container">
+              <h1>Tire Width</h1>
+              <p>
+                Tire widths typically range from about 135 mm to 335 mm for
+                passenger vehicles, although specialty and performance tires may
+                vary. Here’s a breakdown of common widths:
+              </p>
               <ol>
                 <li>
-                  <strong>New Tire Tread Depth:</strong>
-                  <ul>
-                    <li>
-                      A new passenger car tire typically has a tread depth of
-                      about 8-9 mm.
-                    </li>
-                    <li>
-                      For other tire types:
-                      <ul>
-                        <li>Performance tires: Around 7 mm.</li>
-                        <li>SUV and light truck tires: 10-12 mm.</li>
-                        <li>
-                          Winter tires: 9-12 mm for better snow and ice
-                          traction.
-                        </li>{" "}
-                        <li>
-                          Truck and bus tires: 12-20 mm, depending on
-                          application.
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
+                  <strong>Narrow tires</strong>: 135 mm to 175 mm - Often found
+                  on compact cars and economy vehicles.
                 </li>
                 <li>
-                  <strong>Legal Minimum Tread Depth:</strong>
-                  <p>
-                    It's important to check the legal minimum tread depth
-                    required in your country, as it can vary depending on local
-                    laws. For example, in Japan, the legal minimum tread depth
-                    for passenger vehicles is 1.6 mm, below which tires are
-                    deemed unfit for road use.
-                  </p>
+                  <strong>Standard tires</strong>: 185 mm to 225 mm - Common on
+                  mid-sized sedans and family vehicles.
                 </li>
                 <li>
-                  <strong>Practical Safety Limit:</strong>
-                  <p>
-                    Tires with less than 30% tread remaining may still be legal
-                    but are generally unsafe for optimal performance, especially
-                    in wet or challenging conditions.
-                  </p>
+                  <strong>Wider tires</strong>: 225 mm to 305 mm - Typically
+                  used on sports cars and performance vehicles.
                 </li>
                 <li>
-                  <strong>Safety Recommendation:</strong>
-                  <p>
-                    Regularly checking tread depth is essential for safety, as
-                    insufficient tread significantly reduces traction,
-                    particularly in wet conditions.
-                  </p>
+                  <strong>Ultra-wide tires</strong>: 305 mm and above -
+                  Generally seen on high-performance or racing vehicles.
                 </li>
               </ol>
+              <p>
+                When selecting tires, it’s important to consider the vehicle
+                specifications, driving conditions, and personal preferences for
+                handling and comfort. Always consult your vehicle’s manual or a
+                tire specialist for the best fit.
+              </p>
+            </div>
           </div>
-   
+
           <div className="order-steps-container">
             <h1>4 Simple Steps to Your Wholesale Tire Order</h1>
             <div className="step-card">
