@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
+    // Get the user_id from the request data or session
     $uid = $data['user_id'] ?? null;
     if (empty($uid)) {
         $errorMessage = "User not logged in. Orders cannot be saved without a valid user ID.";
@@ -33,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         http_response_code(401); // Unauthorized
         exit;
     }
+
+    // Get the rest of the order details
     $make = $data['make'];
     $type = $data['type'];
     $width = $data['width'];
@@ -42,48 +45,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $speed_rating = $data['speed_rating'] ?? null;
     $load_index = $data['load_index'] ?? null;
 
-    $sql = "INSERT INTO tireorders (`user_id`, make, type, width, aspect_ratio, rim_diameter, quantity, speed_rating, load_index)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // Check if an existing order with the same parameters already exists
+    $sql_check = "SELECT id, quantity FROM tireorders WHERE user_id = ? AND make = ? AND type = ? AND width = ? AND aspect_ratio = ? AND rim_diameter = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("ssssii", $uid, $make, $type, $width, $aspect_ratio, $rim_diameter);
+    $stmt_check->execute();
+    $result = $stmt_check->get_result();
 
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt === false) {
-        $errorMessage = "Failed to prepare the SQL statement. Error: " . $conn->error;
-        error_log($errorMessage);
-        echo json_encode(['message' => 'Error preparing the SQL statement.']);
-        http_response_code(500);
-        exit;
-    }
-
-    $stmt->bind_param(
-        "sssiiisii", 
-        $uid, 
-        $make, 
-        $type, 
-        $width, 
-        $aspect_ratio, 
-        $rim_diameter, 
-        $quantity, 
-        $speed_rating, 
-        $load_index
-    );
-
-    // Log the SQL and parameters for debugging
-    error_log("Executing SQL: $sql");
-    error_log("Parameters: uid=$uid, make=$make, type=$type, width=$width, aspect_ratio=$aspect_ratio, rim_diameter=$rim_diameter, quantity=$quantity, speed_rating=$speed_rating, load_index=$load_index");
-
-    if ($stmt->execute()) {
-        $order_id = $stmt->insert_id;
-        echo json_encode(['message' => 'Order saved successfully!', 'order_id' => $order_id]);
-        http_response_code(200);
+    if ($result->num_rows > 0) {
+        // If order already exists, update the quantity
+        $existingOrder = $result->fetch_assoc();
+        $newQuantity = $existingOrder['quantity'] + $quantity;
+        $sql_update = "UPDATE tireorders SET quantity = ? WHERE id = ?";
+        $stmt_update = $conn->prepare($sql_update);
+        $stmt_update->bind_param("ii", $newQuantity, $existingOrder['id']);
+        if ($stmt_update->execute()) {
+            echo json_encode(['message' => 'Order quantity updated successfully!', 'order_id' => $existingOrder['id']]);
+            http_response_code(200);
+        } else {
+            echo json_encode(['message' => 'Error updating the order.']);
+            http_response_code(500);
+        }
+        $stmt_update->close();
     } else {
-        $errorMessage = "Error executing the SQL statement. Error: " . $stmt->error;
-        error_log($errorMessage);
-        echo json_encode(['message' => 'Error saving the order.']);
-        http_response_code(500);
+        // If no existing order, insert a new one
+        $sql_insert = "INSERT INTO tireorders (user_id, make, type, width, aspect_ratio, rim_diameter, quantity, speed_rating, load_index)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt_insert = $conn->prepare($sql_insert);
+        $stmt_insert->bind_param(
+            "sssiiisii",
+            $uid,
+            $make,
+            $type,
+            $width,
+            $aspect_ratio,
+            $rim_diameter,
+            $quantity,
+            $speed_rating,
+            $load_index
+        );
+
+        if ($stmt_insert->execute()) {
+            $order_id = $stmt_insert->insert_id;
+            echo json_encode(['message' => 'Order saved successfully!', 'order_id' => $order_id]);
+            http_response_code(200);
+        } else {
+            echo json_encode(['message' => 'Error saving the order.']);
+            http_response_code(500);
+        }
+        $stmt_insert->close();
     }
 
-    $stmt->close();
+    $stmt_check->close();
     $conn->close();
 }
 ?>

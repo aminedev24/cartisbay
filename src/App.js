@@ -23,7 +23,7 @@ import Login from './components/login';
 import { useLocation } from 'react-router-dom';
 import ResetPassword from './components/resetPassword';
 import ForgotPassword from './components/forgotPassword';
-
+import Profile from './components/profile';
 /* src/index.css */
 
 
@@ -87,6 +87,8 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} /> {/* Token in URL */}
+          <Route path="/profile" element={<Profile />} />
+
           </Routes>
       <Footer />
     </Router>

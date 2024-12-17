@@ -23,6 +23,8 @@ const RightSidebar = () => {
       
        <h2>welcome {`${user.name}`}</h2>
        <img src={`${process.env.PUBLIC_URL}/images/homepage/register1.png`} />
+       <Link to='/contact'><button className="contact-btn">contact</button></Link>
+       <Link to='/profile'><button className="profile-btn">profile</button></Link>
     </div>
       
     </>

@@ -1,20 +1,7 @@
 <?php
 // Include your database connection
 require 'db_connection.php';
-
-// Get the Origin header from the request
-$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-
-// Set the allowed origins dynamically (for local and production environments)
-$allowedOrigins = ['http://localhost:3000', 'https://artisbay.com'];
-
-// Check if the incoming request's origin matches any of the allowed origins
-if (in_array($origin, $allowedOrigins)) {
-    header("Access-Control-Allow-Origin: $origin");
-}
-
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Allow specific methods
-header("Access-Control-Allow-Headers: Content-Type, Authorization, Origin, X-Requested-With"); // Allow specific headers
+include 'headers.php';
 
 // If it's a preflight request (OPTIONS), send a 200 response without processing further
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {

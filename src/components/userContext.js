@@ -94,6 +94,7 @@ export const UserProvider = ({ children }) => {
         //console.log(data.user)
         if (data.status === 'success') {
           setUser(data.user); // Set user from validated backend session
+          
         } else {
           Cookies.remove('session_token'); // Ensure no invalid tokens remain
           setUser(null);

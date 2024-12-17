@@ -65,6 +65,7 @@ const UsedTires = () => {
     quantity: "",
     type: "",
     tireSize: "",
+    customerMessage: ""
   });
 
   const updateFormData = (updatedData) => setFormData(updatedData);

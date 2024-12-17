@@ -20,7 +20,19 @@
   margin-top: 20px;
 }
 
+.profile-btn , .contact-btn {
+  position: absolute;
+}
 
+.profile-btn {
+  left: 10%;
+  top: 31%;
+}
+
+.contact-btn {
+  top: 31%;
+  right: 9%;
+}
 /* Optional: Images should adjust dynamically */
 .right-sidebar img {
   max-width: 100%;
@@ -42,7 +54,7 @@
   position: relative;
 } 
 
-.sign-in-btn, .register-btn {
+.sign-in-btn, .register-btn , .contact-btn ,.profile-btn {
   background-color: transparent;
   color: transparent;
 }

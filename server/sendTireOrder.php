@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect and sanitize inputs
     $orderIds = isset($inputData['order_ids']) ? $inputData['order_ids'] : null;
     $email = isset($inputData['email']) ? htmlspecialchars(trim($inputData['email'])) : null;
-    $customerMessage = isset($inputData['customer_message']) ? htmlspecialchars(trim($inputData['customer_message'])) : '';
+    $customerMessage = isset($inputData['customerMessage']) ? htmlspecialchars(trim($inputData['customerMessage'])) : '';
 
     // Validate required fields
     if (empty($orderIds) || empty($email)) {
@@ -50,29 +50,89 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Prepare the email body
-            $body = "New Tire Order Details:\n\n";
+            // Prepare the email body as an HTML table
+            $body = "
+                <html>
+                    <head>
+                        <style>
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                            }
+                            th, td {
+                                border: 1px solid #ddd;
+                                padding: 8px;
+                            }
+                            th {
+                                background-color: #f2f2f2;
+                                text-align: left;
+                            }
+                            tr:nth-child(even) {
+                                background-color: #f9f9f9;
+                            }
+                            tr:hover {
+                                background-color: #f1f1f1;
+                            }
+                            .customer-message {
+                                margin-top: 20px;
+                                font-weight: bold;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>New Tire Order Details</h2>
+                        <table>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Maker</th>
+                                <th>Size</th>
+                                <th>Load Index</th>
+                                <th>Speed Rating</th>
+                                <th>Quantity</th>
+                                <th>Type</th>
+                            </tr>";
+
             while ($order = $result->fetch_assoc()) {
-                $body .= "Order ID: " . $order['id'] . "\n" . 
-                         "Maker: " . $order['make'] . "\n" . 
-                         "Width: " . $order['width'] . "\n" . 
-                         "Aspect Ratio: " . $order['aspect_ratio'] . "\n" . 
-                         "Rim Diameter: " . $order['rim_diameter'] . "\n" . 
-                         "Load Index: " . $order['load_index'] . "\n" . 
-                         "Speed Rating: " . $order['speed_rating'] . "\n" . 
-                         "Quantity: " . $order['quantity'] . "\n" . 
-                         "Type: " . $order['type'] . "\n\n";
+                // Set default values for load index and speed rating if empty
+                $loadIndex = !empty($order['load_index']) ? $order['load_index'] : 0;
+                $speedRating = !empty($order['speed_rating']) ? $order['speed_rating'] : 0;
+
+                // Format the size as width/aspect_ratioRrim_diameter (e.g., 255/45R18)
+                $size = htmlspecialchars($order['width']) . '/' . htmlspecialchars($order['aspect_ratio']) . 'R' . htmlspecialchars($order['rim_diameter']);
+
+                $body .= "
+                            <tr>
+                                <td>" . htmlspecialchars($order['id']) . "</td>
+                                <td>" . htmlspecialchars($order['make']) . "</td>
+                                <td>" . $size . "</td>
+                                <td>" . $loadIndex . "</td>
+                                <td>" . $speedRating . "</td>
+                                <td>" . htmlspecialchars($order['quantity']) . "</td>
+                                <td>" . htmlspecialchars($order['type']) . "</td>
+                            </tr>";
             }
 
-            // Append the optional customer message
+            $body .= "
+                        </table>";
+
+            // Append optional customer message if provided
             if (!empty($customerMessage)) {
-                $body .= "Customer Message: " . $customerMessage . "\n\n";
+                $body .= "
+                        <div class='customer-message'>
+                            <p>Customer Message: " . nl2br(htmlspecialchars($customerMessage)) . "</p>
+                        </div>";
             }
+
+            $body .= "
+                    </body>
+                </html>";
 
             // Email details
             $to = "orders@artisbay.com";
             $subject = "New Tire Orders Received";
-            $headers = "From: " . $email;
+            $headers = "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+            $headers .= "From: " . $email . "\r\n";
 
             // Send the email
             if (mail($to, $subject, $body, $headers)) {
