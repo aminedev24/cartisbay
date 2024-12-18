@@ -40,8 +40,12 @@
   display: block;
 }
 
-.welcome-banner img , .register-banner img {
+.register-banner img {
   height: 279px;
+}
+
+.welcome-banner img {
+  height: 280px;
 }
 
 .right-sidebar .account-container {

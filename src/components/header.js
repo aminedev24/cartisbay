@@ -23,6 +23,7 @@ const Header = () => {
       dropdownRefs.current[activeDropdown] &&
       !dropdownRefs.current[activeDropdown].contains(event.target)
     ) {
+      event.stopPropagation(); // Prevent bubbling issues
       setActiveDropdown(null);
     }
   };
