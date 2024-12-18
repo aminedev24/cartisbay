@@ -1,0 +1,104 @@
+.shipping-container {
+    margin: 0 auto;
+    height: 80vh;
+    overflow: hidden; /* Prevent overflow of the container */
+}
+
+.shipping-container .header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.shipping-container .header h1 {
+    position: unset;
+    text-shadow: none;
+}
+
+.header img {
+    margin-right: 10px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.search-button {
+    margin-left: auto;
+    background-color: #f1892b;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.content {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.content a {
+    color: #4B0082;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 10px 0;
+    display: block;
+}
+
+#list {
+    overflow: auto; /* Allow horizontal scrolling */
+    margin-top: 20px; /* Add some space above the table */
+    height: 60%;
+}
+
+table {
+    width: 100%; /* Make the table take full width */
+    border-collapse: collapse;
+}
+
+.main_h {
+    background-color: #f2f2f2;
+}
+
+.main_h td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+
+td , th {
+    font-size: 10px;
+}
+
+.main {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.row {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.row:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}

@@ -202,6 +202,15 @@ const Contact = ({ sell }) => {
            
           </select>
 
+          {sell ? 
+          <>
+          <label htmlFor='company'>Company</label>
+          <input type='text' placeholder='company'name='company' />
+          </>
+          :
+          ''
+          }
+
           <label htmlFor="message">Message<span className="required">*</span></label>
           <textarea 
             id="message" 

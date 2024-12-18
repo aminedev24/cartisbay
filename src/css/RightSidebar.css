@@ -2,7 +2,7 @@
 .right-sidebar {
   width: 300px;
   background-color: #fff;
-  margin: 20px 10px 0px 5px;
+  margin: 20px 5px 0px 0px;
   display: flex;
   flex-direction: column; 
   box-sizing: border-box; /* Include padding in the total dimensions */
@@ -37,6 +37,7 @@
 .right-sidebar img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 .welcome-banner img , .register-banner img {
@@ -49,12 +50,13 @@
   background-color: unset;
   border: unset;
   box-shadow: unset;
+  margin: 0 5px ;
 }
 .register-banner, .welcome-banner, .shipment-banner {
   position: relative;
 } 
 
-.sign-in-btn, .register-btn , .contact-btn ,.profile-btn {
+.sign-in-btn, .register-btn , .contact-btn ,.profile-btn , .shipping-btn {
   background-color: transparent;
   color: transparent;
 }
@@ -83,4 +85,16 @@
   position: absolute;
   top: 5%;
   color: #fff;
+}
+
+.shipment-banner img {
+  height: 275.43px;
+}
+
+.shipping-btn {
+  bottom: 11%;
+  position: absolute;
+  left: 25%;
+  height: 13%;
+  width: 49%;
 }

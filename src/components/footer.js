@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <>
+    <div className='footer-container'>
     <div class="footer-upper">
       <div className='footer-inner'>
         <Link to='/'><img alt="Autocom Japan logo"  src={ `${process.env.PUBLIC_URL}/images/logo3new.png`} width="130"/></Link>
@@ -25,7 +25,7 @@ const Footer = () => {
    <div class="footer">
      <p>&copy; 2024 Artisbay. All Rights Reserved.</p>
    </div>
-   </>
+   </div>
   );
 };
 

@@ -33,11 +33,10 @@ const RightSidebar = () => {
 
   <div 
     className="shipment-banner"
-    style={{
-      marginTop : user ? "20px" : "18px",
-    }}
+  
   >
     <img src={`${process.env.PUBLIC_URL}/images/homepage/shipping.png`} />
+    <Link to='shipping'><button className="shipping-btn">learn more</button></Link>
     
   </div>
   
