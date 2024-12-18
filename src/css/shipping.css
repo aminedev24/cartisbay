@@ -12,6 +12,15 @@
     border-bottom: 1px solid #ccc;
 }
 
+#list table {
+    margin-top: unset;
+}
+
+#list table thead {
+    position: sticky;
+    top: 0;
+}
+
 .shipping-container .header h1 {
     position: unset;
     text-shadow: none;
@@ -55,7 +64,6 @@
 
 #list {
     overflow: auto; /* Allow horizontal scrolling */
-    margin-top: 20px; /* Add some space above the table */
     height: 60%;
 }
 
