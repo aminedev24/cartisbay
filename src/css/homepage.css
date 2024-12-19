@@ -355,7 +355,7 @@ option {
 
 .brand p {
     margin: 0;
-    font-size: 18px; /* Reduced font size for brand text */
+    font-size: 20px !important; /* Reduced font size for brand text */
     text-transform: uppercase;
 }
 
