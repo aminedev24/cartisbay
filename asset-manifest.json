@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.5a3a9664.css",
-    "main.js": "/cartisbay/static/js/main.7d6f2088.js",
+    "main.css": "/cartisbay/static/css/main.d897acc2.css",
+    "main.js": "/cartisbay/static/js/main.b89c7fc9.js",
     "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
     "static/media/eco1copy.jpeg": "/cartisbay/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
     "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
@@ -19,6 +19,7 @@
     "static/media/car-makes-icons.ttf?gtc92f": "/cartisbay/static/media/car-makes-icons.5560f91d48a01b0a6b0f.ttf",
     "static/media/fa-regular-400.ttf": "/cartisbay/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
     "static/media/car-makes-icons.woff2?gtc92f": "/cartisbay/static/media/car-makes-icons.bd9b9d280fdab147db37.woff2",
+    "static/media/printwatermark.png": "/cartisbay/static/media/printwatermark.4a63492b97b9694c05b9.png",
     "static/media/fa-regular-400.woff2": "/cartisbay/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
     "static/media/fa-v4compatibility.ttf": "/cartisbay/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fraction.cjs": "/cartisbay/static/media/fraction.7992481f3d8339b77604.cjs",
@@ -29,12 +30,12 @@
     "static/media/slick.ttf": "/cartisbay/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.5a3a9664.css.map": "/cartisbay/static/css/main.5a3a9664.css.map",
-    "main.7d6f2088.js.map": "/cartisbay/static/js/main.7d6f2088.js.map",
+    "main.d897acc2.css.map": "/cartisbay/static/css/main.d897acc2.css.map",
+    "main.b89c7fc9.js.map": "/cartisbay/static/js/main.b89c7fc9.js.map",
     "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a3a9664.css",
-    "static/js/main.7d6f2088.js"
+    "static/css/main.d897acc2.css",
+    "static/js/main.b89c7fc9.js"
   ]
 }
