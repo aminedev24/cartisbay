@@ -161,6 +161,7 @@ const TireSelection = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)} // Close the modal
         orders={orders} // Pass all orders to the modal
+        setIsModalOpen={setIsModalOpen}
       />
     </div>
   );

@@ -34,7 +34,7 @@ const Contact = ({ sell }) => {
 
   const { isSmallScreen, isPortrait } = useCheckScreenSize();
 
-  console.log(`is small screen: ${isSmallScreen} is portrait: ${isPortrait}`)
+  //console.log(`is small screen: ${isSmallScreen} is portrait: ${isPortrait}`)
   const apiUrl = process.env.NODE_ENV === 'development'
     ? 'http://localhost/artisbay-server/server'
     : '/server';

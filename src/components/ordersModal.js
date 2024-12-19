@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Modal = ({ isOpen, onClose, orders }) => {
+const Modal = ({ isOpen, onClose, orders, setIsModalOpen }) => {
+  // Handle the afterprint event
+  useEffect(() => {
+    const handleAfterPrint = () => {
+      const printTable = document.querySelector('.print-table');
+      if (printTable) {
+        printTable.style.backgroundImage = `url(${process.env.PUBLIC_URL}/images/printwatermark.png)`;
+      }
+      // Close the modal after printing or canceling
+      setIsModalOpen(false);
+    };
+
+    window.addEventListener('afterprint', handleAfterPrint);
+
+    return () => {
+      window.removeEventListener('afterprint', handleAfterPrint);
+    };
+  }, [onClose]);
+
+  // Early return if modal is not open
   if (!isOpen) return null;
 
   const handlePrint = () => {
     const printContent = document.getElementById('printable-content');
     const logoSrc = `${process.env.PUBLIC_URL}/images/logo.png`;
-    const bgImage = `${process.env.PUBLIC_URL}/images/orderlistprintbackground.jpeg`;
+    const bgImage = `${process.env.PUBLIC_URL}/images/printwatermark.png`;
     const printWindow = window.open('', '_blank');
 
     printWindow.document.write(`
@@ -37,7 +56,6 @@ const Modal = ({ isOpen, onClose, orders }) => {
             table {
               width: 100%;
               border-collapse: collapse;
-              background-image: url('${bgImage}');
               background-repeat: no-repeat;
               background-size: cover;
               background-position: center;
@@ -56,20 +74,6 @@ const Modal = ({ isOpen, onClose, orders }) => {
 
             th {
               background-color: rgba(29, 161, 242, 0.7);
-            }
-
-            @media print {
-              body {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-              }
-
-              table {
-                background-image: url('${bgImage}') !important;
-                background-size: cover !important;
-                background-repeat: no-repeat !important;
-                background-position: center !important;
-              }
             }
           </style>
         </head>
@@ -98,8 +102,13 @@ const Modal = ({ isOpen, onClose, orders }) => {
       <div className="modal-content orders">
         <button className="close-btn" onClick={onClose}>&minus;</button>
         <div id="printable-content">
-        <table
-          className="orders-table print-table">
+          <table
+            className="orders-table print-table"
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL}/images/printwatermark.png)`,
+              WebkitPrintColorAdjust: 'exact',
+            }}
+          >
             <thead>
               <tr>
                 <th>Make</th>
