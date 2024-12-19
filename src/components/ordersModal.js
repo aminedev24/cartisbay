@@ -98,12 +98,7 @@ const Modal = ({ isOpen, onClose, orders }) => {
       <div className="modal-content orders">
         <button className="close-btn" onClick={onClose}>&minus;</button>
         <div id="printable-content">
-          <table 
-           style={{
-            WebkitPrintColorAdjust: 'exact',
-            backgroundImage: `url(${process.env.PUBLIC_URL}/images/orderlistprintbackground.jpeg)`,
-            backgroundSize: 'cover'
-          }} 
+        <table
           className="orders-table print-table">
             <thead>
               <tr>

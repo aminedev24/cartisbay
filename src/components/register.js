@@ -18,13 +18,6 @@ const RegisterForm = () => {
     >
       <div 
         className="account-container"
-        style={{
-          scale: isSmallScreen && isPortrait ? '2.5' : isSmallScreen ? '1' : '', // Set scale based on both conditions
-          width: isSmallScreen && isPortrait ? '24%': isSmallScreen ? '50%' : '',
-          margin: isSmallScreen ? '0 auto':  '',
-          
-         
-        }}
       >
         <div className="header">
           <span className="person-icon">

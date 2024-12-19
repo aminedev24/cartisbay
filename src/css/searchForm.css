@@ -1,10 +1,13 @@
+.search-container-wrapper {
+  display: flex;
+}
 .search-container {
   background-color: #1e3a8a;
-  padding: 11px 20px;
+  padding: 10px 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   overflow: hidden; /* Prevent overflow */
-  height: 44%;
+  width: 83%;
 }
 
 .search-container h4 {

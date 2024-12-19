@@ -3,6 +3,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {Link} from 'react-router-dom';
+import '../css/slider.css'
+import { useUser } from "./userContext"; // Import useUser  hook
 
 const MediaSlider = () => {
   const settings = {
@@ -18,6 +20,9 @@ const MediaSlider = () => {
     pauseOnFocus: false,
   };
 
+  const { user, logout } = useUser(); // Access user and logout from context
+  
+
   const mediaItems = [
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaSlider2.jpeg` , link : '#' },
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoSlider2.jpeg`, link: '#' },
@@ -26,21 +31,43 @@ const MediaSlider = () => {
   ];
 
   return (
-    <section className="image-slider-section">
+    <div className="slider-container">
+    <div className="slider">
       <Slider {...settings}>
-        {mediaItems.map((item, index) => (
-          <div className="media-slide" key={index}>
-            <Link to={item.link}>
-            <img
-              src={item.src}
-              alt={`slide-${index}`}
-              style={{ width: '100%', height: 'auto' }} // Adjust maxHeight as needed
-            />
-            </Link>
-          </div>
-        ))}
+        <div>
+          <img src={`${process.env.PUBLIC_URL}/images/slider/namibiaSlider2.jpeg`} alt="Slide 1" />
+        </div>
+        <div>
+          <img src={`${process.env.PUBLIC_URL}/images/slider/congoSlider2.jpeg`} alt="Slide 2" />
+        </div>
+        <div>
+          <img src={`${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider2.jpeg`} alt="Slide 3" />
+        </div>
       </Slider>
-    </section>
+    </div>
+    <div className="right-image register-banner">
+      {!user ? (
+        <>
+        <div className="register-banner">
+          <img src={`${process.env.PUBLIC_URL}/images/homepage/register0.png`} />
+          <Link to='/login'><button className="sign-in-btn">sign in</button></Link>
+          <Link to='register'><button className="register-btn">register</button></Link>
+        </div>   
+        </>
+      ) : (
+        <>
+        <div className="welcome-banner">
+          
+          <h2>welcome {`${user.name}`}</h2>
+          <img src={`${process.env.PUBLIC_URL}/images/homepage/register1.png`} />
+          <Link to='/contact'><button className="contact-btn">contact</button></Link>
+          <Link to='/profile'><button className="profile-btn">profile</button></Link>
+        </div>
+          
+        </>
+      )}    
+  </div>
+  </div>
   );
 };
 

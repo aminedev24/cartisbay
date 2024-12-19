@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../css/searchForm.css"; // Assuming you keep the CSS in a separate file
 import VehicleSelector from "./vehicleSelector"; // Import the new component
-
+import { Link } from "react-router-dom";
 const SearchForm = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const [formData, setFormData] = useState({
@@ -32,6 +32,7 @@ const SearchForm = () => {
   };
 
   return (
+    <div className="search-container-wrapper">
     <div className="search-container">
       <h4>Search vehicles</h4>
       <form className="search-form" onSubmit={handleSubmit}>
@@ -49,6 +50,13 @@ const SearchForm = () => {
         </div>
       </form>
     </div>
+    <div className="right-image register-banner">
+      <img src={`${process.env.PUBLIC_URL}/images/homepage/shipping.png`} alt="shipping banner" />
+      <Link to='shipping'><button className="shipping-btn">learn more</button></Link>
+      
+    </div>
+    </div>
+
   );
 };
 

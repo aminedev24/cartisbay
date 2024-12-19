@@ -12,7 +12,7 @@ option {
 }
 
 .homepage {
-    padding: 20px 0px 0px 20px;
+    padding: 20px 20px 0px 20px;
     overflow: hidden; /* Prevent overflow issues */
     color: #444; /* Soft dark gray for general text */
     display: flex; /* Use flexbox to align elements */
@@ -265,7 +265,7 @@ option {
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    bottom: 4px !important;
+    bottom: 3px !important;
 }
 
 .slick-dots li button:before {
@@ -297,7 +297,7 @@ option {
 
 
 .title {
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
     padding: 20px;
@@ -322,12 +322,12 @@ option {
 }
 
 .grid-item img {
-    width: 65px;
+    width: 110px;
     margin-bottom: 5px;
 }
 
 .grid-item span {
-    font-size: 20px;
+    font-size: 23px;
 }
 
 .brands {
@@ -348,14 +348,14 @@ option {
 }
 
 .brand img {
-    max-width: 65px; /* Reduced size of brand logos */
+    max-width: 90px; /* Reduced size of brand logos */
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 5px; /* Reduced margin */
 }
 
 .brand p {
     margin: 0;
-    font-size: 15px; /* Reduced font size for brand text */
+    font-size: 18px; /* Reduced font size for brand text */
     text-transform: uppercase;
 }
 

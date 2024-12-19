@@ -86,7 +86,7 @@ const links2 = [
             <MediaSlider />
             <SearchForm />
           </div>
-          <RightSidebar />
+         
         </div>
         <div 
           className="info-cards-container"

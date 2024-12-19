@@ -1,0 +1,51 @@
+/* Ensure all elements use border-box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Ensure the body and HTML element take full height */
+}
+
+/* Slider container adjustments */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+/* The slider area */
+.slider {
+    width: 73%;  /* Adjust this width as needed */
+    max-width: 100%; /* Prevent the slider from exceeding the viewport width */
+}
+
+/* Right image container */
+.right-image {
+    width: 30%; /* Adjust width of the right image */
+    max-width: 100%; /* Prevent overflow */
+    margin-left: 3px;
+    position: relative;
+}
+
+.right-image img {
+    width: 300px; /* Make the image responsive */
+    height: 281px; /* Maintain aspect ratio */
+    display: block;
+}
+
+/* Slick slider image styles */
+.slick-slide img {
+    width: 100%; /* Make slider images responsive */
+    height: auto; /* Maintain aspect ratio */
+  
+}
+
+/* Optional: Adjust position of slider dots */
+.slick-dots {
+    bottom: -30px; /* Adjust the position of the dots */
+}

@@ -83,7 +83,7 @@ table {
 }
 
 
-td , th {
+#list table td ,#list table th {
     font-size: 10px;
 }
 
