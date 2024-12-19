@@ -13,11 +13,15 @@ const RegisterForm = () => {
     <div 
       className="register-container"
       style={{
-        height: isSmallScreen ? '90vh' : '',
+        height: isSmallScreen && isPortrait ? '90vh' : '',
+     
       }}  
     >
       <div 
         className="account-container"
+        style = {{
+             scale: isSmallScreen && isPortrait ? '1.3': ''
+        }}
       >
         <div className="header">
           <span className="person-icon">

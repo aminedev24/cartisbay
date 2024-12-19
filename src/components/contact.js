@@ -34,6 +34,7 @@ const Contact = ({ sell }) => {
 
   const { isSmallScreen, isPortrait } = useCheckScreenSize();
 
+  console.log(`is small screen: ${isSmallScreen} is portrait: ${isPortrait}`)
   const apiUrl = process.env.NODE_ENV === 'development'
     ? 'http://localhost/artisbay-server/server'
     : '/server';
@@ -105,11 +106,14 @@ const Contact = ({ sell }) => {
   return (
     <div 
       className='form-wrapper contact-wrapper'
-      style={{ height: isSmallScreen ? '90vh' : '' }}
+      style={{ height: isSmallScreen && isPortrait ? '100vh' : '' }}
     >
       <div 
         className="contact-container"
-       
+        style={{ 
+          scale: isSmallScreen && isPortrait ? '1.3' : '' 
+
+        }}
       >
         <h1>We like to hear from you!</h1>
         <h2>Contact Us</h2>
