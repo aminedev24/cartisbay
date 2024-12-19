@@ -27,8 +27,43 @@
 
       document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
      } 
-     </script>
-
+    </script>
+    <script>
+      function adjustFontSize() {
+          const screenWidth = window.screen.width;
+  
+          // Define base font sizes
+          let bodyFontSize, h1FontSize, h2FontSize, pFontSize, liFontSize, spanFontSize, aFontSize;
+  
+          // Adjust font sizes based on screen width
+          if (screenWidth < 1200) {
+              bodyFontSize = '1.25em'; // Base size for larger screens
+              h1FontSize = '2.75em';
+              h2FontSize = '2.5em';
+              pFontSize = '1.25em';
+              liFontSize = '1.125em';
+              spanFontSize = '1.3em';
+              aFontSize = '1.125em';
+          } 
+          // Apply the font sizes to the elements
+          document.body.style.fontSize = bodyFontSize;
+          document.querySelectorAll('h1').forEach(el => el.style.fontSize = h1FontSize);
+          document.querySelectorAll('h2').forEach(el => el.style.fontSize = h2FontSize);
+          document.querySelectorAll('p').forEach(el => el.style.fontSize = pFontSize);
+          document.querySelectorAll('li').forEach(el => el.style.fontSize = liFontSize);
+          document.querySelectorAll('span').forEach(el => el.style.fontSize = spanFontSize);
+          document.querySelectorAll('a').forEach(el => el.style.fontSize = aFontSize);
+          document.querySelectorAll('input::placeholder, textarea::placeholder').forEach(el => {
+              el.style.fontSize = aFontSize; // Note: Placeholder styling may need to be handled differently
+          });
+      }
+  
+      // Call the function on page load
+      window.onload = adjustFontSize;
+  
+      // Optional: Call the function on window resize
+      window.onresize = adjustFontSize;
+  </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     

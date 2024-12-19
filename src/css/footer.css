@@ -9,6 +9,8 @@
   z-index: 200;
 }
 
+
+
 .footer-upper {
   background-color: #1e3a8a;
   color: white;
@@ -32,10 +34,4 @@
   color: inherit;
 }
 
-@media screen and (max-width:1000px) {
-  .footer-container {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-}
+

@@ -1,10 +1,21 @@
 import React from 'react';
 import '../css/footer.css';
 import { Link } from 'react-router-dom';
+import useCheckScreenSize from './screenSize';
 
 const Footer = () => {
+
+  const { isSmallScreen, isPortrait } = useCheckScreenSize();
+
   return (
-    <div className='footer-container'>
+    <div 
+      className='footer-container'
+      style={{ 
+        position: 'relative',
+        bottom: '0',
+        width: '100%'
+      }}  
+    >
     <div class="footer-upper">
       <div className='footer-inner'>
         <Link to='/'><img alt="Autocom Japan logo"  src={ `${process.env.PUBLIC_URL}/images/logo3new.png`} width="130"/></Link>
