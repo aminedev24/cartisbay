@@ -14,27 +14,26 @@ html, body {
 /* Slider container adjustments */
 .slider-container {
     display: flex;
-    justify-content: center;
-    overflow: hidden; /* Prevent scrollbars */
+    justify-content: space-between; /* Space between slider and right image */
 }
 
 /* The slider area */
 .slider {
-    width: 73%;  /* Adjust this width as needed */
-    max-width: 100%; /* Prevent the slider from exceeding the viewport width */
+    min-width: 200px; /* Ensure slider doesn't shrink too much */
+    overflow: hidden; /* Prevent overflow */
+    width: 83%;
 }
 
 /* Right image container */
 .right-image {
-    width: 30%; /* Adjust width of the right image */
-    max-width: 100%; /* Prevent overflow */
-    margin-left: 3px;
+    max-width: 300px; /* Set a maximum width for the image */
     position: relative;
+    text-align: center; /* Optional: Center the image inside the container */
+    margin-left: 3px;
 }
 
 .right-image img {
-    width: 300px; /* Make the image responsive */
-    height: 281px; /* Maintain aspect ratio */
+    width: 100%; /* Make the image responsive to its container */
     display: block;
 }
 
@@ -42,7 +41,6 @@ html, body {
 .slick-slide img {
     width: 100%; /* Make slider images responsive */
     height: auto; /* Maintain aspect ratio */
-  
 }
 
 /* Optional: Adjust position of slider dots */
