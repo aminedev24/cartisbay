@@ -124,7 +124,6 @@ const Contact = ({ sell }) => {
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Your Name<span className="required">*</span></label>
           <input 
-            readOnly={!!userData.fullName} 
             type="text" 
             id="name" 
             name="name" 
@@ -136,7 +135,6 @@ const Contact = ({ sell }) => {
 
           <label htmlFor="email">E-mail<span className="required">*</span></label>
           <input 
-            readOnly={!!userData.email} 
             type="email" 
             id="email" 
             name="email" 
@@ -148,7 +146,6 @@ const Contact = ({ sell }) => {
 
           <label htmlFor="country">Country<span className="required">*</span></label>
           <select 
-            disabled={!!userData.country} 
             id="country" 
             name="country" 
             required 

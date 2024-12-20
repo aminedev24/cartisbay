@@ -157,7 +157,7 @@ const InquiryForm = () => {
             name="name"
             value={userData.fullName}
             required
-            readOnly={!!userData.fullName} // Make input read-only if data exists
+             // Make input read-only if data exists
           />
         </div>
         <div className="half-width">
@@ -184,7 +184,6 @@ const InquiryForm = () => {
             name="email"
             value={userData.email}
             required
-            readOnly={!!userData.email} // Make email read-only if data exists
           />
         </div>
         <div className="half-width">

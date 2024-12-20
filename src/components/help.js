@@ -34,7 +34,7 @@ const topics = {
   buying: [
     { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
     { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
-    { name: "sell on artisbay", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonartisbay.jpeg` },
+    { name: "sell on artisbay", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonab.png` },
     { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},
     { name: "privacy policy", content: <PrivacyPolicy />, image:  `${process.env.PUBLIC_URL}/images/privacybanner.png`},
 
