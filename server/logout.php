@@ -27,7 +27,7 @@ if (isset($_SESSION['user_id'])) {
     }
 
     // Bind the parameter and execute the query
-    $stmt->bind_param("i", $userId);
+    $stmt->bind_param("s", $userId);
     
     if (!$stmt->execute()) {
         $errorMessage = "Failed to execute the query. Error: " . $stmt->error;

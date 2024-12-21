@@ -3,7 +3,7 @@ import '../css/topbar.css'; // Adjust your CSS file path accordingly
 
 const TopBar = () => {
   const [japanTime, setJapanTime] = useState('');
-  const [usdToYenRate, setUsdToYenRate] = useState(150); // Example rate, replace with actual fetching logic
+  const [usdToYenRate, setUsdToYenRate] = useState(154.95); // Example rate, replace with actual fetching logic
   const [country, setCountry] = useState('Japan');
   const [currency, setCurrency] = useState('USD');
   const [language, setLanguage] = useState('English');

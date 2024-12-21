@@ -40,13 +40,11 @@
   display: block;
 }
 
-.register-banner img {
+.register-banner img , .welcome-banner img {
   height: 281px;
 }
 
-.welcome-banner img {
-  height: 280px;
-}
+
 
 .right-sidebar .account-container {
   flex-direction: column;
@@ -76,7 +74,7 @@
   position: absolute;
   top: 3%;
   width: 96%;
-  height: 78%;
+  height: 23%;
   left: 2%;
 }
 
@@ -91,9 +89,6 @@
   color: #fff;
 }
 
-.shipment-banner img {
-  height: 275.43px;
-}
 
 .shipping-btn {
   bottom: 11%;

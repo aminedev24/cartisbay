@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Set the recipient email address
-    $to = 'contact@example.com'; // Replace with your business email
+    $to = 'contact@artisbay.com'; // Replace with your business email
     $subject = $enquiry;
 
     // Create the email content
