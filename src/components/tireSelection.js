@@ -152,7 +152,7 @@ const TireSelection = ({
 
       <div className="image-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/containericon3copy.png`}
+          src={`${process.env.PUBLIC_URL}/images/containericonnew.png`}
           alt="Container Image"
         />
         <div className="text">{percentageFill.toLocaleString()}</div>

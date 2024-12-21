@@ -594,13 +594,13 @@ const editOrder = async (updatedOrder) => {
       <header className="form-header">
         <div>
           <img
-            src={process.env.PUBLIC_URL + "/images/logo.png"}
+            src={process.env.PUBLIC_URL + "/images/logo3new.png"}
             alt="Logo"
             className="logo"
           />
           <h1>Wholesale Tires Order</h1>
           <img
-            src={process.env.PUBLIC_URL + "/images/logo.png"}
+            src={process.env.PUBLIC_URL + "/images/logo3new.png"}
             alt="Logo"
             className="logo"
           />
