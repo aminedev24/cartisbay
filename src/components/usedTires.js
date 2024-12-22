@@ -14,13 +14,13 @@ const UsedTires = () => {
         "Nearly new with minimal wear and strong structural integrity.",
     },
     {
-      title: "Good Quality (50% - 69%)",
+      title: "Good Quality (50% and Up)",
       treadDepth: "4 mm to 5.5 mm (5/32 to 7/32 inches)",
       sidewallCondition: "Generally good, no major cracks or bulges.",
       overallCondition: "Shows moderate wear but remains safe.",
     },
     {
-      title: "Fair Quality (30% - 49%)",
+      title: "Fair Quality (below 50%)",
       treadDepth: "2.4 mm to 3.9 mm (3/32 to 5/32 inches)",
       sidewallCondition:
         "Signs of aging, such as cracks, dry rot, or potential bulging.",
@@ -220,57 +220,60 @@ const UsedTires = () => {
                 </div>
               </div>
             </div>
-            <h3>Additional Notes</h3>
-            <ol>
-              <li>
-                <strong>New Tire Tread Depth:</strong>
-                <ul>
-                  <li>
-                    A new passenger car tire typically has a tread depth of
-                    about 8-9 mm.
-                  </li>
-                  <li>
-                    For other tire types:
-                    <ul>
-                      <li>Performance tires: Around 7 mm.</li>
-                      <li>SUV and light truck tires: 10-12 mm.</li>
-                      <li>
-                        Winter tires: 9-12 mm for better snow and ice traction.
-                      </li>{" "}
-                      <li>
-                        Truck and bus tires: 12-20 mm, depending on application.
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <strong>Legal Minimum Tread Depth:</strong>
-                <p>
-                  It's important to check the legal minimum tread depth required
-                  in your country, as it can vary depending on local laws. For
-                  example, in Japan, the legal minimum tread depth for passenger
-                  vehicles is 1.6 mm, below which tires are deemed unfit for
-                  road use.
-                </p>
-              </li>
-              <li>
-                <strong>Practical Safety Limit:</strong>
-                <p>
-                  Tires with less than 30% tread remaining may still be legal
-                  but are generally unsafe for optimal performance, especially
-                  in wet or challenging conditions.
-                </p>
-              </li>
-              <li>
-                <strong>Safety Recommendation:</strong>
-                <p>
-                  Regularly checking tread depth is essential for safety, as
-                  insufficient tread significantly reduces traction,
-                  particularly in wet conditions.
-                </p>
-              </li>
-            </ol>
+            <div className="additional-notes">
+              <h3>Additional Notes</h3>
+              <ol>
+                <li>
+                  <strong>New Tire Tread Depth:</strong>
+                  <ul>
+                    <li>
+                      A new passenger car tire typically has a tread depth of
+                      about 8-9 mm.
+                    </li>
+                    <li>
+                      For other tire types:
+                      <ul>
+                        <li>Performance tires: Around 7 mm.</li>
+                        <li>SUV and light truck tires: 10-12 mm.</li>
+                        <li>
+                          Winter tires: 9-12 mm for better snow and ice traction.
+                        </li>{" "}
+                        <li>
+                          Truck and bus tires: 12-20 mm, depending on application.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Legal Minimum Tread Depth:</strong>
+                  <p>
+                    It's important to check the legal minimum tread depth required
+                    in your country, as it can vary depending on local laws. For
+                    example, in Japan, the legal minimum tread depth for passenger
+                    vehicles is 1.6 mm, below which tires are deemed unfit for
+                    road use.
+                  </p>
+                </li>
+                <li>
+                  <strong>Practical Safety Limit:</strong>
+                  <p>
+                    Tires with less than 30% tread remaining may still be legal
+                    but are generally unsafe for optimal performance, especially
+                    in wet or challenging conditions.
+                  </p>
+                </li>
+                <li>
+                  <strong>Safety Recommendation:</strong>
+                  <p>
+                    Regularly checking tread depth is essential for safety, as
+                    insufficient tread significantly reduces traction,
+                    particularly in wet conditions.
+                  </p>
+                </li>
+              </ol>
+            </div>
+            
           </div>
 
           <div className="tire-width-wrapper">

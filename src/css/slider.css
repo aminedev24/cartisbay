@@ -33,7 +33,6 @@ html, body {
 }
 
 .right-image img {
-    width: 100%; /* Make the image responsive to its container */
     display: block;
 }
 

@@ -24,12 +24,12 @@ body {
     .layout, .usedTiresForm-container, .car-details, .help-page , .footer-inner {
         margin: 0 auto;
         width: 90%; /* Use percentage */
-        max-width: 1590px; /* Set a max-width */
+        max-width: 1370px; /* Set a max-width */
     }
     .header-bottom, .header-top, .local-services-banner {
         margin: 0 auto;
         width: 90%; /* Use percentage */
-        max-width: 1560px; /* Set a max-width */
+        max-width: 1302px; /* Set a max-width */
     }
 }
 

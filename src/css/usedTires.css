@@ -448,6 +448,11 @@ ul li {
   margin: 0 auto;
 }
 
+.additional-notes {
+  box-shadow:0 4px 15px rgba(0, 0, 0, 0.1) ;
+  padding: 20px;
+}
+
 
 .tire-width-container p {
   font-size: 1.1em;

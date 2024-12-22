@@ -40,11 +40,6 @@
   display: block;
 }
 
-.register-banner img , .welcome-banner img {
-  height: 281px;
-}
-
-
 
 .right-sidebar .account-container {
   flex-direction: column;
