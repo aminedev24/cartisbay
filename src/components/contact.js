@@ -10,7 +10,7 @@ const Contact = ({ sell }) => {
     email: '',
     country: sell ? 'Japan' : '',
     phone: '',
-    enquiry: sell ? 'sales' : '',
+    enquiry: sell ? 'sell on artisbay' : '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -94,7 +94,7 @@ const Contact = ({ sell }) => {
       const result = await response.json();
 
       if (result.status === 'success') {
-        setMessageInfo({ type: 'success', text: 'Thank you for your message! We will get back to you shortly.' });
+        setMessageInfo({ type: 'success', text: sell ? "Thank you for your interest in joining Artisbay! We will review your application and get back to you within a few days." :'Thank you for your message! We will get back to you shortly.' });
       } else {
         setMessageInfo({ type: 'error', text: result.message || 'Something went wrong. Please try again.' });
       }
@@ -112,7 +112,7 @@ const Contact = ({ sell }) => {
       // Dismiss the message after 5 seconds
       setTimeout(() => {
         setMessageInfo(null);
-      }, 5000);
+      }, 10000);
     }
   };
 
@@ -129,7 +129,7 @@ const Contact = ({ sell }) => {
           scale: isSmallScreen && isPortrait ? '1.3' : ''
         }}
       >
-        <h1>We like to hear from you!</h1>
+        {!sell && <h1>We like to hear from you!</h1>}
         <h2>Contact Us</h2>
         <p className='contact-prompt'>
           If you have any questions or would like to learn more about our offerings, please don’t hesitate to reach out using the form below. We’re always eager to connect with our customers and will respond as promptly as possible.

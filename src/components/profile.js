@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../css/profile.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
+import useCheckScreenSize from './screenSize';
+
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -8,6 +10,8 @@ const Profile = () => {
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();
+  const { isSmallScreen, isPortrait } = useCheckScreenSize();
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -51,6 +55,8 @@ const Profile = () => {
 
     fetchUserData();
   }, []);
+
+  //console.log(user)
 
   useEffect(() => {
     if (!loading && !user) {
@@ -109,7 +115,12 @@ const Profile = () => {
   }
 
   return (
-    <div className="profile-wrapper">
+    <div 
+      className="profile-wrapper"
+      style={{
+        height: isSmallScreen ? '90vh': ''
+      }}
+    >
       <div className="profile-container">
         <div className="profile-header">
           <h1>Profile Page</h1>
@@ -162,6 +173,7 @@ const Profile = () => {
           </form>
         ) : (
           <div className="profile-details">
+            <p>joined date: {new Date(user.joined_date).toLocaleDateString()}</p>
             <p>Name: {user.full_name}</p>
             <p>Email: {user.email}</p>
             <p>Phone: {user.phone}</p>

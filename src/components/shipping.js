@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/shipping.css';
 import useCheckScreenSize from './screenSize';
 import AfricaShippingTable from "./africaContainer";
 import AfricaRoroShippingTable from "./africaRoroContainer";
 
 const Shipping = () => {
-  const [showTable, setShowTable] = useState(null); // null for no table, 1 for Roro, 2 for Container
+  const location = useLocation();
+  const navigate = useNavigate();
   const { isSmallScreen, isPortrait } = useCheckScreenSize();
 
+  // Extract destination from URL or default to null
+  const [showTable, setShowTable] = useState(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const destParam = searchParams.get('dest');
+    return destParam ? parseInt(destParam) : null;
+  });
+
   useEffect(() => {
-    if (showTable !== null) { // Apply font size only when a table is visible
+    if (showTable !== null) {
       const applyFontSize = () => {
         const fontSize = (() => {
           if (isSmallScreen && isPortrait) return '20px';
@@ -17,28 +26,34 @@ const Shipping = () => {
           return '10px';
         })();
 
-        // Select all <th> and <td> elements and apply the font size
         const elements = document.querySelectorAll('th, td');
         elements.forEach((el) => {
           el.style.fontSize = fontSize;
         });
       };
 
-      // Apply font size when the table is rendered
       applyFontSize();
+      
+      // Update URL parameter when table changes
+      navigate(`?dest=${showTable}`, { replace: true });
     }
-  }, [showTable, isSmallScreen, isPortrait]); // Re-run when showTable or screen size changes
+  }, [showTable, isSmallScreen, isPortrait, navigate]);
 
   const handleAfricaRoroClick = () => {
-    setShowTable(1); // Show Africa Roro table
+    setShowTable(1);
   };
 
   const handleAfricaContainerClick = () => {
-    setShowTable(2); // Show Africa Container table
+    setShowTable(2);
   };
 
   return (
-    <div className="shipping-container">
+    <div 
+      className="shipping-container"
+      style= {{
+        height: isSmallScreen && isPortrait ? '100vh' : ''
+      }}
+    >
       <div className="header">
         <img
           alt="Company Logo"
@@ -48,10 +63,18 @@ const Shipping = () => {
         <h1>Shipping Schedule</h1>
       </div>
       <div className="content">
-        <button onClick={handleAfricaRoroClick}>AFRICA (RO-RO)</button>
-        <button onClick={handleAfricaContainerClick}>AFRICA (CONTAINER)</button>
-
-        
+        <button 
+          onClick={handleAfricaRoroClick}
+          className={showTable === 1 ? 'active' : ''}
+        >
+          AFRICA (RO-RO)
+        </button>
+        <button 
+          onClick={handleAfricaContainerClick}
+          className={showTable === 2 ? 'active' : ''}
+        >
+          AFRICA (CONTAINER)
+        </button>
       </div>
       {/* Render only the selected table */}
       {showTable === 1 && <AfricaRoroShippingTable />}
