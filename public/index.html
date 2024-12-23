@@ -25,10 +25,12 @@
       var siteWidth = 1200;
       var scale = screen.width /siteWidth;
 
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale=1.0');
      } 
     </script>
-    <script>
+    <!--
+    
+         <script>
       function adjustFontSize() {
           const screenWidth = window.screen.width;
   
@@ -36,7 +38,7 @@
           let bodyFontSize, h1FontSize, h2FontSize, pFontSize, liFontSize, spanFontSize, aFontSize;
   
           // Adjust font sizes based on screen width
-          if (screenWidth < 1200) {
+          if (screenWidth > 1200) {
               bodyFontSize = '1.25em'; // Base size for larger screens
               h1FontSize = '2.75em';
               h2FontSize = '2.1em';
@@ -64,6 +66,8 @@
       // Optional: Call the function on window resize
       window.onresize = adjustFontSize;
   </script>
+    -->
+ 
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
