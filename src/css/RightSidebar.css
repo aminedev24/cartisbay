@@ -92,3 +92,42 @@
   height: 13%;
   width: 49%;
 }
+
+.sign-in-btn {
+    border:none;
+    color: #FFf;
+    /* font-weight: bold; */
+    font-family: anton;
+    font-size: 20px;
+    text-transform: capitalize;
+  
+}
+
+.sign-in-btn:hover {
+  background-color: #1e3a8a;
+}
+
+/* Adding lines with pseudo-elements */
+.sign-in-btn::before,
+.sign-in-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 10px;
+  width: 100px; /* Adjust length of the lines as needed */
+  background-color: #fe9901; /* Line color */
+}
+
+.sign-in-btn::before {
+  left: 20px; /* Space between line and button */
+}
+
+.sign-in-btn::after {
+  right: 20px; /* Space between line and button */
+}
+
+.sign-in-btn:hover::before,
+.sign-in-btn:hover::after {
+  background-color: #FFf; /* Line color on hover */
+}

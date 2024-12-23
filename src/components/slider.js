@@ -49,7 +49,7 @@ const MediaSlider = () => {
       {!user ? (
         <>
         <div className="register-banner">
-          <img src={`${process.env.PUBLIC_URL}/images/homepage/register0.png`} />
+          <img src={`${process.env.PUBLIC_URL}/images/homepage/register0b.png`} />
           <Link to='/login'><button className="sign-in-btn">sign in</button></Link>
           <Link to='register'><button className="register-btn">register</button></Link>
         </div>   

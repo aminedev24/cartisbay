@@ -50,9 +50,6 @@ const Shipping = () => {
   return (
     <div 
       className="shipping-container"
-      style= {{
-        height: isSmallScreen && isPortrait ? '100vh' : ''
-      }}
     >
       <div className="header">
         <img

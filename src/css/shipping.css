@@ -1,6 +1,7 @@
 .shipping-container {
     margin: 0 auto;
     overflow: hidden; /* Prevent overflow of the container */
+    justify-content: flex-start;
 }
 
 .shipping-container .header {
@@ -63,7 +64,6 @@
 
 .shipping-table-container {
     overflow: auto;
-    height: 90vh;
 }
 
 .sticky-header {
