@@ -12,10 +12,7 @@ const RegisterForm = () => {
     <div className='register-wrapper'>
     <div 
       className="register-container"
-      style={{
-        height: isSmallScreen && isPortrait ? '90vh' : '',
-     
-      }}  
+    
     >
       <div 
         className="account-container"

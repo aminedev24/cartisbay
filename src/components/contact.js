@@ -121,7 +121,6 @@ const Contact = ({ sell }) => {
   return (
     <div
       className='form-wrapper contact-wrapper'
-      style={{ height: isSmallScreen && isPortrait ? '100vh' : '' }}
     >
       <div
         className="contact-container"

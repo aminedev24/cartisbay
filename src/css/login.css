@@ -101,6 +101,7 @@
   .register-container {
     display: flex;
     align-items: center;
+    flex-grow: 1;
   }
 
   .login-container .message {
@@ -264,8 +265,14 @@
   color: #fff;
   }
   
-  .register-wrapper {
-  margin: 20px;
+  .register-wrapper , .contact-wrapper , .login-form-wrapper{
+    margin: 20px;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
   }
   .register-container label {
   left:65px;

@@ -59,11 +59,7 @@ const Login = () => {
   return (
     <div
       className="login-form-wrapper"
-      style={{
-        height: isSmallScreen ? '90vh' : '',
-        display: isSmallScreen ? 'flex' : '',
-        alignItems: isSmallScreen ? 'center' : '',
-      }}
+  
     >
       <div
         className="login-container"
