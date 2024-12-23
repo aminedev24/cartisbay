@@ -124,9 +124,7 @@ const Contact = ({ sell }) => {
     >
       <div
         className="contact-container"
-        style={{
-          scale: isSmallScreen && isPortrait ? '1.3' : ''
-        }}
+       
       >
         {!sell && <h1>We like to hear from you!</h1>}
         <h2>Contact Us</h2>
