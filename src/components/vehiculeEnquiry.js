@@ -141,9 +141,7 @@ const InquiryForm = () => {
     <div className='enquiry-wrapper'>
     <form
        onSubmit={handleSubmit}
-       style={{
-        scale: isPortrait && isSmallScreen ? "1.5" :''
-       }}
+       
     >
       <div className="enquiryContainer">
       {notification.message && (
