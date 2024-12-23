@@ -64,6 +64,7 @@
 
 .shipping-table-container {
     overflow: auto;
+    height: 80vh;
 }
 
 .sticky-header {
