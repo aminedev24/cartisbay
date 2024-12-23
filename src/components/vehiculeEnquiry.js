@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/vehiculeEquiry.css";
 import { popularMakes, bodyTypeOptions, transmissionOptions, fetchMakes, fetchModelsForMake } from "./vehicleData";
 import CountryList from './countryList';
+import useCheckScreenSize from './screenSize';
 
 const InquiryForm = () => {
   const [makes, setMakes] = useState([]);
@@ -10,6 +11,7 @@ const InquiryForm = () => {
   const [selectedPort, setSelectedPort] = useState("");
   const [selectedMake, setSelectedMake] = useState(""); // State for selected make
   const [notification, setNotification] = useState({ type: "", message: "" });
+  const {isPortrait, isSmallScreen} = useCheckScreenSize();
 
   
     // Dynamically set API URL based on environment
@@ -136,7 +138,13 @@ const InquiryForm = () => {
   
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className='enquiry-wrapper'>
+    <form
+       onSubmit={handleSubmit}
+       style={{
+        scale: isPortrait && isSmallScreen ? "1.5" :''
+       }}
+    >
       <div className="enquiryContainer">
       {notification.message && (
         <div className={`message-status ${notification.type}`}>
@@ -376,6 +384,7 @@ const InquiryForm = () => {
         </div>
       </div>
     </form>
+    </div>
   );
 };
 

@@ -112,7 +112,6 @@
 
 /* Title under the icon */
 .icon-item h4 {
-  font-size: 16px;
   font-weight: bold;
   color: #333;
   margin: 0;
@@ -126,7 +125,6 @@
 
 .cta-button {
   padding: 15px 30px;
-  font-size: 1.2em;
   color: white;
   background-color: #f1892b; /* Change to your preferred color */
   border: none;

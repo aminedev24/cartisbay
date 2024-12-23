@@ -13,37 +13,39 @@ const BankInformation = () => {
   };
 
   return (
-    <div className="bank-information">
-      <h2>Bank Information</h2>
-      <div className="bank-info-item">
-        <strong>Beneficiary Name:</strong>
-        <span>{bankInfo.beneficiaryName}</span>
-      </div>
-      <div className="bank-info-item">
-        <strong>Bank Name:</strong>
-        <span>{bankInfo.bankName}</span>
-      </div>
-      <div className="bank-info-item">
-        <strong>Branch Name:</strong>
-        <span>{bankInfo.branchName}</span>
-      </div>
-      <div className="bank-info-item">
-        <strong>Bank Address:</strong>
-        <span>{bankInfo.bankAddress}</span>
-      </div>
-      <div className="bank-info-item">
-        <strong>SWIFT Code:</strong>
-        <span>{bankInfo.swiftCode}</span>
-      </div>
-      <div className="bank-info-item">
-        <strong>Account Number:</strong>
-        <span>{bankInfo.accountNumber}</span>
-      </div>
-      <div className="bank-info-item">
-        <strong>Beneficiary Address:</strong>
-        <span>{bankInfo.beneficiaryAddress}</span>
-      </div>
+    <div className="bank-information terms-container">
+    <h2>Bank Information</h2>
+    <div className="bank-info-grid"> {/* New container for grid layout */}
+        <div className="bank-info-item">
+            <h2>Beneficiary Name:</h2>
+            <p>{bankInfo.beneficiaryName}</p>
+        </div>
+        <div className="bank-info-item">
+            <h2>Bank Name:</h2>
+            <p>{bankInfo.bankName}</p>
+        </div>
+        <div className="bank-info-item">
+            <h2>Branch Name:</h2>
+            <p>{bankInfo.branchName}</p>
+        </div>
+        <div className="bank-info-item">
+            <h2>Bank Address:</h2>
+            <p>{bankInfo.bankAddress}</p>
+        </div>
+        <div className="bank-info-item">
+            <h2>SWIFT Code:</h2>
+            <p>{bankInfo.swiftCode}</p>
+        </div>
+        <div className="bank-info-item">
+            <h2>Account Number:</h2>
+            <p>{bankInfo.accountNumber}</p>
+        </div>
+        <div className="bank-info-item">
+            <h2>Beneficiary Address:</h2>
+            <p>{bankInfo.beneficiaryAddress}</p>
+        </div>
     </div>
+</div>
   );
 };
 

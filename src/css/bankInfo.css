@@ -1,51 +1,49 @@
 .bank-information {
-    padding: 25px;
-    margin: 50px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-  }
-  
-  .bank-information:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    transform: translateY(-3px);
-  }
-  
-  .bank-information h2 {
-    color: #2c3e50;
-    font-weight: 600;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+  padding: 25px;
+  margin: 50px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
 
-  }
-  
-  .bank-info-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #ecf0f1;
-    transition: background-color 0.2s ease;
-    margin:20px 0;
-  }
-  
-  .bank-info-item:last-child {
-    border-bottom: none;
-  }
-  
-  .bank-info-item:hover {
-    background-color: #f8f9fa;
-  }
-  
-  .bank-info-item strong {
-    color: #34495e;
-    min-width: 150px;
- 
-  }
-  
-  .bank-info-item span {
-    color: #2c3e50;
-    text-align: right;
+.bank-information:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
 
-  }
-  
+.bank-info-grid {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 20px; /* Space between items */
+}
+
+.bank-info-item {
+  display: flex;
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ecf0f1;
+  transition: background-color 0.2s ease;
+  flex-direction: column;
+}
+
+.bank-info-item:last-child {
+  border-bottom: none;
+  grid-column: span 2; /* Make the last item span both columns */
+  text-align: center; /* Center the text */
+}
+
+.bank-info-item:hover {
+  background-color: #f8f9fa;
+}
+
+.bank-info-item h2 {
+  color: #34495e;
+  margin: 0; /* Remove default margin */
+  padding: 0 10px 0 0; /* Add right padding for space between header and text */
+}
+
+.bank-info-item p {
+  color: #2c3e50;
+  margin: 0; /* Remove default margin */
+  padding: 0 0 0 5px; /* Add left padding for space between header and text */
+}
