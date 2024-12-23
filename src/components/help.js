@@ -25,7 +25,7 @@ const topics = {
     { name: "help", content: <h1 className='help-header'>All you need to know <br />about us</h1>, image:`${process.env.PUBLIC_URL}/images/helpcopy.jpeg` },
     { name: "Overview", component: <ArtisbayOverview />, image:`${process.env.PUBLIC_URL}/images/overview.jpg`},
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofilecopy.jpg`},
-    { name: "Bank Information", content: <BankInformation/>, image: `` },
+    { name: "Bank Information", content: <BankInformation/>, image: `${process.env.PUBLIC_URL}/images/helpcopy.jpeg`},
     { name: "Why Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
     { name: "sell on artisbay", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonab.png` },
     { name: "Terms & Conditions", content: <TermsAndConditions />, image:  `${process.env.PUBLIC_URL}/images/terms&conditions.png` },
@@ -69,7 +69,9 @@ const HelpPage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    selectedTopic.name == "Bank Information" ? window.scrollTo(0,700):window.scrollTo(0, 0);
+    
+    console.log(selectedTopic.name)
   }, [location.pathname]);
 
   if (isLoading) {
@@ -79,7 +81,7 @@ const HelpPage = () => {
   return (
     <div className="help-page">
       {selectedTopic.image && (
-        <img src={selectedTopic.image} alt={selectedTopic.name} className="topic-image" />
+        <img style={{visibility: selectedTopic.name =="Bank Information" ? 'hidden': '' }} src={selectedTopic.image} alt={selectedTopic.name} className="topic-image" />
       )}
       <div className={`help-main-content ${
             selectedTopic.name === 'help' ? 'help-lp' : 

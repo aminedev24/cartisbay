@@ -19,15 +19,12 @@
   <body>
  
     <script>
-   
-   if (window.innerWidth < 1024) 
-     { 
-      var siteWidth = 1200;
-      var scale = screen.width /siteWidth;
-
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale=1.0');
-     } 
-    </script>
+      if (window.innerWidth < 1024) {
+          var siteWidth = 1200,
+              scale = screen.width / siteWidth;
+          document.querySelector('meta[name="viewport"]').setAttribute("content", "width=" + siteWidth + ", initial-scale=" + scale);
+      }
+  </script>
     <!--
     
          <script>
