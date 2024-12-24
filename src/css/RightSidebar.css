@@ -94,13 +94,12 @@
 }
 
 .sign-in-btn {
-    border:none;
     color: #FFf;
     /* font-weight: bold; */
     font-family: anton;
-
+    background-color: #ff9900;
     text-transform: capitalize;
-  
+    font-size: 20px;
 }
 
 .sign-in-btn:hover {
@@ -116,7 +115,7 @@
   transform: translateY(-50%);
   height: 10px;
   width: 100px; /* Adjust length of the lines as needed */
-  background-color: #fe9901; /* Line color */
+  background-color: #fff; /* Line color */
 }
 
 .sign-in-btn::before {

@@ -141,7 +141,7 @@ const InquiryForm = () => {
     <div className='enquiry-wrapper'>
     <form
        onSubmit={handleSubmit}
-       
+      
     >
       <div className="enquiryContainer">
       {notification.message && (
