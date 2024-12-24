@@ -14,7 +14,7 @@
 }
 
 .no-cars-found {
-  font-size: 1.5rem; /* Larger font size for visibility */
+ /* Larger font size for visibility */
   color: #e67e22; /* Color for 'No cars found' message */
   background-color: #f9f9f9; /* Light background color */
   border-radius: 8px; /* Rounded corners */
@@ -49,13 +49,13 @@
 
 /* Car Card Title */
 .car-card h2 {
-  font-size: 1.1em; /* Slightly larger font for the title */
+ /* Slightly larger font for the title */
   margin: 10px 0; /* Margin for spacing */
 }
 
 /* Car Card Description */
 .car-card p {
-  font-size: 0.9em; /* Smaller font size */
+ /* Smaller font size */
   color: #666; /* Gray color for description */
 }
 

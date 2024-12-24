@@ -143,7 +143,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 20px;
+
     cursor: pointer;
   }
   
@@ -171,7 +171,7 @@
 
   .contact-message, .mandatory-note {
     margin-top: 20px;
-    font-size: 16px;
+
     color: #fff;
     text-align: center;
     font-weight: bold;
@@ -200,7 +200,7 @@
   }
   .order-preview p {
     display: inline;
-    font-size: 2em;
+
     font-weight: bold;
   }
 
@@ -236,7 +236,7 @@
     top: 53%; 
     left: 18%;
     transform:translate(-50%, -50%) perspective(600px) rotateX(2deg) rotateY(334deg); 
-    font-size: 1.6em; /* Adjust font size as needed */ 
+ /* Adjust font size as needed */ 
     color: white; 
     font-weight: bold; 
   }
@@ -267,13 +267,13 @@
 
 .alert-modal-content h2 {
   margin: 0 0 15px; /* Spacing below the heading */
-  font-size: 24px; /* Larger font size for the heading */
+ /* Larger font size for the heading */
   color: #333; /* Darker color for better readability */
 }
 
 .alert-modal-content p {
   margin: 0 0 20px; /* Spacing below the paragraph */
-  font-size: 18px; /* Increased font size for better readability */
+ /* Increased font size for better readability */
   line-height: 1.6; /* Increased line height for better spacing */
   font-weight: 400; /* Normal weight for the paragraph */
   color: #555; /* Softer, neutral color for the message */
@@ -287,7 +287,7 @@
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners for the button */
   padding: 10px 20px; /* Padding for the button */
-  font-size: 16px; /* Font size for the button */
+ /* Font size for the button */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 12px;  /* Smaller font size */
+  /* Smaller font size */
     font-weight: bold;
     color: #fff;
   }
@@ -12,7 +12,7 @@
   .app-info .app-name {
     font-weight: bold;
     color: #fff;
-    font-size: 14px;  /* Reduced font size */
+  /* Reduced font size */
     margin-right: 20px;  /* Space between app name and other elements */
   }
   
@@ -25,7 +25,7 @@
   .extra-info .time,
   .extra-info .exchange-rate {
     color: #fff;
-    font-size: 12px;  /* Smaller font size */
+  /* Smaller font size */
   }
   
   .extra-info select {
@@ -33,7 +33,7 @@
     padding: 5px; /* Padding for select boxes */
     border-radius: 4px; /* Rounded corners for select boxes */
     border: 1px solid #ccc; /* Border style */
-    font-size: 12px; /* Match font size */
+ /* Match font size */
   }
   
 .app-info span {

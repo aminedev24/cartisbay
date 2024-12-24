@@ -7,12 +7,12 @@
   }
   
   .terms-container h1, .asf h1, .whyChoose h1, .dismantling h1, .overview h1, .pypal h1, .howtopay h1 ,.aboutusedtires h1 {
-    font-size: 24px;
+
     margin-bottom: 20px;
   }
   
   .terms-container h2 , .asf h2 , .whyChoose h2 ,.envirement-policy h2 ,.security-notice h2 , .paypal h2, .howtopay h2, .aboutusedtires h2{
-    font-size: 20px;
+
     margin-top: 20px;
     margin-bottom: 10px;
   }
@@ -77,13 +77,13 @@
 }
 
 .envirement-policy h1 {
-    font-size: 26px; /* Larger font size for the header */
+ /* Larger font size for the header */
     color: #2c3e50; /* Darker color for better readability */
     margin-bottom: 15px; /* Space below the header */
 }
 
 .envirement-policy p {
-    font-size: 18px; /* Increase font size for better readability */
+ /* Increase font size for better readability */
     line-height: 1.6; /* Increase line height for better spacing */
     margin-bottom: 15px; /* Space between paragraphs */
     font-weight: bold;

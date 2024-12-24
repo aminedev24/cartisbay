@@ -7,7 +7,7 @@
 
   }
   .enquiryContainer h2 {
-    font-size: 24px;
+
     color: #000;
     border-bottom: 2px solid #f1892b;
     padding-bottom: 5px;
@@ -71,7 +71,7 @@
     padding: 15px 30px;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+
     cursor: pointer;
 }
 .submit-section button:hover {
@@ -108,7 +108,7 @@ textarea {
     padding: 15px;
     border-radius: 5px;
     text-align: center;
-    font-size: 16px;
+
     font-weight: bold;
     transition: opacity 0.5s ease;
   }

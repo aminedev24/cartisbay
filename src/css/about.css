@@ -13,7 +13,7 @@
   }
   
   .about-container p {
-    font-size: 1.1rem;
+
     color: #34495e;
     margin-bottom: 20px;
   }
@@ -50,13 +50,13 @@
   }
   
   .feature-item i {
-    font-size: 2.5rem;
+
     color: #2980b9;
     margin-bottom: 10px;
   }
   
   .feature-item h4 {
-    font-size: 1.5rem;
+
     color: #34495e;
     margin-bottom: 10px;
   }
@@ -74,7 +74,7 @@
   blockquote {
     font-style: italic;
     color: #7f8c8d;
-    font-size: 1.2rem;
+
   }
   
    .about-container span {
@@ -111,11 +111,11 @@
     }
   
     h2 {
-      font-size: 1.6rem;
+
     }
   
     p {
-      font-size: 1rem;
+
     }
   }
   

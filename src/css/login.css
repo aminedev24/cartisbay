@@ -14,7 +14,7 @@
   }
   
   .login-container h2 {
-    font-size: 1.8rem;
+
     margin-bottom: 1rem;
     color: #333;
   }
@@ -33,7 +33,7 @@
   .login-container .input-group input {
     width: 100%;
     padding: 0.8rem 0.5rem;
-    font-size: 1rem;
+
     border-radius: 4px;
     border: 1px solid #ccc;
     transition: border 0.3s;
@@ -49,7 +49,7 @@
     top: 50%;
     left: 0.5rem;
     color: #888;
-    font-size: 1rem;
+
     transform: translateY(-50%);
     pointer-events: none;
     transition: 0.2s ease all;
@@ -58,13 +58,13 @@
   .input-group input:focus + label,
   .input-group .float {
     top: -0.5rem;
-    font-size: 0.75rem;
+
     color: #007bff;
   }
   
   .login-button {
     padding: 0.8rem;
-    font-size: 1rem;
+
     font-weight: bold;
     color: #fff;
     background-color: #007bff;
@@ -136,19 +136,19 @@
   }
   
   .header h2 {
-    font-size: 1.2rem; /* Larger header text */
+ /* Larger header text */
   }
   
   /* Subtitle */
   .header-subtitle {
-    font-size: 1rem; /* Slightly larger subtitle */
+ /* Slightly larger subtitle */
     color: #555; /* Darker gray for better readability */
     margin-bottom: 30px; /* Increased margin for spacing */
   }
   
   /* Icon styling */
   .header-icon .fa-user-plus {
-    font-size: 1.6rem; /* Larger icon size */
+ /* Larger icon size */
   }
   
   /* Input Group Styling */
@@ -164,7 +164,7 @@
     border: 2px solid transparent;
     background: #f7f9fc;
     transition: all 0.3s ease;
-    font-size: 16px;
+
     box-sizing: content-box;
   }
   
@@ -184,7 +184,7 @@
     background: #f7f9fc;
     padding: 0 5px;
     color: #1e3a8a;
-    font-size: 16px;
+
     pointer-events: none;
     transition: 0.3s ease;
   }
@@ -197,7 +197,7 @@
    {
     top: -10px;
     left: 10px;
-    font-size: 12px;
+
     color: #9face6;
   }
   
@@ -209,7 +209,7 @@
     border-radius: 25px;
     background: #1e3a8a;
     color: white;
-    font-size: 16px;
+
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -246,7 +246,7 @@
   .input-group select:not(:placeholder-shown) + label {
   top: -10px;
   left: 10px;
-  font-size: 12px;
+
   color: #9face6;
   }
   

@@ -43,11 +43,11 @@
 }
 
 .pdf-container h1 {
-  font-size: 2.5em; /* Larger font size for main title */
+ /* Larger font size for main title */
 }
 
 .pdf-container h2 {
-  font-size: 2em; /* Slightly smaller for subheadings */
+ /* Slightly smaller for subheadings */
 }
 
 .pdf-container ol {
@@ -75,7 +75,7 @@
   top: 15px; /* Align with the text */
   font-weight: bold;
   color: #1da1f2; /* Color for the counter */
-  font-size: 1.2em; /* Font size for the counter */
+ /* Font size for the counter */
 }
 
 .pdf-container strong , .cutting-style h3 {

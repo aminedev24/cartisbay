@@ -29,13 +29,13 @@ option {
 
 .why-choose-us h2 {
     margin-bottom: 20px;
-    font-size: 2.5em; /* Larger font size for emphasis */
+ /* Larger font size for emphasis */
     font-weight: 700; /* Bold text */
 }
 
 .why-choose-us p {
     margin-bottom: 30px; /* Increased bottom margin for spacing */
-    font-size: 1.2em; /* Slightly larger font for readability */
+ /* Slightly larger font for readability */
     line-height: 1.8; /* Improved line height for better readability */
 }
 
@@ -48,7 +48,7 @@ option {
 
 .why-choose-us li {
     margin: 15px 0;
-    font-size: 1.1em; /* Slightly larger font for readability */
+ /* Slightly larger font for readability */
     position: relative; /* For adding icons or styles */
 }
 
@@ -60,7 +60,7 @@ option {
 }
 
 .why-choose-us .cta-button, .bordered .cta-button {
-    font-size: small !important;
+
   
 }
 
@@ -114,21 +114,21 @@ option {
  
     .why-choose-us h2,
     .stocklist-section h2 {
-        font-size: 1.5rem; /* Adjusted heading size */
+ /* Adjusted heading size */
     }
 
     .cta-button {
-        font-size: 1rem; /* Adjust button font size */
+ /* Adjust button font size */
         padding: 10px 20px; /* Adjust button padding */
     }
 
     /* Testimonials Section */
     .testimonial {
-        font-size: 1rem; /* Adjust testimonial font size */
+ /* Adjust testimonial font size */
     }
 
     .contact-cta p {
-        font-size: 1.2rem; /* Smaller contact CTA text */
+ /* Smaller contact CTA text */
     }
 }
 
@@ -163,7 +163,7 @@ option {
 
 .info-card-title {
     margin-top: 10px; /* Space between image and text */
-    font-size: 1rem; /* Adjust font size for better readability */
+ /* Adjust font size for better readability */
     font-weight: 600; /* Bold text for emphasis */
     color: #2c3e50; /* Darker text color */
 }
@@ -189,13 +189,13 @@ option {
   
   .dismantling-content h2 {
     color: #1e3a8a;
-    font-size: 24px;
+
   }
   
   .dismantling-content p {
     color: #333;
     margin-top: 10px;
-    font-size: 16px;
+
     line-height: 1.5;
   }
   
@@ -268,7 +268,7 @@ option {
 }
 
 .slick-dots li button:before {
-    font-size: 10px !important;
+
 }
 
  .slick-prev {
@@ -296,7 +296,7 @@ option {
 
 
 .title {
-    font-size: 25px;
+
     font-weight: bold;
     margin-bottom: 10px;
     padding: 5px;
@@ -326,7 +326,7 @@ option {
 }
 
 .grid-item span {
-    font-size: 23px;
+
 }
 
 .brands {
@@ -342,7 +342,7 @@ option {
     text-align: center;
     padding: 10px; /* Reduced padding for smaller size */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    font-size: 30px; /* Reduced font size for brand text */
+ /* Reduced font size for brand text */
     cursor: pointer;
 }
 
@@ -354,7 +354,7 @@ option {
 
 .brand p {
     margin: 0;
-    font-size: 20px !important; /* Reduced font size for brand text */
+ /* Reduced font size for brand text */
     text-transform: uppercase;
 }
 
@@ -371,7 +371,7 @@ option {
     top:48%; /* Center vertically */
     right: 0%; /* Position the pointer to the right */
     transform: translate(-50%, -50%); /* Offset the center */
-    font-size: 24px; /* Size of the pointer */
+ /* Size of the pointer */
     cursor: pointer; /* Pointer cursor */
     width: 25%;
     height: 50%;
@@ -474,7 +474,7 @@ option {
 }
 
 .small-icon {
-    font-size: 108px; /* Size of the hand pointer icon */
+ /* Size of the hand pointer icon */
     color: #e67e22;
 }
 
@@ -485,7 +485,7 @@ option {
 .click-text {
     display: block; /* Make the text a block element */
     margin-top: 5px; /* Space between icon and text */
-    font-size: 28px; /* Font size for the text */
+ /* Font size for the text */
     color: #e67e22; /* Text color */
     text-transform: uppercase;
 }
@@ -528,7 +528,7 @@ option {
 
 .bold-text {
     font-weight: bold; /* Makes the text bold */
-    font-size: 1.5em; /* Increases the font size */
+ /* Increases the font size */
     text-align: center; /* Centers the text */
     margin: 10px 0; /* Adds some space above and below the text */
 
@@ -554,7 +554,7 @@ option {
     right: 14%;
     background-color: #1da1f2;
     font-weight: bold;
-    font-size: 20px;
+
   }
 
   .small-banner-container {
@@ -569,7 +569,7 @@ option {
     position: absolute;
     top: 57%;
     left: 52%;
-    font-size: 15px;
+
     width: 18%;
   }
 
@@ -618,7 +618,7 @@ option {
 }
 
 .header h1 {
-    font-size: 36px;
+
     text-shadow: 2px 2px 5px #1da1f2;
     display: inline-block;
     background: #fff;
@@ -643,7 +643,7 @@ option {
 }
 
 .news-item {
-    font-size: 1.2em; /* Increase font size */
+ /* Increase font size */
     color: #333; /* Dark text color */
     margin: 10px 0; /* Space between news items */
     padding: 10px 20px; /* Padding around text */
@@ -690,7 +690,7 @@ option {
 }
 
 .links ul li {
-    font-size: 18px;
+
     color: #000;
     margin-bottom: 10px; /* Add bottom margin for spacing */
     font-weight: bold;
