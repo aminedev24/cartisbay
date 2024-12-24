@@ -15,36 +15,38 @@ const BankInformation = () => {
   return (
     <div className="bank-information terms-container">
     <h2>Bank Information</h2>
-    <div className="bank-info-grid"> {/* New container for grid layout */}
-        <div className="bank-info-item">
-            <h2>Beneficiary Name:</h2>
-            <p>{bankInfo.beneficiaryName}</p>
-        </div>
-        <div className="bank-info-item">
-            <h2>Bank Name:</h2>
-            <p>{bankInfo.bankName}</p>
-        </div>
-        <div className="bank-info-item">
-            <h2>Branch Name:</h2>
-            <p>{bankInfo.branchName}</p>
-        </div>
-        <div className="bank-info-item">
-            <h2>Bank Address:</h2>
-            <p>{bankInfo.bankAddress}</p>
-        </div>
-        <div className="bank-info-item">
-            <h2>SWIFT Code:</h2>
-            <p>{bankInfo.swiftCode}</p>
-        </div>
-        <div className="bank-info-item">
-            <h2>Account Number:</h2>
-            <p>{bankInfo.accountNumber}</p>
-        </div>
-        <div className="bank-info-item">
-            <h2>Beneficiary Address:</h2>
-            <p>{bankInfo.beneficiaryAddress}</p>
-        </div>
-    </div>
+    <table className="bank-info-table">
+        <tbody>
+            <tr>
+                <th>Beneficiary Name</th>
+                <td>{bankInfo.beneficiaryName}</td>
+            </tr>
+            <tr>
+                <th>Bank Name</th>
+                <td>{bankInfo.bankName}</td>
+            </tr>
+            <tr>
+                <th>Branch Name</th>
+                <td>{bankInfo.branchName}</td>
+            </tr>
+            <tr>
+                <th>Bank Address</th>
+                <td>{bankInfo.bankAddress}</td>
+            </tr>
+            <tr>
+                <th>SWIFT Code</th>
+                <td>{bankInfo.swiftCode}</td>
+            </tr>
+            <tr>
+                <th>Account Number</th>
+                <td>{bankInfo.accountNumber}</td>
+            </tr>
+            <tr>
+                <th>Beneficiary Address</th>
+                <td>{bankInfo.beneficiaryAddress}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
   );
 };

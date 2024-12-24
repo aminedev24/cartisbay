@@ -40,12 +40,10 @@
 }
 
 .car-list-item h3 {
-  font-size: 1.5rem; /* Heading size for car name */
   margin: 15px 0; /* Margin for spacing */
   color: #2c3e50; /* Deep blue-gray color */
 }
 
 .car-list-item p {
-  font-size: 1.2rem; /* Price size */
   color: #e67e22; /* Soft orange for pricing */
 }

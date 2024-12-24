@@ -2,48 +2,31 @@
   padding: 25px;
   margin: 50px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
 }
 
-.bank-information:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  transform: translateY(-3px);
-}
-
-.bank-info-grid {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
-  gap: 20px; /* Space between items */
+.bank-info-container {
+  display: flex; /* Use flexbox for item layout */
+  flex-direction: column; /* Stack items vertically */
+  gap: 15px; /* Space between items */
 }
 
 .bank-info-item {
-  display: flex;
-  justify-content: flex-start; /* Align items to the start */
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #ecf0f1;
-  transition: background-color 0.2s ease;
-  flex-direction: column;
-}
-
-.bank-info-item:last-child {
-  border-bottom: none;
-  grid-column: span 2; /* Make the last item span both columns */
-  text-align: center; /* Center the text */
-}
-
-.bank-info-item:hover {
-  background-color: #f8f9fa;
+  display: flex; /* Use flexbox for item layout */
+  justify-content: space-between; /* Space between header and paragraph */
+  align-items: center; /* Center items vertically */
+  padding: 10px;
+  border: 1px solid #ecf0f1; /* Add a border for separation */
+  border-radius: 5px; /* Rounded corners */
 }
 
 .bank-info-item h2 {
+  margin: 0; /* Remove margin for header */
   color: #34495e;
-  margin: 0; /* Remove default margin */
-  padding: 0 10px 0 0; /* Add right padding for space between header and text */
+  padding-right: 5px; /* Add a small right padding for space */
 }
 
 .bank-info-item p {
+  margin: 0; /* Remove margin for paragraph */
   color: #2c3e50;
-  margin: 0; /* Remove default margin */
-  padding: 0 0 0 5px; /* Add left padding for space between header and text */
+  padding-left: 5px; /* Add a small left padding for space */
 }

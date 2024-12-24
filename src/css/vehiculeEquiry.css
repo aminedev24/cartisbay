@@ -7,7 +7,6 @@
 
   }
   .enquiryContainer h2 {
-    font-size: 24px;
     color: #000;
     border-bottom: 2px solid #f1892b;
     padding-bottom: 5px;
@@ -90,17 +89,6 @@
 
 textarea {
     resize: none;
-}
-
-@media only screen and (max-width: 762px) {
-    .enquiryContainer .form-group {
-        margin-bottom: 30px !important;
-
-    }
-
-    .enquiryContainer {
-        min-height: 100vh;
-    }
 }
 
 .message-status {

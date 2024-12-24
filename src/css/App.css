@@ -19,12 +19,6 @@ body {
 
 
 
-
-.container  {
-
- min-height: 100vh;
-}
-
     
 @media screen and (max-width: 9999px) {
     .layout, .usedTiresForm-container, .car-details, .help-page , .footer-inner, .shipping-container {

@@ -14,7 +14,6 @@
   }
   
   .login-container h2 {
-    font-size: 1.8rem;
     margin-bottom: 1rem;
     color: #333;
   }
@@ -33,7 +32,6 @@
   .login-container .input-group input {
     width: 100%;
     padding: 0.8rem 0.5rem;
-    font-size: 1rem;
     border-radius: 4px;
     border: 1px solid #ccc;
     transition: border 0.3s;
@@ -49,7 +47,6 @@
     top: 50%;
     left: 0.5rem;
     color: #888;
-    font-size: 1rem;
     transform: translateY(-50%);
     pointer-events: none;
     transition: 0.2s ease all;
@@ -135,13 +132,9 @@
   
   }
   
-  .header h2 {
-    font-size: 1.2rem; /* Larger header text */
-  }
   
   /* Subtitle */
   .header-subtitle {
-    font-size: 1rem; /* Slightly larger subtitle */
     color: #555; /* Darker gray for better readability */
     margin-bottom: 30px; /* Increased margin for spacing */
   }
@@ -265,7 +258,7 @@
   color: #fff;
   }
   
-  .register-wrapper , .contact-wrapper , .login-form-wrapper , .shipping-container , .enquiry-wrapper{
+  .register-wrapper , .contact-wrapper , .login-form-wrapper , .shipping-container , .enquiry-wrapper , .help-page{
     margin: 20px;
     flex: 1 0 auto;
     display: flex;

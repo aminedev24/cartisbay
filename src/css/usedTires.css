@@ -80,7 +80,6 @@
 
 /* Heading styling */
 .order-steps-container h1 , .reasons-wrapper h1, .tireRating-title, .tire-width-container h1 , .tire-depth h2 {
-  font-size: 2.5em;
   color: #1e377f;
   margin-bottom: 40px;
   font-weight: bold;
@@ -107,14 +106,12 @@
 }
 
 .step-card h3 {
-  font-size: 1.8em;
   color: #f1892b;
   margin-bottom: 20px;
   font-weight: bold;
 }
 
 .step-card p {
-  font-size: 1.2em;
   color: #555;
   line-height: 1.8;
   margin-bottom: 20px;
@@ -129,7 +126,6 @@
 }
 
 .step-card li {
-  font-size: 1.2em;
   line-height: 1.8;
   margin-bottom: 12px;
 }
@@ -145,7 +141,6 @@
 
 
 .order-call-to-action p {
-  font-size: 1.3em;
   color: #333;
   margin-bottom: 20px;
 }
@@ -236,14 +231,12 @@
 /* Text Styles */
 .reason h2 {
   color: #f1892b;
-  font-size: 1.6em;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .reason p {
   color: #333;
-  font-size: 1.1em;
   line-height: 1.6;
   margin-bottom: 10px;
 }
@@ -265,7 +258,6 @@
 .tireRating-title {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 2em;
   font-weight: bold;
 }
 
@@ -294,7 +286,6 @@
 .rating-title {
   color: #1da1f2;
   margin-bottom: 15px;
-  font-size: 1.5em;
   font-weight: 600;
 }
 
@@ -340,7 +331,6 @@
 
 /* Paragraph styles */
 p {
-  font-size: 1em;
   line-height: 1.6;
 }
 
@@ -407,25 +397,6 @@ ul li {
   margin-bottom: 8px;
 }
 
-/* Responsive Design - Adjusting table layout for smaller screens */
-@media (max-width: 768px) {
-  table, th, td {
-    font-size: 0.9em;
-  }
-
-  /* Stacking tables vertically for small screens */
-  table {
-    margin-bottom: 15px;
-  }
-
-  h2 {
-    font-size: 1.6em;
-  }
-
-  h3 {
-    font-size: 1.4em;
-  }
-}
 
 .tables {
   display: flex;
@@ -455,7 +426,6 @@ ul li {
 
 
 .tire-width-container p {
-  font-size: 1.1em;
   margin-bottom: 15px;
   line-height: 1.6;
   color: #555;
@@ -467,7 +437,6 @@ ul li {
 
 .tire-width-container li {
   margin-bottom: 10px;
-  font-size: 1.1em;
   color: #444;
   line-height: 1.5;
 }
