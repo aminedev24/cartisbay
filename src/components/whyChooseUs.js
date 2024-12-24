@@ -4,7 +4,7 @@ import '../css/terms.css';
 const WhyChooseUs = () => {
     return (
         <div className="whyChooseUs">
-            <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
+            <h2>Why Choose Artisbay Inc. for Your Used Tires</h2>
             <section>
                 <h2>Premium Selection</h2>
                 <p>

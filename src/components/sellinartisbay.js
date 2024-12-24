@@ -5,7 +5,7 @@ function SellInArtisbay() {
   const [sell, setSell] = useState(true)
   return (
     <div className="terms-container">
-      <h1 className="heading">Join Artisbay Inc. and Expand Your Reach to Global Markets</h1>
+      <h2 className="heading">Join Artisbay Inc. and Expand Your Reach to Global Markets</h2>
 
       <p className="description">
         Artisbay Inc. offers local Japanese small-size car dealers the opportunity to grow their business by connecting with international buyers for used cars, trucks, buses, and machinery. With our streamlined process and reliable shipping solutions, we enable dealers to reach key markets, including Dar es Salaam Port in Tanzania and Walvis Bay Port in Namibia.

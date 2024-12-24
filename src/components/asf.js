@@ -3,7 +3,7 @@ import '../css/terms.css'
 const AntiSocialForcesPolicy = () => {
   return (
     <div className='asf'>
-      <h1>Anti-Social Forces Policy</h1>
+      <h2>Anti-Social Forces Policy</h2>
       <section>
         <h2>1. Prohibition on Transactions with Anti-Social Forces</h2>
         <p>

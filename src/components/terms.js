@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const TermsAndConditions = () => (
   <div className="terms-container">
-    <h1>Terms and Conditions of Use</h1>
+    <h2>Terms and Conditions of Use</h2>
     <p>These terms and conditions (hereinafter referred to as “Terms”) govern the use of the services provided by Artisbay Inc. (hereinafter referred to as “the Company”) through its online platform (hereinafter referred to as “the Service”). All registered users (hereinafter referred to as “Users”) agree to comply with the Terms outlined below. Specific terms regarding purchases can be found in the relevant sales conditions applicable to each transaction.</p>
     <h2>Article 1 (Scope of Application)</h2>
     <p>These Terms apply to all interactions between the Company and the Users related to the use of the Service. By accessing or using the Service, Users agree to be bound by these Terms.</p>

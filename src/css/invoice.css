@@ -1,0 +1,94 @@
+.invoice-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.invoice-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.invoice-container .header img {
+    width: 150px;
+}
+.invoice-container .header .contact-info {
+    max-width: 60%;
+    text-align: left;
+}
+.invoice-container .header .contact-info p {
+    margin: 0;
+}
+.invoice-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+.invoice-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.invoice-info .left,
+.invoice-info .right {
+    width: 48%;
+}
+.invoice-info .right {
+    text-align: right;
+}
+.important {
+    background-color: #00aeef;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+.important span {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+.important .warning {
+    color: red;
+    background-color: transparent;
+    border: none;
+    margin-left: 0;
+}
+.invoice-container .table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.invoice-container .table-container th,
+.invoice-container .table-container td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+.invoice-container .table-container th {
+    background-color: #003366;
+    color: white;
+}
+.table-container .total {
+    text-align: right;
+}
+.signature {
+    text-align: right;
+    margin-top: 20px;
+}
+.signature img {
+    width: 100px;
+}
+.invoice-container .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.invoice-container .note {
+    margin-top: 10px;
+    font-style: italic;
+}

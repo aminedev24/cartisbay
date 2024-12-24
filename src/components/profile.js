@@ -42,8 +42,6 @@ const Profile = () => {
         setUser(data);
         setFormData({
           name: data.full_name,
-          email: data.email,
-          phone: data.phone,
           country: data.country,
         });
       } catch (error) {
@@ -141,24 +139,7 @@ const Profile = () => {
                   onChange={handleChange}
                 />
               </label>
-              <label>
-                Email:
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Phone:
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </label>
+          
               <label>
                 Country:
                 <input

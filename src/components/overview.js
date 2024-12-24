@@ -3,7 +3,7 @@ import React from 'react';
 const ArtisbayOverview = () => {
   return (
     <div className='overview'>
-      <h1>Artisbay Inc.</h1>
+      <h2>Artisbay Inc.</h2>
       {/*<img src={`${process.env.PUBLIC_URL}/images/companyProfile2.jpg`} alt={'company-profile'} className="topic-image" />*/}
 
       <p>

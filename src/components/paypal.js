@@ -5,7 +5,7 @@ const PaypalInfo = () => {
     <div className='paypal'>
       
       {/*<img style={{ maxHeight : 'unset' }}  src={`${process.env.PUBLIC_URL}/images/paypalbanner.png`} alt={'company-profile'} className="topic-image" />*/}
-      <h1>Simple & Secure Payments with PayPal</h1>
+      <h2>Simple & Secure Payments with PayPal</h2>
       <p>
         At Artisbay Inc., we prioritize security and convenience in every transaction. That’s why we’ve chosen PayPal as our trusted partner to process all payments safely and seamlessly.
       </p>

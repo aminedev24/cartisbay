@@ -6,7 +6,7 @@ const TelegraphicTransfer = () => {
    
       {/*<img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/banktransfer.jpeg`} alt={'company-profile'} className="topic-image" />*/}
       <ol>
-      <h1>How to Make a Payment via Telegraphic Transfer (T/T)</h1>
+      <h2>How to Make a Payment via Telegraphic Transfer (T/T)</h2>
         <li>
           <h2>Receive the Invoice</h2>
           <p>After placing your order, Artisbay Inc. will send you a detailed invoice via email. This invoice will include:</p>
