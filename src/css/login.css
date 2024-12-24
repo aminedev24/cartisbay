@@ -265,7 +265,7 @@
   color: #fff;
   }
   
-  .register-wrapper , .contact-wrapper , .login-form-wrapper , .shipping-container , .enquiry-wrapper{
+  .register-wrapper , .contact-wrapper , .login-form-wrapper , .shipping-container , .enquiry-wrapper, .help-page{
     margin: 20px;
     flex: 1 0 auto;
     display: flex;
