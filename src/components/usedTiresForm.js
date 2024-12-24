@@ -3,7 +3,7 @@ import "../css/usedTiresForm.css";
 import TireSelection from "./tireSelection";
 import Modal from "./alertModal";
 import { useUser } from "./userContext"; // Importing the useUser hook to access user data
-import { Link } from "react-router-dom";
+import { Link  , useLocation} from "react-router-dom";
 import { TireSizes } from "./tireSizes";
 import { data } from "autoprefixer";
 const OrderForm = ({
@@ -27,7 +27,7 @@ const OrderForm = ({
   const [isQuantityValid, setIsQuantityValid] = useState(true);
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
   const { user, loading } = useUser(); // Accessing the user from context
-
+  const location = useLocation();
   const [modalMessage, setModalMessage] = useState(""); // Message to show in the modal
   const [modalType, setModalType] = useState(""); // Type of modal: 'warning' or 'confirmation'
   const [selectedOrderIndex, setSelectedOrderIndex] = useState(null);
@@ -612,11 +612,11 @@ const editOrder = async (updatedOrder) => {
         // If not logged in, display login/register prompt
         <p className="login-prompt">
           Please{" "}
-          <Link to="/login" className="cta-link" href="/login">
+          <Link  state={{ from: location.pathname }}  to="/login" className="cta-link" href="/login">
             log in
           </Link>{" "}
           or
-          <Link to="/register" className="cta-link" href="/register">
+          <Link state={{ from: location.pathname }}   to="/register" className="cta-link" href="/register">
             register
           </Link>{" "}
           to send an order.

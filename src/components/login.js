@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import '../css/login.css';
 import useCheckScreenSize from './screenSize';
-import { useUser } from './userContext';
+import { useUser  } from './userContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,8 +10,9 @@ const Login = () => {
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current location
   const { isPortrait, isSmallScreen } = useCheckScreenSize();
-  const { user, loading, login } = useUser();
+  const { user, loading, login } = useUser ();
 
   // Check if the user is already logged in when the component mounts
   useEffect(() => {
@@ -19,6 +20,7 @@ const Login = () => {
       // Redirect to homepage if user is logged in
       const timeoutId = setTimeout(() => {
         navigate('/'); // Redirect after 2 seconds
+        console.log('navigating to homepage')
       }, 2000);
 
       return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
@@ -34,6 +36,11 @@ const Login = () => {
       if (response.status === 'success') {
         setMessage(`Welcome, ${response.user.name || email}!`); // Display welcome message
         setMessageType('success');
+
+        // Redirect to the previous location or homepage
+        const from = location.state?.from || '/'; // Default to homepage if no previous location
+        console.log(from)
+        navigate(from);
       } else {
         throw new Error(response.message || 'Login failed. Please try again.');
       }
@@ -44,8 +51,8 @@ const Login = () => {
     }
   };
 
-   // Timer to clear the message after 5 seconds
-   useEffect(() => {
+  // Timer to clear the message after 5 seconds
+  useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {
         setMessage('');
@@ -57,10 +64,7 @@ const Login = () => {
   }, [message]);
 
   return (
-    <div
-      className="login-form-wrapper"
-  
-    >
+    <div className="login-form-wrapper">
       <div
         className="login-container"
         style={{
@@ -101,7 +105,7 @@ const Login = () => {
               Login
             </button>
             <div className="forgot-password-link">
-              <Link to="/forgot-password">Forgot Password?</Link> {/* Forgot password link */}
+              <Link to="/forgot-password">Forgot Password?</Link>
             </div>
             {message && <p className={`message ${messageType}`}>{message}</p>}
           </form>

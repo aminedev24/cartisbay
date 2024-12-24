@@ -10,7 +10,7 @@ const Contact = ({ sell }) => {
     email: '',
     country: sell ? 'Japan' : '',
     phone: '',
-    enquiry: sell ? 'sell on artisbay' : '',
+    enquiry: sell ? 'sell on Artisbay' : '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);

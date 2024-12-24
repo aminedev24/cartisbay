@@ -57,6 +57,7 @@
     color: #17a2b8;
     position: absolute;
     margin-top: 15px;
+    display: none;
 }
 .form-group .info-icon:hover {
     cursor: pointer;
@@ -92,16 +93,6 @@ textarea {
     resize: none;
 }
 
-@media only screen and (max-width: 762px) {
-    .enquiryContainer .form-group {
-        margin-bottom: 30px !important;
-
-    }
-
-    .enquiryContainer {
-        min-height: 100vh;
-    }
-}
 
 .message-status {
     margin-top: 20px;
@@ -125,3 +116,29 @@ textarea {
     border: 1px solid #f5c6cb;
   }
   
+  .login-note {
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding around the content */
+    margin: 20px 0; /* Margin above and below the note */
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text */
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-note button {
+    background-color: #1da1f2; /* Bootstrap primary color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 7px 12px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.login-note button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
