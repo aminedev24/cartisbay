@@ -9,6 +9,7 @@ const CompanyProfile = (selectedTopic) => {
     mainBusiness: "Platform for the sale and export of used vehicles Sale",
     annualSales: "[To be confirmed in 2026]",
     url: "https://artisbay.com",
+    registeredinJapan: "License No. 7370001051924"
   };
 
   return (
@@ -41,6 +42,10 @@ const CompanyProfile = (selectedTopic) => {
           <div className="detail-item">
             <h3>URL:</h3>
             <p><a href={companyDetails.url} target="_blank" rel="noopener noreferrer">{companyDetails.url}</a></p>
+          </div>
+          <div className="detail-item">
+            <h3>Registered in Japan</h3>
+            <p>{companyDetails.registeredinJapan}</p>
           </div>
         </div>
       </div>
