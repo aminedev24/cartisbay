@@ -20,7 +20,7 @@ const RegisterForm = () => {
              scale: isSmallScreen && isPortrait ? '1.3': ''
         }}
       >
-      <img src={`${process.env.PUBLIC_URL}/images/logodb.png`} alt="Logo" className="logo" />
+      <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo" />
 
         <div className="header">
           <span className="person-icon">
