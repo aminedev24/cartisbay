@@ -73,7 +73,7 @@ const HowToBuy = () => {
           {steps.map((step, index) => (
             <div className="step" key={index}>
               <div className="step-text">
-                <h3>{step.title}</h3>
+                <h2>{step.title}</h2>
                 <ul>
                   {step.details.map((detail, idx) => (
                     <li key={idx}>{detail}</li>

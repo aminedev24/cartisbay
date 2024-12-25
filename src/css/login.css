@@ -84,6 +84,7 @@
     border-radius: 5px;
     font-weight: bold;
     width: 83%;
+    text-align: center;
   }
   
   .success {
@@ -112,172 +113,7 @@
   }
   
 
-  /* Container for the account creation section */
-  .account-container {
-    background-color: #1da1f2; /* White background for contrast */
-    padding: 26px 10px; /* More spacious padding */
-    border: 1px solid #e67e22; /* Orange border */
-    width: 100%; /* Slight width adjustment for sidebar space */
-    margin: 0 auto;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Deeper shadow for better emphasis */
-    text-align: center;
-    max-width: 800px; /* Limiting the maximum width */
-    transition: transform 0.3s ease;
-  }
-  
-  /* Header for the Create Account section */
-  .account-container .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #e67e22; /* Orange color */
-    font-weight: bold;
-  
-  }
-  
-  .header h2 {
- /* Larger header text */
-  }
-  
-  /* Subtitle */
-  .header-subtitle {
- /* Slightly larger subtitle */
-    color: #555; /* Darker gray for better readability */
-    margin-bottom: 30px; /* Increased margin for spacing */
-  }
-  
-  /* Icon styling */
-  .header-icon .fa-user-plus {
- /* Larger icon size */
-  }
-  
-  /* Input Group Styling */
-  .input-group {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  /* Input Styling */
-  .input-group input, .input-group select {
-    width: 80%;
-    padding: 7px 15px;
-    border: 2px solid transparent;
-    background: #f7f9fc;
-    transition: all 0.3s ease;
-
-    box-sizing: content-box;
-  }
-  
-  /* Input Focus Effect */
-  .input-group input:focus, .input-group select:focus {
-    outline: none;
-    border-color: #e67e22;
-    box-shadow: 0 0 8px rgba(156, 174, 230, 0.6);
-  }
-  
-  /* Floating Label */
-  .input-group label {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #f7f9fc;
-    padding: 0 5px;
-    color: #1e3a8a;
-
-    pointer-events: none;
-    transition: 0.3s ease;
-  }
-  
-  /* Label Animation */
-  .input-group input:focus + label,
-  .input-group input.not-empty + label,
-  .input-group select:focus + label,
-  .input-group select.not-empty + label
-   {
-    top: -10px;
-    left: 10px;
-
-    color: #9face6;
-  }
-  
-  /* Button Styling */
-  .signup-form button , .close-modal {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    background: #1e3a8a;
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .signup-form button:hover {
-    background: linear-gradient(90deg, #1e377f, #27459c);
-  }
-  
-  .header {
-    display: flex; /* Flex layout for icon and title */
-    align-items: center; /* Center items vertically */
-    margin-bottom: 12px; /* Space below header */
-  }
-
-  .phone-number-group {
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
-    justify-content: center;
-  }
-  
-  .phone-code {
-    border: 1px solid #ccc; /* Border for phone code */
-    border-top-left-radius: 4px; /* Rounded corners */
-    border-bottom-left-radius: 4px; /* Rounded corners */
-    padding: 9px 10px; /* Padding inside the box */
-    font-weight: bold; /* Bold text for better visibility */
-    margin-right: -1px; /* Overlap with the input field */
-    background-color: #f9f9f9;
-  }
-  
-  /* Add this for the select element to trigger the label animation */
-  .input-group select:focus + label,
-  .input-group select:not(:placeholder-shown) + label {
-  top: -10px;
-  left: 10px;
-
-  color: #9face6;
-  }
-  
-  .right-sidebar .shrink {
-  width: 60% !important;
-  }
-  
-  .account-container .shrink {
-  width: 68%;
-  }
-  .account-container button[type='submit'] {
-  background-color: #f1892b;
-  }
-  
-  .header h2 {
-  color: #fff;
-  }
-  
-  .register-wrapper , .contact-wrapper , .login-form-wrapper , .shipping-container , .enquiry-wrapper, .help-page{
-    margin: 20px;
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-
-  }
-  .register-container label {
-  left:65px;
-  }
-  
+   
   .register-container .modal-overlay {
     background: rgba(0, 0, 0, 0.5);
   }
@@ -286,14 +122,6 @@
     background-color: #fff;
   }
 
-  .terms-highlight {
-    color: #fff;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
   .register-container .terms-container {
     max-width: 600px;
   }
-
- 

@@ -1,7 +1,6 @@
 <?php
 
-include 'headers.php';
-
+include 'headers.php'; // Include your headers for CORS and content type
 include 'db_connection.php'; // Include database connection
 
 // Handle preflight requests
@@ -10,21 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Retrieve the Authorization header
-$headers = getallheaders();
-if (!isset($headers['Authorization'])) {
-    $errorMessage = 'Unauthorized: Missing Authorization header';
-    error_log($errorMessage); // Log the error
-    http_response_code(401);
-    echo json_encode(['message' => $errorMessage]);
-    exit();
-}
+// Use session to get user_id
+session_start(); // Ensure the session is started
+$user_id = $_SESSION['user_id'] ?? null; // Retrieve user_id from session
 
-// Extract the UID from the Authorization header
-$authHeader = $headers['Authorization'];
-$uid = str_replace('Bearer ', '', $authHeader);
-
-if (empty($uid)) {
+if (empty($user_id)) {
     $errorMessage = 'Unauthorized: Invalid UID';
     error_log($errorMessage); // Log the error
     http_response_code(401);
@@ -44,8 +33,8 @@ if ($stmt === false) {
     exit();
 }
 
-// Bind the UID as a parameter
-if (!$stmt->bind_param("s", $uid)) {
+// Bind the user_id as a parameter
+if (!$stmt->bind_param("s", $user_id)) {
     $errorMessage = 'Parameter binding failed: ' . $stmt->error;
     error_log($errorMessage); // Log the error
     http_response_code(500);

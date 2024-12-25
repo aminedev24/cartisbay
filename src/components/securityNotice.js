@@ -6,7 +6,7 @@ const PaymentPolicy = () => {
       <h2>Security Notice for Payments</h2>
       <p><strong>Be careful, avoid being scammed!</strong> Confirm our correct bank account before you send your money!</p>
       <ul>
-        <li>The beneficiary for all of our accounts is Artisbay Inc., and we only use the details listed below.</li>
+        <li>The beneficiary for all of our accounts is Artisbay Inc, and we only use the details listed<Link to='/help?topic=Bank%20Information' className='cta-link'>HERE.</Link></li>
         <li>We do not use any payment services such as Western Union.</li>
         <li>Please be cautious of fake or fraudulent emails pretending to be from Artisbay Inc. Verify that the email address ends with @artisbay.com, as this is the only domain we use.</li>
       </ul>

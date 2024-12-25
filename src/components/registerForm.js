@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import CountryList from "./countryList";
 import { useNavigate } from "react-router-dom";
+//import logo from `${process.env.PUBLIC_URL}/images/companyprofile.jpg`; // Import your logo image
 
-const SignupForm = ({ setIsModalOpen })  => {
+const SignupForm = ({ setIsModalOpen }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
@@ -36,6 +38,12 @@ const SignupForm = ({ setIsModalOpen })  => {
 
     if (!agreeToTerms) {
       setMessage("You must agree to the terms and conditions.");
+      setIsError(true);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match.");
       setIsError(true);
       return;
     }
@@ -77,110 +85,116 @@ const SignupForm = ({ setIsModalOpen })  => {
 
   return (
     <div className="signup-container">
-    <form className="signup-form" onSubmit={handleSignup}>
-      {message && (
-        <div className={`message ${isError ? "error" : "success"}`}>
-          {message}
+      <form className="signup-form" onSubmit={handleSignup}>
+        <div className="input-group">
+          <input
+            type="text"
+            value={fullName}
+            onChange={(e) => handleInputChange(setFullName, e)}
+            required
+          />
+          <label>Full Name</label>
         </div>
-      )}
 
-      <div className="input-group">
-        <input
-          type="text"
-          value={fullName}
-          onChange={(e) => handleInputChange(setFullName, e)}
-          required
-        />
-        <label>Full Name</label>
-      </div>
+        <div className="input-group">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => handleInputChange(setEmail, e)}
+            required
+          />
+          <label>Email</label>
+        </div>
 
-      <div className="input-group">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => handleInputChange(setEmail, e)}
-          required
-        />
-        <label>Email</label>
-      </div>
+        <div className="input-group phone-number-group">
+          {phoneCode && <span className="phone-code">{phoneCode}</span>}
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={phone}
+            onChange={(e) => handleInputChange(setPhone, e)}
+            required
+            placeholder="Phone Number"
+            className={phoneCode ? "shrink" : ''}
+          />
+        </div>
 
-      <div className="input-group phone-number-group">
-        {phoneCode && <span className="phone-code">{phoneCode}</span>}
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={phone}
-          onChange={(e) => handleInputChange(setPhone, e)}
-          required
-          placeholder="Phone Number"
-          className={phoneCode ? "shrink" : ''}
-        />
-      </div>
-
-      <div className="input-group">
-        <select
-          id="country"
-          value={selectedCountry}
-          onChange={handleCountryChange}
-          name="country"
-          className={selectedCountry ? "not-empty" : ""}
-          required
-        >
-          <option value="">Select Country</option>
-          {CountryList().sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
-            <option key={country.code} value={country.label}>
-              {country.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-
-
-      <div className="input-group">
-        <input
-          type="text"
-          value={company}
-          onChange={(e) => handleInputChange(setCompany, e)}
-        />
-        <label>Company</label>
-      </div>
-
-      <div className="input-group">
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => handleInputChange(setPassword, e)}
-          required
-        />
-        <label>Password</label>
-      </div>
-
-      <div className="checkbox-group">
-        <input
-          type="checkbox"
-          id="agree-to-terms"
-          checked={agreeToTerms}
-          required
-          onChange={() => setAgreeToTerms(!agreeToTerms)}
-        />
-        <label htmlFor="agree-to-terms">
-          I agree to the{" "}
-          <span
-            className="terms-highlight"
-            onClick={() => setIsModalOpen(true)}
+        <div className="input-group">
+          <select
+            id="country"
+            value={selectedCountry}
+            onChange={handleCountryChange}
+            name="country"
+            className={selectedCountry ? "not-empty" : ""}
+            required
           >
-            Terms and Conditions
-          </span>
-        </label>
-      </div>
+            <option value="">Select Country</option>
+            {CountryList().sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
+              <option key={country.code} value={country.label}>
+                {country.label}
+              </option>
+            ))}
+          </select>
+        </div>
 
-    
+        <div className="input-group">
+          <input
+            type="text"
+            name="company"
+            value={company}
+            onChange={(e) => handleInputChange(setCompany, e)}
+          />
+          <label>Company</label>
+        </div>
 
-      <button type="submit">Sign Up</button>
-    </form>
-   
+        <div className="input-group">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => handleInputChange(setPassword, e)}
+            required
+          />
+          <label>Password</label>
+        </div>
+
+        <div className="input-group">
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => handleInputChange(setConfirmPassword, e)}
+            required
+          />
+          <label>Confirm Password</label>
+        </div>
+
+        <div className="checkbox-group">
+          <input
+            type="checkbox"
+            id="agree-to-terms"
+            checked={agreeToTerms}
+            required
+            onChange={() => setAgreeToTerms(!agreeToTerms)}
+          />
+          <label htmlFor="agree-to-terms">
+            I agree to the{" "}
+            <span
+              className="terms-highlight"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Terms and Conditions
+            </span>
+          </label>
+        </div>
+
+        {message && (
+          <div className={`message ${isError ? "error" : "success"}`}>
+            {message}
+          </div>
+        )}
+
+        <button type="submit">Sign Up</button>
+      </form>
     </div>
   );
 };

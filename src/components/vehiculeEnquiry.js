@@ -87,39 +87,60 @@ const InquiryForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    try {
-      const response = await fetch(`${apiUrl}/sendInquiry.php`, {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (response.status === 200 && result.status === "success") {
-        setNotification({ type: "success", message: "Inquiry sent successfully!" });
-        
-        // Reset the form fields
-        setSelectedMake("");
-        setModels([]);
-        setSelectedCountry("");
-        setSelectedPort("");
-        setUserData({
-          fullName: "",
-          email: "",
-          phone: "",
-          country: ""
-        });
+    console.log(formData)
+    
+    // Validate form data before sending
+    const yearFrom = parseInt(formData.get('year-from'), 10);
+    const yearTo = parseInt(formData.get('year-to'), 10);
+    const priceFrom = parseFloat(formData.get('price-from'));
+    const priceTo = parseFloat(formData.get('price-to'));
+    
+    if (yearFrom > yearTo) {
+        setNotification({ type: "error", message: "Year 'from' cannot be greater than 'to'." });
         window.scrollTo(0, 0);
-      } else {
-        setNotification({ type: "error", message: "Failed to send inquiry. Please try again." });
-        window.scrollTo(0, 0);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setNotification({ type: "error", message: "An error occurred while sending the inquiry." });
-      window.scrollTo(0, 0);
+        return;
     }
-  };
+
+    if (priceFrom > priceTo) {
+        setNotification({ type: "error", message: "Price 'from' cannot be greater than 'to'." });
+        window.scrollTo(0, 0);
+        return;
+    }
+
+  
+
+    try {
+        const response = await fetch(`${apiUrl}/sendInquiry.php`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.status === 200 && result.status === "success") {
+            setNotification({ type: "success", message: "Inquiry sent successfully!" });
+            // Reset the form fields
+            setSelectedMake("");
+            setModels([]);
+            setSelectedCountry("");
+            setSelectedPort("");
+            setUserData({
+                fullName: "",
+                email: "",
+                phone: "",
+                country: ""
+            });
+            window.scrollTo(0, 0);
+        } else {
+            setNotification({ type: "error", message: "Failed to send inquiry. Please try again." });
+            window.scrollTo(0, 0);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        setNotification({ type: "error", message: "An error occurred while sending the inquiry." });
+        window.scrollTo(0, 0);
+    }
+};
 
   useEffect(() => {
     if (notification.message) {
@@ -261,7 +282,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="make">Make</label>
                 <select id="make" name="make" onChange={handleMakeChange}>
-                  <option>Make (all)</option>
+                  <option value=''>Make (any)</option>
                   {makes.map((make, index) => (
                     <option key={index} value={make}>
                       {make.charAt(0).toUpperCase() + make.slice(1)}
@@ -294,7 +315,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="model">Model</label>
                 <select id="model" name="model">
-                  <option>Model (all)</option>
+                  <option value=''>Model (any)</option>
                   {models.map((model, index) => (
                     <option key={index} value={model}>
                       {model}

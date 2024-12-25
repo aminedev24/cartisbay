@@ -11,7 +11,7 @@ const Login = () => {
   const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
   const location = useLocation(); // Get the current location
-  const { isPortrait, isSmallScreen } = useCheckScreenSize();
+  const { isSmallScreen } = useCheckScreenSize();
   const { user, loading, login } = useUser ();
 
   // Check if the user is already logged in when the component mounts
@@ -20,7 +20,7 @@ const Login = () => {
       // Redirect to homepage if user is logged in
       const timeoutId = setTimeout(() => {
         navigate('/'); // Redirect after 2 seconds
-        console.log('navigating to homepage')
+        console.log('navigating to homepage');
       }, 2000);
 
       return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
@@ -34,13 +34,24 @@ const Login = () => {
       const response = await login(email, password);
 
       if (response.status === 'success') {
+        // Set the welcome message
         setMessage(`Welcome, ${response.user.name || email}!`); // Display welcome message
         setMessageType('success');
 
-        // Redirect to the previous location or homepage
+        // Clear the message after 5 seconds
+        setTimeout(() => {
+          setMessage('');
+          setMessageType('');
+        }, 5000); // Message disappears after 5 seconds
+
+        // Debugging: Check location state
+        console.log('Location state:', location.state.from);
+
+        // Redirect to the previous location or homepage after 2 seconds
         const from = location.state?.from || '/'; // Default to homepage if no previous location
-        console.log(from)
-        navigate(from);
+        setTimeout(() => {
+          navigate(from);
+        }, 2000); // Redirect after 2 seconds
       } else {
         throw new Error(response.message || 'Login failed. Please try again.');
       }
@@ -50,18 +61,6 @@ const Login = () => {
       console.error('Login error:', error);
     }
   };
-
-  // Timer to clear the message after 5 seconds
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage('');
-        setMessageType('');
-      }, 5000); // Message disappears after 5 seconds
-
-      return () => clearTimeout(timer); // Cleanup timer on unmount or message change
-    }
-  }, [message]);
 
   return (
     <div className="login-form-wrapper">

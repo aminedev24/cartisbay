@@ -18,6 +18,7 @@ const Profile = () => {
     email: "",
     phone: "",
     country: "",
+    company: ''
   });
 
   const apiUrl =
@@ -43,6 +44,7 @@ const Profile = () => {
         setFormData({
           name: data.full_name,
           country: data.country,
+          company: data.company
         });
       } catch (error) {
         setError(error.message);
@@ -149,6 +151,15 @@ const Profile = () => {
                   onChange={handleChange}
                 />
               </label>
+              <label>
+                company:
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                />
+              </label>
             </div>
             <button type="submit">Save Changes</button>
           </form>
@@ -159,6 +170,7 @@ const Profile = () => {
             <p>Email: {user.email}</p>
             <p>Phone: {user.phone}</p>
             <p>Country: {user.country}</p>
+            <p>Company: {user.company}</p>
           </div>
         )}
       </div>

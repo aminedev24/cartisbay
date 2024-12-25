@@ -214,7 +214,7 @@ const links2 = [
 
         <div className="ad-header-container">
             <img
-              src={`${process.env.PUBLIC_URL}/images/ecohome.jpeg`}
+              src={`${process.env.PUBLIC_URL}/images/ecohome2.jpeg`}
               className="ad-banner"
               alt="eco friendly banner"
             />

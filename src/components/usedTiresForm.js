@@ -97,10 +97,6 @@ const OrderForm = ({
         const response = await fetch(`${apiUrl}/fetchTires.php`, {
           method: "GET",
           credentials: "include", // Send cookies
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.uid}`, // Pass the UID in the Authorization header
-          },
         });
 
         if (!response.ok) {
@@ -313,6 +309,8 @@ const OrderForm = ({
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(orderData),
+            credentials: 'include' // Include credentials (cookies) in the request
+
         });
 
         const result = await response.json();
@@ -609,18 +607,17 @@ const editOrder = async (updatedOrder) => {
 
       {/* Check if user is logged in */}
       {!user ? (
-        // If not logged in, display login/register prompt
         <p className="login-prompt">
-          Please{" "}
-          <Link  state={{ from: location.pathname }}  to="/login" className="cta-link" href="/login">
-            log in
-          </Link>{" "}
-          or
-          <Link state={{ from: location.pathname }}   to="/register" className="cta-link" href="/register">
-            register
-          </Link>{" "}
-          to send an order.
-        </p>
+        Please{" "}
+        <Link state={{ from: location.pathname }} to="/login" className="cta-link">
+          log in
+        </Link>{" "}
+        or
+        <Link state={{ from: location.pathname }} to="/register" className="cta-link">
+          register
+        </Link>{" "}
+        to send an order.
+      </p>
       ) : (
         // If logged in, display a welcome message
         <>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate for redire
 import useCheckScreenSize from './screenSize';
 import SignupForm from './registerForm';
 import TermsAndConditions from "./terms";
-
+import '../css/register.css';
 const RegisterForm = () => {
   const {isPortrait, isSmallScreen} = useCheckScreenSize();
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -20,6 +20,8 @@ const RegisterForm = () => {
              scale: isSmallScreen && isPortrait ? '1.3': ''
         }}
       >
+      <img src={`${process.env.PUBLIC_URL}/images/logodb.png`} alt="Logo" className="logo" />
+
         <div className="header">
           <span className="person-icon">
             <i className="fas fa-user-plus"></i>

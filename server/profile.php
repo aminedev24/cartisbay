@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Get user information
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT full_name, email, phone, country , joined_date FROM users WHERE id = ?";
+$sql = "SELECT full_name, email, phone, country , joined_date , company FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {

@@ -1,8 +1,7 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Content-Type: application/json; charset=UTF-8");
+session_start(); // Start the session to access session variables
+
+include 'headers.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
@@ -13,7 +12,7 @@ include 'db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
-    $requiredFields = ['user_id', 'make', 'type', 'width', 'aspect_ratio', 'rim_diameter', 'quantity'];
+    $requiredFields = ['make', 'type', 'width', 'aspect_ratio', 'rim_diameter', 'quantity'];
     $missingFields = array_filter($requiredFields, fn($field) => empty($data[$field]));
 
     // Check for missing fields
@@ -25,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Get the user_id from the request data or session
-    $uid = $data['user_id'] ?? null;
-    if (empty($uid)) {
-        $errorMessage = "User not logged in. Orders cannot be saved without a valid user ID.";
+    // Get the user_id from the session
+    $user_id = $_SESSION['user_id'] ?? null; // Use session to get user_id
+    if (empty($user_id)) {
+        $errorMessage = "User  not logged in. Orders cannot be saved without a valid user ID.";
         error_log($errorMessage);
         echo json_encode(['message' => $errorMessage]);
         http_response_code(401); // Unauthorized
@@ -48,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if an existing order with the same parameters already exists
     $sql_check = "SELECT id, quantity FROM tireorders WHERE user_id = ? AND make = ? AND type = ? AND width = ? AND aspect_ratio = ? AND rim_diameter = ?";
     $stmt_check = $conn->prepare($sql_check);
-    $stmt_check->bind_param("ssssii", $uid, $make, $type, $width, $aspect_ratio, $rim_diameter);
+    $stmt_check->bind_param("ssssii", $user_id, $make, $type, $width, $aspect_ratio, $rim_diameter);
     $stmt_check->execute();
     $result = $stmt_check->get_result();
 
@@ -74,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_insert = $conn->prepare($sql_insert);
         $stmt_insert->bind_param(
             "sssiiisii",
-            $uid,
+            $user_id,
             $make,
             $type,
             $width,
