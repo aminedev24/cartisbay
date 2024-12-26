@@ -20,31 +20,31 @@ const CompanyProfile = (selectedTopic) => {
         <h2>Company Profile</h2>
         <div className="company-details">
           <div className="detail-item">
-            <h3>Company Name:</h3>
+            <h2>Company Name:</h2>
             <p>{companyDetails.name}</p>
           </div>
           <div className="detail-item">
-            <h3>Founded:</h3>
+            <h2>Founded:</h2>
             <p>{companyDetails.founded}</p>
           </div>
           <div className="detail-item">
-            <h3>Address:</h3>
+            <h2>Address:</h2>
             <p>{companyDetails.address}</p>
           </div>
           <div className="detail-item">
-            <h3>Main Business Activities:</h3>
+            <h2>Main Business Activities:</h2>
             <p>{companyDetails.mainBusiness}</p>
           </div>
           <div className="detail-item">
-            <h3>Annual Sales:</h3>
+            <h2>Annual Sales:</h2>
             <p>{companyDetails.annualSales}</p>
           </div>
           <div className="detail-item">
-            <h3>URL:</h3>
+            <h2>URL:</h2>
             <p><a href={companyDetails.url} target="_blank" rel="noopener noreferrer">{companyDetails.url}</a></p>
           </div>
           <div className="detail-item">
-            <h3>Registered in Japan</h3>
+            <h2>Registered in Japan</h2>
             <p>{companyDetails.registeredinJapan}</p>
           </div>
         </div>
