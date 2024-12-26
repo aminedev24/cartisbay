@@ -17,7 +17,6 @@ const CompanyProfile = (selectedTopic) => {
       {/*<img src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`} alt={'company-profile'} className="topic-image" />*/}
 
       <div className="company-profile-container">
-        <h2>Company Profile</h2>
         <div className="company-details">
           <div className="detail-item">
             <h2>Company Name:</h2>

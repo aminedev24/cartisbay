@@ -80,8 +80,13 @@
 
 .welcome-banner h2 {
   position: absolute;
-  top: 5%;
+  max-width: 70%;
   color: #fff;
+  display: -webkit-box;          /* Create a flexible box */
+  -webkit-box-orient: vertical;  /* Define the direction of the box */
+  overflow: hidden;              /* Hide overflowed content */
+  -webkit-line-clamp: 3;         /* Limits the content to 3 lines */
+  text-overflow: ellipsis
 }
 
 

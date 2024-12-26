@@ -14,7 +14,6 @@ const BankInformation = () => {
 
   return (
     <div className="bank-information terms-container">
-    <h2>Bank Information</h2>
     <table className="bank-info-table">
         <tbody>
             <tr>
