@@ -28,6 +28,9 @@ const TopBar = () => {
   }, []);
 
   return (
+    <div className='top-bar-wrapper'>
+
+  
     <div className="top-bar">
       <div className="app-info">
         <span className="app-name">Artisbay</span>
@@ -54,6 +57,7 @@ const TopBar = () => {
           <option value="French">French</option>
         </select>
         */}
+      </div>
       </div>
     </div>
   );

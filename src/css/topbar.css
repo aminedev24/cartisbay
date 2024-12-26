@@ -1,5 +1,8 @@
+.top-bar-wrapper {
+  background-color: #1da1f2;
+}
 .top-bar {
-    background-color: #1da1f2;
+
     padding: 5px 10px;  /* Adjust padding for a better layout */
     display: flex;
     justify-content: space-around;

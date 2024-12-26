@@ -1,4 +1,8 @@
 /* Container for the account creation section */
+
+.register-wrapper {
+    margin: 30px;
+}
 .account-container {
     background-color: #ffffff; /* Changed to white for better contrast */
     padding: 40px 20px; /* Increased padding for a more spacious feel */
@@ -145,7 +149,7 @@
 }
 
 /* Logo Styling */
-.account-container .logo {
+.logo-form {
     width: 130px; /* Adjust the size as needed */
     margin: 0 auto;
     display: block;

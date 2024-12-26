@@ -70,6 +70,8 @@ const Login = () => {
           scale: isSmallScreen ? '2.5' : '',
         }}
       >
+        <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo-form" />
+
         {user ? (
           <p>{message}</p>
         ) : (

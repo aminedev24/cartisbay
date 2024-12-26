@@ -126,6 +126,8 @@ const Contact = ({ sell }) => {
         className="contact-container"
        
       >
+      <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo-form" />
+
         {!sell && <h1>We like to hear from you!</h1>}
         <h2>Contact Us</h2>
         <p className='contact-prompt'>

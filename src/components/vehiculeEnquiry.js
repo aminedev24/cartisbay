@@ -159,8 +159,12 @@ const InquiryForm = () => {
 
   return (
     <div className='enquiry-wrapper'>
+
       <form onSubmit={handleSubmit}>
+
         <div className="enquiryContainer">
+        <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo-form" />
+
           {notification.message && (
             <div className={`message-status ${notification.type}`}>
               {notification.message}
