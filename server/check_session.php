@@ -3,9 +3,7 @@ ini_set('session.cookie_lifetime', 0);
 ini_set('session.cookie_httponly', true);
 session_start();
 
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: http://localhost:3000");
-header("Access-Control-Allow-Credentials: true");
+include 'headers.php';
 
 // Check if the user session exists
 if (isset($_SESSION['user_id'])) {

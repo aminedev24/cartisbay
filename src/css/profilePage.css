@@ -1,0 +1,246 @@
+:root {
+    --primary-color: #003366;
+    --secondary-color: #004080;
+    --accent-color: #f1892b;
+    --text-color: #333;
+    --background-color: #f4f4f8;
+    --white: #ffffff;
+    
+    /* Button colors */
+    --edit-btn-color: #1da1f2;
+    --save-btn-color: #4CAF50;
+    --cancel-btn-color: #f44336;
+
+    /* Sidebar specific */
+    --sidebar-width: 250px;
+}
+
+.profile-container {
+    display: flex;
+    background-color: var(--background-color);
+    flex: 1;
+}
+
+/* Sidebar Styles */
+.profile-sidebar {
+    position: sticky;
+    top: 0;
+    width: var(--sidebar-width);
+    background: linear-gradient(
+        135deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 100%
+    );
+    color: var(--white);
+    padding: 30px 20px;
+    overflow-y: auto;
+    box-shadow: 
+        2px 0 5px rgba(0, 0, 0, 0.1),
+        0 4px 6px rgba(0,0,0,0.1);
+    border-right: 3px solid var(--accent-color);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.profile-sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.profile-sidebar h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.profile-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-sidebar ul li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.profile-sidebar ul li a {
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    background-color: transparent;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid transparent;
+}
+
+.profile-sidebar ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.profile-sidebar ul li a:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-left-color: var(--accent-color);
+    padding-left: 20px;
+}
+
+.profile-sidebar ul li a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.profile-sidebar ul li a.active {
+    background-color: rgba(255,255,255,0.2);
+    border-left-color: var(--accent-color);
+    font-weight: bold;
+}
+
+.amount {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 15px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.amount p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+/* Content Styles */
+.profile-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.profile-content h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.profile-content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Settings Table Styles */
+.settings-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settings-table th, 
+.settings-table td {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+.settings-table th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 250px;
+}
+
+.settings-table td {
+    background-color: #f9f9f9;
+}
+
+/* Edit and View Mode Styles */
+.edit-mode, .view-mode {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.settings-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.settings-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(241, 137, 43, 0.3);
+}
+
+/* Button Styles */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-edit {
+    background-color: var(--edit-btn-color);
+    color: var(--white);
+}
+
+.btn-save {
+    background-color: var(--save-btn-color);
+    color: var(--white);
+}
+
+.btn-cancel {
+    background-color: var(--cancel-btn-color);
+    color: var(--white);
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+}
+

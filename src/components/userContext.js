@@ -7,6 +7,9 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null); // No user data in cookies
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [shouldRefreshSession, setShouldRefreshSession] = useState(false);
+
+  
 
   // API URL setup
   const apiUrl =
@@ -81,36 +84,53 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  // Check User Session
-  useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/check_session.php`, {
-          method: 'GET',
-          credentials: 'include',
-        });
+ // Main session check method
+ const checkSession = async () => {
+  try {
+    const response = await fetch(`${apiUrl}/check_session.php`, {
+      method: 'GET',
+      credentials: 'include',
+    });
 
-        const data = await response.json();
-        //console.log(data.user)
-        if (data.status === 'success') {
-          setUser(data.user); // Set user from validated backend session
-          
-        } else {
-          Cookies.remove('session_token'); // Ensure no invalid tokens remain
-          setUser(null);
-        }
-      } catch (error) {
-        console.error('Error checking session:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      setUser(data.user);
+      return data.user;
+    } else {
+      Cookies.remove('session_token');
+      setUser(null);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error checking session:', error);
+    return null;
+  } finally {
+    setLoading(false);
+  }
+};
 
+// Initial session check on component mount
+useEffect(() => {
+  checkSession();
+}, []);
+
+
+// Session refresh trigger
+useEffect(() => {
+  if (shouldRefreshSession) {
     checkSession();
-  }, []);
+    setShouldRefreshSession(false);
+  }
+}, [shouldRefreshSession]);
+
+const triggerSessionRefresh = () => {
+  setShouldRefreshSession(true);
+};
+
 
   return (
-    <UserContext.Provider value={{ user, loading, login, logout }}>
+    <UserContext.Provider value={{ user, loading, login, logout, triggerSessionRefresh }}>
       {children}
     </UserContext.Provider>
   );

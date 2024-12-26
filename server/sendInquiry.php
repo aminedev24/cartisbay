@@ -19,17 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'tel' => htmlspecialchars(trim($_POST['tel'] ?? '')),
             'port' => htmlspecialchars(trim($_POST['port'] ?? '')),
             'message' => htmlspecialchars(trim($_POST['message'] ?? '')),
-            'make' => htmlspecialchars(trim($_POST['make'] ?? 'Any')), // Default to 'Any' if not provided
-            'model' => htmlspecialchars(trim($_POST['model'] ?? 'Any')), // Default to 'Any' if not provided
+            'make' => htmlspecialchars(trim($_POST['make'] )), // Default to 'Any' if not provided
+            'model' => htmlspecialchars(trim($_POST['model'])), // Default to 'Any' if not provided
             'year_from' => (int) htmlspecialchars(trim($_POST['year-from'] ?? 0)),
             'year_to' => (int) htmlspecialchars(trim($_POST['year-to'] ?? 0)),
             'price_from' => (float) htmlspecialchars(trim($_POST['price-from'] ?? 0.0)),
             'price_to' => (float) htmlspecialchars(trim($_POST['price-to'] ?? 0.0)),
-            'body_type' => ($_POST['body-type'] === 'Body type (all)' ? 'Any' : htmlspecialchars(trim($_POST['body-type'] ?? 'Any'))), // Map placeholder to 'Any'
+            'body_type' => htmlspecialchars(trim($_POST['body-type'])),
             'mileage_from' => (int) htmlspecialchars(trim($_POST['mileage-from'] ?? 0)),
             'mileage_to' => (int) htmlspecialchars(trim($_POST['mileage-to'] ?? 0)),
-            'transmission' => ($_POST['transmission'] === 'Transmission (all)' ? 'Any' : htmlspecialchars(trim($_POST['transmission'] ?? 'Any'))), // Map placeholder to 'Any'
-            'steering' => htmlspecialchars(trim($_POST['steering'] ?? 'Any')),
+            'transmission' => htmlspecialchars(trim($_POST['transmission'])),
+            'steering' => htmlspecialchars(trim($_POST['steering'])),
         ];
 
         // Log the received inputs for debugging

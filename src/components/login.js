@@ -11,7 +11,7 @@ const Login = () => {
   const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
   const location = useLocation(); // Get the current location
-  const { isSmallScreen } = useCheckScreenSize();
+  const { isSmallScreen , isPortrait} = useCheckScreenSize();
   const { user, loading, login } = useUser ();
 
   // Check if the user is already logged in when the component mounts
@@ -45,7 +45,7 @@ const Login = () => {
         }, 5000); // Message disappears after 5 seconds
 
         // Debugging: Check location state
-        console.log('Location state:', location.state.from);
+        //console.log('Location state:', location.state.from);
 
         // Redirect to the previous location or homepage after 2 seconds
         const from = location.state?.from || '/'; // Default to homepage if no previous location
@@ -67,13 +67,16 @@ const Login = () => {
       <div
         className="login-container"
         style={{
-          scale: isSmallScreen ? '2.5' : '',
+          scale: isSmallScreen && isPortrait ? '2.5' : '',
         }}
       >
         <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo-form" />
+       <div className='header'>
+        <h2>Login</h2>
+       </div>
 
         {user ? (
-          <p>{message}</p>
+          <p className='welcome-message'>{message}</p>
         ) : (
           <form className="login-form" onSubmit={handleLogin}>
             <div className="input-group">

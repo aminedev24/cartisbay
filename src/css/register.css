@@ -15,7 +15,7 @@
 }
 
 /* Header for the Create Account section */
-.account-container .header {
+.account-container .header , .login-container .header {
     display: flex;
     align-items: center;
     justify-content: center;

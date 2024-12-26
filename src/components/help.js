@@ -14,7 +14,7 @@ import PaypalInfo from './paypal';
 import ArtisbayInfo from './whyArtisbay';
 import PaymentMethods from './paymentMethods';
 import UsedTiresFAQ from './aboutusedtires';
-import Auction from './auction';
+import AuctionLanding from './auction';
 import TelegraphicTransfer from './telegraphicTransfer';
 import PrivacyPolicy from './privacy';
 import SellInArtisbay from './sellinartisbay';
@@ -27,7 +27,7 @@ const topics = {
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofile.jpg`},
     { name: "Bank Information", content: <BankInformation/>, image: `${process.env.PUBLIC_URL}/images/bankinfo.png`},
     { name: "Why Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
-    { name: "sell on artisbay", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonab.png` },
+    { name: "sell on artisbay Inc.", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonab.png` },
     { name: "Terms & Conditions", content: <TermsAndConditions />, image:  `${process.env.PUBLIC_URL}/images/terms&conditions.png` },
     { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `${process.env.PUBLIC_URL}/images/asf.png` },
     { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent2.jpeg`},
@@ -41,11 +41,12 @@ const topics = {
     { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},
     { name: "privacy policy", content: <PrivacyPolicy />, image:  `${process.env.PUBLIC_URL}/images/privacybanner.png`},
     { name: "Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/eco3.png` },
-    { name: "auction", content: <Auction />, image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` },
+    { name: "auction", content: <AuctionLanding />, image: `${process.env.PUBLIC_URL}/images/auctionsbanner.png` },
     { name: "Machinery", content:'', image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` }
   ]
 };
 const HelpPage = () => {
+  
   const location = useLocation();
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search);
@@ -71,6 +72,47 @@ const HelpPage = () => {
   useEffect(() => {
    window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  useEffect(() => {
+    // Wait for the component to render
+    const timer = setTimeout(() => {
+      // Specific selectors for font sizes
+      const selectorsToCheck = [
+        'h1.help-header',
+        '.btn-header h2',
+        '.content-area h2',
+        '.content-area h3',
+        '.content-area p',
+        '.content-area span'
+      ];
+  
+      const fontSizes = {};
+  
+      selectorsToCheck.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        
+        elements.forEach((el, index) => {
+          const computedStyle = window.getComputedStyle(el);
+          
+          // Create a unique key
+          const key = elements.length > 1 
+            ? `${selector}-${index}` 
+            : selector;
+  
+          fontSizes[key] = {
+            fontSize: computedStyle.fontSize,
+            fontWeight: computedStyle.fontWeight,
+            color: computedStyle.color
+          };
+        });
+      });
+  
+      console.log('Current Component Font Sizes:', fontSizes);
+    }, 100);
+  
+    // Cleanup timer
+    return () => clearTimeout(timer);
+  }, [selectedTopic]);
 
   if (isLoading) {
     return <div>Loading...</div>; // Show loading state

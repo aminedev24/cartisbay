@@ -30,8 +30,9 @@
     margin-left: 20px;
   }
   
-  .terms-container ul li, .asf ul li , .whyChoose ul li, .whyChoose ol li, .security-notice ol li , .security-notice ul li, .paypal ul li , .paypal ol li , .howtopay ul li, .howtopay ol li, .aboutusedtires ul li{
-    margin-bottom: 5px;
+  .terms-container ul li, .terms-container ol li, .asf ul li , .whyChoose ul li, .whyChoose ol li, .security-notice ol li , .security-notice ul li, .paypal ul li , .paypal ol li , .howtopay ul li, .howtopay ol li, .aboutusedtires ul li{
+    margin-bottom: 10px !important;
+    margin-left: 30px;
   }
   
 

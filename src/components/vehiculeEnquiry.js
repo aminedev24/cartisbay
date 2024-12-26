@@ -145,6 +145,7 @@ const InquiryForm = () => {
   useEffect(() => {
     if (notification.message) {
       const timer = setTimeout(() => setNotification({ type: "", message: "" }), 5000);
+      window.location.reload();
       return () => clearTimeout(timer);
     }
   }, [notification]);
@@ -286,7 +287,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="make">Make</label>
                 <select id="make" name="make" onChange={handleMakeChange}>
-                  <option value=''>Make (any)</option>
+                  <option value='any'>Make (any)</option>
                   {makes.map((make, index) => (
                     <option key={index} value={make}>
                       {make.charAt(0).toUpperCase() + make.slice(1)}
@@ -319,7 +320,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="model">Model</label>
                 <select id="model" name="model">
-                  <option value=''>Model (any)</option>
+                  <option value='any'>Model (any)</option>
                   {models.map((model, index) => (
                     <option key={index} value={model}>
                       {model}
@@ -352,7 +353,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="body-type">Body type</label>
                 <select id="body-type" name="body-type">
-                  <option>Body type (all)</option>
+                  <option value='any'>Body type (any)</option>
                   {bodyTypeOptions.map((bodyType, index) => (
                     <option key={index} value={bodyType}>
                       {bodyType}
@@ -385,7 +386,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="transmission">Transmission</label>
                 <select id="transmission" name="transmission">
-                  <option>Transmission (all)</option>
+                  <option value='any'>Transmission (all)</option>
                   {transmissionOptions.map((transmission, index) => (
                     <option key={index} value={transmission}>
                       {transmission}
@@ -396,7 +397,7 @@ const InquiryForm = () => {
               <div className="quarter-width">
                 <label htmlFor="steering">Steering</label>
                 <select id="steering" name="steering">
-                  <option>Any</option>
+                  <option value='any'>Any</option>
                   {/* Add steering options here */}
                 </select>
               </div>
