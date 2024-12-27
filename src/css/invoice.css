@@ -3,16 +3,38 @@
     margin: 0 auto;
     padding: 20px;
 }
-.invoice-container .header {
+
+.invoice-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.header-left{
+    flex:3;
+}
+
+.header-right {
+    flex: 1;
+}
+
+.invoice-header p {
+    line-height:unset;
+    margin: 0;
+}
+
+.invoice-container p {
+    line-height: 1.2;
+}
+
+.header-right p {
+    white-space: nowrap;
 }
 .invoice-container .header img {
     width: 150px;
 }
 .invoice-container .header .contact-info {
-    max-width: 60%;
+    max-width: 90%;
     text-align: left;
 }
 .invoice-container .header .contact-info p {
@@ -28,6 +50,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    align-items: center;
+}
+
+.contact-container .phone-code {
+    top: unset;
 }
 .invoice-info .left,
 .invoice-info .right {
@@ -38,14 +65,13 @@
 }
 .important {
     background-color: #00aeef;
-    color: white;
-    padding: 10px;
     text-align: center;
     font-weight: bold;
     border: 2px solid black;
     margin-bottom: 10px;
+    display: flex;
 }
-.important span {
+.important .notice {
     background-color: white;
     color: black;
     padding: 5px;
@@ -57,6 +83,7 @@
     background-color: transparent;
     border: none;
     margin-left: 0;
+    white-space: nowrap;
 }
 .invoice-container .table-container {
     width: 100%;
@@ -91,4 +118,34 @@
 .invoice-container .note {
     margin-top: 10px;
     font-style: italic;
+}
+
+
+/* Modal Overlay */
+.invoice-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure modal is above other content */
+}
+
+.invoice-modal-overlay .modal-content {
+    background-color: #fff;
+}
+
+/* Close Button */
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }

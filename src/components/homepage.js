@@ -75,7 +75,7 @@ const links2 = [
     { text: "SECURITY", path: "/help?topic=security" },
     { text: "PRIVACY", path: "/help?topic=privacy%20policy" },
     { text: "TELEGRAPHIC TRANSFER", path: "/help?topic=telegraphic%20transfer" },
-    { text: "SELL ON ARTISBAY", path: "/help?topic=sell%20on%20artisbay%20Inc." }
+    { text: "SELL ON ARTISBAY INC.", path: "/help?topic=sell%20on%20artisbay%20Inc." }
 ];
 
   return (

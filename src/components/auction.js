@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const AuctionLanding = () => {
   return (
     <div className='terms-container'>
@@ -47,7 +47,7 @@ const AuctionLanding = () => {
         Take control of your car-sourcing experience with Artisbay Inc. Whether you’re ready to buy or need assistance with the process, we’re here to help.
       </p>
       <p>
-        <strong>Contact us today</strong> to discuss your needs and secure the best vehicles from Japanese auctions.
+        <strong><Link className='cta-link' to='/contact'>Contact us today</Link></strong> to discuss your needs and secure the best vehicles from Japanese auctions.
       </p>
       <p>
         Already know what you want? <strong>Get an automated invoice now </strong>to make a deposit and start your purchase immediately!

@@ -25,7 +25,7 @@ import ResetPassword from './components/resetPassword';
 import ForgotPassword from './components/forgotPassword';
 import ProfilePage from './components/profile2';
 import Shipping from './components/shipping';
-
+import ProformaInvoiceForm from './components/invoiceForm'
 /* src/index.css */
 
 
@@ -91,7 +91,7 @@ function App() {
           <Route path="/reset-password/:token" element={<ResetPassword />} /> {/* Token in URL */}
           <Route path="/profile/:section?" element={<ProfilePage />} />
           <Route path='/shipping' element={<Shipping />}></Route>
-
+          <Route path = '/invoice' element = {<ProformaInvoiceForm />}></Route>
           </Routes>
       <Footer />
     </Router>

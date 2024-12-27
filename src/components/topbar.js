@@ -33,7 +33,7 @@ const TopBar = () => {
       const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD'); // Example API
       const data = await response.json();
       if (data && data.rates && data.rates.JPY) {
-        const rate = data.rates.JPY-2.74; // Get the USD to JPY rate
+        const rate = data.rates.JPY-2.5;//-2.74; // Get the USD to JPY rate
         console.log(rate)
         setUsdToYenRate(rate);
       } else {

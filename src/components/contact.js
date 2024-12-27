@@ -14,6 +14,8 @@ const Contact = ({ sell }) => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneCode, setPhoneCode] = useState("");
+  
   const [submitted, setSubmitted] = useState(false);
   const [userData, setUserData] = useState({
     fullName: '',
@@ -75,7 +77,29 @@ const Contact = ({ sell }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name)
+    // Update form data first
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    
+    // Handle phone code for country selection
+    if (name === 'country') {
+      try {
+        const selectedCountry = CountryList().find(
+          (country) => country.label === value
+        );
+        
+        if (selectedCountry?.countryCode) {
+          setPhoneCode(selectedCountry.countryCode);
+        } else {
+          // Reset phone code if no country found
+          setPhoneCode('');
+          console.warn('No country code found for:', value);
+        }
+      } catch (error) {
+        console.error('Error setting phone code:', error);
+        setPhoneCode('');
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -122,11 +146,14 @@ const Contact = ({ sell }) => {
     <div className='form-wrapper contact-wrapper'>
   <div className="signup-container contact-container">
     <form className="signup-form contact-form" onSubmit={handleSubmit}>
-      <img 
-        src={`${process.env.PUBLIC_URL}/images/logo3new.png`} 
-        alt="Logo" 
-        className="logo-form" 
-      />
+      {!sell &&
+         <img 
+         src={`${process.env.PUBLIC_URL}/images/logo3new.png`} 
+         alt="Logo" 
+         className="logo-form" 
+       />
+      }
+     
 
       {!sell && <h1>We like to hear from you!</h1>}
       <h2>Contact Us</h2>
@@ -183,10 +210,12 @@ const Contact = ({ sell }) => {
       </div>
 
       <div className="input-group phone-number-group">
-       
+      {phoneCode && <span className="phone-code">{phoneCode}</span>}
+
         <input
           type="tel"
           name="phone"
+          className={phoneCode ? "shrink" : ''}
           value={formData.phone}
           onChange={handleChange}
           placeholder="phone number"
