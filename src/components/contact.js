@@ -119,130 +119,142 @@ const Contact = ({ sell }) => {
   
 
   return (
-    <div
-      className='form-wrapper contact-wrapper'
-    >
-      <div
-        className="contact-container"
-       
-      >
-      <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo-form" />
+    <div className='form-wrapper contact-wrapper'>
+  <div className="signup-container contact-container">
+    <form className="signup-form contact-form" onSubmit={handleSubmit}>
+      <img 
+        src={`${process.env.PUBLIC_URL}/images/logo3new.png`} 
+        alt="Logo" 
+        className="logo-form" 
+      />
 
-        {!sell && <h1>We like to hear from you!</h1>}
-        <h2>Contact Us</h2>
-        <p className='contact-prompt'>
-          If you have any questions or would like to learn more about our offerings, please don’t hesitate to reach out using the form below. We’re always eager to connect with our customers and will respond as promptly as possible.
-        </p>
-              
-          <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Your Name<span className="required">*</span></label>
+      {!sell && <h1>We like to hear from you!</h1>}
+      <h2>Contact Us</h2>
+      <p className='contact-prompt'>
+      If you have any questions or would like to learn more about our offerings, please don’t hesitate to reach out using the form below. We’re always eager to connect with our customers and will respond as promptly as possible.
+      </p>
+
+      <div className="input-group">
+        <input
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          name="name"
+          placeholder='your name'
+          required
+        />
+        <label>Your Name <span className="required">*</span></label>
+      </div>
+
+      <div className="input-group">
+        <input
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          name="email"
+          placeholder='email'
+          required
+        />
+        <label>E-mail<span className="required">*</span></label>
+      </div>
+
+      <div className="input-group">
+     
+        <select
+          id="country"
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+          className={formData.country ? "not-empty" : ""}
+          required
+        >
+          <option value="">Select Country</option>
+          {sell ? (
+            <option value="Japan">Japan</option>
+          ) : (
+            CountryList().sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
+              <option key={country.code} value={country.label}>
+                {country.label}
+              </option>
+            ))
+          )}
+        </select>
+        <label>Country<span className="required">*</span></label>
+      </div>
+
+      <div className="input-group phone-number-group">
+       
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="phone number"
+          readOnly={!!userData.phone}
+          required
+        />
+        <label>Phone<span className="required">*</span></label>
+      </div>
+
+      {!sell && (
+        <div className="input-group">
+          <select
+            name="enquiry"
+            value={formData.enquiry}
+            onChange={handleChange}
+            className={formData.enquiry ? "not-empty" : ""}
+            required
+          >
+            <option value="">Select Enquiry Type</option>
+            <option value="General">General Inquiry</option>
+            <option value="Support">Support</option>
+            <option value="Sales">Sales</option>
+          </select>
+          <label>Enquiry type<span className="required">*</span></label>
+        </div>
+      )}
+
+      {sell && (
+        <div className="input-group">
           <input
             type="text"
-            id="name"
-            name="name"
-            placeholder="Full Name"
-            required
-            value={formData.name}
+            name="company"
+            value={formData.company}
+            placeholder='company'
             onChange={handleChange}
           />
+          <label>Company</label>
+        </div>
+      )}
 
-          <label htmlFor="email">E-mail<span className="required">*</span></label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="E-mail"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="country">Country<span className="required">*</span></label>
-          <select
-            id="country"
-            name="country"
-            required
-            value={formData.country}
-            onChange={handleChange}
-          >
-            {sell ? (
-              <option value="Japan">Japan</option>
-            ) : (
-              <>
-                <option value="" disabled>Select</option>
-                {CountryList().map((country) => (
-                  <option key={country.label} value={country.label}>
-                    {country.label}
-                  </option>
-                ))}
-              </>
-            )}
-          </select>
-
-          <label htmlFor="phone">Phone<span className="required">*</span></label>
-          <input
-            readOnly={!!userData.phone}
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Telephone or Mobile"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-          />
-
-          {!sell && (
-            <>
-              <label htmlFor="enquiry">Enquiry Type<span className="required">*</span></label>
-              <select
-                id="enquiry"
-                name="enquiry"
-                required
-                value={formData.enquiry}
-                onChange={handleChange}
-              >
-                <option value="" disabled>Select</option>
-                <option value="General">General Inquiry</option>
-                <option value="Support">Support</option>
-                <option value="Sales">Sales</option>
-              </select>
-            </>
-          )}
-
-          {sell && (
-            <>
-              <label htmlFor='company'>Company</label>
-              <input type='text' placeholder='Company' name='company' />
-            </>
-          )}
-
-          <label htmlFor="message">Message<span className="required">*</span></label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Message"
-            rows="5"
-            required
-            value={formData.message}
-            onChange={handleChange}
-          ></textarea>
-
-          {messageInfo && (
-            <p
-              ref={messageRef}
-              className={`message ${messageInfo.type === 'success' ? 'success' : 'error'}`}
-            >
-              {messageInfo.text}
-            </p>
-          )} 
-
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'SUBMIT'}
-          </button>
-        </form>
-     
+      <div className="input-group">
+      <label>Message<span className="required">*</span></label>
+        <textarea
+          name="message"
+          placeholder='your message'
+          value={formData.message}
+          onChange={handleChange}
+          required
+          rows="5"
+        ></textarea>
+        
       </div>
-    </div>
+
+      {messageInfo && (
+        <div className={`message ${messageInfo.type === 'success' ? 'success' : 'error'}`}>
+          {messageInfo.text}
+        </div>
+      )}
+
+      <button 
+        type="submit" 
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+      </button>
+    </form>
+  </div>
+</div>
   );
 };
 

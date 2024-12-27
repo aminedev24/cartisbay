@@ -36,7 +36,7 @@
 .contact-container textarea::placeholder {
   color: #ccc;
 }
-.contact-container .required {
+ .required {
   color: red;
 }
 .contact-container button {
@@ -66,4 +66,6 @@
   margin: 20px 0;
 }
 
-
+.contact-prompt {
+  margin-bottom: 25px;
+}

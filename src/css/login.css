@@ -44,8 +44,6 @@
     position: absolute;
     top: 50%;
     left: 0.5rem;
-    color: #888;
-
     transform: translateY(-50%);
     pointer-events: none;
     transition: 0.2s ease all;
@@ -54,8 +52,6 @@
   .input-group input:focus + label,
   .input-group .float {
     top: -0.5rem;
-
-    color: #007bff;
   }
   
   .login-button {

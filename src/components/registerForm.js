@@ -92,18 +92,20 @@ const SignupForm = ({ setIsModalOpen }) => {
             value={fullName}
             onChange={(e) => handleInputChange(setFullName, e)}
             required
+            placeholder="Your name"
           />
-          <label>Full Name</label>
+          <label>Full Name <span className="required">*</span></label>
         </div>
 
         <div className="input-group">
           <input
             type="email"
             value={email}
+            placeholder="email"
             onChange={(e) => handleInputChange(setEmail, e)}
             required
           />
-          <label>Email</label>
+          <label>Email<span className="required">*</span></label>
         </div>
 
         <div className="input-group phone-number-group">
@@ -118,6 +120,7 @@ const SignupForm = ({ setIsModalOpen }) => {
             placeholder="Phone Number"
             className={phoneCode ? "shrink" : ''}
           />
+          <label>Phone Number <span className="required">*</span></label>
         </div>
 
         <div className="input-group">
@@ -136,11 +139,14 @@ const SignupForm = ({ setIsModalOpen }) => {
               </option>
             ))}
           </select>
+          <label>Country<span className="required">*</span></label>
+
         </div>
 
         <div className="input-group">
           <input
             type="text"
+            placeholder="company"
             name="company"
             value={company}
             onChange={(e) => handleInputChange(setCompany, e)}
@@ -152,20 +158,22 @@ const SignupForm = ({ setIsModalOpen }) => {
           <input
             type="password"
             value={password}
+            placeholder="password"
             onChange={(e) => handleInputChange(setPassword, e)}
             required
           />
-          <label>Password</label>
+          <label>Password<span className="required">*</span></label>
         </div>
 
         <div className="input-group">
           <input
             type="password"
+            placeholder="confirm password"
             value={confirmPassword}
             onChange={(e) => handleInputChange(setConfirmPassword, e)}
             required
           />
-          <label>Confirm Password</label>
+          <label>Confirm Password <span className="required">*</span></label>
         </div>
 
         <div className="checkbox-group">

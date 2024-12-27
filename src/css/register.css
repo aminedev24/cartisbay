@@ -40,7 +40,7 @@
 /* Input Group Styling */
 .input-group {
     position: relative;
-    margin-bottom: 20px; /* Space between input groups */
+    margin-bottom: 30px; /* Space between input groups */
 }
 
 /* Input Styling */
@@ -55,7 +55,7 @@
 }
 
 /* Input Focus Effect */
-.input-group input:focus, .input-group select:focus {
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
     outline: none;
     border-color: #1da1f2; /* Change border color on focus */
     box-shadow: 0 0 8px rgba(29, 161, 242, 0.5); /* Subtle shadow effect */
@@ -64,13 +64,14 @@
 /* Floating Label */
 .input-group label {
     position: absolute;
-    left: 15px;
-    top: 50%;
+    left: 10px;
+    top:-8px;
     transform: translateY(-50%);
     background: #f7f9fc;
     padding: 0 5px;
     color: #1e3a8a;
     transition: 0.3s ease;
+    font-weight: bold;
 }
 
 /* Label Animation */
@@ -80,7 +81,7 @@
 .input-group select:not(:placeholder-shown) + label {
     top: -10px;
     left: 10px;
-    color: #1da1f2; /* Change label color on focus */
+
 }
 
 /* Button Styling */
@@ -102,19 +103,50 @@
     transform: translateY(-2px); /* Slight lift effect */
 }
 
-/* Phone Number Group */
+/* Phone Number Group Styling */
 .phone-number-group {
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-/* Phone Code Styling */
-.phone-code {
-    border: 1px solid #ccc; /* Border for phone code */
-    border-radius: 5px 0 0 5px; /* Rounded corners */
-    padding: 12px; /* Padding inside the box */
-    font-weight: bold; /* Bold text for better visibility */
-    background-color: #f9f9f9; /* Light background */
+.phone-number-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    background: #f7f9fc;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.phone-number-group .phone-code {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.phone-number-group input.shrink {
+    padding-left: calc(15px + 50px); /* Adjust based on phone code width */
+}
+
+.phone-number-group label {
+    position: absolute;
+    top: -8px;
+    transform: translateY(-50%);
+    background: #f7f9fc;
+    padding: 0 5px;
+    color: #1e3a8a;
+    transition: 0.3s ease;
+}
+
+/* Label Animation for Phone Input */
+.phone-number-group input:focus + label,
+.phone-number-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
 }
 
 /* Message Styling */
