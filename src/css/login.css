@@ -118,7 +118,7 @@
     max-width: 600px;
   }
 
-  .login-form-wrapper , .register-wrapper, .contact-wrapper, .help-page, .enquiry-wrapper, .forgot-password-container, .reset-password-container {
+  .login-form-wrapper , .register-wrapper, .contact-wrapper, .help-page, .enquiry-wrapper, .forgot-password-container, .reset-password-container , .profile-wrapper, .invoice-wrapper{
         display: flex;
         flex-direction: column;
         flex-grow: 1;

@@ -13,7 +13,7 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
-
+  const [address, setAddress] = useState('')
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
@@ -58,6 +58,7 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
       country: selectedCountry,
       phone,
       company,
+      address
     };
 
     try {
@@ -73,7 +74,7 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
         setMessage("Signup successful! Redirecting...");
         setTimeout(() => navigate("/login"), 3000);
       } else {
-        setMessage(result.error || "Signup failed. Try again.");
+        setMessage("Signup failed. Try again.");
         setIsError(true);
       }
     } catch (error) {
@@ -141,6 +142,18 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
           </select>
           <label>Country<span className="required">*</span></label>
 
+        </div>
+
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Address"
+            name="address"
+            value={address}
+            required
+            onChange={(e) => handleInputChange(setAddress, e)}
+          />
+          <label>Address<span className="required">*</span></label>
         </div>
 
         <div className="input-group">

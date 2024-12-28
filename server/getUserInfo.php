@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
     
     // Fetch user information from the database
     $user_id = $_SESSION['user_id'];
-    $sql = "SELECT full_name, country, email, phone FROM users WHERE id = ?";
+    $sql = "SELECT full_name, country, email, phone, company,address FROM users WHERE id = ?";
     
     try {
         // Prepare and execute the query

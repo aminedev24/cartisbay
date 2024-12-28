@@ -1,5 +1,8 @@
 import React from 'react';
+import { FaEnvelope, FaGlobe } from "react-icons/fa";
 import '../css/invoice.css';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
@@ -14,14 +17,60 @@ const calculateExpiryDate = (invoiceDate) => {
         }
     }
 
-    return date.toLocaleDateString(); // Format the date as needed
+    return date.toISOString().split('T')[0]; // Format as YYYY-MM-DD
 };
+
 
 // Modal Component
 const InvoiceModal = ({ isOpen, onClose, invoiceData }) => {
     if (!isOpen) return null;
 
     const expiryDate = calculateExpiryDate(invoiceData.invoiceDate);
+
+    const handlePrint = () => {
+        window.print();
+    };
+
+    const handleSaveAsPDF = () => {
+        const modalContent = document.querySelector('.modal-content');
+        const buttons = modalContent.querySelectorAll('.no-print'); // Select elements with the 'no-print' class
+    
+        // Backup original styles
+        const originalStyle = {
+            maxHeight: modalContent.style.maxHeight,
+            overflowY: modalContent.style.overflowY,
+        };
+    
+        // Hide buttons
+        buttons.forEach(button => {
+            button.style.display = 'none';
+        });
+    
+        // Temporarily remove height restrictions and scrolling
+        modalContent.style.maxHeight = 'none';
+        modalContent.style.overflowY = 'visible';
+    
+        html2canvas(modalContent, { scale: 2 }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+    
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            pdf.save(`Artisbay_invoice.pdf`);
+    
+            // Restore original styles
+            modalContent.style.maxHeight = originalStyle.maxHeight;
+            modalContent.style.overflowY = originalStyle.overflowY;
+    
+            // Restore buttons
+            buttons.forEach(button => {
+                button.style.display = '';
+            });
+        });
+    };
+    
 
     return (
         <div className="invoice-modal-overlay">
@@ -41,7 +90,8 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData }) => {
                             <div className="contact-info">
                                 <p>An online platform for the sale and export of used vehicles and auto parts</p>
                                 <p>Registered in Japan | License No. 3700-01-051924</p>
-                                <p>Email: contact@artisbay.com</p>
+                                <p style={{display: 'flex', gap : '5px'}}><FaEnvelope className='icon' />Email: contact@artisbay.com</p>
+                                <p style={{display: 'flex', gap :'5px'}}><FaGlobe className='icon' />Website: artisbay.com</p>
                                 </div>
                             </div>
                         </div>
@@ -79,12 +129,14 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData }) => {
 
                     {/* Bank Details Section */}
                     <div className="invoice-bank-info">
-                        <h3>Bank Details</h3>
+                       
                         <p><strong>Beneficiary Name:</strong> {invoiceData.beneficiaryName}</p>
                         <p><strong>Bank Name:</strong> {invoiceData.bankName}</p>
-                        <p><strong>Branch:</strong> {invoiceData.bankBranch}</p>
+                        <p><strong>Branch Name:</strong> {invoiceData.branchName}</p>
+                        <p><strong>Bank Address:</strong> {invoiceData.bankAddress}</p>
                         <p><strong>Swift Code:</strong> {invoiceData.swiftCode}</p>
                         <p><strong>Account Number:</strong> {invoiceData.accountNumber}</p>
+                        <p><strong>Beneficiary Address:</strong> {invoiceData.beneficiaryAddress}</p>
                     </div>
 
                     <div className="important">
@@ -126,6 +178,12 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData }) => {
 
                     <div className="invoice-footer">
                         <p>Thank you for your business!</p>
+                    </div>
+
+                       {/* Action Buttons */}
+                       <div className="action-buttons">
+                        <button className='no-print' onClick={handlePrint}>Print</button>
+                        <button className='no-print' onClick={handleSaveAsPDF}>Save as PDF</button>
                     </div>
                 </div>
             </div>

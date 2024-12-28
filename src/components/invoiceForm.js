@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InvoiceModal from './invoice2';
 import CountryList from './countryList';
 import '../css/invoice.css';
@@ -6,12 +6,13 @@ import '../css/invoice.css';
 const ProformaInvoiceForm = () => {
     // Predefined Bank Details
     const bankDetails = {
-        beneficiaryName: 'Artisbay Inc.',
-        bankName: 'Mizuho Bank, Ltd.',
-        branchName: 'Tokyo Central Branch',
-        swiftCode: 'MHCBJPJT',
-        accountNumber: '1234567890',
-        bankAddress: '1-5-5 Otemachi, Chiyoda-ku, Tokyo 100-0004, Japan'
+        beneficiaryName: 'Artisbay Inc',
+        bankName: 'SUMISHIN SBI NET BANK',
+        branchName: 'HOJIN DAI ICHI (BRANCH SORT CODE:106)',
+        bankAddress: '3-2-1 Roppongi, Minato-ku, Tokyo-to',
+        swiftCode: 'NTSSJPJT',
+        accountNumber: '2628940',
+        beneficiaryAddress: '5-10-44, Kasagami, Tagajyo, Miyagi, Japan',
     };
 
     const [formData, setFormData] = useState({
@@ -31,6 +32,74 @@ const ProformaInvoiceForm = () => {
     const [submittedInvoiceData, setSubmittedInvoiceData] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [invoiceCounter, setInvoiceCounter] = useState(1000); // Initialize invoice counter
+
+
+    const apiUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost/artisbay-server/server'
+    : '/server';
+
+    // Fetch user data from the backend and populate form fields
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`${apiUrl}/getUserInfo.php`, {
+                    method: 'GET',
+                    credentials: 'include',
+                });
+    
+                if (!response.ok) {
+                    console.error('Failed to fetch user data:', response.statusText);
+                    return;
+                }
+    
+                const data = await response.json();
+    
+                // Validate data and check structure
+                if (!data || data.error || !data.data) {
+                    console.error('Invalid or missing data returned from API:', data);
+                    return;
+                }
+    
+                // Destructure with fallbacks to avoid undefined values
+                const {
+                    full_name = '',
+                    company = '',
+                    country = '',
+                    phone = '',
+                    email = '',
+                    address = '',
+                } = data.data;
+    
+                // Set form data safely
+                setFormData(prevState => ({
+                    ...prevState,
+                    fullName: full_name,
+                    company: company,
+                    country: country,
+                    phone: phone,
+                    email: email,
+                    address: address,
+                }));
+    
+                // Update phone code if country is valid
+                if (country) {
+                    const selectedCountry = CountryList().find(
+                        countryItem => countryItem.label === country
+                    );
+                    if (selectedCountry?.countryCode) {
+                        setPhoneCode(selectedCountry.countryCode);
+                    } else {
+                        setPhoneCode(''); // Clear phone code if no match
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+    
+        fetchUserData();
+    }, [apiUrl]);
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -61,7 +130,7 @@ const ProformaInvoiceForm = () => {
         // Validation logic
         const requiredFields = [
             'fullName', 'country', 'phone', 
-            'email', 'depositAmount', 'depositDescription', 'depositPurpose'
+            'email', 'depositAmount', 'depositDescription', 'depositPurpose','address'
         ];
 
         const isFormValid = requiredFields.every(field => formData[field]);
@@ -71,7 +140,8 @@ const ProformaInvoiceForm = () => {
             const newInvoiceData = {
                 customerFullName: formData.fullName,
                 customerCompany: formData.company,
-                customerPhone: formData.phone,
+                customerAddress: formData.address,
+                customerPhone: phoneCode+ formData.phone,
                 customerEmail: formData.email,
                 invoiceNumber: invoiceCounter, // Assign the current invoice number
                 invoiceDate: new Date().toISOString().split('T')[0], // Set current date in YYYY-MM-DD format
@@ -169,6 +239,18 @@ const ProformaInvoiceForm = () => {
 
                     <div className="input-group">
                         <input
+                            type="text"
+                            value={formData.address}
+                            onChange={handleChange}
+                            name="address"
+                            placeholder='address'
+                            required
+                        />
+                        <label>address<span className="required">*</span></label>
+                    </div>
+
+                    <div className="input-group">
+                        <input
                             type="email"
                             value={formData.email}
                             onChange={handleChange}
@@ -214,7 +296,7 @@ const ProformaInvoiceForm = () => {
                         >
                             <option value="">Select Deposit Purpose</option>
                             <option value="vehicle_purchase">Vehicle Purchase</option>
-                            <option value="parts_order">Auto Parts Order</option>
+                            <option value="auto_parts_order">Auto Parts Order</option>
                             <option value="service_fee">Service Fee</option>
                             <option value="other">Other</option>
                         </select>

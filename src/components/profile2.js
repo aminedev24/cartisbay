@@ -26,7 +26,8 @@ const ProfilePage = () => {
     email: "",
     phone: "",
     country: "",
-    company: ''
+    company: '',
+    address: ''
   });
 
   const apiUrl =
@@ -71,11 +72,6 @@ const ProfilePage = () => {
       label: 'Sales Contract', 
       component: null 
     },
-    {
-      key: "Bank-Information",
-      label: "Bank Information",
-      component: BankInformation
-    }
   ];
 
   // Determine active content based on URL or default to settings
@@ -104,7 +100,8 @@ const ProfilePage = () => {
         setFormData({
           name: data.full_name,
           country: data.country,
-          company: data.company
+          company: data.company,
+          address: data.address
         });
       } catch (error) {
         setError(error.message);
@@ -158,6 +155,7 @@ const ProfilePage = () => {
   )?.component || Settings;
 
   return (
+    <div className="profile-wrapper">
     <div className="profile-container">
       <div className="profile-sidebar">
         <h2>MENU</h2>
@@ -188,6 +186,7 @@ const ProfilePage = () => {
           isEditing={isEditing}
           setIsEditing={setIsEditing}
         />
+      </div>
       </div>
     </div>
   );

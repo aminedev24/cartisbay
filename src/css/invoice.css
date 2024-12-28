@@ -149,3 +149,60 @@
     font-size: 24px;
     cursor: pointer;
 }
+
+.amount-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.amount-table {
+    width: 40%;
+}
+
+.invoice-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icon {
+    color: #1e398a;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px; /* Space between the buttons */
+    margin-top: 20px; /* Add some spacing above the buttons */
+}
+
+.action-buttons button {
+    background-color: var(--secondary-color); /* Primary button color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Add padding */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.action-buttons button:hover {
+    background-color: var(--primary-color); /* Darker shade on hover */
+}
+
+.action-buttons button:active {
+    background-color: var(--primary-color); /* Even darker shade when active */
+    transform: scale(0.98); /* Slight scale effect when clicked */
+}
+
+.action-buttons button:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+}
+
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

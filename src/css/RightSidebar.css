@@ -88,6 +88,8 @@
   -webkit-line-clamp: 3;         /* Limits the content to 3 lines */
   text-overflow: ellipsis;
   text-transform: capitalize;
+  font-size: 20px;
+  top: 5%;
 }
 
 

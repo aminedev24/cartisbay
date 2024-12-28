@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = isset($_POST['country']) ? trim($_POST['country']) : '';
     $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
     $company = isset($_POST['company']) ? trim($_POST['company']) : '';
+    $address = isset($_POST['address']) ? trim($_POST['address']) : '';
     // Validate that all fields are filled
     if (empty($fullName) || empty($email) || empty($password) || empty($country) || empty($phone)) {
         header('Content-Type: application/json');
@@ -65,14 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare and bind the database statement for inserting the user
-    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone,company, joined_date) VALUES (?, ?, ?, ?, ?, ?,?, NOW())");
+    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone,company,address, joined_date) VALUES (?, ?, ?, ?, ?, ?,?,?, NOW())");
     if (!$stmt) {
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'error' => 'Database prepare failed: ' . $conn->error]);
         error_log("Database prepare failed: " . $conn->error);
         exit;
     }
-    $stmt->bind_param("sssssss", $uid, $fullName, $email, $hashedPassword, $country, $phone, $company);
+    $stmt->bind_param("ssssssss", $uid, $fullName, $email, $hashedPassword, $country, $phone, $company, $address);
 
     // Execute the statement
     if ($stmt->execute()) {

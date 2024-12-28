@@ -142,7 +142,7 @@ const Header = () => {
                 <Link to={'/help?topic=How%20to%20Buy%20used%20cars'}>
                   How To Buy
                 </Link>
-                <Link to={'/help?topic=About%20payement'}>How To Pay</Link>
+                <Link to={'/help?topic=About%20payement'}>About Payment</Link>
               </div>
             </div>
           </div>

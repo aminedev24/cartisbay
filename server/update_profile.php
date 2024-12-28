@@ -35,7 +35,7 @@ try {
     error_log("Received data: " . print_r($data, true));
 
     // Validate that only one field is being updated
-    $updatableFields = ['company', 'full_name', 'country'];
+    $updatableFields = ['company', 'full_name', 'country', 'address'];
     $updateField = null;
     $updateValue = null;
 

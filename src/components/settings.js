@@ -47,6 +47,13 @@ const Settings = ({ user, setUser }) => {
       type: 'email',
       editable: false,
       value: user?.email || ''
+    },
+    {
+      key: 'address',
+      label: 'Address',
+      type: 'text',
+      editable: true,
+      value: user?.address || ''
     }
   ]);
 

@@ -43,6 +43,7 @@ export const UserProvider = ({ children }) => {
           sameSite: "Strict",
         });
         setUser(data.user);
+        user.name[0].toUpperCase();
       }
   
       return data; // Return server response to be handled by calling function
@@ -96,6 +97,7 @@ export const UserProvider = ({ children }) => {
     
     if (data.status === 'success') {
       setUser(data.user);
+      user.name[0].toUpperCase();
       return data.user;
     } else {
       Cookies.remove('session_token');

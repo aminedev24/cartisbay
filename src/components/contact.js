@@ -38,30 +38,44 @@ const Contact = ({ sell }) => {
     ? 'http://localhost/artisbay-server/server'
     : '/server';
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/getUserInfo.php`, {
-          method: 'GET',
-          credentials: 'include'
-        });
-
-        const data = await response.json();
-        if (data.error) return;
-
-        setUserData({
-          fullName: data.data.full_name,
-          email: data.data.email,
-          phone: data.data.phone,
-          country: data.data.country
-        });
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+    useEffect(() => {
+      const fetchUserData = async () => {
+        try {
+          const response = await fetch(`${apiUrl}/getUserInfo.php`, {
+            method: 'GET',
+            credentials: 'include',
+          });
+    
+          if (!response.ok) {
+            console.error('Failed to fetch user data:', response.statusText);
+            return;
+          }
+    
+          const data = await response.json();
+    
+          // Check if data and expected fields exist
+          if (!data || data.error || !data.data) {
+            console.error('Invalid or missing data returned from API:', data);
+            return;
+          }
+    
+          // Ensure all fields are present and set defaults if needed
+          const { full_name = '', email = '', phone = '', country = '' } = data.data;
+    
+          setUserData({
+            fullName: full_name,
+            email: email,
+            phone: phone,
+            country: country,
+          });
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      };
+    
+      fetchUserData();
+    }, []);
+    
 
   useEffect(() => {
     if (userData.fullName) {
