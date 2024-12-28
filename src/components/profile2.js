@@ -38,17 +38,17 @@ const ProfilePage = () => {
   const menuItems = [
     { 
       key: 'settings', 
-      label: 'SETTINGS', 
+      label: 'Settings', 
       component: Settings 
     },
     { 
       key: 'inquiries', 
-      label: 'INQUIRIES', 
+      label: 'Inquiries', 
       component: null 
     },
     { 
       key: 'purchase-history', 
-      label: 'PURCHASE HISTORY', 
+      label: 'Purchase History', 
       component: null 
     },
     { 
@@ -68,7 +68,7 @@ const ProfilePage = () => {
     },
     { 
       key: 'sales-contract', 
-      label: 'SALES CONTRACT', 
+      label: 'Sales Contract', 
       component: null 
     },
     {

@@ -53,7 +53,7 @@ const Shipping = () => {
     <div 
       className="shipping-container"
       style={{
-        height: isSmallScreen  ? "60vh" : ''
+        height: isSmallScreen  ? "60vh" : '80vh'
       }}
     >
       <div className="header">
