@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const TelegraphicTransfer = () => {
   return (
     <div className = 'terms-container'>
@@ -44,7 +44,7 @@ const TelegraphicTransfer = () => {
         </li>
         <li>
           <h2>Order Processing</h2>
-          <p>After confirming your payment, we will proceed with your order and keep you updated on its status.</p>
+          <p>After confirming your payment, we will proceed with your order and keep you updated on its status check out our<Link to='/help?topic=Bank%20Information' className='cta-link'>bank information</Link>for more details.</p>
         </li>
       </ol>
     </div>

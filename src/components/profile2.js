@@ -9,6 +9,7 @@ import Privacy from './privacy';
 import TermsConditions from './terms';
 import AntiSocialPolicy from './asf';
 import '../css/profilePage.css';
+import BankInformation from './bankInfo';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -69,6 +70,11 @@ const ProfilePage = () => {
       key: 'sales-contract', 
       label: 'SALES CONTRACT', 
       component: null 
+    },
+    {
+      key: "Bank-Information",
+      label: "Bank information",
+      component: BankInformation
     }
   ];
 

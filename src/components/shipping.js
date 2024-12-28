@@ -52,6 +52,9 @@ const Shipping = () => {
   return (
     <div 
       className="shipping-container"
+      style={{
+        height: isSmallScreen  ? "60vh" : ''
+      }}
     >
       <div className="header">
         <img
