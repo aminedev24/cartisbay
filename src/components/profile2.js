@@ -73,7 +73,7 @@ const ProfilePage = () => {
     },
     {
       key: "Bank-Information",
-      label: "Bank information",
+      label: "Bank Information",
       component: BankInformation
     }
   ];
