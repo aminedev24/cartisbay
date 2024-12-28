@@ -8,7 +8,7 @@ const useCheckScreenSize = () => {
 
     useEffect(() => {
         const checkScreenWidth = () => {
-            setIsSmallScreen(window.screen.width <= 1000);
+            setIsSmallScreen(window.screen.width <= 900);
         };
 
         const checkOrientation = (e) => {

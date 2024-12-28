@@ -69,7 +69,6 @@
     transform: translateY(-50%);
     background: #f7f9fc;
     padding: 0 5px;
-    color: #1e3a8a;
     transition: 0.3s ease;
     font-weight: bold;
 }
@@ -138,7 +137,6 @@
     transform: translateY(-50%);
     background: #f7f9fc;
     padding: 0 5px;
-    color: #1e3a8a;
     transition: 0.3s ease;
 }
 

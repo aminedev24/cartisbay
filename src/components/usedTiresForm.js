@@ -794,9 +794,9 @@ const editOrder = async (updatedOrder) => {
                 {message && <p className="message">{message}</p>}
               </form>
 
-              <div className="percentage-fill">
+              <p className="percentage-fill">
                 Container Percentage Fill : {percentageFill.toFixed(2)}%
-              </div>
+              </p>
 
               <div className="form-row">
                 <div className="form-group textArea">

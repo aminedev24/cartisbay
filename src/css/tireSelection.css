@@ -13,10 +13,14 @@
 }
 
 .orders-wrapper {
-  height: 215px; /* Fixed height for the orders table */
+  height: 300px; /* Fixed height for the orders table */
   overflow-y: auto; /* Allow vertical scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   overflow-x: visible;
+}
+
+.image-container .text {
+  font-size: 30px;
 }
 
 .tire-selection-container h3 {

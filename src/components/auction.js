@@ -50,8 +50,7 @@ const AuctionLanding = () => {
         <strong><Link className='cta-link' to='/contact'>Contact us today</Link></strong> to discuss your needs and secure the best vehicles from Japanese auctions.
       </p>
       <p>
-        Already know what you want? <strong>Get an automated invoice now </strong>to make a deposit and start your purchase immediately!
-      </p>
+        Already know what you want? Request an invoice now to make a deposit and start your purchase immediately!      </p>
     </div>
   );
 };

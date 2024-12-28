@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #003366;
-    --secondary-color: #004080;
+    --primary-color: #1e3a8a;
+    --secondary-color: #1da1f2;
     --accent-color: #f1892b;
     --text-color: #333;
     --background-color: #f4f4f8;
@@ -26,11 +26,7 @@
     position: sticky;
     top: 0;
     width: var(--sidebar-width);
-    background: linear-gradient(
-        135deg, 
-        var(--primary-color) 0%, 
-        var(--secondary-color) 100%
-    );
+    background: #1da1f2;
     color: var(--white);
     padding: 30px 20px;
     overflow-y: auto;
@@ -135,6 +131,8 @@
 .profile-content {
     flex: 1;
     padding: 40px;
+    height: 80vh;
+    overflow-y: auto;
 }
 
 .profile-content h1 {

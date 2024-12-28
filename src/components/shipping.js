@@ -25,20 +25,22 @@ const Shipping = () => {
           if (isSmallScreen && !isPortrait) return '20px';
           return '10px';
         })();
-
-        const elements = document.querySelectorAll('th, td');
-        elements.forEach((el) => {
-          el.style.fontSize = fontSize;
-        });
+  
+        // Use a timeout to ensure the table is rendered
+        setTimeout(() => {
+          const elements = document.querySelectorAll('th, td');
+          elements.forEach((el) => {
+            el.style.fontSize = fontSize;
+          });
+        }, 0);
       };
-
+  
       applyFontSize();
       
       // Update URL parameter when table changes
       navigate(`?dest=${showTable}`, { replace: true });
     }
   }, [showTable, isSmallScreen, isPortrait, navigate]);
-
   const handleAfricaRoroClick = () => {
     setShowTable(1);
   };

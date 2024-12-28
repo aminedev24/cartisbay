@@ -3,7 +3,7 @@ import CountryList from "./countryList";
 import { useNavigate } from "react-router-dom";
 //import logo from `${process.env.PUBLIC_URL}/images/companyprofile.jpg`; // Import your logo image
 
-const SignupForm = ({ setIsModalOpen }) => {
+const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -188,9 +188,16 @@ const SignupForm = ({ setIsModalOpen }) => {
             I agree to the{" "}
             <span
               className="terms-highlight"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => { setModalType('terms'); setIsModalOpen(true); }} // Open terms modal
             >
               Terms and Conditions
+            </span>
+            {" "}and the{" "}
+            <span
+              className="terms-highlight"
+              onClick={() => { setModalType('privacy'); setIsModalOpen(true); }} // Open privacy modal
+            >
+              Privacy Policy
             </span>
           </label>
         </div>
