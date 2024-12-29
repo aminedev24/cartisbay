@@ -21,8 +21,8 @@ const Shipping = () => {
     if (showTable !== null) {
       const applyFontSize = () => {
         const fontSize = (() => {
-          if (isSmallScreen && isPortrait) return '20px';
-          if (isSmallScreen && !isPortrait) return '20px';
+          if (isSmallScreen && isPortrait) return '15px';
+          if (isSmallScreen && !isPortrait) return '15px';
           return '10px';
         })();
   
@@ -52,9 +52,6 @@ const Shipping = () => {
   return (
     <div 
       className="shipping-container"
-      style={{
-        height: isSmallScreen  ? "60vh" : '80vh'
-      }}
     >
       <div className="header">
         <img

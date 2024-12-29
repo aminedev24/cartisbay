@@ -66,6 +66,7 @@
 
 .shipping-table-container {
     overflow: auto;
+    height: 70vh;
 }
 
 .sticky-header {
@@ -91,4 +92,12 @@
 
   .con td , .con th {
     padding: 9px;
+  }
+
+  @media  (max-width:900px) {
+
+    .shipping-table th, .shipping-table td {
+        font-size: 15px;
+    }
+    
   }
