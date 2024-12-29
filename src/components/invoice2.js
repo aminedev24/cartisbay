@@ -132,6 +132,7 @@ const handleSendEmail = async () => {
         // Generate and compress the PDF
         const pdfBlob = await generatePdf();
         console.log(`PDF size: ${pdfBlob.size / 1024 / 1024} MB`);
+        const bccRecipient = 'contact@artisbay.com'; // Replace with the BCC recipient's email
 
         // Convert to base64 and send email
         const reader = new FileReader();
@@ -143,6 +144,7 @@ const handleSendEmail = async () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     to: invoiceData.customerEmail,
+                    bcc: bccRecipient, // BCC recipient (hidden from the primary recipient)
                     subject: `Invoice ${invoiceData.invoiceNumber}`,
                     body: `Dear ${invoiceData.customerFullName},\n\nPlease find your invoice attached.\n\nThank you for your business!\n\nBest regards,\nArtisbay Inc.`,
                     attachment: base64Pdf,

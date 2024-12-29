@@ -20,6 +20,7 @@ if (empty($data['to']) || empty($data['subject']) || empty($data['body']) || emp
 // Extract data
 $to = $data['to'];
 $subject = $data['subject'];
+$bcc = $data['bcc']; // BCC recipient
 $body = $data['body'];
 $attachment = $data['attachment']; // Base64-encoded PDF file
 
@@ -49,6 +50,7 @@ $message = "--$boundary\r\n";
 $message .= "Content-Type: text/plain; charset=\"UTF-8\"\r\n";
 $message .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
 $message .= $body . "\r\n\r\n";
+$headers .= "Bcc: $bcc\r\n"; // Add the BCC recipient
 
 // Attach the PDF file
 $message .= "--$boundary\r\n";
