@@ -32,7 +32,7 @@ const Login = () => {
 
     try {
       const response = await login(email, password);
-
+      console.log(response)
       if (response.status === 'success') {
         // Set the welcome message
         setMessage(`Welcome, ${response.user.name || email}!`); // Display welcome message

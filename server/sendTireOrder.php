@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </html>";
 
             // Email details
-            $to = "orders@example.com";
+            $to = "orders@artisbay.com";
             $subject = "New Tire Orders Received";
             $headers = "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
