@@ -33,6 +33,13 @@ const ProformaInvoiceForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [invoiceCounter, setInvoiceCounter] = useState(1000); // Initialize invoice counter
 
+    const purposeDescriptions = {
+        "vehicle purchase": "This payment is to order cars from the auctions, the cars details and chassis numbers will be available after the purchase",
+        "auto parts order": "This payment is to order auto parts, the details will be available after the purchase",
+        "dismantling": "This is a deposit to order dismantled cars, the cars details and chassis numbers will be available after the purchase",
+        "tires order": "This is a deposit to order used tires",
+    };
+
 
     const apiUrl = process.env.NODE_ENV === 'development'
     ? 'http://localhost/artisbay-server/server'
@@ -87,7 +94,18 @@ const ProformaInvoiceForm = () => {
                         countryItem => countryItem.label === country
                     );
                     if (selectedCountry?.countryCode) {
-                        setPhoneCode(selectedCountry.countryCode);
+                        // Check if the phone number already includes the country code
+                        if (phone.startsWith(selectedCountry.countryCode)) {
+                            // If it does, set the phone code and remove it from the phone number
+                            setPhoneCode(selectedCountry.countryCode);
+                            setFormData(prevState => ({
+                                ...prevState,
+                                phone: phone.replace(selectedCountry.countryCode, ''),
+                            }));
+                        } else {
+                            // If it doesn't, set the phone code
+                            setPhoneCode(selectedCountry.countryCode);
+                        }
                     } else {
                         setPhoneCode(''); // Clear phone code if no match
                     }
@@ -103,55 +121,72 @@ const ProformaInvoiceForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        
+    
         // Handle phone code for country selection
         if (name === 'country') {
             const selectedCountry = CountryList().find(
                 (country) => country.label === value
             );
-            
+    
             if (selectedCountry?.countryCode) {
                 setPhoneCode(selectedCountry.countryCode);
             } else {
                 setPhoneCode('');
             }
         }
-
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+    
+        // Update the description when the purpose changes
+        if (name === 'depositPurpose') {
+            const description = purposeDescriptions[value] || '';
+            setFormData(prevState => ({
+                ...prevState,
+                depositDescription: description, // Always update the description when the purpose changes
+                [name]: value,
+            }));
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value,
+            }));
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-
+    
         // Validation logic
         const requiredFields = [
             'fullName', 'country', 'phone', 
-            'email', 'depositAmount', 'depositDescription', 'depositPurpose','address'
+            'email', 'depositAmount', 'depositDescription', 'depositPurpose', 'address'
         ];
-
+    
         const isFormValid = requiredFields.every(field => formData[field]);
-
+    
         if (isFormValid) {
+            // Combine the phone code and phone number
+            const fullPhoneNumber = phoneCode + formData.phone;
+    
+            // Format the deposit amount with commas
+            const formattedDepositAmount = parseFloat(formData.depositAmount).toLocaleString();
+    
             // Generate invoice number automatically and set current date
             const newInvoiceData = {
                 customerFullName: formData.fullName,
                 customerCompany: formData.company,
                 customerAddress: formData.address,
-                customerPhone: phoneCode+ formData.phone,
+                customerPhone: fullPhoneNumber, // Use the full phone number
                 customerEmail: formData.email,
-                invoiceNumber: invoiceCounter, // Assign the current invoice number
-                invoiceDate: new Date().toISOString().split('T')[0], // Set current date in YYYY-MM-DD format
-                depositAmount: formData.depositAmount,
+                country: formData.country, // Include the country field
+                invoiceNumber: `AB-${invoiceCounter}`,
+                invoiceDate: new Date().toISOString().split('T')[0],
+                depositAmount: formattedDepositAmount,
                 depositCurrency: formData.depositCurrency,
                 depositDescription: formData.depositDescription,
                 depositPurpose: formData.depositPurpose,
-                ...bankDetails // Include bank details
+                ...bankDetails,
             };
-
+    
             setSubmittedInvoiceData(newInvoiceData);
             setIsModalOpen(true);
             setIsSubmitting(false);
@@ -160,6 +195,47 @@ const ProformaInvoiceForm = () => {
             alert('Please fill in all required fields');
             setIsSubmitting(false);
         }
+    };
+
+    const handleEditInvoice = (invoiceData) => {
+        // Parse the deposit amount (remove commas and convert to a number)
+        const depositAmount = parseFloat(invoiceData.depositAmount.replace(/,/g, ''));
+    
+        // Extract the phone code from the phone number (e.g., +2135898495)
+        const phoneNumber = invoiceData.customerPhone;
+        let phoneCode = '';
+        let phoneWithoutCode = phoneNumber;
+    
+        // Find the country that matches the phone code
+        const selectedCountry = CountryList().find((country) =>
+            phoneNumber.startsWith(country.countryCode)
+        );
+    
+        if (selectedCountry) {
+            phoneCode = selectedCountry.countryCode; // Set the phone code
+            phoneWithoutCode = phoneNumber.replace(phoneCode, ''); // Remove the phone code from the phone number
+        }
+    
+        console.log(invoiceData)
+        // Set the form data to the invoice data for editing
+        setFormData({
+            fullName: invoiceData.customerFullName,
+            company: invoiceData.customerCompany,
+            country: invoiceData.country || '', // Set the country if available
+            phone: phoneWithoutCode, // Set the phone number without the code
+            email: invoiceData.customerEmail,
+            depositAmount: depositAmount || '', // Set the parsed deposit amount
+            depositCurrency: invoiceData.depositCurrency,
+            depositDescription: invoiceData.depositDescription,
+            depositPurpose: invoiceData.depositPurpose,
+            address: invoiceData.customerAddress,
+        });
+    
+        // Set the phone code based on the extracted code
+        setPhoneCode(phoneCode);
+    
+        // Close the modal and allow the user to edit the form
+        setIsModalOpen(false);
     };
 
     const handleCloseModal = () => {
@@ -295,10 +371,10 @@ const ProformaInvoiceForm = () => {
                             required
                         >
                             <option value="">Select Deposit Purpose</option>
-                            <option value="vehicle_purchase">Vehicle Purchase</option>
-                            <option value="auto_parts_order">Auto Parts Order</option>
-                            <option value="service_fee">Service Fee</option>
-                            <option value="other">Other</option>
+                            <option value="vehicle purchase">Vehicle Purchase</option>
+                            <option value="auto parts order">Auto Parts Order</option>
+                            <option value="dismantling">Dismantling</option>
+                            <option value="tires order">Tires order</option>
                         </select>
                         <label>Deposit Purpose <span className="required">*</span></label>
                     </div>
@@ -330,6 +406,7 @@ const ProformaInvoiceForm = () => {
                     isOpen={isModalOpen} 
                     onClose={handleCloseModal} 
                     invoiceData={submittedInvoiceData}
+                    onEdit={handleEditInvoice} // Pass the onEdit callback
                 />
             )}
         </div>

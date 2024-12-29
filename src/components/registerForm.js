@@ -37,52 +37,55 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
     event.preventDefault();
 
     if (!agreeToTerms) {
-      setMessage("You must agree to the terms and conditions.");
-      setIsError(true);
-      return;
+        setMessage("You must agree to the terms and conditions.");
+        setIsError(true);
+        return;
     }
 
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match.");
-      setIsError(true);
-      return;
+        setMessage("Passwords do not match.");
+        setIsError(true);
+        return;
     }
 
     setMessage("Signing up...");
     setIsError(false);
 
+    // Concatenate phone code and phone number
+    const fullPhoneNumber = `${phoneCode} ${phone}`.trim();
+
     const formData = {
-      "full-name": fullName,
-      email,
-      password,
-      country: selectedCountry,
-      phone,
-      company,
-      address
+        "full-name": fullName,
+        email,
+        password,
+        country: selectedCountry,
+        phone: fullPhoneNumber, // Use the concatenated phone number
+        company,
+        address
     };
 
     try {
-      const response = await fetch(`${apiUrl}/signup.php`, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
+        const response = await fetch(`${apiUrl}/signup.php`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        });
 
-      const result = await response.json();
+        const result = await response.json();
 
-      if (result.success) {
-        setMessage("Signup successful! Redirecting...");
-        setTimeout(() => navigate("/login"), 3000);
-      } else {
-        setMessage("Signup failed. Try again.");
-        setIsError(true);
-      }
+        if (result.success) {
+            setMessage("Signup successful! Redirecting...");
+            setTimeout(() => navigate("/login"), 3000);
+        } else {
+            setMessage("Signup failed. Try again.");
+            setIsError(true);
+        }
     } catch (error) {
-      console.error("Error:", error);
-      setMessage("An error occurred. Please try again.");
-      setIsError(true);
+        console.error("Error:", error);
+        setMessage("An error occurred. Please try again.");
+        setIsError(true);
     }
-  };
+};
 
   return (
     <div className="signup-container">

@@ -1,6 +1,4 @@
 .invoice-container {
-    width: 80%;
-    margin: 0 auto;
     padding: 20px;
 }
 
@@ -8,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 4px solid;
 }
 
 .header-left{
@@ -30,11 +29,11 @@
 .header-right p {
     white-space: nowrap;
 }
-.invoice-container .header img {
+.invoice-container .header-left img {
     width: 150px;
 }
 .invoice-container .header .contact-info {
-    max-width: 90%;
+    max-width: 80%;
     text-align: left;
 }
 .invoice-container .header .contact-info p {
@@ -137,6 +136,8 @@
 
 .invoice-modal-overlay .modal-content {
     background-color: #fff;
+    width: 45%;
+    padding: 0;
 }
 
 /* Close Button */
@@ -150,13 +151,14 @@
     cursor: pointer;
 }
 
+
 .amount-container {
     display: flex;
     justify-content: flex-end;
 }
 
 .amount-table {
-    width: 40%;
+    width: 50%;
 }
 
 .invoice-footer {
