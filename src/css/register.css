@@ -138,14 +138,7 @@
     padding-left: calc(15px + 50px); /* Adjust based on phone code width */
 }
 
-.phone-number-group label {
-    position: absolute;
-    top: -8px;
-    transform: translateY(-50%);
-    background: #f7f9fc;
-    padding: 0 5px;
-    transition: 0.3s ease;
-}
+
 
 /* Label Animation for Phone Input */
 .phone-number-group input:focus + label,
