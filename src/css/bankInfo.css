@@ -10,7 +10,7 @@
 .bank-info-table th, .bank-info-table td {
   padding: 10px; /* Padding for table cells */
   border: 1px solid #ecf0f1; /* Border for table cells */
-  text-align: left; /* Align text to the left */
+  text-align: center; /* Align text to the left */
 }
 
 .bank-info-table th {

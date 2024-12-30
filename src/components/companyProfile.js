@@ -6,10 +6,11 @@ const CompanyProfile = (selectedTopic) => {
     name: "Artisbay Inc.",
     founded: "November 2024",
     address: "Miyagi Ken Sendai city",
-    mainBusiness: "Platform for the sale and export of used vehicles Sale",
+    mainBusiness: "An online-based platform for the sale and export of used vehicles and auto parts.",
     annualSales: "[To be confirmed in 2026]",
     url: "https://artisbay.com",
-    registeredinJapan: "License No. 7370001051924"
+    registeredinJapan: "License No. 7370001051924",
+    email: 'contact@artisbay.com'
   };
 
   return (
@@ -20,11 +21,11 @@ const CompanyProfile = (selectedTopic) => {
       <table className="bank-info-table">
         <tbody>
             <tr>
-                <th>Company Name:</th>
+                <th>Company Name</th>
                 <td>{companyDetails.name}</td>
             </tr>
             <tr>
-                <th>Founded:</th>
+                <th>Founded</th>
                 <td>{companyDetails.founded}</td>
             </tr>
             <tr>
@@ -46,6 +47,10 @@ const CompanyProfile = (selectedTopic) => {
             <tr>
                 <th>Registered in Japan</th>
                 <td>{companyDetails.registeredinJapan}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{companyDetails.email}</td>
             </tr>
         </tbody>
     </table>
