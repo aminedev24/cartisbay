@@ -7,7 +7,7 @@
   border-collapse: collapse; /* Remove space between borders */
 }
 
-.bank-info-table th, .bank-info-table td {
+.bank-info-table th {
   padding: 10px; /* Padding for table cells */
   border: 1px solid #ecf0f1; /* Border for table cells */
   text-align: center; /* Align text to the left */
