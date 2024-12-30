@@ -207,7 +207,7 @@ const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0,
           <label>Company</label>
         </div>
 
-        <div className="input-group">
+        <div className="input-group password">
           <input
               type="password"
               value={password}
@@ -230,7 +230,7 @@ const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0,
             </ul>
         </div>
 
-        <div className="input-group">
+        <div className="input-group confirm-password">
           <input
             type="password"
             placeholder="confirm password"

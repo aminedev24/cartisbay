@@ -65,12 +65,16 @@
 .input-group label {
     position: absolute;
     left: 10px;
-    top:-8px;
+    top:-10px;
     transform: translateY(-50%);
     background: #f7f9fc;
     padding: 0 5px;
     transition: 0.3s ease;
     font-weight: bold;
+}
+
+.password {
+    margin-bottom: -10px;
 }
 
 /* Label Animation */
@@ -200,11 +204,14 @@
 
 /* Password Criteria List */
 .password-criteria {
-    margin-top: 10px;
+    margin: 10px;
     font-size: 14px;
     color: #555; /* Default color for criteria text */
 }
 
+.confirm-password{
+    margin-top: 20px;
+}
 .password-criteria ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0; /* Remove padding */
