@@ -22,7 +22,7 @@ const OrderForm = ({
   const [isFormValid, setIsFormValid] = useState(false);
   const [percentageFill, setPercentageFill] = useState(0);
   const [doubleLoading, setDoubleLoading] = useState(false);
-  const [selectedDiameter, setSelectedDiameter] = useState("");
+  const [selectedDiameter, setSelectedDiameter] = useState(null);
   const [availableSizes, setAvailableSizes] = useState([]);
   const [isQuantityValid, setIsQuantityValid] = useState(true);
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -77,6 +77,8 @@ const OrderForm = ({
       tireSize: "",
     }));
   };
+
+  console.log("selectedDiameter updated:", selectedDiameter);
 
   const handleSizeChange = (e) => {
     const size = e.target.value;
@@ -173,7 +175,13 @@ const OrderForm = ({
   };
   const handleEditOrder = (order) => {
     console.log("Order to edit:", order);
-
+  
+    // Extract the diameter from the order's rim_diameter
+    const diameter = order.rim_diameter;
+  
+    // Find the corresponding tire sizes for the diameter
+    const sizes = TireSizes.find((tire) => tire.diameter === diameter)?.sizes || [];
+  
     // Set the form data based on the order to edit
     setFormData({
       make: order.make,
@@ -184,15 +192,19 @@ const OrderForm = ({
       type: order.type,
       tireSize: `${order.width}/${order.aspect_ratio}R${order.rim_diameter}`,
     });
-
+  
+    // Set the selected diameter and available sizes
+    setSelectedDiameter(diameter);
+    setAvailableSizes(sizes);
+  
     // Find the index of the order in the original `orders` array
     const originalIndex = orders.findIndex((o) => o === order);
-
+  
     if (originalIndex === -1) {
       console.error("Order not found in original orders array.");
       return;
     }
-
+  
     setEditingOrder(originalIndex);
     setShowForm(true);
   };
@@ -258,185 +270,156 @@ const OrderForm = ({
 
   //console.log(user)
   const addOrder = async (newOrder) => {
-    // Simulate order submission when not logged in
     if (!user || !user.uid) {
-        console.warn("User is not logged in. Order will not be saved on the server.");
-
-        // Simulate the addition of the order locally for UI feedback
-        setOrders((prevOrders) => {
-            const ordersArray = Array.isArray(prevOrders) ? prevOrders : [];
-
-            // Find an existing order with the same type and size
-            const existingOrderIndex = ordersArray.findIndex(
-                (order) =>
-                    order.type === newOrder.type &&
-                    `${order.width}/${order.aspect_ratio}R${order.rim_diameter}` ===
-                        `${newOrder.width}/${newOrder.aspect_ratio}R${newOrder.rim_diameter}`
-            );
-
-            if (existingOrderIndex !== -1) {
-                // Update the quantity of the existing order
-                const updatedOrders = [...ordersArray];
-                updatedOrders[existingOrderIndex].quantity += newOrder.quantity;
-                return updatedOrders;
-            } else {
-                // Add the new order if no matching order exists
-                return [...ordersArray, { ...newOrder, id: "TEMP_ID" }];
-            }
-        });
-
-        setMessage("Order added locally but not saved. Please log in to save.");
-        return;
+      // Simulate the addition of the order locally for UI feedback
+      const tempId = "TEMP_ID_" + Date.now(); // Generate a unique temporary ID
+      const tempOrder = { ...newOrder, id: tempId };
+  
+      setOrders((prevOrders) => [...prevOrders, tempOrder]);
+      setMessage("Order added locally but not saved. Please log in to save.");
+      return;
     }
-
+  
     // Prepare the order for server submission
     const orderData = {
-        order_id: null,
-        user_id: user ? user.uid : '',
-        make: newOrder.make,
-        width: newOrder.width,
-        aspect_ratio: newOrder.aspect_ratio,
-        rim_diameter: newOrder.rim_diameter,
-        quantity: newOrder.quantity,
-        type: newOrder.type,
-        ...(newOrder.load_index && { load_index: newOrder.load_index }),
-        ...(newOrder.speed_rating && { speed_rating: newOrder.speed_rating }),
+      user_id: user.uid,
+      make: newOrder.make,
+      width: newOrder.width,
+      aspect_ratio: newOrder.aspect_ratio,
+      rim_diameter: newOrder.rim_diameter,
+      quantity: newOrder.quantity,
+      type: newOrder.type,
+      load_index: newOrder.load_index || null,
+      speed_rating: newOrder.speed_rating || null,
     };
-
-    console.log(`Payload sent to the server ${JSON.stringify(orderData)}`);
+  
     try {
-        const response = await fetch(`${apiUrl}/saveOrder.php`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(orderData),
-            credentials: 'include' // Include credentials (cookies) in the request
-
-        });
-
-        const result = await response.json();
-        if (response.ok && result.order_id > 0) {
-            newOrder.id = result.order_id; // Use server ID
-
-            setOrders((prevOrders) => {
-                const ordersArray = Array.isArray(prevOrders) ? prevOrders : [];
-
-                // Find an existing order with the same type and size
-                const existingOrderIndex = ordersArray.findIndex(
-                    (order) =>
-                        order.type === newOrder.type &&
-                        `${order.width}/${order.aspect_ratio}R${order.rim_diameter}` ===
-                            `${newOrder.width}/${newOrder.aspect_ratio}R${newOrder.rim_diameter}`
-                );
-
-                if (existingOrderIndex !== -1) {
-                    // Update the quantity of the existing order
-                    const updatedOrders = [...ordersArray];
-                    updatedOrders[existingOrderIndex].quantity += newOrder.quantity;
-                    return updatedOrders;
-                } else {
-                    // Add the new order if no matching order exists
-                    return [...ordersArray, newOrder];
-                }
-            });
-
-            setMessage("Order saved successfully!");
+      const response = await fetch(`${apiUrl}/saveOrder.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData),
+        credentials: "include", // Send cookies
+      });
+  
+      const result = await response.json();
+      console.log("Server Response for saving order:", result);
+  
+      if (response.ok) {
+        if (result.message === 'Order saved successfully!') {
+          // If a new order was saved, add it to the local state
+          setOrders((prevOrders) => [...prevOrders, result.order]);
+          setMessage("Order saved successfully!");
+        } else if (result.message === 'Order quantity updated successfully!') {
+          // If an existing order was updated, replace it in the local state
+          setOrders((prevOrders) =>
+            prevOrders.map((order) =>
+              order.id === result.order.id ? result.order : order
+            )
+          );
+          setMessage("Order quantity updated successfully!");
         } else {
-            throw new Error(result.message || "Failed to save order.");
+          throw new Error(result.message || "Unexpected response from the server.");
         }
+      } else {
+        throw new Error(result.message || "Failed to save order.");
+      }
     } catch (error) {
-        console.error("Error saving order:", error.message);
-        setMessage(`Error: ${error.message}`);
+      setMessage(`Error: ${error.message}`);
     }
-};
+  };
 
 
   
 
-const editOrder = async (updatedOrder) => {
-  const updatedOrders = [...(orders || [])]; // Default to an empty array if orders is falsy
-  const previousOrder = updatedOrders[editingOrder];
-
-  if (!previousOrder) {
-    setMessage("Order not found.");
-    return;
-  }
-
-  // Temporarily update the order in the array for server submission
-  updatedOrders[editingOrder] = { ...previousOrder, ...updatedOrder };
-
-  // Grouping and quantity accumulation logic before sending to server
-  const newOrders = updatedOrders.reduce((acc, order, index) => {
-    const sizeKey = `${order.width}/${order.aspect_ratio}R${order.rim_diameter}`;
-    const existingIndex = acc.findIndex(
-      (o) =>
-        o.type === order.type &&
-        o.make === order.make &&
-        `${o.width}/${o.aspect_ratio}R${o.rim_diameter}` === sizeKey
-    );
-
-    if (existingIndex !== -1) {
-      // If a match is found, accumulate quantities
-      acc[existingIndex].quantity += order.quantity;
-
-      // If the matched order is the edited one, skip adding it again
-      if (index === editingOrder) return acc;
-    } else {
-      // Add the order to the accumulator if it doesn't exist already
-      acc.push(order);
+  const editOrder = async (updatedOrder) => {
+    const updatedOrders = [...(orders || [])];
+    const previousOrder = updatedOrders[editingOrder];
+  
+    console.log("Editing Order Index:", editingOrder);
+    console.log("Previous Order:", previousOrder);
+  
+    if (!previousOrder) {
+      setMessage("Order not found.");
+      return;
     }
-
-    return acc;
-  }, []);
-
-  // After the group and accumulate logic, update the state before sending to the server
-  setOrders(newOrders); // Update the orders state with the merged orders
-  console.log(`newOrders: ${JSON.stringify(newOrders)}`)
-  // Prepare the payload for the server based on updated orders
-  const payload = newOrders.map(order => ({
-    order_id: order.id,
-    user_id: user.uid,
-    make: order.make,
-    width: order.width,
-    aspect_ratio: order.aspect_ratio,
-    rim_diameter: order.rim_diameter,
-    quantity: order.quantity,
-    type: order.type,
-    load_index: order.load_index || null,
-    speed_rating: order.speed_rating || null,
-  }));
-
-  console.log(`Payload sent to server for editing order: ${JSON.stringify(payload)}`);
-
-  try {
-    const response = await fetch(`${apiUrl}/edit_order.php`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload), // Directly sending the array of orders
-    });
-
-    const result = await response.json();
-    console.log("Server Response for editing order: ", result);
-
-    if (response.ok && result.message === "Order updated successfully.") {
-      console.log("Order updated successfully.");
-      setMessage("Your order has been successfully updated and grouped!");
-    } else {
-      console.log("Error: Server response indicates failure.");
-      setMessage(result.message || "An error occurred while updating the order.");
+  
+    console.log("Previous Order ID:", previousOrder.id);
+  
+    const payload = {
+      order_id: previousOrder.id,
+      make: updatedOrder.make,
+      quantity: updatedOrder.quantity,
+      rim_diameter: updatedOrder.rim_diameter,
+      type: updatedOrder.type,
+      width: updatedOrder.width,
+      aspect_ratio: updatedOrder.aspect_ratio,
+      load_index: updatedOrder.load_index || null,
+      speed_rating: updatedOrder.speed_rating || null,
+    };
+  
+    console.log("Payload sent to server for editing order:", payload);
+  
+    try {
+      const response = await fetch(`${apiUrl}/edit_order.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+  
+      const result = await response.json();
+      console.log("Server Response for editing order:", result);
+  
+      if (response.ok && result.message === "Order updated successfully.") {
+        // Check if another order with the same type and size exists
+        const matchingOrder = orders.find(
+          (order) =>
+            order.id !== previousOrder.id && // Exclude the edited order
+            order.type === updatedOrder.type &&
+            order.make === updatedOrder.make &&
+            order.width === updatedOrder.width &&
+            order.aspect_ratio === updatedOrder.aspect_ratio &&
+            order.rim_diameter === updatedOrder.rim_diameter
+        );
+  
+        if (matchingOrder) {
+          // Merge the quantities
+          const mergedQuantity = matchingOrder.quantity + updatedOrder.quantity;
+  
+          // Update the matching order with the merged quantity
+          const updatedOrders = orders.map((order) =>
+            order.id === matchingOrder.id
+              ? { ...order, quantity: mergedQuantity }
+              : order
+          );
+  
+          // Remove the edited order from the list
+          const filteredOrders = updatedOrders.filter(
+            (order) => order.id !== previousOrder.id
+          );
+  
+          setOrders(filteredOrders); // Update the UI
+          setMessage("Your order has been successfully merged with an existing order!");
+        } else {
+          // If no matching order exists, update the edited order
+          const updatedOrders = orders.map((order) =>
+            order.id === previousOrder.id
+              ? { ...order, ...updatedOrder, id: previousOrder.id } // Preserve the ID
+              : order
+          );
+  
+          setOrders(updatedOrders); // Update the UI
+          setMessage("Your order has been successfully updated!");
+        }
+      } else {
+        setMessage(result.message || "An error occurred while updating the order.");
+      }
+    } catch (error) {
+      setMessage(`An error occurred while connecting to the server: ${error.message}`);
+    } finally {
+      setEditingOrder(null); // Exit editing mode
     }
-  } catch (error) {
-    console.log("Error: An error occurred during the fetch request.");
-    setMessage(`An error occurred while connecting to the server: ${error.message}`);
-  } finally {
-    setEditingOrder(null); // Exit editing mode
-  }
-};
-
-
-
-
-
-  // Open confirmation modal when deleting an order
+  };
+ // Open confirmation modal when deleting an order
   const handleDeleteOrder = (index) => {
     // Ensure the index is valid
     if (index < 0 || index >= orders.length) {
@@ -795,7 +778,7 @@ const editOrder = async (updatedOrder) => {
               </form>
 
               <p className="percentage-fill">
-                Container Percentage Fill : {percentageFill.toFixed(2)}%
+                Container Percentage Fill : {Math.round(percentageFill.toFixed(2))}%
               </p>
 
               <div className="form-row">

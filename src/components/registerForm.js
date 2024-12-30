@@ -16,6 +16,8 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
   const [address, setAddress] = useState('')
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState("");
+
   const navigate = useNavigate();
 
   const apiUrl =
@@ -32,9 +34,44 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
   const handleInputChange = (setter, event) => {
     setter(event.target.value);
   };
+  const evaluatePasswordStrength = (password) => {
+    let strength = "Weak";
+    const lengthCriteria = password.length >= 8;
+    const numberCriteria = /[0-9]/.test(password);
+    const specialCharCriteria = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const uppercaseCriteria = /[A-Z]/.test(password);
+    const lowercaseCriteria = /[a-z]/.test(password);
+
+    const criteriaMet = [lengthCriteria, numberCriteria, specialCharCriteria, uppercaseCriteria, lowercaseCriteria].filter(Boolean).length;
+
+    if (criteriaMet >= 4) {
+        strength = "Strong";
+    } else if (criteriaMet === 3) {
+        strength = "Medium";
+    }
+
+    return { strength, criteriaMet, totalCriteria: 5 };
+};
+
+const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    const { strength, criteriaMet, totalCriteria } = evaluatePasswordStrength(newPassword);
+    setPassword(newPassword);
+    setPasswordStrength(strength);
+    setPasswordCriteriaMet({ criteriaMet, totalCriteria });
+};
+
+const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0, totalCriteria: 5 });
 
   const handleSignup = async (event) => {
     event.preventDefault();
+
+    // Check if the password strength is weak
+    if (passwordStrength === "Weak") {
+      setMessage("Your password is too weak. Please choose a stronger password.");
+      setIsError(true);
+      return;
+  }
 
     if (!agreeToTerms) {
         setMessage("You must agree to the terms and conditions.");
@@ -72,12 +109,12 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
         });
 
         const result = await response.json();
-
+        console.log(result)
         if (result.success) {
             setMessage("Signup successful! Redirecting...");
             setTimeout(() => navigate("/login"), 3000);
         } else {
-            setMessage("Signup failed. Try again.");
+            setMessage("Signup failed. Try again.", result.error);
             setIsError(true);
         }
     } catch (error) {
@@ -143,7 +180,7 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
               </option>
             ))}
           </select>
-          <label>Country<span className="required">*</span></label>
+          <label className="country-label">Country<span className="required">*</span></label>
 
         </div>
 
@@ -172,13 +209,25 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
 
         <div className="input-group">
           <input
-            type="password"
-            value={password}
-            placeholder="password"
-            onChange={(e) => handleInputChange(setPassword, e)}
-            required
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={handlePasswordChange} // Updated handler
+              required
           />
           <label>Password<span className="required">*</span></label>
+          {password && <div className="password-strength">Strength: {passwordStrength}</div>} {/* Display password strength */}
+        </div>
+
+        {/* Password criteria hints */}
+        <div className="password-criteria">
+            <ul>
+                <li className={password.length >= 8 ? 'green' : 'red'}>At least 8 characters long</li>
+                <li className={/[A-Z]/.test(password) ? 'green' : 'red'}>Contains at least one uppercase letter</li>
+                <li className={/[a-z]/.test(password) ? 'green' : 'red'}>Contains at least one lowercase letter</li>
+                <li className={/[0-9]/.test(password) ? 'green' : 'red'}>Contains at least one number</li>
+                <li className={/[!@#$%^&*(),.?":{}|<>]/.test(password) ? 'green' : 'red'}>Contains at least one special character</li>
+            </ul>
         </div>
 
         <div className="input-group">
@@ -206,7 +255,7 @@ const SignupForm = ({ setIsModalOpen , setModalType ,modalType }) => {
               className="terms-highlight"
               onClick={() => { setModalType('terms'); setIsModalOpen(true); }} // Open terms modal
             >
-              Terms and Conditions
+              Terms & Conditions
             </span>
             {" "}and the{" "}
             <span

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the user_id from the session
     $user_id = $_SESSION['user_id'] ?? null; // Use session to get user_id
     if (empty($user_id)) {
-        $errorMessage = "User  not logged in. Orders cannot be saved without a valid user ID.";
+        $errorMessage = "User not logged in. Orders cannot be saved without a valid user ID.";
         error_log($errorMessage);
         echo json_encode(['message' => $errorMessage]);
         http_response_code(401); // Unauthorized
@@ -58,14 +58,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql_update = "UPDATE tireorders SET quantity = ? WHERE id = ?";
         $stmt_update = $conn->prepare($sql_update);
         $stmt_update->bind_param("ii", $newQuantity, $existingOrder['id']);
+
         if ($stmt_update->execute()) {
-            echo json_encode(['message' => 'Order quantity updated successfully!', 'order_id' => $existingOrder['id']]);
+            // Fetch the updated order data
+            $sql_fetch = "SELECT * FROM tireorders WHERE id = ?";
+            $stmt_fetch = $conn->prepare($sql_fetch);
+            $stmt_fetch->bind_param("i", $existingOrder['id']);
+            $stmt_fetch->execute();
+            $updatedOrder = $stmt_fetch->get_result()->fetch_assoc();
+
+            echo json_encode([
+                'message' => 'Order quantity updated successfully!',
+                'order' => $updatedOrder
+            ]);
             http_response_code(200);
         } else {
             echo json_encode(['message' => 'Error updating the order.']);
             http_response_code(500);
         }
         $stmt_update->close();
+        $stmt_fetch->close();
     } else {
         // If no existing order, insert a new one
         $sql_insert = "INSERT INTO tireorders (user_id, make, type, width, aspect_ratio, rim_diameter, quantity, speed_rating, load_index)
@@ -85,14 +97,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
 
         if ($stmt_insert->execute()) {
+            // Get the newly created order ID
             $order_id = $stmt_insert->insert_id;
-            echo json_encode(['message' => 'Order saved successfully!', 'order_id' => $order_id]);
+
+            // Fetch the newly created order data
+            $sql_fetch = "SELECT * FROM tireorders WHERE id = ?";
+            $stmt_fetch = $conn->prepare($sql_fetch);
+            $stmt_fetch->bind_param("i", $order_id);
+            $stmt_fetch->execute();
+            $newOrder = $stmt_fetch->get_result()->fetch_assoc();
+
+            echo json_encode([
+                'message' => 'Order saved successfully!',
+                'order' => $newOrder
+            ]);
             http_response_code(200);
         } else {
             echo json_encode(['message' => 'Error saving the order.']);
             http_response_code(500);
         }
         $stmt_insert->close();
+        $stmt_fetch->close();
     }
 
     $stmt_check->close();

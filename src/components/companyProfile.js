@@ -17,36 +17,38 @@ const CompanyProfile = (selectedTopic) => {
       {/*<img src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`} alt={'company-profile'} className="topic-image" />*/}
 
       <div className="company-profile-container">
-        <div className="company-details">
-          <div className="detail-item">
-            <h2>Company Name:</h2>
-            <p>{companyDetails.name}</p>
-          </div>
-          <div className="detail-item">
-            <h2>Founded:</h2>
-            <p>{companyDetails.founded}</p>
-          </div>
-          <div className="detail-item">
-            <h2>Address:</h2>
-            <p>{companyDetails.address}</p>
-          </div>
-          <div className="detail-item">
-            <h2>Main Business Activities:</h2>
-            <p>{companyDetails.mainBusiness}</p>
-          </div>
-          <div className="detail-item">
-            <h2>Annual Sales:</h2>
-            <p>{companyDetails.annualSales}</p>
-          </div>
-          <div className="detail-item">
-            <h2>URL:</h2>
-            <p><a href={companyDetails.url} target="_blank" rel="noopener noreferrer">{companyDetails.url}</a></p>
-          </div>
-          <div className="detail-item">
-            <h2>Registered in Japan</h2>
-            <p>{companyDetails.registeredinJapan}</p>
-          </div>
-        </div>
+      <table className="bank-info-table">
+        <tbody>
+            <tr>
+                <th>Company Name:</th>
+                <td>{companyDetails.name}</td>
+            </tr>
+            <tr>
+                <th>Founded:</th>
+                <td>{companyDetails.founded}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{companyDetails.address}</td>
+            </tr>
+            <tr>
+                <th>Main Business Activity</th>
+                <td>{companyDetails.mainBusiness}</td>
+            </tr>
+            <tr>
+                <th>annual Sales</th>
+                <td>{companyDetails.annualSales}</td>
+            </tr>
+            <tr>
+                <th>URL</th>
+                <td>{companyDetails.url}</td>
+            </tr>
+            <tr>
+                <th>Registered in Japan</th>
+                <td>{companyDetails.registeredinJapan}</td>
+            </tr>
+        </tbody>
+    </table>
       </div>
     </div>
   );

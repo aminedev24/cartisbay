@@ -155,7 +155,7 @@ const TireSelection = ({
           src={`${process.env.PUBLIC_URL}/images/containericonnew.png`}
           alt="Container Image"
         />
-        <div className="text">{percentageFill.toLocaleString()}</div>
+        <div className="text">{Math.round(percentageFill.toLocaleString())}</div>
       </div>
       <Modal
         isOpen={isModalOpen}

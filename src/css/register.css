@@ -83,6 +83,9 @@
 
 }
 
+.country-label {
+    top: -8px !important;
+}
 /* Button Styling */
 .signup-form button {
     width: 100%;
@@ -187,4 +190,36 @@
 
 .person-icon {
     color: #e67e22;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Password Criteria List */
+.password-criteria {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555; /* Default color for criteria text */
+}
+
+.password-criteria ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+}
+
+.password-criteria li {
+    margin: 5px 0; /* Space between criteria */
+}
+
+/* Color for met criteria */
+.password-criteria li.green {
+    color: green; /* Color for met criteria */
+}
+
+/* Color for unmet criteria */
+.password-criteria li.red {
+    color: red; /* Color for unmet criteria */
 }

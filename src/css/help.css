@@ -105,6 +105,9 @@
     flex: 1;
   }
   
+  .content-header {
+    text-decoration:  underline;
+  }
   .content-area h2 {
     margin-top: 0;
     text-transform: capitalize;
