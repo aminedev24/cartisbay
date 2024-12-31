@@ -5,6 +5,12 @@ import "../css/RightSidebar.css";
 import { Link } from "react-router-dom";
 const RightSidebar = () => {
   const { user, logout } = useUser(); // Access user and logout from context
+
+  const logoutHandler = () => {
+    logout();
+   
+  };
+
   return (
     <>
   <div className="right-sidebar">
@@ -20,10 +26,8 @@ const RightSidebar = () => {
   ) : (
     <>
      <div className="welcome-banner">
-      
-       <h2>welcome {`${user.name}`}</h2>
        <img src={`${process.env.PUBLIC_URL}/images/homepage/register1.png`} />
-       <Link to='/contact'><button className="contact-btn">contact</button></Link>
+       <Link onClick={logoutHandler}><button className="contact-btn">logut</button></Link>
        <Link to='/profile'><button className="profile-btn">profile</button></Link>
     </div>
       

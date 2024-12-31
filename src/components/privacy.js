@@ -51,7 +51,7 @@ const PrivacyPolicy = () => {
       <h2>7. Updates to This Policy</h2>
       <p>This Privacy Policy may be updated periodically. The latest version will always be available on our website.</p>
       
-      <h2>8. Contact Us</h2>
+      <h2>Contact Us</h2>
       <p>If you have any questions about this Privacy Policy, <Link className='cta-link' to='/contact'>please contact us.</Link></p>
     </div>
   );

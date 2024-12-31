@@ -34,7 +34,7 @@ const RegisterForm = () => {
         {/* Modals */}
       {modalType === 'terms' && (
         <div className="modal-overlay" onClick={() => setModalType(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div style={{maxHeight: isSmallScreen ? '60vh': '90vh'}} className="modal-content" onClick={(e) => e.stopPropagation()}>
             <TermsAndConditions />
             <button className="close-modal" onClick={() => setModalType(null)}>
               Close

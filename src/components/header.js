@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation , useNavigate} from 'react-router-dom';
 import { useUser } from './userContext'; // Import useUser hook
 import '../css/header.css';
 import TopBar from './topbar';
@@ -40,6 +40,20 @@ const Header = () => {
     };
   }, [activeDropdown]);
 
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const navigate = useNavigate();
+  
+  const handleSearch = () => {
+      // Update the URL with the search keyword
+      navigate(`/stocklist?search=${encodeURIComponent(searchKeyword)}`);
+  };
+  
+  const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+          handleSearch();
+      }
+  };
+
   return (
     <div className="header-container">
       <TopBar />
@@ -49,8 +63,15 @@ const Header = () => {
             <img src={`${process.env.PUBLIC_URL}/images/logo3.png`} alt="Logo" />
           </Link>
           <div className="header-search">
-            <input type="text" placeholder="Search by keyword..." />
-            <i className="fas fa-search search-icon"></i>
+            <input
+              type="text" 
+              placeholder="Search by keyword..." 
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              onKeyPress={handleKeyPress}
+
+             />
+            <i className="fas fa-search search-icon" onClick={handleSearch}></i>
           </div>
           <div className="header-icons">
             <div className="header-item">

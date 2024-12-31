@@ -26,3 +26,8 @@
 .bank-info-table th {
   font-size: 1.5em;
 }
+
+.notice {
+  color: red;
+  margin: 0;
+}

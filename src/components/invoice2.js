@@ -336,34 +336,41 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
               </table>
             </div>
           </div>
+          <div className="invoice-footer-container">
+            <div className="instructions">
+              <p>
+                <strong>Instructions:</strong>
+              </p>
+              <ul>
+                <li>
+                  Please ensure all transfer fees are covered by the sender to
+                  avoid any shortfall.
+                </li>
+                <li>
+                  Include the invoice number in the payment reference for accurate
+                  processing.
+                </li>
+                <li>
+                  Funds will be applied upon receipt in full. Kindly notify us
+                  once the payment is completed.
+                </li>
+                <li>
+                  Please note that our bank is located in Japan and international
+                  transfers may take 3-5 business days to reflect.
+                </li>
+              </ul>
+            </div>
 
-          <div className="instructions">
-            <p>
-              <strong>Instructions:</strong>
-            </p>
-            <ul>
-              <li>
-                Please ensure all transfer fees are covered by the sender to
-                avoid any shortfall.
-              </li>
-              <li>
-                Include the invoice number in the payment reference for accurate
-                processing.
-              </li>
-              <li>
-                Funds will be applied upon receipt in full. Kindly notify us
-                once the payment is completed.
-              </li>
-              <li>
-                Please note that our bank is located in Japan and international
-                transfers may take 3-5 business days to reflect.
-              </li>
-            </ul>
+            <div className="invoice-footer">
+              <img
+                  alt="Artisbay signature"
+                  src={`${process.env.PUBLIC_URL}/images/abstamp.png`}
+                  width="130"
+              />
+              <p>Thank you for your business!</p>
+            </div>
           </div>
-
-          <div className="invoice-footer">
-            <p>Thank you for your business!</p>
-          </div>
+          
 
           {/* Action Buttons */}
           <div className="action-buttons">

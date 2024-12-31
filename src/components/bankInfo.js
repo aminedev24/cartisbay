@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/bankInfo.css'; // Import the CSS file
-
+import {Link} from 'react-router-dom'; 
 const BankInformation = () => {
   const bankInfo = {
     beneficiaryName: 'Artisbay Inc',
@@ -14,6 +14,12 @@ const BankInformation = () => {
 
   return (
     <div className="bank-information terms-container">
+        <h3 className='notice'>important</h3>
+        <p>
+            
+            Kindly ensure that the bank’s branch name is included alongside the bank’s name and SWIFT code to avoid delays in processing your payment. 
+            If you have any questions about the payment process, please don’t hesitate to<Link className='cta-link' to='/contact'>contact us</Link>.
+        </p>
     <table className="bank-info-table">
         <tbody>
             <tr>

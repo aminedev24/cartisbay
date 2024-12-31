@@ -76,6 +76,22 @@ body {
       width: 90%; /* Use percentage */
       max-width: 1330px; /* Set a max-width */
   }
+
+
+
+  
+}
+
+@media screen and (min-width:1500px) {
+
+    .terms-container, .asf, .whyChoose, .dismantling, .overview, .envirement-policy, .security-notice, .paypal, .howtopay, .aboutusedtires {
+        margin: 0 !important;
+      }
+    
+      .sidebar {
+        padding: 0 !important;
+      }
+    
 }
 
 

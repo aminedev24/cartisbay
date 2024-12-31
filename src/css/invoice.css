@@ -192,7 +192,13 @@
 .invoice-footer {
     display:flex;
     justify-content: flex-end;
-    margin-top: 20px;
+    flex-direction: column;
+}
+
+.invoice-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .invoice-footer p {

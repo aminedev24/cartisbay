@@ -59,7 +59,6 @@
   .help-main-content {
     display: flex;
     flex: 1;
-    padding: 20px;
     justify-content: center;
   }
   
@@ -76,10 +75,11 @@
     max-width: 217px;
     position: sticky;
     text-align: center;
+    padding: 0 20px;
     
   }
   
-  .sidebar h2 {
+  .sidebar h1 {
     margin-bottom: 10px;
   }
   
@@ -101,7 +101,7 @@
   }
   
   .content-area {
-    padding: 20px;
+    padding: 20px 0;
     flex: 1;
   }
   
@@ -111,6 +111,7 @@
   .content-area h2 {
     margin-top: 0;
     text-transform: capitalize;
+    padding: 0 20px;
   }
   
   /* Style for the active button */

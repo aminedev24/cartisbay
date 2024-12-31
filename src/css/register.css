@@ -86,9 +86,8 @@
     left: 10px;
 
 }
-
-.country-label {
-    top: -8px !important;
+#country::placeholder {
+    color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
 /* Button Styling */
 .signup-form button {
