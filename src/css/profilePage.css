@@ -31,11 +31,15 @@
     box-shadow: 
         2px 0 5px rgba(0, 0, 0, 0.1),
         0 4px 6px rgba(0, 0, 0, 0.1);
-    border-right: 3px solid var(--accent-color);
     z-index: 10;
     transition: all 0.3s ease;
 }
 
+/*
+.profile-sidebar-menus {
+    border-right: 3px solid var(--accent-color);
+}
+*/
 .profile-sidebar h2 {
     font-size: 20px;
     margin-bottom: 25px;

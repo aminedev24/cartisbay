@@ -61,6 +61,7 @@
 .contact-info p {
     margin: 0;
     font-size: 14px;
+    line-height: 1;
 }
 
 .header-right {
@@ -203,6 +204,7 @@
 
 .invoice-footer p {
     margin: 0;
+    text-align: right;
     font-size: 14px;
 }
 
@@ -292,4 +294,14 @@
 .action-buttons button:focus {
     outline: none; /* Remove focus outline */
     box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+}
+
+.signature-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note p:last-child {
+    padding: 0 20px;
 }

@@ -184,13 +184,19 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
         </button>
         <div className="invoice-container">
           <div className="invoice-header">
-            <div className="header-full-width"></div>
-            <div className="headers">
-              <div className="header-left">
-                <img
+            <div className="header-full-width">
+              <img
                   alt="Artisbay Inc. Logo"
                   src={`${process.env.PUBLIC_URL}/images/Signatureforemail.png`}
+                  width='140'
                 />
+                <p className="company-name">
+                  <strong>Artisbay Inc</strong>
+                </p>
+            </div>
+            <div className="headers">
+              <div className="header-left">
+               
                 <div className="contact-info">
                   <p>
                     An online platform for the sale and export of used vehicles
@@ -208,9 +214,7 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
                 </div>
               </div>
               <div className="header-right">
-                <p className="company-name">
-                  <strong>Artisbay Inc</strong>
-                </p>
+               
                 <p>
                   <strong>Date:</strong> {invoiceData.invoiceDate}
                 </p>
@@ -362,11 +366,24 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
             </div>
 
             <div className="invoice-footer">
-              <img
-                  alt="Artisbay signature"
-                  src={`${process.env.PUBLIC_URL}/images/abstamp.png`}
-                  width="130"
-              />
+              <p>Authorised Sales Signature</p>
+              <div className='signature-container'>
+               
+                <img
+                    className="signature"
+                    alt="Artisbay signature"
+                    src={`${process.env.PUBLIC_URL}/images/absignature.png`}
+                    width="130"
+                />
+
+                <img
+                    alt="Artisbay stamp"
+                    src={`${process.env.PUBLIC_URL}/images/abstamp.png`}
+                    width="70"
+                />
+
+              </div>
+           
               <p>Thank you for your business!</p>
             </div>
           </div>

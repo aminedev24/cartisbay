@@ -153,31 +153,42 @@ const ProfilePage = () => {
   const ActiveComponent = menuItems.find(
     item => item.key === activeContent
   )?.component || Settings;
-
+console.log(activeContent)
   return (
     <div className="profile-wrapper">
-    <div className="profile-container">
+    <div 
+      className="profile-container"
+   
+    >
       <div className="profile-sidebar">
-        <h2>MENU</h2>
-        <ul>
-          {menuItems.map((item) => (
-            <li 
-              key={item.key}
-              onClick={() => handleMenuClick(item)}
-              className={activeContent === item.key ? 'active' : ''}
-              style={{ cursor: 'pointer' }}
-            >
-              {item.label}
-            </li>
-          ))}
-        </ul>
-        <div className="amount">
-          <p><strong>Total Guaranty:</strong> $2,014</p>
-          <p><strong>Total Expensive Guaranty:</strong> $2,014</p>
-          <p><strong>Spending Amount:</strong> ¥1,042,063</p>
+        <div className='profile-sidebar-menus'>
+          <h2>MENU</h2>
+          <ul>
+            {menuItems.map((item) => (
+              <li 
+                key={item.key}
+                onClick={() => handleMenuClick(item)}
+                className={activeContent === item.key ? 'active' : ''}
+                style={{ cursor: 'pointer' }}
+              >
+                {item.label}
+              </li>
+            ))}
+          </ul>
+          <div className="amount">
+            <p><strong>Total Guaranty:</strong> $2,014</p>
+            <p><strong>Total Expensive Guaranty:</strong> $2,014</p>
+            <p><strong>Spending Amount:</strong> ¥1,042,063</p>
+          </div>
         </div>
+       
       </div>
-      <div className="profile-content">
+      <div 
+        className="profile-content"
+        style={{
+          height: isSmallScreen && activeContent == 'terms' || isSmallScreen && activeContent == 'privacy' ? '70vh' : "90vh"
+        }}  
+      >
         <ActiveComponent 
           user={user} 
           setUser={setUser}
