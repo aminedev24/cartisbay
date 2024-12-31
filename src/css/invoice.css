@@ -64,6 +64,10 @@
     line-height: 1;
 }
 
+.signature {
+    position: relative;
+    left: 25%;
+}
 .header-right {
     width: 100%;
 }
