@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.dae04036.css",
-    "main.js": "/cartisbay/static/js/main.c58d5f48.js",
+    "main.css": "/cartisbay/static/css/main.cd428417.css",
+    "main.js": "/cartisbay/static/js/main.d6a4023f.js",
     "static/js/213.809af65b.chunk.js": "/cartisbay/static/js/213.809af65b.chunk.js",
     "static/js/732.5a05b03f.chunk.js": "/cartisbay/static/js/732.5a05b03f.chunk.js",
     "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
@@ -32,14 +32,14 @@
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.dae04036.css.map": "/cartisbay/static/css/main.dae04036.css.map",
-    "main.c58d5f48.js.map": "/cartisbay/static/js/main.c58d5f48.js.map",
+    "main.cd428417.css.map": "/cartisbay/static/css/main.cd428417.css.map",
+    "main.d6a4023f.js.map": "/cartisbay/static/js/main.d6a4023f.js.map",
     "213.809af65b.chunk.js.map": "/cartisbay/static/js/213.809af65b.chunk.js.map",
     "732.5a05b03f.chunk.js.map": "/cartisbay/static/js/732.5a05b03f.chunk.js.map",
     "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dae04036.css",
-    "static/js/main.c58d5f48.js"
+    "static/css/main.cd428417.css",
+    "static/js/main.d6a4023f.js"
   ]
 }
