@@ -79,97 +79,160 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
   };
 
   // Define the compressPdf function
-  const compressPdf = async (pdfBlob) => {
-    const pdfDoc = await PDFDocument.load(await pdfBlob.arrayBuffer());
-    const compressedPdf = await pdfDoc.save({ useObjectStreams: true }); // Enable compression
-    return new Blob([compressedPdf], { type: "application/pdf" });
+const compressPdf = async (pdfBlob) => {
+  const pdfDoc = await PDFDocument.load(await pdfBlob.arrayBuffer());
+  const compressedPdf = await pdfDoc.save({ useObjectStreams: true }); // Enable compression
+  return new Blob([compressedPdf], { type: "application/pdf" });
+};
+
+const generatePdf = async () => {
+  const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
+  const buttons = modalContent.querySelectorAll(".no-print");
+
+  // Store original styles
+  const originalStyles = {
+      position: modalContent.style.position,
+      width: modalContent.style.width,
+      maxWidth: modalContent.style.maxWidth,
+      padding: modalContent.style.padding,
+      overflow: modalContent.style.overflow,
+      maxHeight: modalContent.style.maxHeight,
+      height: modalContent.style.height,
   };
 
-  const generatePdf = async () => {
-    const modalContent = document.querySelector(".modal-content");
-    const buttons = modalContent.querySelectorAll(".no-print");
+  // Adjust modal content for rendering
+  modalContent.style.position = "absolute";
+  modalContent.style.width = `${modalContent.scrollWidth}px`;
+  modalContent.style.maxWidth = "none";
+  modalContent.style.padding = "20px";
+  modalContent.style.overflow = "visible";
+  modalContent.style.maxHeight = "none";
+  modalContent.style.height = `${modalContent.scrollHeight}px`; // Force full height
 
-    // Declare originalStyle
-    const originalStyle = {
-      maxHeight: modalContent.style.maxHeight,
-      overflowY: modalContent.style.overflowY,
-    };
+  // Hide buttons
+  buttons.forEach((button) => (button.style.display = "none"));
 
-    // Hide buttons and adjust styles
-    buttons.forEach((button) => (button.style.display = "none"));
-    modalContent.style.maxHeight = "none";
-    modalContent.style.overflowY = "visible";
+  // Ensure fonts and images are fully loaded
+  await document.fonts.ready;
+  const images = modalContent.querySelectorAll("img");
+  await Promise.all(
+      Array.from(images).map((img) => {
+          if (!img.complete) {
+              return new Promise((resolve, reject) => {
+                  img.onload = resolve;
+                  img.onerror = reject;
+              });
+          }
+      })
+  );
 
-    // Generate canvas with reduced quality
-    const canvas = await html2canvas(modalContent, {
-      scale: 1,
-      logging: true,
+  // Generate canvas with corrected dimensions
+  const canvas = await html2canvas(modalContent, {
+      scale: 2, // High resolution
       useCORS: true,
-    });
+      backgroundColor: "#FFFFFF",
+      width: modalContent.scrollWidth,
+      height: modalContent.scrollHeight,
+  });
 
-    // Restore styles and buttons
-    modalContent.style.maxHeight = originalStyle.maxHeight;
-    modalContent.style.overflowY = originalStyle.overflowY;
-    buttons.forEach((button) => (button.style.display = ""));
+  // Restore original styles
+  Object.assign(modalContent.style, originalStyles);
+  buttons.forEach((button) => (button.style.display = ""));
 
-    // Convert canvas to PDF
-    const pdf = new jsPDF("p", "mm", "a4");
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    pdf.addImage(
-      canvas.toDataURL("image/png"),
+  // Debug logs for dimensions
+  console.log(`Canvas Width: ${canvas.width}, Height: ${canvas.height}`);
+  console.log(`Modal ScrollHeight: ${modalContent.scrollHeight}`);
+  console.log(`Modal OffsetHeight: ${modalContent.offsetHeight}`);
+  console.log(`Modal ClientHeight: ${modalContent.clientHeight}`);
+
+  // Calculate dimensions in mm for PDF
+  const pxToMm = 0.264583; // 1px = 0.264583mm
+  const pdfWidth = canvas.width * pxToMm;
+  const pdfHeight = canvas.height * pxToMm;
+
+  // Create PDF with exact dimensions
+  const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight], true);
+  pdf.addImage(
+      canvas.toDataURL("image/png", 1.0), // High-quality image
       "PNG",
       0,
       0,
       pdfWidth,
-      pdfHeight,
-    );
+      pdfHeight
+  );
 
-    // Compress the PDF
-    const pdfBlob = pdf.output("blob");
-    const compressedPdfBlob = await compressPdf(pdfBlob);
+  // Compress and return the PDF
+  const pdfBlob = pdf.output("blob");
+  const compressedPdfBlob = await compressPdf(pdfBlob);
 
-    return compressedPdfBlob;
-  };
+  return compressedPdfBlob;
+};
 
-  const handleSendEmail = async () => {
-    try {
+
+
+
+const handleSendEmail = async () => {
+  try {
       setIsGeneratingPdf(true);
 
       // Generate and compress the PDF
       const pdfBlob = await generatePdf();
-      console.log(`PDF size: ${pdfBlob.size / 1024 / 1024} MB`);
-      const bccRecipient = "contact@artisbay.com"; // Replace with the BCC recipient's email
+      console.log(`PDF size: ${(pdfBlob.size / 1024 / 1024).toFixed(2)} MB`);
+      const bccRecipient = "contact@example.com"; // Replace with the BCC recipient's email
 
       // Convert to base64 and send email
       const reader = new FileReader();
       reader.readAsDataURL(pdfBlob);
       reader.onloadend = async () => {
-        const base64Pdf = reader.result.split(",")[1];
-        const response = await fetch(`${apiUrl}/sendInvoice.php`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            to: invoiceData.customerEmail,
-            bcc: bccRecipient, // BCC recipient (hidden from the primary recipient)
-            subject: `Invoice ${invoiceData.invoiceNumber}`,
-            body: `Dear ${invoiceData.customerFullName},\n\nPlease find your invoice attached.\n\nThank you for your business!\n\nBest regards,\nArtisbay Inc.`,
-            attachment: base64Pdf,
-          }),
-          credentials: "include",
-        });
+          const base64Pdf = reader.result.split(",")[1];
 
-        if (!response.ok) throw new Error("Failed to send email");
-        const data = await response.json();
-        alert(data.success || "Email sent successfully!");
+          // Stylized email body
+          const emailBody = `
+              <div style="font-family: Arial, sans-serif; color: #333;">
+                  <h2 style="color: #004080;">Dear ${invoiceData.customerFullName},</h2>
+                  <p>Thank you for placing your order with <strong>Artisbay Inc.</strong>.</p>
+                  <p>This is an automated email to provide you with the deposit invoice for your recent transaction. Below are the details of the invoice:</p>
+                  <h3 style="color: #004080;">Invoice Details:</h3>
+                  <ul>
+                      <li><strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}</li>
+                      <li><strong>Invoice Date:</strong> ${invoiceData.invoiceDate}</li>
+                      <li><strong>Deposit Description:</strong> ${invoiceData.depositDescription}</li>
+                      <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
+                      <li><strong>Due Date:</strong> Due immediately</li>
+                      <li><strong>Expiry Date:</strong> ${invoiceData.expiryDate}</li>
+                  </ul>
+                  <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
+                  <p>For any questions or concerns, feel free to contact us at: <a href="mailto:contact@artisbay.com">contact@artisbay.com</a>.</p>
+                  <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
+                  <p style="color: #004080;"><strong>Best regards,</strong><br>Artisbay Inc.</p>
+              </div>
+          `;
+
+          const response = await fetch(`${apiUrl}/sendInvoice.php`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                  to: invoiceData.customerEmail,
+                  bcc: bccRecipient,
+                  subject: `Automated Deposit Invoice from company Inc.`,
+                  body: emailBody,
+                  attachment: base64Pdf,
+              }),
+              credentials: "include",
+          });
+
+          if (!response.ok) throw new Error("Failed to send email");
+          const data = await response.json();
+          alert(data.success || "Email sent successfully!");
       };
-    } catch (error) {
+  } catch (error) {
       console.error("Error sending email:", error);
       alert(error.message || "An error occurred while sending the email.");
-    } finally {
+  } finally {
       setIsGeneratingPdf(false);
-    }
-  };
+  }
+};
+
 
   const handleEditInvoice = () => {
     onClose(); // Close the modal
@@ -179,42 +242,42 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
   return (
     <div className="invoice-modal-overlay">
       <div className="modal-content">
-        <button className="modal-close-btn" onClick={onClose}>
+        <button className="modal-close-btn no-print" onClick={onClose}>
           ×
         </button>
         <div className="invoice-container">
           <div className="invoice-header">
             <div className="header-full-width">
-              <img
-                  alt="Artisbay Inc. Logo"
-                  src={`${process.env.PUBLIC_URL}/images/Signatureforemail.png`}
-                  width='140'
-                />
-                <p className="company-name">
-                  <strong>Artisbay Inc</strong>
-                </p>
+             
+               
             </div>
             <div className="headers">
               <div className="header-left">
-               
+                <img
+                    alt="Artisbay Inc. Logo"
+                    src={`${process.env.PUBLIC_URL}/images/Signatureforemail.png`}
+                    width='140'
+                  />
                 <div className="contact-info">
                   <p>
                     An online platform for the sale and export of used vehicles
                     and auto parts
                   </p>
                   <p>Registered in Japan | License No. 7370001051924</p>
-                  <p>
+                  <p className='icon-paragraph'>
                     <FaEnvelope className="icon" />
                     Email: contact@artisbay.com
                   </p>
-                  <p>
+                  <p className='icon-paragraph '>
                     <FaGlobe className="icon" />
                     Website: www.artisbay.com
                   </p>
                 </div>
               </div>
               <div className="header-right">
-               
+               <p className="company-name">
+                  <strong>Artisbay Inc</strong>
+                </p>
                 <p>
                   <strong>Date:</strong> {invoiceData.invoiceDate}
                 </p>
@@ -263,33 +326,31 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
 
           <div className="invoice-bank-info">
             <p>
-              <strong>Beneficiary Name:</strong> Artisbay Inc
+              <strong>Beneficiary Name: </strong>{invoiceData.beneficiaryName}
             </p>
             <p>
-              <strong>Bank Name:</strong> SUMISHIN SBI NET BANK
+              <strong>Bank Name:</strong> {invoiceData.bankName}
             </p>
             <p>
-              <strong>Branch Name:</strong> HOUIN DAI ICHI (BRANCH SORT
-              CODE:106)
+              <strong>Branch Name:</strong> {invoiceData.branchName}
             </p>
             <p>
-              <strong>Bank Address:</strong> 3-2-1 Roppongi, Minato-ku, Tokyo-to
+              <strong>Bank Address:</strong> {invoiceData.bankAddress}
             </p>
             <p>
-              <strong>Swift Code:</strong> NTSSJPJT
+              <strong>Swift Code:</strong> {invoiceData.swiftCode}
             </p>
             <p>
-              <strong>Account Number:</strong> 2628940
+              <strong>Account Number:</strong> {invoiceData.accountNumber}
             </p>
             <p>
-              <strong>Beneficiary Address:</strong> 5-10-44, Kasagami, Tagajyo,
-              Miyagi, Japan
+              <strong>Beneficiary Address:</strong> {invoiceData.beneficiaryAddress}
             </p>
           </div>
 
           <div className="important">
             <span className="notice">Important</span>
-            <span className="invoice-number">{invoiceData.invoiceNumber}</span>
+            <span className="invoice-number">Invoice number: {invoiceData.invoiceNumber}</span>
             <span className="warning">
               <span className="red">Be careful</span>,avoid being scammed!
               Confirm our correct bank account before you send your money!

@@ -109,12 +109,12 @@ const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0,
         });
 
         const result = await response.json();
-        console.log(result)
+        //console.log(result)
         if (result.success) {
             setMessage("Signup successful! Redirecting...");
             setTimeout(() => navigate("/login"), 3000);
         } else {
-            setMessage("Signup failed. Try again.", result.error);
+            setMessage(`Signup failed, ${result.error}`);
             setIsError(true);
         }
     } catch (error) {

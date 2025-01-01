@@ -12,8 +12,8 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 1000; /* Ensure modal is above other content */
 }
 
@@ -120,6 +120,9 @@
 
 .invoice-number {
     align-self: center;
+    flex: 3.5;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 
@@ -147,6 +150,8 @@
     margin-left: 0;
     font-weight: bold;
     flex: 6;
+    font-size: 12px;
+    align-self: center;
 }
 
 .red {
@@ -215,6 +220,12 @@
 .headers {
     display: flex;
     justify-content: space-between;
+    padding-bottom:5px ;
+    align-items: center;
+}
+
+.icon-paragraph {
+    display: flex;
 }
 
 .header-left {
@@ -228,10 +239,12 @@
 .note-amount-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .note-amount-container p {
     margin: 0;
+    line-height: 1.2;
 }
 
 .note-amount-container .note {
@@ -264,7 +277,7 @@
     top: unset;
 }
 
-.company-name {
+.header-right .company-name {
     font-size: 18px;
 }
 

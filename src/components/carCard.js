@@ -8,7 +8,7 @@ const CarCard = ({ car }) => {
       <img src={car.image} alt={car.name} />
       <h2>{car.name}</h2>
       <p>${car.price}</p>
-      <Link to={`/cars/${car.id}`}>View Details</Link>
+      {/*<Link to={`/cars/${car.id}`}>View Details</Link>*/}
     </div>
   );
 };

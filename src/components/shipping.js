@@ -78,6 +78,16 @@ const Shipping = () => {
       {/* Render only the selected table */}
       {showTable === 1 && <AfricaRoroShippingTable />}
       {showTable === 2 && <AfricaShippingTable />}
+
+      {isSmallScreen && !showTable &&
+        <div className="image-container">
+            <img
+              alt="freighter sailing"
+              src={`${process.env.PUBLIC_URL}/images/freightersailing.jpeg`} 
+              
+        />
+        </div>
+      }
     </div>
   );
 };

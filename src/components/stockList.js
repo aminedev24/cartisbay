@@ -64,6 +64,8 @@ const Stocklist = ({ cars }) => {
         }
     });
 
+
+
     const handleFilterChange = (make, bodyType) => {
         const params = new URLSearchParams(location.search);
         if (make) params.set('make', make);
@@ -118,7 +120,7 @@ const Stocklist = ({ cars }) => {
                     ))
                 ) : (
                     <div className="no-cars-found-container">
-                        <div className="no-cars-found">No cars found</div>
+                        <div className="no-cars-found">No stock</div>
                     </div>
                 )}
             </div>

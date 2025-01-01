@@ -1,77 +1,64 @@
 <?php
-require 'headers.php';
+require 'vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-error_log("Starting sendInvoice.php script");
-
-// Get the raw POST data
+include "headers.php";
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Log the received data for debugging
-error_log("Received data: " . print_r($data, true));
-
 // Validate input data
-if (empty($data['to']) || empty($data['subject']) || empty($data['body']) || empty($data['attachment'])) {
-    http_response_code(400);
-    error_log("Missing required fields");
-    echo json_encode(['error' => 'Missing required fields']);
-    exit;
+$requiredFields = ['to', 'subject', 'body', 'attachment'];
+foreach ($requiredFields as $field) {
+    if (empty($data[$field])) {
+        http_response_code(400);
+        echo json_encode(['error' => "Missing required field: $field"]);
+        exit;
+    }
 }
 
 // Extract data
 $to = $data['to'];
 $subject = $data['subject'];
-$bcc = $data['bcc']; // BCC recipient
+$bcc = $data['bcc'];
 $body = $data['body'];
-$attachment = $data['attachment']; // Base64-encoded PDF file
+$attachment = $data['attachment'];
 
 // Decode the base64-encoded PDF file
 $pdfData = base64_decode($attachment);
-
 if (!$pdfData) {
     http_response_code(400);
-    error_log("Invalid PDF attachment");
     echo json_encode(['error' => 'Invalid PDF attachment']);
     exit;
 }
 
-// Log the size of the PDF for debugging
-error_log("PDF size: " . strlen($pdfData) . " bytes");
+// Create a new PHPMailer instance
+$mail = new PHPMailer(true);
 
-// Generate a boundary for the email
-$boundary = md5(time());
+try {
+    $mail->isSMTP();
+    $mail->Host = 'localhost'; // MailHog SMTP server
+    $mail->SMTPAuth = false; // No authentication required
+    $mail->Port = 1025; // MailHog SMTP port
+    $mail->SMTPSecure = false; // Disable TLS/SSL
 
-// Email headers
-$headers = "From: Artisbay Inc <no-reply@artisbay.com>\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+    // Recipients
+    $mail->setFrom('no-reply@artisbay.com', 'Artisbay Inc');
+    $mail->addAddress($to);
+    $mail->addBCC($bcc);
 
-// Email body
-$message = "--$boundary\r\n";
-$message .= "Content-Type: text/plain; charset=\"UTF-8\"\r\n";
-$message .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-$message .= $body . "\r\n\r\n";
-$headers .= "Bcc: $bcc\r\n"; // Add the BCC recipient
+    // Attachments
+    $mail->addStringAttachment($pdfData, 'Invoice.pdf');
 
-// Attach the PDF file
-$message .= "--$boundary\r\n";
-$message .= "Content-Type: application/pdf; name=\"Invoice.pdf\"\r\n";
-$message .= "Content-Transfer-Encoding: base64\r\n";
-$message .= "Content-Disposition: attachment; filename=\"Invoice.pdf\"\r\n\r\n"; // Use "attachment" for downloadable file
-$message .= chunk_split($attachment) . "\r\n";
-$message .= "--$boundary--";
+    // Content
+    $mail->isHTML(true); // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body = $body;
 
-// Log the email details for debugging
-error_log("Sending email to: $to");
-error_log("Email subject: $subject");
-error_log("Email body: $body");
-
-// Send the email
-if (mail($to, $subject, $message, $headers)) {
-    error_log("Email sent successfully");
+    // Send the email
+    $mail->send();
     echo json_encode(['success' => 'Email sent successfully']);
-} else {
+} catch (Exception $e) {
     http_response_code(500);
-    error_log("Failed to send email");
-    echo json_encode(['error' => 'Failed to send email']);
+    echo json_encode(['error' => 'Failed to send email: ' . $mail->ErrorInfo]);
 }
 ?>

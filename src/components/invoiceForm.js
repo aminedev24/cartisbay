@@ -34,7 +34,7 @@ const ProformaInvoiceForm = () => {
     const [invoiceCounter, setInvoiceCounter] = useState(1000); // Initialize invoice counter
 
     const purposeDescriptions = {
-        "vehicle purchase": "This payment is to order cars from the auctions, the cars details and chassis numbers will be available after the purchase",
+        "vehicle purchase": "This payment is to order cars from the auctions in Japan",
         "auto parts order": "This payment is to order auto parts, the details will be available after the purchase",
         "dismantling": "This is a deposit to order dismantled cars, the cars details and chassis numbers will be available after the purchase",
         "tires order": "This is a deposit to order used tires",
