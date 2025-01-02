@@ -244,6 +244,7 @@ const handleSendEmail = async () => {
                   invoiceNumber: invoiceData.invoiceNumber,
                   customerFullName: invoiceData.customerFullName,
                   depositAmount: invoiceData.depositAmount,
+                  depositPurpose : invoiceData.depositPurpose,
                   depositDescription: invoiceData.depositDescription,
               }),
               credentials: "include",
@@ -499,7 +500,7 @@ const handleSendEmail = async () => {
               onClick={handleSendEmail}
               disabled={isGeneratingPdf}
             >
-              {isGeneratingPdf ? "Generating PDF..." : "Sumbit Invoice"}
+              {isGeneratingPdf ? "Generating PDF..." : "Submit Invoice"}
             </button>
             <button className="no-print" onClick={handleEditInvoice}>
               Edit Invoice

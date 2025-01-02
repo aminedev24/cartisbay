@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -9,7 +9,7 @@ include "db_connection.php"; // Include your database connection file
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Validate input data
-$requiredFields = ['to', 'subject', 'body', 'attachment'];
+$requiredFields = ['to', 'subject', 'body', 'attachment', 'invoiceNumber', 'customerFullName', 'depositAmount', 'depositDescription', 'depositPurpose'];
 foreach ($requiredFields as $field) {
     if (empty($data[$field])) {
         http_response_code(400);
@@ -33,25 +33,27 @@ if (!$pdfData) {
     exit;
 }
 
-// Extract additional invoice data (if included in the API request)
+// Extract additional invoice data
 $invoiceNumber = $data['invoiceNumber'] ?? null;
 $customerName = $data['customerFullName'] ?? null;
 $depositAmount = $data['depositAmount'] ?? null;
 $depositDescription = $data['depositDescription'] ?? null;
+$depositPurpose = $data['depositPurpose'] ?? null; // New deposit purpose field
 
 // Insert invoice data into the database using mysqli
 try {
-    $stmt = $conn->prepare("INSERT INTO invoices (invoice_number, customer_name, email, deposit_amount, description) 
-                            VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO invoices (invoice_number, customer_name, email, deposit_amount, description, deposit_purpose) 
+                            VALUES (?, ?, ?, ?, ?, ?)");
     if ($stmt) {
-        // Adjusted bind_param to match the number of variables (5 variables)
+        // Adjusted bind_param to match the number of variables (6 variables now)
         $stmt->bind_param(
-            'ssssd', // Adjust the types string to match the number of variables
+            'sssdss', // Adjusted the types string to match the number of variables
             $invoiceNumber, 
             $customerName, 
             $to, 
             $depositAmount, 
-            $depositDescription
+            $depositDescription, 
+            $depositPurpose // Bind depositPurpose
         );
         if (!$stmt->execute()) {
             throw new Exception("Failed to execute statement: " . $stmt->error);
