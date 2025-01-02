@@ -4,6 +4,8 @@ import "../css/invoice.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { PDFDocument } from "pdf-lib";
+import { useUser } from "./userContext"; // Importing the useUser hook to access user data
+import Modal from "./alertModal";
 
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
@@ -24,6 +26,10 @@ const calculateExpiryDate = (invoiceDate) => {
 // Modal Component
 const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false); // Loading state
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalType, setModalType] = useState("");  // Could be 'alert', 'confirmation', or 'clear_all'
+  const {user} = useUser(); // Accessing user data from the context
 
   if (!isOpen) return null;
 
@@ -77,6 +83,7 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
       });
     });
   };
+
 
   // Define the compressPdf function
 const compressPdf = async (pdfBlob) => {
@@ -168,29 +175,45 @@ const generatePdf = async () => {
   return compressedPdfBlob;
 };
 
+const showAlert = (message, type = "alert") => {
+  setModalMessage(message);
+  setModalType(type);
+  setShowModal(true);
+};
+
+const handleCloseModal = () => {
+  setShowModal(false);
+};
 
 
 
 const handleSendEmail = async () => {
+
+  if (!user) {
+      showAlert("You must be logged in to submit the invoice.");
+
+    return;
+  }
+
   try {
       setIsGeneratingPdf(true);
 
       // Generate and compress the PDF
       const pdfBlob = await generatePdf();
       console.log(`PDF size: ${(pdfBlob.size / 1024 / 1024).toFixed(2)} MB`);
-      const bccRecipient = "contact@example.com"; // Replace with the BCC recipient's email
+      const bccRecipient = "contact@artisbay.com"; // Replace with the BCC recipient's email
 
-      // Convert to base64 and send email
+      // Convert PDF Blob to Base64
       const reader = new FileReader();
       reader.readAsDataURL(pdfBlob);
       reader.onloadend = async () => {
           const base64Pdf = reader.result.split(",")[1];
 
-          // Stylized email body
+          // Construct email body
           const emailBody = `
               <div style="font-family: Arial, sans-serif; color: #333;">
                   <h2 style="color: #004080;">Dear ${invoiceData.customerFullName},</h2>
-                  <p>Thank you for placing your order with <strong>Artisbay Inc.</strong>.</p>
+                  <p>Thank you for placing your order with <strong>Artisbay Inc.</strong></p>
                   <p>This is an automated email to provide you with the deposit invoice for your recent transaction. Below are the details of the invoice:</p>
                   <h3 style="color: #004080;">Invoice Details:</h3>
                   <ul>
@@ -199,7 +222,7 @@ const handleSendEmail = async () => {
                       <li><strong>Deposit Description:</strong> ${invoiceData.depositDescription}</li>
                       <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
                       <li><strong>Due Date:</strong> Due immediately</li>
-                      <li><strong>Expiry Date:</strong> ${invoiceData.expiryDate}</li>
+                      <li><strong>Expiry Date:</strong> ${expiryDate}</li>
                   </ul>
                   <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
                   <p>For any questions or concerns, feel free to contact us at: <a href="mailto:contact@artisbay.com">contact@artisbay.com</a>.</p>
@@ -208,30 +231,36 @@ const handleSendEmail = async () => {
               </div>
           `;
 
+          // Send the invoice data along with the PDF attachment
           const response = await fetch(`${apiUrl}/sendInvoice.php`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                   to: invoiceData.customerEmail,
                   bcc: bccRecipient,
-                  subject: `Automated Deposit Invoice from company Inc.`,
+                  subject: `Automated Deposit Invoice from Artisbay Inc.`,
                   body: emailBody,
                   attachment: base64Pdf,
+                  invoiceNumber: invoiceData.invoiceNumber,
+                  customerFullName: invoiceData.customerFullName,
+                  depositAmount: invoiceData.depositAmount,
+                  depositDescription: invoiceData.depositDescription,
               }),
               credentials: "include",
           });
 
           if (!response.ok) throw new Error("Failed to send email");
           const data = await response.json();
-          alert(data.success || "Email sent successfully!");
-      };
+          showAlert(data.success || "Email sent successfully!");
+        };
   } catch (error) {
       console.error("Error sending email:", error);
-      alert(error.message || "An error occurred while sending the email.");
-  } finally {
+      showAlert(error.message || "An error occurred while submitting the email.");
+    } finally {
       setIsGeneratingPdf(false);
   }
 };
+
 
 
   const handleEditInvoice = () => {
@@ -241,6 +270,14 @@ const handleSendEmail = async () => {
 
   return (
     <div className="invoice-modal-overlay">
+      {showModal && (
+        <Modal
+          message={modalMessage}
+          onClose={handleCloseModal}
+          type={modalType}
+        />
+      )}
+
       <div className="modal-content">
         <button className="modal-close-btn no-print" onClick={onClose}>
           ×
@@ -294,7 +331,7 @@ const handleSendEmail = async () => {
             </div>
           </div>
 
-          <div className="invoice-title">Proforma Invoice</div>
+          <div className="invoice-title">Deposit Invoice</div>
 
           <div className="invoice-info">
             <div className="left">
@@ -462,7 +499,7 @@ const handleSendEmail = async () => {
               onClick={handleSendEmail}
               disabled={isGeneratingPdf}
             >
-              {isGeneratingPdf ? "Generating PDF..." : "Send via Email"}
+              {isGeneratingPdf ? "Generating PDF..." : "Sumbit Invoice"}
             </button>
             <button className="no-print" onClick={handleEditInvoice}>
               Edit Invoice

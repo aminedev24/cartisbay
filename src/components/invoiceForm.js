@@ -31,7 +31,37 @@ const ProformaInvoiceForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [submittedInvoiceData, setSubmittedInvoiceData] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [invoiceCounter, setInvoiceCounter] = useState(1000); // Initialize invoice counter
+    const [invoiceCounter, setInvoiceCounter] = useState(''); // Initialize invoice counter
+    const [isLoading, setIsLoading] = useState(false); // For handling loading state
+    const [error, setError] = useState(null); // For handling errors
+
+    // Function to get the next invoice number from the backend
+  const fetchInvoiceNumber = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${apiUrl}/getInvoiceNumber.php`);
+      const data = await response.json();
+
+      if (data.invoiceNumber) {
+        setInvoiceCounter(data.invoiceNumber); // Set the invoice number to state
+      } else {
+        setError('Failed to fetch invoice number');
+      }
+    } catch (err) {
+      console.error('Error fetching invoice number:', err);
+      setError('An error occurred while fetching the invoice number');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch invoice number when the component mounts
+  useEffect(() => {
+    fetchInvoiceNumber();
+  }, []);
+
+  console.log(invoiceCounter)
+
 
     const purposeDescriptions = {
         "vehicle purchase": "This payment is to order cars from the auctions in Japan",

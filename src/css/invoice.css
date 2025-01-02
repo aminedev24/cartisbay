@@ -268,7 +268,7 @@
     cursor: pointer;
 }
 
-.icon {
+.invoice-container .icon {
     color: #1e3a8a;
     margin-right: 3px;
 }

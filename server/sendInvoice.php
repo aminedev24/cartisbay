@@ -4,6 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 include "headers.php";
+include "db_connection.php"; // Include your database connection file
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Validate input data
@@ -31,9 +33,41 @@ if (!$pdfData) {
     exit;
 }
 
-// Create a new PHPMailer instance
-$mail = new PHPMailer(true);
+// Extract additional invoice data (if included in the API request)
+$invoiceNumber = $data['invoiceNumber'] ?? null;
+$customerName = $data['customerFullName'] ?? null;
+$depositAmount = $data['depositAmount'] ?? null;
+$depositDescription = $data['depositDescription'] ?? null;
 
+// Insert invoice data into the database using mysqli
+try {
+    $stmt = $conn->prepare("INSERT INTO invoices (invoice_number, customer_name, email, deposit_amount, description) 
+                            VALUES (?, ?, ?, ?, ?)");
+    if ($stmt) {
+        // Adjusted bind_param to match the number of variables (5 variables)
+        $stmt->bind_param(
+            'ssssd', // Adjust the types string to match the number of variables
+            $invoiceNumber, 
+            $customerName, 
+            $to, 
+            $depositAmount, 
+            $depositDescription
+        );
+        if (!$stmt->execute()) {
+            throw new Exception("Failed to execute statement: " . $stmt->error);
+        }
+        $stmt->close();
+    } else {
+        throw new Exception("Failed to prepare statement: " . $conn->error);
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to save invoice data: ' . $e->getMessage()]);
+    exit;
+}
+
+// Create a new PHPMailer instance to send email to both the primary user and BCC
+$mail = new PHPMailer(true);
 try {
     $mail->isSMTP();
     $mail->Host = 'localhost'; // MailHog SMTP server
@@ -42,9 +76,9 @@ try {
     $mail->SMTPSecure = false; // Disable TLS/SSL
 
     // Recipients
-    $mail->setFrom('no-reply@artisbay.com', 'Artisbay Inc');
-    $mail->addAddress($to);
-    $mail->addBCC($bcc);
+    $mail->setFrom('noreply@artisbay.com', 'Artisbay Inc'); 
+    $mail->addAddress($to); // Primary user email
+    $mail->addBCC($bcc); // BCC for the additional recipient
 
     // Attachments
     $mail->addStringAttachment($pdfData, 'Invoice.pdf');
@@ -61,4 +95,7 @@ try {
     http_response_code(500);
     echo json_encode(['error' => 'Failed to send email: ' . $mail->ErrorInfo]);
 }
+
+// Close the database connection
+$conn->close();
 ?>
