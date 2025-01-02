@@ -290,7 +290,7 @@ const handleSendEmail = async () => {
         <div className="invoice-container">
           <div className="invoice-header">
             <div className="header-full-width">
-             
+             <p>{invoiceData.serialNumber}</p>
                
             </div>
             <div className="headers">

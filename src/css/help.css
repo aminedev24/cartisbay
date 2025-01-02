@@ -1,130 +1,136 @@
 .help-page {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hidden {
-    display: none;
-  }
-  
-
-  .hero-section-help {
-    position: relative;
-    width: 100%;
-    height: 50vh; /* Adjust the height as needed */
-    max-height: 200px;
-    color: white;
-    padding: 40px;
-    text-align: center;
-    background-image: url('../../public/images/Help.jpeg');
-    background-size: cover; /* Ensure the image covers the full width */
-    background-position: center center; /* Center the image both horizontally and vertically */
-    background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 
-  .help-lp {
-    background-image: url('../../public/images/custumersupportcopy.JPEG');
-    background-size: cover;
-  }
+.hidden {
+  display: none;
+}
 
-  .commitment-topic-lp {
-    background-image: url('../../public/images/eco1copy.jpeg');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .hero {
-    position: relative;
-    margin-bottom: -4px;
-  }
-  .hero h1 {
-    position: absolute; 
-    top: 50%; 
-    left: 6%; 
-    transform: translateY(-50%); 
-    color: #1da1f2; 
-    padding: 10px; 
- /* Adjust font size as needed */
-    text-shadow: 1px 1px 1px #ffffff; /* Added text shadow */
-  }
+.hero-section-help {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Adjust the height as needed */
+  max-height: 200px;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  background-image: url('../../public/images/Help.jpeg');
+  background-size: cover; /* Ensure the image covers the full width */
+  background-position: center center; /* Center the image both horizontally and vertically */
+  background-repeat: no-repeat;
+}
 
-  .help-header {
-    color: #1da1f2;
-    justify-self: center;
-    text-align: center;
-    text-shadow: 1px 1px 1px #333; /* Added text shadow */
-    text-transform: capitalize;
-  }
-  
-  .help-main-content {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-  }
-  
-  .topic-image {
-    width: 100%; /* Makes the image responsive */
-    height: auto; /* Maintains the aspect ratio */
-    max-height: 400px; /* Sets a maximum height for the image */
-    object-fit: cover;
-  }
-  
-  .sidebar {
-    width: 50%;
-    padding-right: 20px;
-    max-width: 217px;
-    position: sticky;
-    text-align: center;
-    padding: 0 20px;
-    
-  }
-  
-  .sidebar h1 {
-    margin-bottom: 10px;
-  }
-  
-  .sidebar button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-    margin: 10px 0;
-    text-transform: capitalize;
-    border: none;
-    color: #333;
-    font-weight: bold;
-    background-color: transparent;
-    text-shadow: 1px 1px 5px #ddd; /* Added text shadow */
-    background-color: rgba(255, 255, 255, 0.5); /* Light background with transparency */
+.help-lp {
+  background-image: url('../../public/images/custumersupportcopy.JPEG');
+  background-size: cover;
+}
 
+.commitment-topic-lp {
+  background-image: url('../../public/images/eco1copy.jpeg');
+  background-size: cover;
+  background-position: center;
+}
 
-  }
-  
-  .content-area {
-    padding: 20px 0;
-    flex: 1;
-  }
-  
-  .content-header {
-    text-decoration:  underline;
-  }
-  .content-area h2 {
-    margin-top: 0;
-    text-transform: capitalize;
-    padding: 0 20px;
-  }
-  
-  /* Style for the active button */
-  button.active {
-    background-color: #f1892b; /* Or any color you want */
-    color: white;
-    text-shadow: none;
-  }
+.hero {
+  position: relative;
+  margin-bottom: -4px;
+}
 
-  .btn-header {
-    background-color: unset !important;
-    text-align: center !important;
-    margin: 0 !important;
-  }
+.hero h1 {
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  transform: translateY(-50%);
+  color: #1da1f2;
+  padding: 10px;
+  text-shadow: 1px 1px 1px #ffffff; /* Added text shadow */
+}
 
-  
+.help-header {
+  color: #1da1f2;
+  justify-self: center;
+  text-align: center;
+  text-shadow: 1px 1px 1px #333; /* Added text shadow */
+  text-transform: capitalize;
+}
+
+.help-main-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 20px; /* Adds space between sidebar and content */
+}
+
+.topic-image {
+  width: 100%; /* Makes the image responsive */
+  height: auto; /* Maintains the aspect ratio */
+  max-height: 400px; /* Sets a maximum height for the image */
+  object-fit: cover;
+}
+
+.sidebar {
+  width: 217px; /* Original width */
+  max-height: 90vh; /* Makes sidebar scrollable if needed */
+  overflow-y: auto; /* Enables scrolling */
+  padding: 0 20px; /* Original padding */
+  position: sticky;
+  top: 20px; /* Sticks to the top with some spacing */
+  background-color: rgba(255, 255, 255, 0.5); /* Original background color */
+}
+
+.sidebar h1 {
+  margin-bottom: 10px; /* Original margin */
+  text-align: center; /* Center the header */
+  color: #333; /* Original color */
+  text-shadow: 1px 1px 5px #ddd; /* Original text shadow */
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 10px; /* Original padding */
+  text-align: left; /* Original alignment */
+  margin: 10px 0; /* Original margin */
+  text-transform: capitalize; /* Original text transform */
+  border: none; /* Original border */
+  color: #333; /* Original color */
+  font-weight: bold; /* Original font weight */
+  background-color: rgba(255, 255, 255, 0.5); /* Original background color */
+  text-shadow: 1px 1px 5px #ddd; /* Original text shadow */
+  cursor: pointer; /* Adds pointer cursor for better UX */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.sidebar button:hover {
+  background-color: rgba(241, 137, 43, 0.8); /* Hover effect using original active color */
+  color: white; /* Text color on hover */
+}
+
+.sidebar button.active {
+  background-color: #f1892b; /* Original active color */
+  color: white; /* Original active text color */
+  text-shadow: none; /* Original active text shadow */
+}
+
+.btn-header {
+  background-color: unset !important; /* Original background */
+  text-align: center !important; /* Original alignment */
+  margin: 0 !important; /* Original margin */
+}
+
+.content-area {
+  padding: 20px 0; /* Original padding */
+  flex: 1;
+}
+
+.content-header {
+  text-decoration: underline; /* Original underline */
+  text-transform: capitalize; /* Original text transform */
+}
+
+.content-area h2 {
+  margin-top: 0; /* Original margin */
+  text-transform: capitalize; /* Original text transform */
+  padding: 0 20px; /* Original padding */
+}

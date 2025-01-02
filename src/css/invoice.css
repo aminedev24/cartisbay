@@ -34,9 +34,8 @@
 
 .header-full-width {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    justify-content: flex-end;
+    
 }
 
 .header-left img {
@@ -45,9 +44,8 @@
 
 .header-full-width p {
     margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-    margin-right: 90px;
+    font-size: 10px;
+    margin-right: 15px;
 }
 
 .contact-info {

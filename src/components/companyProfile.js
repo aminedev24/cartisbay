@@ -17,7 +17,7 @@ const CompanyProfile = (selectedTopic) => {
     <div className="company-profile-wrapper">
       {/*<img src={`${process.env.PUBLIC_URL}/images/companyProfile.jpg`} alt={'company-profile'} className="topic-image" />*/}
 
-      <div className="company-profile-container">
+      <div className="terms-container">
       <table className="bank-info-table">
         <tbody>
             <tr>
