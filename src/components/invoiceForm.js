@@ -197,8 +197,8 @@ const ProformaInvoiceForm = () => {
             // Combine the phone code and phone number
             const fullPhoneNumber = phoneCode + formData.phone;
     
-            // Format the deposit amount with commas
-            const formattedDepositAmount = parseFloat(formData.depositAmount).toLocaleString();
+            // Format the deposit amount with commas and append currency
+            const formattedDepositAmount = new Intl.NumberFormat().format(formData.depositAmount) + ' ' + formData.depositCurrency;
     
             // Generate invoice number automatically and set current date
             const newInvoiceData = {
@@ -210,7 +210,7 @@ const ProformaInvoiceForm = () => {
                 country: formData.country, // Include the country field
                 invoiceNumber: `AB-${invoiceCounter}`,
                 invoiceDate: new Date().toISOString().split('T')[0],
-                depositAmount: formattedDepositAmount,
+                depositAmount: formattedDepositAmount, // Store formatted deposit amount
                 depositCurrency: formData.depositCurrency,
                 depositDescription: formData.depositDescription,
                 depositPurpose: formData.depositPurpose,
@@ -226,6 +226,7 @@ const ProformaInvoiceForm = () => {
             setIsSubmitting(false);
         }
     };
+    
 
     const handleEditInvoice = (invoiceData) => {
         // Parse the deposit amount (remove commas and convert to a number)

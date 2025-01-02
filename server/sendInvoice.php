@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../../vendor/autoload.php';
+require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -36,7 +36,7 @@ if (!$pdfData) {
 // Extract additional invoice data
 $invoiceNumber = $data['invoiceNumber'] ?? null;
 $customerName = $data['customerFullName'] ?? null;
-$depositAmount = $data['depositAmount'] ?? null;
+$depositAmount = $data['depositAmount'] ?? null; // This will contain the formatted value like "3,000 USD"
 $depositDescription = $data['depositDescription'] ?? null;
 $depositPurpose = $data['depositPurpose'] ?? null; // New deposit purpose field
 
@@ -47,7 +47,7 @@ try {
     if ($stmt) {
         // Adjusted bind_param to match the number of variables (6 variables now)
         $stmt->bind_param(
-            'sssdss', // Adjusted the types string to match the number of variables
+            'ssssss', // Adjusted the types string to match the number of variables
             $invoiceNumber, 
             $customerName, 
             $to, 

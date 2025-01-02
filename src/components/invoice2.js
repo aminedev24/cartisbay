@@ -426,13 +426,13 @@ const handleSendEmail = async () => {
                   <tr>
                     <th>Deposit amount</th>
                     <td>
-                      {invoiceData.depositAmount} {invoiceData.depositCurrency}
+                      {invoiceData.depositAmount}
                     </td>
                   </tr>
                   <tr>
                     <th>Grand Total</th>
                     <td>
-                      {invoiceData.depositAmount} {invoiceData.depositCurrency}
+                      {invoiceData.depositAmount} 
                     </td>
                   </tr>
                 </tbody>
