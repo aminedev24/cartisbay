@@ -222,6 +222,7 @@ const ProformaInvoiceForm = () => {
                 };
     
                 setSubmittedInvoiceData(newInvoiceData);
+                
                 setIsModalOpen(true);
                 //setInvoiceCounter(prevCounter => prevCounter + 1); // Increment the invoice counter
             } else {

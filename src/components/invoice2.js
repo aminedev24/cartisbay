@@ -253,6 +253,10 @@ const handleSendEmail = async () => {
           if (!response.ok) throw new Error("Failed to send email");
           const data = await response.json();
           showAlert(data.success || "Email sent successfully!");
+          // Reload the page after 3 seconds (3000 milliseconds)
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
         };
   } catch (error) {
       console.error("Error sending email:", error);
