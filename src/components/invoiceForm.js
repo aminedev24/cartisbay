@@ -181,51 +181,59 @@ const ProformaInvoiceForm = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
     
-        // Validation logic
-        const requiredFields = [
-            'fullName', 'country', 'phone', 
-            'email', 'depositAmount', 'depositDescription', 'depositPurpose', 'address'
-        ];
+        try {
+            // Fetch the invoice number before proceeding
+            await fetchInvoiceNumber();
     
-        const isFormValid = requiredFields.every(field => formData[field]);
+            // Validation logic
+            const requiredFields = [
+                'fullName', 'country', 'phone', 
+                'email', 'depositAmount', 'depositDescription', 'depositPurpose', 'address'
+            ];
     
-        if (isFormValid) {
-            // Combine the phone code and phone number
-            const fullPhoneNumber = phoneCode + formData.phone;
+            const isFormValid = requiredFields.every(field => formData[field]);
     
-            // Format the deposit amount with commas and append currency
-            const formattedDepositAmount = new Intl.NumberFormat().format(formData.depositAmount) + ' ' + formData.depositCurrency;
+            if (isFormValid) {
+                // Combine the phone code and phone number
+                const fullPhoneNumber = phoneCode + formData.phone;
     
-            // Generate invoice number automatically and set current date
-            const newInvoiceData = {
-                customerFullName: formData.fullName,
-                customerCompany: formData.company,
-                customerAddress: formData.address,
-                customerPhone: fullPhoneNumber, // Use the full phone number
-                customerEmail: formData.email,
-                country: formData.country, // Include the country field
-                invoiceNumber: `AB-${invoiceCounter}`,
-                invoiceDate: new Date().toISOString().split('T')[0],
-                depositAmount: formattedDepositAmount, // Store formatted deposit amount
-                depositCurrency: formData.depositCurrency,
-                depositDescription: formData.depositDescription,
-                depositPurpose: formData.depositPurpose,
-                ...bankDetails,
-            };
+                // Format the deposit amount with commas and append currency
+                const formattedDepositAmount = new Intl.NumberFormat().format(formData.depositAmount) + ' ' + formData.depositCurrency;
     
-            setSubmittedInvoiceData(newInvoiceData);
-            setIsModalOpen(true);
-            setIsSubmitting(false);
-            setInvoiceCounter(prevCounter => prevCounter + 1); // Increment the invoice counter
-        } else {
-            alert('Please fill in all required fields');
+                // Generate invoice number automatically and set current date
+                const newInvoiceData = {
+                    customerFullName: formData.fullName,
+                    customerCompany: formData.company,
+                    customerAddress: formData.address,
+                    customerPhone: fullPhoneNumber, // Use the full phone number
+                    customerEmail: formData.email,
+                    country: formData.country, // Include the country field
+                    invoiceNumber: `AB-${invoiceCounter}`, // Use updated invoiceCounter
+                    invoiceDate: new Date().toISOString().split('T')[0],
+                    depositAmount: formattedDepositAmount, // Store formatted deposit amount
+                    depositCurrency: formData.depositCurrency,
+                    depositDescription: formData.depositDescription,
+                    depositPurpose: formData.depositPurpose,
+                    ...bankDetails,
+                };
+    
+                setSubmittedInvoiceData(newInvoiceData);
+                setIsModalOpen(true);
+                //setInvoiceCounter(prevCounter => prevCounter + 1); // Increment the invoice counter
+            } else {
+                alert('Please fill in all required fields');
+            }
+        } catch (error) {
+            alert('Failed to fetch invoice number. Please try again.');
+        } finally {
             setIsSubmitting(false);
         }
     };
+    
     
 
     const handleEditInvoice = (invoiceData) => {
