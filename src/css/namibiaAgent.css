@@ -1,6 +1,7 @@
 /* General Styles */
 .namibia-agent-container {
   color: #333;
+
 }
 
 /* Banner Section */
@@ -102,6 +103,7 @@
   justify-content: center;
   text-align: center;
   color: #fff;
+  background-position: center;
 }
 
 .why-choose-agent-text {
