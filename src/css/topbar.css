@@ -1,6 +1,10 @@
 .top-bar-wrapper {
   background-color: #1da1f2;
 }
+
+.stock {
+  display: none;
+}
 .top-bar {
 
     padding: 5px 10px;  /* Adjust padding for a better layout */
