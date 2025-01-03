@@ -67,7 +67,7 @@ const Login = () => {
       <div
         className="login-container"
         style={{
-          scale: isSmallScreen && isPortrait ? '2.5' : '',
+          scale: isSmallScreen && isPortrait ? '2' : '',
         }}
       >
         <img src={`${process.env.PUBLIC_URL}/images/logo3new.png`} alt="Logo" className="logo-form" />
