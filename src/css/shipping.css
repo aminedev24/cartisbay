@@ -94,6 +94,18 @@
     padding: 9px;
   }
 
+  .content button {
+    background-color: #1e3a8a;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+
+  }
+
+  .content button:hover {
+    background-color:#364c8b ;
+  }
+
   @media  (max-width:900px) {
 
     .shipping-table th, .shipping-table td {
