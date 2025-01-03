@@ -25,7 +25,9 @@ import ResetPassword from './components/resetPassword';
 import ForgotPassword from './components/forgotPassword';
 import ProfilePage from './components/profile2';
 import Shipping from './components/shipping';
-import ProformaInvoiceForm from './components/invoiceForm'
+import ProformaInvoiceForm from './components/invoiceForm';
+import NamibiaAgent from './components/namibiaAgent';
+
 /* src/index.css */
 
 
@@ -92,6 +94,7 @@ function App() {
           <Route path="/profile/:section?" element={<ProfilePage />} />
           <Route path='/shipping' element={<Shipping />}></Route>
           <Route path = '/invoice' element = {<ProformaInvoiceForm />}></Route>
+          <Route path= '/local-services/namibiaAgent' element ={<NamibiaAgent />}></Route>
           </Routes>
       <Footer />
     </Router>

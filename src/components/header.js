@@ -132,7 +132,8 @@ const Header = () => {
                   activeDropdown === 'localServices' ? 'show' : ''
                 }`}
               >
-                <a href="#">Namibia</a>
+                
+                <Link to='local-services/namibiaAgent'>Namibia</Link>
                 <a href="#">DR-Congo</a>
                 <a href="#">Tanzania</a>
               </div>

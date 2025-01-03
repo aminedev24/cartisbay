@@ -92,87 +92,8 @@ const compressPdf = async (pdfBlob) => {
   return new Blob([compressedPdf], { type: "application/pdf" });
 };
 
-const generatePdf = async () => {
-  const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
-  const buttons = modalContent.querySelectorAll(".no-print");
-
-  // Store original styles
-  const originalStyles = {
-      position: modalContent.style.position,
-      width: modalContent.style.width,
-      maxWidth: modalContent.style.maxWidth,
-      padding: modalContent.style.padding,
-      overflow: modalContent.style.overflow,
-      maxHeight: modalContent.style.maxHeight,
-      height: modalContent.style.height,
-  };
-
-  // Adjust modal content for rendering
-  modalContent.style.position = "absolute";
-  modalContent.style.width = `${modalContent.scrollWidth}px`;
-  modalContent.style.maxWidth = "none";
-  modalContent.style.padding = "20px";
-  modalContent.style.overflow = "visible";
-  modalContent.style.maxHeight = "none";
-  modalContent.style.height = `${modalContent.scrollHeight}px`; // Force full height
-
-  // Hide buttons
-  buttons.forEach((button) => (button.style.display = "none"));
-
-  // Ensure fonts and images are fully loaded
-  await document.fonts.ready;
-  const images = modalContent.querySelectorAll("img");
-  await Promise.all(
-      Array.from(images).map((img) => {
-          if (!img.complete) {
-              return new Promise((resolve, reject) => {
-                  img.onload = resolve;
-                  img.onerror = reject;
-              });
-          }
-      })
-  );
-
-  // Generate canvas with corrected dimensions
-  const canvas = await html2canvas(modalContent, {
-      scale: 2, // High resolution
-      useCORS: true,
-      backgroundColor: "#FFFFFF",
-      width: modalContent.scrollWidth,
-      height: modalContent.scrollHeight,
-  });
-
-  // Restore original styles
-  Object.assign(modalContent.style, originalStyles);
-  buttons.forEach((button) => (button.style.display = ""));
-
-  // Debug logs for dimensions
-  console.log(`Canvas Width: ${canvas.width}, Height: ${canvas.height}`);
-  console.log(`Modal ScrollHeight: ${modalContent.scrollHeight}`);
-  console.log(`Modal OffsetHeight: ${modalContent.offsetHeight}`);
-  console.log(`Modal ClientHeight: ${modalContent.clientHeight}`);
-
-  // Calculate dimensions in mm for PDF
-  const pxToMm = 0.264583; // 1px = 0.264583mm
-  const pdfWidth = canvas.width * pxToMm;
-  const pdfHeight = canvas.height * pxToMm;
-
-  // Create PDF with exact dimensions
-  const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight], true);
-  pdf.addImage(
-      canvas.toDataURL("image/png", 1.0), // High-quality image
-      "PNG",
-      0,
-      0,
-      pdfWidth,
-      pdfHeight
-  );
-
-  // Compress and return the PDF
-  const pdfBlob = pdf.output("blob");
-  const compressedPdfBlob = await compressPdf(pdfBlob);
-
-  return compressedPdfBlob;
+const handleCloseModal = () => {
+  setShowModal(false);
 };
 
 const showAlert = (message, type = "alert") => {
@@ -181,90 +102,163 @@ const showAlert = (message, type = "alert") => {
   setShowModal(true);
 };
 
-const handleCloseModal = () => {
-  setShowModal(false);
+const generatePdf = async () => {
+  const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
+  const buttons = modalContent.querySelectorAll(".no-print");
+
+  // Store original styles
+  const originalStyles = { ...modalContent.style };
+
+  // Adjust modal content for rendering
+  modalContent.style.position = "absolute";
+  modalContent.style.width = `${modalContent.scrollWidth}px`;
+  modalContent.style.maxWidth = "none";
+  modalContent.style.padding = "20px";
+  modalContent.style.overflow = "visible";
+  modalContent.style.maxHeight = "none";
+  modalContent.style.height = `${modalContent.scrollHeight}px`;
+  void modalContent.offsetHeight; // Trigger reflow
+
+  // Hide buttons
+  buttons.forEach((button) => (button.style.display = "none"));
+
+  // Ensure fonts and images are fully loaded
+  await document.fonts.ready.catch(() => console.error("Font loading failed"));
+  const images = modalContent.querySelectorAll("img");
+  await Promise.all(
+    Array.from(images).map((img) =>
+      new Promise((resolve) => {
+        if (img.complete) resolve();
+        else {
+          img.onload = resolve;
+          img.onerror = () => {
+            console.warn(`Image failed to load: ${img.src}`);
+            resolve();
+          };
+        }
+      })
+    )
+  );
+
+  // Generate canvas
+  const canvas = await html2canvas(modalContent, {
+    scale: Math.min(2, 16000 / modalContent.scrollHeight), // Scale for Safari
+    useCORS: true,
+    backgroundColor: "#FFFFFF",
+    width: modalContent.scrollWidth,
+    height: modalContent.scrollHeight,
+  });
+
+  // Restore original styles
+  Object.assign(modalContent.style, originalStyles);
+  buttons.forEach((button) => (button.style.display = ""));
+
+  // Calculate dimensions in mm for PDF
+  const pxToMm = 0.264583; // 1px = 0.264583mm
+  const pdfWidth = Math.min(canvas.width * pxToMm, 210); // Cap at A4 width
+  const pdfHeight = Math.min(canvas.height * pxToMm, 297); // Cap at A4 height
+
+  // Create PDF
+  const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight], true);
+  pdf.addImage(canvas.toDataURL("image/png", 1.0), "PNG", 0, 0, pdfWidth, pdfHeight);
+
+  // Compress PDF
+  let compressedPdfBlob;
+  try {
+    compressedPdfBlob = await compressPdf(pdf.output("blob"));
+  } catch (err) {
+    console.error("PDF compression failed:", err);
+    compressedPdfBlob = pdf.output("blob"); // Use uncompressed as fallback
+  }
+
+  return compressedPdfBlob;
 };
+
 
 
 
 const handleSendEmail = async () => {
-
   if (!user) {
-      showAlert("You must be logged in to submit the invoice.");
-
+    showAlert("You must be logged in to submit the invoice.");
     return;
   }
 
   try {
-      setIsGeneratingPdf(true);
+    setIsGeneratingPdf(true);
 
-      // Generate and compress the PDF
-      const pdfBlob = await generatePdf();
-      console.log(`PDF size: ${(pdfBlob.size / 1024 / 1024).toFixed(2)} MB`);
-      const bccRecipient = "contact@artisbay.com"; // Replace with the BCC recipient's email
+    // Generate and compress the PDF
+    const pdfBlob = await generatePdf();
+    console.log(`PDF size: ${(pdfBlob.size / 1024 / 1024).toFixed(2)} MB`);
+    const bccRecipient = "contact@artisbay.com"; // Replace with the BCC recipient's email
 
-      // Convert PDF Blob to Base64
-      const reader = new FileReader();
-      reader.readAsDataURL(pdfBlob);
-      reader.onloadend = async () => {
-          const base64Pdf = reader.result.split(",")[1];
+    // Convert PDF Blob to Base64 using a Promise-based approach
+    const convertBlobToBase64 = (blob) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
 
-          // Construct email body
-          const emailBody = `
-              <div style="font-family: Arial, sans-serif; color: #333;">
-                  <h2 style="color: #004080;">Dear ${invoiceData.customerFullName},</h2>
-                  <p>Thank you for placing your order with <strong>Artisbay Inc.</strong></p>
-                  <p>This is an automated email to provide you with the deposit invoice for your recent transaction. Below are the details of the invoice:</p>
-                  <h3 style="color: #004080;">Invoice Details:</h3>
-                  <ul>
-                      <li><strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}</li>
-                      <li><strong>Invoice Date:</strong> ${invoiceData.invoiceDate}</li>
-                      <li><strong>Deposit Description:</strong> ${invoiceData.depositDescription}</li>
-                      <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
-                      <li><strong>Due Date:</strong> Due immediately</li>
-                      <li><strong>Expiry Date:</strong> ${expiryDate}</li>
-                  </ul>
-                  <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
-                  <p>For any questions or concerns, feel free to contact us at: <a href="mailto:contact@artisbay.com">contact@artisbay.com</a>.</p>
-                  <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
-                  <p style="color: #004080;"><strong>Best regards,</strong><br>Artisbay Inc.</p>
-              </div>
-          `;
+    const base64Pdf = await convertBlobToBase64(pdfBlob);
 
-          // Send the invoice data along with the PDF attachment
-          const response = await fetch(`${apiUrl}/sendInvoice.php`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                  to: invoiceData.customerEmail,
-                  bcc: bccRecipient,
-                  subject: `Automated Deposit Invoice from Artisbay Inc.`,
-                  body: emailBody,
-                  attachment: base64Pdf,
-                  invoiceNumber: invoiceData.invoiceNumber,
-                  customerFullName: invoiceData.customerFullName,
-                  depositAmount: invoiceData.depositAmount,
-                  depositPurpose : invoiceData.depositPurpose,
-                  depositDescription: invoiceData.depositDescription,
-              }),
-              credentials: "include",
-          });
+    // Construct email body
+    const emailBody = `
+      <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2 style="color: #004080;">Dear ${invoiceData.customerFullName},</h2>
+          <p>Thank you for placing your order with <strong>Artisbay Inc.</strong></p>
+          <p>This is an automated email to provide you with the deposit invoice for your recent transaction. Below are the details of the invoice:</p>
+          <h3 style="color: #004080;">Invoice Details:</h3>
+          <ul>
+              <li><strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}</li>
+              <li><strong>Invoice Date:</strong> ${invoiceData.invoiceDate}</li>
+              <li><strong>Deposit Description:</strong> ${invoiceData.depositDescription}</li>
+              <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
+              <li><strong>Due Date:</strong> Due immediately</li>
+              <li><strong>Expiry Date:</strong> ${expiryDate}</li>
+          </ul>
+          <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
+          <p>For any questions or concerns, feel free to contact us at: <a href="mailto:contact@artisbay.com">contact@artisbay.com</a>.</p>
+          <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
+          <p style="color: #004080;"><strong>Best regards,</strong><br>Artisbay Inc.</p>
+      </div>
+    `;
 
-          if (!response.ok) throw new Error("Failed to send email");
-          const data = await response.json();
-          showAlert(data.success || "Email sent successfully!");
-          // Reload the page after 3 seconds (3000 milliseconds)
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
-        };
+    // Send the invoice data along with the PDF attachment
+    const response = await fetch(`${apiUrl}/sendInvoice.php`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        to: invoiceData.customerEmail,
+        bcc: bccRecipient,
+        subject: `Automated Deposit Invoice from Artisbay Inc.`,
+        body: emailBody,
+        attachment: base64Pdf,
+        invoiceNumber: invoiceData.invoiceNumber,
+        customerFullName: invoiceData.customerFullName,
+        depositAmount: invoiceData.depositAmount,
+        depositPurpose: invoiceData.depositPurpose,
+        depositDescription: invoiceData.depositDescription,
+      }),
+      credentials: "include",
+    });
+
+    if (!response.ok) throw new Error("Failed to send email");
+    const data = await response.json();
+    showAlert(data.success || "Email sent successfully!");
+
+    // Reload the page after 3 seconds (3000 milliseconds)
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   } catch (error) {
-      console.error("Error sending email:", error);
-      showAlert(error.message || "An error occurred while submitting the email.");
-    } finally {
-      setIsGeneratingPdf(false);
+    console.error("Error sending email:", error);
+    showAlert(error.message || "An error occurred while submitting the email.");
+  } finally {
+    setIsGeneratingPdf(false);
   }
 };
+
 
 
 

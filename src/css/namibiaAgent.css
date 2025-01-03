@@ -1,0 +1,288 @@
+/* General Styles */
+.namibia-agent-container {
+  color: #333;
+}
+
+/* Banner Section */
+.banner {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Introduction Section */
+.introduction-section {
+  margin-bottom: 60px;
+  text-align: center;
+  background: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.introduction-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1e3a8a;
+}
+
+.introduction-section p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Why Choose Our Namibia Agent Section */
+/* Why Choose Our Services Section */
+.why-choose-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.why-choose-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  color: #1e3a8a;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.why-choose-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-choose-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.why-choose-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #1e3a8a;
+}
+
+.why-choose-item p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Why Choose Our Agent in Namibia Section */
+.why-choose-agent-section {
+  position: relative;
+  width: 100%;
+  height: 422px; /* Adjust height as needed */
+  background-image: url('../../public/images/localServices/namibiatransparent.png'); /* Replace with your actual image */
+  background-size: cover;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.why-choose-agent-text {
+  padding: 30px;
+  max-width: 502px;
+  color: #333;
+}
+
+
+
+.why-choose-agent-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.why-choose-agent-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.why-choose-agent-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Comprehensive Services Section */
+.comprehensive-services-section {
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.services-header h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
+
+.services-header p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.service-box {
+  background: #fff;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 15px;
+}
+
+.service-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #1e3a8a;
+  text-align: center;
+}
+
+.service-box p {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.5;
+}
+
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contact-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #1e3a8a;
+}
+
+.contact-info {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #666;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.contact-info a {
+  color: #1da1f2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #1e3a8a;
+}
+
+.introduction-section , .why-choose-section , .comprehensive-services , .introduction-section {
+  padding: 20px;
+}
+
+/* Introduction Banner with Text */
+.introduction-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  background: url('../../public/images/localServices/simplifyLogisticstransparent.png') no-repeat center center;
+  background-size: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Title Styling */
+.introduction-banner .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: absolute;
+  top: -1%;
+  left: 11%;
+  text-decoration: underline;
+}
+
+/* Text Content Styling */
+.introduction-banner .text-content {
+  margin-top: 60px;
+  max-width: 700px;
+}
+
+.introduction-banner .text-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Styling for the Contact Information */
+.introduction-banner .contact-details {
+  margin-top: 20px;
+}
+
+.introduction-banner .contact-details p {
+  margin: 5px 0;
+}
+
+.introduction-banner .contact-details p span {
+  font-weight: bold;
+}

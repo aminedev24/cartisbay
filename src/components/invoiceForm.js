@@ -195,7 +195,7 @@ const ProformaInvoiceForm = () => {
         const randomNumber = Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
       
         // Combine date/time with the random number
-        return `DOC-${year}${month}${day}${hours}${minutes}${seconds}-${randomNumber}`;
+        return `DOC-${year}${month}${day}${hours}${minutes}${seconds}`;
       }
 
     const handleSubmit = async (e) => {
