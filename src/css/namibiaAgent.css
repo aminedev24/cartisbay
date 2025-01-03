@@ -201,8 +201,8 @@
   margin-bottom: 30px;
   color: #1e3a8a;
 }
-
-.contact-info {
+ 
+.namibia-agent-container .contact-info {
   background: #fff;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -211,26 +211,26 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact-info:hover {
+.namibia-agent-container .contact-info:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.contact-info p {
+.namibia-agent-container .contact-info p {
   font-size: 1rem;
   color: #666;
   margin: 10px 0;
   line-height: 1.5;
 }
 
-.contact-info a {
+.namibia-agent-container .contact-info a {
   color: #1da1f2;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
-.contact-info a:hover {
+.namibia-agent-container .contact-info a:hover {
   color: #1e3a8a;
 }
 

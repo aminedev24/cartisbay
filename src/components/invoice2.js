@@ -97,10 +97,15 @@ const handleCloseModal = () => {
 };
 
 const showAlert = (message, type = "alert") => {
-  setModalMessage(message);
-  setModalType(type);
-  setShowModal(true);
+  setIsGeneratingPdf(true); // Show spinner
+  setTimeout(() => {
+    setIsGeneratingPdf(false); // Hide spinner
+    setModalMessage(message);
+    setModalType(type);
+    setShowModal(true);
+  }, 1000); // Delay for 1 second
 };
+
 
 const generatePdf = async () => {
   const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
@@ -239,13 +244,14 @@ const handleSendEmail = async () => {
         depositAmount: invoiceData.depositAmount,
         depositPurpose: invoiceData.depositPurpose,
         depositDescription: invoiceData.depositDescription,
+        serialNumber: invoiceData.serialNumber
       }),
       credentials: "include",
     });
 
     if (!response.ok) throw new Error("Failed to send email");
     const data = await response.json();
-    showAlert(data.success || "Email sent successfully!");
+    showAlert("Invoice sent successfully!");
 
     // Reload the page after 3 seconds (3000 milliseconds)
     setTimeout(() => {
@@ -253,13 +259,19 @@ const handleSendEmail = async () => {
     }, 3000);
   } catch (error) {
     console.error("Error sending email:", error);
-    showAlert(error.message || "An error occurred while submitting the email.");
+    showAlert("An error occurred while submitting the email.");
   } finally {
     setIsGeneratingPdf(false);
   }
 };
 
 
+  const Spinner = () => (
+    <div className="spinner">
+      <div className="double-bounce1"></div>
+      <div className="double-bounce2"></div>
+    </div>
+  );
 
 
   const handleEditInvoice = () => {
@@ -269,13 +281,18 @@ const handleSendEmail = async () => {
 
   return (
     <div className="invoice-modal-overlay">
-      {showModal && (
-        <Modal
-          message={modalMessage}
-          onClose={handleCloseModal}
-          type={modalType}
-        />
-      )}
+        {isGeneratingPdf && (
+      <div className="spinner-overlay">
+        <Spinner />
+      </div>
+    )}
+    {!isGeneratingPdf && showModal && (
+      <Modal
+        message={modalMessage}
+        onClose={handleCloseModal}
+        type={modalType}
+      />
+    )}
 
       <div className="modal-content">
         <button className="modal-close-btn no-print" onClick={onClose}>
@@ -326,6 +343,7 @@ const handleSendEmail = async () => {
                 <p>
                   <strong>Purpose:</strong> {invoiceData.depositPurpose}
                 </p>
+               
               </div>
             </div>
           </div>
@@ -498,7 +516,7 @@ const handleSendEmail = async () => {
               onClick={handleSendEmail}
               disabled={isGeneratingPdf}
             >
-              {isGeneratingPdf ? "Generating PDF..." : "Submit Invoice"}
+              {isGeneratingPdf ? "Generating PDF..." : "Request Invoice"}
             </button>
             <button className="no-print" onClick={handleEditInvoice}>
               Edit Invoice
