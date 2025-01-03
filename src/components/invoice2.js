@@ -145,9 +145,12 @@ const generatePdf = async () => {
     )
   );
 
+  // Reduce scale for mobile devices
+  const scaleFactor = window.innerWidth < 768 ? 1 : Math.min(2, 16000 / modalContent.scrollHeight);
+
   // Generate canvas
   const canvas = await html2canvas(modalContent, {
-    scale: Math.min(2, 16000 / modalContent.scrollHeight), // Scale for Safari
+    scale: scaleFactor,
     useCORS: true,
     backgroundColor: "#FFFFFF",
     width: modalContent.scrollWidth,
@@ -178,6 +181,7 @@ const generatePdf = async () => {
 
   return compressedPdfBlob;
 };
+
 
 
 
