@@ -59,11 +59,13 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding: 20px;
+  place-items: center;
 }
 
 .why-choose-item {
   background: #fff;
   padding: 20px;
+  width: 300px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -183,7 +185,7 @@
 }
 
 .service-box p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #555;
   text-align: center;
   line-height: 1.5;
@@ -245,7 +247,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: 40px 20px;
-  background: url('../../public/images/localServices/simplifyLogisticstransparent.png') no-repeat center center;
+  background: url('../../public/images/localServices/simplifyLogisticstransparent.png') no-repeat;
   background-size: cover;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -254,11 +256,11 @@
 
 /* Title Styling */
 .introduction-banner .title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 20px;
   position: absolute;
-  top: -1%;
+  top: 1%;
   left: 11%;
   text-decoration: underline;
 }
@@ -266,7 +268,7 @@
 /* Text Content Styling */
 .introduction-banner .text-content {
   margin-top: 60px;
-  max-width: 700px;
+  max-width: 580px;
 }
 
 .introduction-banner .text-content p {
