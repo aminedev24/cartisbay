@@ -103,7 +103,7 @@
   justify-content: center;
   text-align: center;
   color: #fff;
-  background-position: center;
+  background-position: initial;
 }
 
 .why-choose-agent-text {
@@ -210,7 +210,6 @@
   background: #fff;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
   margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
