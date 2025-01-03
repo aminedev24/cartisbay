@@ -3,7 +3,7 @@
 }
 
 .stock {
-  display: none;
+  visibility: hidden;
 }
 .top-bar {
 

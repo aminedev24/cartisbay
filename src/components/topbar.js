@@ -56,11 +56,8 @@ const TopBar = () => {
       <div className="top-bar">
         <div className="app-info">
           <span className="app-name">Artisbay</span>
-          <div className='stock'>
-            <span className="total-cars">Total Cars in Stock: 120</span>
-            <span className="cars-added-today">Cars Added Today: 5</span>
-          </div>
-         
+          <span className="total-cars stock">Total Cars in Stock: 120</span>
+          <span className="cars-added-today stock">Cars Added Today: 5</span>
         </div>
         <div className="extra-info">
           <span className="time">Japan Standard Time: {japanTime}</span>
