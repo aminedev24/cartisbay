@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 const Modal = ({ isOpen, onClose, orders, setIsModalOpen }) => {
   // Handle the afterprint event
   useEffect(() => {
@@ -130,7 +130,11 @@ const Modal = ({ isOpen, onClose, orders, setIsModalOpen }) => {
           </table>
           <div className="total">Total Quantity: {totalQuantity}</div>
         </div>
-        <button className="print-button" onClick={handlePrint}>Print Orders</button>
+        <div className='action-btns'>
+          <button className="print-button" onClick={handlePrint}>Print Orders</button>
+          <Link to='/invoice' className='print-button'>Generate Invoice</Link>
+        </div>
+       
       </div>
     </div>
   );

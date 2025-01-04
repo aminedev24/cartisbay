@@ -31,6 +31,7 @@ const topics = {
     { name: "Terms & Conditions", content: <TermsAndConditions />, image:  `${process.env.PUBLIC_URL}/images/terms&conditions.png` },
     { name: "Anti-Social Force Policy", content: <AntiSocialForcesPolicy />, image: `${process.env.PUBLIC_URL}/images/asf.png` },
     { name: "How to Buy used cars", component: <HowToBuy /> ,image:`${process.env.PUBLIC_URL}/images/howtobuyrecent2.jpeg`},
+    { name: "auction", content: <AuctionLanding />, image: `${process.env.PUBLIC_URL}/images/auction.png` },
     { name: "about used Tires", component: <UsedTiresFAQ />, image: `${process.env.PUBLIC_URL}/images/tiresfromjapanhelp.png`},
   ],
   buying: [
@@ -40,7 +41,6 @@ const topics = {
     { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/telegraphictransferrecent.jpeg` },
     { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},
     { name: "privacy policy", content: <PrivacyPolicy />, image:  `${process.env.PUBLIC_URL}/images/privacybanner.png`},
-    { name: "auction", content: <AuctionLanding />, image: `${process.env.PUBLIC_URL}/images/auction.png` },
     { name: "Machinery", content:'', image: `${process.env.PUBLIC_URL}/images/comingsoon.jpeg` },
     { name: "Sustainability", content: <EnvironmentalMessage />, image: `${process.env.PUBLIC_URL}/images/eco3.png` },
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InvoiceModal from './invoice2';
 import CountryList from './countryList';
 import '../css/invoice.css';
+import { useLocation } from 'react-router-dom';
 
 const ProformaInvoiceForm = () => {
     // Predefined Bank Details
@@ -24,7 +25,8 @@ const ProformaInvoiceForm = () => {
         depositAmount: '',
         depositCurrency: 'USD',
         depositDescription: '',
-        depositPurpose: ''
+        depositPurpose: '',
+        bankNote: ' Car details, including chassis numbers, will be provided by the remitter upon completion of the car purchase.'
     });
 
     const [phoneCode, setPhoneCode] = useState('');
@@ -34,6 +36,7 @@ const ProformaInvoiceForm = () => {
     const [invoiceCounter, setInvoiceCounter] = useState(''); // Initialize invoice counter
     const [isLoading, setIsLoading] = useState(false); // For handling loading state
     const [error, setError] = useState(null); // For handling errors
+    const location = useLocation();
 
     // Function to get the next invoice number from the backend
   const fetchInvoiceNumber = async () => {
@@ -147,6 +150,13 @@ const ProformaInvoiceForm = () => {
     
         fetchUserData();
     }, [apiUrl]);
+
+
+
+
+    useEffect(() => {
+      window.scrollTo(0, 0);  // Scroll to the top whenever the location changes
+    }, [location]);
     
 
     const handleChange = (e) => {
@@ -178,6 +188,10 @@ const ProformaInvoiceForm = () => {
                 ...prevState,
                 [name]: value,
             }));
+        }
+
+        if(name === 'depositAmount'){
+          
         }
     };
 
@@ -235,6 +249,7 @@ const ProformaInvoiceForm = () => {
                     depositCurrency: formData.depositCurrency,
                     depositDescription: formData.depositDescription,
                     depositPurpose: formData.depositPurpose,
+                    bankNote: formData.bankNote,
                     serialNumber: generateSerialNumber(),
                     ...bankDetails,
                 };
@@ -302,172 +317,227 @@ const ProformaInvoiceForm = () => {
     };
 
     return (
-        <div className='form-wrapper invoice-wrapper'>
-            <div className="contact-container invoice-container">
-                <form className="signup-form invoice-form" onSubmit={handleSubmit}>
-                    <img 
-                        src={`${process.env.PUBLIC_URL}/images/logo3new.png`} 
-                        alt="Logo" 
-                        className="logo-form" 
+        <div className='enquiry-wrapper invoice-wrapper'>
+        <form onSubmit={handleSubmit}>
+          <div className="enquiryContainer contact-container">
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/logo3new.png`} 
+              alt="Logo" 
+              className="logo-form" 
+            />
+      
+            <h1>Proforma Invoice Generation</h1>
+
+               {/* Compatibility Message */}
+            <p className="compatibility-message">
+                <strong>Note:</strong> Our invoice generator form is currently under development and may not function properly on iPhones and iPads at this time. 
+                However, it works just fine on most Android devices, MacBooks, Mac Studios, and Windows computers. 
+                We sincerely apologize for any inconvenience this may cause and appreciate your understanding as we work to improve compatibility.
+            </p>
+
+            <p className='invoice-prompt'>
+              Please fill out the details below to generate a proforma invoice.
+            </p>
+      
+            <div className="form-section">
+              <h2>Your Information</h2>
+              <div className="form-group">
+                <div className="half-width">
+                  <label htmlFor="fullName">
+                    Full Name<span className="required-star">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Full name"
+                    required
+                  />
+                </div>
+                <div className="half-width">
+                  <label htmlFor="company">Company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Company"
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="half-width">
+                  <label htmlFor="country">
+                    Country<span className="required-star">*</span>
+                  </label>
+                  <select
+                    id="country"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Country</option>
+                    {CountryList().sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
+                      <option key={country.code} value={country.label}>
+                        {country.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="half-width">
+                  <label htmlFor="phone">
+                    Phone<span className="required-star">*</span>
+                  </label>
+                  <div className="phone-number-group">
+                    {phoneCode && <span className="phone-code">{phoneCode}</span>}
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className={phoneCode ? "shrink" : ''}
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Phone number"
+                      required
                     />
-
-                    <h1>Proforma Invoice Generation</h1>
-                    <p className='invoice-prompt'>
-                        Please fill out the details below to generate a proforma invoice.
-                    </p>
-
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            value={formData.fullName }
-                            onChange={handleChange}
-                            name="fullName"
-                            placeholder='full name'
-                            required
-                        />
-                        <label>Full Name <span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            value={formData.company}
-                            onChange={handleChange}
-                            name="company"
-                            placeholder='company'
-                        />
-                        <label>Company</label>
-                    </div>
-
-                    <div className="input-group">
-                        <select
-                            name="country"
-                            value={formData.country}
-                            onChange={handleChange}
-                            className={formData.country ? "not-empty" : ""}
-                            required
-                        >
-                            <option value="">Select Country</option>
-                            {CountryList().sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
-                                <option key={country.code} value={country.label}>
-                                    {country.label}
-                                </option>
-                            ))}
-                        </select>
-                        <label>Country <span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group phone-number-group">
-                        {phoneCode && <span className="phone-code">{phoneCode}</span>}
-                        <input
-                            type="tel"
-                            name="phone"
-                            className={phoneCode ? "shrink" : ''}
-                            value={formData.phone}
-                            onChange={handleChange}
-                            placeholder="phone number"
-                            required
-                        />
-                        <label>Phone <span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            value={formData.address}
-                            onChange={handleChange}
-                            name="address"
-                            placeholder='address'
-                            required
-                        />
-                        <label>address<span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group">
-                        <input
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            name="email"
-                            placeholder='email'
-                            required
-                        />
-                        <label>E-mail <span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group">
-                        <div className="input-with-addon">
-                            <select
-                                name="depositCurrency"
-                                value={formData.depositCurrency}
-                                onChange={handleChange}
-                            >
-                                <option value="USD">USD</option>
-                                <option value="JPY">JPY</option>
-                                <option value="EUR">EUR</option>
-                            </select>
-                            <input
-                                type="number"
-                                name="depositAmount"
-                                value={formData.depositAmount}
-                                onChange={handleChange}
-                                placeholder='deposit amount'
-                                required
-                                min="0"
-                                step="0.01"
-                            />
-                        </div>
-                        <label>Deposit Amount <span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group">
-                        <select
-                            name="depositPurpose"
-                            value={formData.depositPurpose}
-                            onChange={handleChange}
-                            className={formData.depositPurpose ? "not-empty" : ""}
-                            required
-                        >
-                            <option value="">Select Deposit Purpose</option>
-                            <option value="vehicle purchase">Vehicle Purchase</option>
-                            <option value="auto parts order">Auto Parts Order</option>
-                            <option value="dismantling">Dismantling</option>
-                            <option value="tires order">Tires order</option>
-                        </select>
-                        <label>Deposit Purpose <span className="required">*</span></label>
-                    </div>
-
-                    <div className="input-group">
-                        <textarea
-                            name="depositDescription"
-                            placeholder='deposit description'
-                            value={formData.depositDescription}
-                            onChange={handleChange}
-                            required
-                            rows="5"
-                        ></textarea>
-                        <label>Deposit Description <span className="required">*</span></label>
-                    </div>
-
-                    <button 
-                        type="submit" 
-                        disabled={isSubmitting}
+                  </div>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="half-width">
+                  <label htmlFor="address">
+                    Address<span className="required-star">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    placeholder="Address"
+                    required
+                  />
+                </div>
+                <div className="half-width">
+                  <label htmlFor="email">
+                    E-mail<span className="required-star">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="E-mail"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+      
+            <div className="form-section">
+              <h2>Deposit Details</h2>
+              <div className="form-group">
+                <div className="half-width">
+                  <label htmlFor="depositCurrency">
+                    Deposit Amount<span className="required-star">*</span>
+                  </label>
+                  <div className="input-with-addon">
+                    <select
+                      id="depositCurrency"
+                      name="depositCurrency"
+                      value={formData.depositCurrency}
+                      onChange={handleChange}
                     >
-                        {isSubmitting ? 'Generating...' : 'Generate Invoice'}
-                    </button>
-                </form>
+                      <option value="USD">USD</option>
+                      <option value="JPY">JPY</option>
+                      <option value="EUR">EUR</option>
+                    </select>
+                    <input
+                      type="number"
+                      id="depositAmount"
+                      name="depositAmount"
+                      value={formData.depositAmount}
+                      onChange={handleChange}
+                      placeholder="Deposit amount"
+                      required
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                </div>
+                <div className="half-width">
+                  <label htmlFor="depositPurpose">
+                    Deposit Purpose<span className="required-star">*</span>
+                  </label>
+                  <select
+                    id="depositPurpose"
+                    name="depositPurpose"
+                    value={formData.depositPurpose}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Deposit Purpose</option>
+                    <option value="vehicle purchase">Vehicle Purchase</option>
+                    <option value="auto parts order">Auto Parts Order</option>
+                    <option value="dismantling">Dismantling</option>
+                    <option value="tires order">Tires Order</option>
+                  </select>
+                </div>
+              </div>
+              <div className="form-group" style={{ flexDirection: "column" }}>
+                <label htmlFor="depositDescription">
+                  Deposit Description<span className="required-star">*</span>
+                </label>
+                <textarea
+                  id="depositDescription"
+                  name="depositDescription"
+                  value={formData.depositDescription}
+                  onChange={handleChange}
+                  placeholder="Deposit description"
+                  required
+                  rows="5"
+                ></textarea>
+              </div>
             </div>
 
-            {/* Modal for Invoice */}
-            {isModalOpen && submittedInvoiceData && (
+            <div className="input-group">
+             <label htmlFor='bankNote'>Bank Note <span className="required-star">*</span></label>
+                <textarea
+                    name="bankNote"
+                    value={formData.bankNote || ''} // Add the bankNote field to your state
+                    onChange={handleChange} // Ensure handleChange updates the value in state
+                    placeholder="Enter bank note"
+                    rows="4"
+                    required
+                ></textarea>
+             
+            </div>
+
+      
+            <div className="submit-section">
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Generating...' : 'Generate Invoice'}
+              </button>
+            </div>
+          </div>
+        </form>
+
+         {/* Modal for Invoice */}
+         {isModalOpen && submittedInvoiceData && (
                 <InvoiceModal 
                     isOpen={isModalOpen} 
                     onClose={handleCloseModal} 
                     invoiceData={submittedInvoiceData}
                     onEdit={handleEditInvoice} // Pass the onEdit callback
                 />
-            )}
-        </div>
+        )}
+      </div>
+      
     );
 };
 

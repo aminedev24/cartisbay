@@ -190,3 +190,12 @@ h4 {
   background-size: cover !important;
   background-image: url('../../public/images/printwatermark.png');
 }
+
+.action-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btns a {
+  text-decoration: none;
+}

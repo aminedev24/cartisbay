@@ -1,4 +1,9 @@
 /* General Styles */
+* {
+  box-sizing: border-box;
+}
+
+
 .namibia-agent-container {
   color: #333;
 
@@ -38,7 +43,7 @@
   font-size: 1.1rem;
   color: #666;
   line-height: 1.8;
-  max-width: 900px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -92,19 +97,19 @@
 
 /* Why Choose Our Agent in Namibia Section */
 .why-choose-agent-section {
-  position: relative;
-  width: 100%;
-  height: 422px; /* Adjust height as needed */
-  background-image: url('../../public/images/localServices/namibiatransparent.png'); /* Replace with your actual image */
-  background-size: cover;
-  margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px; /* Adjust padding as needed */
+  background: url('../../public/images/localServices/namibiatransparent.png') no-repeat center center;
+  background-size: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
   text-align: center;
-  color: #fff;
-  background-position: initial;
+  height: 422px; /* You can adjust this height to fit the image */
 }
+
 
 .why-choose-agent-text {
   padding: 30px;
@@ -250,26 +255,28 @@
   padding: 40px 20px;
   background: url('../../public/images/localServices/simplifyLogisticstransparent.png') no-repeat;
   background-size: cover;
-  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
 /* Title Styling */
 .introduction-banner .title {
-  font-size: 1.1rem;
+  font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 20px;
   position: absolute;
-  top: 1%;
-  left: 13%;
+  top: -2%;
+  left: 12%;
   text-decoration: underline;
+  max-width: 55%;
 }
+
+
 
 /* Text Content Styling */
 .introduction-banner .text-content {
   margin-top: 60px;
-  max-width: 580px;
+  max-width: 50%;
 }
 
 .introduction-banner .text-content p {
@@ -288,4 +295,24 @@
 
 .introduction-banner .contact-details p span {
   font-weight: bold;
+}
+
+@media  (min-width:1400px){
+  .introduction-banner .title {
+    font-size: 1.5em;
+    left: 11%;
+    top: -3%;
+  }
+
+  .contact-details p {
+    font-size: 1.4em;
+  }
+
+  .introduction-banner {
+    height: 450px;
+  }
+
+  .why-choose-agent-section {
+    height: 550px;
+  }
 }

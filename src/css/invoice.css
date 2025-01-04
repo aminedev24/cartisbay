@@ -72,6 +72,7 @@
 
 .header-right p {
     margin: 0;
+    line-height: 1.9;
     font-size: 14px;
 }
 
@@ -80,6 +81,14 @@
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
+}
+
+.invoice-prompt {
+    text-align:center;
+}
+
+.invoice-wrapper h2 {
+    text-align: left;
 }
 
 .invoice-info {
@@ -219,11 +228,12 @@
     display: flex;
     justify-content: space-between;
     padding-bottom:5px ;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .icon-paragraph {
     display: flex;
+    align-items: center;
 }
 
 .header-left {
@@ -349,5 +359,15 @@
     to {
       transform: rotate(360deg);
     }
+  }
+  
+  .compatibility-message {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    border: 1px solid #ffeeba;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
   }
   

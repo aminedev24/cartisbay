@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaEnvelope, FaGlobe } from "react-icons/fa";
 import "../css/invoice.css";
 import jsPDF from "jspdf";
@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import { PDFDocument } from "pdf-lib";
 import { useUser } from "./userContext"; // Importing the useUser hook to access user data
 import Modal from "./alertModal";
+import { useLocation } from 'react-router-dom';
 
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
@@ -31,6 +32,14 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
   const [modalType, setModalType] = useState("");  // Could be 'alert', 'confirmation', or 'clear_all'
   const {user} = useUser(); // Accessing user data from the context
 
+  const location = useLocation();
+
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);  // Scroll to the top whenever the location changes
+  }, [location]);
+
   if (!isOpen) return null;
 
   const expiryDate = calculateExpiryDate(invoiceData.invoiceDate);
@@ -39,6 +48,7 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
     process.env.NODE_ENV === "development"
       ? "http://localhost/artisbay-server/server"
       : "/server";
+
 
   const handlePrint = () => {
     window.print();
@@ -85,12 +95,6 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
   };
 
 
-  // Define the compressPdf function
-const compressPdf = async (pdfBlob) => {
-  const pdfDoc = await PDFDocument.load(await pdfBlob.arrayBuffer());
-  const compressedPdf = await pdfDoc.save({ useObjectStreams: true }); // Enable compression
-  return new Blob([compressedPdf], { type: "application/pdf" });
-};
 
 const handleCloseModal = () => {
   setShowModal(false);
@@ -106,6 +110,13 @@ const showAlert = (message, type = "alert") => {
   }, 1000); // Delay for 1 second
 };
 
+
+  // Define the compressPdf function
+  const compressPdf = async (pdfBlob) => {
+    const pdfDoc = await PDFDocument.load(await pdfBlob.arrayBuffer());
+    const compressedPdf = await pdfDoc.save({ useObjectStreams: true }); // Enable compression
+    return new Blob([compressedPdf], { type: "application/pdf" });
+  };
 
 const generatePdf = async () => {
   const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
@@ -183,9 +194,6 @@ const generatePdf = async () => {
 };
 
 
-
-
-
 const handleSendEmail = async () => {
   if (!user) {
     showAlert("You must be logged in to submit the invoice.");
@@ -225,9 +233,10 @@ const handleSendEmail = async () => {
               <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
               <li><strong>Due Date:</strong> Due immediately</li>
               <li><strong>Expiry Date:</strong> ${expiryDate}</li>
+              <li><strong>Serial Number:</strong> ${invoiceData.serialNumber}</li>
           </ul>
           <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
-          <p>For any questions or concerns, feel free to contact us at: <a href="mailto:contact@artisbay.com">contact@artisbay.com</a>.</p>
+          <p>For any questions or concerns, feel free to contact us at: <a href="mailto:sales@artisbay.com">contact@artisbay.com</a>.</p>
           <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
           <p style="color: #004080;"><strong>Best regards,</strong><br>Artisbay Inc.</p>
       </div>
@@ -435,8 +444,7 @@ const handleSendEmail = async () => {
                 <strong>Note for bank:</strong>
               </p>
               <p>
-                Car details, including chassis numbers, will be provided by the
-                remitter upon completion of the car purchase.
+               {invoiceData.bankNote}
               </p>
             </div>
 

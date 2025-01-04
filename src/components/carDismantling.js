@@ -121,6 +121,9 @@ const CarDismantling = () => {
                 <li>Telegraphic Transfer (T/T)</li>
                 <li>PayPal</li>
               </ul>
+              <p>
+                Already know what you want? <Link to='/invoice' className='cta-link'>Request an invoice</Link> now to make a deposit and start your purchase immediately!      
+              </p>
             </li>
             <li>
               <strong>Staged Payments and Vehicle Selection:</strong> We will

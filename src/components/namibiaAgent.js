@@ -26,9 +26,10 @@ const NamibiaAgent = () => {
           </p>
         </div>
       </div>
+      <div>
       <div className="introduction-banner">
   {/* Title Positioned at the Top */}
-  <div className="title">SIMPLIFY YOUR LOGISTICS NOW WITH OUR TRUSTED CLEARING SERVICES!</div>
+  <h2 className="title">SIMPLIFY YOUR LOGISTICS NOW WITH OUR TRUSTED CLEARING SERVICES!</h2>
 
   {/* Contact Information */}
   <div className="text-content">
@@ -41,6 +42,7 @@ const NamibiaAgent = () => {
       <p><span>Address:</span> CORNER OFFICE, SAM NUYOMA STREET, OPPOSITE KFC, WALVIS Bay, NAMIBIA.</p>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -64,8 +66,10 @@ const NamibiaAgent = () => {
   </div>
 </div>
 
-      {/* Why Choose Our Agent in Namibia Section */}
+      <div>
+           {/* Why Choose Our Agent in Namibia Section */}
       <div className="why-choose-agent-section">
+        
         <div className="why-choose-agent-text">
           <h3>RELIABLE CLEARING AND IMPORT SERVICES IN WALVIS BAY</h3>
           <p>
@@ -77,6 +81,8 @@ const NamibiaAgent = () => {
           </p>
         </div>
       </div>
+      </div>
+     
 
 {/* Comprehensive Services Section */}
 <div className="comprehensive-services-section">

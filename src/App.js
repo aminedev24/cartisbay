@@ -94,7 +94,7 @@ function App() {
           <Route path="/profile/:section?" element={<ProfilePage />} />
           <Route path='/shipping' element={<Shipping />}></Route>
           <Route path = '/invoice' element = {<ProformaInvoiceForm />}></Route>
-          <Route path= '/local-services/namibiaAgent' element ={<NamibiaAgent />}></Route>
+          <Route path= '/local-services/namibia' element ={<NamibiaAgent />}></Route>
           </Routes>
       <Footer />
     </Router>

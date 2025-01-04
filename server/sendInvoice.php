@@ -39,7 +39,7 @@ $customerName = $data['customerFullName'] ?? null;
 $depositAmount = $data['depositAmount'] ?? null; // This will contain the formatted value like "3,000 USD"
 $depositDescription = $data['depositDescription'] ?? null;
 $depositPurpose = $data['depositPurpose'] ?? null; // New deposit purpose field
-
+$serialNumber = $data['serialNumber'] ?? null; 
 // Insert invoice data into the database using mysqli
 try {
     $stmt = $conn->prepare("INSERT INTO invoices (invoice_number, customer_name, email, deposit_amount, description, deposit_purpose) 

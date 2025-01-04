@@ -115,7 +115,7 @@
     align-items: center;
 }
 
-.phone-number-group input {
+.register-container .phone-number-group input {
     width: 100%;
     padding: 12px 15px;
     border: 2px solid #e0e0e0;
@@ -131,6 +131,10 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+}
+
+.invoice-wrapper .phone-number-group .phone-code {
+    top: unset;
 }
 
 .phone-number-group input.shrink {
