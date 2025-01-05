@@ -258,7 +258,7 @@ const handleSendEmail = async () => {
       credentials: "include",
     });
 
-    if (!response.ok) throw new Error("Failed to send email");
+    if (!response.ok) throw new Error("Failed to send invoice");
     const data = await response.json();
     showAlert("Invoice sent successfully!");
 
@@ -267,8 +267,8 @@ const handleSendEmail = async () => {
       window.location.reload();
     }, 3000);
   } catch (error) {
-    console.error("Error sending email:", error);
-    showAlert("An error occurred while submitting the email.");
+    console.error("Error sending invoice:", error);
+    showAlert("An error occurred while submitting the invoice.");
   } finally {
     setIsGeneratingPdf(false);
   }

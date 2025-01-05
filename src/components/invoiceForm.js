@@ -37,6 +37,8 @@ const ProformaInvoiceForm = () => {
     const [isLoading, setIsLoading] = useState(false); // For handling loading state
     const [error, setError] = useState(null); // For handling errors
     const location = useLocation();
+    const [isDataLoaded, setIsDataLoaded] = useState(false); // New state for tracking data load status
+
 
     // Function to get the next invoice number from the backend
   const fetchInvoiceNumber = async () => {
@@ -63,7 +65,7 @@ const ProformaInvoiceForm = () => {
     fetchInvoiceNumber();
   }, []);
 
-  console.log(invoiceCounter)
+  //console.log(invoiceCounter)
 
 
     const purposeDescriptions = {
@@ -120,6 +122,7 @@ const ProformaInvoiceForm = () => {
                     email: email,
                     address: address,
                 }));
+
     
                 // Update phone code if country is valid
                 if (country) {
@@ -143,6 +146,8 @@ const ProformaInvoiceForm = () => {
                         setPhoneCode(''); // Clear phone code if no match
                     }
                 }
+                setIsDataLoaded(true); // Mark data as loaded
+
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -403,6 +408,8 @@ const ProformaInvoiceForm = () => {
                       onChange={handleChange}
                       placeholder="Phone number"
                       required
+                      readOnly={isDataLoaded} // Set as read-only if data is loaded
+
                     />
                   </div>
                 </div>
@@ -434,6 +441,7 @@ const ProformaInvoiceForm = () => {
                     onChange={handleChange}
                     placeholder="E-mail"
                     required
+                    readOnly={isDataLoaded} // Set as read-only if data is loaded
                   />
                 </div>
               </div>

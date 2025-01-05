@@ -27,7 +27,7 @@ import ProfilePage from './components/profile2';
 import Shipping from './components/shipping';
 import ProformaInvoiceForm from './components/invoiceForm';
 import NamibiaAgent from './components/namibiaAgent';
-
+import CongoAgent from './components/congoAgent';
 /* src/index.css */
 
 
@@ -95,6 +95,7 @@ function App() {
           <Route path='/shipping' element={<Shipping />}></Route>
           <Route path = '/invoice' element = {<ProformaInvoiceForm />}></Route>
           <Route path= '/local-services/namibia' element ={<NamibiaAgent />}></Route>
+          <Route path= '/local-services/congo' element ={<CongoAgent />}></Route>
           </Routes>
       <Footer />
     </Router>
