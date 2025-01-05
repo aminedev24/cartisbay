@@ -6,7 +6,6 @@ import html2canvas from "html2canvas";
 import { PDFDocument } from "pdf-lib";
 import { useUser } from "./userContext"; // Importing the useUser hook to access user data
 import Modal from "./alertModal";
-import { useLocation } from 'react-router-dom';
 
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
@@ -32,13 +31,7 @@ const InvoiceModal = ({ isOpen, onClose, invoiceData, onEdit }) => {
   const [modalType, setModalType] = useState("");  // Could be 'alert', 'confirmation', or 'clear_all'
   const {user} = useUser(); // Accessing user data from the context
 
-  const location = useLocation();
-
-
-
-  useEffect(() => {
-    window.scrollTo(0, 0);  // Scroll to the top whenever the location changes
-  }, [location]);
+ 
 
   if (!isOpen) return null;
 
@@ -118,80 +111,73 @@ const showAlert = (message, type = "alert") => {
     return new Blob([compressedPdf], { type: "application/pdf" });
   };
 
-const generatePdf = async () => {
-  const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
-  const buttons = modalContent.querySelectorAll(".no-print");
-
-  // Store original styles
-  const originalStyles = { ...modalContent.style };
-
-  // Adjust modal content for rendering
-  modalContent.style.position = "absolute";
-  modalContent.style.width = `${modalContent.scrollWidth}px`;
-  modalContent.style.maxWidth = "none";
-  modalContent.style.padding = "20px";
-  modalContent.style.overflow = "visible";
-  modalContent.style.maxHeight = "none";
-  modalContent.style.height = `${modalContent.scrollHeight}px`;
-  void modalContent.offsetHeight; // Trigger reflow
-
-  // Hide buttons
-  buttons.forEach((button) => (button.style.display = "none"));
-
-  // Ensure fonts and images are fully loaded
-  await document.fonts.ready.catch(() => console.error("Font loading failed"));
-  const images = modalContent.querySelectorAll("img");
-  await Promise.all(
-    Array.from(images).map((img) =>
-      new Promise((resolve) => {
-        if (img.complete) resolve();
-        else {
-          img.onload = resolve;
-          img.onerror = () => {
-            console.warn(`Image failed to load: ${img.src}`);
-            resolve();
-          };
-        }
-      })
-    )
-  );
-
-  // Reduce scale for mobile devices
-  const scaleFactor = window.innerWidth < 768 ? 1 : Math.min(2, 16000 / modalContent.scrollHeight);
-
-  // Generate canvas
-  const canvas = await html2canvas(modalContent, {
-    scale: scaleFactor,
-    useCORS: true,
-    backgroundColor: "#FFFFFF",
-    width: modalContent.scrollWidth,
-    height: modalContent.scrollHeight,
-  });
-
-  // Restore original styles
-  Object.assign(modalContent.style, originalStyles);
-  buttons.forEach((button) => (button.style.display = ""));
-
-  // Calculate dimensions in mm for PDF
-  const pxToMm = 0.264583; // 1px = 0.264583mm
-  const pdfWidth = Math.min(canvas.width * pxToMm, 210); // Cap at A4 width
-  const pdfHeight = Math.min(canvas.height * pxToMm, 297); // Cap at A4 height
-
-  // Create PDF
-  const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight], true);
-  pdf.addImage(canvas.toDataURL("image/png", 1.0), "PNG", 0, 0, pdfWidth, pdfHeight);
-
-  // Compress PDF
-  let compressedPdfBlob;
-  try {
-    compressedPdfBlob = await compressPdf(pdf.output("blob"));
-  } catch (err) {
-    console.error("PDF compression failed:", err);
-    compressedPdfBlob = pdf.output("blob"); // Use uncompressed as fallback
-  }
-
-  return compressedPdfBlob;
-};
+  const generatePdf = async () => {
+    const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
+    const buttons = modalContent.querySelectorAll(".no-print");
+  
+    // Store original styles
+    const originalStyles = { ...modalContent.style };
+  
+    // Adjust modal content for rendering
+    modalContent.style.position = "absolute";
+    modalContent.style.width = `${modalContent.scrollWidth}px`;
+    modalContent.style.maxWidth = "none";
+    modalContent.style.padding = "20px";
+    modalContent.style.overflow = "visible";
+    modalContent.style.maxHeight = "none";
+    modalContent.style.height = `${modalContent.scrollHeight}px`;
+    void modalContent.offsetHeight; // Trigger reflow
+  
+    // Hide buttons
+    buttons.forEach((button) => (button.style.display = "none"));
+  
+    // Ensure fonts and images are fully loaded
+    await document.fonts.ready.catch(() => console.error("Font loading failed"));
+    const images = modalContent.querySelectorAll("img");
+    await Promise.all(
+      Array.from(images).map((img) =>
+        new Promise((resolve) => {
+          if (img.complete) resolve();
+          else {
+            img.onload = resolve;
+            img.onerror = () => {
+              console.warn(`Image failed to load: ${img.src}`);
+              resolve();
+            };
+          }
+        })
+      )
+    );
+  
+    // Use a higher scale factor for better quality
+    const scaleFactor = Math.min(2, 16000 / modalContent.scrollHeight);
+  
+    // Generate canvas with higher quality
+    const canvas = await html2canvas(modalContent, {
+      scale: scaleFactor,
+      useCORS: true,
+      backgroundColor: "#FFFFFF",
+      width: modalContent.scrollWidth,
+      height: modalContent.scrollHeight,
+    });
+  
+    // Restore original styles
+    Object.assign(modalContent.style, originalStyles);
+    buttons.forEach((button) => (button.style.display = ""));
+  
+    // Calculate dimensions in mm for PDF
+    const pxToMm = 0.264583;
+    const pdfWidth = Math.min(canvas.width * pxToMm, 210);
+    const pdfHeight = Math.min(canvas.height * pxToMm, 297);
+  
+    // Create PDF without aggressive compression
+    const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight], true);
+    pdf.addImage(canvas.toDataURL("image/png", 1.0), "PNG", 0, 0, pdfWidth, pdfHeight); // Use maximum quality (1.0)
+  
+    // Avoid additional compression steps
+    return pdf.output("blob"); // Directly return the uncompressed PDF blob
+  };
+  
 
 
 const handleSendEmail = async () => {

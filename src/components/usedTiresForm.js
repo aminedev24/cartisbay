@@ -270,12 +270,12 @@ const OrderForm = ({
 
   //console.log(user)
   const addOrder = async (newOrder) => {
+    // Function to handle order addition when the user is not logged in
     if (!user || !user.uid) {
-      // Simulate the addition of the order locally for UI feedback
       const tempId = "TEMP_ID_" + Date.now(); // Generate a unique temporary ID
       const tempOrder = { ...newOrder, id: tempId };
-  
-      setOrders((prevOrders) => [...prevOrders, tempOrder]);
+
+      setOrders((prevOrders) => (Array.isArray(prevOrders) ? [...prevOrders, tempOrder] : [tempOrder]));
       setMessage("Order added locally but not saved. Please log in to save.");
       return;
     }

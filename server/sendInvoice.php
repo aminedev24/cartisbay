@@ -40,6 +40,23 @@ $depositAmount = $data['depositAmount'] ?? null; // This will contain the format
 $depositDescription = $data['depositDescription'] ?? null;
 $depositPurpose = $data['depositPurpose'] ?? null; // New deposit purpose field
 $serialNumber = $data['serialNumber'] ?? null; 
+
+// Get the user's IP address
+$userIp = $_SERVER['REMOTE_ADDR'];
+
+// Fetch the region from a geolocation API (ipinfo.io does not require an API key for basic requests)
+$region = '';
+try {
+    // Using IPInfo API to get region information (no API key required for basic use)
+    $ipInfoResponse = file_get_contents("http://ipinfo.io/{$userIp}/json");
+    if ($ipInfoResponse) {
+        $ipInfo = json_decode($ipInfoResponse, true);
+        $region = $ipInfo['region'] ?? 'Unknown region';
+    }
+} catch (Exception $e) {
+    $region = 'Unable to retrieve region';
+}
+
 // Insert invoice data into the database using mysqli
 try {
     $stmt = $conn->prepare("INSERT INTO invoices (invoice_number, customer_name, email, deposit_amount, description, deposit_purpose) 
@@ -82,13 +99,16 @@ try {
     $mail->addAddress($to); // Primary user email
     $mail->addBCC($bcc); // BCC for the additional recipient
 
+    // Add the user's IP and region as part of the email body
+    $bodyWithIpInfo = $body . "<br><br><strong>User IP:</strong> " . $userIp . "<br><strong>Region:</strong> " . $region;
+
     // Attachments
     $mail->addStringAttachment($pdfData, 'Invoice.pdf');
 
     // Content
     $mail->isHTML(true); // Set email format to HTML
     $mail->Subject = $subject;
-    $mail->Body = $body;
+    $mail->Body = $bodyWithIpInfo; // Add IP and region information to the email body
 
     // Send the email
     $mail->send();
