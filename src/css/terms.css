@@ -23,6 +23,7 @@
   
   .terms-container p, .asf p , .whyChoose p ,.dismantling p , .overview p , .envirement-policy p , .security-notice p, .paypal p, .howtopay p , .aboutusedtires p {
     margin-bottom: 10px;
+    padding: 0 20px;
   }
   
   .terms-container ul, .asf ul, .whyChoose ul , .security-notice ul , .paypal ul , .howtopay ul , .aboutusedtires ul{
