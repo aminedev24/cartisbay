@@ -506,12 +506,12 @@ const ProformaInvoiceForm = () => {
             </div>
 
             <div className="input-group">
-             <label htmlFor='bankNote'>Bank Note <span className="required-star">*</span></label>
+             <label htmlFor='bankNote'>Note for bank <span className="required-star">*</span></label>
                 <textarea
                     name="bankNote"
                     value={formData.bankNote || ''} // Add the bankNote field to your state
                     onChange={handleChange} // Ensure handleChange updates the value in state
-                    placeholder="Enter bank note"
+                    placeholder="Enter note for bank"
                     rows="4"
                     required
                 ></textarea>

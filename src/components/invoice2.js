@@ -159,6 +159,10 @@ const showAlert = (message, type = "alert") => {
       backgroundColor: "#FFFFFF",
       width: modalContent.scrollWidth,
       height: modalContent.scrollHeight,
+      allowTaint: true,
+      removeContainer: true,
+      imageTimeout: 15000,
+      logging: true,
     });
   
     // Restore original styles
@@ -177,6 +181,7 @@ const showAlert = (message, type = "alert") => {
     // Avoid additional compression steps
     return pdf.output("blob"); // Directly return the uncompressed PDF blob
   };
+  
   
 
 
@@ -210,7 +215,7 @@ const handleSendEmail = async () => {
       <div style="font-family: Arial, sans-serif; color: #333;">
           <h2 style="color: #004080;">Dear ${invoiceData.customerFullName},</h2>
           <p>Thank you for placing your order with <strong>Artisbay Inc.</strong></p>
-          <p>This is an automated email to provide you with the deposit invoice for your recent transaction. Below are the details of the invoice:</p>
+          <p>This is an automated email to provide you with the deposit invoice for your orders Below are the details of the invoice:</p>
           <h3 style="color: #004080;">Invoice Details:</h3>
           <ul>
               <li><strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}</li>
@@ -222,7 +227,7 @@ const handleSendEmail = async () => {
               <li><strong>Serial Number:</strong> ${invoiceData.serialNumber}</li>
           </ul>
           <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
-          <p>For any questions or concerns, feel free to contact us at: <a href="mailto:sales@artisbay.com">contact@artisbay.com</a>.</p>
+          <p>For any questions or concerns, feel free to contact us at: <a href="mailto:sales@artisbay.com">sales@artisbay.com</a>.</p>
           <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
           <p style="color: #004080;"><strong>Best regards,</strong><br>Artisbay Inc.</p>
       </div>
