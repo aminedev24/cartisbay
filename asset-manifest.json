@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.2971f45e.css",
-    "main.js": "/cartisbay/static/js/main.022b973a.js",
+    "main.css": "/cartisbay/static/css/main.bafba41e.css",
+    "main.js": "/cartisbay/static/js/main.1e09dcb0.js",
     "static/js/213.809af65b.chunk.js": "/cartisbay/static/js/213.809af65b.chunk.js",
     "static/js/732.5a05b03f.chunk.js": "/cartisbay/static/js/732.5a05b03f.chunk.js",
     "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
@@ -9,11 +9,9 @@
     "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
     "static/media/used-tires-banner.jpeg": "/cartisbay/static/media/used-tires-banner.b4de323e8b0ae1a20a96.jpeg",
     "static/media/Help.jpeg": "/cartisbay/static/media/Help.8b9170007596b4f409f3.jpeg",
-    "static/media/namibiatransparent.png": "/cartisbay/static/media/namibiatransparent.ac69def64d3d9ef69f3e.png",
     "static/media/car-makes-icons.svg?gtc92f": "/cartisbay/static/media/car-makes-icons.5887cab9f6dcec54f2f5.svg",
     "static/media/fa-solid-900.ttf": "/cartisbay/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
     "static/media/custumersupportcopy.JPEG": "/cartisbay/static/media/custumersupportcopy.0a69171f9c039e13995c.JPEG",
-    "static/media/simplifyLogisticstransparent.png": "/cartisbay/static/media/simplifyLogisticstransparent.59a336f6f1b3f6f50674.png",
     "static/media/fa-brands-400.ttf": "/cartisbay/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
     "static/media/fa-solid-900.woff2": "/cartisbay/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
     "static/media/underconstructionstamp.jpeg": "/cartisbay/static/media/underconstructionstamp.6158dc6c2fc87ba523c3.jpeg",
@@ -34,14 +32,14 @@
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.2971f45e.css.map": "/cartisbay/static/css/main.2971f45e.css.map",
-    "main.022b973a.js.map": "/cartisbay/static/js/main.022b973a.js.map",
+    "main.bafba41e.css.map": "/cartisbay/static/css/main.bafba41e.css.map",
+    "main.1e09dcb0.js.map": "/cartisbay/static/js/main.1e09dcb0.js.map",
     "213.809af65b.chunk.js.map": "/cartisbay/static/js/213.809af65b.chunk.js.map",
     "732.5a05b03f.chunk.js.map": "/cartisbay/static/js/732.5a05b03f.chunk.js.map",
     "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2971f45e.css",
-    "static/js/main.022b973a.js"
+    "static/css/main.bafba41e.css",
+    "static/js/main.1e09dcb0.js"
   ]
 }
