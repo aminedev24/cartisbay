@@ -135,18 +135,22 @@ const showAlert = (message, type = "alert") => {
     await document.fonts.ready.catch(() => console.error("Font loading failed"));
     const images = modalContent.querySelectorAll("img");
     await Promise.all(
-      Array.from(images).map((img) =>
-        new Promise((resolve) => {
-          if (img.complete) resolve();
-          else {
-            img.onload = resolve;
-            img.onerror = () => {
-              console.warn(`Image failed to load: ${img.src}`);
-              resolve();
-            };
-          }
-        })
-      )
+      Array.from(images).map(async (img) => {
+        if (!img.complete) {
+          img.src += `?t=${Date.now()}`;
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        return new Promise((resolve) => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.toBlob(blob => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(blob);
+          });
+          img.onload = () => ctx.drawImage(img, 0, 0);
+        });
+      })
     );
   
     // Use a higher scale factor for better quality
@@ -181,6 +185,7 @@ const showAlert = (message, type = "alert") => {
     // Avoid additional compression steps
     return pdf.output("blob"); // Directly return the uncompressed PDF blob
   };
+  
   
   
 
