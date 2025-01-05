@@ -20,7 +20,7 @@ import PrivacyPolicy from './privacy';
 import SellInArtisbay from './sellinartisbay';
 import BankInformation from './bankInfo';
 import FAQComponent from './faq';
-
+import AutomatedInvoice from './automatedInvoice';
 // Define the topics
 const topics = {
   help: [
@@ -29,6 +29,7 @@ const topics = {
     { name: "Company Profile", component: <CompanyProfile/>, image : `${process.env.PUBLIC_URL}/images/companyprofile.png`},
     { name: "Bank Information", content: <BankInformation/>, image: `${process.env.PUBLIC_URL}/images/bankinfo.png`},
     { name: "F&Q", content: <FAQComponent/>, image: `${process.env.PUBLIC_URL}/images/FAQ.png`},
+    { name: "Automated Invoice", content: <AutomatedInvoice/>, image: `${process.env.PUBLIC_URL}/images/invoicegenerator.png`},
 
     { name: "Why Artisbay Inc.", content: <ArtisbayInfo />, image: `${process.env.PUBLIC_URL}/images/whychooseusrecent.jpeg` },
     { name: "sell on artisbay Inc.", component: <SellInArtisbay />, image:`${process.env.PUBLIC_URL}/images/sellonab.png` },

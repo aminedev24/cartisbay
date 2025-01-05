@@ -78,7 +78,7 @@ const CongoAgent = () => {
           <li>Multi-Devises : Générez des factures dans la devise de votre choix pour faciliter vos paiements internationaux.</li>
           <li>Descriptions Claires pour les Banques : Ajustez les descriptions pour répondre aux exigences bancaires, garantissant un traitement fluide de vos paiements.</li>
         </ul>
-        <a href="#invoice-generator" className="invoice-link">
+        <a href="#invoice" className="invoice-link">
           Accédez au Générateur de Factures Automatisées
         </a>
       </div>

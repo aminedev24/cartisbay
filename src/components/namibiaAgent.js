@@ -7,7 +7,7 @@ const NamibiaAgent = () => {
       {/* Banner Section */}
       <div className="banner">
         <img
-          src={`${process.env.PUBLIC_URL}/images/localServices/namibiaBanner.png`}
+          src={`${process.env.PUBLIC_URL}/images/localServices/namibiabanner.png`}
           alt="Simplify Logistics"
           className="banner-image"
         />
@@ -25,7 +25,7 @@ const NamibiaAgent = () => {
 
       <div className="introduction-banner">
           <img
-            src={`${process.env.PUBLIC_URL}/images/localServices/simplifyLogistics.png`}
+            src={`${process.env.PUBLIC_URL}/images/localServices/simplifylogistics.png`}
             className="banner"
             alt="Background"
           />
