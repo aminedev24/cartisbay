@@ -67,12 +67,12 @@
     }
 
     @media (min-width: 768px) {
-        .services {
+       .congo-agent-container .services {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .service {
+       .congo-agent-container .service {
             width: 48%;
         }
     }
@@ -128,7 +128,7 @@
   }
   
   /* Contact Section */
-  .contact-section {
+  .congo-agent-container .contact-section {
     text-align: center;
     margin-bottom: 60px;
   }

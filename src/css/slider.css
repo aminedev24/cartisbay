@@ -38,11 +38,18 @@ html, body {
 
 /* Slick slider image styles */
 .slick-slide img {
-    width: 100%; /* Make slider images responsive */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: 300px;
 }
+
 
 /* Optional: Adjust position of slider dots */
 .slick-dots {
     bottom: -30px; /* Adjust the position of the dots */
+}
+
+@media screen and (min-width:1400px) {
+    .slick-slide img {
+        height: auto;
+    }
 }

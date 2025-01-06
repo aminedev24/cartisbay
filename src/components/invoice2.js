@@ -6,6 +6,13 @@ import html2canvas from "html2canvas";
 import { PDFDocument } from "pdf-lib";
 import { useUser } from "./userContext"; // Importing the useUser hook to access user data
 import Modal from "./alertModal";
+import GeneratePdfButton from "./invoicePdf";
+import MyPdfDocument from './invoicePdf'; // Ensure the correct path to your component
+import { pdf } from '@react-pdf/renderer';
+
+import { generatePdfBlob } from "./invoicePdf"; // Import the generatePdfBlob function
+
+
 
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
@@ -104,92 +111,6 @@ const showAlert = (message, type = "alert") => {
 };
 
 
-  // Define the compressPdf function
-  const compressPdf = async (pdfBlob) => {
-    const pdfDoc = await PDFDocument.load(await pdfBlob.arrayBuffer());
-    const compressedPdf = await pdfDoc.save({ useObjectStreams: true }); // Enable compression
-    return new Blob([compressedPdf], { type: "application/pdf" });
-  };
-
-  const generatePdf = async () => {
-    const modalContent = document.querySelector(".invoice-modal-overlay .modal-content");
-    const buttons = modalContent.querySelectorAll(".no-print");
-  
-    // Store original styles
-    const originalStyles = { ...modalContent.style };
-  
-    // Adjust modal content for rendering
-    modalContent.style.position = "absolute";
-    modalContent.style.width = `${modalContent.scrollWidth}px`;
-    modalContent.style.maxWidth = "none";
-    modalContent.style.padding = "20px";
-    modalContent.style.overflow = "visible";
-    modalContent.style.maxHeight = "none";
-    modalContent.style.height = `${modalContent.scrollHeight}px`;
-    void modalContent.offsetHeight; // Trigger reflow
-  
-    // Hide buttons
-    buttons.forEach((button) => (button.style.display = "none"));
-  
-    // Ensure fonts and images are fully loaded
-    await document.fonts.ready.catch(() => console.error("Font loading failed"));
-    const images = modalContent.querySelectorAll("img");
-    await Promise.all(
-      Array.from(images).map(async (img) => {
-        if (!img.complete) {
-          img.src += `?t=${Date.now()}`;
-          await new Promise(resolve => setTimeout(resolve, 100));
-        }
-        return new Promise((resolve) => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          canvas.toBlob(blob => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.readAsDataURL(blob);
-          });
-          img.onload = () => ctx.drawImage(img, 0, 0);
-        });
-      })
-    );
-  
-    // Use a higher scale factor for better quality
-    const scaleFactor = Math.min(2, 16000 / modalContent.scrollHeight);
-  
-    // Generate canvas with higher quality
-    const canvas = await html2canvas(modalContent, {
-      scale: scaleFactor,
-      useCORS: true,
-      backgroundColor: "#FFFFFF",
-      width: modalContent.scrollWidth,
-      height: modalContent.scrollHeight,
-      allowTaint: true,
-      removeContainer: true,
-      imageTimeout: 15000,
-      logging: true,
-    });
-  
-    // Restore original styles
-    Object.assign(modalContent.style, originalStyles);
-    buttons.forEach((button) => (button.style.display = ""));
-  
-    // Calculate dimensions in mm for PDF
-    const pxToMm = 0.264583;
-    const pdfWidth = Math.min(canvas.width * pxToMm, 210);
-    const pdfHeight = Math.min(canvas.height * pxToMm, 297);
-  
-    // Create PDF without aggressive compression
-    const pdf = new jsPDF("p", "mm", [pdfWidth, pdfHeight], true);
-    pdf.addImage(canvas.toDataURL("image/png", 1.0), "PNG", 0, 0, pdfWidth, pdfHeight); // Use maximum quality (1.0)
-  
-    // Avoid additional compression steps
-    return pdf.output("blob"); // Directly return the uncompressed PDF blob
-  };
-  
-  
-  
-
-
 const handleSendEmail = async () => {
   if (!user) {
     showAlert("You must be logged in to submit the invoice.");
@@ -199,23 +120,28 @@ const handleSendEmail = async () => {
   try {
     setIsGeneratingPdf(true);
 
-    // Generate and compress the PDF
-    const pdfBlob = await generatePdf();
+    // Step 1: Generate the PDF as a Blob
+    console.log("Generating PDF...");
+    const pdfBlob = await generatePdfBlob(invoiceData);
     console.log(`PDF size: ${(pdfBlob.size / 1024 / 1024).toFixed(2)} MB`);
-    const bccRecipient = "contact@artisbay.com"; // Replace with the BCC recipient's email
 
-    // Convert PDF Blob to Base64 using a Promise-based approach
+    if (pdfBlob.size === 0) {
+      throw new Error("Generated PDF Blob is empty.");
+    }
+
+    // Step 2: Convert PDF Blob to Base64
     const convertBlobToBase64 = (blob) =>
       new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result.split(",")[1]);
+        reader.onloadend = () => resolve(reader.result.split(",")[1]); // Get Base64 string without the "data:" prefix
         reader.onerror = reject;
         reader.readAsDataURL(blob);
       });
 
     const base64Pdf = await convertBlobToBase64(pdfBlob);
+    console.log("PDF converted to Base64 successfully.");
 
-    // Construct email body
+    // Step 3: Construct email body (HTML format)
     const emailBody = `
       <div style="font-family: Arial, sans-serif; color: #333;">
           <h2 style="color: #004080;">Dear ${invoiceData.customerFullName},</h2>
@@ -228,7 +154,7 @@ const handleSendEmail = async () => {
               <li><strong>Deposit Description:</strong> ${invoiceData.depositDescription}</li>
               <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
               <li><strong>Due Date:</strong> Due immediately</li>
-              <li><strong>Expiry Date:</strong> ${expiryDate}</li>
+              <li><strong>Expiry Date:</strong> ${invoiceData.expiryDate}</li>
               <li><strong>Serial Number:</strong> ${invoiceData.serialNumber}</li>
           </ul>
           <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
@@ -238,13 +164,13 @@ const handleSendEmail = async () => {
       </div>
     `;
 
-    // Send the invoice data along with the PDF attachment
+    // Step 4: Send the email with the PDF attachment
     const response = await fetch(`${apiUrl}/sendInvoice.php`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         to: invoiceData.customerEmail,
-        bcc: bccRecipient,
+        bcc: "contact@artisbay.com",
         subject: `Automated Deposit Invoice from Artisbay Inc.`,
         body: emailBody,
         attachment: base64Pdf,
@@ -253,12 +179,13 @@ const handleSendEmail = async () => {
         depositAmount: invoiceData.depositAmount,
         depositPurpose: invoiceData.depositPurpose,
         depositDescription: invoiceData.depositDescription,
-        serialNumber: invoiceData.serialNumber
+        serialNumber: invoiceData.serialNumber,
       }),
       credentials: "include",
     });
 
     if (!response.ok) throw new Error("Failed to send invoice");
+
     const data = await response.json();
     showAlert("Invoice sent successfully!");
 
@@ -273,7 +200,6 @@ const handleSendEmail = async () => {
     setIsGeneratingPdf(false);
   }
 };
-
 
   const Spinner = () => (
     <div className="spinner">
@@ -347,7 +273,7 @@ const handleSendEmail = async () => {
                   <strong>Invoice:</strong> {invoiceData.invoiceNumber}
                 </p>
                 <p>
-                  <strong>Expiry Date:</strong> {expiryDate}
+                  <strong>Expiry Date:</strong> {invoiceData.expiryDate}
                 </p>
                 <p>
                   <strong>Purpose:</strong> {invoiceData.depositPurpose}
@@ -517,8 +443,9 @@ const handleSendEmail = async () => {
             {/*
                         <button className='no-print' onClick={handlePrint}>Print</button>
                         <button className='no-print' onClick={handleSaveAsPDF}>Save as PDF</button>
+                        <GeneratePdfButton invoiceData={invoiceData} />
                         */}
-
+      
             <button
               className="no-print"
               onClick={handleSendEmail}

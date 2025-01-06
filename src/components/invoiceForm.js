@@ -4,6 +4,22 @@ import CountryList from './countryList';
 import '../css/invoice.css';
 import { useLocation } from 'react-router-dom';
 
+// Function to calculate expiry date (5 business days later)
+const calculateExpiryDate = (invoiceDate) => {
+  const date = new Date(invoiceDate);
+  let businessDaysAdded = 0;
+
+  while (businessDaysAdded < 5) {
+    date.setDate(date.getDate() + 1);
+    // Check if the day is a weekday (Monday to Friday)
+    if (date.getDay() !== 0 && date.getDay() !== 6) {
+      businessDaysAdded++;
+    }
+  }
+
+  return date.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+};
+
 const ProformaInvoiceForm = () => {
     // Predefined Bank Details
     const bankDetails = {
@@ -26,7 +42,8 @@ const ProformaInvoiceForm = () => {
         depositCurrency: 'USD',
         depositDescription: '',
         depositPurpose: '',
-        bankNote: ' Car details, including chassis numbers, will be provided by the remitter upon completion of the car purchase.'
+        expiryDate: '',
+        bankNote: 'Car details, including chassis numbers, will be provided by the remitter upon completion of the car purchase.'
     });
 
     const [phoneCode, setPhoneCode] = useState('');
@@ -220,7 +237,9 @@ const ProformaInvoiceForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-    
+        const invoiceDate = new Date().toISOString().split('T')[0];
+        const expiryDate = calculateExpiryDate(invoiceDate);
+
         try {
             // Fetch the invoice number before proceeding
             await fetchInvoiceNumber();
@@ -249,13 +268,14 @@ const ProformaInvoiceForm = () => {
                     customerEmail: formData.email,
                     country: formData.country, // Include the country field
                     invoiceNumber: `AB-${invoiceCounter}`, // Use updated invoiceCounter
-                    invoiceDate: new Date().toISOString().split('T')[0],
+                    invoiceDate:invoiceDate,
                     depositAmount: formattedDepositAmount, // Store formatted deposit amount
                     depositCurrency: formData.depositCurrency,
                     depositDescription: formData.depositDescription,
                     depositPurpose: formData.depositPurpose,
                     bankNote: formData.bankNote,
                     serialNumber: generateSerialNumber(),
+                    expiryDate: expiryDate,
                     ...bankDetails,
                 };
     

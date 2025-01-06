@@ -192,7 +192,7 @@ const links2 = [
               className="ad-banner"
               alt="sell banner"
             />
-            <Link to="/help?topic=sell%20on%20artisbay">
+            <Link to="/help?topic=sell%20on%20artisbay%20Inc.">
               <button className="sell-btn">Read more</button>
             </Link>
         </div>

@@ -1,14 +1,3 @@
-/* General Styles */
-* {
-  box-sizing: border-box;
-}
-
-
-.namibia-agent-container {
-  color: #333;
-
-}
-
 /* Banner Section */
 .banner {
   width: 100%;
@@ -22,285 +11,141 @@
   display: block;
 }
 
-/* Introduction Section */
-.introduction-section {
-  margin-bottom: 60px;
+.main-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
   text-align: center;
-  background: #fff;
-  padding: 40px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
-.introduction-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #1e3a8a;
-}
-
-.introduction-section p {
-  font-size: 1.1rem;
-  color: #666;
-  line-height: 1.8;
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-/* Why Choose Our Namibia Agent Section */
-/* Why Choose Our Services Section */
-.why-choose-section {
+.sub-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
   text-align: center;
-  margin-bottom: 60px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
-
-.why-choose-section h2 {
-  font-size: 2.4rem;
-  margin-bottom: 30px;
-  color: #1e3a8a;
-}
-
-.why-choose-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.intro-content {
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
-  place-items: center;
+  margin: 40px 0;
 }
-
-.why-choose-item {
-  background: #fff;
-  padding: 20px;
-  width: 350px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.intro-content p {
+  font-size: 30px;
+  color: #333;
+  line-height: 1.6;
+  padding: 80px 20px;
+  border: solid;
+  margin: 1px 0;
 }
-
-.why-choose-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.why-choose-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #1e3a8a;
-}
-
-.why-choose-item p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-
-
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.intro-content img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1; /* Place the background image behind other content */
+  height: auto;
+  max-width: 450px;
+  margin-left: 20px;
 }
-
-.content-wrapper {
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 100%;
 }
-
-.why-choose-agent-text {
+.nav a i {
+  margin-right: 5px;
+}
+.section-title {
+  background-color: #003366;
+  color: #fff;
+  padding: 10px;
   text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.namibia-agent-container .services {
+  padding: 40px 30px;
+  margin: 0;
+}
+.services h3 {
+  font-size: 20px;
+  font-weight: bold;
   color: #333;
-  padding: 20px;
-  max-width: 40%;
-}
-
-.person-image {
-  height: 100%;
-  width: auto;
-  flex-shrink: 0;
-  margin-left: 20px; /* Space between text and image */
-}
-
-.why-choose-agent-text h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #1e3a8a;
-}
-
-.why-choose-agent-text h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.why-choose-agent-text p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* Comprehensive Services Section */
-.comprehensive-services-section {
-  padding: 60px 30px;
-  text-align: center;
-
-}
-
-.services-header {
-  margin-bottom: 40px;
-}
-
-.services-header h2 {
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #1e3a8a;
-  margin-bottom: 15px;
-}
-
-.services-header p {
-  font-size: 18px;
-  color: #555;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto 20px;
-}
-
-.services-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.service-box {
-  background-color: #ffffff;
-  padding: 25px;
-  width: calc(50% - 40px);
-  max-width: 320px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-
-.service-box:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  transform: translateY(-8px);
-  background-color: #fafafa;
-}
-
-.service-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
-  color: #007bff;
-}
-
-.service-box h3 {
-  font-size: 22px;
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 12px;
-  color: #1e3a8a;
-}
-
-.service-box p {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.8;
-}
-
-
-
-
-/* Contact Section */
-.contact-section {
-  text-align: center;
-  display: flex;
-  margin-bottom: 60px;
-  flex-direction: column;
-}
-
-.contact-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  color: #1e3a8a;
-}
- 
-.namibia-agent-container .contact-info {
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.namibia-agent-container .contact-info:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.namibia-agent-container .contact-info p {
-  font-size: 1rem;
-  color: #666;
   margin: 10px 0;
-  line-height: 1.5;
 }
-
-.namibia-agent-container .contact-info a {
-  color: #1da1f2;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
+.services p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  padding: 0 20px;
 }
-
-.namibia-agent-container .contact-info a:hover {
-  color: #1e3a8a;
-}
-
-.introduction-section , .why-choose-section , .comprehensive-services , .introduction-section {
+.contact {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  margin: 40px 0;
 }
-
-
-/* Title Styling */
-.introduction-banner .title {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  position: absolute;
-  top: -2%;
-  left: 12%;
-  text-decoration: underline;
-  max-width: 55%;
-}
-
-
-
-/* Text Content Styling */
-.introduction-banner .text-content {
-  margin-top: 60px;
-  max-width: 50%;
-}
-
-.introduction-banner .text-content p {
-  font-size: 1.1rem;
+.contact p {
+  font-size: 18px;
+  color: #333;
   line-height: 1.6;
 }
-
-/* Styling for the Contact Information */
-.introduction-banner .contact-details {
-  margin-top: 20px;
+.contact img {
+  width: 100%;
+  height: auto;
+  max-width:  450px;
+  margin-left: 20px;
 }
 
-.introduction-banner .contact-details p {
-  margin: 5px 0;
-}
-
-.introduction-banner .contact-details p span {
+.faq {
+  text-align: center;
+  font-size: 24px;
   font-weight: bold;
+  margin: 20px 0;
+}
+
+.why-choose-agent-section , .section-container , .logistics-banner {
+  margin: 40px 0;
+}
+
+.contact-text {
+  border: solid;
+  padding: 30px 45px;
+
+}
+
+@media screen and (min-width:1500px) {
+  .intro-content {
+    padding: 0 !important;
+  }
+}
+
+.package-container {
+  text-align: left;
+  padding: 20px;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.chevrons {
+  display: inline-block;
+  vertical-align: middle;
+}
+.chevrons img {
+  height: 20px;
+}
+.list {
+  margin-top: 10px;
+}
+.list-item {
+  margin-bottom: 10px;
 }
