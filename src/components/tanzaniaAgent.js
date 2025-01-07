@@ -97,7 +97,7 @@ const TanzainaAgent = () => {
       <section id="packages" className="package-section">
         <div className="package-container">
           <div className="title">
-            <span>A Whole Package of Premium Services!</span> 
+            <h3>A Whole Package of Premium Services!</h3> 
             <span className="chevrons">
               <img 
                 alt="Decorative chevrons" 

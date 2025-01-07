@@ -2,6 +2,7 @@ import React from 'react';
 import { pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
 import { StyleSheet, Document, Page, View, Text, Image, Font } from '@react-pdf/renderer';
+import { FaEnvelope, FaGlobe } from "react-icons/fa";
 
 
 // Register Arial font
@@ -15,10 +16,17 @@ Font.register({
 
 // Define styles for the PDF
 const styles = StyleSheet.create({
+    text: {
+      hyphenationCallback: null, // Prevents hyphenation
+      wordBreak: 'break-word', // Ensures words break naturally
+    },
     invoiceContainer: {
-      padding: '5px 20px',
+      padding: '10px',
       fontFamily: 'Roboto',
     },
+    headerText: {
+      fontSize: '12px',
+    },  
     invoiceHeader: {
       display: 'flex',
       flexDirection: 'column',
@@ -42,6 +50,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       paddingBottom: '5px',
       alignItems: 'center', // Ensure vertical alignment
+      width: '100%',
     },
     headerLeft: {
       flex: 2,
@@ -58,14 +67,14 @@ const styles = StyleSheet.create({
     },
     contactInfoText: {
       margin: 0,
-      fontSize: '13px',
+      fontSize: '12px',
       lineHeight: 1.5, // Adjust line height for better readability
       marginBottom: '3px',
     },
     iconParagraph: {
       display: 'flex',
       flexDirection: 'row',
-      fontSize: '13px',
+      fontSize: '12px',
       alignItems: 'center',
     },
     icon: {
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
       display: 'inline-block',
     },
     companyName: {
-      fontSize: '14px',
+      fontSize: '15px',
       fontWeight: 'bold',
       marginBottom: '3px',
     },
@@ -95,21 +104,21 @@ const styles = StyleSheet.create({
       width: '48%',
     },
     right: {
-      width: '48%',
+      width: '45%',
       textAlign: 'right',
     },
     rightImage: {
       position: 'absolute',
       top: 0,
       right: '5%',
-      width: '130px',
+      width: '100px',
     },
     invoiceBankInfo: {
-      marginBottom: '10px',
+      marginBottom: '20px',
     },
     bankInfoText: {
       margin: 0,
-      fontSize: '13px',
+      fontSize: '12px',
       lineHeight: 1.5, // Consistent line height
     },
     important: {
@@ -128,13 +137,13 @@ const styles = StyleSheet.create({
       display: 'flex',
       alignItems: 'center',
       flex: 2,
-      fontSize: '13px',
+      fontSize: '12px',
     },
     invoiceNumber: {
       alignSelf: 'center',
       flex: 3.5,
       fontWeight: 'bold',
-      fontSize: '13px',
+      fontSize: '12px',
     },
     warning: {
       backgroundColor: 'transparent',
@@ -181,7 +190,10 @@ const styles = StyleSheet.create({
       marginBottom: '20px',
     },
     note: {
-      maxWidth: '50%',
+      maxWidth: '55%',
+      border: '1px solid #000',
+      hyphenationCallback: null, // Prevents hyphenation
+      wordBreak: 'break-word', // Ensures words break naturally
     },
     amountContainer: {
       width: '40%',
@@ -216,6 +228,9 @@ const styles = StyleSheet.create({
     instructions: {
       marginBottom: '10px',
       maxWidth: '55%',
+      border: ' 1px solid #000',
+      hyphenationCallback: null, // Prevents hyphenation
+      wordBreak: 'break-word', // Ensures words break naturally
     },
     instructionsList: {
       margin: 0,
@@ -253,8 +268,8 @@ const styles = StyleSheet.create({
       width: '50px',
     },
     rightText : {
-      marginBottom: '7px',
-      fontSize: '13px'
+      margin: '15px 0',
+      fontSize: '13px',
     }
   });
 
@@ -270,26 +285,26 @@ const MyPdfDocument = ({ invoiceData }) => (
           <View style={styles.headerLeft}>
             <Image style={styles.logo} src={`${process.env.PUBLIC_URL}/images/Signatureforemail.png`} />
             <View style={styles.contactInfo}>
-              <Text style={styles.contactInfoText}>
+              <Text style={styles.headerText}>
                 An online platform for the sale and export of used vehicles and auto parts
               </Text>
-              <Text style={styles.contactInfoText}>Registered in Japan | License No. 7370001051924</Text>
+              <Text style={styles.headerText}>Registered in Japan | License No.7370001051924</Text>
               <Text style={styles.iconParagraph}>
-                <Text style={styles.icon}>✉️</Text>
+                <Text style={styles.icon}><FaEnvelope /></Text>
                 <Text>Email: contact@artisbay.com</Text>
               </Text>
               <Text style={styles.iconParagraph}>
-                <Text style={styles.icon}>🌐</Text>
+                <Text style={styles.icon}><FaGlobe /></Text>
                 <Text>Website: www.artisbay.com</Text>
               </Text>
             </View>
           </View>
           <View style={styles.headerRight}>
             <Text style={styles.companyName}>Artisbay Inc</Text>
-            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Date:</Text> {invoiceData.invoiceDate}</Text>
-            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Invoice:</Text> {invoiceData.invoiceNumber}</Text>
-            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Expiry Date:</Text> {invoiceData.expiryDate}</Text>
-            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Purpose:</Text> {invoiceData.depositPurpose}</Text>
+            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Date:</Text> {invoiceData.invoiceDate}</Text>
+            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Invoice:</Text> {invoiceData.invoiceNumber}</Text>
+            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Expiry Date:</Text> {invoiceData.expiryDate}</Text>
+            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Purpose:</Text> {invoiceData.depositPurpose}</Text>
           </View>
         </View>
       </View>
@@ -374,7 +389,7 @@ const MyPdfDocument = ({ invoiceData }) => (
           <View style={styles.instructionsList}>
             <Text style={styles.instructionsListItem}>•Please ensure all transfer fees are covered by the sender to avoid any shortfall.</Text>
             <Text style={styles.instructionsListItem}>•Include the invoice number in the payment reference for accurate processing.</Text>
-            <Text style={styles.instructionsListItem}>•Funds will be applied upon receipt in full. Kindly notify us once the payment is completed.</Text>
+            <Text style={styles.instructionsListItem}>•Funds will be applied upon receipt in full.Kindly notify us once the payment is completed.</Text>
             <Text style={styles.instructionsListItem}>•Please note that our bank is located in Japan and international transfers may take 3-5 business days to reflect.</Text>
           </View>
         </View>

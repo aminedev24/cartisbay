@@ -87,8 +87,8 @@ const ProformaInvoiceForm = () => {
 
     const purposeDescriptions = {
         "vehicle purchase": "This payment is to order cars from the auctions in Japan",
-        "auto parts order": "This payment is to order auto parts, the details will be available after the purchase",
-        "dismantling": "This is a deposit to order dismantled cars, the cars details and chassis numbers will be available after the purchase",
+        "auto parts order": "This payment is to order auto parts",
+        "dismantling": "This is a deposit to order dismantled cars",
         "tires order": "This is a deposit to order used tires",
     };
 
@@ -278,10 +278,12 @@ const ProformaInvoiceForm = () => {
                     expiryDate: expiryDate,
                     ...bankDetails,
                 };
-    
-                setSubmittedInvoiceData(newInvoiceData);
+                  setTimeout(() => {
+                    setSubmittedInvoiceData(newInvoiceData);
                 
-                setIsModalOpen(true);
+                    setIsModalOpen(true);
+                  }, 3000);
+               
                 //setInvoiceCounter(prevCounter => prevCounter + 1); // Increment the invoice counter
             } else {
                 alert('Please fill in all required fields');
@@ -353,12 +355,13 @@ const ProformaInvoiceForm = () => {
       
             <h1>Proforma Invoice Generation</h1>
 
-               {/* Compatibility Message */}
+               {/* Compatibility Message  */}
             <p className="compatibility-message">
                 <strong>Note:</strong> Our invoice generator form is currently under development and may not function properly on iPhones and iPads at this time. 
                 However, it works just fine on most Android devices, MacBooks, Mac Studios, and Windows computers. 
                 We sincerely apologize for any inconvenience this may cause and appreciate your understanding as we work to improve compatibility.
             </p>
+           
 
             <p className='invoice-prompt'>
               Please fill out the details below to generate a proforma invoice.

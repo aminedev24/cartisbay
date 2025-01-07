@@ -269,6 +269,7 @@
   margin: 0 0 15px; /* Spacing below the heading */
  /* Larger font size for the heading */
   color: #333; /* Darker color for better readability */
+  text-align: center;
 }
 
 .alert-modal-content p {

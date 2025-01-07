@@ -27,9 +27,9 @@ const MediaSlider = () => {
   };
 
   const mediaItems = [
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaslider3.png`, link: '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaslider3.png`, link: '/local-services/namibia' },
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoslider3.png`, link: '#' },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider3.png`, link: '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider3.png`, link: '/local-services/tanzania' }
   ];
 
   return (
@@ -38,7 +38,9 @@ const MediaSlider = () => {
         <Slider {...settings}>
           {mediaItems.map((item, index) => (
             <div key={index}>
-              <img src={item.src} alt={`Slide ${index + 1}`} />
+              <Link to={item.link}>
+                <img src={item.src} alt={`Slide ${index + 1}`} />
+              </Link>
             </div>
           ))}
         </Slider>
