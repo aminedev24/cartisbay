@@ -112,6 +112,8 @@
   font-size: 24px;
   font-weight: bold;
   margin: 20px 0;
+  height: 60vh;
+  overflow-y:auto ;
 }
 
 .why-choose-agent-section , .section-container , .logistics-banner {
