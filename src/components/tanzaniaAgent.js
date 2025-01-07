@@ -1,8 +1,8 @@
 import React from "react";
-import "../css/tanzaniaAgent.css"; // Import the CSS file
+import "../css/namibiaAgent.css"; // Import the CSS file
 import FAQComponent from './faq';
 
-const NamibiaAgent = () => {
+const TanzainaAgent = () => {
 
   const scrollToSection = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
@@ -10,22 +10,22 @@ const NamibiaAgent = () => {
 
   return (
     <div className="namibia-agent-container">
-      <div class="banner">
-        <img className="banner-image" alt="Header image with containers and trucks" src={`${process.env.PUBLIC_URL}/images/localServices/namibiabanner.png`}/>
+      <div className="banner">
+        <img className="banner-image" alt="Header image with containers and trucks" src={`${process.env.PUBLIC_URL}/images/localServices/tanzaniabanner.png`}/>
       </div>
-      <div class="main-title">
+      <div className="main-title">
         Streamlined Logistics, Trusted Expertise
       </div>
       <section className="intro-container">
-        <div class="intro-content">
+        <div className="intro-content">
           <p>
-          At Artisbay Inc., we understand that importing vehicles, tires, or parts into Namibia requires efficient and reliable clearing services. That’s why we’ve partnered with <strong>IT Import and Export CC</strong>, a trusted clearing agent with over 10 years of experience, to offer you hassle-free logistics solutions in Walvis Bay.
+          At Artisbay Inc., we understand that importing vehicles, tires, or parts into Tanzaina requires efficient and reliable clearing services. That’s why we’ve partnered with <strong>star Voyage Shippers Company Limited</strong>, a trusted clearing agent with over 10 years of experience, to offer you hassle-free logistics solutions in Dar Essalam.
           </p>
-          <img alt="Image of a ship and containers" height="200" src={`${process.env.PUBLIC_URL}/images/localServices/smallBanner.png`} width="300"/>
+          <img alt="Image of a ship and containers" height="200" src={`${process.env.PUBLIC_URL}/images/localServices/smallbanner2.png`} width="300"/>
         </div>
       </section>
       
-      <div class="nav">
+      <div className="nav">
 
         <a onClick={() => scrollToSection('agent')}>
         <img className="nav-icon" src={`${process.env.PUBLIC_URL}/images/localServices/agenticon.png`} alt='services icon'/>
@@ -39,7 +39,7 @@ const NamibiaAgent = () => {
         <img className="nav-icon" src={`${process.env.PUBLIC_URL}/images/localServices/stockicon.png`} alt='services icon'/>
 
         </a>
-        <a href='#/help?topic=auction'>
+        <a href="#/help?topic=auction">
           <img className="nav-icon" src={`${process.env.PUBLIC_URL}/images/localServices/auctionicon.png`} alt='services icon'/>
 
         </a>
@@ -50,20 +50,20 @@ const NamibiaAgent = () => {
       
       </div>
 
-      <div id="agent" class="banner why-choose-agent-section">
-        <img className="banner-image" alt="namibia-agent-banner" src={`${process.env.PUBLIC_URL}/images/localServices/whynamibiaagent2.png`}/>
+      <div id="agent" className="banner why-choose-agent-section">
+        <img className="banner-image" alt="namibia-agent-banner" src={`${process.env.PUBLIC_URL}/images/localServices/tanzaniaagent.png`}/>
       </div>
       
       <section id="services" className="section-container">
-        <div class="section-title">
+        <div className="section-title">
           Container shipment services
         </div>
-        <div class="services">
+        <div className="services">
           <h3>
           1. Consolidation Service
           </h3>
           <p>
-          Our Consolidation Service allows vehicles from multiple customers to be combined into a single shared container, ensuring cost-efficient shipping and streamlined handling. This service is made possible through our collaboration with our trusted partner, IT Import and Export CC.
+          Our Consolidation Service allows vehicles from multiple customers to be combined into a single shared container, ensuring cost-efficient shipping and streamlined handling. This service is made possible through our collaboration with our trusted partner, <strong>StarVoyage Shippers Company Limited.</strong>
           </p>
           <h3>
           2. Customs Clearing and Documentation
@@ -77,9 +77,9 @@ const NamibiaAgent = () => {
           3. Nationwide Delivery
           </h3>
           <p>
-          • Efficient delivery to major cities, including Swakopmund, Windhoek, and beyond.
+          • Efficient delivery to major cities, including Dar Essalam, Arusha and beyond.
           <br/>
-          • Border deliveries to Botswana, Angola, and Zambia.
+          • Border deliveries to DR-Congo, Zambia, Malawi, Uganda, Zimbabwe.
           </p>
           <h3>
           4. Consignment Management
@@ -107,7 +107,8 @@ const NamibiaAgent = () => {
           </div>
           <div className="list">
             <div className="list-item">
-              <strong>Reliable Clearing Agent:</strong> With over a decade of experience, IT Import and Export CC ensures smooth customs clearance and dependable service.
+              <strong>Reliable Clearing Agent:</strong> With over a decade of experience, StarVoyage Shippers 
+              Company Limited ensures smooth customs clearance and dependable service.
             </div>
             <div className="list-item">
               <strong>Trusted Partner:</strong> Our long-standing partnership guarantees your goods are handled with care and expertise.
@@ -122,32 +123,18 @@ const NamibiaAgent = () => {
      
 
       <section className="contact-section-container">
-        <div class="contact">
+        <div className="contact">
           <div className='contact-text'>
           <h2>
             We are your Partner for Stress-Free Imports
           </h2>
           <p>
-            With<strong> Artisbay Inc.</strong> <strong>and IT Import and Export CC</strong>
+            With<strong> Artisbay Inc. and</strong> <strong> StarVoyage Shippers Company 
+            Limited.</strong>
             , you can rest assured that your goods are in safe hands. We take care of the paperwork, customs processes, and transportation so you can focus on your business.
             <strong>
             Get started today!
             </strong>
-          </p>
-          <p>
-            Contact Us: contact@artisbay.com
-            <br/>
-            Or Contact our agent:
-            <br/>
-            <strong>
-            IT IMPORT AND EXPORT CC
-            </strong>
-            <br/>
-            CEO: Isak Titus
-            <br/>
-            Phone/ WhatsApp: 264 812 294 597
-            <br/>
-            Address: CORNER OFFICE, SAM NUYOMA STREET, OPPOSITE KFC, WALVIS BAY, NAMIBIA.
           </p>
           </div>
           <img alt="Image of a handshake and a ship with containers" height="200" src={`${process.env.PUBLIC_URL}/images/localServices/partner.png`} width="300"/>
@@ -157,14 +144,57 @@ const NamibiaAgent = () => {
 
       <div className="banner logistics-banner">
           <img
-            src={`${process.env.PUBLIC_URL}/images/localServices/simplifylogistics2.png`}
+            src={`${process.env.PUBLIC_URL}/images/localServices/simplifylogisticsTitle.png`}
             className="banner"
             alt="Background"
           />
-      
+        <div className="logistics-container">
+            <div className="section">
+                <img alt="Star Voyage logo" src={`${process.env.PUBLIC_URL}/images/localServices/starvoyagerlogo2.png`} />
+                <h2>
+                Documents and paperwork:
+                </h2>
+                <p>
+                StarVoyage Shippers Co.,Ltd
+                </p>
+                <p>
+                Twiga House, 2nd floor, Office No.210,
+                </p>
+                <p>
+                Samora Avenue, Dar es salaam, Tanzania.
+                </p>
+                <p>
+                Tel: +255 752 650 650
+                </p>
+                <p>
+                info@starvoyageshippers.com
+                </p>
+            </div>
+            <div className="section">
+                <img className='skybridge' alt="SkyBridge logo" src={`${process.env.PUBLIC_URL}/images/localServices/skybridgelogo.png`}/>
+                <h2>
+                Clearing and forwarding:
+                </h2>
+                <p>
+                SkyBridge Logistics Co.Ltd
+                </p>
+                <p>
+                Samora Tower, Samore Avenue,
+                </p>
+                <p>
+                Dar Es Salaam
+                </p>
+                <p>
+                +255 760 202 222
+                </p>
+                <p>
+                sales@skybridgelg.com
+                </p>
+            </div>
+            </div>
       </div>
 
-      <div id="faq" class="faq">
+      <div id="faq" className="faq">
         <h2 className="faq-title">Frequently Asked Questions</h2>
         <FAQComponent />
       </div>
@@ -172,4 +202,4 @@ const NamibiaAgent = () => {
   );
 };
 
-export default NamibiaAgent;
+export default TanzainaAgent;

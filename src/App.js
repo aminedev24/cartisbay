@@ -28,6 +28,7 @@ import Shipping from './components/shipping';
 import ProformaInvoiceForm from './components/invoiceForm';
 import NamibiaAgent from './components/namibiaAgent';
 import CongoAgent from './components/congoAgent';
+import TanzainaAgent from './components/tanzaniaAgent';
 /* src/index.css */
 
 
@@ -96,6 +97,7 @@ function App() {
           <Route path = '/invoice' element = {<ProformaInvoiceForm />}></Route>
           <Route path= '/local-services/namibia' element ={<NamibiaAgent />}></Route>
           <Route path= '/local-services/congo' element ={<CongoAgent />}></Route>
+          <Route path= '/local-services/tanzania' element ={<TanzainaAgent />}></Route>
           </Routes>
       <Footer />
     </Router>

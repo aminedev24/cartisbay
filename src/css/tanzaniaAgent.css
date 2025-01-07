@@ -1,0 +1,26 @@
+.logistics-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.section {
+    width: 50%;
+    text-align: center;
+}
+.section img {
+    margin-bottom: 20px;
+}
+.section h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+.skybridge {
+    max-width: 120px;
+}

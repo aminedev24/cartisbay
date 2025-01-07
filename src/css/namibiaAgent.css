@@ -30,25 +30,27 @@
   justify-content: space-between;
   padding: 20px;
   margin: 40px 0;
+  align-items: normal;
 }
 .intro-content p {
-  font-size: 30px;
+  font-size: 20px;
   color: #333;
   line-height: 1.6;
-  padding: 80px 20px;
+  padding: 60px 20px;
   border: solid;
   margin: 1px 0;
+  flex: 1;
 }
 .intro-content img {
   width: 100%;
+  max-height: 380px;
   height: auto;
-  max-width: 450px;
   margin-left: 20px;
+  flex: 1;
 }
 .nav {
   display: flex;
   justify-content: center;
-  background-color: #f8f8f8;
   padding: 10px 0;
 }
 .nav a {
@@ -58,6 +60,7 @@
   font-size: 18px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .nav a i {
   margin-right: 5px;
@@ -101,7 +104,6 @@
 .contact img {
   width: 100%;
   height: auto;
-  max-width:  450px;
   margin-left: 20px;
 }
 
@@ -122,30 +124,72 @@
 
 }
 
-@media screen and (min-width:1500px) {
-  .intro-content {
-    padding: 0 !important;
-  }
+.nav-icon {
+  max-width: 200px;
 }
 
 .package-container {
   text-align: left;
   padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
 }
 .title {
-  font-size: 24px;
+  font-size: 34px;
   font-weight: bold;
+  color: #333;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
+
+.title span {
+  flex : 1;
+}
+
 .chevrons {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  width: 100%;
 }
 .chevrons img {
-  height: 20px;
+  width: 90%;
+  height: auto;
 }
-.list {
-  margin-top: 10px;
-}
+
 .list-item {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+.list-item strong {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.faq .faq-item {
+  text-align: left;
+}
+
+.faq h2 {
+    font-size: 24px;
+}
+
+.faq-title {
+  font-size: 30px;
+}
+
+
+@media screen and (min-width:1500px) {
+  .intro-content {
+    padding: 0 !important;
+  }
+  .intro-content p ,.faq h2 {
+    font-size: 27px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
 }
