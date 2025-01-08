@@ -10,12 +10,13 @@ import TermsConditions from './terms';
 import AntiSocialPolicy from './asf';
 import '../css/profilePage.css';
 import BankInformation from './bankInfo';
-
+import SalesAgreement from './salesAgreement';
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [userProfile,setUserProfile] = useState(true);
   
   const navigate = useNavigate();
   const { section } = useParams(); // Get URL param
@@ -70,7 +71,7 @@ const ProfilePage = () => {
     { 
       key: 'sales-contract', 
       label: 'Sales Contract', 
-      component: null 
+      component: SalesAgreement 
     },
   ];
 
@@ -196,6 +197,7 @@ console.log(activeContent)
           setFormData={setFormData}
           isEditing={isEditing}
           setIsEditing={setIsEditing}
+          userProfile={userProfile}
         />
       </div>
       </div>

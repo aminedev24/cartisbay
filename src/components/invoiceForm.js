@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import InvoiceModal from './invoice2';
 import CountryList from './countryList';
 import '../css/invoice.css';
-import { useLocation } from 'react-router-dom';
-
+import { useNavigate, useLocation } from "react-router-dom";
+import { useUser  } from './userContext';
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
   const date = new Date(invoiceDate);
@@ -53,10 +53,11 @@ const ProformaInvoiceForm = () => {
     const [invoiceCounter, setInvoiceCounter] = useState(''); // Initialize invoice counter
     const [isLoading, setIsLoading] = useState(false); // For handling loading state
     const [error, setError] = useState(null); // For handling errors
-    const location = useLocation();
     const [isDataLoaded, setIsDataLoaded] = useState(false); // New state for tracking data load status
-
-
+    const navigate = useNavigate();
+    
+    const location = useLocation();
+    const { user, loading, login } = useUser ();
     // Function to get the next invoice number from the backend
   const fetchInvoiceNumber = async () => {
     setIsLoading(true);
@@ -361,6 +362,14 @@ const ProformaInvoiceForm = () => {
                 However, it works just fine on most Android devices, MacBooks, Mac Studios, and Windows computers. 
                 We sincerely apologize for any inconvenience this may cause and appreciate your understanding as we work to improve compatibility.
             </p>
+
+            {user ? null : (
+              <div className="login-note">
+                Log in for a quick auto-fill.
+                <button type="button" onClick={() => {navigate('/login', { state: { from: location.pathname } })}}>Log In</button>
+                <button type="button" onClick={() => {navigate('/register', { state: { from: location.pathname } })}}>Register</button>
+              </div>
+            )}
            
 
             <p className='invoice-prompt'>

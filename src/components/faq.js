@@ -13,7 +13,7 @@ const FAQComponent = () => {
 
   return (
     <div className="terms-container faq-container">
-      {/* Language selector with label */}
+      {/* Language selector with label 
       <div className="language-selector-container">
         <label htmlFor="language-selector" className="language-label">
           Select Language:
@@ -28,7 +28,7 @@ const FAQComponent = () => {
           <option value="fr">French</option>
         </select>
       </div>
-
+      */}
       {/* FAQ list */}
       <div className="faq-list">
         {currentFAQ.questions.map((item, index) => (

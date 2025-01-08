@@ -4,6 +4,7 @@ import { useUser } from './userContext';
 
 const Settings = ({ user, setUser }) => {
   const { triggerSessionRefresh } = useUser();
+  
 
   const [details, setDetails] = useState([
     {
@@ -124,6 +125,7 @@ const Settings = ({ user, setUser }) => {
           {error}
         </div>
       )}
+      <h1>settings</h1>
       <table className="settings-table">
         <tbody>
           {details.map((detail) => (

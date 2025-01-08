@@ -21,7 +21,7 @@ const TanzainaAgent = () => {
           <p>
           At Artisbay Inc., we understand that importing vehicles, tires, or parts into Tanzaina requires efficient and reliable clearing services. That’s why we’ve partnered with <strong>star Voyage Shippers Company Limited</strong>, a trusted clearing agent with over 10 years of experience, to offer you hassle-free logistics solutions in Dar Essalam.
           </p>
-          <img alt="Image of a ship and containers" height="200" src={`${process.env.PUBLIC_URL}/images/localServices/smallbanner2.png`} width="300"/>
+          <img alt="Image of a ship and containers" src={`${process.env.PUBLIC_URL}/images/localServices/smallbanner2.png`}/>
         </div>
       </section>
       

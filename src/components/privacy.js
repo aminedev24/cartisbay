@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const PrivacyPolicy = () => {
+import AgreementForm from './agreementForm';
+import ProfilePage from './profile2';
+const PrivacyPolicy = ({userProfile}) => {
   return (
     <div className='terms-container'>
-      
+      {userProfile ? <h1>Privacy</h1> : ''}
       <p>At Artisbay Inc., we are committed to protecting your privacy and ensuring that your personal information is handled securely and responsibly. This Privacy Policy outlines how we collect, use, store, and share your information when you interact with our services.</p>
       
       <h2>1. Information We Collect</h2>
@@ -53,6 +54,8 @@ const PrivacyPolicy = () => {
       
       <h2>Contact Us</h2>
       <p>If you have any questions about this Privacy Policy, <Link className='cta-link' to='/contact'>please contact us.</Link></p>
+      {userProfile && <AgreementForm />}
+
     </div>
   );
 };

@@ -21,7 +21,7 @@ const NamibiaAgent = () => {
           <p>
           At Artisbay Inc., we understand that importing vehicles, tires, or parts into Namibia requires efficient and reliable clearing services. That’s why we’ve partnered with <strong>IT Import and Export CC</strong>, a trusted clearing agent with over 10 years of experience, to offer you hassle-free logistics solutions in Walvis Bay.
           </p>
-          <img alt="Image of a ship and containers" height="200" src={`${process.env.PUBLIC_URL}/images/localServices/smallBanner.png`} width="300"/>
+          <img alt="Image of a ship and containers" src={`${process.env.PUBLIC_URL}/images/localServices/smallBanner.png`} />
         </div>
       </section>
       
@@ -134,23 +134,9 @@ const NamibiaAgent = () => {
             Get started today!
             </strong>
           </p>
-          <p>
-            Contact Us: contact@artisbay.com
-            <br/>
-            Or Contact our agent:
-            <br/>
-            <strong>
-            IT IMPORT AND EXPORT CC
-            </strong>
-            <br/>
-            CEO: Isak Titus
-            <br/>
-            Phone/ WhatsApp: 264 812 294 597
-            <br/>
-            Address: CORNER OFFICE, SAM NUYOMA STREET, OPPOSITE KFC, WALVIS BAY, NAMIBIA.
-          </p>
+         
           </div>
-          <img alt="Image of a handshake and a ship with containers" height="200" src={`${process.env.PUBLIC_URL}/images/localServices/partner.png`} width="300"/>
+          <img alt="Image of a handshake and a ship with containers"  src={`${process.env.PUBLIC_URL}/images/localServices/partner.png`}/>
         </div>
       </section>
       

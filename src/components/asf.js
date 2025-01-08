@@ -1,9 +1,10 @@
 import React from 'react';
-import '../css/terms.css'
-const AntiSocialForcesPolicy = () => {
+import '../css/terms.css';
+import AgreementForm from './agreementForm';
+const AntiSocialForcesPolicy = ({userProfile}) => {
   return (
     <div className='asf'>
-      <h2>Anti-Social Forces Policy</h2>
+      {userProfile ? <h1>Anti-Social Forces Policy</h1>: <h2>Anti-Social Forces Policy</h2>}
       <section>
         <h2>1. Prohibition on Transactions with Anti-Social Forces</h2>
         <p>
@@ -85,6 +86,7 @@ const AntiSocialForcesPolicy = () => {
       </section>
       <section>
       </section>
+     {userProfile && <AgreementForm />}
     </div>
   );
 };
