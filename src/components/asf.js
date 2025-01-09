@@ -1,11 +1,11 @@
 import React from 'react';
 import '../css/terms.css';
 import AgreementForm from './agreementForm';
-const AntiSocialForcesPolicy = ({userProfile}) => {
-  return (
-    <div className='asf'>
-      {userProfile ? <h1>Anti-Social Forces Policy</h1>: <h2>Anti-Social Forces Policy</h2>}
-      <section>
+const AntiSocialForcesPolicy = ({userProfile,agreementType}) => {
+const agreementContent = (
+  `
+  <div>
+    <section>
         <h2>1. Prohibition on Transactions with Anti-Social Forces</h2>
         <p>
           Artisbay Ltd. (hereinafter referred to as “the Company”) enforces a strict policy against any dealings, affiliations, or interactions with individuals or entities connected to anti-social force. This includes, but is not limited to, criminal organizations, violent groups, or those associated with such entities (hereinafter referred to as “Anti-Social Forces”).
@@ -86,7 +86,15 @@ const AntiSocialForcesPolicy = ({userProfile}) => {
       </section>
       <section>
       </section>
-     {userProfile && <AgreementForm />}
+
+  </div>
+  `
+);
+  return (
+    <div className='asf'>
+      {userProfile ? <h1>Anti-Social Forces Policy</h1>: <h2>Anti-Social Forces Policy</h2>}
+      <div dangerouslySetInnerHTML={{ __html: agreementContent }} />
+      {userProfile && <AgreementForm agreementType={agreementType} agreementContent={agreementContent} />}
     </div>
   );
 };

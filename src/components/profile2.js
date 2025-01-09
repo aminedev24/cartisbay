@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  useNavigate, 
-  useParams 
-} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useCheckScreenSize from './screenSize';
 import Settings from './settings';
 import Privacy from './privacy';
@@ -11,13 +8,15 @@ import AntiSocialPolicy from './asf';
 import '../css/profilePage.css';
 import BankInformation from './bankInfo';
 import SalesAgreement from './salesAgreement';
+
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [userProfile,setUserProfile] = useState(true);
-  
+  const [userProfile, setUserProfile] = useState(true);
+  const [agreementType, setAgreementType] = useState(''); // State for agreement type
+
   const navigate = useNavigate();
   const { section } = useParams(); // Get URL param
   const { isSmallScreen, isPortrait } = useCheckScreenSize();
@@ -38,49 +37,41 @@ const ProfilePage = () => {
 
   // Menu items configuration
   const menuItems = [
-    { 
-      key: 'settings', 
-      label: 'Settings', 
-      component: Settings 
-    },
-    { 
-      key: 'inquiries', 
-      label: 'Inquiries', 
-      component: null 
-    },
-    { 
-      key: 'purchase-history', 
-      label: 'Purchase History', 
-      component: null 
-    },
-    { 
-      key: 'privacy', 
-      label: 'Privacy', 
-      component: Privacy 
-    },
-    { 
-      key: 'terms', 
-      label: 'Terms & Conditions', 
-      component: TermsConditions 
-    },
-    { 
-      key: 'anti-social-policy', 
-      label: 'Anti-Social Forces Policy', 
-      component: AntiSocialPolicy 
-    },
-    { 
-      key: 'sales-contract', 
-      label: 'Sales Contract', 
-      component: SalesAgreement 
-    },
+    { key: 'settings', label: 'Settings', component: Settings },
+    { key: 'inquiries', label: 'Inquiries', component: null },
+    { key: 'purchase-history', label: 'Purchase History', component: null },
+    { key: 'privacy', label: 'Privacy', component: Privacy },
+    { key: 'terms', label: 'Terms & Conditions', component: TermsConditions },
+    { key: 'anti-social-policy', label: 'Anti-Social Forces Policy', component: AntiSocialPolicy },
+    { key: 'sales-contract', label: 'Sales Contract', component: SalesAgreement },
   ];
 
   // Determine active content based on URL or default to settings
   const [activeContent, setActiveContent] = useState(
-    section && menuItems.some(item => item.key === section) 
-      ? section 
+    section && menuItems.some(item => item.key === section)
+      ? section
       : 'settings'
   );
+
+  // Set agreement type based on active content
+  useEffect(() => {
+    switch (activeContent) {
+      case 'terms':
+        setAgreementType('Terms & Conditions');
+        break;
+      case 'privacy':
+        setAgreementType('Privacy Policy');
+        break;
+      case 'anti-social-policy':
+        setAgreementType('Anti-Social Forces Policy');
+        break;
+      case 'sales-contract':
+        setAgreementType('Sales Agreement');
+        break;
+      default:
+        setAgreementType('');
+    }
+  }, [activeContent]);
 
   // Fetch user data
   useEffect(() => {
@@ -154,52 +145,55 @@ const ProfilePage = () => {
   const ActiveComponent = menuItems.find(
     item => item.key === activeContent
   )?.component || Settings;
-console.log(activeContent)
+
+  const isSpecialContent = isSmallScreen && (
+    activeContent === 'terms' ||
+    activeContent === 'privacy' ||
+    activeContent === 'sales-contract' ||
+    activeContent === 'anti-social-policy'
+  );
+
+  const style = {
+    height: isSpecialContent ? '70vh' : '90vh',
+  };
+
   return (
     <div className="profile-wrapper">
-    <div 
-      className="profile-container"
-   
-    >
-      <div className="profile-sidebar">
-        <div className='profile-sidebar-menus'>
-          <h2>MENU</h2>
-          <ul>
-            {menuItems.map((item) => (
-              <li 
-                key={item.key}
-                onClick={() => handleMenuClick(item)}
-                className={activeContent === item.key ? 'active' : ''}
-                style={{ cursor: 'pointer' }}
-              >
-                {item.label}
-              </li>
-            ))}
-          </ul>
-          <div className="amount">
-            <p><strong>Total Guaranty:</strong> $2,014</p>
-            <p><strong>Total Expensive Guaranty:</strong> $2,014</p>
-            <p><strong>Spending Amount:</strong> ¥1,042,063</p>
+      <div className="profile-container">
+        <div className="profile-sidebar">
+          <div className='profile-sidebar-menus'>
+            <h2>MENU</h2>
+            <ul>
+              {menuItems.map((item) => (
+                <li
+                  key={item.key}
+                  onClick={() => handleMenuClick(item)}
+                  className={activeContent === item.key ? 'active' : ''}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {item.label}
+                </li>
+              ))}
+            </ul>
+            <div className="amount">
+              <p><strong>Total Guaranty:</strong> $2,014</p>
+              <p><strong>Total Expensive Guaranty:</strong> $2,014</p>
+              <p><strong>Spending Amount:</strong> ¥1,042,063</p>
+            </div>
           </div>
         </div>
-       
-      </div>
-      <div 
-        className="profile-content"
-        style={{
-          height: isSmallScreen && activeContent == 'terms' || isSmallScreen && activeContent == 'privacy' ? '70vh' : "90vh"
-        }}  
-      >
-        <ActiveComponent 
-          user={user} 
-          setUser={setUser}
-          formData={formData}
-          setFormData={setFormData}
-          isEditing={isEditing}
-          setIsEditing={setIsEditing}
-          userProfile={userProfile}
-        />
-      </div>
+        <div className="profile-content" style={style}>
+          <ActiveComponent
+            user={user}
+            setUser={setUser}
+            formData={formData}
+            setFormData={setFormData}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            userProfile={userProfile}
+            agreementType={agreementType} // Pass agreementType as a prop
+          />
+        </div>
       </div>
     </div>
   );

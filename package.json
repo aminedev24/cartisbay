@@ -16,6 +16,7 @@
     "car-makes-icons": "^1.0.0",
     "express": "^4.21.2",
     "file-saver": "^2.0.5",
+    "html-react-parser": "^5.2.2",
     "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.2",
     "js-cookie": "^3.0.5",

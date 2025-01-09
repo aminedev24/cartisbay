@@ -39,8 +39,12 @@
  .required {
   color: red;
 }
-.contact-container button {
+
+.submit-section button {
   width: 100%;
+
+}
+.contact-container button {
   padding: 10px;
   background-color: #1da1f2;
   border: none;

@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $stmtInsert->bind_param(
-            "sssssssssiidddssss", 
+            "sssssssssiiddsssss", 
             $inputs['name'], 
             $inputs['address'], 
             $inputs['email'], 
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $inputs['year_to'], 
             $inputs['price_from'], 
             $inputs['price_to'], 
-            $inputs['body_type'], 
+            $inputs['body_type'], // This should be a string
             $inputs['mileage_from'], 
             $inputs['mileage_to'], 
             $inputs['transmission'], 
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute the statement
         if ($stmtInsert->execute()) {
             // Prepare email
-            $to = "orders@example.com"; // Replace with your email
+            $to = "orders@artisbay.com"; // Replace with your email
             $subject = "New Vehicle Inquiry from " . $inputs['name'];
             $body = "Name: " . $inputs['name'] . "\nAddress: " . $inputs['address'] . "\nEmail: " . $inputs['email'] . "\nCountry: " . $inputs['country'] . "\nTel: " . $inputs['tel'] . "\nPort: " . $inputs['port'] . "\nMessage: " . $inputs['message'] . "\n\nVehicle Information:\nMake: " . $inputs['make'] . "\nModel: " . $inputs['model'] . "\nRegistration Year: " . $inputs['year_from'] . " to " . $inputs['year_to'] . "\nPrice: " . $inputs['price_from'] . " to " . $inputs['price_to'] . "\nBody Type: " . $inputs['body_type'] . "\nMileage: " . $inputs['mileage_from'] . " to " . $inputs['mileage_to'] . "\nTransmission: " . $inputs['transmission'] . "\nSteering: " . $inputs['steering'];
             $headers = "From: " . $inputs['email'];

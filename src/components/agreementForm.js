@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const AgreementForm = () => {
+const AgreementForm = ({ agreementType, agreementContent }) => {
   const apiUrl =
     process.env.NODE_ENV === "development"
       ? "http://localhost/artisbay-server/server"
@@ -10,14 +10,77 @@ const AgreementForm = () => {
     fullName: '',
     email: '',
     terms: false,
+    agreementType: agreementType,
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [fetchedData, setFetchedData] = useState(false); // Track if data is fetched
-  const [alreadyAgreed, setAlreadyAgreed] = useState(false); // Track if the user already agreed to terms
+  const [alreadyAgreed, setAlreadyAgreed] = useState(false);
+
+  const isMountedRef = useRef(true);
+
+  const fetchUserData = async () => {
+    try {
+      console.log('Fetching user data and agreement status for:', agreementType);
+
+      // Fetch user profile data
+      const response = await fetch(`${apiUrl}/profile.php`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // Update form data with user profile
+      if (isMountedRef.current) {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          fullName: data.full_name,
+          email: data.email,
+        }));
+      }
+
+      // Check if user already agreed to the specific agreement type
+      const agreementResponse = await fetch(`${apiUrl}/checkAgreement.php?agreementType=${encodeURIComponent(agreementType)}`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+
+      const agreementData = await agreementResponse.json();
+      console.log('Agreement API response:', agreementData);
+
+      if (isMountedRef.current) {
+        setAlreadyAgreed(agreementData.already_agreed || false);
+      }
+    } catch (error) {
+      if (isMountedRef.current) {
+        console.error('Error fetching user data or agreement status:', error);
+        setError(error.message);
+      }
+    } finally {
+      if (isMountedRef.current) {
+        setLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    setLoading(true);
+    fetchUserData();
+
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, [agreementType]);
 
   const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
@@ -29,63 +92,37 @@ const AgreementForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch(`${apiUrl}/submitAgreement.php`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-      credentials: 'include',
-    });
-
-    if (response.ok) {
-      setIsSubmitted(true);
+  
+    // Create a copy of formData to ensure no circular references
+    const formDataCopy = { ...formData };
+  
+    // Include agreement content in the submission data
+    const submissionData = {
+      ...formDataCopy,
+      agreementType: agreementType,
+      agreementContent: agreementContent, // Add agreement content to the data
+    };
+  
+    try {
+      const response = await fetch(`${apiUrl}/submitAgreement.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(submissionData),
+        credentials: 'include',
+      });
+  
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || 'An error occurred while submitting the form.');
+      }
+    } catch (error) {
+      setError('Error: ' + error.message);
     }
   };
-
-  // Fetch user data and check if they have already agreed
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/profile.php`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-        if (data.error) {
-          throw new Error(data.error);
-        }
-
-        setFormData({
-          fullName: data.full_name,
-          email: data.email,
-        });
-
-        setFetchedData(true); // Set to true once data is fetched
-
-        // Check if user already agreed to terms
-        const agreementResponse = await fetch(`${apiUrl}/checkAgreement.php`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        const agreementData = await agreementResponse.json();
-        if (agreementData.already_agreed) {
-          setAlreadyAgreed(true); // Set flag if already agreed
-        }
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, [apiUrl]);
+  
+  
 
   if (loading) {
     return <p>Loading...</p>;
@@ -105,8 +142,7 @@ const AgreementForm = () => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            disabled={alreadyAgreed || isSubmitted} // Disable form if already agreed or submitted
-            readOnly={fetchedData} // Make it read-only once data is fetched
+            disabled={alreadyAgreed || isSubmitted}
             required
           />
         </label>
@@ -117,8 +153,7 @@ const AgreementForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            disabled={alreadyAgreed || isSubmitted} // Disable form if already agreed or submitted
-            readOnly={fetchedData} // Make it read-only once data is fetched
+            disabled={alreadyAgreed || isSubmitted}
             required
           />
         </label>
@@ -128,20 +163,20 @@ const AgreementForm = () => {
             name="terms"
             checked={formData.terms}
             onChange={handleChange}
-            disabled={alreadyAgreed || isSubmitted} // Disable form if already agreed or submitted
+            disabled={alreadyAgreed || isSubmitted}
             required
           />
-          I agree to the terms & conditions and privacy
+          I agree to the {agreementType}
         </label>
         {!alreadyAgreed && (
           <button type="submit" disabled={isSubmitted}>Submit</button>
         )}
       </form>
 
-      {alreadyAgreed && <p className="success">You have already agreed to the terms.</p>}
-      {isSubmitted && !alreadyAgreed && <p className="success">Thank you for agreeing to the terms.</p>}
+      {alreadyAgreed && <p className="success">You have already agreed to the {agreementType}.</p>}
+      {isSubmitted && !alreadyAgreed && <p className="success">Thank you for agreeing to the {agreementType}.</p>}
     </div>
   );
 };
 
-export default AgreementForm;
+export default React.memo(AgreementForm);

@@ -38,7 +38,7 @@
 }
 
 .intro-content p {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: #333;
   line-height: 1.6;
   padding: 50px 20px;
@@ -197,7 +197,11 @@
 }
 
 .faq h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+.faq p {
+  font-size: 1.1rem;
 }
 
 .faq-title {

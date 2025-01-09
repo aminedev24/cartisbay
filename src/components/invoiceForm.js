@@ -365,7 +365,7 @@ const ProformaInvoiceForm = () => {
 
             {user ? null : (
               <div className="login-note">
-                Log in for a quick auto-fill.
+                <span>Log in for a quick auto-fill.</span>
                 <button type="button" onClick={() => {navigate('/login', { state: { from: location.pathname } })}}>Log In</button>
                 <button type="button" onClick={() => {navigate('/register', { state: { from: location.pathname } })}}>Register</button>
               </div>
