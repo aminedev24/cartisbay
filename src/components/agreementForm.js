@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const AgreementForm = ({ agreementType, agreementContent }) => {
-  const apiUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost/artisbay-server/server"
-      : "/server";
+  const apiUrl = process.env.NODE_ENV === "development" ? "http://localhost/artisbay-server/server" : "/server";
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -16,7 +13,8 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isReadOnly, setIsReadOnly] = useState(false); // State to track read-only status
+  const [alreadyAgreed, setAlreadyAgreed] = useState(false);
+  const [isFetched, setIsFetched] = useState(false); // New state variable for fetched status
 
   const isMountedRef = useRef(true);
 
@@ -44,11 +42,23 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
           fullName: data.full_name,
           email: data.email,
         }));
-        setIsReadOnly(true); // Set read-only status to true after data is fetched
+        setIsFetched(true); // Set fetched status to true
+      }
+
+      const agreementResponse = await fetch(`${apiUrl}/checkAgreement.php?agreementType=${encodeURIComponent(agreementType)}`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+
+      const agreementData = await agreementResponse.json();
+      console.log('Agreement API response:', agreementData);
+
+      if (isMountedRef.current) {
+        setAlreadyAgreed(agreementData.already_agreed || false);
       }
     } catch (error) {
       if (isMountedRef.current) {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching user data or agreement status:', error);
         setError(error.message);
       }
     } finally {
@@ -122,7 +132,7 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            readOnly={isReadOnly} // Input becomes read-only based on state
+            readOnly={isFetched} // Make read-only based on fetched status
             required
           />
         </label>
@@ -133,7 +143,7 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            readOnly={isReadOnly} // Input becomes read-only based on state
+            readOnly={isFetched} // Make read-only based on fetched status
             required
           />
         </label>
@@ -143,14 +153,18 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
             name="terms"
             checked={formData.terms}
             onChange={handleChange}
+            disabled={alreadyAgreed || isSubmitted}
             required
           />
           I agree to the {agreementType}
         </label>
-        <button type="submit" disabled={isSubmitted}>Submit</button>
+        {!alreadyAgreed && (
+          <button type="submit" disabled={isSubmitted}>Submit</button>
+        )}
       </form>
 
-      {isSubmitted && <p className="success">Thank you for agreeing to the {agreementType}.</p>}
+      {alreadyAgreed && <p className="success">You have already agreed to the {agreementType}.</p>}
+      {isSubmitted && !alreadyAgreed && <p className="success">Thank you for agreeing to the {agreementType}.</p>}
     </div>
   );
 };
