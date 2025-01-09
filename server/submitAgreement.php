@@ -99,9 +99,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li><strong>Date and Time of Agreement:</strong> $accepted_at</li>
                         <li><strong>Agreement Type:</strong> $agreementType</li>
                     </ul>
-                    <p><strong>Content of the Agreement:</strong></p>
+                    <h2 style='color: #004080;'>Content of the Agreement:</h2>
                     <div class='agreement-content'>$agreementContent</div>
-                    <p>Should you have any questions or need further clarification, feel free to contact us at:<a href='mailto:contact@artisbay.com,'>contact@artisbay.com</a>./p>
+                    <p>Should you have any questions or need further clarification, feel free to contact us at:<a href='mailto:contact@artisbay.com'>contact@artisbay.com</a>.</p>
                     <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
                     <p style='color:#004080;'><strong>Best regards,</strong><br>Artisbay Inc.</p>
                 </body>

@@ -16,7 +16,7 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [alreadyAgreed, setAlreadyAgreed] = useState(false);
+  const [isReadOnly, setIsReadOnly] = useState(false); // State to track read-only status
 
   const isMountedRef = useRef(true);
 
@@ -24,7 +24,6 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
     try {
       console.log('Fetching user data and agreement status for:', agreementType);
 
-      // Fetch user profile data
       const response = await fetch(`${apiUrl}/profile.php`, {
         method: 'GET',
         credentials: 'include',
@@ -39,30 +38,17 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
         throw new Error(data.error);
       }
 
-      // Update form data with user profile
       if (isMountedRef.current) {
         setFormData((prevFormData) => ({
           ...prevFormData,
           fullName: data.full_name,
           email: data.email,
         }));
-      }
-
-      // Check if user already agreed to the specific agreement type
-      const agreementResponse = await fetch(`${apiUrl}/checkAgreement.php?agreementType=${encodeURIComponent(agreementType)}`, {
-        method: 'GET',
-        credentials: 'include',
-      });
-
-      const agreementData = await agreementResponse.json();
-      console.log('Agreement API response:', agreementData);
-
-      if (isMountedRef.current) {
-        setAlreadyAgreed(agreementData.already_agreed || false);
+        setIsReadOnly(true); // Set read-only status to true after data is fetched
       }
     } catch (error) {
       if (isMountedRef.current) {
-        console.error('Error fetching user data or agreement status:', error);
+        console.error('Error fetching user data:', error);
         setError(error.message);
       }
     } finally {
@@ -92,17 +78,13 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Create a copy of formData to ensure no circular references
-    const formDataCopy = { ...formData };
-  
-    // Include agreement content in the submission data
+
     const submissionData = {
-      ...formDataCopy,
+      ...formData,
       agreementType: agreementType,
-      agreementContent: agreementContent, // Add agreement content to the data
+      agreementContent: agreementContent,
     };
-  
+
     try {
       const response = await fetch(`${apiUrl}/submitAgreement.php`, {
         method: 'POST',
@@ -110,7 +92,7 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
         body: JSON.stringify(submissionData),
         credentials: 'include',
       });
-  
+
       if (response.ok) {
         setIsSubmitted(true);
       } else {
@@ -121,8 +103,6 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
       setError('Error: ' + error.message);
     }
   };
-  
-  
 
   if (loading) {
     return <p>Loading...</p>;
@@ -142,7 +122,7 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            disabled={alreadyAgreed || isSubmitted}
+            readOnly={isReadOnly} // Input becomes read-only based on state
             required
           />
         </label>
@@ -153,7 +133,7 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            disabled={alreadyAgreed || isSubmitted}
+            readOnly={isReadOnly} // Input becomes read-only based on state
             required
           />
         </label>
@@ -163,18 +143,14 @@ const AgreementForm = ({ agreementType, agreementContent }) => {
             name="terms"
             checked={formData.terms}
             onChange={handleChange}
-            disabled={alreadyAgreed || isSubmitted}
             required
           />
           I agree to the {agreementType}
         </label>
-        {!alreadyAgreed && (
-          <button type="submit" disabled={isSubmitted}>Submit</button>
-        )}
+        <button type="submit" disabled={isSubmitted}>Submit</button>
       </form>
 
-      {alreadyAgreed && <p className="success">You have already agreed to the {agreementType}.</p>}
-      {isSubmitted && !alreadyAgreed && <p className="success">Thank you for agreeing to the {agreementType}.</p>}
+      {isSubmitted && <p className="success">Thank you for agreeing to the {agreementType}.</p>}
     </div>
   );
 };
