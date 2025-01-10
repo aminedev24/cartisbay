@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },  
     description : {
         fontSize: '12px',
-        maxWidth: '95%',
+        maxWidth: '97%',
     },
     invoiceHeader: {
       display: 'flex',
@@ -272,8 +272,8 @@ const styles = StyleSheet.create({
       width: '50px',
     },
     rightText : {
-      margin: '15px 0',
-      fontSize: '13px',
+      marginBottom: '3px',
+      fontSize: '12px',
     }
   });
 
@@ -305,10 +305,10 @@ const MyPdfDocument = ({ invoiceData }) => (
           </View>
           <View style={styles.headerRight}>
             <Text style={styles.companyName}>Artisbay Inc</Text>
-            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Date:</Text> {invoiceData.invoiceDate}</Text>
-            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Invoice:</Text> {invoiceData.invoiceNumber}</Text>
-            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Expiry Date:</Text> {invoiceData.expiryDate}</Text>
-            <Text style={styles.headerText}><Text style={{ fontWeight: 'bold' }}>Purpose:</Text> {invoiceData.depositPurpose}</Text>
+            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Date:</Text> {invoiceData.invoiceDate}</Text>
+            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Invoice Number:</Text> {invoiceData.invoiceNumber}</Text>
+            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Expiry Date:</Text> {invoiceData.expiryDate}</Text>
+            <Text style={styles.rightText}><Text style={{ fontWeight: 'bold' }}>Purpose:</Text> {invoiceData.depositPurpose}</Text>
           </View>
         </View>
       </View>
