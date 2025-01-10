@@ -50,9 +50,24 @@ const TanzainaAgent = () => {
       
       </div>
 
-      <div id="agent" className="banner why-choose-agent-section">
+       {/* 
+      <div className="banner why-choose-agent-section">
         <img className="banner-image" alt="namibia-agent-banner" src={`${process.env.PUBLIC_URL}/images/localServices/tanzaniaagent.png`}/>
       </div>
+      */}
+
+
+    
+
+      <div className="background tanzania-agent">
+            <div className="services-text">
+                <strong>RELIABLE CLEARING AND IMPORT SERVICES IN DAR ESSALAM<br /></strong>
+                <strong>Nationwide Delivery<br /></strong>
+                Efficient delivery to major cities, including Dar es Salaam, Arusha, and beyond.<br />
+                <strong>Border deliveries</strong> <br />
+                 to DR-Congo, Zambia , Zimbabwe , Malawi, Uganda
+            </div>
+        </div>
       
       <section id="services" className="section-container">
         <div className="section-title">
@@ -97,7 +112,7 @@ const TanzainaAgent = () => {
       <section id="packages" className="package-section">
         <div className="package-container">
           <div className="title">
-            <h3>A Whole Package of Premium Services!</h3> 
+            <h2>A Whole Package of Premium Services!</h2> 
             <span className="chevrons">
               <img 
                 alt="Decorative chevrons" 
@@ -122,7 +137,7 @@ const TanzainaAgent = () => {
    
      
 
-      <section className="contact-section-container">
+      <section  className="contact-section-container">
         <div className="contact">
           <div className='contact-text'>
           <h2>
@@ -142,13 +157,14 @@ const TanzainaAgent = () => {
       </section>
       
 
+     
       <div className="banner logistics-banner">
           <img
             src={`${process.env.PUBLIC_URL}/images/localServices/simplifylogisticsTitle.png`}
             className="banner"
             alt="Background"
           />
-        <div className="logistics-container">
+        <div id="agent"  className="logistics-container">
             <div className="section">
                 <img alt="Star Voyage logo" src={`${process.env.PUBLIC_URL}/images/localServices/starvoyagerlogo2.png`} />
                 <h2>
@@ -191,7 +207,7 @@ const TanzainaAgent = () => {
                 sales@skybridgelg.com
                 </p>
             </div>
-            </div>
+        </div>
       </div>
 
       <div id="faq" className="faq">

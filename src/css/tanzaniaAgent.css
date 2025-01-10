@@ -24,3 +24,13 @@
 .skybridge {
     max-width: 120px;
 }
+
+.tanzania-agent {
+    background-image: url('../../public/images/localServices/tanzaniaagentph.png'); /* Replace with your image path */
+    margin: 40px 0;
+}   
+
+
+.tanzania-agent .services-text {
+    left: -20px;
+}

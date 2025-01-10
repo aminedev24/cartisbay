@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
     headerText: {
       fontSize: '12px',
     },  
+    description : {
+        fontSize: '12px',
+        maxWidth: '95%',
+    },
     invoiceHeader: {
       display: 'flex',
       flexDirection: 'column',
@@ -285,7 +289,7 @@ const MyPdfDocument = ({ invoiceData }) => (
           <View style={styles.headerLeft}>
             <Image style={styles.logo} src={`${process.env.PUBLIC_URL}/images/Signatureforemail.png`} />
             <View style={styles.contactInfo}>
-              <Text style={styles.headerText}>
+              <Text style={styles.description}>
                 An online platform for the sale and export of used vehicles and auto parts
               </Text>
               <Text style={styles.headerText}>Registered in Japan | License No.7370001051924</Text>
@@ -328,13 +332,13 @@ const MyPdfDocument = ({ invoiceData }) => (
 
       {/* Bank Info */}
       <View style={styles.invoiceBankInfo}>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Beneficiary Name:</Text> {invoiceData.beneficiaryName}</Text>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Bank Name:</Text> {invoiceData.bankName}</Text>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Branch Name:</Text> {invoiceData.branchName}</Text>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Bank Address:</Text> {invoiceData.bankAddress}</Text>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Swift Code:</Text> {invoiceData.swiftCode}</Text>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Account Number:</Text> {invoiceData.accountNumber}</Text>
-        <Text style={styles.bankInfoText}><Text style={{ fontWeight: 'bold' }}>Beneficiary Address:</Text> {invoiceData.beneficiaryAddress}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Beneficiary Name:</Text> {invoiceData.beneficiaryName}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Bank Name:</Text> {invoiceData.bankName}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Branch Name:</Text> {invoiceData.branchName}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Bank Address:</Text> {invoiceData.bankAddress}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Swift Code:</Text> {invoiceData.swiftCode}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Account Number:</Text> {invoiceData.accountNumber}</Text>
+        <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Beneficiary Address:</Text> {invoiceData.beneficiaryAddress}</Text>
       </View>
 
       {/* Important Section */}

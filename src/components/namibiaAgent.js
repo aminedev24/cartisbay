@@ -49,9 +49,22 @@ const NamibiaAgent = () => {
         </a>
       
       </div>
-
-      <div id="agent" class="banner why-choose-agent-section">
-        <img className="banner-image" alt="namibia-agent-banner" src={`${process.env.PUBLIC_URL}/images/localServices/whynamibiaagent2.png`}/>
+      {/*
+        <div  class="banner why-choose-agent-section">
+          <img className="banner-image" alt="namibia-agent-banner" src={`${process.env.PUBLIC_URL}/images/localServices/whynamibiaagent2.png`}/>
+        </div>
+      */}
+      
+      
+      <div className="background namibia-agent">
+            <div className="services-text">
+                <span><strong>RELIABLE CLEARING AND IMPORT SERVICES IN WALVIS BAY<br /></strong></span>
+                <span><strong>Nationwide Delivery<br /></strong></span>
+                <span>Efficient delivery to major cities<br /> </span>
+                <span>including Swakopmund, Windhoek, and beyond.<br /></span>
+                <span><strong>Border deliveries</strong> <br/></span>
+                <span>to Botswana, Angola, and Zambia</span>
+            </div>
       </div>
       
       <section id="services" className="section-container">
@@ -97,7 +110,7 @@ const NamibiaAgent = () => {
       <section id="packages" className="package-section">
         <div className="package-container">
           <div className="title">
-            <span>A Whole Package of Premium Services!</span> 
+            <h2>A Whole Package of Premium Services!</h2> 
             <span className="chevrons">
               <img 
                 alt="Decorative chevrons" 
@@ -140,8 +153,8 @@ const NamibiaAgent = () => {
         </div>
       </section>
       
-
-      <div className="banner logistics-banner">
+      {/* 
+        <div className="banner logistics-banner">
           <img
             src={`${process.env.PUBLIC_URL}/images/localServices/simplifylogistics2.png`}
             className="banner"
@@ -149,6 +162,21 @@ const NamibiaAgent = () => {
           />
       
       </div>
+      */}
+    
+
+      <div id="agent" className="logistics background">
+           
+            <div className="logistics-agent-info">
+               Contact Us: <a href="mailto:contact@artisbay.com">contact@artisbay.com</a><br />
+
+                Or Contact our agent:<br />
+                IT IMPORT AND EXPORT CC<br />
+                CEO: Isak Titus<br />
+                Phone/WhatsApp: 264 812 294 597<br />
+                Address: CORNER OFFICE, SAM NUYOMA STREET, OPPOSITE KFC, WALVIS BAY, NAMIBIA
+            </div>
+        </div>
 
       <div id="faq" class="faq">
         <h2 className="faq-title">Frequently Asked Questions</h2>
