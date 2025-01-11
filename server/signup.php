@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
     $company = isset($_POST['company']) ? trim($_POST['company']) : '';
     $address = isset($_POST['address']) ? trim($_POST['address']) : '';
+    
     // Validate that all fields are filled
     if (empty($fullName) || empty($email) || empty($password) || empty($country) || empty($phone)) {
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'error' => 'All fields are required.']);
-        error_log("Signup failed: All fields are required.");
         exit;
     }
 
@@ -40,54 +40,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'error' => 'Invalid email format.']);
-        error_log("Signup failed: Invalid email format.");
         exit;
     }
 
-    // Check if the email already exists
-    $emailCheckQuery = $conn->prepare("SELECT id FROM users WHERE email = ?");
-    $emailCheckQuery->bind_param("s", $email);
-    $emailCheckQuery->execute();
-    $emailCheckResult = $emailCheckQuery->get_result();
+    // Check if the email or phone number already exists
+    $userCheckQuery = $conn->prepare("SELECT id FROM users WHERE email = ? OR phone = ?");
+    $userCheckQuery->bind_param("ss", $email, $phone);
+    $userCheckQuery->execute();
+    $userCheckResult = $userCheckQuery->get_result();
 
-    if ($emailCheckResult->num_rows > 0) {
-        // Email already exists
+    if ($userCheckResult->num_rows > 0) {
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'error' => 'Email already exist try login in please.']);
-        $emailCheckQuery->close();
+        echo json_encode(['success' => false, 'error' => 'Email or phone number already exists. Please try to login.']);
+        $userCheckQuery->close();
         exit;
     }
 
     // Generate a unique ID for the user
-    $uid = uniqid('user_', true); // Generates a unique ID prefixed with 'user_'
-    $_SESSION['uid'] = $uid; // Store UID in session
+    $uid = uniqid('user_', true);
+    $_SESSION['uid'] = $uid;
 
     // Hash the password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare and bind the database statement for inserting the user
-    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone,company,address, joined_date) VALUES (?, ?, ?, ?, ?, ?,?,?, NOW())");
-    if (!$stmt) {
-        header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'error' => 'Database prepare failed: ' . $conn->error]);
-        error_log("Database prepare failed: " . $conn->error);
-        exit;
-    }
+    $stmt = $conn->prepare("INSERT INTO users (uid, full_name, email, password, country, phone, company, address, joined_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
     $stmt->bind_param("ssssssss", $uid, $fullName, $email, $hashedPassword, $country, $phone, $company, $address);
 
-    // Execute the statement
     if ($stmt->execute()) {
-        header('Content-Type: application/json');
+        // Send email notification to admin
+        $adminEmail = "contact@artisbay.com"; 
+        $subject = "New User Signup Notification";
+        $message = "A new user has signed up:\n\n"
+                 . "Full Name: $fullName\n"
+                 . "Email: $email\n"
+                 . "Country: $country\n"
+                 . "Phone: $phone\n"
+                 . "Company: $company\n"
+                 . "Address: $address\n";
+        $headers = "From: noreply@artisbay.com";
+
+        mail($adminEmail, $subject, $message, $headers);
+
         echo json_encode(['success' => true, 'uid' => $uid]);
     } else {
-        header('Content-Type: application/json');
         echo json_encode(['success' => false, 'error' => 'Error: ' . $stmt->error]);
-        error_log("Signup failed: " . $stmt->error);
     }
 
     // Close statement and connection
     $stmt->close();
-    $emailCheckQuery->close();
+    $userCheckQuery->close();
 }
 
 $conn->close();

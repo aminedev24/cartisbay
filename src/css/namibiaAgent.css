@@ -169,7 +169,8 @@
 }
 
 .title h2 {
-  font-size: 35px; /* 28px */
+  font-size: 35px; 
+  margin: 0;
 
 }
 .title span {
@@ -181,7 +182,7 @@
   width: 100%;
 }
 
-.chevrons img {
+.title img {
   width: 100%;
   height: auto;
 }
@@ -230,12 +231,18 @@
   align-items: center;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  min-height: 420px;
+  min-height: 415px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 .namibia-agent {
-  background-image: url('../../public/images/localServices/nabimiaph3.png'); /* Replace with your image path */
+  background-image: url('../../public/images/localServices/namibiaph4.png'); /* Replace with your image path */
   margin: 40px 0;
+  background-position: top center;
+  padding: 40px;
+  height: auto;
 }
 
 .logistics {
@@ -250,11 +257,11 @@
   /* background-color: rgba(0, 0, 0, 0.5); */
   padding: 20px;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 545px;
   color: #333;
   text-align: left;
   position: relative;
-  left: 20px;
+  left: 45px;
   top: 20px;
 }
 
@@ -277,7 +284,7 @@
 }
 
 /* Media query for screens wider than 1260px */
-@media (min-width: 1500px) {
+@media (min-width: 1400px) {
   .background {
     background-position: top center; /* Adjust the position as needed */
     padding-top: 40px; /* Increase the padding to ensure visibility */
@@ -285,7 +292,7 @@
   }
 
   .services-text , .logistics-agent-info {
-    font-size: 30px;
+    font-size: 33px;
   }
 
   .logistics-agent-info {
@@ -307,5 +314,10 @@
   .contact  , .faq-item h2 {
     font-size: 35px;
   }
-  
+  .main-title, .section-title,.faq-title  { 
+    font-size: 3rem !important;
+  }
+  .contact-text h2{
+    font-size: 2.5rem;
+  }
 }

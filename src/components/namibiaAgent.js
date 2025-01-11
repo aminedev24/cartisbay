@@ -55,17 +55,20 @@ const NamibiaAgent = () => {
         </div>
       */}
       
+      <section className="agent-section">
+        <div className="background namibia-agent">
+              <div className="services-text">
+                  <span><strong>RELIABLE CLEARING AND IMPORT SERVICES IN WALVIS BAY<br /></strong></span>
+                  <span><strong>Nationwide Delivery<br /></strong></span>
+                  <span>Efficient delivery to major cities<br /> </span>
+                  <span>including Swakopmund, Windhoek, and beyond.<br /></span>
+                  <span><strong>Border deliveries</strong> <br/></span>
+                  <span>to Botswana, Angola, and Zambia</span>
+              </div>
+        </div>
+
+      </section>
       
-      <div className="background namibia-agent">
-            <div className="services-text">
-                <span><strong>RELIABLE CLEARING AND IMPORT SERVICES IN WALVIS BAY<br /></strong></span>
-                <span><strong>Nationwide Delivery<br /></strong></span>
-                <span>Efficient delivery to major cities<br /> </span>
-                <span>including Swakopmund, Windhoek, and beyond.<br /></span>
-                <span><strong>Border deliveries</strong> <br/></span>
-                <span>to Botswana, Angola, and Zambia</span>
-            </div>
-      </div>
       
       <section id="services" className="section-container">
         <div class="section-title">
@@ -111,12 +114,12 @@ const NamibiaAgent = () => {
         <div className="package-container">
           <div className="title">
             <h2>A Whole Package of Premium Services!</h2> 
-            <span className="chevrons">
+    
               <img 
                 alt="Decorative chevrons" 
                 src={`${process.env.PUBLIC_URL}/images/localServices/arrows.png`} 
               />
-            </span>
+       
           </div>
           <div className="list">
             <div className="list-item">

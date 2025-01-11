@@ -187,7 +187,7 @@ const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0,
         <div className="input-group">
           <input
             type="text"
-            placeholder="Address"
+            placeholder="Address E.g. City"
             name="address"
             value={address}
             required
