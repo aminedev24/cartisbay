@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cartisbay/static/css/main.a9b363a2.css",
-    "main.js": "/cartisbay/static/js/main.088b5951.js",
+    "main.css": "/cartisbay/static/css/main.a60a0de7.css",
+    "main.js": "/cartisbay/static/js/main.f54e6304.js",
     "static/js/213.809af65b.chunk.js": "/cartisbay/static/js/213.809af65b.chunk.js",
     "static/js/732.5a05b03f.chunk.js": "/cartisbay/static/js/732.5a05b03f.chunk.js",
     "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
@@ -9,10 +9,10 @@
     "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
     "static/media/used-tires-banner.jpeg": "/cartisbay/static/media/used-tires-banner.b4de323e8b0ae1a20a96.jpeg",
     "static/media/Help.jpeg": "/cartisbay/static/media/Help.8b9170007596b4f409f3.jpeg",
-    "static/media/nabimiaph3.png": "/cartisbay/static/media/nabimiaph3.91b96e19a7b4ae88a249.png",
     "static/media/car-makes-icons.svg?gtc92f": "/cartisbay/static/media/car-makes-icons.5887cab9f6dcec54f2f5.svg",
-    "static/media/tanzaniaph3.png": "/cartisbay/static/media/tanzaniaph3.4f17a0fc1daae8a8b958.png",
     "static/media/fa-solid-900.ttf": "/cartisbay/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/namibiaph4.png": "/cartisbay/static/media/namibiaph4.70c90aecea824a1b08ea.png",
+    "static/media/tanzaniaagentnew.png": "/cartisbay/static/media/tanzaniaagentnew.ee992414972f5ad9012f.png",
     "static/media/custumersupportcopy.JPEG": "/cartisbay/static/media/custumersupportcopy.0a69171f9c039e13995c.JPEG",
     "static/media/logisticstransparent.png": "/cartisbay/static/media/logisticstransparent.c71c4fab1c5cdcdf091e.png",
     "static/media/fa-brands-400.ttf": "/cartisbay/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
@@ -35,14 +35,14 @@
     "index.html": "/cartisbay/index.html",
     "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
     "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.a9b363a2.css.map": "/cartisbay/static/css/main.a9b363a2.css.map",
-    "main.088b5951.js.map": "/cartisbay/static/js/main.088b5951.js.map",
+    "main.a60a0de7.css.map": "/cartisbay/static/css/main.a60a0de7.css.map",
+    "main.f54e6304.js.map": "/cartisbay/static/js/main.f54e6304.js.map",
     "213.809af65b.chunk.js.map": "/cartisbay/static/js/213.809af65b.chunk.js.map",
     "732.5a05b03f.chunk.js.map": "/cartisbay/static/js/732.5a05b03f.chunk.js.map",
     "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a9b363a2.css",
-    "static/js/main.088b5951.js"
+    "static/css/main.a60a0de7.css",
+    "static/js/main.f54e6304.js"
   ]
 }
