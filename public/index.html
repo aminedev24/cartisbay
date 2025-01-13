@@ -14,18 +14,20 @@
     -->
     <link rel="manifest" href="manifest.json" />
 
-    <title>Artisbay</title>
+    <title>Artisbay Inc.</title>
   </head>
   <body>
  
     <script>
       if (window.innerWidth < 1024) {
           var siteWidth = 1200;
-          document.querySelector('meta[name="viewport"]').setAttribute("content", "width=1200, maximum-scale=1.0, initial-scale=1.0" );
-          
+          document.querySelector('meta[name="viewport"]').setAttribute(
+            "content", 
+            `width=${siteWidth}, initial-scale=${window.innerWidth / siteWidth}, maximum-scale=1.0`
+          );
       }
-
     </script>
+    
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

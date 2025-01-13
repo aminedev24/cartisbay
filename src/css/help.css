@@ -70,7 +70,7 @@
 }
 
 .sidebar {
-  width: 217px; /* Original width */
+  width: 250px; /* Original width */
   max-height: 90vh; /* Makes sidebar scrollable if needed */
   overflow-y: auto; /* Enables scrolling */
   padding: 0 20px; /* Original padding */

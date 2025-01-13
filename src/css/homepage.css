@@ -704,14 +704,14 @@ option {
 }
 
 .image-usefulLinks_container img {
-    max-width: 80%;
+    max-width: 90%;
     height: auto;
 }
 
 @media screen and (max-width:1200px){
     .image-usefulLinks_container img {
         margin: 15px;
-        max-width: 95%;
+        max-width: 100%;
         object-fit: cover;
     }    
 

@@ -15,13 +15,15 @@ html, body {
 .slider-container {
     display: flex;
     justify-content: space-between; /* Space between slider and right image */
+    width: 100%; /* Ensure container takes full width */
+    max-width: 100%; /* Ensure no overflow */
+    margin: 0 auto;
 }
 
 /* The slider area */
 .slider {
-    min-width: 200px; /* Ensure slider doesn't shrink too much */
+    width: 80%; /* Make the slider take up 80% of the container width */
     overflow: hidden; /* Prevent overflow */
-    width: 83%;
 }
 
 /* Right image container */
@@ -36,21 +38,21 @@ html, body {
     display: block;
 }
 
+
 /* Slick slider image styles */
 .slick-slide img {
-    width: 100%;
-    height: 300px;
+    width: -webkit-fill-available; /* Ensure the image fills the slider container */
+    height: 300px; /* Maintain the aspect ratio */
 }
-
 
 /* Optional: Adjust position of slider dots */
 .slick-dots {
     bottom: -30px; /* Adjust the position of the dots */
 }
 
-@media screen and (min-width:1500px) {
+@media screen and (min-width:1800px) {
+    /* On large screens, ensure images scale well */
     .slick-slide img {
-        height: auto;
+        height: auto; /* Ensure images don't stretch vertically */
     }
 }
-
