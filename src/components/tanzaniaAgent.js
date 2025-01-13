@@ -167,9 +167,9 @@ const TanzainaAgent = () => {
         <div id="agent"  className="logistics-container">
             <div className="section">
                 <img alt="Star Voyage logo" src={`${process.env.PUBLIC_URL}/images/localServices/starvoyagerlogo2.png`} />
-                <h2>
+                <h5>
                 Documents and paperwork:
-                </h2>
+                </h5>
                 <p>
                 StarVoyage Shippers Co.,Ltd
                 </p>
@@ -188,9 +188,9 @@ const TanzainaAgent = () => {
             </div>
             <div className="section">
                 <img className='skybridge' alt="SkyBridge logo" src={`${process.env.PUBLIC_URL}/images/localServices/skybridgelogo.png`}/>
-                <h2>
+                <h5>
                 Clearing and forwarding:
-                </h2>
+                </h5>
                 <p>
                 SkyBridge Logistics Co.Ltd
                 </p>
