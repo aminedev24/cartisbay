@@ -201,7 +201,7 @@ const TanzainaAgent = () => {
                 Dar Es Salaam
                 </p>
                 <p>
-                +255 760 202 222
+                Tel: +255 760 202 222
                 </p>
                 <p>
                 sales@skybridgelg.com
