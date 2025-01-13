@@ -148,20 +148,35 @@ const links2 = [
 
         <div>
           <div className="ad-header-container">
-            <img
+
+          <picture className="ad-banner">
+            <source srcset={`${process.env.PUBLIC_URL}/images/tiresbannerhome.webp`} type="image/webp" />
+            <source srcset={`${process.env.PUBLIC_URL}/images/tiresbannerhome.jpeg`} type="image/jpeg" /> 
+            <img className="ad-banner" src={`${process.env.PUBLIC_URL}/images/tiresbannerhome.jpeg`} alt="Tires banner" />
+          </picture>
+
+          <Link to="/help?topic=about%20used%20Tires">
+              <button className="order-now">read more</button>
+          </Link>
+          {/* 
+             <img
               src={`${process.env.PUBLIC_URL}/images/tiresbannerhome.jpeg`}
               className="ad-banner"
             />
             <Link to="/help?topic=about%20used%20Tires">
               <button className="order-now">read more</button>
             </Link>
+          */}
+           
           </div>
 
           <div className="ad-header-container">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/dismantlinghome.jpeg`}
-              className="ad-banner"
-            />
+          <picture className="ad-banner">
+            <source srcset={`${process.env.PUBLIC_URL}/images/dismantlinghome.webp`} type="image/webp" />
+            <source srcset={`${process.env.PUBLIC_URL}/images/dismantlinghome.jpeg`} type="image/jpeg" /> 
+            <img className="ad-banner" src={`${process.env.PUBLIC_URL}/images/dismantlinghome.jpeg`} alt="dismantling banner" />
+          </picture>
+
             <Link to="/car-dismantling">
               <button className="dismantling-btn">read more</button>
             </Link>

@@ -579,7 +579,7 @@ const OrderForm = ({
             alt="Logo"
             className="logo"
           />
-          <h1>Wholesale Tires Order</h1>
+          <h3>Wholesale Tires Order</h3>
           <img
             src={process.env.PUBLIC_URL + "/images/logo3new.png"}
             alt="Logo"

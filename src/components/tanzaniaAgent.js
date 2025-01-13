@@ -13,9 +13,9 @@ const TanzainaAgent = () => {
       <div className="banner">
         <img className="banner-image" alt="Header image with containers and trucks" src={`${process.env.PUBLIC_URL}/images/localServices/tanzaniabanner.png`}/>
       </div>
-      <div className="main-title">
+      <h1 className="main-title">
         Streamlined Logistics, Trusted Expertise
-      </div>
+      </h1>
       <section className="intro-container">
         <div className="intro-content">
           <p>
@@ -70,9 +70,9 @@ const TanzainaAgent = () => {
         </div>
       
       <section id="services" className="section-container">
-        <div className="section-title">
+        <h1 className="section-title">
           Container shipment services
-        </div>
+        </h1>
         <div className="services">
           <h3>
           1. Consolidation Service
@@ -140,9 +140,9 @@ const TanzainaAgent = () => {
       <section  className="contact-section-container">
         <div className="contact">
           <div className='contact-text'>
-          <h2>
+          <h3>
             We are your Partner for Stress-Free Imports
-          </h2>
+          </h3>
           <p>
             With<strong> Artisbay Inc. and</strong> <strong> StarVoyage Shippers Company 
             Limited.</strong>

@@ -169,8 +169,8 @@ const Contact = ({ sell }) => {
       }
      
 
-      {!sell && <h1>We like to hear from you!</h1>}
-      <h2>Contact Us</h2>
+      {!sell && <h2>We like to hear from you!</h2>}
+      <h3>Contact Us</h3>
       <p className='contact-prompt'>
       If you have any questions or would like to learn more about our offerings, please don’t hesitate to reach out using the form below. We’re always eager to connect with our customers and will respond as promptly as possible.
       </p>

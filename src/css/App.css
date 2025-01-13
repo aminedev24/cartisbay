@@ -1,5 +1,78 @@
 /* Force desktop styles for smaller screens */
-/* Force desktop styles for smaller screens */
+p, ul li, ol li, .list-item, .services-text, .logistics-agent-info {
+  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Dynamic paragraph size, smaller than h2 */
+}
+
+.logistics-agent-info , .services-text , .logistics-agent-info a {
+  font-size:clamp(0.875rem, 2vw, 2.25rem) !important ;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Larger than h2 */
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem); /* Baseline for heading balance */
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Slightly smaller than h2 */
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem); /* Smaller than h3 */
+}
+
+h5 {
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Smaller than h4 */
+}
+
+h6 {
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem); /* Smaller than h5 */
+}
+
+small {
+  font-size: clamp(0.75rem, 1.25vw, 1rem); /* Small text, smaller than paragraph */
+}
+
+button {
+  font-size: clamp(0.875rem, 1.75vw, 1.25rem); /* Similar to small, balanced for button size */
+}
+
+blockquote {
+  font-size: clamp(1.5rem, 3.5vw, 2rem); /* Slightly larger than paragraph, distinct but balanced */
+}
+
+caption {
+  font-size: clamp(0.75rem, 1.25vw, 1rem); /* Same as small, suitable for captions */
+}
+
+nav {
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Similar to paragraph, fitting for navigation */
+}
+
+a , .nav-item , i  {
+  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for links */
+  text-decoration: none; /* Optional: remove underline */
+  color: inherit; /* Optional: inherit text color */
+}
+
+td {
+  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for table data */
+}
+
+th {
+  font-size: clamp(1rem, 2.5vw, 1.5rem); /* Slightly larger than table data for headings */
+}
+
+label {
+  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for form labels */
+}
+
+input {
+  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for input text */
+}
+  
 
 body {
   overflow-x:hidden ;

@@ -58,13 +58,13 @@
   background-color: #007bff;
 }
 
-.contact-container h1 {
+.contact-container h2 {
 
   color: #1da1f2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
-.contact-container h2 {
+.contact-container h3 {
   color: #333;
   text-align: center;
   margin: 20px 0;

@@ -89,7 +89,7 @@ const UsedTires = () => {
             <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
             <section class="reasons">
               <div class="reason">
-                <h2>Premium Selection</h2>
+                <h3>Premium Selection</h3>
                 <p>
                   Discover our curated collection of high-quality used tires,
                   expertly chosen to deliver unbeatable value, performance, and
@@ -97,21 +97,21 @@ const UsedTires = () => {
                 </p>
               </div>
               <div class="reason">
-                <h2>Space-Optimized Shipping</h2>
+                <h3>Space-Optimized Shipping</h3>
                 <p>
                   By utilizing our 40-foot containers, we maximize your order’s
                   volume without compromising on quality.
                 </p>
               </div>
               <div class="reason">
-                <h2>Wholesale Pricing & Bulk Availability</h2>
+                <h3>Wholesale Pricing & Bulk Availability</h3>
                 <p>
                   Take advantage of our competitive wholesale prices tailored
                   for bulk purchases.
                 </p>
               </div>
               <div class="reason">
-                <h2>Meticulous Inspection</h2>
+                <h3>Meticulous Inspection</h3>
                 <p>
                   Each tire undergoes a manual inspection to meet our strict
                   quality standards.
@@ -127,7 +127,7 @@ const UsedTires = () => {
             <div className="rating-grid">
               {ratings.map((rating, index) => (
                 <div className="rating-card" key={index}>
-                  <h2 className="rating-title">{rating.title}</h2>
+                  <h3 className="rating-title">{rating.title}</h3>
                   <ul className="rating-details">
                     <li>
                       <strong>Tread Depth:</strong> {rating.treadDepth}

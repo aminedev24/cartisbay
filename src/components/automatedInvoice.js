@@ -3,7 +3,7 @@ import React from 'react';
 const AutomatedInvoice = () => {
   return (
     <div className="automated-invoice terms-container">
-      <h1>Generate Your Invoice Instantly with Our Automated System</h1>
+      <h2>Generate Your Invoice Instantly with Our Automated System</h2>
       <p>
         At Artisbay Inc., we understand the importance of efficiency and accuracy in your business
         operations. That’s why we’ve created our Automated Invoice Generator—a tool uniquely

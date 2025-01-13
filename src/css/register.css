@@ -26,7 +26,6 @@
 
 /* Header text styling */
 .header h2 {
-    font-size: 24px; /* Larger header text */
     margin: 0; /* Remove default margin */
 }
 
@@ -215,6 +214,7 @@
 
 .password-criteria li {
     margin: 5px 0; /* Space between criteria */
+    font-size: inherit;
 }
 
 /* Color for met criteria */

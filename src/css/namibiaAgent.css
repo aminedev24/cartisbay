@@ -15,7 +15,6 @@
 }
 
 .main-title {
-  font-size: 2rem; /* 32px */
   font-weight: bold;
   color: #333;
   margin: 20px 0;
@@ -23,7 +22,6 @@
 }
 
 .sub-title {
-  font-size: 1.75rem; /* 28px */
   font-weight: bold;
   color: #333;
   text-align: center;
@@ -39,7 +37,6 @@
 }
 
 .intro-content p {
-  font-size: 24px; /* 16px */
   color: #333;
   line-height: 1.6;
   padding: 50px 20px;
@@ -61,7 +58,7 @@
 }
 
 .nav a {
-  font-size: 1rem; /* 16px */
+
   margin: 0 15px;
   text-decoration: none;
   color: #333;
@@ -80,13 +77,36 @@
 }
 
 .section-title {
-  font-size: 2rem; /* 28px */
-  background-color: #1e398a;
+  position: relative;
   color: #fff;
-  padding: 10px;
+  padding: 5px 40px; /* Adjust horizontal padding */
   text-align: center;
   font-weight: bold;
+  z-index: 1; /* Ensure the text is above the pseudo-elements */
+  text-shadow: 0px 6px 0px #f1892b;
 }
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 45px; /* Increased height of the background color */
+  background-color: #1e398a;
+  transform: translateY(-50%); /* Center the lines vertically with the text */
+  z-index: -1; /* Ensure the background lines are behind the text */
+}
+
+.section-title::before {
+  left: 0;
+  width: calc(100% - 40px); /* Adjust width to reflect padding */
+}
+
+.section-title::after {
+  right: -45%;
+  width: calc(100% - 40px); /* Adjust width to reflect padding */
+}
+
 
 .namibia-agent-container .services {
   padding: 40px 30px;
@@ -94,14 +114,12 @@
 }
 
 .services h3 {
-  font-size: 26px;
   font-weight: bold;
   color: #333;
   margin: 10px 0;
 }
 
 .services p {
-  font-size: 24px; 
   color: #333;
   line-height: 1.6;
   padding: 0 20px;
@@ -129,7 +147,6 @@
 }
 
 .faq {
-  font-size: 1.75rem; /* 28px */
   text-align: center;
   font-weight: bold;
   margin: 20px 0;
@@ -140,7 +157,6 @@
 }
 
 .contact-text {
-  font-size: 1rem; /* 16px */
   border: 1px solid #ccc;
   padding: 30px 45px;
 }
@@ -150,7 +166,6 @@
 }
 
 .package-container {
-  font-size: 1rem; /* 16px */
   text-align: left;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -169,7 +184,6 @@
 }
 
 .title h2 {
-  font-size: 35px; 
   margin: 0;
 
 }
@@ -188,7 +202,6 @@
 }
 
 .list-item {
-  font-size: 24px; /* 16px */
   margin-bottom: 15px;
   color: #333;
   line-height: 1.6;
@@ -202,17 +215,7 @@
   text-align: left;
 }
 
-.faq h2 {
-  font-size: 28px;
-}
 
-.faq p {
-  font-size: 25px;
-}
-
-.faq-title {
-  font-size: 2rem !important; /* 32px */
-}
 
 @media screen and (min-width: 1500px) {
   .intro-content {
@@ -252,12 +255,11 @@
 
 
 .services-text {
-  font-size: 25px;
   line-height: 1.5;
   /* background-color: rgba(0, 0, 0, 0.5); */
   padding: 20px;
   border-radius: 10px;
-  max-width: 545px;
+  max-width: 520px;
   color: #333;
   text-align: left;
   position: relative;
@@ -267,7 +269,6 @@
 
 
 .logistics-agent-info {
-  font-size: 25px;
   line-height: 1.6;
   padding: 20px;
   position: relative;
@@ -287,37 +288,24 @@
 @media (min-width: 1400px) {
   .background {
     background-position: top center; /* Adjust the position as needed */
-    padding-top: 40px; /* Increase the padding to ensure visibility */
     min-height: 512px; /* Optional: Increase the height if needed */
   }
 
   .services-text , .logistics-agent-info {
-    font-size: 33px;
+        max-width: 640px;
   }
 
   .logistics-agent-info {
     max-width: 700px;
   }
 
-  .intro-content p , .services p , .list-item, .contact p, .faq p {
-    font-size: 30px;
-  }
+ 
+ 
 
-  .services h3 {
-    font-size: 32px;
-  }
+  
+  
 
-  .title h2 {
-    font-size: 50px;
-  }
-
-  .contact  , .faq-item h2 {
-    font-size: 35px;
-  }
-  .main-title, .section-title,.faq-title  { 
-    font-size: 3rem !important;
-  }
-  .contact-text h2{
-    font-size: 2.5rem;
+  .nav-icon {
+    max-width: 250px;
   }
 }

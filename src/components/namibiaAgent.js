@@ -13,9 +13,9 @@ const NamibiaAgent = () => {
       <div class="banner">
         <img className="banner-image" alt="Header image with containers and trucks" src={`${process.env.PUBLIC_URL}/images/localServices/namibiabanner.png`}/>
       </div>
-      <div class="main-title">
+      <h1 class="main-title">
         Streamlined Logistics, Trusted Expertise
-      </div>
+      </h1>
       <section className="intro-container">
         <div class="intro-content">
           <p>
@@ -71,9 +71,9 @@ const NamibiaAgent = () => {
       
       
       <section id="services" className="section-container">
-        <div class="section-title">
+        <h1 class="section-title">
           Container shipment services
-        </div>
+        </h1>
         <div class="services">
           <h3>
           1. Consolidation Service
@@ -140,9 +140,9 @@ const NamibiaAgent = () => {
       <section className="contact-section-container">
         <div class="contact">
           <div className='contact-text'>
-          <h2>
+          <h3>
             We are your Partner for Stress-Free Imports
-          </h2>
+          </h3>
           <p>
             With<strong> Artisbay Inc.</strong> <strong>and IT Import and Export CC</strong>
             , you can rest assured that your goods are in safe hands. We take care of the paperwork, customs processes, and transportation so you can focus on your business.
@@ -182,7 +182,7 @@ const NamibiaAgent = () => {
         </div>
 
       <div id="faq" class="faq">
-        <h2 className="faq-title">Frequently Asked Questions</h2>
+        <h1 className="faq-title">Frequently Asked Questions</h1>
         <FAQComponent />
       </div>
     </div>

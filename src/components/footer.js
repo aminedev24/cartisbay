@@ -20,9 +20,9 @@ const Footer = () => {
       <div className='footer-inner'>
         <Link to='/'><img alt="Autocom Japan logo"  src={ `${process.env.PUBLIC_URL}/images/logo3new.png`} width="130"/></Link>
         <div class="info">
-        <h1>
+        <h4>
           Artisbay Inc.
-        </h1>
+        </h4>
         <p>
           Artisbay Inc. An online-based platform for the sale and export of used vehicles and auto parts.
         </p>
