@@ -211,7 +211,7 @@ const TanzainaAgent = () => {
       </div>
 
       <div id="faq" className="faq">
-        <h2 className="faq-title">Frequently Asked Questions</h2>
+        <h1 className="faq-title">Frequently Asked Questions</h1>
         <FAQComponent />
       </div>
     </div>
