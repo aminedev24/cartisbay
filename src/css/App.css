@@ -1,5 +1,5 @@
 /* Force desktop styles for smaller screens */
-
+/* Force desktop styles for smaller screens */
 p, ul li, ol li, .list-item, .services-text, .logistics-agent-info {
   font-size: clamp(1.25rem, 1.75vw, 1.625rem); /* Increased for better readability */
 }
