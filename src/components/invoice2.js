@@ -363,7 +363,7 @@ const handleSendEmail = async () => {
           <div className="note-amount-container">
             <div className="note">
               <p>
-                <strong>Note for bank:</strong>
+                <strong>Note for bank (By the Remitter):</strong>
               </p>
               <p>
                {invoiceData.bankNote}

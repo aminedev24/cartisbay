@@ -39,20 +39,23 @@ html, body {
 }
 
 
-/* Slick slider image styles */
-.slick-slide img {
-    width: -webkit-fill-available; /* Ensure the image fills the slider container */
-    height: 300px; /* Maintain the aspect ratio */
-}
+.slick-list img {
+    width: 100%;        /* Ensure the image fills the container width */
+    height: 300px;       /* Maintain aspect ratio */
+    object-fit: cover;  /* Ensure the image covers the container without distortion */
+    display: block;     /* Prevent any inline spacing below the image */
+  }
+  
 
 /* Optional: Adjust position of slider dots */
 .slick-dots {
     bottom: -30px; /* Adjust the position of the dots */
 }
 
-@media screen and (min-width:1800px) {
+@media screen and (min-width:1300px) {
     /* On large screens, ensure images scale well */
     .slick-slide img {
         height: auto; /* Ensure images don't stretch vertically */
+        object-fit: fill;
     }
 }

@@ -354,7 +354,7 @@ const ProformaInvoiceForm = () => {
               className="logo-form" 
             />
       
-            <h1>Proforma Invoice Generation</h1>
+            <h2>Proforma Invoice Generation</h2>
 
                {/* Compatibility Message  */}
             <p className="compatibility-message">
@@ -377,7 +377,7 @@ const ProformaInvoiceForm = () => {
             </p>
       
             <div className="form-section">
-              <h2>Your Information</h2>
+              <h3>Your Information</h3>
               <div className="form-group">
                 <div className="half-width">
                   <label htmlFor="fullName">
@@ -480,7 +480,7 @@ const ProformaInvoiceForm = () => {
             </div>
       
             <div className="form-section">
-              <h2>Deposit Details</h2>
+              <h3>Deposit Details</h3>
               <div className="form-group">
                 <div className="half-width">
                   <label htmlFor="depositCurrency">

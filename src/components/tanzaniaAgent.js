@@ -43,10 +43,12 @@ const TanzainaAgent = () => {
           <img className="nav-icon" src={`${process.env.PUBLIC_URL}/images/localServices/auctionicon.png`} alt='services icon'/>
 
         </a>
-        <a onClick={() => scrollToSection('faq')}>
+
+        <a href='#/help?topic=F%26Q'>
           <img className="nav-icon" src={`${process.env.PUBLIC_URL}/images/localServices/faqicon.png`} alt='services icon'/>
 
         </a>
+     
       
       </div>
 
@@ -116,7 +118,7 @@ const TanzainaAgent = () => {
             <span className="chevrons">
               <img 
                 alt="Decorative chevrons" 
-                src={`${process.env.PUBLIC_URL}/images/localServices/arrows.png`} 
+                src={`${process.env.PUBLIC_URL}/images/localServices/arrowscopy.png`} 
               />
             </span>
           </div>
@@ -210,10 +212,7 @@ const TanzainaAgent = () => {
         </div>
       </div>
 
-      <div id="faq" className="faq">
-        <h1 className="faq-title">Frequently Asked Questions</h1>
-        <FAQComponent />
-      </div>
+    
     </div>
   );
 };

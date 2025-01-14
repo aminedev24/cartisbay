@@ -87,9 +87,7 @@
     text-align:center;
 }
 
-.invoice-wrapper h2 {
-    text-align: left;
-}
+
 
 .invoice-info {
     margin-bottom: 20px;
@@ -112,6 +110,14 @@
 .invoice-bank-info p {
     margin: 0;
     font-size: 14px;
+}
+
+.note p {
+    font-size: clamp(0.875rem, 1.3vw, 1.25rem);
+}
+
+.amount-table th , .amount-table td , .items th , .items td {
+    font-size: clamp(0.875rem, 1.3vw, 1.125rem);
 }
 
 .important {

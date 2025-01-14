@@ -4,7 +4,7 @@ p, ul li, ol li, .list-item, .services-text, .logistics-agent-info {
 }
 
 .logistics-agent-info , .services-text , .logistics-agent-info a {
-  font-size:clamp(0.875rem, 2vw, 2.25rem) !important ;
+  font-size:clamp(0.875rem, 2vw, 2rem) !important ;
 }
 
 h1 {

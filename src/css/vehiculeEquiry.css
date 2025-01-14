@@ -6,8 +6,8 @@
     max-width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
-  .enquiryContainer h2 {
-
+  .enquiryContainer h3 {
+    text-align: left;
     color: #000;
     border-bottom: 2px solid #f1892b;
     padding-bottom: 5px;
