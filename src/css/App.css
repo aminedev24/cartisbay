@@ -1,78 +1,83 @@
 /* Force desktop styles for smaller screens */
+/* Force desktop styles for smaller screens */
 p, ul li, ol li, .list-item, .services-text, .logistics-agent-info {
-  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Dynamic paragraph size, smaller than h2 */
+  font-size: clamp(1.125rem, 1.75vw, 1.5rem); /* Increased for better readability */
 }
 
-.logistics-agent-info , .services-text , .logistics-agent-info a {
-  font-size:clamp(0.875rem, 2vw, 2rem) !important ;
+.logistics-agent-info, .services-text, .logistics-agent-info a {
+  font-size: clamp(0.875rem, 2vw, 2rem) !important; /* As per your original request */
+}
+
+.links a {
+  font-size: clamp(0.95rem, 1.3vw, 1.35rem); /* Decreased slightly for links */
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem); /* Larger than h2 */
+  font-size: clamp(2.125rem, 4.15vw, 3.125rem); /* Slightly decreased for balance */
 }
 
 h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.25rem); /* Baseline for heading balance */
+  font-size: clamp(1.75rem, 3.1vw, 2.375rem); /* Slightly smaller for hierarchy */
 }
 
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem); /* Slightly smaller than h2 */
+  font-size: clamp(1.5rem, 2.5vw, 2rem); /* Slightly decreased for balance with h2 */
 }
 
 h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem); /* Smaller than h3 */
+  font-size: clamp(1.25rem, 2.1vw, 1.5rem); /* Slightly smaller for readability */
 }
 
 h5 {
-  font-size: clamp(1rem, 2vw, 1.5rem); /* Smaller than h4 */
+  font-size: clamp(1rem, 1.65vw, 1.25rem); /* Decreased for clarity */
 }
 
 h6 {
-  font-size: clamp(0.875rem, 1.5vw, 1.25rem); /* Smaller than h5 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem); /* Slightly smaller */
 }
 
-small , .top-bar span{
-  font-size: clamp(0.75rem, 1.25vw, 1rem); /* Small text, smaller than paragraph */
+small, .top-bar span {
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem); /* Slightly smaller */
 }
 
 button {
-  font-size: clamp(0.875rem, 1.75vw, 1.25rem); /* Similar to small, balanced for button size */
+  font-size: clamp(0.95rem, 1.25vw, 1.125rem); /* Decreased for clarity */
 }
 
 blockquote {
-  font-size: clamp(1.5rem, 3.5vw, 2rem); /* Slightly larger than paragraph, distinct but balanced */
+  font-size: clamp(1.125rem, 2.25vw, 1.625rem); /* Slightly smaller for distinction */
 }
 
 caption {
-  font-size: clamp(0.75rem, 1.25vw, 1rem); /* Same as small, suitable for captions */
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem); /* Decreased to match */
 }
 
 nav {
-  font-size: clamp(1rem, 2vw, 1.5rem); /* Similar to paragraph, fitting for navigation */
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem); /* Slightly smaller for navigation */
 }
 
-a , .nav-item , i  {
-  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for links */
-  text-decoration: none; /* Optional: remove underline */
-  color: inherit; /* Optional: inherit text color */
+a, .nav-item, i {
+  font-size: clamp(0.95rem, 1.35vw, 1.125rem); /* Slightly smaller for consistency */
+  text-decoration: none;
+  color: inherit;
 }
 
 td {
-  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for table data */
+  font-size: clamp(0.95rem, 1.35vw, 1.125rem); /* Slightly smaller for table data */
 }
 
 th {
-  font-size: clamp(1rem, 2.5vw, 1.5rem); /* Slightly larger than table data for headings */
+  font-size: clamp(1rem, 1.65vw, 1.25rem); /* Slightly smaller for table headings */
 }
 
 label {
-  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for form labels */
+  font-size: clamp(0.95rem, 1.35vw, 1.125rem); /* Slightly smaller for form labels */
 }
 
 input {
-  font-size: clamp(0.875rem, 2vw, 1.25rem); /* Match paragraph size for input text */
+  font-size: clamp(0.95rem, 1.35vw, 1.125rem); /* Slightly smaller for form inputs */
 }
-  
+
 
 body {
   overflow-x:hidden ;
