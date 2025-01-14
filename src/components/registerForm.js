@@ -158,7 +158,7 @@ const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0,
             value={phone}
             onChange={(e) => handleInputChange(setPhone, e)}
             required
-            placeholder="Phone Number Only Without Country Code"
+            placeholder="Phone Number"
             className={phoneCode ? "shrink" : ''}
           />
           <label>Phone Number <span className="required">*</span></label>
