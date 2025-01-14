@@ -367,7 +367,7 @@ const MyPdfDocument = ({ invoiceData }) => (
       {/* Note and Amount Section */}
       <View style={styles.noteAmountContainer}>
         <View style={styles.note}>
-          <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Note for bank:</Text></Text>
+          <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Note for bank (By the Remitter):</Text></Text>
           <Text style={styles.contactInfoText}>{invoiceData.bankNote}</Text>
         </View>
         <View style={styles.amountContainer}>
