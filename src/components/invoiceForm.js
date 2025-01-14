@@ -546,7 +546,7 @@ const ProformaInvoiceForm = () => {
             </div>
 
             <div className="input-group">
-             <label htmlFor='bankNote'>Note for bank <span className="required-star">*</span></label>
+             <label htmlFor='bankNote'>Note for bank (By The Remitter) <span className="required-star">*</span></label>
                 <textarea
                     name="bankNote"
                     value={formData.bankNote || ''} // Add the bankNote field to your state

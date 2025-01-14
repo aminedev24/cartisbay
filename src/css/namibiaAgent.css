@@ -252,6 +252,10 @@
   height: auto;
 }
 
+.agent-section {
+  padding: 0 20px;
+
+}
 .logistics {
   background-image: url('../../public/images/localServices/logisticstransparent.png'); /* Replace with your image path */
   justify-content: flex-start;
