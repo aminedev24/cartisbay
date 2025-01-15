@@ -5,8 +5,16 @@ p, ul li, ol li, .list-item, .services-text, .logistics-agent-info, .cta-link ,.
 }
 
 .intro-content p {
-  font-size: clamp(0.875rem, 2vw, 2rem) !important;
+  font-size: clamp(1.25rem, 2.3vw, 2.20rem);
 }
+
+@media (min-width: 1270px) {
+  .intro-content p {
+    font-size: clamp(1rem, 1.5vw, 1.75rem); /* Adjusted for larger screens */
+  }
+
+}
+
 .logistics-agent-info, .services-text, .logistics-agent-info a {
   font-size: clamp(0.875rem, 2vw, 2rem) !important; /* As per your original request */
 }
