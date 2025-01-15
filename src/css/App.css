@@ -10,7 +10,7 @@ p, ul li, ol li, .list-item, .services-text, .logistics-agent-info, .cta-link ,.
 
 @media (min-width: 1270px) {
   .intro-content p {
-    font-size: clamp(1rem, 1.5vw, 1.75rem); /* Adjusted for larger screens */
+    font-size: clamp(1.125rem, 2vw, 1.75rem); /* Adjusted for larger screens */
   }
 
 }
