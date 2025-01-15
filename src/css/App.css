@@ -1,6 +1,6 @@
 /* Force desktop styles for smaller screens */
 /* Force desktop styles for smaller screens */
-p, ul li, ol li, .list-item, .services-text, .logistics-agent-info {
+p, ul li, ol li, .list-item, .services-text, .logistics-agent-info, .cta-link ,.bank-info-table td {
   font-size: clamp(1.25rem, 1.75vw, 1.625rem); /* Increased for better readability */
 }
 
@@ -24,11 +24,11 @@ h3 {
   font-size: clamp(1.5rem, 2.5vw, 2rem); /* Slightly decreased for balance with h2 */
 }
 
-h4 {
+h4  , .bank-info-table th{
   font-size: clamp(1.25rem, 2.1vw, 1.5rem); /* Slightly smaller for readability */
 }
 
-h5 {
+h5  {
   font-size: clamp(1rem, 1.65vw, 1.25rem); /* Decreased for clarity */
 }
 
@@ -36,7 +36,7 @@ h6 {
   font-size: clamp(0.875rem, 1.5vw, 1.125rem); /* Slightly smaller */
 }
 
-small, .top-bar span {
+small, .top-bar span, .profile-sidebar-menus li {
   font-size: clamp(0.875rem, 1.25vw, 1.125rem); /* Slightly smaller */
 }
 
@@ -81,7 +81,7 @@ input {
 
 body {
   overflow-x:hidden ;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .header-container, .used-tires-page{

@@ -6,9 +6,9 @@ const TelegraphicTransfer = () => {
    
       {/*<img style={{ maxHeight : 'unset' }} src={`${process.env.PUBLIC_URL}/images/banktransfer.jpeg`} alt={'company-profile'} className="topic-image" />*/}
       <ol>
-      <h2>How to Make a Payment via Telegraphic Transfer (T/T)</h2>
+      <h4>How to Make a Payment via Telegraphic Transfer (T/T)</h4>
         <li>
-          <h2>Receive the Invoice</h2>
+          <h4>Receive the Invoice</h4>
           <p>After placing your order, Artisbay Inc. will send you a detailed invoice via email. This invoice will include:</p>
           <ul>
             <li>The total amount due.</li>
@@ -17,14 +17,14 @@ const TelegraphicTransfer = () => {
           </ul>
         </li>
         <li>
-          <h2>Verify the Payment Details</h2>
+          <h4>Verify the Payment Details</h4>
           <ul>
             <li>Double-check the bank account information on the invoice to ensure it matches our official details.</li>
             <li>Ensure the email containing the invoice is from @artisbay.com to avoid fraudulent activity.</li>
           </ul>
         </li>
         <li>
-          <h2>Initiate the Transfer</h2>
+          <h4>Initiate the Transfer</h4>
           <ul>
             <li>Visit your bank (in person or via online banking) to initiate the Telegraphic Transfer (T/T).</li>
             <li>Provide the bank with the following details:</li>
@@ -36,14 +36,14 @@ const TelegraphicTransfer = () => {
           </ul>
         </li>
         <li>
-          <h2>Confirmation of Payment</h2>
+          <h4>Confirmation of Payment</h4>
           <ul>
             <li>Once the transfer is completed, request a payment receipt from your bank.</li>
             <li>Share the receipt with Artisbay Inc. via email to confirm your payment. This helps us verify and process your order more quickly.</li>
           </ul>
         </li>
         <li>
-          <h2>Order Processing</h2>
+          <h4>Order Processing</h4>
           <p>After confirming your payment, we will proceed with your order and keep you updated on its status check out our<Link to='/help?topic=Bank%20Information' className='cta-link'>bank information</Link>for more details.</p>
         </li>
       </ol>

@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 //import './Artisbay.css'; // Import the CSS file
-import Contact from './contact';
+import Contact from '../contact';
 function SellInArtisbay() {
   const [sell, setSell] = useState(true)
   return (
     <div className="terms-container">
-      <h2 className="heading">Join Artisbay Inc. and Expand Your Reach to Global Markets</h2>
+      <h4 className="heading">Join Artisbay Inc. and Expand Your Reach to Global Markets</h4>
 
       <p className="description">
         Artisbay Inc. offers local Japanese small-size car dealers the opportunity to grow their business by connecting with international buyers for used cars, trucks, buses, and machinery. With our streamlined process and reliable shipping solutions, we enable dealers to reach key markets, including Dar es Salaam Port in Tanzania and Walvis Bay Port in Namibia.
       </p>
 
       <div className="why-choose-artisbay">
-        <h2>Why Choose Artisbay Inc.?</h2>
+        <h4>Why Choose Artisbay Inc.?</h4>
         <ul>
           <li>Strategic Shipping Ports:</li>
           <ul>
@@ -26,7 +26,7 @@ function SellInArtisbay() {
       </div>
 
       <div className="how-to-get-started">
-        <h2>How to Get Started?</h2>
+        <h4>How to Get Started?</h4>
         <ol>
           <li>Submit Your Details: Fill out the contact form on our website with your information.</li>
           <li>Agreement Signing: Once approved, we'll finalize the agreement.</li>

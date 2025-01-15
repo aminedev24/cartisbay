@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CarDismantling from './components/carDismantling';
 import UsedTires from './components/usedTires';
-import HelpPage from './components/help';
+import HelpPage from './components/help/help';
 import InquiryForm from './components/vehiculeEnquiry';
 import RegisterForm from './components/register';
 import { UserProvider } from './components/userContext';

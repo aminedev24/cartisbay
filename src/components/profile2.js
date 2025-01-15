@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useCheckScreenSize from './screenSize';
 import Settings from './settings';
-import Privacy from './privacy';
-import TermsConditions from './terms';
-import AntiSocialPolicy from './asf';
+import Privacy from './help/privacy';
+import TermsConditions from './help/terms';
+import AntiSocialPolicy from './help/asf';
 import '../css/profilePage.css';
-import BankInformation from './bankInfo';
+import BankInformation from './help/bankInfo';
 import SalesAgreement from './salesAgreement';
 
 const ProfilePage = () => {

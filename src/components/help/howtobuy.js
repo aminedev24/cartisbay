@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/howToBuy.css';
+import '../../css/howToBuy.css';
 import {Link} from 'react-router-dom';
 
 const HowToBuy = () => {
@@ -73,7 +73,7 @@ const HowToBuy = () => {
           {steps.map((step, index) => (
             <div className="step" key={index}>
               <div className="step-text">
-                <h2>{step.title}</h2>
+                <h4>{step.title}</h4>
                 <ul>
                   {step.details.map((detail, idx) => (
                     <li key={idx}>{detail}</li>

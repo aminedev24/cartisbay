@@ -3,8 +3,8 @@ import { countries } from './countries';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import useCheckScreenSize from './screenSize';
 import SignupForm from './registerForm';
-import TermsAndConditions from "./terms";
-import PrivacyPolicy from './privacy'; // Import the PrivacyPolicy component
+import TermsAndConditions from "./help/terms";
+import PrivacyPolicy from './help/privacy'; // Import the PrivacyPolicy component
 import '../css/register.css';
 
 const RegisterForm = () => {

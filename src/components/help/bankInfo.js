@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/bankInfo.css'; // Import the CSS file
+import '../../css/bankInfo.css'; // Import the CSS file
 import {Link} from 'react-router-dom'; 
 const BankInformation = () => {
   const bankInfo = {

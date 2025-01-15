@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import faqData from './faqData.json';
-import '../css/faq.css'; // Import the CSS file
+import faqData from '../faqData.json';
+import '../../css/faq.css'; // Import the CSS file
 
 const FAQComponent = () => {
   const [language, setLanguage] = useState('en'); // Default language is English
@@ -33,7 +33,7 @@ const FAQComponent = () => {
       <div className="faq-list">
         {currentFAQ.questions.map((item, index) => (
           <div className="faq-item" key={index}>
-            <h2 className="faq-question">{item.question}</h2>
+            <h4 className="faq-question">{item.question}</h4>
             <p className="faq-answer">{item.answer}</p>
           </div>
         ))}

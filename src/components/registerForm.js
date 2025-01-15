@@ -63,66 +63,69 @@ const handlePasswordChange = (event) => {
 
 const [passwordCriteriaMet, setPasswordCriteriaMet] = useState({ criteriaMet: 0, totalCriteria: 5 });
 
-  const handleSignup = async (event) => {
-    event.preventDefault();
+const handleSignup = async (event) => {
+  event.preventDefault();
 
-    // Check if the password strength is weak
-    if (passwordStrength === "Weak") {
-      setMessage("Your password is too weak. Please choose a stronger password.");
+  // Check if the password strength is weak
+  if (passwordStrength === "Weak") {
+    setMessage("Your password is too weak. Please choose a stronger password.");
+    setIsError(true);
+    return;
+  }
+
+  if (!agreeToTerms) {
+      setMessage("You must agree to the terms and conditions.");
       setIsError(true);
       return;
   }
 
-    if (!agreeToTerms) {
-        setMessage("You must agree to the terms and conditions.");
-        setIsError(true);
-        return;
-    }
+  if (password !== confirmPassword) {
+      setMessage("Passwords do not match.");
+      setIsError(true);
+      return;
+  }
 
-    if (password !== confirmPassword) {
-        setMessage("Passwords do not match.");
-        setIsError(true);
-        return;
-    }
+  setMessage("Signing up...");
+  setIsError(false);
 
-    setMessage("Signing up...");
-    setIsError(false);
+  // Check if the phone code is already included in the phone number
+  let fullPhoneNumber = phone;
+  if (!fullPhoneNumber.startsWith(phoneCode)) {
+      fullPhoneNumber = `${phoneCode} ${phone}`.trim();
+  }
 
-    // Concatenate phone code and phone number
-    const fullPhoneNumber = `${phoneCode} ${phone}`.trim();
+  const formData = {
+      "full-name": fullName,
+      email,
+      password,
+      country: selectedCountry,
+      phone: fullPhoneNumber, // Use the checked phone number
+      company,
+      address
+  };
 
-    const formData = {
-        "full-name": fullName,
-        email,
-        password,
-        country: selectedCountry,
-        phone: fullPhoneNumber, // Use the concatenated phone number
-        company,
-        address
-    };
+  try {
+      const response = await fetch(`${apiUrl}/signup.php`, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+      });
 
-    try {
-        const response = await fetch(`${apiUrl}/signup.php`, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
-        });
-
-        const result = await response.json();
-        //console.log(result)
-        if (result.success) {
-            setMessage("Signup successful! Redirecting...");
-            setTimeout(() => navigate("/login"), 3000);
-        } else {
-            setMessage(`Signup failed, ${result.error}`);
-            setIsError(true);
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        setMessage("An error occurred. Please try again.");
-        setIsError(true);
-    }
+      const result = await response.json();
+      if (result.success) {
+          setMessage("Signup successful! Redirecting...");
+          setTimeout(() => navigate("/login"), 3000);
+      } else {
+          setMessage(`Signup failed, ${result.error}`);
+          setIsError(true);
+      }
+  } catch (error) {
+      console.error("Error:", error);
+      setMessage("An error occurred. Please try again.");
+      setIsError(true);
+  }
 };
+
 
   return (
     <div className="signup-container">

@@ -49,7 +49,7 @@ const UsedTiresFAQ = () => {
       <p>
         Japan is renowned for its high standards in vehicle maintenance, and used tires are no exception. Japanese roads are exceptionally well-maintained, and strict speed limits mean that tires endure less wear and tear compared to those in other countries. Additionally, Japanese drivers tend to replace their tires more frequently, ensuring that pre-owned tires are often in excellent condition with plenty of remaining tread life.
       </p>
-      <h2>Why Buy Used Tires from Artisbay Inc.?</h2>
+      <h3>Why Buy Used Tires from Artisbay Inc.?</h3>
       <ul>
         <li><strong>Premium Selection:</strong> High-quality, pre-owned tires sourced from Japan’s well-maintained roads.</li>
         <li><strong>Space-Optimized Shipping:</strong> Expert tire nesting ensures efficient packing, reducing shipping costs.</li>
@@ -61,10 +61,10 @@ const UsedTiresFAQ = () => {
       </p>
 
       <div className="faq-container">
-            <h1 className="faq-title">Frequently Asked Questions</h1>
+            <h3 className="faq-title">Frequently Asked Questions</h3>
             {faq.map((item, index) => (
                 <div key={index} className="faq-item">
-                    <h2 className="faq-question">{item.Q}</h2>
+                    <h4 className="faq-question">{item.Q}</h4>
                     <p className="faq-answer">
                         <strong>{item.A.split(':')[0]}</strong>: {item.A.split(':').slice(1).join(':')}
                     </p>

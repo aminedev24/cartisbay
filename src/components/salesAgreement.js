@@ -10,7 +10,7 @@ const SalesAgreement = () => {
         <li><strong>Customer</strong>, referred to as the “Buyer.”</li>
       </ul>
 
-      <h2>Notice for Vehicle Pickup</h2>
+      <h4>Notice for Vehicle Pickup</h4>
       <p>Upon receiving the unit(s) at the port of arrival:</p>
       <ul>
         <li>The customer must refill oil, fuel, and radiator coolant as these are not included.</li>
@@ -21,7 +21,7 @@ const SalesAgreement = () => {
         </ul>
       </ul>
 
-      <h2>Terms and Conditions</h2>
+      <h4>Terms and Conditions</h4>
       <ol>
         <li>
           <strong>Roll-on Roll-off (RORO) Shipping</strong>

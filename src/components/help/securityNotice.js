@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const PaymentPolicy = () => {
   return (
     <div className='security-notice'>
-      <h2>Security Notice for Payments</h2>
+      <h4>Security Notice for Payments</h4>
       <p><strong>Be careful, avoid being scammed!</strong> Confirm our correct bank account before you send your money!</p>
       <ul>
         <li>The beneficiary for all of our accounts is Artisbay Inc, and we only use the details listed<Link to='/help?topic=Bank%20Information' className='cta-link'>HERE.</Link></li>

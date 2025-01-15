@@ -1,18 +1,18 @@
 import React from 'react';
-import '../css/terms.css';
-import AgreementForm from './agreementForm';
+import '../../css/terms.css';
+import AgreementForm from '../agreementForm';
 const AntiSocialForcesPolicy = ({userProfile,agreementType}) => {
 const agreementContent = (
   `
   <div>
     <section>
-        <h2>1. Prohibition on Transactions with Anti-Social Forces</h2>
+        <h4>1. Prohibition on Transactions with Anti-Social Forces</h4>
         <p>
           Artisbay Ltd. (hereinafter referred to as “the Company”) enforces a strict policy against any dealings, affiliations, or interactions with individuals or entities connected to anti-social force. This includes, but is not limited to, criminal organizations, violent groups, or those associated with such entities (hereinafter referred to as “Anti-Social Forces”).
         </p>
       </section>
       <section>
-        <h2>2. Definition of Anti-Social Forces</h2>
+        <h4>2. Definition of Anti-Social Forces</h4>
         <p>
           For the purposes of this policy, Anti-Social Forces are defined as any individuals or organizations that fall within the following categories:
         </p>
@@ -25,19 +25,19 @@ const agreementContent = (
         </ul>
       </section>
       <section>
-        <h2>3. Non-Engagement Commitment</h2>
+        <h4>3. Non-Engagement Commitment</h4>
         <p>
           The Company unequivocally refuses to engage in or support any activities, agreements, or business relationships that involve Anti-Social Forces. This policy applies to all forms of interaction, including sales, collaborations, investments, and any contractual agreements.
         </p>
       </section>
       <section>
-        <h2>4. User Declarations and Warranties</h2>
+        <h4>4. User Declarations and Warranties</h4>
         <p>
           By using the Company’s platform, users affirm and guarantee that they are not, and will not become, associated with Anti-Social Forces. Furthermore, users confirm that they do not maintain any connections or conduct transactions with such entities. Violation of this clause will result in the immediate termination of the user’s account, with all related transactions annulled without prior notice.
         </p>
       </section>
       <section>
-        <h2>5. Prohibited Actions</h2>
+        <h4>5. Prohibited Actions</h4>
         <ul>
           <li>Providing financial support or resources to Anti-Social Forces</li>
           <li>Facilitating the direct or indirect use of the Company’s services by Anti-Social Forces</li>
@@ -45,7 +45,7 @@ const agreementContent = (
         </ul>
       </section>
       <section>
-        <h2>6. Termination of Services</h2>
+        <h4>6. Termination of Services</h4>
         <p>
           If it is discovered that a user is involved with Anti-Social Forces or there is reasonable suspicion of such involvement, the Company reserves the right to:
         </p>
@@ -56,7 +56,7 @@ const agreementContent = (
         </ul>
       </section>
       <section>
-        <h2>7. Safety and Compliance Measures</h2>
+        <h4>7. Safety and Compliance Measures</h4>
         <p>
           The Company will implement the following steps to ensure adherence to this Anti-Social Forces Policy:
         </p>
@@ -67,19 +67,19 @@ const agreementContent = (
         </ul>
       </section>
       <section>
-        <h2>8. Limitation of Liability for Termination</h2>
+        <h4>8. Limitation of Liability for Termination</h4>
         <p>
           The Company bears no responsibility for any loss or damage incurred by users resulting from service suspension or contract cancellations arising from a violation of this Anti-Social Forces Policy.
         </p>
       </section>
       <section>
-        <h2>9. Cooperation with Law Enforcement</h2>
+        <h4>9. Cooperation with Law Enforcement</h4>
         <p>
           The Company will fully cooperate with law enforcement agencies, regulatory bodies, and other relevant authorities to prevent Anti-Social Forces from utilizing the Company’s platform or services.
         </p>
       </section>
       <section>
-        <h2>10. User Responsibility to Report</h2>
+        <h4>10. User Responsibility to Report</h4>
         <p>
           Users are required to immediately notify the Company if they become aware of any Anti-Social Forces-related activities involving themselves or other users. Failure to report such activities will result in the immediate suspension or termination of the user’s account.
         </p>
@@ -92,7 +92,7 @@ const agreementContent = (
 );
   return (
     <div className='asf'>
-      {userProfile ? <h1>Anti-Social Forces Policy</h1>: <h2>Anti-Social Forces Policy</h2>}
+      {userProfile ? <h1>Anti-Social Forces Policy</h1>: <h4>Anti-Social Forces Policy</h4>}
       <div dangerouslySetInnerHTML={{ __html: agreementContent }} />
       {userProfile && <AgreementForm agreementType={agreementType} agreementContent={agreementContent} />}
     </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const AutomatedInvoice = () => {
   return (
     <div className="automated-invoice terms-container">
-      <h2>Generate Your Invoice Instantly with Our Automated System</h2>
+      <h4>Generate Your Invoice Instantly with Our Automated System</h4>
       <p>
         At Artisbay Inc., we understand the importance of efficiency and accuracy in your business
         operations. That’s why we’ve created our Automated Invoice Generator—a tool uniquely
@@ -11,14 +11,14 @@ const AutomatedInvoice = () => {
         professional invoices tailored to your needs in seconds.
       </p>
 
-      <h2>How It Works</h2>
+      <h4>How It Works</h4>
       <ol>
         <li><strong>Fill Out a Quick Form:</strong> Provide your details, including the items or services you’re purchasing.</li>
         <li><strong>Submit the Form:</strong> Once submitted, our system instantly processes your request.</li>
         <li><strong>Download or Email Your Invoice:</strong> Receive your invoice immediately, ready for your records or transactions.</li>
       </ol>
 
-      <h2>Why Choose Our Automated Invoice System?</h2>
+      <h4>Why Choose Our Automated Invoice System?</h4>
       <ul>
         <li><strong>Generate Unlimited Invoices:</strong> No restrictions—create as many invoices as you need.</li>
         <li><strong>Unlimited Editing:</strong> Make changes anytime to ensure accuracy and relevance.</li>
@@ -28,7 +28,7 @@ const AutomatedInvoice = () => {
         <li><strong>Always Accessible:</strong> Use the system 24/7, whenever you need it.</li>
       </ul>
 
-      <h2>Uniquely Designed for Importers</h2>
+      <h4>Uniquely Designed for Importers</h4>
       <p>
         Our automated invoice system is crafted specifically for customers importing used cars,
         used tires, and dismantled vehicles. With detailed descriptions tailored for banks and
@@ -36,7 +36,7 @@ const AutomatedInvoice = () => {
         your business processes.
       </p>
 
-      <h2>Get Started Now</h2>
+      <h4>Get Started Now</h4>
       <p>
         Take control of your invoicing today. Visit our<a className='cta-link' href="#/invoice">Invoice Generator form</a> and experience
         the convenience, accuracy, and efficiency firsthand.

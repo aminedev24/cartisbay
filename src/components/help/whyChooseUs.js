@@ -1,19 +1,19 @@
 import React from "react";
-import '../css/terms.css';
+import '../../css/terms.css';
 
 const WhyChooseUs = () => {
     return (
         <div className="whyChooseUs">
-            <h2>Why Choose Artisbay Inc. for Your Used Tires</h2>
+            <h4>Why Choose Artisbay Inc. for Your Used Tires</h4>
             <section>
-                <h2>Premium Selection</h2>
+                <h4>Premium Selection</h4>
                 <p>
                     Discover our curated collection of high-quality used tires, expertly chosen to deliver unbeatable value, performance, and safety. We offer a wide range of all-season, summer, and winter tires from 13 to 18 inches,
                     meeting the needs of various vehicles and driving conditions. With our rigorous quality standards, you’re assured of dependable tires at a fraction of the cost.
                 </p>
             </section>
             <section>
-                <h2>Space-Optimized Shipping with Tires Nesting</h2>
+                <h4>Space-Optimized Shipping with Tires Nesting</h4>
                 <p>
                     By utilizing our 40-foot containers, we maximize your order’s volume without compromising on quality. Through the innovative technique of “tires nesting,” we fit smaller tires inside larger ones, allowing us to load up
                     to 3,000 tires per container—compared to the standard 2,000. This means more tires delivered in fewer shipments, saving you on freight costs. Before loading, we share detailed photos and, in some cases, videos, ensuring
@@ -21,21 +21,21 @@ const WhyChooseUs = () => {
                 </p>
             </section>
             <section>
-                <h2>Meticulous Inspection</h2>
+                <h4>Meticulous Inspection</h4>
                 <p>
                     Each tire undergoes a manual inspection by our experts to meet our strict quality standards. We check for tread depth, structural integrity, and overall condition to guarantee reliability. When you buy from Artisbay,
                     you’re investing in tires that have been thoroughly evaluated and approved for safe driving.
                 </p>
             </section>
             <section>
-                <h2>Wholesale Pricing & Bulk Availability</h2>
+                <h4>Wholesale Pricing & Bulk Availability</h4>
                 <p>
                     Take advantage of our competitive wholesale prices tailored for bulk purchases. Whether you’re a dealership, repair shop, or fleet manager, our bulk pricing makes it easy to stock up on high-quality tires while keeping
                     costs low.
                 </p>
             </section>
             <section>
-                <h2>5 Simple Steps to Your Wholesale Tire Order</h2>
+                <h4>5 Simple Steps to Your Wholesale Tire Order</h4>
                 <ol>
                     <li>
                         <strong>Connect with Artisbay Inc.</strong> Reach out to discuss your needs, and we’ll guide you through the ordering process, ensuring all your requirements are covered.

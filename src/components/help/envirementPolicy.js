@@ -4,7 +4,7 @@ const EnvironmentalMessage = () => {
   return (
     <div className='envirement-policy'>
       
-      <h2>Environmental Responsibility</h2>
+      <h4>Environmental Responsibility</h4>
       <p>
         A Message from Artisbay Inc. on Environmental Responsibility
       </p>

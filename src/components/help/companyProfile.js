@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/companyProfile.css';
+import '../../css/companyProfile.css';
 
 const CompanyProfile = (selectedTopic) => {
   const companyDetails = {

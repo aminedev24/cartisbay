@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/namibiaAgent.css"; // Import the CSS file
-import FAQComponent from './faq';
 
 const TanzainaAgent = () => {
 
