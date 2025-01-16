@@ -1,7 +1,7 @@
 /* Force desktop styles for smaller screens */
 /* Force desktop styles for smaller screens */
 p, ul li, ol li, .list-item,  .cta-link, .bank-info-table td, .footer-inner a {
-  font-size: clamp(1rem, 1.5vw, 1.125rem); /* 16px - 18px */
+  font-size: clamp(1.125rem, 1.75vw, 1.75rem); /* 18px - 28px */
 }
 
 .intro-content p  {
