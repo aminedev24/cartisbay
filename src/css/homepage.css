@@ -640,6 +640,8 @@ option {
 .news-item-container img {
     width: 17%;
     object-fit: cover;
+    position: absolute;
+    right: 0;
 }
 
 .news-item {
@@ -651,6 +653,7 @@ option {
     border-radius: 5px; /* Rounded corners for news items */
     transition: transform 0.2s; /* Smooth transition for hover effect */
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .title-img {
