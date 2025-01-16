@@ -26,6 +26,8 @@
 .tanzania-agent {
     background-image: url('../../public/images/localServices/tanzaniaagentnew.png'); /* Replace with your image path */
     margin: 40px 0;
+    background-position: top center;
+    height: auto;
 }   
 
 

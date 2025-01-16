@@ -232,7 +232,6 @@
 
 .background {
   background-size: cover;
-  background-position: center;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -256,6 +255,7 @@
 .logistics {
   background-image: url('../../public/images/localServices/logisticstransparent.png'); /* Replace with your image path */
   justify-content: flex-start;
+  
 }
 
 

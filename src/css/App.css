@@ -1,6 +1,6 @@
 /* Force desktop styles for smaller screens */
 /* Force desktop styles for smaller screens */
-p, ul li, ol li, .list-item, .services-text, .logistics-agent-info, .cta-link ,.bank-info-table td {
+p, ul li, ol li, .list-item, .services-text, .logistics-agent-info, .cta-link ,.bank-info-table td , .footer-inner a {
   font-size: clamp(1.25rem, 1.75vw, 1.625rem); /* Increased for better readability */
 }
 
