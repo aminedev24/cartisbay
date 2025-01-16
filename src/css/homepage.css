@@ -650,6 +650,7 @@ option {
     background-color: #ffffff; /* White background for news items */
     border-radius: 5px; /* Rounded corners for news items */
     transition: transform 0.2s; /* Smooth transition for hover effect */
+    font-weight: bold;
 }
 
 .title-img {
