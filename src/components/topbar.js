@@ -3,7 +3,7 @@ import '../css/topbar.css'; // Adjust your CSS file path accordingly
 
 const TopBar = () => {
   const [japanTime, setJapanTime] = useState('');
-  const [usdToYenRate, setUsdToYenRate] = useState(154.95); // Initial rate
+  const [usdToYenRate, setUsdToYenRate] = useState(155.90); // Initial rate
   const [country, setCountry] = useState('Japan');
   const [currency, setCurrency] = useState('USD');
   const [language, setLanguage] = useState('English');
@@ -33,9 +33,9 @@ const TopBar = () => {
       const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD'); // Example API
       const data = await response.json();
       if (data && data.rates && data.rates.JPY) {
-        const rate = data.rates.JPY-2.5;//-2.74; // Get the USD to JPY rate
+        const rate = data.rates.JPY;//-2.74; // Get the USD to JPY rate
         console.log(rate)
-        setUsdToYenRate(rate);
+        //setUsdToYenRate(rate);
       } else {
         console.error('Error fetching exchange rate:', data);
       }
