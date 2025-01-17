@@ -8,11 +8,7 @@ p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
   font-size: clamp(1rem, 1.5vw, 1.25rem); /* 16px - 20px */
 }
 
-@media (min-width: 1270px) {
-  .intro-content p {
-    font-size: clamp(1rem, 1.25vw, 1.125rem); /* 16px - 18px */
-  }
-}
+
 
 .logistics-agent-info, .services-text, .logistics-agent-info a {
   font-size: clamp(1.125rem, 1.5vw, 1.5rem); /* 18px - 24px */
@@ -86,6 +82,16 @@ label {
 
 input {
   font-size: clamp(1rem, 1.125vw, 1.125rem); /* 16px - 18px */
+}
+
+
+@media (min-width: 1400px) {
+  .intro-content p , .logistics-agent-info, .services-text, .logistics-agent-info a {
+    font-size: clamp(1.125rem, 1.75vw, 1.75rem);
+  }
+  p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
+    font-size: clamp(1.125rem, 1.75vw, 1.75rem);
+  }
 }
 
 

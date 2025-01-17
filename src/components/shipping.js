@@ -23,7 +23,7 @@ const Shipping = () => {
         const fontSize = (() => {
           if (isSmallScreen && isPortrait) return '15px';
           if (isSmallScreen && !isPortrait) return '15px';
-          return '10px';
+          return '14px';
         })();
   
         // Use a timeout to ensure the table is rendered
