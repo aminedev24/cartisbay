@@ -74,31 +74,31 @@ const NamibiaAgent = () => {
           Container shipment services
         </h1>
         <div class="services">
-          <h4>
+          <h2>
           1. Consolidation Service
-          </h4>
+          </h2>
           <p>
           Our Consolidation Service allows vehicles from multiple customers to be combined into a single shared container, ensuring cost-efficient shipping and streamlined handling. This service is made possible through our collaboration with our trusted partner, IT Import and Export CC.
           </p>
-          <h4>
+          <h2>
           2. Customs Clearing and Documentation
-          </h4>
+          </h2>
           <p>
           • Hassle-free declaration and customs clearing.
           <br/>
           • Preparation of duty, permits, and all import paperwork for your goods.
           </p>
-          <h4>
+          <h2>
           3. Nationwide Delivery
-          </h4>
+          </h2>
           <p>
           • Efficient delivery to major cities, including Swakopmund, Windhoek, and beyond.
           <br/>
           • Border deliveries to Botswana, Angola, and Zambia.
           </p>
-          <h4>
+          <h2>
           4. Consignment Management
-          </h4>
+          </h2>
           <p>
           From unloading at the port to final delivery, we manage your goods every step of the way.
           </p>
@@ -139,9 +139,9 @@ const NamibiaAgent = () => {
       <section className="contact-section-container">
         <div class="contact">
           <div className='contact-text'>
-          <h4>
+          <h2>
             We are your Partner for Stress-Free Imports
-          </h4>
+          </h2>
           <p>
             With<strong> Artisbay Inc.</strong> <strong>and IT Import and Export CC</strong>
             , you can rest assured that your goods are in safe hands. We take care of the paperwork, customs processes, and transportation so you can focus on your business.

@@ -75,31 +75,31 @@ const TanzainaAgent = () => {
           Container shipment services
         </h1>
         <div className="services">
-          <h3>
+          <h2>
           1. Consolidation Service
-          </h3>
+          </h2>
           <p>
           Our Consolidation Service allows vehicles from multiple customers to be combined into a single shared container, ensuring cost-efficient shipping and streamlined handling. This service is made possible through our collaboration with our trusted partner, <strong>StarVoyage Shippers Company Limited.</strong>
           </p>
-          <h3>
+          <h2>
           2. Customs Clearing and Documentation
-          </h3>
+          </h2>
           <p>
           • Hassle-free declaration and customs clearing.
           <br/>
           • Preparation of duty, permits, and all import paperwork for your goods.
           </p>
-          <h3>
+          <h2>
           3. Nationwide Delivery
-          </h3>
+          </h2>
           <p>
           • Efficient delivery to major cities, including Dar Essalam, Arusha and beyond.
           <br/>
           • Border deliveries to DR-Congo, Zambia, Malawi, Uganda, Zimbabwe.
           </p>
-          <h3>
+          <h2>
           4. Consignment Management
-          </h3>
+          </h2>
           <p>
           From unloading at the port to final delivery, we manage your goods every step of the way.
           </p>
@@ -141,9 +141,9 @@ const TanzainaAgent = () => {
       <section  className="contact-section-container">
         <div className="contact">
           <div className='contact-text'>
-          <h3>
+          <h2>
             We are your Partner for Stress-Free Imports
-          </h3>
+          </h2>
           <p>
             With<strong> Artisbay Inc. and</strong> <strong> StarVoyage Shippers Company 
             Limited.</strong>

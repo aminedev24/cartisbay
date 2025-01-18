@@ -3,12 +3,14 @@ p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
   font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
 }
 
+
+
 .intro-content p {
   font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
 }
 
-.logistics-agent-info, .services-text, .logistics-agent-info a {
-  font-size: clamp(1rem, 1.25vw, 1.25rem); /* 16px - 20px */
+.logistics-agent-info, .services-text, .logistics-agent-info a, .intro-content p, .contact p {
+  font-size: clamp(1.5rem, 1.25vw, 1.25rem); /* 16px - 20px */
 }
 
 .links a {
