@@ -1,96 +1,92 @@
 /* Force desktop styles for smaller screens */
-/* Force desktop styles for smaller screens */
 p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
-  font-size: clamp(1rem, 1.125vw, 1.125rem); /* 16px - 18px */
+  font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
 }
 
 .intro-content p {
-  font-size: clamp(1rem, 1.5vw, 1.25rem); /* 16px - 20px */
+  font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
 }
-
-
 
 .logistics-agent-info, .services-text, .logistics-agent-info a {
-  font-size: clamp(1.125rem, 1.5vw, 1.5rem); /* 18px - 24px */
-}
-
-.links a {
-  font-size: clamp(0.9375rem, 1.1vw, 1rem); /* 15px - 16px */
-}
-
-h1 {
-  font-size: clamp(2rem, 2.5vw, 2.25rem); /* 32px - 36px */
-}
-
-h2 {
-  font-size: clamp(1.75rem, 2.25vw, 2rem); /* 28px - 32px */
-}
-
-h3 {
-  font-size: clamp(1.5rem, 2vw, 1.75rem); /* 24px - 28px */
-}
-
-h4, .bank-info-table th {
-  font-size: clamp(1.25rem, 1.75vw, 1.5rem); /* 20px - 24px */
-}
-
-h5 {
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem); /* 18px - 22px */
-}
-
-h6 {
   font-size: clamp(1rem, 1.25vw, 1.25rem); /* 16px - 20px */
 }
 
-small, .top-bar span, .profile-sidebar-menus li {
+.links a {
+  font-size: clamp(0.8125rem, 0.9375vw, 0.875rem); /* 13px - 14px */
+}
+
+h1 {
+  font-size: clamp(1.875rem, 2.25vw, 2.125rem); /* 30px - 34px */
+}
+
+h2 {
+  font-size: clamp(1.625rem, 2vw, 1.875rem); /* 26px - 30px */
+}
+
+h3 {
+  font-size: clamp(1.375rem, 1.75vw, 1.625rem); /* 22px - 26px */
+}
+
+h4, .bank-info-table th {
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem); /* 18px - 22px */
+}
+
+h5 {
+  font-size: clamp(1rem, 1.25vw, 1.25rem); /* 16px - 20px */
+}
+
+h6 {
   font-size: clamp(0.875rem, 1vw, 1.125rem); /* 14px - 18px */
+}
+
+small, .top-bar span, .profile-sidebar-menus li {
+  font-size: clamp(0.8125rem, 0.9375vw, 0.875rem); /* 13px - 14px */
 }
 
 button {
-  font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
+  font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
 }
 
 blockquote {
-  font-size: clamp(1.125rem, 1.75vw, 1.5rem); /* 18px - 24px */
+  font-size: clamp(1rem, 1.5vw, 1.25rem); /* 16px - 20px */
 }
 
 caption {
-  font-size: clamp(0.875rem, 1vw, 1.125rem); /* 14px - 18px */
+  font-size: clamp(0.8125rem, 0.9375vw, 0.875rem); /* 13px - 14px */
 }
 
 nav {
-  font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
+  font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
 }
 
 a, .nav-item, i {
-  font-size: clamp(0.9375rem, 1vw, 1.125rem); /* 15px - 18px */
+  font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
   text-decoration: none;
   color: inherit;
 }
 
 td {
-  font-size: clamp(0.9375rem, 1vw, 1.125rem); /* 15px - 18px */
+  font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
 }
 
 th {
-  font-size: clamp(1rem, 1.25vw, 1.25rem); /* 16px - 20px */
+  font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
 }
 
 label {
-  font-size: clamp(1rem, 1.125vw, 1.125rem); /* 16px - 18px */
+  font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
 }
 
 input {
-  font-size: clamp(1rem, 1.125vw, 1.125rem); /* 16px - 18px */
+  font-size: clamp(0.9375rem, 1.125vw, 1.125rem); /* 15px - 18px */
 }
 
-
 @media (min-width: 1400px) {
-  .intro-content p , .logistics-agent-info, .services-text, .logistics-agent-info a {
-    font-size: clamp(1.125rem, 1.75vw, 1.75rem);
+  .intro-content p, .logistics-agent-info, .services-text, .logistics-agent-info a {
+    font-size: clamp(1rem, 1.5vw, 1.5rem); /* 16px - 24px */
   }
   p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
-    font-size: clamp(1.125rem, 1.75vw, 1.75rem);
+    font-size: clamp(1rem, 1.5vw, 1.5rem); /* 16px - 24px */
   }
 }
 
