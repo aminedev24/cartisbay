@@ -264,6 +264,7 @@
 
 .note-amount-container .note {
     max-width: 50%;
+    border: solid;
 }
 
 .right img {
