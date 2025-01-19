@@ -393,3 +393,14 @@
     border: none;
   }
   
+  .warning-notice{ 
+    background-color: #f9f9f9;
+    border-left-color: #1da1f2;
+    border-left-width:5px ;
+    padding: 10px;
+
+  }
+
+  .warning-notice p {
+    margin: 0;
+  }

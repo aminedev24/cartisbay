@@ -380,7 +380,7 @@ const handleSendEmail = async () => {
          </div>
           }
 
-          <div className="note-amount-container" style={{justifyContent : invoiceData.bankNote ? 'flex-end': ''}}>
+          <div className="note-amount-container" style={{justifyContent : invoiceData.bankNote == '' ? 'flex-end': 'space-between'}}>
             {invoiceData.bankNote && 
               <div className="note">
                 <p>
@@ -475,6 +475,7 @@ const handleSendEmail = async () => {
 
 
                         */}
+            <GeneratePdfButton invoiceData={invoiceData} />
 
             <button
               className="no-print"

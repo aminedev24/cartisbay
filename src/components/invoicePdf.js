@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       flexDirection: 'column',
       borderBottom: '2px solid #000',
-      marginBottom: '10px',
+      marginBottom: '5px',
     },
     headerFullWidth: {
       display: 'flex',
@@ -95,13 +95,13 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontSize: '20px',
       fontWeight: 'bold',
-      margin: '10px 0',
+      margin: '5px 0',
     },
     invoiceInfo: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: '10px',
+      marginBottom: '5px',
       position: 'relative',
     },
     left: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
       width: '100px',
     },
     invoiceBankInfo: {
-      marginBottom: '20px',
+      marginBottom: '5px',
     },
     bankInfoText: {
       margin: 0,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     },
     important: {
       border: '1px solid #000',
-      marginBottom: '10px',
+      marginBottom: '5px',
       display: 'flex',
       flexDirection: 'row',
       gap: '4px',
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
       display: 'table',
       width: '100%',
       borderCollapse: 'collapse',
-      marginBottom: '10px',
+      marginBottom: '5px',
     },
     tableRow: {
       display: 'table-row',
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: '10px',
+      marginBottom: '5px',
     },
     note: {
       maxWidth: '55%',
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
       display: 'table',
       width: '100%',
       borderCollapse: 'collapse',
-      marginBottom: '5px',
+      marginBottom: '3px',
     },
     amountTableRow: {
       display: 'flex',
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
       fontSize: '12px',
     },
     instructions: {
-      marginBottom: '10px',
+      marginBottom: '5px',
       maxWidth: '55%',
       border: ' 1px solid #000',
       hyphenationCallback: null, // Prevents hyphenation
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     instructionsListItem: {
       fontSize: '12px',
       lineHeight: 1.5, // Consistent line height
-      marginBottom: '5px',
+      marginBottom: '3px',
     },
     invoiceFooterContainer: {
       display: 'flex',
@@ -295,7 +295,22 @@ const styles = StyleSheet.create({
       padding: '5px',
       textAlign: 'left',
       fontSize: '12px',
-    }
+    },
+    noticeContainer: {
+      marginVertical: '5px',
+      padding: '15px',
+      backgroundColor: '#f9f9f9',
+      borderLeftWidth: '5px',
+      borderLeftColor: '#1da1f2',
+    },
+    noticeText: {
+      fontSize: '10px',
+      color: '#333',
+      textAlign: 'justify',
+      lineHeight: '1.5',
+      fontWeight: '600',
+    },
+
   });
 
 const MyPdfDocument = ({ invoiceData }) => (
@@ -451,6 +466,13 @@ const MyPdfDocument = ({ invoiceData }) => (
           </View>
           <Text style={styles.contactInfoText}>Thank you for your business!</Text>
         </View>
+     
+      </View>
+
+      <View style={styles.noticeContainer}>
+        <Text style={styles.noticeText}>
+          This invoice is intended solely for legal and official purposes. Any unauthorized use, modification, or misrepresentation of its content is strictly prohibited and may result in legal action.
+        </Text>
       </View>
     </Page>
   </Document>
