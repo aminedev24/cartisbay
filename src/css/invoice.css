@@ -201,6 +201,7 @@
 .instructions {
     margin-bottom: 20px;
     max-width: 50%;
+    border: solid;
 }
 
 .instructions ul {
