@@ -360,15 +360,38 @@ const handleSendEmail = async () => {
               </tbody>
             </table>
           </div>
-          <div className="note-amount-container">
-            <div className="note">
-              <p>
-                <strong>Note for bank (By the Remitter):</strong>
-              </p>
-              <p>
-               {invoiceData.bankNote}
-              </p>
-            </div>
+          {invoiceData.depositPurpose == 'order vehicle' && 
+           <div className="items">
+           <table>
+             <thead>
+               <tr>
+                 <th>Vehicle Reference</th>
+                 <th>Chassis Number</th>
+
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                <td>{invoiceData.vehicleRef}</td>
+                 <td>{invoiceData.chasisNumber}</td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+          }
+
+          <div className="note-amount-container" style={{justifyContent : invoiceData.bankNote ? 'flex-end': ''}}>
+            {invoiceData.bankNote && 
+              <div className="note">
+                <p>
+                  <strong>Note for bank (By the Remitter):</strong>
+                </p>
+                <p>
+                 {invoiceData.bankNote}
+                </p>
+              </div>
+            }
+          
 
             <div className="amount-container">
               <table className="amount-table">
@@ -435,6 +458,11 @@ const handleSendEmail = async () => {
            
               <p>Thank you for your business!</p>
             </div>
+          </div>
+
+          <div className="warning-notice">
+            <p><strong>Important</strong></p>
+            <p>This invoice is intended solely for legal and official purposes. Any unauthorized use, modification, or misrepresentation of its content is strictly prohibited and may result in legal action.</p>
           </div>
           
 

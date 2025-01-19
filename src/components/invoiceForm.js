@@ -43,7 +43,9 @@ const ProformaInvoiceForm = () => {
         depositDescription: '',
         depositPurpose: '',
         expiryDate: '',
-        bankNote: 'Car details, including chassis numbers, will be provided by the remitter upon completion of the car purchase.'
+        bankNote: 'Car details, including chassis numbers, will be provided by the remitter upon completion of the car purchase.',
+        chasisNumber: '', 
+        vehicleRef: '' 
     });
 
     const [phoneCode, setPhoneCode] = useState('');
@@ -91,6 +93,7 @@ const ProformaInvoiceForm = () => {
         "auto parts order": "This payment is to order auto parts",
         "dismantling": "This is a deposit to order dismantled cars",
         "tires order": "This is a deposit to order used tires",
+        "order vehicle": "I am paying for an existing order"
     };
 
 
@@ -183,40 +186,38 @@ const ProformaInvoiceForm = () => {
     
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-    
-        // Handle phone code for country selection
-        if (name === 'country') {
-            const selectedCountry = CountryList().find(
-                (country) => country.label === value
-            );
-    
-            if (selectedCountry?.countryCode) {
-                setPhoneCode(selectedCountry.countryCode);
-            } else {
-                setPhoneCode('');
-            }
-        }
-    
-        // Update the description when the purpose changes
-        if (name === 'depositPurpose') {
-            const description = purposeDescriptions[value] || '';
-            setFormData(prevState => ({
-                ...prevState,
-                depositDescription: description, // Always update the description when the purpose changes
-                [name]: value,
-            }));
-        } else {
-            setFormData(prevState => ({
-                ...prevState,
-                [name]: value,
-            }));
-        }
+      const { name, value } = e.target;
 
-        if(name === 'depositAmount'){
-          
-        }
-    };
+      // Handle phone code for country selection
+      if (name === 'country') {
+          const selectedCountry = CountryList().find(
+              (country) => country.label === value
+          );
+
+          if (selectedCountry?.countryCode) {
+              setPhoneCode(selectedCountry.countryCode);
+          } else {
+              setPhoneCode('');
+          }
+      }
+
+      // Update the description when the purpose changes
+      if (name === 'depositPurpose') {
+          const description = purposeDescriptions[value] || '';
+          setFormData(prevState => ({
+              ...prevState,
+              depositDescription: description, // Always update the description when the purpose changes
+              [name]: value,
+              bankNote: value === 'order vehicle' ? '' : prevState.bankNote, // Clear bankNote if deposit purpose is "order vehicle"
+          }));
+      } else {
+          setFormData(prevState => ({
+              ...prevState,
+              [name]: value,
+          }));
+      }
+  };
+
 
     function generateSerialNumber() {
         // Get the current date and time
@@ -275,6 +276,8 @@ const ProformaInvoiceForm = () => {
                     depositDescription: formData.depositDescription,
                     depositPurpose: formData.depositPurpose,
                     bankNote: formData.bankNote,
+                    vehicleRef: formData.vehicleRef,
+                    chasisNumber: formData.chasisNumber,
                     serialNumber: generateSerialNumber(),
                     expiryDate: expiryDate,
                     ...bankDetails,
@@ -484,7 +487,7 @@ const ProformaInvoiceForm = () => {
               <div className="form-group">
                 <div className="half-width">
                   <label htmlFor="depositCurrency">
-                    Deposit Amount<span className="required-star">*</span>
+                    Deposit currency<span className="required-star">*</span>
                   </label>
                   <div className="input-with-addon">
                     <select
@@ -497,6 +500,9 @@ const ProformaInvoiceForm = () => {
                       <option value="JPY">JPY</option>
                       <option value="EUR">EUR</option>
                     </select>
+                    <label htmlFor="depositAmount">
+                      Deposit Amount<span className="required-star">*</span>
+                  </label>
                     <input
                       type="number"
                       id="depositAmount"
@@ -511,24 +517,61 @@ const ProformaInvoiceForm = () => {
                   </div>
                 </div>
                 <div className="half-width">
-                  <label htmlFor="depositPurpose">
-                    Deposit Purpose<span className="required-star">*</span>
-                  </label>
-                  <select
-                    id="depositPurpose"
-                    name="depositPurpose"
-                    value={formData.depositPurpose}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select Deposit Purpose</option>
-                    <option value="vehicle purchase">Vehicle Purchase</option>
-                    <option value="auto parts order">Auto Parts Order</option>
-                    <option value="dismantling">Dismantling</option>
-                    <option value="tires order">Tires Order</option>
-                  </select>
+                    <label htmlFor="depositPurpose">
+                        Deposit Purpose<span className="required-star">*</span>
+                    </label>
+                    <select
+                        id="depositPurpose"
+                        name="depositPurpose"
+                        value={formData.depositPurpose}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="">Select Deposit Purpose</option>
+                        <option value="vehicle purchase">Vehicle Purchase</option>
+                        <option value="auto parts order">Auto Parts Order</option>
+                        <option value='order vehicle'>I want to order a vehicle</option>
+                        <option value="dismantling">Dismantling</option>
+                        <option value="tires order">Tires Order</option>
+                    </select>
+
+                    {formData.depositPurpose === 'order vehicle' && (
+                <div className='form-group'>
+                    <div className='half-width'>
+                        <label htmlFor="vehicleRef">
+                            Vehicle Reference<span className="required-star">*</span>
+                        </label>
+                        <input
+                            type='text'
+                            id="vehicleRef"
+                            name="vehicleRef"
+                            value={formData.vehicleRef}
+                            onChange={handleChange}
+                            placeholder='Vehicle Reference'
+                            required
+                        />
+                    </div>
+                    <div className='half-width'>
+                        <label htmlFor="chasisNumber">
+                            Chassis Number<span className="required-star">*</span>
+                        </label>
+                        <input
+                            type='text'
+                            id="chasisNumber"
+                            name="chasisNumber"
+                            value={formData.chasisNumber}
+                            onChange={handleChange}
+                            placeholder='Chassis Number'
+                            required
+                        />
+                    </div>
                 </div>
-              </div>
+                        )}
+                </div>
+                
+            </div>
+
+          
               <div className="form-group" style={{ flexDirection: "column" }}>
                 <label htmlFor="depositDescription">
                   Deposit Description<span className="required-star">*</span>
@@ -546,14 +589,14 @@ const ProformaInvoiceForm = () => {
             </div>
 
             <div className="input-group">
-             <label htmlFor='bankNote'>Note for bank (By The Remitter) <span className="required-star">*</span></label>
+             <label htmlFor='bankNote'>Note for bank (By The Remitter) {/*<span className="required-star">*</span>*/}</label>
                 <textarea
                     name="bankNote"
                     value={formData.bankNote || ''} // Add the bankNote field to your state
                     onChange={handleChange} // Ensure handleChange updates the value in state
-                    placeholder="Enter note for bank"
+                    placeholder="Leave Blank if not applicable"
                     rows="4"
-                    required
+                    
                 ></textarea>
              
             </div>

@@ -106,7 +106,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
 }
 
-.step-card h3 {
+.step-card h2 {
 
   color: #f1892b;
   margin-bottom: 20px;
@@ -233,7 +233,7 @@
 }
 
 /* Text Styles */
-.reason h3 {
+.reason h2 {
   color: #f1892b;
 
   font-weight: bold;

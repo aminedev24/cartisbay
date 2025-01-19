@@ -1,5 +1,5 @@
 /* Force desktop styles for smaller screens */
-p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
+p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a , .grid-item span {
   font-size: clamp(0.875rem, 1vw, 1rem); /* 14px - 16px */
 }
 
@@ -88,8 +88,12 @@ input {
   .intro-content p, .logistics-agent-info, .services-text, .logistics-agent-info a {
     font-size: clamp(1rem, 1.5vw, 1.5rem); /* 16px - 24px */
   }
-  p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a {
+  p, ul li, ol li, .list-item, .cta-link, .bank-info-table td, .footer-inner a , .grid-item span {
     font-size: clamp(1rem, 1.5vw, 1.5rem); /* 16px - 24px */
+  }
+
+  .links a {
+    font-size: clamp(1.125rem, 1vw, 1.50rem);
   }
 }
 

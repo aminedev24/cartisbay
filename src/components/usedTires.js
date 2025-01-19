@@ -89,7 +89,7 @@ const UsedTires = () => {
             <h1>Why Choose Artisbay Inc. for Your Used Tires</h1>
             <section class="reasons">
               <div class="reason">
-                <h3>Premium Selection</h3>
+                <h2>Premium Selection</h2>
                 <p>
                   Discover our curated collection of high-quality used tires,
                   expertly chosen to deliver unbeatable value, performance, and
@@ -97,21 +97,21 @@ const UsedTires = () => {
                 </p>
               </div>
               <div class="reason">
-                <h3>Space-Optimized Shipping</h3>
+                <h2>Space-Optimized Shipping</h2>
                 <p>
                   By utilizing our 40-foot containers, we maximize your order’s
                   volume without compromising on quality.
                 </p>
               </div>
               <div class="reason">
-                <h3>Wholesale Pricing & Bulk Availability</h3>
+                <h2>Wholesale Pricing & Bulk Availability</h2>
                 <p>
                   Take advantage of our competitive wholesale prices tailored
                   for bulk purchases.
                 </p>
               </div>
               <div class="reason">
-                <h3>Meticulous Inspection</h3>
+                <h2>Meticulous Inspection</h2>
                 <p>
                   Each tire undergoes a manual inspection to meet our strict
                   quality standards.
@@ -127,7 +127,7 @@ const UsedTires = () => {
             <div className="rating-grid">
               {ratings.map((rating, index) => (
                 <div className="rating-card" key={index}>
-                  <h3 className="rating-title">{rating.title}</h3>
+                  <h2 className="rating-title">{rating.title}</h2>
                   <ul className="rating-details">
                     <li>
                       <strong>Tread Depth:</strong> {rating.treadDepth}
@@ -153,7 +153,7 @@ const UsedTires = () => {
               </p>
               <div className="tables">
                 <div className="passenger">
-                  <h3>passenger cars:</h3>
+                  <h2>passenger cars:</h2>
                   <table>
                     <tr>
                       <th>Tread Depth Remaining</th>
@@ -185,7 +185,7 @@ const UsedTires = () => {
                   </table>
                 </div>
                 <div className="small-trucks">
-                  <h3>Small trucks and SUVs:</h3>
+                  <h2>Small trucks and SUVs:</h2>
                   <table>
                     <thead>
                       <tr>
@@ -221,7 +221,7 @@ const UsedTires = () => {
               </div>
             </div>
             <div className="additional-notes">
-              <h3>Additional Notes</h3>
+              <h2>Additional Notes</h2>
               <ol>
                 <li>
                   <strong>New Tire Tread Depth:</strong>
@@ -314,7 +314,7 @@ const UsedTires = () => {
           <div className="order-steps-container">
             <h1>4 Simple Steps to Your Wholesale Tire Order</h1>
             <div className="step-card">
-              <h3>Step 1: Send Your Order Details</h3>
+              <h2>Step 1: Send Your Order Details</h2>
               <p>
                 Reach out to discuss your needs, and we’ll guide you through the
                 ordering process, ensuring all your requirements are covered.
@@ -325,7 +325,7 @@ const UsedTires = () => {
             </div>
 
             <div className="step-card">
-              <h3>Step 2: Secure Your Order</h3>
+              <h2>Step 2: Secure Your Order</h2>
               <p>
                 Confirm your order with a deposit of at least 30% of the agreed
                 total C&F price, securing your place in our inventory.
@@ -333,7 +333,7 @@ const UsedTires = () => {
             </div>
 
             <div className="step-card">
-              <h3>Step 3: Preparation Process</h3>
+              <h2>Step 3: Preparation Process</h2>
               <p>
                 Relax while we handle the preparation. Here’s what we do to
                 ensure quality and efficiency:
@@ -355,7 +355,7 @@ const UsedTires = () => {
             </div>
 
             <div className="step-card">
-              <h3>Step 4: Shipping</h3>
+              <h2>Step 4: Shipping</h2>
               <p>When your order is ready, we’ll:</p>
               <ul>
                 <li>
