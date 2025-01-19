@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: '20px',
+      marginBottom: '10px',
       position: 'relative',
     },
     left: {
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: '20px',
+      marginBottom: '10px',
     },
     note: {
       maxWidth: '55%',
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
       display: 'table',
       width: '100%',
       borderCollapse: 'collapse',
-      marginBottom: '10px',
+      marginBottom: '5px',
     },
     amountTableRow: {
       display: 'flex',
@@ -273,6 +273,27 @@ const styles = StyleSheet.create({
     },
     rightText : {
       marginBottom: '3px',
+      fontSize: '12px',
+    },
+    tableRows : {
+      display : 'flex',
+      flexDirection: 'row',
+      width: "100%",
+    },
+    tableHeaders: {
+      flex: '1',
+      border: '1px solid #000',
+      padding: '5px',
+      textAlign: 'left',
+      fontWeight: 'bold',
+      backgroundColor: '#1da1f2',
+      fontSize: '12px',
+    },
+    tableCells: {
+      flex: '1',
+      border: '1px solid #000',
+      padding: '5px',
+      textAlign: 'left',
       fontSize: '12px',
     }
   });
@@ -364,12 +385,37 @@ const MyPdfDocument = ({ invoiceData }) => (
         </View>
       </View>
 
-      {/* Note and Amount Section */}
-      <View style={styles.noteAmountContainer}>
-        <View style={styles.note}>
-          <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Note for bank (By the Remitter):</Text></Text>
-          <Text style={styles.contactInfoText}>{invoiceData.bankNote}</Text>
+      {/* Vehicle Details Table (Conditional) */}
+      {invoiceData.depositPurpose === 'order vehicle' && (
+        <View style={styles.itemsTable}>
+          {/* Table Header Row */}
+          <View style={styles.tableRows}>
+            <Text style={styles.tableHeaders}>Vehicle Ref</Text>
+            <Text style={styles.tableHeaders}>Chasis Number</Text>
+          </View>
+          {/* Table Data Row */}
+          <View style={styles.tableRows}>
+            
+          <Text style={styles.tableCells}>{invoiceData.vehicleRef}</Text>
+
+            <Text style={styles.tableCells}>{invoiceData.chasisNumber}</Text>
+          </View>
         </View>
+      )}
+
+
+      {/* Note and Amount Section */}
+      <View style={[
+          styles.noteAmountContainer,
+          { justifyContent: invoiceData.bankNote ? 'space-between' : 'flex-end' }
+        ]}>
+
+        {invoiceData.bankNote && 
+          <View style={styles.note}>
+            <Text style={styles.contactInfoText}><Text style={{ fontWeight: 'bold' }}>Note for bank (By the Remitter):</Text></Text>
+            <Text style={styles.contactInfoText}>{invoiceData.bankNote}</Text>
+          </View>
+        }
         <View style={styles.amountContainer}>
           <View style={styles.amountTable}>
             {/* Deposit Amount Row */}
