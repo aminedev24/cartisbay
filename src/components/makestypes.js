@@ -81,7 +81,7 @@ const Makestypes = () => {
     <div className="main-container">
        
       <div className="type-container">
-        <h5 className="title">Body Type</h5>
+        <h2 className="title">Body Type</h2>
         <div className="grid">
           {bodyTypes.map((type, index) => (
             <div className="grid-item" key={index} onClick={() => handleFilterChange(null, type.name)}>
