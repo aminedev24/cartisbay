@@ -406,3 +406,33 @@
   .warning-notice p {
     margin: 0;
   }
+
+  /* Edit Button Styles */
+.edit-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-button:hover {
+    background-color: #1abc9c;
+  }
+  
+  /* Bank Note Display Styles */
+  .bank-note-display {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    white-space: pre-wrap; /* Preserve line breaks */
+  }
+
+  .bank-note-wrapper {
+  padding-top: 5px; /* Add margin to the wrapper */
+}

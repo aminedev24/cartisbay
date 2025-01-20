@@ -4,6 +4,8 @@ import CountryList from './countryList';
 import '../css/invoice.css';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useUser  } from './userContext';
+import Tooltip from './toolTip'; // Import the Tooltip component
+
 // Function to calculate expiry date (5 business days later)
 const calculateExpiryDate = (invoiceDate) => {
   const date = new Date(invoiceDate);
@@ -57,7 +59,7 @@ const ProformaInvoiceForm = () => {
     const [error, setError] = useState(null); // For handling errors
     const [isDataLoaded, setIsDataLoaded] = useState(false); // New state for tracking data load status
     const navigate = useNavigate();
-    
+    const [isBankNoteEditable, setIsBankNoteEditable] = useState(false);
     const location = useLocation();
     const { user, loading, login } = useUser ();
     // Function to get the next invoice number from the backend
@@ -359,12 +361,14 @@ const ProformaInvoiceForm = () => {
       
             <h2>Proforma Invoice Generation</h2>
 
-               {/* Compatibility Message  */}
+               {/* Compatibility Message 
             <p className="compatibility-message">
                 <strong>Note:</strong> Our invoice generator form is currently under development and may not function properly on iPhones and iPads at this time. 
                 However, it works just fine on most Android devices, MacBooks, Mac Studios, and Windows computers. 
                 We sincerely apologize for any inconvenience this may cause and appreciate your understanding as we work to improve compatibility.
             </p>
+
+             */}
 
             {user ? null : (
               <div className="login-note">
@@ -483,11 +487,11 @@ const ProformaInvoiceForm = () => {
             </div>
       
             <div className="form-section">
-              <h3>Deposit Details</h3>
+              <h3>Payment Details</h3>
               <div className="form-group">
                 <div className="half-width">
                   <label htmlFor="depositCurrency">
-                    Deposit currency<span className="required-star">*</span>
+                    Payment currency<span className="required-star">*</span>
                   </label>
                   <div className="input-with-addon">
                     <select
@@ -501,7 +505,7 @@ const ProformaInvoiceForm = () => {
                       <option value="EUR">EUR</option>
                     </select>
                     <label htmlFor="depositAmount">
-                      Deposit Amount<span className="required-star">*</span>
+                      Payment Amount<span className="required-star">*</span>
                   </label>
                     <input
                       type="number"
@@ -509,7 +513,7 @@ const ProformaInvoiceForm = () => {
                       name="depositAmount"
                       value={formData.depositAmount}
                       onChange={handleChange}
-                      placeholder="Deposit amount"
+                      placeholder="Payment amount"
                       required
                       min="0"
                       step="0.01"
@@ -518,7 +522,9 @@ const ProformaInvoiceForm = () => {
                 </div>
                 <div className="half-width">
                     <label htmlFor="depositPurpose">
-                        Deposit Purpose<span className="required-star">*</span>
+                        Payment Purpose<span className="required-star">*</span>
+                        {/*<Tooltip message="Select the purpose of your payment, e.g., Vehicle Purchase, Auto Parts Order, etc." />*/}
+
                     </label>
                     <select
                         id="depositPurpose"
@@ -527,7 +533,7 @@ const ProformaInvoiceForm = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Select Deposit Purpose</option>
+                        <option value="">Select Payment Purpose</option>
                         <option value="vehicle purchase">Vehicle Purchase</option>
                         <option value="auto parts order">Auto Parts Order</option>
                         <option value='order vehicle'>I want to order a vehicle</option>
@@ -574,14 +580,16 @@ const ProformaInvoiceForm = () => {
           
               <div className="form-group" style={{ flexDirection: "column" }}>
                 <label htmlFor="depositDescription">
-                  Deposit Description<span className="required-star">*</span>
+                  Payment Description<span className="required-star">*</span>
+                  <Tooltip message="Please describe what you are paying for, e.g., Toyota Land Cruiser 2013" />
+
                 </label>
                 <textarea
                   id="depositDescription"
                   name="depositDescription"
                   value={formData.depositDescription}
                   onChange={handleChange}
-                  placeholder="Deposit description"
+                  placeholder="Payment description"
                   required
                   rows="5"
                 ></textarea>
@@ -589,15 +597,31 @@ const ProformaInvoiceForm = () => {
             </div>
 
             <div className="input-group">
-             <label htmlFor='bankNote'>Note for bank (By The Remitter) {/*<span className="required-star">*</span>*/}</label>
-                <textarea
+             <label htmlFor='bankNote'>Note for bank (By The Remitter) 
+              {/*<span className="required-star">*</span>*/}
+              <button
+                type="button"
+                onClick={() => setIsBankNoteEditable(!isBankNoteEditable)}
+                className="edit-button"
+              >
+                {isBankNoteEditable ? 'Save' : 'Edit'}
+              </button>
+              </label>
+              {isBankNoteEditable ? (
+                  <textarea
                     name="bankNote"
-                    value={formData.bankNote || ''} // Add the bankNote field to your state
-                    onChange={handleChange} // Ensure handleChange updates the value in state
+                    value={formData.bankNote || ''}
+                    onChange={handleChange}
                     placeholder="Leave Blank if not applicable"
                     rows="4"
-                    
-                ></textarea>
+                  ></textarea>
+                ) : (
+                  <div className="bank-note-wrapper">
+                    <div className="bank-note-display">
+                      {formData.bankNote || 'No note added.'}
+                    </div>
+                </div>
+                )}
              
             </div>
 

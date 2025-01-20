@@ -45,7 +45,7 @@ const UsedTiresFAQ = () => {
     <div className='aboutusedtires'>
       {/*<img src={`${process.env.PUBLIC_URL}/images/tiresfromjapan.jpeg`} alt={'howtobuy-banner'} className="topic-image" />*/}
 
-      <h2>Why Choose Used Tires from Japan?</h2>
+      <h3>Why Choose Used Tires from Japan?</h3>
       <p>
         Japan is renowned for its high standards in vehicle maintenance, and used tires are no exception. Japanese roads are exceptionally well-maintained, and strict speed limits mean that tires endure less wear and tear compared to those in other countries. Additionally, Japanese drivers tend to replace their tires more frequently, ensuring that pre-owned tires are often in excellent condition with plenty of remaining tread life.
       </p>

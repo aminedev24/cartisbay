@@ -21,6 +21,7 @@ import SellInArtisbay from './sellinartisbay';
 import BankInformation from './bankInfo';
 import FAQComponent from './faq';
 import AutomatedInvoice from './automatedInvoice';
+import WisePaymentInstructions from './wise';
 // Define the topics
 const topics = {
   help: [
@@ -42,6 +43,8 @@ const topics = {
   buying: [
     { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
     { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
+    { name: "Wise", component: <WisePaymentInstructions />, image:`` },
+
     { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannerrecent.jpeg` },
     { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/telegraphictransferrecent.jpeg` },
     { name: "security", content: <PaymentPolicy />, image:  `${process.env.PUBLIC_URL}/images/securityalert.png`},

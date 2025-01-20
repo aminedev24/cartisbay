@@ -151,13 +151,13 @@ const handleSendEmail = async () => {
           <ul>
               <li><strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}</li>
               <li><strong>Invoice Date:</strong> ${invoiceData.invoiceDate}</li>
-              <li><strong>Deposit Description:</strong> ${invoiceData.depositDescription}</li>
-              <li><strong>Deposit Amount:</strong> ${invoiceData.depositAmount}</li>
+              <li><strong>Payment Description:</strong> ${invoiceData.depositDescription}</li>
+              <li><strong>Payment Amount:</strong> ${invoiceData.depositAmount}</li>
               <li><strong>Due Date:</strong> Due immediately</li>
               <li><strong>Expiry Date:</strong> ${invoiceData.expiryDate}</li>
               <li><strong>Serial Number:</strong> ${invoiceData.serialNumber}</li>
           </ul>
-          <p>Please process the deposit by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
+          <p>Please process the Payment by the due date to proceed with your order. Once the payment is confirmed, we will begin processing your request and keep you informed of the next steps.</p>
           <p>For any questions or concerns, feel free to contact us at: <a href="mailto:sales@artisbay.com">sales@artisbay.com</a>.</p>
           <p>Thank you for choosing <strong>Artisbay Inc.</strong>.</p>
           <p style="color: #004080;"><strong>Best regards,</strong><br>Artisbay Inc.</p>
@@ -397,7 +397,7 @@ const handleSendEmail = async () => {
               <table className="amount-table">
                 <tbody>
                   <tr>
-                    <th>Deposit amount</th>
+                    <th>Payment amount</th>
                     <td>
                       {invoiceData.depositAmount}
                     </td>
