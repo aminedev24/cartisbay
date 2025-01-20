@@ -568,7 +568,7 @@ const ProformaInvoiceForm = () => {
                     </div>
                     <div className='half-width'>
                         <label htmlFor="chasisNumber">
-                            Chassis Number<span className="required-star">*</span>
+                            Chassis Number{/*<span className="required-star">*</span>*/}
                         </label>
                         <input
                             type='text'
@@ -577,7 +577,7 @@ const ProformaInvoiceForm = () => {
                             value={formData.chasisNumber}
                             onChange={handleChange}
                             placeholder='Chassis Number'
-                            required
+                            
                         />
                     </div>
                 </div>

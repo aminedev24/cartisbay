@@ -372,8 +372,8 @@ const handleSendEmail = async () => {
              </thead>
              <tbody>
                <tr>
-                <td>{invoiceData.vehicleRef}</td>
-                 <td>{invoiceData.chasisNumber}</td>
+                <td>{invoiceData.vehicleRef || 'not specified'}</td>
+                 <td>{invoiceData.chasisNumber || 'not specified'}</td>
                </tr>
              </tbody>
            </table>
