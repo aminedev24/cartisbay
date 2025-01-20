@@ -431,6 +431,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     white-space: pre-wrap; /* Preserve line breaks */
+    
   }
 
   .bank-note-wrapper {

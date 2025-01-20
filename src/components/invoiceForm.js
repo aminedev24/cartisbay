@@ -542,10 +542,10 @@ const ProformaInvoiceForm = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Select Payment Purpose</option>
+                
                         <option value="vehicle purchase">Vehicle Purchase</option>
                         <option value="auto parts order">Auto Parts Order</option>
-                        <option value='order vehicle'>I want to order a vehicle</option>
+                        <option value='order vehicle'>Pay My Vehicle</option>
                         <option value="dismantling">Dismantling</option>
                         <option value="tires order">Tires Order</option>
                     </select>
@@ -554,7 +554,7 @@ const ProformaInvoiceForm = () => {
                 <div className='form-group'>
                     <div className='half-width'>
                         <label htmlFor="vehicleRef">
-                            Vehicle Reference<span className="required-star">*</span>
+                            Vehicle Reference {/*<span className="required-star">*</span>*/}
                         </label>
                         <input
                             type='text'
@@ -563,7 +563,7 @@ const ProformaInvoiceForm = () => {
                             value={formData.vehicleRef}
                             onChange={handleChange}
                             placeholder='Vehicle Reference'
-                            required
+                            
                         />
                     </div>
                     <div className='half-width'>

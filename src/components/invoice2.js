@@ -380,16 +380,46 @@ const handleSendEmail = async () => {
          </div>
           }
 
-          <div className="note-amount-container" style={{justifyContent : invoiceData.bankNote == '' ? 'flex-end': 'space-between'}}>
-            {invoiceData.bankNote && 
-              <div className="note">
-                <p>
-                  <strong>Note for bank (By the Remitter):</strong>
-                </p>
-                <p>
-                 {invoiceData.bankNote}
-                </p>
-              </div>
+          <div className="note-amount-container">
+            {invoiceData.bankNote ? (
+
+            <div className="note">
+            <p>
+              <strong>Note for bank (By the Remitter):</strong>
+            </p>
+            <p>
+            {invoiceData.bankNote}
+            </p>
+            </div>
+
+            )
+            : (
+
+              <div className="instructions">
+              <p>
+                <strong>Instructions:</strong>
+              </p>
+              <ul>
+                <li>
+                  Please ensure all transfer fees are covered by the sender to
+                  avoid any shortfall.
+                </li>
+                <li>
+                  Include the invoice number in the payment reference for accurate
+                  processing.
+                </li>
+                <li>
+                  Funds will be applied upon receipt in full. Kindly notify us
+                  once the payment is completed.
+                </li>
+                <li>
+                  Please note that our bank is located in Japan and international
+                  transfers may take 3-5 business days to reflect.
+                </li>
+              </ul>
+            </div>
+            )
+             
             }
           
 
@@ -413,29 +443,42 @@ const handleSendEmail = async () => {
             </div>
           </div>
           <div className="invoice-footer-container">
-            <div className="instructions">
-              <p>
-                <strong>Instructions:</strong>
-              </p>
-              <ul>
-                <li>
-                  Please ensure all transfer fees are covered by the sender to
-                  avoid any shortfall.
-                </li>
-                <li>
-                  Include the invoice number in the payment reference for accurate
-                  processing.
-                </li>
-                <li>
-                  Funds will be applied upon receipt in full. Kindly notify us
-                  once the payment is completed.
-                </li>
-                <li>
-                  Please note that our bank is located in Japan and international
-                  transfers may take 3-5 business days to reflect.
-                </li>
-              </ul>
-            </div>
+          {
+            // Render the instructions in their original place if bankNote is missing
+            invoiceData.bankNote ? (
+              <div className="instructions">
+                <p>
+                  <strong>Instructions:</strong>
+                </p>
+                <ul>
+                  <li>
+                    Please ensure all transfer fees are covered by the sender to avoid any
+                    shortfall.
+                  </li>
+                  <li>
+                    Include the invoice number in the payment reference for accurate
+                    processing.
+                  </li>
+                  <li>
+                    Funds will be applied upon receipt in full. Kindly notify us once the
+                    payment is completed.
+                  </li>
+                  <li>
+                    Please note that our bank is located in Japan and international
+                    transfers may take 3-5 business days to reflect.
+                  </li>
+                </ul>
+              </div>
+            )
+            : (
+              <div style= {{maxWidth : !invoiceData.bankNote && '50%' }} className="warning-notice">
+                <p><strong>Important</strong></p>
+                <p>This invoice is intended solely for legal and official purposes. Any unauthorized use, modification, or misrepresentation of its content is strictly prohibited and may result in legal action.</p>
+              </div>
+            )
+          }
+
+          
 
             <div className="invoice-footer">
               <p>Authorised Sales Signature</p>
@@ -459,11 +502,13 @@ const handleSendEmail = async () => {
               <p>Thank you for your business!</p>
             </div>
           </div>
-
-          <div className="warning-notice">
-            <p><strong>Important</strong></p>
-            <p>This invoice is intended solely for legal and official purposes. Any unauthorized use, modification, or misrepresentation of its content is strictly prohibited and may result in legal action.</p>
-          </div>
+          {invoiceData.bankNote && 
+             <div className="warning-notice">
+             <p><strong>Important</strong></p>
+             <p>This invoice is intended solely for legal and official purposes. Any unauthorized use, modification, or misrepresentation of its content is strictly prohibited and may result in legal action.</p>
+           </div>
+          }
+         
           
 
           {/* Action Buttons */}
@@ -475,6 +520,7 @@ const handleSendEmail = async () => {
 
 
                         */}
+            <GeneratePdfButton invoiceData={invoiceData} />
 
             <button
               className="no-print"
