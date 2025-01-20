@@ -520,7 +520,6 @@ const handleSendEmail = async () => {
 
 
                         */}
-            <GeneratePdfButton invoiceData={invoiceData} />
 
             <button
               className="no-print"
