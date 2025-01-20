@@ -62,6 +62,8 @@ const ProformaInvoiceForm = () => {
     const [isBankNoteEditable, setIsBankNoteEditable] = useState(false);
     const location = useLocation();
     const { user, loading, login } = useUser ();
+    const [isTyping, setIsTyping] = useState(false); // Track typing state
+
     // Function to get the next invoice number from the backend
   const fetchInvoiceNumber = async () => {
     setIsLoading(true);
@@ -349,6 +351,13 @@ const ProformaInvoiceForm = () => {
         setSubmittedInvoiceData(null);
     };
 
+    // Callback to detect when typing starts
+  const handleTypingStart = (hideTooltip) => {
+    if (isTyping) {
+      hideTooltip(); // Hide the tooltip when typing starts
+    }
+  };
+  
     return (
         <div className='enquiry-wrapper invoice-wrapper'>
         <form onSubmit={handleSubmit}>
@@ -581,7 +590,9 @@ const ProformaInvoiceForm = () => {
               <div className="form-group" style={{ flexDirection: "column" }}>
                 <label htmlFor="depositDescription">
                   Payment Description<span className="required-star">*</span>
-                  <Tooltip message="Please describe what you are paying for, e.g., Toyota Land Cruiser 2013" />
+                  <Tooltip                   
+                      onTypingStart={handleTypingStart}
+                      message="Please describe what you are paying for, e.g., Toyota Land Cruiser 2013" />
 
                 </label>
                 <textarea
