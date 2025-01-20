@@ -102,6 +102,10 @@
 
   }
 
+  .image-container img {
+    object-fit: cover;
+  }
+
   .content button:hover {
     background-color:#364c8b ;
   }
