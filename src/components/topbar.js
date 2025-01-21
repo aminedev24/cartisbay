@@ -3,10 +3,16 @@ import '../css/topbar.css'; // Adjust your CSS file path accordingly
 
 const TopBar = () => {
   const [japanTime, setJapanTime] = useState('');
-  const [usdToYenRate, setUsdToYenRate] = useState(158.30); // Initial rate
+  const [usdToYenRate, setUsdToYenRate] = useState(156.04); // Initial rate
   const [country, setCountry] = useState('Japan');
   const [currency, setCurrency] = useState('USD');
   const [language, setLanguage] = useState('English');
+
+    // API URL setup
+    const apiUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost/artisbay-server/server'
+      : '/server';
 
   // Function to update Japan Standard Time
   useEffect(() => {
@@ -27,29 +33,26 @@ const TopBar = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Function to fetch the exchange rate from Free Forex API
   const fetchExchangeRate = async () => {
     try {
-      const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD'); // Example API
+      const response = await fetch(`${apiUrl}/scrap.js`);
       const data = await response.json();
-      if (data && data.rates && data.rates.JPY) {
-        const rate = data.rates.JPY;//-2.74; // Get the USD to JPY rate
-        console.log(rate)
-        //setUsdToYenRate(rate);
+      if (data.rate) {
+        usdToYenRate(data.rate);
       } else {
-        console.error('Error fetching exchange rate:', data);
+        console.error('Error fetching exchange rate:', data.error);
       }
     } catch (error) {
       console.error('Error fetching exchange rate:', error);
     }
   };
 
-  // Fetch the exchange rate every minute
   useEffect(() => {
     fetchExchangeRate(); // Initial fetch
     const interval = setInterval(fetchExchangeRate, 60000); // Fetch every 60 seconds
     return () => clearInterval(interval);
   }, []);
+
 
   return (
     <div className='top-bar-wrapper'>

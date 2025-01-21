@@ -43,7 +43,7 @@ const topics = {
   buying: [
     { name: "about Dismantled Cars", content: <CarDismantlingService />, image: `${process.env.PUBLIC_URL}/images/dismantling&cutting.jpeg`},
     { name: "About payement", component: <PaymentMethods />, image:`${process.env.PUBLIC_URL}/images/aboutpaymentrecent.jpeg` },
-    { name: "Wise", component: <WisePaymentInstructions />, image:`` },
+    { name: "Wise", component: <WisePaymentInstructions />, image:`${process.env.PUBLIC_URL}/images/wisebanner.png` },
 
     { name: "paypal", content: <PaypalInfo />, image:`${process.env.PUBLIC_URL}/images/paypalbannerrecent.jpeg` },
     { name: "telegraphic transfer", content: <TelegraphicTransfer />, image: `${process.env.PUBLIC_URL}/images/telegraphictransferrecent.jpeg` },
