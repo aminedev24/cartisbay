@@ -1,12 +1,20 @@
 const puppeteer = require('puppeteer');
+const express = require('express');
+const cors = require('cors');
 
+const app = express();
+const port = 5000; // Change this to your desired port
+
+// Enable CORS for all routes
+app.use(cors());
+
+// Scrape exchange rate
 const scrapeExchangeRate = async () => {
   let browser;
   try {
-    // Launch a headless browser
     browser = await puppeteer.launch({
-      headless: true, // Set to false to see the browser in action
-      args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for some environments
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
 
@@ -17,12 +25,12 @@ const scrapeExchangeRate = async () => {
 
     // Navigate to the target website
     await page.goto('https://www.sbishinseibank.co.jp/english/gaika/exchange_rate_fx.html', {
-      waitUntil: 'networkidle2', // Wait until the page is fully loaded
+      waitUntil: 'networkidle2',
     });
 
     // Wait for the specific element to load
     await page.waitForSelector('span[data-interestrate_sre="Fxrate_N_USD_sellrate"]', {
-      timeout: 5000, // Wait up to 5 seconds for the element to appear
+      timeout: 5000,
     });
 
     // Extract the content of the element
@@ -37,21 +45,23 @@ const scrapeExchangeRate = async () => {
     console.error('Error scraping exchange rate:', error);
     return null;
   } finally {
-    // Close the browser
     if (browser) {
       await browser.close();
     }
   }
 };
 
-// Fetch the exchange rate every minute
-setInterval(async () => {
+// API endpoint to fetch exchange rate
+app.get('/api/exchange-rate', async (req, res) => {
   const rate = await scrapeExchangeRate();
   if (rate) {
-    // Update your application state or perform other actions
-    console.log('Updated Exchange Rate:', rate);
+    res.json({ rate });
+  } else {
+    res.status(500).json({ error: 'Failed to fetch exchange rate' });
   }
-}, 60000); // Fetch every 60 seconds
+});
 
-// Initial fetch
-scrapeExchangeRate();
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});

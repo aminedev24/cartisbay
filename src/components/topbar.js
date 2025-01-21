@@ -8,11 +8,7 @@ const TopBar = () => {
   const [currency, setCurrency] = useState('USD');
   const [language, setLanguage] = useState('English');
 
-    // API URL setup
-    const apiUrl =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost/artisbay-server/server'
-      : '/server';
+
 
   // Function to update Japan Standard Time
   useEffect(() => {
@@ -33,20 +29,25 @@ const TopBar = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const fetchExchangeRate = async () => {
-    try {
-      const response = await fetch(`${apiUrl}/scrap.js`);
-      const data = await response.json();
-      if (data.rate) {
-        usdToYenRate(data.rate);
-      } else {
-        console.error('Error fetching exchange rate:', data.error);
-      }
-    } catch (error) {
-      console.error('Error fetching exchange rate:', error);
-    }
-  };
+      // API URL setup
+      const apiUrl =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost/artisbay-server/server'
+        : '/server';
 
+        const fetchExchangeRate = async () => {
+          try {
+            const response = await fetch(`${apiUrl}/scrap.php`);
+            const data = await response.json();
+            if (data.rate) {
+              setUsdToYenRate(data.rate); // Update the state with the rate
+            } else {
+              console.error('Error fetching exchange rate:', data.error);
+            }
+          } catch (error) {
+            console.error('Error fetching exchange rate:', error);
+          }
+        };
   useEffect(() => {
     fetchExchangeRate(); // Initial fetch
     const interval = setInterval(fetchExchangeRate, 60000); // Fetch every 60 seconds
