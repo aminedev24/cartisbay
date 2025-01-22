@@ -212,7 +212,7 @@ const ProformaInvoiceForm = () => {
               ...prevState,
               depositDescription: description, // Always update the description when the purpose changes
               [name]: value,
-              bankNote: value === 'order vehicle' ? '' : prevState.bankNote, // Clear bankNote if deposit purpose is "order vehicle"
+              bankNote: value === 'order vehicle' || 'tires order' ? '' : prevState.bankNote, // Clear bankNote if deposit purpose is "order vehicle"
           }));
       } else {
           setFormData(prevState => ({

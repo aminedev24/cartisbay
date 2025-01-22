@@ -113,7 +113,7 @@
 
 */
 
-.namibia-agent-container .services {
+.namibia-agent-container .services, .congo-agent-container .services {
   padding: 40px 30px;
   margin: 0;
 }

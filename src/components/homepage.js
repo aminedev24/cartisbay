@@ -146,6 +146,17 @@ const links2 = [
 
         */}
 
+        <div className="ad-header-container">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/consultwithab.jpeg`}
+              className="ad-banner"
+              alt="sell banner"
+            />
+            <Link to="/help?topic=Artisbay%20Consulting">
+              <button className="sell-btn">Read more</button>
+            </Link>
+        </div>
+
         <div>
           <div className="ad-header-container">
 
@@ -200,8 +211,8 @@ const links2 = [
             </div>
           </div>
         </div>
-
-        <div className="ad-header-container">
+      {/*
+          <div className="ad-header-container">
             <img
               src={`${process.env.PUBLIC_URL}/images/sellhome.jpeg`}
               className="ad-banner"
@@ -211,6 +222,8 @@ const links2 = [
               <button className="sell-btn">Read more</button>
             </Link>
         </div>
+      */}
+
 
         <div className="newsupdates">
           <img className="title-img" src={`${process.env.PUBLIC_URL}/images/news&updatestitle.png`} alt="usefullLinks" />

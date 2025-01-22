@@ -95,6 +95,10 @@ input {
   .links a {
     font-size: clamp(1.125rem, 1vw, 1.50rem);
   }
+
+  .congo-agent-container .intro-content p {
+    font-size: clamp(2rem, 2.25vw, 1.25rem) ;
+  }
 }
 
 

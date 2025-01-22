@@ -28,7 +28,7 @@ const MediaSlider = () => {
 
   const mediaItems = [
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/namibiaSlider5.png`, link: '/local-services/namibia' },
-    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoSlider5.png`, link: '#' },
+    { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/congoSlider5.png`, link: '/local-services/congo' },
     { type: 'image', src: `${process.env.PUBLIC_URL}/images/slider/tanzaniaSlider5.png`, link: '/local-services/tanzania' }
   ];
 
