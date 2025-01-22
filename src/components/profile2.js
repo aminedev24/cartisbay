@@ -8,6 +8,9 @@ import AntiSocialPolicy from './help/asf';
 import '../css/profilePage.css';
 import BankInformation from './help/bankInfo';
 import SalesAgreement from './salesAgreement';
+import InquiryList from './inquiryList';
+import TireOrderList from './submittedTireOrders';
+import InvoiceList from './invoicesList';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -38,8 +41,9 @@ const ProfilePage = () => {
   // Menu items configuration
   const menuItems = [
     { key: 'settings', label: 'Settings', component: Settings },
-    { key: 'inquiries', label: 'Inquiries', component: null },
-    { key: 'purchase-history', label: 'Purchase History', component: null },
+    { key: 'inquiries', label: 'Inquiries', component: InquiryList },
+    { key: 'submitted tire orders', label: 'submitted tire orders', component: TireOrderList },
+    { key: 'Invoices List', label: 'Invoices List', component: InvoiceList },
     { key: 'privacy', label: 'Privacy', component: Privacy },
     { key: 'terms', label: 'Terms & Conditions', component: TermsConditions },
     { key: 'anti-social-policy', label: 'Anti-Social Forces Policy', component: AntiSocialPolicy },

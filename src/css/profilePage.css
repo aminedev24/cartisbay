@@ -222,3 +222,33 @@
     display: flex;
     gap: 10px;
 }
+
+
+.order-list .pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+.order-list   .pagination-button {
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+.order-list   .pagination-button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+.order-list  .pagination-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
