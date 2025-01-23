@@ -26,7 +26,7 @@ const CongoAgent = () => {
           <p>
             Depuis plus de 7 ans, notre partenariat repose sur une confiance mutuelle et une expertise solide, garantissant un service de qualité pour nos clients à Kinshasa et ses environs.
           </p>
-          <img alt="Image of a ship and containers" src={`${process.env.PUBLIC_URL}/images/localServices/smallBanner2.png`} />
+          <img alt="Image of a ship and containers" src={`${process.env.PUBLIC_URL}/images/localServices/smallbanner2.png`} />
         </div>
       </section>
 
