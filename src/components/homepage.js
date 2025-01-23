@@ -89,16 +89,7 @@ const links2 = [
          
         </div>
         
-        <div className="ad-header-container">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/consultwithab.jpeg`}
-              className="ad-banner"
-              alt="sell banner"
-            />
-            <Link to="/help?topic=Artisbay%20Consulting">
-              <button className="sell-btn">Read more</button>
-            </Link>
-        </div>
+
         
         <div 
           className="info-cards-container"
@@ -118,6 +109,17 @@ const links2 = [
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="ad-header-container">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/consultwithab.jpeg`}
+              className="ad-banner"
+              alt="sell banner"
+            />
+            <Link to="/help?topic=Artisbay%20Consulting">
+              <button className="sell-btn">Read more</button>
+            </Link>
         </div>
 
         <Makestypes />

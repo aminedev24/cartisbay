@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "short_name": "React App",
   "name": "Create React App Sample",
+=======
+  "short_name": "Artisbay Inc.",
+  "name": "Artisbay Inc.",
+>>>>>>> a828ce6 (Deploy to gh-pages)
   "icons": [
     {
       "src": "favicon.ico",

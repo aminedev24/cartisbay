@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/repos/static/css/main.54ec35ea.css",
     "main.js": "/repos/static/js/main.412839f7.js",
     "static/js/453.d1cd0238.chunk.js": "/repos/static/js/453.d1cd0238.chunk.js",
@@ -33,5 +34,52 @@
   "entrypoints": [
     "static/css/main.54ec35ea.css",
     "static/js/main.412839f7.js"
+=======
+    "main.css": "/cartisbay/static/css/main.4da59263.css",
+    "main.js": "/cartisbay/static/js/main.f1818423.js",
+    "static/js/213.809af65b.chunk.js": "/cartisbay/static/js/213.809af65b.chunk.js",
+    "static/js/732.5a05b03f.chunk.js": "/cartisbay/static/js/732.5a05b03f.chunk.js",
+    "static/js/453.aaf8b0ee.chunk.js": "/cartisbay/static/js/453.aaf8b0ee.chunk.js",
+    "static/media/eco1copy.jpeg": "/cartisbay/static/media/eco1copy.a9c5e6c0fdb3459632c8.jpeg",
+    "static/media/TireBanner.jpg": "/cartisbay/static/media/TireBanner.63bf7043e5d0a428858e.jpg",
+    "static/media/used-tires-banner.jpeg": "/cartisbay/static/media/used-tires-banner.b4de323e8b0ae1a20a96.jpeg",
+    "static/media/Help.jpeg": "/cartisbay/static/media/Help.8b9170007596b4f409f3.jpeg",
+    "static/media/car-makes-icons.svg?gtc92f": "/cartisbay/static/media/car-makes-icons.5887cab9f6dcec54f2f5.svg",
+    "static/media/fa-solid-900.ttf": "/cartisbay/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/namibiaagentnew.png": "/cartisbay/static/media/namibiaagentnew.f1975e05afdb61e048b3.png",
+    "static/media/tanzaniaagentnew.png": "/cartisbay/static/media/tanzaniaagentnew.ee992414972f5ad9012f.png",
+    "static/media/custumersupportcopy.JPEG": "/cartisbay/static/media/custumersupportcopy.0a69171f9c039e13995c.JPEG",
+    "static/media/congoagentbanner.png": "/cartisbay/static/media/congoagentbanner.3eee5d60a47fd7647583.png",
+    "static/media/logisticstransparent.png": "/cartisbay/static/media/logisticstransparent.c71c4fab1c5cdcdf091e.png",
+    "static/media/fa-brands-400.ttf": "/cartisbay/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
+    "static/media/fa-solid-900.woff2": "/cartisbay/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/underconstructionstamp.jpeg": "/cartisbay/static/media/underconstructionstamp.6158dc6c2fc87ba523c3.jpeg",
+    "static/media/fa-brands-400.woff2": "/cartisbay/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/car-makes-icons.eot?gtc92f": "/cartisbay/static/media/car-makes-icons.bf967c12a6e7e4d8b65b.eot",
+    "static/media/car-makes-icons.woff?gtc92f": "/cartisbay/static/media/car-makes-icons.da6932fc85780f0b262b.woff",
+    "static/media/car-makes-icons.ttf?gtc92f": "/cartisbay/static/media/car-makes-icons.5560f91d48a01b0a6b0f.ttf",
+    "static/media/fa-regular-400.ttf": "/cartisbay/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/car-makes-icons.woff2?gtc92f": "/cartisbay/static/media/car-makes-icons.bd9b9d280fdab147db37.woff2",
+    "static/media/printwatermark.png": "/cartisbay/static/media/printwatermark.4a63492b97b9694c05b9.png",
+    "static/media/fa-regular-400.woff2": "/cartisbay/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/fa-v4compatibility.ttf": "/cartisbay/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fraction.cjs": "/cartisbay/static/media/fraction.7992481f3d8339b77604.cjs",
+    "static/media/fa-v4compatibility.woff2": "/cartisbay/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "static/media/slick.svg": "/cartisbay/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/cartisbay/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/cartisbay/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "index.html": "/cartisbay/index.html",
+    "static/media/slick.woff": "/cartisbay/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/index.cjs": "/cartisbay/static/media/index.cd351d7c31d0d3fccf96.cjs",
+    "main.4da59263.css.map": "/cartisbay/static/css/main.4da59263.css.map",
+    "main.f1818423.js.map": "/cartisbay/static/js/main.f1818423.js.map",
+    "213.809af65b.chunk.js.map": "/cartisbay/static/js/213.809af65b.chunk.js.map",
+    "732.5a05b03f.chunk.js.map": "/cartisbay/static/js/732.5a05b03f.chunk.js.map",
+    "453.aaf8b0ee.chunk.js.map": "/cartisbay/static/js/453.aaf8b0ee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4da59263.css",
+    "static/js/main.f1818423.js"
+>>>>>>> a828ce6 (Deploy to gh-pages)
   ]
 }
