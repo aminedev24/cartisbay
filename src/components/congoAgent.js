@@ -161,6 +161,8 @@ const CongoAgent = () => {
           </h2>
           <p>
             Pour plus de détails sur nos services de partage de conteneur, contactez notre partenaire <strong>Agence R.T.A</strong> au port de Matadi.
+            Mr Pascal Masamba
+            WhatsApp: +243 891 655 033
           </p>
           </div>
           <img alt="Image of a handshake and a ship with containers"  src={`${process.env.PUBLIC_URL}/images/localServices/partner.png`}/>
