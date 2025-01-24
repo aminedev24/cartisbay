@@ -15,7 +15,10 @@ const InvoiceList = () => {
       : "/server";
 
   useEffect(() => {
-    fetch(`${apiUrl}/fetchInvoices.php`)
+    fetch(`${apiUrl}/fetchInvoices.php`, {
+      method: "GET", // Optional: specify the HTTP method
+      credentials: "include", // Include credentials such as cookies
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

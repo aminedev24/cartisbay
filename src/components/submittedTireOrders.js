@@ -14,23 +14,27 @@ const TireOrderList = () => {
       ? "http://localhost/artisbay-server/server"
       : "/server";
 
-  useEffect(() => {
-    fetch(`${apiUrl}/fetchTireOrders.php`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setOrders(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+      useEffect(() => {
+        fetch(`${apiUrl}/fetchTireOrders.php`, {
+          method: "GET", // Optional: specify the HTTP method
+          credentials: "include", // Include credentials such as cookies
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Failed to fetch data");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setOrders(data);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setError(err.message);
+            setLoading(false);
+          });
+      }, []);
+      
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -54,9 +58,7 @@ const TireOrderList = () => {
           <tr>
             <th>Make</th>
             <th>Type</th>
-            <th>Width</th>
-            <th>Aspect Ratio</th>
-            <th>Rim Diameter</th>
+            <th>Size</th>
             <th>Quantity</th>
             <th>Speed Rating</th>
             <th>Load Index</th>
@@ -68,9 +70,7 @@ const TireOrderList = () => {
             <tr key={order.id}>
               <td>{order.make}</td>
               <td>{order.type}</td>
-              <td>{order.width}</td>
-              <td>{order.aspect_ratio || "N/A"}</td>
-              <td>{order.rim_diameter}</td>
+              <td>{`${order.width}/${order.aspect_ratio}R${order.rim_diameter}`}</td>
               <td>{order.quantity}</td>
               <td>{order.speed_rating || "N/A"}</td>
               <td>{order.load_index || "N/A"}</td>
