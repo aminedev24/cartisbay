@@ -357,6 +357,26 @@ const ProformaInvoiceForm = () => {
       hideTooltip(); // Hide the tooltip when typing starts
     }
   };
+
+  
+useEffect(() => {
+  if (formData.depositPurpose === 'dismantling') {
+    const minAmounts = {
+      USD: 6000,
+      JPY: 600000,
+      EUR: 6000
+    };
+    
+    const requiredMin = minAmounts[formData.depositCurrency] || 0;
+    
+    if (formData.depositAmount < requiredMin || !formData.depositAmount) {
+      setFormData(prev => ({
+        ...prev,
+        depositAmount: requiredMin
+      }));
+    }
+  }
+}, [formData.depositPurpose, formData.depositCurrency]);
   
     return (
         <div className='enquiry-wrapper invoice-wrapper'>
@@ -524,7 +544,15 @@ const ProformaInvoiceForm = () => {
                       onChange={handleChange}
                       placeholder="Payment amount"
                       required
-                      min="0"
+                      min={
+                        formData.depositPurpose === 'dismantling'
+                          ? {
+                              USD: 6000,
+                              JPY: 600000,
+                              EUR: 6000
+                            }[formData.depositCurrency] || 0
+                          : 0
+                      }                      
                       step="0.01"
                     />
                   </div>
